@@ -1,0 +1,182 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+:root {
+  --gradient: linear-gradient(30deg, #ff5c01, #fcff03);
+}
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+body {
+  scroll-behavior: smooth;
+  min-height: 100vh;
+}
+header {
+  position: fixed;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body {
+  background: linear-gradient(92deg, black, #2b2b2b 50%);
+}
+
+//GENERAL PROPERTIES
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+.justifyContent-center {
+  justify-content: center;
+}
+.justify-content-space-between {
+  justify-content: space-between;
+}
+.justify-content-space-evenly {
+  justify-content: space-evenly;
+}
+.flex-wrapReverse {
+  flex-wrap: wrap-reverse;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.align-items-center {
+  align-items: center;
+}
+.align-items-start {
+  align-items: start;
+}
+.align-items-end {
+  align-items: end;
+}
+
+.text-align-end {
+  text-align: end;
+}
+.text-align-center {
+  text-align: center;
+}
+.text-align-start {
+  text-align: start;
+}
+.page-section {
+  width: 100%;
+  padding: var(--padding-top-section) 0 0;
+}
+.margin-top-page {
+  margin-top: var(--margin-top-section);
+}
+
+.text-transform-uppercase {
+  text-transform: uppercase;
+}
+
+//FONTS
+.first-title {
+  font-family: "Title";
+  text-transform: uppercase;
+  padding: 0 1rem;
+}
+.second-title {
+  font-family: "Second-Title";
+  text-transform: uppercase;
+}
+.poppins-regular-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+.poppins-semibold-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: italic;
+}
+.poppins-regular {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.poppins-semibold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.montserrat-regular {
+  font-family: "Montserrat";
+  font-weight: 500;
+}
+.montserrat-semibold {
+  font-family: "Montserrat";
+  font-weight: 600;
+}
+
+//WEBSITE CSS
+.gradient-burneeble {
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent;
+  background: var(--gradient);
+  width: fit-content;
+}
+
+//TODO gradient text as skullnbanana
+
+.white-title {
+  color: white;
+  font-family: "Montserrat";
+  font-weight: 600;
+  font-size: 40px;
+}
+.gray-description {
+  color: #acacac;
+  font-family: "Montserrat";
+  font-weight: 500;
+  font-size: 18px;
+}
+.black-text {
+  color: black;
+}
+
+.website-padding {
+  padding: 2rem 3rem;
+}
+.website-top-padding {
+  padding-top: 2rem;
+}
+.website-bottom-padding {
+  padding-bottom: 2rem;
+}
+.website-left-padding {
+  padding-left: 3rem;
+}
+.website-right-padding {
+  padding-right: 3rem;
+}

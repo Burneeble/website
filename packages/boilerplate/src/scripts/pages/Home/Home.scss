@@ -1,0 +1,52 @@
+.homepage {
+  height: 100vh;
+  .developers-company {
+    color: white;
+    font-size: 15px;
+    background-color: #ffa701;
+    border-radius: 20px;
+    padding: 0.25rem 0.5rem;
+    gap: 0.5rem;
+    .web3-icon-image {
+      width: 30px;
+    }
+  }
+  .text-content {
+    gap: 1rem;
+    width: 500px;
+    .burneeble-text {
+      line-height: 58px;
+      @media screen and (max-width: 950px) {
+        font-size: 45px;
+      }
+    }
+    @media screen and (max-width: 950px) {
+      width: 100%;
+    }
+  }
+  .linear-gradient-background {
+    background: linear-gradient(360deg, #2b2b2b 1%, transparent 10%),
+      linear-gradient(90deg, #ff5c01, #fcff03);
+    width: 48%;
+    height: 100%;
+  }
+}
+
+.white-button {
+  border-radius: 5px;
+  width: fit-content;
+  padding: 0.5rem 0.75rem;
+  box-shadow: 0px 0px 8px #fcff03;
+  background-color: white;
+  border: 1px solid #ffa701;
+  color: #ff5c01;
+  font-size: 20px;
+  cursor: pointer;
+  transition: ease-in-out 0.3s;
+  &:hover {
+    box-shadow: 0px 0px 12px #fcff03;
+    background-color: #ff5c01;
+    border: 1px solid white;
+    color: white;
+  }
+}
