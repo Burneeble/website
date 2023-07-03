@@ -43,7 +43,8 @@ const Home = (props: HomeProps) => {
               </div>
             </h1>
             <p className="gray-description">
-              lorem ipsum lorem ipsumlorem ipsumlorem ipsumlorem lorem ipsum{" "}
+              Build your own awesome Web3 applications and start exploring this
+              new world. What are you waiting for?
             </p>
             <button
               onClick={() => {

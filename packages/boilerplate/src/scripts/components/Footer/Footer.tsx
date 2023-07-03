@@ -61,7 +61,7 @@ const Footer = (props: FooterProps) => {
                       />
                     </>
                   ),
-                  socialLink: "https://twitter.com/zoppel_u",
+                  socialLink: "",
                 },
                 {
                   nameSocial: "telegram",
@@ -74,7 +74,7 @@ const Footer = (props: FooterProps) => {
                       />
                     </>
                   ),
-                  socialLink: "https://t.me/ZOPPELINT",
+                  socialLink: "",
                 },
                 {
                   nameSocial: "discord",
@@ -87,7 +87,7 @@ const Footer = (props: FooterProps) => {
                       />
                     </>
                   ),
-                  socialLink: "https://discord.gg/ZFUKfMw9",
+                  socialLink: "",
                 },
               ]}
               secondRowSocials={[
@@ -101,7 +101,7 @@ const Footer = (props: FooterProps) => {
                       />
                     </>
                   ),
-                  socialLink: "https://www.instagram.com/zoppeluniverse/",
+                  socialLink: "",
                 },
                 {
                   nameSocial: "linkedin",
@@ -113,8 +113,7 @@ const Footer = (props: FooterProps) => {
                       />
                     </>
                   ),
-                  socialLink:
-                    "https://www.linkedin.com/company/zoppel-universe",
+                  socialLink: "",
                 },
                 {
                   nameSocial: "medium",
@@ -126,7 +125,7 @@ const Footer = (props: FooterProps) => {
                       />
                     </>
                   ),
-                  socialLink: "https://zoppeluniverse.medium.com/",
+                  socialLink: "",
                 },
               ]}
             ></SocialsLink>
