@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { Button, Popup, usePopup } from "@minteeble/ui-components";
+import PortfolioImages from "../../components/PortfolioImages";
 
 const Home = (props: HomeProps) => {
   const handleForm = usePopup();
@@ -57,7 +58,79 @@ const Home = (props: HomeProps) => {
           </div>
 
           {/* TODO add slider portfolio project */}
-          {width > 950 && <div className="linear-gradient-background"></div>}
+          {width > 950 && (
+            <div className="linear-gradient-background">
+              <>
+                <PortfolioImages
+                  firstColumn={[
+                    {
+                      src: "/build/images/portfolio/AlienClubsDapp.webp",
+                      link: "",
+                      figureCaption: "Alien Clubs NFT Website",
+                    },
+
+                    {
+                      src: "/build/images/portfolio/SkullMetacomm.png",
+                      link: "",
+                      figureCaption: "Skull N Bananas Form with Captcha",
+                    },
+                    {
+                      src: "/build/images/portfolio/BoredApe.webp",
+                      link: "",
+                      figureCaption: "Bored Ape Referral NFT Website",
+                    },
+                    {
+                      src: "/build/images/portfolio/SkullNBananas.webp",
+                      link: "",
+                      figureCaption: "Skull N Bananas NFT Website",
+                    },
+                    {
+                      src: "/build/images/portfolio/ZoppelUniverseLanding.webp",
+                      link: "",
+                      figureCaption: "Zoppel Universe Landing Page",
+                    },
+                  ]}
+                  secondColumn={[
+                    {
+                      src: "/build/images/portfolio/Vandals.png",
+                      link: "",
+                      figureCaption: "Vandals Union Minting Dapp",
+                    },
+                    {
+                      src: "/build/images/portfolio/Hourglass.png",
+                      link: "",
+                      figureCaption: "Hourglass Minting Dapp",
+                    },
+                    {
+                      src: "/build/images/portfolio/Zoppel-Universe.png",
+                      link: "",
+                      figureCaption: "Zoppel Universe NFT Website",
+                    },
+                    {
+                      src: "/build/images/portfolio/Benjis.webp",
+                      link: "",
+                      figureCaption: "Benjis NFT Website",
+                    },
+                    {
+                      src: "/build/images/portfolio/FighterPunks.webp",
+                      link: "",
+                      figureCaption: "Fighter Punks NFT Website",
+                    },
+                    {
+                      src: "/build/images/portfolio/Kaijocats.webp",
+                      link: "",
+                      figureCaption: "Kaijocats Minting Dapp",
+                    },
+                  ]}
+                ></PortfolioImages>
+              </>
+              <img
+                className="home-flames"
+                src="/build/images/assets/flameShadow.png"
+                alt="Flames"
+              />
+            </div>
+          )}
         </div>
       </section>
     </>

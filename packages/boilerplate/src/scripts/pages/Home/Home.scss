@@ -11,6 +11,7 @@
       width: 30px;
     }
   }
+
   .text-content {
     gap: 1rem;
     width: 500px;
@@ -29,6 +30,12 @@
       linear-gradient(90deg, #ff5c01, #fcff03);
     width: 48%;
     height: 100%;
+    position: relative;
+    .home-flames {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
   }
 }
 
