@@ -1,12 +1,14 @@
 export interface PortfolioPopupProps {
+  title?: string;
   description: string;
   srcImg: string;
   link: string;
+  tags?: string[];
   closePopup: ()=>void;
   };
   
 
-// Hook
+
 
 
 const PortfolioPopup = (props: PortfolioPopupProps) => {
@@ -18,8 +20,18 @@ const PortfolioPopup = (props: PortfolioPopupProps) => {
       <div className="image-wrapper">
       <img src={props.srcImg} alt="Immagine" className="image"></img>
       </div>
+      <div className="logo-row">
+        <hr className="row first" />
       <div className="logo-wrapper">
+        
+        {/* <div className="line" /> */}
+        
         <img src="/build/images/logo/burneebleB.png" alt="Logo Burneeble" className="logo" />
+        
+        {/* <div className="line" /> */}
+
+      </div>
+      <hr className="row second"/>
       </div>
       <div className="description-container gray-description">
         <p>

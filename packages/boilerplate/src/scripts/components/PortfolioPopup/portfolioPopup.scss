@@ -37,10 +37,24 @@
       
     }
     
-    .logo-wrapper{
-      width: 40px;
-      aspect-ratio: 1/1;
+    .logo-row{
+      display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        width: 100%;
+        position: relative;
+
+        .row{
+          width: 30%;
+        }
+
+      .logo-wrapper{
+        width: 40px;
+        aspect-ratio: 1/1;        
+      }
     }
+    
     
     .description-container{
       padding: 0 1rem;
