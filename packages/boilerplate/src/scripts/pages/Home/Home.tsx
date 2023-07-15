@@ -30,7 +30,16 @@ const Home = (props: HomeProps) => {
   return (
     <>
       <section className="homepage " id="homepage">
-        {isPortfolioPopupOpen && (<PortfolioPopup closePopup={closePopup} description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et diam risus. Nam at augue odio. Fusce in gravida elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris sit amet ex ac mauris consequat porta in sit amet diam. Proin diam nulla, maximus at justo in, gravida pellentesque nulla. Nulla molestie vitae ipsum vel aliquam. Praesent convallis quis quam quis semper. Integer sodales neque quam. Maecenas faucibus tristique turpis. Phasellus rhoncus dolor velit, sed interdum ante facilisis id. Nulla convallis quis diam vel condimentum." srcImg="/build/images/portfolio/ZoppelUniverseLanding.webp" link="" />)}
+        {isPortfolioPopupOpen && (
+        <PortfolioPopup 
+          closePopup={closePopup} 
+          title="Alien Clubs"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et diam risus. Nam at augue odio. Fusce in gravida elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris sit amet ex ac mauris consequat porta in sit amet diam. Proin diam nulla, maximus at justo in, gravida pellentesque nulla. Nulla molestie vitae ipsum vel aliquam. Praesent convallis quis quam quis semper. Integer sodales neque quam. Maecenas faucibus tristique turpis. Phasellus rhoncus dolor velit, sed interdum ante facilisis id. Nulla convallis quis diam vel condimentum." 
+          srcImg="/build/images/portfolio/ZoppelUniverseLanding.webp" 
+          link=""  
+          tags={["#Mintin Dapps", "#Web3 Website"]}
+          />
+          )}
         <div
           className="flex-row justify-content-space-between align-items-center"
           style={{ height: "100%" }}
@@ -88,6 +97,7 @@ const Home = (props: HomeProps) => {
                       
                       figureCaption: "Skull N Bananas Form with Captcha",
                       onImageClick: openPopup,
+                    
                     },
                     {
                       src: "/build/images/portfolio/BoredApe.webp",

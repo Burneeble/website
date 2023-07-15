@@ -1,9 +1,9 @@
 export interface PortfolioPopupProps {
-  title?: string;
+  title: string;
   description: string;
   srcImg: string;
   link: string;
-  tags?: string[];
+  tags: string[];
   closePopup: ()=>void;
   };
   
@@ -33,13 +33,33 @@ const PortfolioPopup = (props: PortfolioPopupProps) => {
       </div>
       <hr className="row second"/>
       </div>
-      <div className="description-container gray-description">
-        <p>
-          {props.description}
-        </p>
+      <div className="popup-content">
+        <div className="title">
+          <h1>{props.title}</h1>
+        </div>
+        <div className="tags-container">
+          {props.tags.map((item)=>{
+            return(
+            <>
+            <div className="tag">
+              {item}
+            </div>
+            </>
+            )            
+          })}
+        </div>
+        <div className="description-container gray-description">
+          <p>
+            {props.description}
+          </p>
+        </div>
+           
+        </div>
+        
+          <a href={props.link} className="see-website burn-button">See website</a>
+
       </div>
-        <a href={props.link} className="see-more burn-button">See more</a> 
-      </div>
+
     </div>
     
 
