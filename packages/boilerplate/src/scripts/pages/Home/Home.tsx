@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { Button, Popup, usePopup } from "@minteeble/ui-components";
 import PortfolioImages from "../../components/PortfolioImages";
+import PortfolioPopup from "../../components/PortfolioPopup";
 
 const Home = (props: HomeProps) => {
   const handleForm = usePopup();
@@ -15,9 +16,21 @@ const Home = (props: HomeProps) => {
       setWidth(window.innerWidth);
     });
   }, []);
+
+  const [isPortfolioPopupOpen, setIsPortfolioPopupOpen] = useState<boolean>(false);
+
+  const openPopup=()=>{
+    setIsPortfolioPopupOpen(true);
+  }
+
+  const closePopup=()=>{
+    setIsPortfolioPopupOpen(false);
+  }
+
   return (
     <>
       <section className="homepage " id="homepage">
+        {isPortfolioPopupOpen && (<PortfolioPopup closePopup={closePopup} description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et diam risus. Nam at augue odio. Fusce in gravida elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris sit amet ex ac mauris consequat porta in sit amet diam. Proin diam nulla, maximus at justo in, gravida pellentesque nulla. Nulla molestie vitae ipsum vel aliquam. Praesent convallis quis quam quis semper. Integer sodales neque quam. Maecenas faucibus tristique turpis. Phasellus rhoncus dolor velit, sed interdum ante facilisis id. Nulla convallis quis diam vel condimentum." srcImg="/build/images/portfolio/ZoppelUniverseLanding.webp" link="" />)}
         <div
           className="flex-row justify-content-space-between align-items-center"
           style={{ height: "100%" }}
@@ -29,7 +42,7 @@ const Home = (props: HomeProps) => {
                 : "website-left-padding"
             }`}
           >
-            <div className="developers-company montserrat-regular align-items-center flex-row justify-content-center">
+            <div className="developers-company montserrat-regular align-items-center flex-row justify-content-center burn-button">
               <img
                 className="web3-icon-image"
                 src="/build/images/homepage/web3Icon.png"
@@ -65,61 +78,72 @@ const Home = (props: HomeProps) => {
                   firstColumn={[
                     {
                       src: "/build/images/portfolio/AlienClubsDapp.webp",
-                      link: "",
+                      
                       figureCaption: "Alien Clubs NFT Website",
+                      onImageClick: openPopup,
                     },
 
                     {
                       src: "/build/images/portfolio/SkullMetacomm.png",
-                      link: "",
+                      
                       figureCaption: "Skull N Bananas Form with Captcha",
+                      onImageClick: openPopup,
                     },
                     {
                       src: "/build/images/portfolio/BoredApe.webp",
-                      link: "",
+                      
                       figureCaption: "Bored Ape Referral NFT Website",
+                      onImageClick: openPopup,
                     },
                     {
                       src: "/build/images/portfolio/SkullNBananas.webp",
-                      link: "",
+                      
                       figureCaption: "Skull N Bananas NFT Website",
+                      onImageClick: openPopup,
                     },
                     {
                       src: "/build/images/portfolio/ZoppelUniverseLanding.webp",
-                      link: "",
+                      
                       figureCaption: "Zoppel Universe Landing Page",
+                      onImageClick: openPopup,
                     },
                   ]}
                   secondColumn={[
                     {
                       src: "/build/images/portfolio/Vandals.png",
-                      link: "",
+                      
                       figureCaption: "Vandals Union Minting Dapp",
+                      onImageClick: openPopup,
                     },
                     {
                       src: "/build/images/portfolio/Hourglass.png",
-                      link: "",
+                      
                       figureCaption: "Hourglass Minting Dapp",
+                      onImageClick: openPopup,
                     },
                     {
                       src: "/build/images/portfolio/Zoppel-Universe.png",
-                      link: "",
+                      
                       figureCaption: "Zoppel Universe NFT Website",
+                      onImageClick: openPopup,
                     },
                     {
                       src: "/build/images/portfolio/Benjis.webp",
-                      link: "",
+                      
                       figureCaption: "Benjis NFT Website",
+                      onImageClick: openPopup,
                     },
                     {
                       src: "/build/images/portfolio/FighterPunks.webp",
-                      link: "",
+                      
                       figureCaption: "Fighter Punks NFT Website",
+                      onImageClick: openPopup,
                     },
                     {
                       src: "/build/images/portfolio/Kaijocats.webp",
-                      link: "",
+                      
                       figureCaption: "Kaijocats Minting Dapp",
+                      onImageClick: openPopup,
                     },
                   ]}
                 ></PortfolioImages>

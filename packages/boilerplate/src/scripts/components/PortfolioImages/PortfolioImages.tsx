@@ -17,10 +17,12 @@ export interface PortfolioImagesProps {
   secondColumn: InfoImages[];
 }
 export interface InfoImages {
-  link: string;
+  //link: string;
   src: string;
   figureCaption: string;
+  onImageClick: () => void;
 }
+
 const PortfolioImages = (props: PortfolioImagesProps) => {
   return (
     <>
@@ -29,7 +31,7 @@ const PortfolioImages = (props: PortfolioImagesProps) => {
           <div className="gallery__column animate" style={{ left: "0" }}>
             {props.firstColumn.map((item) => {
               return (
-                <a href={item.link} target="_blank" className="gallery__link">
+                <a onClick={item.onImageClick}  target="_blank" className="gallery__link">
                   <figure className="gallery__thumb">
                     <img
                       src={item.src}
@@ -45,7 +47,7 @@ const PortfolioImages = (props: PortfolioImagesProps) => {
             })}
             {props.firstColumn.map((item) => {
               return (
-                <a href={item.link} target="_blank" className="gallery__link">
+                <a onClick={item.onImageClick}  target="_blank" className="gallery__link">
                   <figure className="gallery__thumb">
                     <img
                       src={item.src}
@@ -167,7 +169,7 @@ const PortfolioImages = (props: PortfolioImagesProps) => {
           >
             {props.secondColumn.map((item) => {
               return (
-                <a href={item.link} target="_blank" className="gallery__link">
+                <a onClick={item.onImageClick}  target="_blank" className="gallery__link">
                   <figure className="gallery__thumb">
                     <img
                       src={item.src}
@@ -183,7 +185,7 @@ const PortfolioImages = (props: PortfolioImagesProps) => {
             })}
             {props.secondColumn.map((item) => {
               return (
-                <a href={item.link} target="_blank" className="gallery__link">
+                <a onClick={item.onImageClick}  target="_blank" className="gallery__link">
                   <figure className="gallery__thumb">
                     <img
                       src={item.src}
