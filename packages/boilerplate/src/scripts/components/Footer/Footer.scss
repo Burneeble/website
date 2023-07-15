@@ -293,6 +293,13 @@
 footer {
   position: relative;
   padding-top: 3rem;
+
+  .second {
+    clip-path: polygon(0 61%, 100% 0, 100% 1%, 0 62%);
+  }
+  .first {
+    clip-path: polygon(0 79%, 100% 0, 100% 1%, 0 80%);
+  }
 }
 
 .top-line {
@@ -302,10 +309,4 @@ footer {
   width: 100%;
   background-color: white;
   transform: rotate(180deg);
-}
-.second {
-  clip-path: polygon(0 61%, 100% 0, 100% 1%, 0 62%);
-}
-.first {
-  clip-path: polygon(0 79%, 100% 0, 100% 1%, 0 80%);
 }
