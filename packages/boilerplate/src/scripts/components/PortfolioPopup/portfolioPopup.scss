@@ -8,18 +8,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  .popup-background{
+
+  .popup-background {
     height: 100%;
     width: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, .4);
+    background-color: rgba(0, 0, 0, 0.4);
     z-index: 0;
   }
 
-  .popup-container{
+  .popup-container {
     height: 650px;
     max-width: 600px;
     display: flex;
@@ -31,47 +31,46 @@
     overflow-y: scroll;
     gap: 2rem;
     z-index: 1;
-    
-    .image-wrapper{
+
+    .image-wrapper {
       width: 100%;
-      
     }
-    
-    .logo-row{
+
+    .logo-row {
       display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 2rem;
-        width: 100%;
-        position: relative;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      width: 100%;
+      position: relative;
 
-        .row{
-          width: 30%;
-          border: none;
-          height: 1px;
+      .row {
+        width: 30%;
+        border: none;
+        height: 1px;
 
-          &.first{
-            background: linear-gradient(90deg, #ff5c01, #fcff03);
-          }
-
-          &.second{
-            background: linear-gradient(270deg, #ff5c01, #fcff03);
-          }
+        &.first {
+          background: linear-gradient(90deg, #ff5c01, #fcff03);
         }
 
-      .logo-wrapper{
+        &.second {
+          background: linear-gradient(270deg, #ff5c01, #fcff03);
+        }
+      }
+
+      .logo-wrapper {
         width: 40px;
-        aspect-ratio: 1/1;        
+        aspect-ratio: 1/1;
       }
     }
-    
-    .popup-content{
+
+    .popup-content {
       padding: 0 1rem;
       display: flex;
       flex-direction: column;
       gap: 1rem;
 
-      .title{
+      .title {
         -webkit-background-clip: text !important;
         -webkit-text-fill-color: transparent;
         background: var(--gradient);
@@ -79,13 +78,13 @@
         font-size: 26px;
       }
 
-      .tags-container{
+      .tags-container {
         display: flex;
         justify-content: flex-start;
         align-items: center;
         gap: 0.2rem;
 
-        .tag{
+        .tag {
           color: white;
           background-color: rgba(255, 167, 1, 0.81);
           border-radius: 10px;
@@ -93,24 +92,10 @@
           font-weight: 550;
           font-size: 14px;
         }
-
       }
 
-      .description-container{
-        
+      .description-container {
       }
-  
-
     }
-
-    .see-website{
-      margin-bottom: 0.5rem;
-    }
-    
   }
 }
-
-
-
-
-
