@@ -1,17 +1,3 @@
-import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faTelegram,
-  faDiscord,
-  faTwitter,
-  faInstagram,
-  faLinkedin,
-  faMedium,
-} from "@fortawesome/free-brands-svg-icons";
-import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
-// @ts-ignore
-import { HashLink as Link } from "react-router-hash-link";
-
 export interface PortfolioImagesProps {
   firstColumn: InfoImages[];
   secondColumn: InfoImages[];
@@ -31,7 +17,11 @@ const PortfolioImages = (props: PortfolioImagesProps) => {
           <div className="gallery__column animate" style={{ left: "0" }}>
             {props.firstColumn.map((item) => {
               return (
-                <a onClick={item.onImageClick}  target="_blank" className="gallery__link">
+                <a
+                  onClick={item.onImageClick}
+                  target="_blank"
+                  className="gallery__link"
+                >
                   <figure className="gallery__thumb">
                     <img
                       src={item.src}
@@ -47,7 +37,11 @@ const PortfolioImages = (props: PortfolioImagesProps) => {
             })}
             {props.firstColumn.map((item) => {
               return (
-                <a onClick={item.onImageClick}  target="_blank" className="gallery__link">
+                <a
+                  onClick={item.onImageClick}
+                  target="_blank"
+                  className="gallery__link"
+                >
                   <figure className="gallery__thumb">
                     <img
                       src={item.src}
@@ -169,7 +163,11 @@ const PortfolioImages = (props: PortfolioImagesProps) => {
           >
             {props.secondColumn.map((item) => {
               return (
-                <a onClick={item.onImageClick}  target="_blank" className="gallery__link">
+                <a
+                  onClick={item.onImageClick}
+                  target="_blank"
+                  className="gallery__link"
+                >
                   <figure className="gallery__thumb">
                     <img
                       src={item.src}
@@ -185,7 +183,11 @@ const PortfolioImages = (props: PortfolioImagesProps) => {
             })}
             {props.secondColumn.map((item) => {
               return (
-                <a onClick={item.onImageClick}  target="_blank" className="gallery__link">
+                <a
+                  onClick={item.onImageClick}
+                  target="_blank"
+                  className="gallery__link"
+                >
                   <figure className="gallery__thumb">
                     <img
                       src={item.src}
