@@ -1,0 +1,8 @@
+.DS_Store
+node_modules/
+*.log
+extra-service-info.json
+coverage
+lib
+*.pdf
+reports

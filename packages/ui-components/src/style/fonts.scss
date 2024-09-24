@@ -1,0 +1,78 @@
+// Fonts
+
+// function to get the rem value based on px
+@function calc-rem($size) {
+  @return calc(#{$size} / 16 * 1rem);
+}
+
+// lists
+$width-list: "default", "425";
+
+// element lists
+$element-lists: (
+  "default": (
+    "h1": calc-rem(50),
+    "h2": calc-rem(40),
+    "h3": calc-rem(30),
+    "p": calc-rem(20),
+  ),
+  "992": (
+    "h1": calc-rem(35),
+    "h2": calc-rem(30),
+    "h3": calc-rem(25),
+    "p": calc-rem(18),
+  ),
+  "425": (
+    "h1": calc-rem(33),
+    "h2": calc-rem(28),
+    "h3": calc-rem(23),
+    "p": calc-rem(16),
+  ),
+);
+
+// Font weigths
+$weight-values: (
+  "light": 300,
+  "regular": 400,
+  "bold": 700,
+  "extra-bold": 800,
+  "black": 900,
+);
+
+// Font Sizes
+$size-values: (
+  "extra-small": 0.5,
+  "small": 0.75,
+  "medium": 1,
+  "large": 1.25,
+);
+
+@each $width in $width-list {
+  @if $width == "default" {
+    @each $element, $normal-value in map-get($element-lists, $width) {
+      @each $weight, $weight-value in $weight_values {
+        @each $size, $coefficient in $size-values {
+          .#{$element}-#{$weight}-#{$size} {
+            font-size: calc(#{$normal-value} * #{$coefficient});
+            line-height: calc(#{$normal-value} * #{$coefficient} + 4px);
+            font-weight: $weight-value;
+          }
+        }
+      }
+    }
+  } @else {
+    @media only screen and (max-width: #{$width}px) {
+      @each $element, $normal-value in map-get($element-lists, $width) {
+        @each $weight, $weight-value in $weight-values {
+          @each $size, $coefficient in $size_values {
+            .#{$element}-#{$weight}-#{$size} {
+              font-size: calc(#{$normal-value} * #{$coefficient});
+              line-height: calc(#{$normal-value} * #{$coefficient} + 4px);
+              font-weight: $weight-value;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+@import "./../../../node_modules/react-toastify/dist/ReactToastify.css";
+
+/* stylelint-disable-next-line selector-class-pattern */
+.Toastify {
+  position: relative;
+  z-index: 99999999;
+}

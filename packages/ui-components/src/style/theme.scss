@@ -1,0 +1,78 @@
+// Theming
+
+$themes: (
+  // Default theme
+  default:
+    (
+      "primary-color": #0194fe,
+      "secondary-color": #fff,
+      "tertiary-color": #20282b,
+      "neutral-color": #787878,
+    ),
+  // Dark theme
+  dark:
+    (
+      "primary-color": #0194fe,
+      "secondary-color": #fff,
+      "tertiary-color": #20282b,
+      "neutral-color": #787878,
+    )
+);
+
+@use "sass:color";
+
+$multiplier: 10;
+$variants: 3;
+
+// Creating theming class names
+@each $name, $map in $themes {
+  .burneeble-#{$name}-theme {
+    @each $key, $value in $map {
+      --#{$key}: #{$value};
+      --#{$key}-trs-20: #{rgba($value, 0.2)};
+      --#{$key}-trs-50: #{rgba($value, 0.5)};
+
+      @for $i from 1 to $variants + 1 {
+        --#{$key}-dark-#{$i}: #{color.adjust(
+            $value,
+            $lightness: - $i * $multiplier * 1%
+          )};
+        --#{$key}-dark-#{$i}-trs-20: #{rgba(
+            color.adjust($value, $lightness: - $i * $multiplier * 1%),
+            0.2
+          )};
+        --#{$key}-dark-#{$i}-trs-50: #{rgba(
+            color.adjust($value, $lightness: - $i * $multiplier * 1%),
+            0.5
+          )};
+      }
+
+      @for $i from 1 to $variants + 1 {
+        --#{$key}-light-#{$i}: #{color.adjust(
+            $value,
+            $lightness: $i * $multiplier * 1%
+          )};
+        --#{$key}-light-#{$i}-trs-20: #{rgba(
+            color.adjust($value, $lightness: $i * $multiplier * 1%),
+            0.2
+          )};
+        --#{$key}-light-#{$i}-trs-50: #{rgba(
+            color.adjust($value, $lightness: $i * $multiplier * 1%),
+            0.5
+          )};
+      }
+    }
+  }
+}
+
+@mixin ligthen-color-background($color, $opacity) {
+  background: color-mix(in srgb, $color $opacity, transparent);
+}
+
+@mixin ligthen-color-text($color, $opacity) {
+  color: color-mix(in srgb, $color $opacity, transparent);
+}
+
+@function custom-color-opacity($color, $opacity) {
+  @return rgba($color, $opacity);
+}

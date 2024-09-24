@@ -1,0 +1,43 @@
+{
+  "name": "@burneeble/icons",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/index.esm.js",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/index.d.ts",
+  "license": "MIT",
+  "author": {
+    "name": "Giuseppe Compagnone",
+    "email": "compagnonegiuseppe04@gmail.com"
+  },
+  "scripts": {
+    "prebuild": "rimraf src && rimraf dist",
+    "build": "npm run svgr && rollup -c",
+    "svgr": "svgr --typescript --icon --title-prop --replace-attr-values \"#000000=currentColor\" --replace-attr-values \"#000=currentColor\" --replace-attr-values \"black=currentColor\" -d src svgs"
+  },
+  "files": [
+    "dist"
+  ],
+  "dtsRollup": {
+    "enabled": true,
+    "untrimmedFilePath": "./dist/index.d.ts"
+  },
+  "resolutions": {
+    "wrap-ansi": "7.0.0",
+    "string-width": "4.1.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.24.3",
+    "@babel/preset-env": "^7.24.3",
+    "@babel/preset-react": "^7.24.1",
+    "@babel/runtime": "^7.24.1",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@svgr/cli": "^8.1.0",
+    "rimraf": "^5.0.5",
+    "rollup": "^4.13.1",
+    "rollup-plugin-dts": "^6.1.0",
+    "rollup-plugin-filesize": "^10.0.0",
+    "typescript": "5.6.2"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "root",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "lerna run build",
+    "build-libs": "lerna run build --scope @exomoon/*",
+    "build-dapp": "lerna run build --ignore exomoon-dashboard",
+    "build-dashboard": "lerna run build --ignore exomoon-frontend",
+    "lint": "lerna run lint",
+    "nx": "nx",
+    "clean-modules": "rm -rf node_modules && lerna exec -- rm -rf ./node_modules",
+    "lh": "lerna run lighthouse-headless",
+    "reports": "node scripts/genReports.js"
+  },
+  "devDependencies": {
+    "lerna": "^8.0.1",
+    "puppeteer-core": "^22.6.1"
+  },
+  "dependencies": {
+    "next": "14.2.13"
+  }
+}
