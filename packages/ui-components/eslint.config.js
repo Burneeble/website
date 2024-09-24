@@ -7,7 +7,17 @@ Object.keys(rules).forEach((rule) => {
   customRules["@burneeble/burneeble/" + rule] = "error";
 });
 
-module.exports = {
+const { FlatCompat } = require("@eslint/eslintrc");
+const js = require("@eslint/js");
+
+const compat = new FlatCompat({
+  recommendedConfig: js.configs.recommended,
+  baseDirectory: __dirname,
+  allConfig: js.configs.all,
+  resolvePluginsRelativeTo: __dirname,
+});
+
+const baseConfig = compat.config({
   env: {
     browser: true,
     es2021: true,
@@ -24,6 +34,12 @@ module.exports = {
     "plugin:storybook/recommended",
   ],
   overrides: [
+    {
+      files: ["**/*.ts", "**/*.tsx"],
+      parser: "@typescript-eslint/parser",
+      plugins: ["@typescript-eslint"],
+      extends: ["plugin:@typescript-eslint/recommended"],
+    },
     {
       env: {
         node: true,
@@ -46,5 +62,12 @@ module.exports = {
     ...customRules,
     ...disabled,
   },
-  ignorePatterns: [".eslintrc.js", "dist/**/*"],
-};
+  ignorePatterns: [
+    "eslint.config.js",
+    "dist/**/*",
+    "rollup.config.js",
+    "create-component.js",
+  ],
+});
+
+module.exports = baseConfig;
