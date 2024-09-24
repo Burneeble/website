@@ -17,44 +17,48 @@ const compat = new FlatCompat({
   resolvePluginsRelativeTo: __dirname,
 });
 
-module.exports = compat.config({
-  env: {
-    browser: true,
-    es2021: true,
-  },
-  settings: {
-    react: {
-      version: "detect",
+module.exports = [
+  ...compat.config({
+    env: {
+      browser: true,
+      es2021: true,
     },
-  },
-  extends: [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended",
-  ],
-  overrides: [
-    {
-      env: {
-        node: true,
-      },
-      files: [".eslintrc.{js,cjs}"],
-      parserOptions: {
-        sourceType: "script",
+    settings: {
+      react: {
+        version: "detect",
       },
     },
-  ],
-  parser: "@typescript-eslint/parser",
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-  },
-  plugins: ["@typescript-eslint", "react", "@burneeble/burneeble"],
-  rules: {
-    "react/jsx-key": "error",
-    "storybook/prefer-pascal-case": "off",
-    "@typescript-eslint/no-explicit-any": "off",
-    ...customRules,
-    ...disabled,
-  },
-  ignorePatterns: ["eslint.config.js", "lib/**/*"],
-});
+    extends: [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react/recommended",
+    ],
+    overrides: [
+      {
+        env: {
+          node: true,
+        },
+        files: [".eslintrc.{js,cjs}"],
+        parserOptions: {
+          sourceType: "script",
+        },
+      },
+    ],
+    parser: "@typescript-eslint/parser",
+    parserOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
+    },
+    plugins: ["@typescript-eslint", "react", "@burneeble/burneeble"],
+
+    ignorePatterns: ["eslint.config.js", "lib/**/*"],
+  }),
+  ...compat.config({
+    rules: {
+      "react/jsx-key": "error",
+      "storybook/prefer-pascal-case": "off",
+      ...customRules,
+      ...disabled,
+    },
+  }),
+];
