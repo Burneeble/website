@@ -2,7 +2,7 @@ import { ToastOptions, toast } from "react-toastify";
 
 export class NotificationHandler {
   /**
-   * Class instanceto Follow singleton design
+   * Class instance to Follow singleton design
    */
   private static _instance: NotificationHandler;
 

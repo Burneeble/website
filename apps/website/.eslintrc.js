@@ -10,12 +10,16 @@ Object.keys(rules).forEach((rule) => {
 module.exports = {
   extends: [
     "next/core-web-vitals",
+    "next/typescript",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
   ],
   plugins: ["@burneeble/burneeble"],
   rules: {
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-empty-object-type": "off",
     ...customRules,
     ...disabled,
   },
+  ignorePatterns: ["node_modules/", ".next/", ".eslintrc.js"],
 };

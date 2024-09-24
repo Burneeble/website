@@ -7,7 +7,17 @@ Object.keys(rules).forEach((rule) => {
   customRules["@burneeble/burneeble/" + rule] = "error";
 });
 
-module.exports = {
+const { FlatCompat } = require("@eslint/eslintrc");
+const js = require("@eslint/js");
+
+const compat = new FlatCompat({
+  recommendedConfig: js.configs.recommended,
+  baseDirectory: __dirname,
+  allConfig: js.configs.all,
+  resolvePluginsRelativeTo: __dirname,
+});
+
+module.exports = compat.config({
   env: {
     browser: true,
     es2021: true,
@@ -21,7 +31,6 @@ module.exports = {
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
-    "plugin:storybook/recommended",
   ],
   overrides: [
     {
@@ -43,8 +52,9 @@ module.exports = {
   rules: {
     "react/jsx-key": "error",
     "storybook/prefer-pascal-case": "off",
+    "@typescript-eslint/no-explicit-any": "off",
     ...customRules,
     ...disabled,
   },
-  ignorePatterns: [".eslintrc.js", "lib/**/*"],
-};
+  ignorePatterns: ["eslint.config.js", "lib/**/*"],
+});

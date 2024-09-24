@@ -15,6 +15,7 @@
     "lhci:desktop": "lhci autorun --collect.settings.preset=desktop"
   },
   "dependencies": {
+    "@burneeble/eslint-plugin-burneeble": "^1.0.13",
     "@burneeble/icons": "^1.0.0",
     "@burneeble/sdk": "^1.0.0",
     "@burneeble/ui-components": "^1.0.0",
@@ -30,22 +31,22 @@
     "react-toastify": "^10.0.5"
   },
   "devDependencies": {
-    "@burneeble/eslint-plugin-burneeble": "^1.0.12",
+    "@burneeble/eslint-plugin-burneeble": "^1.0.13",
     "@burneeble/stylelint-plugin-burneeble": "^1.0.5",
     "@lhci/cli": "^0.13.0",
     "@next/bundle-analyzer": "^14.1.4",
     "@types/node": "^20",
     "@types/react": "18.3.8",
     "@types/react-dom": "18.3.0",
-    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@typescript-eslint/eslint-plugin": "8.7.0",
     "cross-env": "^7.0.3",
-    "eslint": "9.11.1",
-    "eslint-config-next": "14.0.3",
+    "eslint": "8.57.1",
+    "eslint-config-next": "14.2.13",
     "lighthouse": "^11.7.0",
     "sass": "^1.69.5",
     "stylelint": "^15.11.0",
     "stylelint-config-standard": "^34.0.0",
     "stylelint-config-standard-scss": "^11.1.0",
-    "typescript": "5.6.2"
+    "typescript": "5.5.4"
   }
 }

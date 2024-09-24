@@ -14,10 +14,9 @@ const compat = new FlatCompat({
   recommendedConfig: js.configs.recommended,
   baseDirectory: __dirname,
   allConfig: js.configs.all,
-  resolvePluginsRelativeTo: __dirname,
 });
 
-const baseConfig = compat.config({
+const a = compat.config({
   env: {
     browser: true,
     es2021: true,
@@ -70,4 +69,7 @@ const baseConfig = compat.config({
   ],
 });
 
-module.exports = baseConfig;
+a[4].rules["@typescript-eslint/no-explicit-any"] = "off";
+a[15].rules["@typescript-eslint/no-explicit-any"] = "off";
+
+module.exports = a;
