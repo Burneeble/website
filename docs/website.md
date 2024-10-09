@@ -18,6 +18,8 @@ Install the following plugins through the WordPress admin panel:
 - [Advanced Custom Fields (ACF)](https://wordpress.org/plugins/advanced-custom-fields/)
 - [WPGraphQL](https://wordpress.org/plugins/wp-graphql/)
 - [WPGraphQL for ACF](https://wordpress.org/plugins/wpgraphql-acf/)
+- [Contact Form 7](https://wordpress.org/plugins/contact-form-7/)
+- [Flamingo](https://wordpress.org/plugins/flamingo/)
 
 ### 2. ACF Configuration
 
@@ -42,7 +44,21 @@ The Portfolio Project data type is used to store the information about the proje
      - GraphQL
        - Show in GraphQL: `True`
 
-3. Create the custom fields for the `Project` post type. Name it `Project Fields`
+3. Create a Taxonomy named `Project Category`.
+   Configuration:
+
+   - Plural label: `Project Categories`
+   - Singular label: `Project Category`
+   - Taxonomy Key: `project_category`
+   - Hierarchical: `True`
+   - Post Types: `Project`
+   - Advanced Configuration: `True`
+     - GraphQL
+       - Show in GraphQL: `True`
+     - Visibility
+       - Metabox: `No Metabox`
+
+4. Create the custom fields for the `Project` post type. Name it `Project Fields`
 
    Inside the `Project Fields` group, create the following fields:
 
@@ -76,6 +92,15 @@ The Portfolio Project data type is used to store the information about the proje
   - Label: `Image3`
   - Name: `Image3`
   - Required: `False`
+- Category
+  - Field Type: `Taxonomy`
+  - Label: `Category`
+  - Name: `category`
+  - Required: `True`
+  - Taxonomy: `Project Category`
+  - Return Value: `Term Object`
+  - Save Terms: `True`
+  - Create Terms: `True`
 
 Additional settings/configuration:
 
@@ -86,6 +111,24 @@ Additional settings/configuration:
 - GraphQL
   - Show in GraphQL: `True`
 
+### 3. Contact Form 7 & Flamingo check
+
+The Contact Form 7 plugin is used to manage the contact form on the Burneeble site. The Flamingo plugin is used to store the form submissions in the WordPress database.
+
+These plugins do not require any additional configuration, so it's just about checking if they are working properly.
+
+For doing this, submit a `POST` request to the `/wp-json/contact-form-7/v1/contact-forms/{form_id}/feedback` endpoint, where `{form_id}` is the ID of the form you want to submit (the form id is numerical), and with the following payload as Form Data:
+
+```
+your-name:John Doe
+your-email:johndoe@example.com
+your-subject:Hey!
+your-message:Message content text
+_wpcf7_unit_tag:wpcf7-f20-o1
+```
+
+If everything is working properly, you should receive a `200 OK` and you should see the form submission in the Flamingo plugin through the WordPress admin panel.
+
 ## Reverse Proxy Configuration
 
 In order to maintain the existing URLs for the blog section, we need to configure a reverse proxy in the Next.js app. The goal is to redirect requests from the `/blog/**` path to the WordPress installation, and at the same time, maintain the same URL in the browser.
@@ -93,7 +136,6 @@ In order to maintain the existing URLs for the blog section, we need to configur
 For doing this, we need to:
 
 1. In the WordPress settings, go to the `Settings > General` section and change the `Site Address (URL)` to the URL of the Next.js app (which will act as a reverse proxy, and represents the domain that will be visible in the browser).
-
 2. In the Next.js app, create a custom middleware that will handle the reverse proxy configuration. The middleware will be responsible for redirecting requests from the `/blog/**` path to the WordPress installation.
 
 Tip: Even if the WordPress installation is in a different domain that will never be visible in the URL bar, it is recommended to use a meaningful domain name for the WordPress installation, such as `blog.burneeble.com`, because some internal references in the WordPress installation may use the domain name.
