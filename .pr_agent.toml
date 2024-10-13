@@ -1,5 +1,5 @@
 [config]
-model = "ollama/llama3"
-model_turbo = "ollama/llama3"
-fallback_models=["ollama/llama3"]
+model = "ollama/llama3.1"
+model_turbo = "ollama/llama3.1"
+fallback_models=["ollama/llama3.1"]
 custom_model_max_tokens=128000
