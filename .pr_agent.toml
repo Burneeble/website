@@ -1,5 +1,0 @@
-[config]
-model = "ollama/deepseek-coder-v2"
-model_turbo = "ollama/deepseek-coder-v2"
-fallback_models=["ollama/deepseek-coder-v2"]
-custom_model_max_tokens=128000
