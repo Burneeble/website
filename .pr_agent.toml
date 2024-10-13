@@ -1,0 +1,4 @@
+[config]
+model = "ollama/llama2"
+model_turbo = "ollama/llama2"
+fallback_models=["ollama/llama2"]
