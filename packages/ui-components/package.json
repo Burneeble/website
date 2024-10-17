@@ -2,7 +2,6 @@
   "name": "@burneeble/ui-components",
   "version": "1.0.0",
   "description": "Burneeble UI components package",
-  "repository": "https://github.com/Burneeble/exomoon.git",
   "author": {
     "name": "Giuseppe Compagnone",
     "email": "compagnonegiuseppe04@gmail.com"

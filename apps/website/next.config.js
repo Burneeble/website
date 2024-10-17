@@ -14,6 +14,14 @@ const nextConfig = {
   images: {
     remotePatterns: [],
   },
+  // async rewrites() {
+  //   return [
+  //     {
+  //       source: '/blog/:path*',
+  //       destination: 'https://burneeble.com/:path*',
+  //     },
+  //   ];
+  // },
 };
 
 module.exports = withBundleAnalyzer(nextConfig);

@@ -19,6 +19,8 @@ chromewebdata_*.html
 # next.js
 /.next/
 /out/
+robots.txt
+sitemap*.xml
 
 # production
 public/build

@@ -52,7 +52,7 @@ import { ${compName}Props } from "./${compName}.types";
 import React from "react";
 
 export default {
-  title: "exomoon-components/${type}/${compName}",
+  title: "burneeble-website-components/${type}/${compName}",
   component: ${compName},
   argTypes: {},
 } as Meta<typeof ${compName}>;

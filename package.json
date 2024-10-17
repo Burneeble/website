@@ -7,8 +7,7 @@
   ],
   "scripts": {
     "build": "lerna run build",
-    "build-libs": "lerna run build --scope @exomoon/*",
-    "build-dapp": "lerna run build --ignore exomoon-dashboard",
+    "build-libs": "lerna run build --scope @burneeble/*",
     "build-dashboard": "lerna run build --ignore exomoon-frontend",
     "lint": "lerna run lint",
     "nx": "nx",
