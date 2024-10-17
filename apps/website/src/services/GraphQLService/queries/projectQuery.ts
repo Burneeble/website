@@ -1,6 +1,7 @@
-import gql from "graphql-tag";
+/* eslint-disable @burneeble/burneeble/camel-case-vars */
+import { gql } from "@/__generated__";
 
-export const projectQuery = gql`
+export const PROJECT_QUERY = gql(`
   query Projects {
     projects {
       edges {
@@ -33,4 +34,4 @@ export const projectQuery = gql`
       }
     }
   }
-`;
+`);

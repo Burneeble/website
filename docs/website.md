@@ -129,6 +129,10 @@ _wpcf7_unit_tag:wpcf7-f20-o1
 
 If everything is working properly, you should receive a `200 OK` and you should see the form submission in the Flamingo plugin through the WordPress admin panel.
 
+### 4. GraphQL settings
+
+- Check `Enable Public Introspection`
+
 ## Reverse Proxy Configuration
 
 In order to maintain the existing URLs for the blog section, we need to configure a reverse proxy in the Next.js app. The goal is to redirect requests from the `/blog/**` path to the WordPress installation, and at the same time, maintain the same URL in the browser.

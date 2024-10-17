@@ -13,7 +13,9 @@
     "lighthouse": "lighthouse http://localhost:3000 --view --output html --output-path=./lighthouse-report.html",
     "lighthouse-headless": "lighthouse http://localhost:3000 --output html --output-path=./lighthouse-report.html",
     "lhci:mobile": "lhci autorun",
-    "lhci:desktop": "lhci autorun --collect.settings.preset=desktop"
+    "lhci:desktop": "lhci autorun --collect.settings.preset=desktop",
+    "compile": "graphql-codegen",
+    "watch": "graphql-codegen -w"
   },
   "dependencies": {
     "@apollo/client": "^3.11.8",
@@ -40,6 +42,9 @@
   "devDependencies": {
     "@burneeble/eslint-plugin-burneeble": "^1.0.13",
     "@burneeble/stylelint-plugin-burneeble": "^1.0.5",
+    "@graphql-codegen/cli": "^5.0.3",
+    "@graphql-codegen/client-preset": "^4.4.0",
+    "@graphql-typed-document-node/core": "^3.2.0",
     "@lhci/cli": "^0.13.0",
     "@next/bundle-analyzer": "^14.1.4",
     "@types/node": "^20",
