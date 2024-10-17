@@ -4,7 +4,7 @@ import cn from "classnames";
 import { ProvidersWrapper } from "@/components";
 import LayoutWrapper from "@/components/LayoutWrapper";
 import dynamic from "next/dynamic";
-import { GraphQLService } from "@/services/GraphQLService";
+import ProjectServiceProvider from "@/services/ProjectService";
 
 export const metadata: Metadata = {
   title: "Burneeble website",
@@ -21,39 +21,44 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const data = await GraphQLService.instance.getProject();
-
   return (
     <html lang="en">
       <body className={cn("burneeble-default-theme")}>
         <QueryProvider>
-          <ProvidersWrapper>
-            <LayoutWrapper>
-              <p>Project name: {data.projects.edges[0].node.title}</p>
-              <p>Project slug: {data.projects.edges[0].node.slug}</p>
-              <p>Project id: {data.projects.edges[0].node.id}</p>
-              <p>
-                Project category:{" "}
-                {
-                  data.projects.edges[0].node.projectFields.category.nodes[0]
-                    .name
-                }
-              </p>
-              <p>
-                Project url:{" "}
-                <a href={data.projects.edges[0].node.projectFields.projectUrl}>
-                  {data.projects.edges[0].node.projectFields.projectUrl}
-                </a>
-              </p>
-              <img
-                src={
-                  data.projects.edges[0].node.projectFields.thumbnail.node
-                    .sourceUrl
-                }
-              />
-              {children}
-            </LayoutWrapper>
-          </ProvidersWrapper>
+          <ProjectServiceProvider>
+            <ProvidersWrapper>
+              <LayoutWrapper>
+                {/* <p>Project name: {data.projects?.edges[0].node.title}</p>
+                <p>Project slug: {data.projects?.edges[0].node.slug}</p>
+                <p>Project id: {data.projects?.edges[0].node.id}</p>
+                <p>
+                  Project category:{" "}
+                  {
+                    data.projects?.edges[0].node.projectFields?.category
+                      ?.nodes[0].name
+                  }
+                </p>
+                <p>
+                  Project url:{" "}
+                  <a
+                    href={
+                      data.projects?.edges[0].node.projectFields?.projectUrl ||
+                      ""
+                    }
+                  >
+                    {data.projects?.edges[0].node.projectFields?.projectUrl}
+                  </a>
+                </p>
+                <img
+                  src={
+                    data.projects?.edges[0].node.projectFields?.thumbnail?.node
+                      .sourceUrl || ""
+                  }
+                /> */}
+                {children}
+              </LayoutWrapper>
+            </ProvidersWrapper>
+          </ProjectServiceProvider>
         </QueryProvider>
       </body>
     </html>

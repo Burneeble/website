@@ -6,4 +6,3 @@ export * from "./GraphQLService.types";
 export * from "./GraphQLService";
 export * from "./GraphQLServiceContext";
 export * from "./useGraphQLService";
-export * from "./queries";

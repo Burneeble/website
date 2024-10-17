@@ -3,7 +3,6 @@ import {
   InMemoryCache,
   NormalizedCacheObject,
 } from "@apollo/client";
-import { PROJECT_QUERY } from "./queries";
 export class GraphQLService {
   private static _instance: GraphQLService;
 
@@ -18,15 +17,6 @@ export class GraphQLService {
 
   public get client(): ApolloClient<NormalizedCacheObject> {
     return GraphQLService._client;
-  }
-
-  public async getProject() {
-    const { data } = await GraphQLService._client.query({
-      query: PROJECT_QUERY,
-    });
-    console.log("[getProject] Data:", JSON.stringify(data, null, 2));
-
-    return data;
   }
 
   private constructor() {
