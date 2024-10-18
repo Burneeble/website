@@ -13,7 +13,8 @@ module.exports = {
     getAbsolutePath("storybook-addon-mock"),
     getAbsolutePath("@storybook/addon-mdx-gfm"),
     getAbsolutePath("@storybook/addon-mdx-gfm"),
-    "@chromatic-com/storybook"
+    getAbsolutePath("@locofy/storybook-addon"),
+    "@chromatic-com/storybook",
   ],
   managerHead: (head) => `
     ${head}
