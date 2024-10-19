@@ -16,7 +16,7 @@
     "lhci:desktop": "lhci autorun --collect.settings.preset=desktop",
     "compile": "graphql-codegen",
     "watch": "graphql-codegen -w",
-    "watch-tailwind": "tailwindcss -i ./src/styles/input.css -o ./src/styles/output.css --watch"
+    "watch-tailwind": "tailwindcss -i ./src/styles/input.scss -o ./src/styles/output.scss --watch"
   },
   "dependencies": {
     "@apollo/client": "^3.11.8",
