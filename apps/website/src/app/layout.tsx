@@ -57,6 +57,7 @@ export default async function RootLayout({
                   }
                 /> */}
                 <Button>Hello World</Button>
+                <p className="text-sky-500">lorem</p>
                 {children}
               </LayoutWrapper>
             </ProvidersWrapper>
