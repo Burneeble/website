@@ -5,6 +5,7 @@ import { ProvidersWrapper } from "@/components";
 import LayoutWrapper from "@/components/LayoutWrapper";
 import dynamic from "next/dynamic";
 import ProjectServiceProvider from "@/services/ProjectService";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "Burneeble website",
@@ -55,6 +56,7 @@ export default async function RootLayout({
                       .sourceUrl || ""
                   }
                 /> */}
+                <Button>Hello World</Button>
                 {children}
               </LayoutWrapper>
             </ProvidersWrapper>
