@@ -21,7 +21,8 @@
     "pub": "yarn build && yarn publish --force-publish",
     "lint": "eslint '**/*.{js,ts,tsx}'",
     "style-lint": "stylelint \"**/*.scss\"",
-    "create-component": "node ./src/scripts/create-component.js"
+    "create-component": "node ./src/scripts/create-component.js",
+    "watch-tailwind": "tailwindcss -i ./src/style/input.css -o ./src/style/output.css --watch"
   },
   "publishConfig": {
     "access": "public"
@@ -89,6 +90,7 @@
     "stylelint": "^16.0.2",
     "stylelint-config-standard": "^35.0.0",
     "stylelint-config-standard-scss": "^12.0.0",
+    "tailwindcss": "^3.4.14",
     "tslib": "^2.4.0",
     "typescript": "5.5.4"
   },
