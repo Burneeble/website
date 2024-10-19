@@ -3,53 +3,87 @@ module.exports = {
   darkMode: ["class"],
   content: ["./src/**/*.{html,js,tsx,jsx}"],
   theme: {
-    extend: {
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+    screens: {
+      mobile: "425px",
+      tablet: "768px",
+      laptop: "992px",
+      desktop: "1300px",
+    },
+
+    colors: {
+      //palette
+      white: "rgba(255, 255, 255, 1)",
+      black: "rgba(0, 0, 0, 1)",
+      blue: {
+        50: "rgba(225, 237, 247, 1)",
+        100: "rgba(196, 219, 241, 1)",
+        200: "rgba(141, 183, 227, 1)",
+        300: "rgba(88, 149, 212, 1)",
+        400: "rgba(43, 119, 201, 1)",
+        500: "rgba(26, 90, 157, 1)",
+        600: "rgba(23, 72, 124, 1)",
+        700: "rgba(18, 52, 87, 1)",
+        800: "rgba(15, 35, 57, 1)",
+        900: "rgba(10, 20, 30, 1)",
       },
-      colors: {
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        chart: {
-          1: "hsl(var(--chart-1))",
-          2: "hsl(var(--chart-2))",
-          3: "hsl(var(--chart-3))",
-          4: "hsl(var(--chart-4))",
-          5: "hsl(var(--chart-5))",
-        },
+      green: {
+        50: "rgba(241, 247, 239, 1)",
+        100: "rgba(227, 239, 221, 1)",
+        200: "rgba(197, 220, 185, 1)",
+        300: "rgba(169, 204, 152, 1)",
+        400: "rgba(143, 187, 120, 1)",
+        500: "rgba(116, 168, 89, 1)",
+        600: "rgba(93, 135, 72, 1)",
+        700: "rgba(69, 100, 53, 1)",
+        800: "rgba(45, 65, 34, 1)",
+        900: "rgba(23, 35, 18, 1)",
+      },
+      yellow: {
+        50: "rgba(253, 245, 236, 1)",
+        100: "rgba(251, 237, 217, 1)",
+        200: "rgba(247, 215, 176, 1)",
+        300: "rgba(243, 197, 139, 1)",
+        400: "rgba(240, 177, 102, 1)",
+        500: "rgba(250, 155, 46, 1)",
+        600: "rgba(215, 130, 48, 1)",
+        700: "rgba(163, 99, 35, 1)",
+        800: "rgba(108, 65, 20, 1)",
+        900: "rgba(56, 34, 7, 1)",
+      },
+      orange: {
+        200: "rgba(242, 192, 7, 1)",
+        300: "rgba(242, 163, 7, 1)",
+        400: "rgba(242, 131, 7, 1)",
+        500: "rgba(255, 92, 1, 1)",
+        600: "rgba(242, 48, 7, 1)",
+      },
+      red: {
+        50: "rgba(247, 231, 229, 1)",
+        100: "rgba(240, 208, 202, 1)",
+        200: "rgba(229, 165, 155, 1)",
+        300: "rgba(218, 119, 103, 1)",
+        400: "rgba(209, 77, 57, 1)",
+        500: "rgba(170, 55, 38, 1)",
+        600: "rgba(136, 43, 30, 1)",
+        700: "rgba(103, 32, 22, 1)",
+        800: "rgba(70, 22, 15, 1)",
+        900: "rgba(15, 0, 0, 1)",
+      },
+      brown: {
+        200: "rgba(157, 92, 57, 1)",
+        300: "rgba(115, 80, 61, 1)",
+        500: "rgba(72, 58, 50, 1)",
+        600: "rgba(51, 46, 44, 1)",
+        700: "rgba(43, 43, 43, 1)",
+      },
+      gray: {
+        400: "rgba(172, 172, 172, 1)",
+        500: "rgba(91, 91, 91, 1)",
+        600: "rgba(59, 59, 59, 1)",
+      },
+      //tokens
+      primary: {
+        // default: colors.orange[500],
       },
     },
   },
