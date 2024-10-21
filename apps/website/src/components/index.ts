@@ -1,2 +1,2 @@
 export * from "./LayoutWrapper";
-export * from "./ProvidersWrapper";
+export * from "./ProviderWrappers";

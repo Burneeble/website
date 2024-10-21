@@ -62,6 +62,7 @@ module.exports = [
       "rollup.config.js",
       "create-component.js",
       "components/ui/**/*",
+      "hooks/**/*",
     ],
   }),
   ...compat.config({

@@ -26,5 +26,6 @@ module.exports = {
     ".next/",
     ".eslintrc.js",
     "components/ui/**/*",
+    "hooks/**/*",
   ],
 };
