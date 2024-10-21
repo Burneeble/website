@@ -3,7 +3,7 @@ import Button from "./Button";
 import { ButtonProps } from "./Button.types";
 
 export default {
-  title: "exomoon-components/common/Button",
+  title: "burneeble-website-components/common/Button",
   component: Button,
 } as Meta<typeof Button>;
 
