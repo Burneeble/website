@@ -16,6 +16,7 @@
     "components": "@/components",
     "ui": "@/components/ui",
     "lib": "@/lib",
+    "utils": "@/lib/utils.ts",
     "hooks": "@/hooks"
   }
 }
