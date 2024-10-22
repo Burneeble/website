@@ -1,5 +1,7 @@
+import { JsonObject, JsonProperty } from "typescript-json-serializer";
+
 export enum ProjectCategory {
-  Dapp = 1,
+  Dapp = "Dapp",
 }
 
 export interface IProjectModel {
@@ -10,11 +12,21 @@ export interface IProjectModel {
   category: ProjectCategory;
 }
 
+@JsonObject()
 export class ProjectModel implements IProjectModel {
+  @JsonProperty()
   title: string;
+
+  @JsonProperty()
   description: string;
+
+  @JsonProperty()
   projectUrl: string;
+
+  @JsonProperty()
   thumbnailUrl: string;
+
+  @JsonProperty()
   category: ProjectCategory;
 
   constructor(obj?: Partial<IProjectModel>) {

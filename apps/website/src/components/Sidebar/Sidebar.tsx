@@ -24,7 +24,7 @@ const Sidebar = (props: ComponentProps<typeof SidebarComponent>) => {
       </SidebarComponent>
       <main>
         <SidebarTrigger />
-        <div className="text-sky-600">Hello World</div>
+        <div className="text-sky-600">{props.children}</div>
       </main>
     </SidebarProvider>
   );

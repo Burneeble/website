@@ -21695,7 +21695,7 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==
 
-typescript-json-serializer@^5.1.0:
+typescript-json-serializer@^5.0.1, typescript-json-serializer@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/typescript-json-serializer/-/typescript-json-serializer-5.1.0.tgz#88e35eaa13b0d2edbf17863cfb7085d1e52fcb2f"
   integrity sha512-0q50ZQV5G+yKNJSZLRwTMAXXS8nx4LvDaNGp82FmLE3lXTKRcSaU+0+A8Ic0lKkqKLhj08OYwBGG6pVuCJImUw==

@@ -2,9 +2,10 @@
 
 import { GraphQLService } from "../GraphQLService";
 import { GET_PROJECT_QUERY } from "./queries";
-import { ProjectModel } from "./models";
-import { z } from "zod";
+import { IProjectModel, ProjectCategory, ProjectModel } from "./models";
+import { JsonSerializer } from "typescript-json-serializer";
 
+const serializer = new JsonSerializer();
 export class ProjectService {
   private static _instance: ProjectService;
 
@@ -26,19 +27,23 @@ export class ProjectService {
 
     if (!data) return null;
 
-    const projectSchema = z.object({
-      id: z.string(),
-      name: z.string(),
-      description: z.string().nullable(),
-    });
+    const projectInfo: IProjectModel = {
+      title: data.projectBy?.title || "",
+      description: data.projectBy?.projectFields?.description || "",
+      projectUrl: data.projectBy?.projectFields?.projectUrl || "",
+      thumbnailUrl:
+        data.projectBy?.projectFields?.thumbnail?.node.sourceUrl || "",
+      category:
+        // @ts-ignore
+        ProjectCategory[
+          data.projectBy?.projectFields?.category?.edges[0].node.name || "Dapp"
+        ],
+    };
 
-    try {
-      const project = projectSchema.parse(data.projectBy);
-      //   @ts-ignore
-      return project as ProjectModel;
-    } catch (e) {
-      console.error("Failed to parse project data", e);
-      return null;
-    }
+    const project =
+      serializer.deserializeObject<ProjectModel>(projectInfo, ProjectModel) ||
+      null;
+
+    return project;
   }
 }
