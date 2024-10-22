@@ -8,8 +8,12 @@ import scss from "rollup-plugin-scss";
 import svg from "rollup-plugin-svg";
 import rollupNodeResolve from "rollup-plugin-node-resolve";
 import rollupJson from "rollup-plugin-json";
+import postcss from "postcss";
+import autoprefixer from "autoprefixer";
+import tailwindcss from "tailwindcss";
 
 const packageJson = require("./package.json");
+const tailwindConfig = require("./tailwind.config.js");
 
 export default [
   {
@@ -27,6 +31,11 @@ export default [
       },
     ],
     plugins: [
+      postcss({
+        plugins: [tailwindcss(tailwindConfig), autoprefixer()],
+        extract: true,
+        minimize: true,
+      }),
       peerDepsExternal(),
       resolve(),
       rollupNodeResolve({
@@ -38,11 +47,6 @@ export default [
       rollupJson(),
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
-      scss({
-        output: "./build/css/style.css",
-        failOnError: true,
-        include: "./src/**/*.scss",
-      }),
       terser(),
       svg(),
     ],
@@ -53,6 +57,7 @@ export default [
       "react-router-dom",
       "styled-components",
       "fs",
+      /\.(sc|sa|c)ss$/,
     ],
   },
   {
@@ -64,10 +69,12 @@ export default [
     input: "src/style.ts",
     plugins: [
       scss({
-        output: "./dist/css/style.css",
         failOnError: true,
         include: "./src/**/*.scss",
+        output: "./dist/css/style.css",
       }),
+
+      terser(),
     ],
     external: ["react", "react-dom", "react-router-dom", "styled-components"],
   },

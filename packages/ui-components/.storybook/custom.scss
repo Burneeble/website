@@ -9,3 +9,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  * {
+    @apply tw-border-border;
+  }
+
+  body {
+    @apply tw-bg-background tw-text-foreground;
+  }
+}
