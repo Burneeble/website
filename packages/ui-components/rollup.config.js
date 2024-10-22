@@ -11,9 +11,12 @@ import rollupJson from "rollup-plugin-json";
 import postcss from "postcss";
 import autoprefixer from "autoprefixer";
 import tailwindcss from "tailwindcss";
+import copy from "rollup-plugin-copy";
 
 const packageJson = require("./package.json");
 const tailwindConfig = require("./tailwind.config.js");
+
+console.log(__dirname);
 
 export default [
   {
@@ -31,6 +34,14 @@ export default [
       },
     ],
     plugins: [
+      copy({
+        targets: [
+          {
+            src: "./tailwind.config.js",
+            dest: "./dist/css/",
+          },
+        ],
+      }),
       postcss({
         plugins: [tailwindcss(tailwindConfig), autoprefixer()],
         extract: true,
@@ -73,7 +84,6 @@ export default [
         include: "./src/**/*.scss",
         output: "./dist/css/style.css",
       }),
-
       terser(),
     ],
     external: ["react", "react-dom", "react-router-dom", "styled-components"],
