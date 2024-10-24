@@ -46,7 +46,7 @@ export * from "./${compName}.types";
 );
 fs.writeFileSync(
   path.join(compPath, compName + ".stories.tsx"),
-  `import { Story, Meta } from "@storybook/react";
+  `import { StoryObj, Meta } from "@storybook/react";
 import ${compName} from "./${compName}";
 import { ${compName}Props } from "./${compName}.types";
 import React from "react";
@@ -54,17 +54,15 @@ import React from "react";
 export default {
   title: "burneeble-website-components/${type}/${compName}",
   component: ${compName},
-  argTypes: {},
 } as Meta<typeof ${compName}>;
 
-const Template: Story<${compName}Props> = (args) => <${compName} {...args} />;
+type Story = StoryObj<${compName}Props>;
 
-export const Simple${compName} = Template.bind({});
-
-const Simple${compName}Args: ${compName}Props = {
+export const simple${compName}: Story = {
+  args: {
+   
+  },
 };
-
-Simple${compName}.args = Simple${compName}Args;
 `
 );
 

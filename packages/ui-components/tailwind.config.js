@@ -215,7 +215,7 @@ module.exports = {
   prefix: "tw-",
   plugins: [
     require("tailwindcss-animate"),
-    plugin(function ({ addBase, theme }) {
+    plugin(function ({ addBase, theme, apply }) {
       addBase({
         ":root": {
           "--white": theme("colors.white"),
