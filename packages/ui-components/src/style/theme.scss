@@ -2,21 +2,9 @@
 
 $themes: (
   // Default theme
-  default:
-    (
-      "primary-color": #0194fe,
-      "secondary-color": #fff,
-      "tertiary-color": #20282b,
-      "neutral-color": #787878,
-    ),
+  default: (),
   // Dark theme
-  dark:
-    (
-      "primary-color": #0194fe,
-      "secondary-color": #fff,
-      "tertiary-color": #20282b,
-      "neutral-color": #787878,
-    )
+  dark: ()
 );
 
 @use "sass:color";

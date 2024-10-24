@@ -4,16 +4,13 @@ import React from "react";
 export default async function Home() {
   const data = await ProjectService.instance.getProject("cG9zdDozMg==");
 
-  console.log("[Project data]", JSON.stringify(data));
-
   return (
-    <>
-      <p>Project name: {data?.title}</p>
+    <div className="text-sky-600 ">
+      <p>Project title: {data?.title}</p>
+      <p>Project description: {data?.description}</p>
+      <p>Project url: {data?.projectUrl}</p>
       <p>Project category: {data?.category}</p>
-      <p>
-        Project url: <a href={data?.projectUrl || ""}>{data?.projectUrl}</a>
-      </p>
-      <img src={data?.thumbnailUrl || ""} />
-    </>
+      <img src={data?.thumbnailUrl} />
+    </div>
   );
 }

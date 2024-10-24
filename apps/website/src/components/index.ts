@@ -1,2 +1,3 @@
 export * from "./LayoutWrapper";
-export * from "./ProvidersWrapper";
+export * from "./ProviderWrappers";
+export * from "./Sidebar";

@@ -21,5 +21,11 @@ module.exports = {
     ...customRules,
     ...disabled,
   },
-  ignorePatterns: ["node_modules/", ".next/", ".eslintrc.js"],
+  ignorePatterns: [
+    "node_modules/",
+    ".next/",
+    ".eslintrc.js",
+    "components/ui/**/*",
+    "hooks/**/*",
+  ],
 };

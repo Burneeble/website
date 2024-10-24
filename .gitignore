@@ -3,6 +3,6 @@ node_modules/
 *.log
 extra-service-info.json
 coverage
-lib
+packages/sdk/lib
 *.pdf
 reports
