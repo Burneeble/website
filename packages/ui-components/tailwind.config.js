@@ -94,6 +94,7 @@ module.exports = {
     },
     extend: {
       colors: {
+        //TODO review these hsl shadcn values
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -137,6 +138,7 @@ module.exports = {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        //--- end
       },
 
       //custom mapping
