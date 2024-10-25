@@ -94,7 +94,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        //TODO review these hsl shadcn values
+        //TODO review these  hsl shadcn values
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -195,6 +195,8 @@ module.exports = {
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
+        "bowlby-one": ["Bowlby One", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
       },
       keyframes: {
         "accordion-down": {
