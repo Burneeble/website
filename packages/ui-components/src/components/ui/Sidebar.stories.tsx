@@ -32,7 +32,7 @@ export const baseSidebar: Story = {
         </Sidebar>
         <main>
           <SidebarTrigger />
-          <div className="text-sky-600">Hello World</div>
+          <div>Hello World</div>
         </main>
       </SidebarProvider>
     );
