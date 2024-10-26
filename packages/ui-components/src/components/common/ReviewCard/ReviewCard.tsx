@@ -26,13 +26,7 @@ const ReviewCard = (props: ReviewCardProps) => {
             </div>
           </div>
         </div>
-        <div className="tw-justify-start tw-items-center tw-inline-flex tw-gap-2">
-          <div className="primary-gradient tw-bg-gradient-to-tr tw-w-8 tw-h-8 tw-justify-center tw-items-center tw-flex" />
-          <div className="primary-gradient tw-bg-gradient-to-tr tw-w-8 tw-h-8 tw-justify-center tw-items-center tw-flex" />
-          <div className="primary-gradient tw-bg-gradient-to-tr tw-w-8 tw-h-8 tw-justify-center tw-items-center tw-flex" />
-          <div className="primary-gradient tw-bg-gradient-to-tr tw-w-8 tw-h-8 tw-justify-center tw-items-center tw-flex" />
-          <div className="primary-gradient tw-bg-gradient-to-tr tw-w-8 tw-h-8 tw-justify-center tw-items-center tw-flex" />
-        </div>
+        <div className="tw-justify-start tw-items-center tw-inline-flex tw-gap-2"></div>
         <p className="tw-self-stretch tw-text-body tw-font-inter tw-text-xl tw-leading-[30px]">
           So I started to walk into the water. I won't lie to you boys, I was
           terrified. But I pressed on, and as I made...
