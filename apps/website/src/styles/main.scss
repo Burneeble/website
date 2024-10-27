@@ -1,0 +1,20 @@
+// Tailwind
+@import "./tailwind";
+
+// Shadcn
+@import "./shadcn";
+
+// General Style
+@import "./general";
+
+// Lib Style
+@import "../../../../node_modules/@burneeble/ui-components/dist/css/style.css";
+
+// Colors
+@import "./colors";
+
+// Components
+@import "./../components/components";
+
+// Toastify
+@import "./../../../../node_modules/react-toastify/dist/ReactToastify.css";

@@ -1,0 +1,20 @@
+// Tailwind
+@import "./tailwind";
+
+// Shadcn
+@import "./shadcn";
+
+// Importing fonts
+@import "./fonts";
+
+// Importing shared styles
+@import "./shared";
+
+// Importing theme
+@import "./theme";
+
+// Importing components
+@import "../components/components";
+
+// Importing style for storybook
+@import "./storybook";

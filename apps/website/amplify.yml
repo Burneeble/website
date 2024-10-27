@@ -1,0 +1,25 @@
+version: 1
+applications:
+  - frontend:
+      # buildPath: "frontend"
+      phases:
+        preBuild:
+          commands:
+            - echo "Starting from amplify.yml settings"
+            - yarn install
+        build:
+          commands:
+            - cd ../../
+            - yarn run build-libs
+            - cd apps/website
+            - yarn run build
+        postBuild:
+          commands: echo "Build completed"
+      artifacts:
+        baseDirectory: .next
+        files:
+          - "**/*"
+      cache:
+        paths:
+          - node_modules/**/*
+    appRoot: apps/website
