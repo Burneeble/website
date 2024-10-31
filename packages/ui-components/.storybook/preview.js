@@ -4,6 +4,8 @@ import { ToastContainer } from "react-toastify";
 
 import "./custom.scss";
 
+import { ClientInfoServiceProvider } from "../src/services/ClientInfoService";
+
 export const parameters = {
   controls: {
     matchers: {
@@ -27,8 +29,10 @@ export const decorators = [
   (Story) => {
     return (
       <>
-        <Story />
-        <ToastContainer />
+        <ClientInfoServiceProvider>
+          <Story />
+          <ToastContainer />
+        </ClientInfoServiceProvider>
       </>
     );
   },

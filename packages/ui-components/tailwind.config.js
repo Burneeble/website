@@ -196,6 +196,7 @@ module.exports = {
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
         "bowlby-one": ["Bowlby One", "sans-serif"],
+        "Bowlby One": ["Bowlby One", "sans-serif"],
         inter: ["Inter", "sans-serif"],
       },
       keyframes: {
