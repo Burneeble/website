@@ -13,12 +13,13 @@ module.exports = {
         "2xl": "1400px",
       },
     },
-    screens: {
-      mobile: "425px",
-      tablet: "768px",
-      laptop: "992px",
-      desktop: "1300px",
-    },
+    //TODO dont delete
+    // screens: {
+    //   mobile: "425px",
+    //   tablet: "768px",
+    //   laptop: "992px",
+    //   desktop: "1300px",
+    // },
 
     colors: {
       //burneeble palette
@@ -196,7 +197,6 @@ module.exports = {
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
         "bowlby-one": ["Bowlby One", "sans-serif"],
-        "Bowlby One": ["Bowlby One", "sans-serif"],
         inter: ["Inter", "sans-serif"],
       },
       keyframes: {
