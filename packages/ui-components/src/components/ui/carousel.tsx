@@ -64,6 +64,7 @@ const Carousel = React.forwardRef<
       {
         ...opts,
         axis: orientation === "horizontal" ? "x" : "y",
+        loop: true,
       },
       plugins
     );
@@ -106,7 +107,6 @@ const Carousel = React.forwardRef<
       if (!api || !setApi) {
         return;
       }
-
       setApi(api);
     }, [api, setApi]);
 
@@ -114,6 +114,8 @@ const Carousel = React.forwardRef<
       if (!api) {
         return;
       }
+
+      api.scrollTo(1);
 
       onSelect(api);
       api.on("reInit", onSelect);
@@ -190,7 +192,7 @@ const CarouselItem = React.forwardRef<
       role="group"
       aria-roledescription="slide"
       className={cn(
-        "tw-min-w-0 tw-shrink-0 tw-grow-0 tw-basis-full tw-transition-all tw-ease-in-out tw-duration-300",
+        "tw-min-w-0 tw-shrink-0 tw-grow-0 tw-basis-full ",
         index === currentIndex ? "tw-translate-y-4" : "tw-translate-y-0",
         orientation === "horizontal" ? "tw-pl-4" : "tw-pt-4",
 
