@@ -4,6 +4,8 @@ import React, { useEffect, useRef, useState } from "react";
 
 const ClientInfoServiceProvider = (props: ClientInfoServiceProviderProps) => {
   //States
+  //TODO create a custom state for get the type of device instead of width, to avoid the use of hardcoded numbers in the components
+  //exmaples: mobile, tablet, desktop
   const [width, setWidth] = useState<number>(window.innerWidth);
 
   //Hooks
