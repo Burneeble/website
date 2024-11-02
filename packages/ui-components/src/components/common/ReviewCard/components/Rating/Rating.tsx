@@ -11,7 +11,7 @@ const Rating = (props: RatingProps) => {
     if (starIndex <= roundedRating) {
       return (
         <FontAwesomeIcon
-          className="fontawesome-gradient-icon  tw-w-8 tw-h-8"
+          className="fontawesome-gradient-icon  tw-w-5 tw-h-5 lg:tw-w-8 lg:tw-h-8"
           key={starIndex}
           icon={faStar}
           style={{ color: "#ffce00" }}
@@ -19,14 +19,17 @@ const Rating = (props: RatingProps) => {
       );
     } else if (starIndex - 0.5 === roundedRating) {
       return (
-        <div className="tw-relative tw-w-8 tw-h-8" key={starIndex}>
+        <div
+          className="tw-relative tw-w-5 tw-h-5 lg:tw-w-8 lg:tw-h-8"
+          key={starIndex}
+        >
           <FontAwesomeIcon
-            className="fontawesome-gradient-icon tw-w-8 tw-h-8 tw-absolute tw-top-2/4 tw-left-2/4 -tw-translate-x-2/4 -tw-translate-y-2/4 tw-z-10"
+            className="fontawesome-gradient-icon tw-w-5 tw-h-5 lg:tw-w-8 lg:tw-h-8 tw-absolute tw-top-2/4 tw-left-2/4 -tw-translate-x-2/4 -tw-translate-y-2/4 tw-z-10"
             icon={faStarHalf}
             style={{}}
           />
           <FontAwesomeIcon
-            className="tw-w-8 tw-h-8 tw-absolute tw-top-2/4 tw-left-2/4  -tw-translate-x-2/4 -tw-translate-y-2/4  tw-z-0"
+            className="tw-w-5 tw-h-5 lg:tw-w-8 lg:tw-h-8 tw-absolute tw-top-2/4 tw-left-2/4  -tw-translate-x-2/4 -tw-translate-y-2/4  tw-z-0"
             icon={faStar}
             style={{ color: "var(--secondary-darker)" }}
           />
@@ -35,7 +38,7 @@ const Rating = (props: RatingProps) => {
     } else {
       return (
         <FontAwesomeIcon
-          className=" tw-w-8 tw-h-8"
+          className=" tw-w-5 tw-h-5 lg:tw-w-8 lg:tw-h-8"
           key={starIndex}
           icon={faStar}
           style={{ color: "var(--secondary-darker)" }}

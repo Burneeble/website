@@ -3,9 +3,9 @@
 
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
 
 @layer base {
+  //base: set some defaults and base styles to specific HTML elements
   @import url("https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
@@ -24,14 +24,24 @@
   }
 }
 
+@layer components {
+  //components: set reutilizable base styles to small components; also good to put custom styles for any third-party components you’re using
+  .card {
+    @apply secondary-gradient tw-bg-gradient-to-tr tw-p-5 tw-rounded-lg tw-gap-2;
+  }
+}
 .primary-gradient {
   @apply tw-from-orange-500 tw-to-orange-300;
 }
-
 .secondary-gradient {
   @apply tw-from-black tw-to-[#322923];
 }
-
 .tertiary-gradient {
   @apply tw-from-brown-500 tw-to-brown-200;
+}
+
+@tailwind utilities;
+
+@layer utilities {
+  //utilities: when there’s a CSS feature you’d like to use in your project that Tailwind doesn’t include utilities for out of the box.
 }

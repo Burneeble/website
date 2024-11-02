@@ -1,5 +1,6 @@
 @import "./../../../node_modules/react-toastify/dist/ReactToastify.css";
-@import "./../src/style/tailwind";
+@import "./../src/style/tailwind.scss";
+@import "./../src/components/components.scss";
 
 /* stylelint-disable-next-line selector-class-pattern */
 .Toastify {
