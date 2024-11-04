@@ -51,9 +51,9 @@ const ReviewCard = (props: ReviewCardProps) => {
         {width > 992 && <Rating ratingValue={props.rating} />}
 
         <div className="review-card-review tw-self-stretch tw-text-body tw-text-base md:tw-text-lg  lg:tw-text-xl tw-font-normal tw-font-inter tw-leading-[25px] md:tw-leading-7 lg:tw-leading-[30px] tw-line-clamp-3">
-          So I started to walk into the water. I won't lie to you boys, I was
+          So I started to walk into the water. I wont lie to you boys, I was
           terrified. But I pressed on, and as I made my way past the breakers a
-          strange calm came over me. I don't know if it was divine intervention
+          strange calm came over me. I dont know if it was divine intervention
           or the kinship of all living things but I tell you Jerry at that
           moment, I was a marine biologist.
         </div>

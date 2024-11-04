@@ -11,6 +11,6 @@ type Story = StoryObj<ButtonProps>;
 
 export const baseButton: Story = {
   render: () => {
-    return <Button variant="destructive">Start</Button>;
+    return <Button variant="disabled">Start</Button>;
   },
 };
