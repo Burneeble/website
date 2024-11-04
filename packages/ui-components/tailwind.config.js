@@ -95,26 +95,26 @@ module.exports = {
     },
     extend: {
       colors: {
-        border: "var(--neutral-default)",
+        border: "rgba(var(--border))",
         input: "rgba(var(--input))",
         ring: "rgba(var(--ring))",
-        background: "var(--white)",
-        foreground: "var(--neutral-light)",
+        background: "rgba(var(--black)",
+        foreground: "rgba(var(--white))",
         primary: {
-          DEFAULT: "var(--primary-default)",
-          foreground: "var(--primary-default)",
+          DEFAULT: "rgba(var(--primary-default))",
+          foreground: "rgba(var(--black))",
         },
         secondary: {
-          DEFAULT: "var(--secondary-darker)",
-          foreground: "var(--white)",
+          DEFAULT: "rgba(var(--secondary-default))",
+          foreground: "rgba(var(--white))",
         },
         destructive: {
-          DEFAULT: "var(--error-default)",
-          foreground: "var(--white)",
+          DEFAULT: "rgba(var(--destructive))",
+          foreground: "rgba(var(--destructive-foreground))",
         },
         muted: {
-          DEFAULT: "var(--netrual-dark)",
-          foreground: "var(--netrual-default)",
+          DEFAULT: "rgba(var(--muted))",
+          foreground: "rgba(var(--muted-foreground))",
         },
         accent: {
           DEFAULT: "rgba(var(--accent))",
