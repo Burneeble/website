@@ -6,7 +6,10 @@
 
     .swiper-slide {
       aspect-ratio: 1920/1080;
-      border: 1px solid red;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       &.swiper-slide-active {
         transform: translateY(1.5rem);

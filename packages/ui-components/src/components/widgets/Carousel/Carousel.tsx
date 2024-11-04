@@ -9,6 +9,7 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
+import Image from "next/image";
 
 const Carousel = (props: CarouselProps) => {
   return (
@@ -25,16 +26,23 @@ const Carousel = (props: CarouselProps) => {
         modules={[Pagination, Navigation]}
         className="carousel"
         loopAdditionalSlides={2}
+        lazyPreloadPrevNext={1}
       >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
+        {props.images.map((image, i) => {
+          return (
+            <SwiperSlide key={i}>
+              <Image
+                src={image}
+                alt={""}
+                width={1}
+                height={1}
+                className="tw-h-full tw-w-auto"
+                loading="lazy"
+              />
+            </SwiperSlide>
+          );
+        })}
+
         <div className="custom-next carousel-button tw-right-0">
           <FontAwesomeIcon icon={faChevronRight} />
         </div>
