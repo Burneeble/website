@@ -5,24 +5,26 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "tw-cursor-pointer tw-font-bowlby-one tw-inline-flex tw-items-center tw-justify-center tw-gap-2 tw-whitespace-nowrap tw-rounded-md tw-text-sm tw-font-medium tw-transition-colors focus-visible:tw-outline-none focus-visible:tw-ring-1 focus-visible:tw-ring-ring disabled:tw-pointer-events-none disabled:tw-opacity-50 [&_svg]:tw-pointer-events-none [&_svg]:tw-size-4 [&_svg]:tw-shrink-0 hover:tw-brightness-150",
+  "tw-cursor-pointer tw-font-bowlby-one tw-inline-flex tw-items-center tw-justify-center tw-gap-2 tw-whitespace-nowrap tw-rounded-md tw-text-sm tw-font-medium tw-transition-colors focus-visible:tw-outline-none focus-visible:tw-ring-1 focus-visible:tw-ring-ring disabled:tw-pointer-events-none disabled:tw-opacity-50 [&_svg]:tw-pointer-events-none [&_svg]:tw-size-4 [&_svg]:tw-shrink-0 hover:tw-brightness-150 ",
   {
     variants: {
       variant: {
-        default: "tw-bg-button-primary tw-text-white tw-shadow",
-        destructive: "tw-bg-button-error tw-bg-button-text tw-shadow",
+        default:
+          "tw-bg-button-primary tw-text-white tw-shadow tw-border tw-border-primary",
+        destructive:
+          "tw-bg-button-error tw-bg-button-text tw-shadow tw-border tw-border-error",
         outline:
           "tw-border tw-border-input tw-bg-button-primary tw-shadow-sm hover:tw-bg hover:tw-text-accent-foreground",
-        secondary: "tw-bg-button-secondary tw-text-white tw-shadow-sm",
+        secondary:
+          "tw-bg-button-secondary tw-text-white tw-shadow-sm tw-border tw-border-tertiary",
         ghost: "hover:tw-bg-accent hover:tw-text-accent-foreground",
         link: "tw-text-primary tw-underline-offset-4 hover:tw-underline",
-        disabled: "tw-bg-button-disabled tw-text-neutral tw-shadow-none",
       },
       size: {
-        default: "tw-h-9 tw-px-4 tw-py-2",
+        default: "tw-h-12 tw-px-4 tw-py-2",
         sm: "tw-h-8 tw-rounded-md tw-px-3 tw-text-xs",
-        lg: "tw-h-10 tw-rounded-md tw-px-8",
-        icon: "tw-h-9 tw-w-9",
+        lg: "tw-h-16 tw-rounded-md tw-px-8",
+        icon: "tw-h-12 tw-w-12",
       },
     },
     defaultVariants: {
