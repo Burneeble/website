@@ -4,6 +4,11 @@
 // Shadcn
 @import "./shadcn";
 
+// Swiper
+@import "../../../../node_modules/swiper/swiper.css";
+@import "../../../../node_modules/swiper/modules/pagination.css";
+@import "../../../../node_modules/swiper/modules/navigation.css";
+
 // Importing fonts
 @import "./fonts";
 

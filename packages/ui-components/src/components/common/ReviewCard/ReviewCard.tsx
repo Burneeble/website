@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { ReviewCardProps } from "./ReviewCard.types";
 import { useClientInfoService } from "@/services";
