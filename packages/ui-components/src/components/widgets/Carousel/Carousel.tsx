@@ -13,7 +13,7 @@ import Image from "next/image";
 
 const Carousel = (props: CarouselProps) => {
   return (
-    <div className="carousel-wrapper tw-w-full tw-h-[40rem] tw-overflow-hidden">
+    <div className="carousel-wrapper tw-w-full tw-h-screen tw-overflow-hidden tw-max-w-full">
       <Swiper
         slidesPerView={1}
         spaceBetween={30}
@@ -24,7 +24,7 @@ const Carousel = (props: CarouselProps) => {
         }}
         loop={true}
         modules={[Pagination, Navigation]}
-        className="carousel"
+        className="carousel tw-w-[80%] tw-h-auto tw-overflow-visible max-sm:tw-w-full"
         loopAdditionalSlides={2}
         lazyPreloadPrevNext={1}
       >
@@ -34,8 +34,8 @@ const Carousel = (props: CarouselProps) => {
               <Image
                 src={image}
                 alt={""}
-                width={1}
-                height={1}
+                width={1920}
+                height={1080}
                 className="tw-h-full tw-w-auto"
                 loading="lazy"
               />
