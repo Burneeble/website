@@ -12,7 +12,14 @@ const nextConfig = {
     return config;
   },
   images: {
-    remotePatterns: [],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "picsum.photos",
+        port: "",
+        pathname: "/**",
+      },
+    ],
   },
   // async rewrites() {
   //   return [
