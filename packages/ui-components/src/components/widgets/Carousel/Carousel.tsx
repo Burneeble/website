@@ -10,6 +10,7 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
+import { Button } from "@/components/ui";
 
 const Carousel = (props: CarouselProps) => {
   return (
@@ -30,7 +31,10 @@ const Carousel = (props: CarouselProps) => {
       >
         {props.images.map((image, i) => {
           return (
-            <SwiperSlide key={i}>
+            <SwiperSlide
+              className="tw-border-primary tw-border-4 tw-border-solid tw-aspect-[1920/1080] tw-bg-black tw-flex tw-items-center tw-justify-center tw-transition-transform tw-duration-400 tw-ease-in-out"
+              key={i}
+            >
               <Image
                 src={image}
                 alt={""}
@@ -42,13 +46,15 @@ const Carousel = (props: CarouselProps) => {
             </SwiperSlide>
           );
         })}
-
-        <div className="custom-next carousel-button tw-right-0">
+        <Button
+          size={"icon"}
+          className="custom-next carousel-button tw-right-0"
+        >
           <FontAwesomeIcon icon={faChevronRight} />
-        </div>
-        <div className="custom-prev carousel-button tw-left-0">
+        </Button>
+        <Button size={"icon"} className="custom-prev carousel-button tw-left-0">
           <FontAwesomeIcon icon={faChevronLeft} />
-        </div>
+        </Button>
       </Swiper>
     </div>
   );
