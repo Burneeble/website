@@ -1,3 +1,5 @@
+"use client";
+
 import GraphQLServiceProvider from "@/services/GraphQLService";
 import { CommonProvidersProps } from "./CommonProviders.types";
 import ProjectServiceProvider from "@/services/ProjectService";

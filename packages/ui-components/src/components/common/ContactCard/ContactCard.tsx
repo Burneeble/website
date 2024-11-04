@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { ContactCardProps } from "./ContactCard.types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

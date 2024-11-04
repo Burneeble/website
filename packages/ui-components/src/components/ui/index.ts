@@ -1,3 +1,5 @@
+"use client";
+
 export * from "./button";
 export * from "./separator";
 export * from "./input";
@@ -7,4 +9,3 @@ export * from "./skeleton";
 export * from "./tooltip";
 export * from "./navigation-menu";
 export * from "./accordion";
-export * from "./carousel";
