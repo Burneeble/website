@@ -95,26 +95,26 @@ module.exports = {
     },
     extend: {
       colors: {
-        border: "rgba(var(--border))",
+        border: "var(--neutral-default)",
         input: "rgba(var(--input))",
         ring: "rgba(var(--ring))",
-        background: "rgba(var(--black)",
-        foreground: "rgba(var(--white))",
+        background: "var(--white)",
+        foreground: "var(--neutral-light)",
         primary: {
-          DEFAULT: "rgba(var(--primary-default))",
-          foreground: "rgba(var(--black))",
+          DEFAULT: "var(--primary-default)",
+          foreground: "var(--primary-default)",
         },
         secondary: {
-          DEFAULT: "rgba(var(--secondary-default))",
-          foreground: "rgba(var(--white))",
+          DEFAULT: "var(--secondary-darker)",
+          foreground: "var(--white)",
         },
         destructive: {
-          DEFAULT: "rgba(var(--destructive))",
-          foreground: "rgba(var(--destructive-foreground))",
+          DEFAULT: "var(--error-default)",
+          foreground: "var(--white)",
         },
         muted: {
-          DEFAULT: "rgba(var(--muted))",
-          foreground: "rgba(var(--muted-foreground))",
+          DEFAULT: "var(--netrual-dark)",
+          foreground: "var(--netrual-default)",
         },
         accent: {
           DEFAULT: "rgba(var(--accent))",
@@ -148,7 +148,7 @@ module.exports = {
         success: "var(--success-default)",
         information: "var(--info-default)",
         warning: "var(--warning-default)",
-        neutral: "var(--neutral-light)",
+        neutral: "var(--neutral-default)",
         highlight: "var(--primary-light)",
       },
       borderColor: {
@@ -172,7 +172,7 @@ module.exports = {
         success: "var(--success-dark)",
         information: "var(--info-dark)",
         warning: "var(--warning-dark)",
-        neutral: "var(--neutral-dark)",
+        neutral: "var(--neutral-light)",
         button: {
           primary: "var(--primary-default)",
           secondary: "var(--secondary-darker)",
@@ -180,14 +180,10 @@ module.exports = {
           success: "var(--success-default)",
           information: "var(--info-default)",
           warning: "var(--warning-default)",
-          text: "var(--white)",
+          disabled: "var(--neutral-light)",
         },
       },
-      borderRadius: {
-        lg: "`var(--radius)`",
-        md: "`calc(var(--radius) - 2px)`",
-        sm: "calc(var(--radius) - 4px)",
-      },
+
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
         "bowlby-one": ["Bowlby One", "sans-serif"],
@@ -210,26 +206,8 @@ module.exports = {
             height: "0",
           },
         },
-        "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
-        },
-        "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
-        },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
@@ -255,10 +233,10 @@ module.exports = {
           "--neutral-light": theme("colors.gray.400"),
           "--neutral-default": theme("colors.gray.500"),
           "--neutral-dark": theme("colors.gray.600"),
-          "--error-light": theme("colors.red.50"),
           "--success-light": theme("colors.green.50"),
           "--success-default": theme("colors.green.500"),
           "--success-dark": theme("colors.green.900"),
+          "--error-light": theme("colors.red.50"),
           "--error-default": theme("colors.red.500"),
           "--error-dark": theme("colors.red.900"),
           "--warning-light": theme("colors.yellow.50"),
