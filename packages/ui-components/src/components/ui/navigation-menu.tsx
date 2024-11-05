@@ -49,7 +49,21 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
 const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
 const navigationMenuTriggerStyle = cva(
-  "tw-text-body tw-group tw-inline-flex tw-h-9 tw-w-max tw-items-center tw-justify-center tw-rounded-md  tw-px-4 tw-py-2 tw-text-2xl tw-font-inter tw-font-medium tw-transition-colors hover:tw-bg-brown-700 hover:tw-text-white focus:tw-bg-brown-700 focus:tw-text-accent-foreground focus:tw-outline-none disabled:tw-pointer-events-none disabled:tw-opacity-50 data-[active]:tw-bg-brown-700 data-[state=open]:tw-bg-brown-700"
+  `
+    tw-group tw-inline-flex tw-h-9 tw-w-max tw-items-center tw-justify-center
+    tw-rounded-md tw-px-4 tw-py-2 tw-font-inter tw-text-2xl tw-font-medium
+    tw-text-body tw-transition-colors
+
+    data-[active]:tw-bg-brown-700
+
+    data-[state=open]:tw-bg-brown-700
+
+    disabled:tw-pointer-events-none disabled:tw-opacity-50
+
+    focus:tw-bg-brown-700 focus:tw-text-accent-foreground focus:tw-outline-none
+
+    hover:tw-bg-brown-700 hover:tw-text-white
+  `
 );
 
 const NavigationMenuTrigger = React.forwardRef<
@@ -119,7 +133,18 @@ const NavigationMenuViewport = React.forwardRef<
   >
     <NavigationMenuPrimitive.Viewport
       className={cn(
-        "tw-origin-top-center tw-relative tw-mt-1.5 tw-h-[var(--radix-navigation-menu-viewport-height)] tw-w-full tw-overflow-hidden tw-rounded-md tw-border tw-bg-gradient-to-l quaternary-gradient tw-text-popover-foreground tw-shadow data-[state=open]:tw-animate-in data-[state=closed]:tw-animate-out data-[state=closed]:tw-zoom-out-95 data-[state=open]:tw-zoom-in-90 md:tw-w-[var(--radix-navigation-menu-viewport-width)]",
+        `
+          tw-origin-top-center tw-relative tw-mt-1.5
+          tw-h-[var(--radix-navigation-menu-viewport-height)] tw-w-full
+          tw-overflow-hidden tw-rounded-md tw-border tw-bg-gradient-to-l
+          quaternary-gradient tw-text-popover-foreground tw-shadow
+
+          data-[state=closed]:tw-animate-out data-[state=closed]:tw-zoom-out-95
+
+          data-[state=open]:tw-animate-in data-[state=open]:tw-zoom-in-90
+
+          md:tw-w-[var(--radix-navigation-menu-viewport-width)]
+        `,
         className
       )}
       ref={ref}
@@ -170,12 +195,25 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "tw-block tw-select-none tw-space-y-1 tw-rounded-md tw-p-3 tw-leading-none tw-no-underline tw-outline-none tw-transition-colors hover:tw-bg-neutral hover:tw-text-white focus:tw-bg-neutral focus:tw-text-white",
+            `
+              tw-block tw-select-none tw-space-y-1 tw-rounded-md tw-p-3
+              tw-leading-none tw-no-underline tw-outline-none
+              tw-transition-colors
+
+              focus:tw-bg-neutral focus:tw-text-white
+
+              hover:tw-bg-neutral hover:tw-text-white
+            `,
             className
           )}
           {...props}
         >
-          <div className="tw-text-xl tw-text-headings tw-font-inter tw-font-medium tw-leading-none">
+          <div
+            className={`
+              tw-font-inter tw-text-xl tw-font-medium tw-leading-none
+              tw-text-headings
+            `}
+          >
             {title}
           </div>
           <p

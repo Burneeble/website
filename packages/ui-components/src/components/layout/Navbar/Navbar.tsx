@@ -73,9 +73,9 @@ const Navbar = (props: NavbarProps) => {
                           className={`
                             tw-grid tw-gap-3 tw-p-6
 
-                            md:tw-w-[400px]
-
                             lg:tw-grid-cols-[.75fr_1fr]
+
+                            md:tw-w-[400px]
                           `}
                         >
                           {component.primaryItem && (
