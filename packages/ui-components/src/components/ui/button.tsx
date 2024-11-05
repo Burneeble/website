@@ -11,18 +11,18 @@ const buttonVariants = cva(
     tw-gap-2 tw-whitespace-nowrap tw-rounded-md tw-font-bowlby-one tw-text-lg
     tw-font-medium tw-transition-colors
 
-    hover:tw-brightness-90
+    [&_svg]:tw-pointer-events-none [&_svg]:tw-size-5 [&_svg]:tw-shrink-0
+
+    disabled:tw-pointer-events-none disabled:tw-opacity-50
 
     focus-visible:tw-outline-none focus-visible:tw-ring-1
     focus-visible:tw-ring-ring
 
-    disabled:tw-pointer-events-none disabled:tw-opacity-50
-
-    md:tw-text-xl
+    hover:tw-brightness-90
 
     lg:tw-text-2xl
 
-    [&_svg]:tw-pointer-events-none [&_svg]:tw-size-5 [&_svg]:tw-shrink-0
+    md:tw-text-xl
   `,
   {
     variants: {

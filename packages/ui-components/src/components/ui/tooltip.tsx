@@ -1,3 +1,5 @@
+/* eslint-disable @burneeble/burneeble/camel-case-vars */
+/* eslint-disable react/prop-types */
 "use client";
 
 import * as React from "react";
@@ -5,13 +7,12 @@ import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 
 import { cn } from "@/lib/utils";
 
-const tooltipProvider = TooltipPrimitive.Provider;
+const TooltipProvider = TooltipPrimitive.Provider;
 
-const tooltip = TooltipPrimitive.Root;
+const Tooltip = TooltipPrimitive.Root;
 
-const tooltipTrigger = TooltipPrimitive.Trigger;
+const TooltipTrigger = TooltipPrimitive.Trigger;
 
-// eslint-disable-next-line @burneeble/burneeble/camel-case-vars
 const TooltipContent = React.forwardRef<
   React.ElementRef<typeof TooltipPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>
@@ -45,4 +46,4 @@ const TooltipContent = React.forwardRef<
 ));
 TooltipContent.displayName = TooltipPrimitive.Content.displayName;
 
-export { tooltip, tooltipTrigger, TooltipContent, tooltipProvider };
+export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider };

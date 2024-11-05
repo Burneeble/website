@@ -23,7 +23,7 @@ export const simpleCarousel: Story = {
   },
   render: (props) => {
     return (
-      <div className="tw-h-[50rem] tw-w-[60rem] tw-flex tw-justify-center tw-mx-auto">
+      <div className="tw-mx-auto tw-flex tw-h-[50rem] tw-w-[60rem] tw-justify-center">
         <Carousel {...props} />
       </div>
     );

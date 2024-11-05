@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable @burneeble/burneeble/camel-case-vars */
 "use client";
 
@@ -143,7 +144,12 @@ const SidebarProvider = React.forwardRef<
               } as React.CSSProperties
             }
             className={cn(
-              "tw-group/sidebar-wrapper tw-flex tw-min-h-svh tw-w-full tw-text-sidebar-foreground has-[[data-variant=inset]]:tw-bg-sidebar",
+              `
+                tw-group/sidebar-wrapper tw-flex tw-min-h-svh tw-w-full
+                tw-text-sidebar-foreground
+
+                has-[[data-variant=inset]]:tw-bg-sidebar
+              `,
               className
             )}
             ref={ref}
@@ -183,7 +189,10 @@ const Sidebar = React.forwardRef<
       return (
         <div
           className={cn(
-            "tw-flex tw-h-full tw-w-[--sidebar-width] tw-flex-col tw-bg-sidebar tw-text-sidebar-foreground",
+            `
+              tw-flex tw-h-full tw-w-[--sidebar-width] tw-flex-col tw-bg-sidebar
+              tw-text-sidebar-foreground
+            `,
             className
           )}
           ref={ref}
@@ -200,7 +209,12 @@ const Sidebar = React.forwardRef<
           <SheetContent
             data-sidebar="sidebar"
             data-mobile="true"
-            className="tw-w-[--sidebar-width] tw-bg-sidebar tw-p-0 tw-text-sidebar-foreground [&>button]:tw-hidden"
+            className={`
+              tw-w-[--sidebar-width] tw-bg-sidebar tw-p-0
+              tw-text-sidebar-foreground
+
+              [&>button]:tw-hidden
+            `}
             style={
               {
                 "--sidebar-width": SIDEBAR_WIDTH_MOBILE,
@@ -219,7 +233,11 @@ const Sidebar = React.forwardRef<
     return (
       <div
         ref={ref}
-        className="tw-group tw-peer tw-hidden md:tw-block"
+        className={`
+          tw-group tw-peer tw-hidden
+
+          md:tw-block
+        `}
         data-state={state}
         data-collapsible={state === "collapsed" ? collapsible : ""}
         data-variant={variant}
@@ -228,31 +246,67 @@ const Sidebar = React.forwardRef<
         {/* This is what handles the sidebar gap on desktop */}
         <div
           className={cn(
-            "tw-duration-200 tw-relative tw-h-svh tw-w-[--sidebar-width] tw-bg-transparent tw-transition-[width] tw-ease-linear",
+            `
+              tw-relative tw-h-svh tw-w-[--sidebar-width] tw-duration-200
+              tw-bg-transparent tw-transition-[width] tw-ease-linear
+            `,
             "group-data-[collapsible=offcanvas]:tw-w-0",
             "group-data-[side=right]:tw-rotate-180",
             variant === "floating" || variant === "inset"
-              ? "group-data-[collapsible=icon]:tw-w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4))]"
+              ? `
+                group-data-[collapsible=icon]:tw-w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4))]
+              `
               : "group-data-[collapsible=icon]:tw-w-[--sidebar-width-icon]"
           )}
         />
         <div
           className={cn(
-            "tw-duration-200 tw-fixed tw-inset-y-0 tw-z-10 tw-hidden tw-h-svh tw-w-[--sidebar-width] tw-transition-[left,right,width] tw-ease-linear md:tw-flex",
+            `
+              tw-fixed tw-inset-y-0 tw-z-10 tw-hidden tw-h-svh
+              tw-w-[--sidebar-width] tw-transition-[left,right,width]
+              tw-duration-200 tw-ease-linear
+
+              md:tw-flex
+            `,
             side === "left"
-              ? "tw-left-0 group-data-[collapsible=offcanvas]:tw-left-[calc(var(--sidebar-width)*-1)]"
-              : "tw-right-0 group-data-[collapsible=offcanvas]:tw-right-[calc(var(--sidebar-width)*-1)]",
+              ? `
+                tw-left-0
+
+                group-data-[collapsible=offcanvas]:tw-left-[calc(var(--sidebar-width)*-1)]
+              `
+              : `
+                tw-right-0
+
+                group-data-[collapsible=offcanvas]:tw-right-[calc(var(--sidebar-width)*-1)]
+              `,
             // Adjust the padding for floating and inset variants.
             variant === "floating" || variant === "inset"
-              ? "tw-p-2 group-data-[collapsible=icon]:tw-w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+2px)]"
-              : "group-data-[collapsible=icon]:tw-w-[--sidebar-width-icon] group-data-[side=left]:tw-border-r group-data-[side=right]:tw-border-l",
+              ? `
+                tw-p-2
+
+                group-data-[collapsible=icon]:tw-w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+2px)]
+              `
+              : `
+                group-data-[collapsible=icon]:tw-w-[--sidebar-width-icon]
+
+                group-data-[side=left]:tw-border-r
+
+                group-data-[side=right]:tw-border-l
+              `,
             className
           )}
           {...props}
         >
           <div
             data-sidebar="sidebar"
-            className="tw-flex tw-h-full tw-w-full tw-flex-col tw-bg-sidebar group-data-[variant=floating]:tw-rounded-lg group-data-[variant=floating]:tw-border group-data-[variant=floating]:tw-border-sidebar-border group-data-[variant=floating]:tw-shadow"
+            className={`
+              tw-flex tw-h-full tw-w-full tw-flex-col tw-bg-sidebar
+
+              group-data-[variant=floating]:tw-rounded-lg
+              group-data-[variant=floating]:tw-border
+              group-data-[variant=floating]:tw-border-sidebar-border
+              group-data-[variant=floating]:tw-shadow
+            `}
           >
             {children}
           </div>
@@ -304,10 +358,36 @@ const SidebarRail = React.forwardRef<
       onClick={toggleSidebar}
       title="Toggle Sidebar"
       className={cn(
-        "tw-absolute tw-inset-y-0 tw-z-20 tw-hidden tw-w-4 tw--translate-x-1/2 tw-transition-all tw-ease-linear after:tw-absolute after:tw-inset-y-0 after:tw-left-1/2 after:tw-w-[2px] hover:after:tw-bg-sidebar-border group-data-[side=left]:tw--right-4 group-data-[side=right]:tw-left-0 sm:tw-flex",
-        "[[data-side=left]_&]:tw-cursor-w-resize [[data-side=right]_&]:tw-cursor-e-resize",
-        "[[data-side=left][data-state=collapsed]_&]:tw-cursor-e-resize [[data-side=right][data-state=collapsed]_&]:tw-cursor-w-resize",
-        "group-data-[collapsible=offcanvas]:tw-translate-x-0 group-data-[collapsible=offcanvas]:after:tw-left-full group-data-[collapsible=offcanvas]:hover:tw-bg-sidebar",
+        `
+          tw-absolute tw-inset-y-0 tw-z-20 tw-hidden tw-w-4 tw--translate-x-1/2
+          tw-transition-all tw-ease-linear
+
+          after:tw-absolute after:tw-inset-y-0 after:tw-left-1/2
+          after:tw-w-[2px]
+
+          group-data-[side=left]:tw--right-4
+
+          group-data-[side=right]:tw-left-0
+
+          hover:after:tw-bg-sidebar-border
+
+          sm:tw-flex
+        `,
+        `
+          [[data-side=left]_&]:tw-cursor-w-resize
+
+          [[data-side=right]_&]:tw-cursor-e-resize
+        `,
+        `
+          [[data-side=left][data-state=collapsed]_&]:tw-cursor-e-resize
+
+          [[data-side=right][data-state=collapsed]_&]:tw-cursor-w-resize
+        `,
+        `
+          group-data-[collapsible=offcanvas]:tw-translate-x-0
+          group-data-[collapsible=offcanvas]:after:tw-left-full
+          group-data-[collapsible=offcanvas]:hover:tw-bg-sidebar
+        `,
         "[[data-side=left][data-collapsible=offcanvas]_&]:tw--right-2",
         "[[data-side=right][data-collapsible=offcanvas]_&]:tw--left-2",
         className
@@ -326,8 +406,19 @@ const SidebarInset = React.forwardRef<
     <main
       ref={ref}
       className={cn(
-        "tw-relative tw-flex tw-min-h-svh tw-flex-1 tw-flex-col tw-bg-background",
-        "peer-data-[variant=inset]:tw-min-h-[calc(100svh-theme(spacing.4))] md:peer-data-[variant=inset]:tw-m-2 md:peer-data-[state=collapsed]:peer-data-[variant=inset]:tw-ml-2 md:peer-data-[variant=inset]:tw-ml-0 md:peer-data-[variant=inset]:tw-rounded-xl md:peer-data-[variant=inset]:tw-shadow",
+        `
+          tw-relative tw-flex tw-min-h-svh tw-flex-1 tw-flex-col
+          tw-bg-background
+        `,
+        `
+          md:peer-data-[variant=inset]:tw-m-2
+          md:peer-data-[state=collapsed]:peer-data-[variant=inset]:tw-ml-2
+          md:peer-data-[variant=inset]:tw-ml-0
+          md:peer-data-[variant=inset]:tw-rounded-xl
+          md:peer-data-[variant=inset]:tw-shadow
+
+          peer-data-[variant=inset]:tw-min-h-[calc(100svh-theme(spacing.4))]
+        `,
         className
       )}
       {...props}
@@ -345,7 +436,11 @@ const SidebarInput = React.forwardRef<
       ref={ref}
       data-sidebar="input"
       className={cn(
-        "tw-h-8 tw-w-full tw-bg-background tw-shadow-none focus-visible:tw-ring-2 focus-visible:tw-ring-sidebar-ring",
+        `
+          tw-h-8 tw-w-full tw-bg-background tw-shadow-none
+
+          focus-visible:tw-ring-2 focus-visible:tw-ring-sidebar-ring
+        `,
         className
       )}
       {...props}
@@ -408,7 +503,11 @@ const SidebarContent = React.forwardRef<
       ref={ref}
       data-sidebar="content"
       className={cn(
-        "tw-flex tw-min-h-0 tw-flex-1 tw-flex-col tw-gap-2 tw-overflow-auto group-data-[collapsible=icon]:tw-overflow-hidden",
+        `
+          tw-flex tw-min-h-0 tw-flex-1 tw-flex-col tw-gap-2 tw-overflow-auto
+
+          group-data-[collapsible=icon]:tw-overflow-hidden
+        `,
         className
       )}
       {...props}
@@ -446,8 +545,20 @@ const SidebarGroupLabel = React.forwardRef<
       ref={ref}
       data-sidebar="group-label"
       className={cn(
-        "tw-duration-200 tw-flex tw-h-8 tw-shrink-0 tw-items-center tw-rounded-md tw-px-2 tw-text-xs tw-font-medium tw-text-sidebar-foreground/70 tw-outline-none tw-ring-sidebar-ring tw-transition-[margin,opa] tw-ease-linear focus-visible:tw-ring-2 [&>svg]:tw-size-4 [&>svg]:tw-shrink-0",
-        "group-data-[collapsible=icon]:tw--mt-8 group-data-[collapsible=icon]:tw-opacity-0",
+        `
+          tw-flex tw-h-8 tw-shrink-0 tw-items-center tw-rounded-md tw-px-2
+          tw-text-xs tw-font-medium tw-text-sidebar-foreground/70
+          tw-outline-none tw-ring-sidebar-ring tw-transition-[margin,opa]
+          tw-duration-200 tw-ease-linear
+
+          [&>svg]:tw-size-4 [&>svg]:tw-shrink-0
+
+          focus-visible:tw-ring-2
+        `,
+        `
+          group-data-[collapsible=icon]:tw--mt-8
+          group-data-[collapsible=icon]:tw-opacity-0
+        `,
         className
       )}
       {...props}
@@ -467,7 +578,18 @@ const SidebarGroupAction = React.forwardRef<
       ref={ref}
       data-sidebar="group-action"
       className={cn(
-        "tw-absolute tw-right-3 tw-top-3.5 tw-flex tw-aspect-square tw-w-5 tw-items-center tw-justify-center tw-rounded-md tw-p-0 tw-text-sidebar-foreground tw-outline-none tw-ring-sidebar-ring tw-transition-transform hover:tw-bg-sidebar-accent hover:tw-text-sidebar-accent-foreground focus-visible:tw-ring-2 [&>svg]:tw-size-4 [&>svg]:tw-shrink-0",
+        `
+          tw-absolute tw-right-3 tw-top-3.5 tw-flex tw-aspect-square tw-w-5
+          tw-items-center tw-justify-center tw-rounded-md tw-p-0
+          tw-text-sidebar-foreground tw-outline-none tw-ring-sidebar-ring
+          tw-transition-transform
+
+          [&>svg]:tw-size-4 [&>svg]:tw-shrink-0
+
+          focus-visible:tw-ring-2
+
+          hover:tw-bg-sidebar-accent hover:tw-text-sidebar-accent-foreground
+        `,
         // Increases the hit area of the button on mobile.
         "after:tw-absolute after:tw--inset-2 after:md:tw-hidden",
         "group-data-[collapsible=icon]:tw-hidden",
@@ -522,19 +644,56 @@ const SidebarMenuItem = React.forwardRef<
 SidebarMenuItem.displayName = "SidebarMenuItem";
 
 const sidebarMenuButtonVariants = cva(
-  "tw-peer/menu-button tw-flex tw-w-full tw-items-center tw-gap-2 tw-overflow-hidden tw-rounded-md tw-p-2 tw-text-left tw-text-sm tw-outline-none tw-ring-sidebar-ring tw-transition-[width,height,padding] hover:tw-bg-sidebar-accent hover:tw-text-sidebar-accent-foreground focus-visible:tw-ring-2 active:tw-bg-sidebar-accent active:tw-text-sidebar-accent-foreground disabled:tw-pointer-events-none disabled:tw-opacity-50 tw-group-has-[[data-sidebar=menu-action]]/menu-item:pr-8 aria-disabled:tw-pointer-events-none aria-disabled:tw-opacity-50 data-[active=true]:tw-bg-sidebar-accent data-[active=true]:tw-font-medium data-[active=true]:tw-text-sidebar-accent-foreground data-[state=open]:hover:tw-bg-sidebar-accent data-[state=open]:hover:tw-text-sidebar-accent-foreground group-data-[collapsible=icon]:tw-!size-8 group-data-[collapsible=icon]:tw-!p-2 [&>span:last-child]:tw-truncate [&>svg]:tw-size-4 [&>svg]:tw-shrink-0",
+  `
+    tw-peer/menu-button tw-flex tw-w-full tw-items-center tw-gap-2
+    tw-overflow-hidden tw-rounded-md tw-p-2 tw-text-left tw-text-sm
+    tw-outline-none tw-ring-sidebar-ring tw-transition-[width,height,padding]
+
+    [&>span:last-child]:tw-truncate
+
+    [&>svg]:tw-size-4 [&>svg]:tw-shrink-0
+
+    active:tw-bg-sidebar-accent active:tw-text-sidebar-accent-foreground
+
+    aria-disabled:tw-pointer-events-none aria-disabled:tw-opacity-50
+
+    data-[active=true]:tw-bg-sidebar-accent data-[active=true]:tw-font-medium
+    data-[active=true]:tw-text-sidebar-accent-foreground
+
+    data-[state=open]:hover:tw-bg-sidebar-accent
+    data-[state=open]:hover:tw-text-sidebar-accent-foreground
+
+    disabled:tw-pointer-events-none disabled:tw-opacity-50
+
+    focus-visible:tw-ring-2
+
+    group-data-[collapsible=icon]:tw-!size-8
+    group-data-[collapsible=icon]:tw-!p-2
+
+    hover:tw-bg-sidebar-accent hover:tw-text-sidebar-accent-foreground
+
+    tw-group-has-[[data-sidebar=menu-action]]/menu-item:pr-8
+  `,
   {
     variants: {
       variant: {
         default:
           "hover:tw-bg-sidebar-accent hover:tw-text-sidebar-accent-foreground",
-        outline:
-          "tw-bg-background tw-shadow-[0_0_0_1px_hsl(var(--sidebar-border))] hover:tw-bg-sidebar-accent hover:tw-text-sidebar-accent-foreground hover:tw-shadow-[0_0_0_1px_hsl(var(--sidebar-accent))]",
+        outline: `
+          tw-bg-background tw-shadow-[0_0_0_1px_hsl(var(--sidebar-border))]
+
+          hover:tw-bg-sidebar-accent hover:tw-text-sidebar-accent-foreground
+          hover:tw-shadow-[0_0_0_1px_hsl(var(--sidebar-accent))]
+        `,
       },
       size: {
         default: "tw-h-8 tw-text-sm",
         sm: "tw-h-7 tw-text-xs",
-        lg: "tw-h-12 tw-text-sm group-data-[collapsible=icon]:tw-!p-0",
+        lg: `
+          tw-h-12 tw-text-sm
+
+          group-data-[collapsible=icon]:tw-!p-0
+        `,
       },
     },
     defaultVariants: {
@@ -617,7 +776,20 @@ const SidebarMenuAction = React.forwardRef<
       ref={ref}
       data-sidebar="menu-action"
       className={cn(
-        "tw-absolute tw-right-1 tw-top-1.5 tw-flex tw-aspect-square tw-w-5 tw-items-center tw-justify-center tw-rounded-md tw-p-0 tw-text-sidebar-foreground tw-outline-none tw-ring-sidebar-ring tw-transition-transform hover:tw-bg-sidebar-accent hover:tw-text-sidebar-accent-foreground focus-visible:tw-ring-2 tw-peer-hover/menu-button:text-sidebar-accent-foreground [&>svg]:tw-size-4 [&>svg]:tw-shrink-0",
+        `
+          tw-absolute tw-right-1 tw-top-1.5 tw-flex tw-aspect-square tw-w-5
+          tw-items-center tw-justify-center tw-rounded-md tw-p-0
+          tw-text-sidebar-foreground tw-outline-none tw-ring-sidebar-ring
+          tw-transition-transform
+
+          [&>svg]:tw-size-4 [&>svg]:tw-shrink-0
+
+          focus-visible:tw-ring-2
+
+          hover:tw-bg-sidebar-accent hover:tw-text-sidebar-accent-foreground
+
+          tw-peer-hover/menu-button:text-sidebar-accent-foreground
+        `,
         // Increases the hit area of the button on mobile.
         "after:tw-absolute after:tw--inset-2 after:md:tw-hidden",
         "tw-peer-data-[size=sm]/menu-button:top-1",
@@ -625,7 +797,17 @@ const SidebarMenuAction = React.forwardRef<
         "tw-peer-data-[size=lg]/menu-button:top-2.5",
         "group-data-[collapsible=icon]:tw-hidden",
         showOnHover &&
-          "tw-group-focus-within/menu-item:opacity-100 tw-group-hover/menu-item:opacity-100 data-[state=open]:tw-opacity-100 tw-peer-data-[active=true]/menu-button:text-sidebar-accent-foreground md:tw-opacity-0",
+          `
+            data-[state=open]:tw-opacity-100
+
+            md:tw-opacity-0
+
+            tw-group-focus-within/menu-item:opacity-100
+
+            tw-group-hover/menu-item:opacity-100
+
+            tw-peer-data-[active=true]/menu-button:text-sidebar-accent-foreground
+          `,
         className
       )}
       {...props}
@@ -642,8 +824,16 @@ const SidebarMenuBadge = React.forwardRef<
     ref={ref}
     data-sidebar="menu-badge"
     className={cn(
-      "tw-absolute tw-right-1 tw-flex tw-h-5 tw-min-w-5 tw-items-center tw-justify-center tw-rounded-md tw-px-1 tw-text-xs tw-font-medium tw-tabular-nums tw-text-sidebar-foreground tw-select-none tw-pointer-events-none",
-      "tw-peer-hover/menu-button:text-sidebar-accent-foreground tw-peer-data-[active=true]/menu-button:text-sidebar-accent-foreground",
+      `
+        tw-pointer-events-none tw-absolute tw-right-1 tw-flex tw-h-5 tw-min-w-5
+        tw-select-none tw-items-center tw-justify-center tw-rounded-md tw-px-1
+        tw-text-xs tw-font-medium tw-tabular-nums tw-text-sidebar-foreground
+      `,
+      `
+        tw-peer-data-[active=true]/menu-button:text-sidebar-accent-foreground
+
+        tw-peer-hover/menu-button:text-sidebar-accent-foreground
+      `,
       "tw-peer-data-[size=sm]/menu-button:top-1",
       "tw-peer-data-[size=default]/menu-button:top-1.5",
       "tw-peer-data-[size=lg]/menu-button:top-2.5",
@@ -671,7 +861,7 @@ const SidebarMenuSkeleton = React.forwardRef<
       ref={ref}
       data-sidebar="menu-skeleton"
       className={cn(
-        "tw-rounded-md tw-h-8 tw-flex tw-gap-2 tw-px-2 tw-items-center",
+        "tw-flex tw-h-8 tw-items-center tw-gap-2 tw-rounded-md tw-px-2",
         className
       )}
       {...props}
@@ -683,7 +873,7 @@ const SidebarMenuSkeleton = React.forwardRef<
         />
       )}
       <Skeleton
-        className="tw-h-4 tw-flex-1 tw-max-w-[--skeleton-width]"
+        className="tw-h-4 tw-max-w-[--skeleton-width] tw-flex-1"
         data-sidebar="menu-skeleton-text"
         style={
           {
@@ -704,7 +894,10 @@ const SidebarMenuSub = React.forwardRef<
     ref={ref}
     data-sidebar="menu-sub"
     className={cn(
-      "tw-mx-3.5 tw-flex tw-min-w-0 tw-translate-x-px tw-flex-col tw-gap-1 tw-border-l tw-border-sidebar-border tw-px-2.5 tw-py-0.5",
+      `
+        tw-mx-3.5 tw-flex tw-min-w-0 tw-translate-x-px tw-flex-col tw-gap-1
+        tw-border-l tw-border-sidebar-border tw-px-2.5 tw-py-0.5
+      `,
       "group-data-[collapsible=icon]:tw-hidden",
       className
     )}
@@ -736,8 +929,30 @@ const SidebarMenuSubButton = React.forwardRef<
       data-size={size}
       data-active={isActive}
       className={cn(
-        "tw-flex tw-h-7 tw-min-w-0 tw--translate-x-px tw-items-center tw-gap-2 tw-overflow-hidden tw-rounded-md tw-px-2 tw-text-sidebar-foreground tw-outline-none tw-ring-sidebar-ring hover:tw-bg-sidebar-accent hover:tw-text-sidebar-accent-foreground focus-visible:tw-ring-2 active:tw-bg-sidebar-accent active:tw-text-sidebar-accent-foreground disabled:tw-pointer-events-none disabled:tw-opacity-50 aria-disabled:tw-pointer-events-none aria-disabled:tw-opacity-50 [&>span:last-child]:tw-truncate [&>svg]:tw-size-4 [&>svg]:tw-shrink-0 [&>svg]:tw-text-sidebar-accent-foreground",
-        "data-[active=true]:tw-bg-sidebar-accent data-[active=true]:tw-text-sidebar-accent-foreground",
+        `
+          tw-flex tw-h-7 tw-min-w-0 tw--translate-x-px tw-items-center tw-gap-2
+          tw-overflow-hidden tw-rounded-md tw-px-2 tw-text-sidebar-foreground
+          tw-outline-none tw-ring-sidebar-ring
+
+          [&>span:last-child]:tw-truncate
+
+          [&>svg]:tw-size-4 [&>svg]:tw-shrink-0
+          [&>svg]:tw-text-sidebar-accent-foreground
+
+          active:tw-bg-sidebar-accent active:tw-text-sidebar-accent-foreground
+
+          aria-disabled:tw-pointer-events-none aria-disabled:tw-opacity-50
+
+          disabled:tw-pointer-events-none disabled:tw-opacity-50
+
+          focus-visible:tw-ring-2
+
+          hover:tw-bg-sidebar-accent hover:tw-text-sidebar-accent-foreground
+        `,
+        `
+          data-[active=true]:tw-bg-sidebar-accent
+          data-[active=true]:tw-text-sidebar-accent-foreground
+        `,
         size === "sm" && "tw-text-xs",
         size === "md" && "tw-text-sm",
         "group-data-[collapsible=icon]:tw-hidden",

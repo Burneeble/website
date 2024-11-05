@@ -11,7 +11,11 @@ const Rating = (props: RatingProps) => {
     if (starIndex <= roundedRating) {
       return (
         <FontAwesomeIcon
-          className="fontawesome-gradient-icon  tw-w-5 tw-h-5 lg:tw-w-8 lg:tw-h-8"
+          className={`
+            fontawesome-gradient-icon tw-h-5 tw-w-5
+
+            lg:tw-h-8 lg:tw-w-8
+          `}
           key={starIndex}
           icon={faStar}
           style={{ color: "#ffce00" }}
@@ -20,16 +24,30 @@ const Rating = (props: RatingProps) => {
     } else if (starIndex - 0.5 === roundedRating) {
       return (
         <div
-          className="tw-relative tw-w-5 tw-h-5 lg:tw-w-8 lg:tw-h-8"
+          className={`
+            tw-relative tw-h-5 tw-w-5
+
+            lg:tw-h-8 lg:tw-w-8
+          `}
           key={starIndex}
         >
           <FontAwesomeIcon
-            className="fontawesome-gradient-icon tw-w-5 tw-h-5 lg:tw-w-8 lg:tw-h-8 tw-absolute tw-top-2/4 tw-left-2/4 -tw-translate-x-2/4 -tw-translate-y-2/4 tw-z-10"
+            className={`
+              fontawesome-gradient-icon tw-absolute tw-left-2/4 tw-top-2/4
+              tw-z-10 tw-h-5 tw-w-5 -tw-translate-x-2/4 -tw-translate-y-2/4
+
+              lg:tw-h-8 lg:tw-w-8
+            `}
             icon={faStarHalf}
             style={{}}
           />
           <FontAwesomeIcon
-            className="tw-w-5 tw-h-5 lg:tw-w-8 lg:tw-h-8 tw-absolute tw-top-2/4 tw-left-2/4  -tw-translate-x-2/4 -tw-translate-y-2/4  tw-z-0"
+            className={`
+              tw-absolute tw-left-2/4 tw-top-2/4 tw-z-0 tw-h-5 tw-w-5
+              -tw-translate-x-2/4 -tw-translate-y-2/4
+
+              lg:tw-h-8 lg:tw-w-8
+            `}
             icon={faStar}
             style={{ color: "var(--secondary-darker)" }}
           />
@@ -38,7 +56,11 @@ const Rating = (props: RatingProps) => {
     } else {
       return (
         <FontAwesomeIcon
-          className=" tw-w-5 tw-h-5 lg:tw-w-8 lg:tw-h-8"
+          className={`
+            tw-h-5 tw-w-5
+
+            lg:tw-h-8 lg:tw-w-8
+          `}
           key={starIndex}
           icon={faStar}
           style={{ color: "var(--secondary-darker)" }}
@@ -48,7 +70,7 @@ const Rating = (props: RatingProps) => {
   });
 
   return (
-    <div className="tw-justify-start tw-items-center tw-inline-flex">
+    <div className="tw-inline-flex tw-items-center tw-justify-start">
       {/* gradient to svg */}
       <svg className="svg-gradient">
         <defs>
