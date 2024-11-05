@@ -44,6 +44,16 @@
   @apply tw-from-black tw-to-brown-700;
 }
 
+.text-color-primary-gradient {
+  background: linear-gradient(
+    90deg,
+    var(--primary-default) 0%,
+    var(--primary-lighest) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 @tailwind utilities;
 
 @layer utilities {

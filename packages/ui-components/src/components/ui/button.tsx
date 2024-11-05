@@ -6,20 +6,47 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "tw-cursor-pointer tw-font-bowlby-one tw-inline-flex tw-items-center tw-justify-center tw-gap-2 tw-whitespace-nowrap tw-rounded-md tw-text-lg md:tw-text-xl lg:tw-text-2xl tw-font-medium tw-transition-colors focus-visible:tw-outline-none focus-visible:tw-ring-1 focus-visible:tw-ring-ring disabled:tw-pointer-events-none disabled:tw-opacity-50 [&_svg]:tw-pointer-events-none [&_svg]:tw-size-4 [&_svg]:tw-shrink-0 hover:tw-brightness-90 ",
+  `
+    6 tw-inline-flex tw-cursor-pointer tw-items-center tw-justify-center
+    tw-gap-2 tw-whitespace-nowrap tw-rounded-md tw-font-bowlby-one tw-text-lg
+    tw-font-medium tw-transition-colors
+
+    hover:tw-brightness-90
+
+    focus-visible:tw-outline-none focus-visible:tw-ring-1
+    focus-visible:tw-ring-ring
+
+    disabled:tw-pointer-events-none disabled:tw-opacity-50
+
+    md:tw-text-xl
+
+    lg:tw-text-2xl
+
+    [&_svg]:tw-pointer-events-none [&_svg]:tw-size-5 [&_svg]:tw-shrink-0
+  `,
   {
     variants: {
       variant: {
-        default:
-          "tw-bg-button-primary tw-text-white tw-shadow tw-border tw-border-primary",
+        default: `
+          tw-border tw-border-primary tw-bg-button-primary tw-text-white
+          tw-shadow
+        `,
 
-        destructive:
-          "tw-bg-button-error tw-bg-button-text tw-shadow tw-border tw-border-error",
+        destructive: `
+          tw-bg-button-text tw-border tw-border-error tw-bg-button-error
+          tw-shadow
+        `,
         outline: "tw-border tw-border-input tw-bg-button-primary tw-shadow-sm",
-        secondary:
-          "tw-bg-button-secondary tw-text-white tw-shadow-sm tw-border tw-border-tertiary",
+        secondary: `
+          tw-border tw-border-tertiary tw-bg-button-secondary tw-text-white
+          tw-shadow-sm
+        `,
         ghost: "hover:tw-bg-accent hover:tw-text-accent-foreground",
-        link: "tw-text-primary tw-underline-offset-4 hover:tw-underline",
+        link: `
+          tw-text-primary tw-underline-offset-4
+
+          hover:tw-underline
+        `,
       },
       size: {
         default: "tw-h-12 tw-px-4 tw-py-2",
