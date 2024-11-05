@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "../styles/main.scss";
 import cn from "classnames";
-import LayoutWrapper from "@/components/LayoutWrapper";
 import dynamic from "next/dynamic";
 
 export const metadata: Metadata = {
@@ -12,6 +11,11 @@ export const metadata: Metadata = {
 // eslint-disable-next-line @burneeble/burneeble/camel-case-vars
 const CommonProviders = dynamic(
   () => import("@/components/ProviderWrappers/CommonProviders")
+);
+
+// eslint-disable-next-line @burneeble/burneeble/camel-case-vars
+const LayoutWrapper = dynamic(
+  () => import("@/components/LayoutWrapper/LayoutWrapper")
 );
 
 export default async function RootLayout({
