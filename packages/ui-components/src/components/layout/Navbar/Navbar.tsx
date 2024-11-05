@@ -191,6 +191,52 @@ const Navbar = (props: NavbarProps) => {
               </Button>
             </div>
           </div>
+
+          <div
+            className={`
+              pages-wrapper tw-flex tw-h-[200px] tw-flex-col tw-items-start
+              tw-justify-center tw-gap-2.5 tw-self-stretch
+            `}
+          >
+            <div
+              className={`
+                title tw-self-stretch tw-font-['Inter'] tw-text-xl tw-font-light
+                tw-leading-[30px] tw-text-body
+              `}
+            >
+              Explore
+            </div>
+            <div
+              className={`
+                pages tw-flex tw-h-40 tw-flex-col tw-items-start
+                tw-justify-start tw-gap-5 tw-self-stretch tw-rounded-lg
+              `}
+            >
+              {props.links.map((link, i) => {
+                return (
+                  <Link
+                    key={i}
+                    onClick={() => {
+                      setIsOpen(false);
+                    }}
+                    href={link.href}
+                    passHref
+                  >
+                    <div
+                      className={`
+                        tw-cursor-pointer tw-p-6 tw-text-sm
+
+                        hover:tw-underline
+                      `}
+                    >
+                      {link.title}
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+          {/* TODO ADD Footer */}
         </div>
       )}
     </nav>
@@ -199,6 +245,7 @@ const Navbar = (props: NavbarProps) => {
 
 export default Navbar;
 
+// DOT NOT DELETE
 // {props.dropdowns.length > 0 && (
 //   <Accordion type="single" collapsible className="tw-w-full tw-px-6">
 //     {props.dropdowns.map((drop, i) => {
@@ -236,25 +283,3 @@ export default Navbar;
 //     })}
 //   </Accordion>
 // )}
-// {props.links.map((link, i) => {
-//   return (
-//     <Link
-//       key={i}
-//       onClick={() => {
-//         setIsOpen(false);
-//       }}
-//       href={link.href}
-//       passHref
-//     >
-//       <div
-//         className={`
-//           tw-cursor-pointer tw-p-6 tw-text-sm
-
-//           hover:tw-underline
-//         `}
-//       >
-//         {link.title}
-//       </div>
-//     </Link>
-//   );
-// })}
