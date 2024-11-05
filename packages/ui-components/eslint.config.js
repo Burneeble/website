@@ -1,5 +1,3 @@
-import tailwind from "eslint-plugin-tailwindcss";
-
 const rules = require("@burneeble/eslint-plugin-burneeble").rules;
 const disabled = require("@burneeble/eslint-plugin-burneeble").disabled;
 
@@ -79,9 +77,19 @@ module.exports = [
     rules: {
       "react/jsx-key": "error",
       "storybook/prefer-pascal-case": "off",
+      "tailwindcss/classnames-order": "warn",
+      "tailwindcss/no-custom-classname": "off",
+      "tailwindcss/no-arbitrary-value": "warn",
+      "tailwindcss/no-contradicting-classname": "error",
       ...customRules,
       ...disabled,
     },
   }),
-  ...tailwind.configs["flat/recommended"],
+  ...compat.config({
+    settings: {
+      tailwindcss: {
+        prefix: "tw-",
+      },
+    },
+  }),
 ];

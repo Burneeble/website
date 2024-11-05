@@ -1,5 +1,3 @@
-import tailwind from "eslint-plugin-tailwindcss";
-
 const rules = require("@burneeble/eslint-plugin-burneeble").rules;
 const disabled = require("@burneeble/eslint-plugin-burneeble").disabled;
 
@@ -22,6 +20,10 @@ module.exports = {
     rules: {
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-empty-object-type": "off",
+      "tailwindcss/classnames-order": "warn",
+      "tailwindcss/no-custom-classname": "off",
+      "tailwindcss/no-arbitrary-value": "warn",
+      "tailwindcss/no-contradicting-classname": "error",
       ...customRules,
       ...disabled,
     },
@@ -32,6 +34,10 @@ module.exports = {
       "components/ui/**/*",
       "hooks/**/*",
     ],
+    settings: {
+      tailwindcss: {
+        prefix: "tw-",
+      },
+    },
   },
-  ...tailwind.configs["flat/recommended"],
 };
