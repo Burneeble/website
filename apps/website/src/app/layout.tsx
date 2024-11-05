@@ -25,7 +25,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="tw-bg-black">
       <body className={cn("burneeble-default-theme")}>
         <CommonProviders>
           <LayoutWrapper>{children}</LayoutWrapper>
