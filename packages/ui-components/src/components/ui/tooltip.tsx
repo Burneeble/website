@@ -36,8 +36,6 @@ const TooltipContent = React.forwardRef<
 
           data-[state=closed]:tw-animate-out data-[state=closed]:tw-fade-out-0
           data-[state=closed]:tw-zoom-out-95
-
-          md:tw-bg-blue-500
         `,
         className
       )}
