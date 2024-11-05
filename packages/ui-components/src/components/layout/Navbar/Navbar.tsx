@@ -32,12 +32,17 @@ const Navbar = (props: NavbarProps) => {
   const { width } = useClientInfoService();
 
   return (
-    <nav className="tw-font-inter tw-mx-auto tw-h-auto tw-w-full tw-max-w-screen-2xl tw-flex tw-justify-between">
-      <div className="tw-flex tw-flex-col tw-px-6 tw-py-6">
+    <nav
+      className={`
+        tw-mx-auto tw-flex tw-h-auto tw-w-full tw-max-w-screen-2xl
+        tw-justify-between tw-font-inter
+      `}
+    >
+      <div className="tw-flex tw-flex-col tw-p-6">
         <Link href={props.logo.url || "#"}>{props.logo.svg}</Link>
       </div>
 
-      <div className="tw-inline-flex tw-gap-2.5 tw-items-center">
+      <div className="tw-inline-flex tw-items-center tw-gap-2.5">
         {width < 768 ? (
           <>
             {width > 425 && <Button> Start Building</Button>}
@@ -64,19 +69,44 @@ const Navbar = (props: NavbarProps) => {
                         {component.title}
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
-                        <ul className="tw-grid tw-gap-3 tw-p-6 md:tw-w-[400px] lg:tw-grid-cols-[.75fr_1fr]">
+                        <ul
+                          className={`
+                            tw-grid tw-gap-3 tw-p-6
+
+                            lg:tw-grid-cols-[.75fr_1fr]
+
+                            md:tw-w-[400px]
+                          `}
+                        >
                           {component.primaryItem && (
                             <li className="tw-row-span-3">
                               <NavigationMenuLink asChild>
                                 <a
-                                  className="tw-flex tw-h-full tw-w-full tw-select-none tw-flex-col tw-justify-end tw-rounded-md tw-bg-gradient-to-b tw-from-muted/50 tw-to-muted tw-p-6 tw-no-underline tw-outline-none focus:tw-shadow-md"
+                                  className={`
+                                    tw-flex tw-h-full tw-w-full tw-select-none
+                                    tw-flex-col tw-justify-end tw-rounded-md
+                                    tw-bg-gradient-to-b tw-from-muted/50
+                                    tw-to-muted tw-p-6 tw-no-underline
+                                    tw-outline-none
+
+                                    focus:tw-shadow-md
+                                  `}
                                   href={component.primaryItem.href}
                                 >
                                   {component.primaryItem.svg}
-                                  <div className="tw-mb-2 tw-mt-4 tw-text-lg tw-font-medium">
+                                  <div
+                                    className={`
+                                      tw-mb-2 tw-mt-4 tw-text-lg tw-font-medium
+                                    `}
+                                  >
                                     {component.primaryItem.title}
                                   </div>
-                                  <p className="tw-text-sm tw-leading-tight tw-text-muted-foreground">
+                                  <p
+                                    className={`
+                                      tw-text-sm tw-leading-tight
+                                      tw-text-muted-foreground
+                                    `}
+                                  >
                                     {component.primaryItem.description}
                                   </p>
                                 </a>
@@ -121,12 +151,15 @@ const Navbar = (props: NavbarProps) => {
 
       {width < 768 && (
         <div
-          className={`tw-fixed tw-top-0 tw-left-0 tw-w-screen tw-h-screen tw-bg-white tw-transition-all tw-ease-in-out tw-duration-1000 ${
-            isOpen ? "-tw-translate-x-0" : "-tw-translate-x-full"
-          }`}
+          className={`
+            tw-fixed tw-left-0 tw-top-0 tw-h-screen tw-w-screen tw-bg-white
+            tw-transition-all tw-duration-1000 tw-ease-in-out
+
+            ${isOpen ? "-tw-translate-x-0" : "-tw-translate-x-full"}
+          `}
         >
-          <div className="tw-flex tw-justify-between tw-items-center">
-            <div className="tw-flex tw-flex-col tw-px-6 tw-py-6">
+          <div className="tw-flex tw-items-center tw-justify-between">
+            <div className="tw-flex tw-flex-col tw-p-6">
               <Link
                 onClick={() => {
                   setIsOpen(false);
@@ -138,7 +171,7 @@ const Navbar = (props: NavbarProps) => {
             </div>
             <FontAwesomeIcon
               icon={faXmark}
-              className="tw-text-black tw-cursor-pointer tw-text-2xl tw-px-6 tw-py-6"
+              className={`tw-cursor-pointer tw-p-6 tw-text-2xl tw-text-black`}
               onClick={() => {
                 setIsOpen(false);
               }}
@@ -163,7 +196,13 @@ const Navbar = (props: NavbarProps) => {
                             href={item.href}
                             passHref
                           >
-                            <div className="tw-px-1 tw-py-1 tw-cursor-pointer hover:tw-underline">
+                            <div
+                              className={`
+                                tw-cursor-pointer tw-p-1
+
+                                hover:tw-underline
+                              `}
+                            >
                               {item.title}
                             </div>
                           </Link>
@@ -185,7 +224,13 @@ const Navbar = (props: NavbarProps) => {
                 href={link.href}
                 passHref
               >
-                <div className="tw-px-6 tw-py-6 tw-cursor-pointer hover:tw-underline tw-text-sm">
+                <div
+                  className={`
+                    tw-cursor-pointer tw-p-6 tw-text-sm
+
+                    hover:tw-underline
+                  `}
+                >
                   {link.title}
                 </div>
               </Link>

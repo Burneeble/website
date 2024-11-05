@@ -20,9 +20,9 @@ module.exports = {
     rules: {
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-empty-object-type": "off",
-      "tailwindcss/classnames-order": "warn",
+      "tailwindcss/classnames-order": "off",
       "tailwindcss/no-custom-classname": "off",
-      "tailwindcss/no-arbitrary-value": "warn",
+      "tailwindcss/no-arbitrary-value": "off",
       "tailwindcss/no-contradicting-classname": "error",
       ...customRules,
       ...disabled,
@@ -33,6 +33,8 @@ module.exports = {
       ".eslintrc.js",
       "components/ui/**/*",
       "hooks/**/*",
+      "tailwind.config.js",
+      "postcss.config.js",
     ],
     settings: {
       tailwindcss: {

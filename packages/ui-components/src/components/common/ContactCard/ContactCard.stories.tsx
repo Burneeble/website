@@ -1,7 +1,6 @@
 import { StoryObj, Meta } from "@storybook/react";
 import ContactCard from "./ContactCard";
 import { ContactCardProps } from "./ContactCard.types";
-import React from "react";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 export default {

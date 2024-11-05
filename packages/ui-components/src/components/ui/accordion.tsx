@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable @burneeble/burneeble/camel-case-vars */
 "use client";
 
@@ -29,13 +30,25 @@ const AccordionTrigger = React.forwardRef<
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        "tw-flex tw-flex-1 tw-items-center tw-justify-between tw-py-4 tw-text-sm tw-font-medium tw-transition-all hover:tw-underline [&[data-state=open]>svg]:tw-rotate-180",
+        `
+          tw-flex tw-flex-1 tw-items-center tw-justify-between tw-py-4
+          tw-text-sm tw-font-medium tw-transition-all
+
+          [&[data-state=open]>svg]:tw-rotate-180
+
+          hover:tw-underline
+        `,
         className
       )}
       {...props}
     >
       {children}
-      <ChevronDownIcon className="tw-h-4 tw-w-4 tw-shrink-0 tw-text-muted-foreground tw-transition-transform tw-duration-200" />
+      <ChevronDownIcon
+        className={`
+          tw-h-4 tw-w-4 tw-shrink-0 tw-text-muted-foreground
+          tw-transition-transform tw-duration-200
+        `}
+      />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ));
@@ -47,7 +60,13 @@ const AccordionContent = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <AccordionPrimitive.Content
     ref={ref}
-    className="tw-overflow-hidden tw-text-sm data-[state=closed]:tw-animate-accordion-up data-[state=open]:tw-animate-accordion-down"
+    className={`
+      tw-overflow-hidden tw-text-sm
+
+      data-[state=closed]:tw-animate-accordion-up
+
+      data-[state=open]:tw-animate-accordion-down
+    `}
     {...props}
   >
     <div className={cn("tw-pb-4 tw-pt-0", className)}>{children}</div>
