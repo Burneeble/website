@@ -51,7 +51,7 @@ const Navbar = (props: NavbarProps) => {
               onClick={() => {
                 setIsOpen(true);
               }}
-              className="tw-rounded-[50%]"
+              className="!tw-rounded-[50%]"
               size="icon"
               variant={"secondary"}
             >
@@ -73,9 +73,9 @@ const Navbar = (props: NavbarProps) => {
                           className={`
                             tw-grid tw-gap-3 tw-p-6
 
-                            lg:tw-grid-cols-[.75fr_1fr]
-
                             md:tw-w-[400px]
+
+                            lg:tw-grid-cols-[.75fr_1fr]
                           `}
                         >
                           {component.primaryItem && (
@@ -83,11 +83,10 @@ const Navbar = (props: NavbarProps) => {
                               <NavigationMenuLink asChild>
                                 <a
                                   className={`
-                                    tw-flex tw-h-full tw-w-full tw-select-none
-                                    tw-flex-col tw-justify-end tw-rounded-md
-                                    tw-bg-gradient-to-b tw-from-muted/50
-                                    tw-to-muted tw-p-6 tw-no-underline
-                                    tw-outline-none
+                                    primary-gradient tw-flex tw-h-full tw-w-full
+                                    tw-select-none tw-flex-col tw-justify-end
+                                    tw-rounded-md tw-bg-gradient-to-b tw-p-6
+                                    tw-no-underline tw-outline-none
 
                                     focus:tw-shadow-md
                                   `}
@@ -96,7 +95,8 @@ const Navbar = (props: NavbarProps) => {
                                   {component.primaryItem.svg}
                                   <div
                                     className={`
-                                      tw-mb-2 tw-mt-4 tw-text-lg tw-font-medium
+                                      tw-mb-2 tw-mt-4 tw-text-xl tw-font-medium
+                                      tw-text-headings
                                     `}
                                   >
                                     {component.primaryItem.title}
@@ -104,7 +104,7 @@ const Navbar = (props: NavbarProps) => {
                                   <p
                                     className={`
                                       tw-text-sm tw-leading-tight
-                                      tw-text-muted-foreground
+                                      tw-text-headings
                                     `}
                                   >
                                     {component.primaryItem.description}

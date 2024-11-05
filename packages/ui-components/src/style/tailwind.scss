@@ -40,6 +40,10 @@
   @apply tw-from-brown-500 tw-to-brown-200;
 }
 
+.quaternary-gradient {
+  @apply tw-from-black tw-to-brown-700;
+}
+
 @tailwind utilities;
 
 @layer utilities {
