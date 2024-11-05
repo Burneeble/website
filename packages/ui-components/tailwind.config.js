@@ -172,7 +172,7 @@ module.exports = {
         success: "var(--success-dark)",
         information: "var(--info-dark)",
         warning: "var(--warning-dark)",
-        neutral: "var(--neutral-light)",
+        neutral: "var(--neutral-dark)",
         button: {
           primary: "var(--primary-default)",
           secondary: "var(--secondary-darker)",
