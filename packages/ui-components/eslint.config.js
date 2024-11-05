@@ -1,3 +1,5 @@
+import tailwind from "eslint-plugin-tailwindcss";
+
 const rules = require("@burneeble/eslint-plugin-burneeble").rules;
 const disabled = require("@burneeble/eslint-plugin-burneeble").disabled;
 
@@ -32,10 +34,9 @@ module.exports = [
       "plugin:@typescript-eslint/recommended",
       "plugin:react/recommended",
       "plugin:storybook/recommended",
-      // enable all recommended rules to warn
       "plugin:readable-tailwind/warning",
-      // enable all recommended rules to error
-      "plugin:readable-tailwind/error"
+      "plugin:readable-tailwind/error",
+      "plugin:tailwindcss/recommended",
     ],
     overrides: [
       {
@@ -59,7 +60,12 @@ module.exports = [
       ecmaVersion: "latest",
       sourceType: "module",
     },
-    plugins: ["@typescript-eslint", "react", "@burneeble/burneeble", "readable-tailwind"],
+    plugins: [
+      "@typescript-eslint",
+      "react",
+      "@burneeble/burneeble",
+      "readable-tailwind",
+    ],
     ignorePatterns: [
       "eslint.config.js",
       "dist/**/*",
@@ -77,4 +83,5 @@ module.exports = [
       ...disabled,
     },
   }),
+  ...tailwind.configs["flat/recommended"],
 ];

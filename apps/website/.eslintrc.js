@@ -1,3 +1,5 @@
+import tailwind from "eslint-plugin-tailwindcss";
+
 const rules = require("@burneeble/eslint-plugin-burneeble").rules;
 const disabled = require("@burneeble/eslint-plugin-burneeble").disabled;
 
@@ -8,24 +10,28 @@ Object.keys(rules).forEach((rule) => {
 });
 
 module.exports = {
-  extends: [
-    "next/core-web-vitals",
-    "next/typescript",
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-  ],
-  plugins: ["@burneeble/burneeble"],
-  rules: {
-    "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/no-empty-object-type": "off",
-    ...customRules,
-    ...disabled,
+  ...{
+    extends: [
+      "next/core-web-vitals",
+      "next/typescript",
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:tailwindcss/recommended",
+    ],
+    plugins: ["@burneeble/burneeble"],
+    rules: {
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-empty-object-type": "off",
+      ...customRules,
+      ...disabled,
+    },
+    ignorePatterns: [
+      "node_modules/",
+      ".next/",
+      ".eslintrc.js",
+      "components/ui/**/*",
+      "hooks/**/*",
+    ],
   },
-  ignorePatterns: [
-    "node_modules/",
-    ".next/",
-    ".eslintrc.js",
-    "components/ui/**/*",
-    "hooks/**/*",
-  ],
+  ...tailwind.configs["flat/recommended"],
 };
