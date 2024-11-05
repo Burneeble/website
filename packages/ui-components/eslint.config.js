@@ -32,6 +32,9 @@ module.exports = [
       "plugin:@typescript-eslint/recommended",
       "plugin:react/recommended",
       "plugin:storybook/recommended",
+      "plugin:readable-tailwind/warning",
+      "plugin:readable-tailwind/error",
+      "plugin:tailwindcss/recommended",
     ],
     overrides: [
       {
@@ -55,7 +58,12 @@ module.exports = [
       ecmaVersion: "latest",
       sourceType: "module",
     },
-    plugins: ["@typescript-eslint", "react", "@burneeble/burneeble"],
+    plugins: [
+      "@typescript-eslint",
+      "react",
+      "@burneeble/burneeble",
+      "readable-tailwind",
+    ],
     ignorePatterns: [
       "eslint.config.js",
       "dist/**/*",
@@ -69,8 +77,19 @@ module.exports = [
     rules: {
       "react/jsx-key": "error",
       "storybook/prefer-pascal-case": "off",
+      "tailwindcss/classnames-order": "warn",
+      "tailwindcss/no-custom-classname": "off",
+      "tailwindcss/no-arbitrary-value": "warn",
+      "tailwindcss/no-contradicting-classname": "error",
       ...customRules,
       ...disabled,
+    },
+  }),
+  ...compat.config({
+    settings: {
+      tailwindcss: {
+        prefix: "tw-",
+      },
     },
   }),
 ];
