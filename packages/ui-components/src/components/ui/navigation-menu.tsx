@@ -42,7 +42,7 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
 const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
 const navigationMenuTriggerStyle = cva(
-  "tw-text-body tw-group tw-inline-flex tw-h-9 tw-w-max tw-items-center tw-justify-center tw-rounded-md tw-bg-background tw-px-4 tw-py-2 tw-text-sm tw-font-medium tw-transition-colors hover:tw-bg-accent hover:tw-text-accent-foreground focus:tw-bg-accent focus:tw-text-accent-foreground focus:tw-outline-none disabled:tw-pointer-events-none disabled:tw-opacity-50 data-[active]:tw-bg-accent/50 data-[state=open]:tw-bg-accent/50"
+  "tw-text-body tw-group tw-inline-flex tw-h-9 tw-w-max tw-items-center tw-justify-center tw-rounded-md tw-bg-background tw-px-4 tw-py-2 tw-text-2xl tw-font-inter tw-font-medium tw-transition-colors hover:tw-bg-accent hover:tw-text-accent-foreground focus:tw-bg-accent focus:tw-text-accent-foreground focus:tw-outline-none disabled:tw-pointer-events-none disabled:tw-opacity-50 data-[active]:tw-bg-accent/50 data-[state=open]:tw-bg-accent/50"
 );
 
 const NavigationMenuTrigger = React.forwardRef<
@@ -135,10 +135,10 @@ const ListItem = React.forwardRef<
           )}
           {...props}
         >
-          <div className="tw-text-sm tw-font-medium tw-leading-none">
+          <div className="tw-text-xl tw-font-inter tw-font-medium tw-leading-none">
             {title}
           </div>
-          <p className="tw-line-clamp-2 tw-text-sm tw-leading-snug tw-text-muted-foreground">
+          <p className="tw-line-clamp-2 tw-text-sm tw-font-inter tw-leading-snug tw-text-muted-foreground">
             {children}
           </p>
         </a>

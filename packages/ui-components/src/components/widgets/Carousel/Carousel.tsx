@@ -48,7 +48,7 @@ const Carousel = (props: CarouselProps) => {
         })}
         <Button
           size={"icon"}
-          className="custom-next carousel-button tw-right-0"
+          className="custom-next carousel-button tw-rounded-[50%] tw-right-0"
         >
           <FontAwesomeIcon icon={faChevronRight} />
         </Button>
