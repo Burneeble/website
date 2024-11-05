@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "../styles/main.scss";
 import cn from "classnames";
 import dynamic from "next/dynamic";
+import { LayoutWrapper } from "@/components";
 
 export const metadata: Metadata = {
   title: "Burneeble website",
@@ -14,9 +15,9 @@ const CommonProviders = dynamic(
 );
 
 // eslint-disable-next-line @burneeble/burneeble/camel-case-vars
-const LayoutWrapper = dynamic(
-  () => import("@/components/LayoutWrapper/LayoutWrapper")
-);
+// const LayoutWrapper = dynamic(
+//   () => import("@/components/LayoutWrapper/LayoutWrapper")
+// );
 
 export default async function RootLayout({
   children,
@@ -24,7 +25,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="tw-bg-black">
       <body className={cn("burneeble-default-theme")}>
         <CommonProviders>
           <LayoutWrapper>{children}</LayoutWrapper>
