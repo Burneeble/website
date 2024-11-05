@@ -32,6 +32,10 @@ module.exports = [
       "plugin:@typescript-eslint/recommended",
       "plugin:react/recommended",
       "plugin:storybook/recommended",
+      // enable all recommended rules to warn
+      "plugin:readable-tailwind/warning",
+      // enable all recommended rules to error
+      "plugin:readable-tailwind/error"
     ],
     overrides: [
       {
@@ -55,7 +59,7 @@ module.exports = [
       ecmaVersion: "latest",
       sourceType: "module",
     },
-    plugins: ["@typescript-eslint", "react", "@burneeble/burneeble"],
+    plugins: ["@typescript-eslint", "react", "@burneeble/burneeble", "readable-tailwind"],
     ignorePatterns: [
       "eslint.config.js",
       "dist/**/*",
