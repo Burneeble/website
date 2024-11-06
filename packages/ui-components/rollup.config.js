@@ -88,4 +88,16 @@ export default [
     ],
     external: ["react", "react-dom", "react-router-dom", "styled-components"],
   },
+  {
+    input: "src/style.ts",
+    plugins: [
+      scss({
+        failOnError: true,
+        include: "./src/**/*.scss",
+        output: "./dist/css/style.scss",
+      }),
+      terser(),
+    ],
+    external: ["react", "react-dom", "react-router-dom", "styled-components"],
+  },
 ];

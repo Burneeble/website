@@ -3,6 +3,7 @@ import "../styles/main.scss";
 import cn from "classnames";
 import dynamic from "next/dynamic";
 import { LayoutWrapper } from "@/components";
+import { Inter, Bowlby_One } from "next/font/google";
 
 export const metadata: Metadata = {
   title: "Burneeble website",
@@ -14,10 +15,18 @@ const CommonProviders = dynamic(
   () => import("@/components/ProviderWrappers/CommonProviders")
 );
 
-// eslint-disable-next-line @burneeble/burneeble/camel-case-vars
-// const LayoutWrapper = dynamic(
-//   () => import("@/components/LayoutWrapper/LayoutWrapper")
-// );
+const inter = Inter({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-default",
+});
+const bowlyOne = Bowlby_One({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-title",
+});
 
 export default async function RootLayout({
   children,
@@ -25,12 +34,20 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="tw-bg-black">
-      <body className={cn("burneeble-default-theme")}>
-        <CommonProviders>
-          <LayoutWrapper>{children}</LayoutWrapper>
-        </CommonProviders>
-      </body>
-    </html>
+    <>
+      <html lang="en" className="tw-bg-black">
+        <body
+          className={cn(
+            "burneeble-default-theme",
+            inter.variable,
+            bowlyOne.variable
+          )}
+        >
+          <CommonProviders>
+            <LayoutWrapper>{children}</LayoutWrapper>
+          </CommonProviders>
+        </body>
+      </html>
+    </>
   );
 }

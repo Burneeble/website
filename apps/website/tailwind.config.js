@@ -7,13 +7,16 @@ module.exports = {
   content: [
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
     "../../node_modules/@burneeble/ui-components/dist/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/styles/main.scss",
   ],
-  theme: merge(
-    {
-      extend: {},
+  theme: merge(libConfig.theme, {
+    extend: {
+      fontFamily: {
+        "bowlby-one": ["var(--font-title)"],
+        inter: ["var(--font-default)"],
+      },
     },
-    libConfig.theme
-  ),
+  }),
   prefix: "tw-",
   plugins: merge([], libConfig.plugins),
 };
