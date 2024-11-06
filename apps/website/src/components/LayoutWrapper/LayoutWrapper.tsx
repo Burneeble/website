@@ -17,7 +17,7 @@ const LayoutWrapper = (props: LayoutWrapperProps) => {
           links={[]}
         />
       </header>
-      <main>hello{props.children}</main>
+      <main>{props.children}</main>
       <ToastContainer />
     </>
   );
