@@ -32,7 +32,7 @@ const Navbar = (props: NavbarProps) => {
   }, [width]);
 
   useEffect(() => {
-    if (width > 768) {
+    if (width && width > 768) {
       setIsOpen(false);
     }
   }, [width]);
@@ -49,7 +49,7 @@ const Navbar = (props: NavbarProps) => {
       </div>
 
       <div className="tw-inline-flex tw-items-center tw-gap-2.5">
-        {width < 768 ? (
+        {width && width < 768 ? (
           <>
             {width > 425 && <Button> Start Building</Button>}
 
@@ -156,7 +156,7 @@ const Navbar = (props: NavbarProps) => {
       </div>
 
       {/* navbar mobile popup */}
-      {width < 768 && (
+      {width && width < 768 && (
         <MobileMenu
           dropdowns={props.dropdowns}
           links={props.links}

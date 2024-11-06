@@ -61,15 +61,15 @@ const ContactCard = (props: ContactCardProps) => {
                   <FontAwesomeIcon
                     style={{
                       color: "white",
-                      width: width < 768 ? "30px" : "50px",
-                      height: width < 768 ? "30px" : "50px",
+                      width: width && width < 768 ? "30px" : "50px",
+                      height: width && width < 768 ? "30px" : "50px",
                     }}
                     icon={props.icon}
                   />
                 )}
               </div>
             </div>
-            {width >= 768 && (
+            {width && width >= 768 && (
               <div
                 className={`
                   contact-card-info tw-flex tw-shrink tw-grow tw-basis-0
@@ -165,8 +165,8 @@ const ContactCard = (props: ContactCardProps) => {
                 <FontAwesomeIcon
                   style={{
                     color: "white",
-                    width: width < 768 ? "30px" : "50px",
-                    height: width < 768 ? "30px" : "50px",
+                    width: width && width < 768 ? "30px" : "50px",
+                    height: width && width < 768 ? "30px" : "50px",
                   }}
                   icon={props.icon}
                 />

@@ -56,7 +56,7 @@ const ReviewCard = (props: ReviewCardProps) => {
               >
                 {props.user.name}
               </p>
-              {width <= 992 && (
+              {width && width <= 992 && (
                 <>
                   {/* TODO create a flag component */}
                   <img
@@ -66,7 +66,7 @@ const ReviewCard = (props: ReviewCardProps) => {
                 </>
               )}
             </div>
-            {width <= 992 ? (
+            {width && width <= 992 ? (
               <Rating ratingValue={props.rating} />
             ) : (
               <div

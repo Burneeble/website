@@ -1,9 +1,9 @@
 import { createContext } from "react";
 
 export interface ClientInfoServiceContent {
-  width: number;
+  width: number | null;
 }
 
 export const clientInfoServiceContext = createContext<ClientInfoServiceContent>(
-  { width: window.innerWidth }
+  { width: null }
 );

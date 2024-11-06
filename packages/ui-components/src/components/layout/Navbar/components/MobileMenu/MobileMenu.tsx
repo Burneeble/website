@@ -21,7 +21,7 @@ const MobileMenu = (props: MobileMenuProps) => {
   const { width } = useClientInfoService();
   return (
     <>
-      {width < 768 && (
+      {width && width < 768 && (
         <div
           className={`
             mobile-navbar-menu-popup tw-fixed tw-left-0 tw-top-0 tw-flex
