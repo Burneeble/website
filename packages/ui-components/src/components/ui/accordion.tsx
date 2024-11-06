@@ -99,8 +99,8 @@ const AccordionContent = React.forwardRef<
     <div
       className={cn(
         `
-          tw-shrink tw-grow tw-basis-0 tw-pb-2 tw-pt-0 page-name tw-font-inter
-          tw-text-2xl tw-font-black tw-leading-10 tw-text-body
+          tw-shrink tw-grow tw-basis-0 tw-pb-2 tw-pt-0 page-name tw-px-8
+          tw-font-inter tw-text-2xl tw-font-black tw-leading-10 tw-text-body
 
           first:tw-pt-4
 
