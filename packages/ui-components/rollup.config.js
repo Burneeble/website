@@ -12,9 +12,9 @@ import postcss from "postcss";
 import autoprefixer from "autoprefixer";
 import tailwindcss from "tailwindcss";
 import copy from "rollup-plugin-copy";
+import tailwindConfig from "./tailwind.config.ts";
 
 const packageJson = require("./package.json");
-const tailwindConfig = require("./tailwind.config.js");
 
 console.log(__dirname);
 
@@ -37,7 +37,7 @@ export default [
       copy({
         targets: [
           {
-            src: "./tailwind.config.js",
+            src: "./tailwind.config.ts",
             dest: "./dist/css/",
           },
         ],
