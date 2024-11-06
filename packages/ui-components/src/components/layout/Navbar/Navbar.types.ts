@@ -1,3 +1,5 @@
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+
 export interface NavbarDropDownItem {
   title: string;
   href: string;
@@ -13,6 +15,7 @@ export interface NavbarDropDown {
 export interface NavbarLink {
   title: string;
   href: string;
+  icon?: string | IconDefinition;
 }
 
 export interface NavbarProps {

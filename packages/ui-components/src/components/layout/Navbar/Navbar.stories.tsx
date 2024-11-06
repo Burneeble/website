@@ -52,10 +52,12 @@ export const simpleNavbar: Story = {
       {
         title: "Blog",
         href: "/",
+        icon: faReact,
       },
       {
         title: "About",
         href: "/",
+        icon: faReact,
       },
     ],
   },

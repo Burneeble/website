@@ -23,6 +23,7 @@ import {
   AccordionTrigger,
   Button,
 } from "@/components/ui";
+import { useRouter } from "next/navigation";
 
 const Navbar = (props: NavbarProps) => {
   //States
@@ -30,7 +31,7 @@ const Navbar = (props: NavbarProps) => {
 
   //Hooks
   const { width } = useClientInfoService();
-
+  const router = useRouter();
   return (
     <nav
       className={`
@@ -173,8 +174,8 @@ const Navbar = (props: NavbarProps) => {
             >
               <h1
                 className={`
-                  burneeble-text-logo text-color-primary-gradient tw-text--4xl
-                  tw-font-bowlby-one tw-font-normal
+                  burneeble-text-logo tw-text--4xl tw-font-bowlby-one
+                  tw-font-normal
                 `}
               >
                 BURNEEBLE
@@ -194,46 +195,78 @@ const Navbar = (props: NavbarProps) => {
 
           <div
             className={`
-              pages-wrapper tw-flex tw-h-[200px] tw-flex-col tw-items-start
-              tw-justify-center tw-gap-2.5 tw-self-stretch
+              mobile-menu-content tw-flex tw-h-[671px] tw-shrink tw-grow
+              tw-basis-0 tw-flex-col tw-items-start tw-justify-between
+              tw-self-stretch tw-p-5
             `}
           >
             <div
               className={`
-                title tw-self-stretch tw-font-['Inter'] tw-text-xl tw-font-light
-                tw-leading-[30px] tw-text-body
+                pages-wrapper tw-flex tw-h-[200px] tw-flex-col tw-items-start
+                tw-justify-center tw-gap-2.5 tw-self-stretch
               `}
             >
-              Explore
-            </div>
-            <div
-              className={`
-                pages tw-flex tw-h-40 tw-flex-col tw-items-start
-                tw-justify-start tw-gap-5 tw-self-stretch tw-rounded-lg
-              `}
-            >
-              {props.links.map((link, i) => {
-                return (
-                  <Link
-                    key={i}
-                    onClick={() => {
-                      setIsOpen(false);
-                    }}
-                    href={link.href}
-                    passHref
-                  >
-                    <div
-                      className={`
-                        tw-cursor-pointer tw-p-6 tw-text-sm
-
-                        hover:tw-underline
-                      `}
+              <div
+                className={`
+                  title tw-self-stretch tw-font-inter tw-text-xl tw-font-light
+                  tw-leading-7 tw-text-body
+                `}
+              >
+                Explore
+              </div>
+              <div
+                className={`
+                  pages tw-flex tw-h-40 tw-flex-col tw-items-start
+                  tw-justify-start tw-gap-5 tw-self-stretch tw-rounded-lg
+                `}
+              >
+                {props.links.map((link, i) => {
+                  return (
+                    <Link
+                      key={i}
+                      onClick={() => {
+                        setIsOpen(false);
+                      }}
+                      href={link.href}
+                      passHref
                     >
-                      {link.title}
-                    </div>
-                  </Link>
-                );
-              })}
+                      <div
+                        className={`
+                          tw-group page-with-icon tw-inline-flex
+                          tw-cursor-pointer tw-items-center tw-justify-start
+                          tw-gap-2.5 tw-self-stretch tw-text-sm
+                        `}
+                        onClick={() => router.push(link.href)}
+                      >
+                        {link.icon &&
+                          (typeof link.icon === "string" ? (
+                            <img src={link.icon} />
+                          ) : (
+                            <FontAwesomeIcon
+                              className={`
+                                tw-h-5 tw-w-5 tw-text-body
+
+                                group-hover:tw-text-white
+                              `}
+                              icon={link.icon}
+                            />
+                          ))}
+
+                        <p
+                          className={`
+                            page-name tw-shrink tw-grow tw-basis-0 tw-font-inter
+                            tw-text-3xl tw-font-black tw-leading-10 tw-text-body
+
+                            group-hover:tw-text-white
+                          `}
+                        >
+                          {link.title}
+                        </p>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
             </div>
           </div>
           {/* TODO ADD Footer */}
