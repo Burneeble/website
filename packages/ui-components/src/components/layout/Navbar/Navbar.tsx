@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavbarProps } from "./Navbar.types";
 import {
   NavigationMenu,
@@ -22,9 +22,21 @@ import { MobileMenu } from "./components";
 const Navbar = (props: NavbarProps) => {
   //States
   const [isOpen, setIsOpen] = useState<boolean>(false);
-
   //Hooks
   const { width } = useClientInfoService();
+
+  //useEFfects
+  useEffect(() => {
+    console.log("Navbar mounted");
+    console.log(width);
+  }, [width]);
+
+  useEffect(() => {
+    if (width > 768) {
+      setIsOpen(false);
+    }
+  }, [width]);
+
   return (
     <nav
       className={`

@@ -5,5 +5,5 @@ export interface ClientInfoServiceContent {
 }
 
 export const clientInfoServiceContext = createContext<ClientInfoServiceContent>(
-  { width: 0 }
+  { width: window.innerWidth }
 );

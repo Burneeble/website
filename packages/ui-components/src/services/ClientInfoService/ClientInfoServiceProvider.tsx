@@ -6,7 +6,7 @@ const ClientInfoServiceProvider = (props: ClientInfoServiceProviderProps) => {
   //States
   //TODO create a custom state for get the type of device instead of width, to avoid the use of hardcoded numbers in the components
   //exmaples: mobile, tablet, desktop
-  const [width, setWidth] = useState<number>(0);
+  const [width, setWidth] = useState<number>(window.innerWidth);
 
   //Hooks
   const widthRef = useRef<number | null>(null);
