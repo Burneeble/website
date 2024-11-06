@@ -126,7 +126,7 @@ const MobileMenu = (props: MobileMenuProps) => {
                         <p
                           className={`
                             page-name tw-shrink tw-grow tw-basis-0 tw-font-inter
-                            tw-text-3xl tw-font-black tw-leading-10 tw-text-body
+                            tw-text-2xl tw-font-black tw-leading-10 tw-text-body
 
                             group-hover:tw-text-white
                           `}
@@ -213,27 +213,6 @@ const MobileMenu = (props: MobileMenuProps) => {
               </div>
             </div>
           </div>
-
-          {/* TODO ADD Footer */}
-          <div
-            className={`
-              mobile-menu-bottom tw-flex tw-h-[85px] tw-flex-col tw-items-center
-              tw-justify-end tw-self-stretch tw-pb-3
-            `}
-            style={{
-              background:
-                "linear-gradient(180deg, #F2C007 0%, #F2C007 15%, #F2A307 16%, #F2A307 31%, #F28307 32%, #F28307 47%, #FF5C01 48%, #FF5C01 100%)",
-            }}
-          >
-            <p
-              className={`
-                tw-text-center tw-font-bowlby-one tw-text-xs tw-font-normal
-                tw-text-headings
-              `}
-            >
-              © COPYRIGHT 2024 - BURNEEBLE SRL
-            </p>
-          </div>
         </div>
       )}
     </>
@@ -241,5 +220,3 @@ const MobileMenu = (props: MobileMenuProps) => {
 };
 
 export default MobileMenu;
-
-// DOT NOT DELETE

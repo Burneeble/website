@@ -140,7 +140,7 @@ const ContactCard = (props: ContactCardProps) => {
         >
           <div
             className={`
-              contact-card-image-wrapper tw-flex tw-h-[65px] tw-w-[65px]
+              contact-card-image-wrapper tw-flex tw-h-[58px] tw-w-[58px]
               tw-items-center tw-justify-center
 
               lg:tw-h-[124px] lg:tw-w-[124px]
@@ -150,7 +150,7 @@ const ContactCard = (props: ContactCardProps) => {
           >
             <div
               className={`
-                contact-card-image tw-flex tw-h-[65px] tw-w-[65px]
+                contact-card-image tw-flex tw-h-[58px] tw-w-[58px]
                 tw-items-center tw-justify-center tw-rounded-lg
 
                 lg:tw-h-[124px] lg:tw-w-[124px]

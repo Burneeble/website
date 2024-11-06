@@ -37,7 +37,7 @@ const AccordionTrigger = React.forwardRef<
       className={cn(
         `
           tw-group tw-flex tw-flex-1 tw-shrink tw-grow tw-basis-0
-          tw-items-center tw-justify-between tw-font-inter tw-text-3xl
+          tw-items-center tw-justify-between tw-font-inter tw-text-2xl
           tw-font-black tw-leading-10 tw-text-body tw-transition-all
 
           [&[data-state=open]>svg]:tw-rotate-180
@@ -50,7 +50,7 @@ const AccordionTrigger = React.forwardRef<
         className={`
           tw-group page-with-icon tw-inline-flex tw-cursor-pointer
           tw-items-center tw-justify-start tw-gap-2.5 tw-self-stretch
-          tw-font-inter tw-text-3xl tw-font-black tw-leading-10
+          tw-font-inter tw-text-2xl tw-font-black tw-leading-10
 
           group-hover:tw-text-white
         `}
@@ -100,7 +100,7 @@ const AccordionContent = React.forwardRef<
       className={cn(
         `
           tw-shrink tw-grow tw-basis-0 tw-pb-2 tw-pt-0 page-name tw-px-8
-          tw-font-inter tw-text-2xl tw-font-black tw-leading-10 tw-text-body
+          tw-font-inter tw-text-xl tw-font-black tw-leading-10 tw-text-body
 
           first:tw-pt-4
 
