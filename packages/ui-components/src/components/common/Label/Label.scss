@@ -1,7 +1,7 @@
 // Label
 
 .label {
-  &::after {
+  &::before {
     content: "";
     width: calc(100% + 0.2rem);
     height: calc(100% + 0.2rem);
@@ -10,19 +10,19 @@
   }
 
   &.label-default {
-    &::after {
+    &::before {
       @apply tertiary-gradient tw-bg-gradient-to-l tw-to-60%;
     }
   }
 
   &.label-active {
-    &::after {
+    &::before {
       @apply tertiary-gradient tw-bg-gradient-to-l tw-to-60%;
     }
   }
 
   &.label-disabled {
-    &::after {
+    &::before {
       @apply secondary-gradient tw-bg-gradient-to-r tw-to-60%;
     }
   }
