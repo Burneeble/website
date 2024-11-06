@@ -1,5 +1,5 @@
 import { PropsWithChildren } from "react";
-import tailwindConfig from "tailwind.config";
+import tailwindConfig from "../../../tailwind.config";
 
 export type Screen = keyof typeof tailwindConfig.theme.screens;
 

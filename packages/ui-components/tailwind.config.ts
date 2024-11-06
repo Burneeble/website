@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 const { fontFamily } = require("tailwindcss/defaultTheme");
 const plugin = require("tailwindcss/plugin");
 
@@ -216,6 +217,7 @@ const config = {
   prefix: "tw-",
   plugins: [
     require("tailwindcss-animate"),
+    // @ts-ignore
     plugin(function ({ addBase, theme, apply }) {
       addBase({
         ":root": {
@@ -251,5 +253,4 @@ const config = {
   ],
 };
 
-// module.exports = config;
 export default config;

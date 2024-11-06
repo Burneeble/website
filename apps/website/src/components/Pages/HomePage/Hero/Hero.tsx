@@ -1,9 +1,18 @@
 "use client";
 
-import { Button, Label } from "@burneeble/ui-components";
+import { Button, Label, useClientInfoService } from "@burneeble/ui-components";
 import { HeroProps } from "./Hero.types";
 
 const Hero = (props: HeroProps) => {
+
+  //Hooks
+  const {scree} = useClientInfoService()
+
+  //Methods
+  const getLabelSize = () => {
+    switch
+  }
+
   return (
     <div className="hero tw-w-screen tw-flex tw-flex-col tw-justify-center tw-gap-[20px] tw-pt-[86px] tw-px-[20px] tw-pb-[50px] tw-max-w-[1300px] tw-mx-auto md:tw-px-[31px]">
       <h1 className="tw-text-white tw-leading-normal tw-text-3xl tw-font-bowlby-one md:tw-text-5xl">
