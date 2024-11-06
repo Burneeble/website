@@ -15,5 +15,5 @@ module.exports = {
     libConfig.theme
   ),
   prefix: "tw-",
-  plugins: [],
+  plugins: merge([], libConfig.plugins),
 };
