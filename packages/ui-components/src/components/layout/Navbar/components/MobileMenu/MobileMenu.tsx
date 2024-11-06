@@ -24,8 +24,9 @@ const MobileMenu = (props: MobileMenuProps) => {
       {width < 768 && (
         <div
           className={`
-            mobile-navbar-menu-popup tw-fixed tw-left-0 tw-top-0 tw-h-screen
-            tw-w-screen tw-transition-all tw-duration-1000 tw-ease-in-out
+            mobile-navbar-menu-popup tw-fixed tw-left-0 tw-top-0 tw-flex
+            tw-h-screen tw-w-screen tw-flex-col tw-transition-all
+            tw-duration-1000 tw-ease-in-out
 
             ${props.isOpen ? "-tw-translate-x-0" : "-tw-translate-x-full"}
           `}
@@ -68,12 +69,12 @@ const MobileMenu = (props: MobileMenuProps) => {
             className={`
               mobile-menu-content tw-flex tw-h-[671px] tw-shrink tw-grow
               tw-basis-0 tw-flex-col tw-items-start tw-justify-between tw-gap-8
-              tw-self-stretch tw-p-5
+              tw-self-stretch tw-overflow-scroll tw-p-5 no-scrollbar
             `}
           >
             <div
               className={`
-                pages-wrapper tw-flex tw-h-[200px] tw-flex-col tw-items-start
+                pages-wrapper tw-flex tw-flex-col tw-items-start
                 tw-justify-center tw-gap-2.5 tw-self-stretch
               `}
             >
@@ -87,8 +88,8 @@ const MobileMenu = (props: MobileMenuProps) => {
               </div>
               <div
                 className={`
-                  pages tw-flex tw-h-40 tw-flex-col tw-items-start
-                  tw-justify-start tw-gap-5 tw-self-stretch tw-rounded-lg
+                  pages tw-flex tw-flex-col tw-items-start tw-justify-start
+                  tw-gap-5 tw-self-stretch tw-rounded-lg
                 `}
               >
                 {props.links.map((link, i) => {

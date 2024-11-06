@@ -59,4 +59,14 @@
 
 @layer utilities {
   //utilities: when there’s a CSS feature you’d like to use in your project that Tailwind doesn’t include utilities for out of the box.
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 }
