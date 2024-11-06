@@ -43,7 +43,7 @@ export default [
         ],
       }),
       postcss({
-        plugins: [tailwindcss(tailwindConfig), autoprefixer()],
+        plugins: [autoprefixer()],
         extract: true,
         minimize: true,
       }),
