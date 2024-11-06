@@ -54,10 +54,15 @@ const buttonVariants = cva(
         lg: "tw-h-16 tw-rounded-md tw-px-8",
         icon: "tw-h-12 tw-w-12",
       },
+      fit: {
+        default: "tw-w-full",
+        inline: "tw-w-fit",
+      },
     },
     defaultVariants: {
       variant: "default",
       size: "default",
+      fit: "default",
     },
   }
 );
@@ -71,7 +76,15 @@ export interface ButtonProps
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    { className, variant, size, asChild = false, customColorString, ...props },
+    {
+      className,
+      variant,
+      size,
+      fit,
+      asChild = false,
+      customColorString,
+      ...props
+    },
     ref
   ) => {
     const Comp = asChild ? Slot : "button";
@@ -83,7 +96,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       : {};
     return (
       <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
+        className={cn(buttonVariants({ variant, size, fit, className }))}
         style={customColorClass}
         ref={ref}
         {...props}
