@@ -15,7 +15,7 @@ import {
 import Link from "next/link";
 import { useClientInfoService } from "@/services";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faClose, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faClose } from "@fortawesome/free-solid-svg-icons";
 import {
   Accordion,
   AccordionContent,
@@ -23,7 +23,6 @@ import {
   AccordionTrigger,
   Button,
 } from "@/components/ui";
-import { useRouter } from "next/navigation";
 
 const Navbar = (props: NavbarProps) => {
   //States
@@ -31,7 +30,6 @@ const Navbar = (props: NavbarProps) => {
 
   //Hooks
   const { width } = useClientInfoService();
-  const router = useRouter();
   return (
     <nav
       className={`
@@ -236,11 +234,10 @@ const Navbar = (props: NavbarProps) => {
                           tw-cursor-pointer tw-items-center tw-justify-start
                           tw-gap-2.5 tw-self-stretch tw-text-sm
                         `}
-                        onClick={() => router.push(link.href)}
                       >
                         {link.icon &&
                           (typeof link.icon === "string" ? (
-                            <img src={link.icon} />
+                            <img className={`tw-h-5 tw-w-5`} src={link.icon} />
                           ) : (
                             <FontAwesomeIcon
                               className={`
@@ -266,6 +263,38 @@ const Navbar = (props: NavbarProps) => {
                     </Link>
                   );
                 })}
+
+                {props.dropdowns.length > 0 && (
+                  <Accordion type="single" collapsible className="tw-w-full">
+                    {props.dropdowns.map((drop, i) => {
+                      return (
+                        <AccordionItem key={i} value={`item-${i}`}>
+                          <AccordionTrigger icon={drop.icon}>
+                            {drop.title}
+                          </AccordionTrigger>
+                          {[
+                            ...(drop.primaryItem ? [drop.primaryItem] : []),
+                            ...drop.items,
+                          ].map((item, j) => {
+                            return (
+                              <AccordionContent key={j}>
+                                <Link
+                                  onClick={() => {
+                                    setIsOpen(false);
+                                  }}
+                                  href={item.href}
+                                  passHref
+                                >
+                                  {item.title}
+                                </Link>
+                              </AccordionContent>
+                            );
+                          })}
+                        </AccordionItem>
+                      );
+                    })}
+                  </Accordion>
+                )}
               </div>
             </div>
           </div>
@@ -279,40 +308,3 @@ const Navbar = (props: NavbarProps) => {
 export default Navbar;
 
 // DOT NOT DELETE
-// {props.dropdowns.length > 0 && (
-//   <Accordion type="single" collapsible className="tw-w-full tw-px-6">
-//     {props.dropdowns.map((drop, i) => {
-//       return (
-//         <AccordionItem key={i} value={`item-${i}`}>
-//           <AccordionTrigger>{drop.title}</AccordionTrigger>
-//           {[
-//             ...(drop.primaryItem ? [drop.primaryItem] : []),
-//             ...drop.items,
-//           ].map((item, j) => {
-//             return (
-//               <AccordionContent key={j}>
-//                 <Link
-//                   onClick={() => {
-//                     setIsOpen(false);
-//                   }}
-//                   href={item.href}
-//                   passHref
-//                 >
-//                   <div
-//                     className={`
-//                       tw-cursor-pointer tw-p-1
-
-//                       hover:tw-underline
-//                     `}
-//                   >
-//                     {item.title}
-//                   </div>
-//                 </Link>
-//               </AccordionContent>
-//             );
-//           })}
-//         </AccordionItem>
-//       );
-//     })}
-//   </Accordion>
-// )}

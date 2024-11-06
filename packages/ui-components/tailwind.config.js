@@ -221,6 +221,7 @@ module.exports = {
       margin: ["first", "last"],
       backgroundColor: ["odd", "even"],
       scale: ["hover", "active", "group-hover"],
+      padding: ["first", "last"],
     },
   },
   prefix: "tw-",

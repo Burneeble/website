@@ -10,6 +10,7 @@ export interface NavbarDropDown {
   title: string;
   primaryItem?: NavbarDropDownItem & { svg: JSX.Element };
   items: NavbarDropDownItem[];
+  icon?: string | IconDefinition;
 }
 
 export interface NavbarLink {
