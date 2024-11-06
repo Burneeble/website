@@ -10,6 +10,7 @@ export interface ContactCardProps {
   mainColor: string;
   buttonText?: string;
   style?: ContactCardStyle;
+  onClick: (e?: any) => Promise<void> | void;
 }
 
 export enum ContactCardStyle {

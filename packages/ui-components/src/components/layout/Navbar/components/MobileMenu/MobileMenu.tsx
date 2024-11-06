@@ -195,17 +195,20 @@ const MobileMenu = (props: MobileMenuProps) => {
                 <ContactCard
                   style={ContactCardStyle.onlyIcon}
                   icon={faEnvelope}
-                  mainColor={"red"}
+                  onClick={() => {}}
+                  mainColor={"#1dbf73"}
                 />
                 <ContactCard
+                  onClick={() => {}}
                   style={ContactCardStyle.onlyIcon}
                   icon={faEnvelope}
-                  mainColor={"red"}
+                  mainColor={"#f28307"}
                 />
                 <ContactCard
+                  onClick={() => {}}
                   style={ContactCardStyle.onlyIcon}
                   icon={faEnvelope}
-                  mainColor={"red"}
+                  mainColor={"#179e00"}
                 />
               </div>
             </div>

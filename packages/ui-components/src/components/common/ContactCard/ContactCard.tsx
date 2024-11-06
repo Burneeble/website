@@ -109,6 +109,9 @@ const ContactCard = (props: ContactCardProps) => {
 
           <Button
             customColorString={props.mainColor}
+            onClick={async (e) => {
+              await props.onClick(e);
+            }}
             className={`
               contact-card-button tw-inline-flex tw-h-[58px] tw-items-center
               tw-justify-center tw-gap-2.5 tw-self-stretch tw-rounded-lg
@@ -124,10 +127,13 @@ const ContactCard = (props: ContactCardProps) => {
       ) : (
         <div
           style={{ borderColor: props.mainColor }}
+          onClick={async (e) => {
+            await props.onClick(e);
+          }}
           className={`
             contact-card tw-inline-flex tw-items-center tw-justify-center
             tw-gap-[26px] tw-rounded-lg tw-border-2 tw-bg-gradient-to-l tw-p-4
-            secondary-gradient
+            secondary-gradient tw-cursor-pointer
 
             md:tw-flex-col
           `}
