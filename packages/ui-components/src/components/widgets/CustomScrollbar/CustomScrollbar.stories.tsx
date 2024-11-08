@@ -14,14 +14,14 @@ export const simpleCustomScrollbar: Story = {
   args: {
     children: (
       <div
-        className="tw-h-[10rem] tw-w-[200vw]"
+        className="tw-h-40 tw-w-[200vw]"
         style={{ border: "1px solid red" }}
       ></div>
     ),
   },
   render: (props) => {
     return (
-      <div className="tw-mx-auto tw-flex tw-h-[20rem] tw-w-[60rem] tw-justify-center">
+      <div className="tw-mx-auto tw-flex tw-h-80 tw-w-[60rem] tw-justify-center">
         <CustomScrollbar {...props} />
       </div>
     );
