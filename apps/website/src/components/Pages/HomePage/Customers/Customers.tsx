@@ -213,15 +213,7 @@ const Customers = (props: CustomersProps) => {
         tw-gap-[20px] tw-flex-col tw-relative
       `}
     >
-      <h2
-        className={`
-          tw-text-headings tw-text-2xl tw-font-bowlby-one tw-w-fit tw-mx-auto
-
-          md:tw-text-4xl
-
-          xl:tw-text-5xl
-        `}
-      >
+      <h2 className={`tw-w-fit tw-mx-auto`}>
         {screen !== "sm" && "What "}
         <span className="text-color-primary-gradient">
           {screen !== "sm" ? "o" : "O"}ur customers
