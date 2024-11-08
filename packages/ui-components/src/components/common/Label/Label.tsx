@@ -6,9 +6,9 @@ import { cn } from "@/lib/utils";
 const Label = (props: LabelProps) => {
   const labelVariants = cva(
     `
-      tw-m-[0.1rem] tw-inline-flex tw-cursor-pointer tw-items-center
-      tw-justify-center tw-whitespace-nowrap tw-rounded-[8px] tw-px-[10px]
-      tw-py-[2px] tw-font-bowlby-one
+      tw-m-[0.1rem] tw-inline-flex tw-items-center tw-justify-center
+      tw-whitespace-nowrap tw-rounded-[8px] tw-px-[10px] tw-py-[2px]
+      tw-font-bowlby-one
     `,
     {
       variants: {
@@ -39,10 +39,15 @@ const Label = (props: LabelProps) => {
           sm: "tw-h-[31px] tw-px-3 tw-text-[20px]",
           lg: "tw-h-[40px] tw-px-8 tw-text-[24px]",
         },
+        clickable: {
+          true: "tw-cursor-pointer",
+          false: "tw-cursor-default",
+        },
       },
       defaultVariants: {
         variant: "default",
         size: "default",
+        clickable: false,
       },
     }
   );

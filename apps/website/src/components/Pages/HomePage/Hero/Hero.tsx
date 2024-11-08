@@ -45,19 +45,11 @@ const Hero = (props: HeroProps) => {
         xl:tw-px-[20px] xl:tw-h-[calc(100vh-48px)]
       `}
     >
-      <h1
-        className={`
-          tw-font-bowlby-one tw-text-3xl !tw-leading-normal tw-text-white
-
-          md:tw-text-5xl
-
-          xl:tw-w-[910px] xl:tw-text-6xl
-        `}
-      >
-        Build and grow your project with{" "}
-        <span className="gradient-text">BURNEEBLE</span>.<br />
-        <span className="gradient-text">No limits</span>, in every platform and
-        space.
+      <h1 className={`xl:tw-w-[910px]`}>
+        Build and grow your project with
+        <span className="text-color-primary-gradient">BURNEEBLE</span>.<br />
+        <span className="text-color-primary-gradient">No limits</span>, in every
+        platform and space.
       </h1>
       <div
         className={`

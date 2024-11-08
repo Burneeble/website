@@ -10,17 +10,13 @@
   @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
   h1 {
-    @apply tw-text-6xl tw-text-headings tw-font-bowlby-one;
-
-    //laptop & tablet
-    @media screen and (width <= 992px) {
-      @apply tw-text-5xl tw-text-headings tw-font-bowlby-one;
-    }
-
-    //mobile
-    @media screen and (width <= 425px) {
-      @apply tw-text-4xl tw-text-headings tw-font-bowlby-one;
-    }
+    @apply tw-text-4xl tw-text-headings tw-font-bowlby-one md:tw-text-5xl lg:tw-text-6xl !tw-leading-tight;
+  }
+  h2 {
+    @apply tw-text-2xl tw-text-headings tw-font-bowlby-one md:tw-text-4xl lg:tw-text-5xl !tw-leading-tight;
+  }
+  h3 {
+    @apply tw-text-xl tw-text-headings tw-font-bowlby-one md:tw-text-2xl lg:tw-text-3xl !tw-leading-tight;
   }
 }
 
@@ -28,17 +24,6 @@
   //components: set reutilizable base styles to small components; also good to put custom styles for any third-party components you’re using
   .card {
     @apply secondary-gradient tw-bg-gradient-to-tr tw-p-5 tw-rounded-lg tw-gap-2;
-  }
-
-  .text-color-primary-gradient {
-    background: linear-gradient(
-      90deg,
-      var(--primary-default) 0%,
-      var(--primary-lighest) 100%
-    );
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
   }
 }
 
@@ -55,6 +40,17 @@
   .no-scrollbar {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
+  }
+
+  .text-color-primary-gradient {
+    background: linear-gradient(
+      90deg,
+      var(--primary-default) 0%,
+      var(--primary-lighest) 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   //full orange gradient

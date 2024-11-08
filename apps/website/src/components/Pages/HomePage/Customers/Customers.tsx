@@ -198,12 +198,9 @@ const Customers = (props: CustomersProps) => {
         tw-gap-[20px] tw-flex-col tw-relative
       `}
     >
-      <h2
-        className={`
-          tw-text-headings tw-text-2xl tw-font-bowlby-one tw-w-fit tw-mx-auto
-        `}
-      >
-        <strong>Our customers</strong> say...
+      <h2 className={`tw-w-fit tw-mx-auto`}>
+        <span className="text-color-primary-gradient">Our customers</span>{" "}
+        say...
       </h2>
       <div className="tw-relative tw-max-w-full">
         <div className="shadow tw-left-0" />
