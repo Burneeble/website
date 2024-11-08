@@ -181,8 +181,18 @@ const Customers = (props: CustomersProps) => {
     </>,
     <>Gave advice and indicated the best way...</>,
     <>
-      Worked hard, without stopping and
-      <br className="xl:tw-hidden" /> without EVER saying no to you.
+      Worked hard, without stopping <br className="md:tw-hidden" /> and without
+      <br
+        className={`
+          tw-hidden
+
+          md:tw-block
+
+          xl:tw-hidden
+        `}
+      />{" "}
+      EVER saying no to
+      <br className="md:tw-hidden" /> you.
     </>,
     <>We know, there are so many of them...</>,
     <>
@@ -248,14 +258,28 @@ const Customers = (props: CustomersProps) => {
       <p
         className={`
           tw-py-[5px] tw-px-[20px] tw-text-end tw-font-inter tw-text-body
-          tw-block tw-w-full tw-text-xl
+          tw-block tw-w-full tw-text-xl tw-relative
 
           md:tw-text-2xl md:tw-px-[37px]
 
           xl:tw-text-3xl xl:tw-px-[103px] xl:tw-whitespace-nowrap
         `}
       >
-        {phrases[phraseIndex]}
+        {phrases.map((phrase, i) => {
+          return (
+            <span
+              key={i}
+              className={`
+                tw-transition-all tw-duration-200 tw-ease-in-out tw-absolute
+                tw-top-[5px] tw-right-0
+
+                ${phraseIndex === i ? "tw-opacity-1" : "tw-opacity-0"}
+              `}
+            >
+              {phrase}
+            </span>
+          );
+        })}
       </p>
     </section>
   );
