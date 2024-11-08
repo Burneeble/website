@@ -11709,6 +11709,11 @@ eslint-plugin-readable-tailwind@^1.8.1:
   resolved "https://registry.yarnpkg.com/eslint-plugin-readable-tailwind/-/eslint-plugin-readable-tailwind-1.8.1.tgz#6e02f834205c5569b86b8511cdd8fd52bf861d1b"
   integrity sha512-s6RXLVhaPIX+T/a485a4G60wtqd1SzHn24ayKKBHKkzGB97tXt1L9akeX01gMGdWshDghYZrlqJe6bc22/BO/g==
 
+eslint-plugin-readable-tailwind@^1.8.2:
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-readable-tailwind/-/eslint-plugin-readable-tailwind-1.8.2.tgz#bca00350ffcbca219c2aa0620fb53def3d5536d3"
+  integrity sha512-YJ0nDFhuahZZNPgEMwSw4/Ri87qg7Z6YFLTOUam3PBDFomIXAJG89cvFmZg1R2InpEmHAvVRh3QqcoKbkZZM3g==
+
 eslint-plugin-storybook@^0.8.0:
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-storybook/-/eslint-plugin-storybook-0.8.0.tgz#23185ecabdc289cae55248c090f0c1d8fbae6c41"
