@@ -41,19 +41,6 @@
     -webkit-text-fill-color: transparent;
   }
 }
-.primary-gradient {
-  @apply tw-from-orange-500 tw-to-orange-300;
-}
-.secondary-gradient {
-  @apply tw-from-black tw-to-[#322923];
-}
-.tertiary-gradient {
-  @apply tw-from-brown-500 tw-to-brown-200;
-}
-
-.quaternary-gradient {
-  @apply tw-from-black tw-to-brown-700;
-}
 
 @tailwind utilities;
 
@@ -68,5 +55,33 @@
   .no-scrollbar {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
+  }
+
+  //full orange gradient
+  .primary-gradient {
+    @apply tw-from-[var(--primary-default)] tw-to-[var(--primary-lighter)];
+  }
+  //orange to darker brown
+  .primary-gradient-to-secondary {
+    @apply tw-from-[var(--primary-default)] tw-to-[var(--secondary-darker)];
+  }
+
+  //light orange to darker brown
+  .primary-light-gradient-to-secondary {
+    @apply tw-from-[var(--primary-light)] tw-to-[var(--secondary-darker)];
+  }
+
+  //black to darker brown
+  .secondary-gradient {
+    @apply tw-from-[var(--secondary-base)] tw-to-[var(--secondary-darker)];
+  }
+
+  //black to custom brown
+  .secondary-gradient-to-custom {
+    @apply tw-from-[var(--secondary-base)] tw-to-[#322923];
+  }
+  //full brown gradient
+  .tertiary-gradient {
+    @apply tw-from-[var(--secondary-default)] tw-to-[var(--secondary-lightest)];
   }
 }

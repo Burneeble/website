@@ -19,7 +19,7 @@ const ContactCard = (props: ContactCardProps) => {
             contact-card tw-inline-flex tw-h-[116px] tw-w-[424px]
             tw-items-center tw-justify-center tw-gap-[26px] tw-rounded-lg
             tw-border-2 tw-bg-gradient-to-l tw-px-9 tw-py-[29px]
-            secondary-gradient
+            secondary-gradient-to-custom
 
             lg:tw-h-[431px] lg:tw-w-[335px]
 
@@ -133,7 +133,7 @@ const ContactCard = (props: ContactCardProps) => {
           className={`
             contact-card tw-inline-flex tw-items-center tw-justify-center
             tw-gap-[26px] tw-rounded-lg tw-border-2 tw-bg-gradient-to-l tw-p-4
-            secondary-gradient tw-cursor-pointer
+            secondary-gradient-to-custom tw-cursor-pointer
 
             md:tw-flex-col
           `}

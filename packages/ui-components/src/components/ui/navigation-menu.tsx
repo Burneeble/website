@@ -137,7 +137,7 @@ const NavigationMenuViewport = React.forwardRef<
           tw-origin-top-center tw-relative tw-mt-1.5
           tw-h-[var(--radix-navigation-menu-viewport-height)] tw-w-full
           tw-overflow-hidden tw-rounded-md tw-border tw-bg-gradient-to-l
-          quaternary-gradient tw-text-popover-foreground tw-shadow
+          secondary-gradient tw-text-popover-foreground tw-shadow
 
           data-[state=closed]:tw-animate-out data-[state=closed]:tw-zoom-out-95
 

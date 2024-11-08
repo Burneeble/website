@@ -98,15 +98,15 @@ module.exports = {
         border: "rgba(var(--border))",
         input: "rgba(var(--input))",
         ring: "rgba(var(--ring))",
-        background: "rgba(var(--black)",
-        foreground: "rgba(var(--white))",
+        background: "rgba(var(--secondary-base)",
+        foreground: "rgba(var(--primary-base))",
         primary: {
           DEFAULT: "rgba(var(--primary-default))",
-          foreground: "rgba(var(--black))",
+          foreground: "rgba(var(--secondary-base))",
         },
         secondary: {
           DEFAULT: "rgba(var(--secondary-default))",
-          foreground: "rgba(var(--white))",
+          foreground: "rgba(var(--primary-base))",
         },
         destructive: {
           DEFAULT: "rgba(var(--destructive))",
@@ -140,7 +140,7 @@ module.exports = {
         },
       },
       textColor: {
-        headings: "var(--white)",
+        headings: "var(--primary-base)",
         body: "var(--neutral-light)",
         action: "var(--primary-default)",
         "action-hover": "var(--primary-lighter)",
@@ -154,7 +154,7 @@ module.exports = {
       borderColor: {
         primary: "var(--primary-light)",
         secondary: "var(--secondary-darker)",
-        tertiary: "var(--white)",
+        tertiary: "var(--primary-base)",
         active: "var(--primary-default)",
         error: "var(--error-default)",
         success: "var(--success-default)",
@@ -163,8 +163,8 @@ module.exports = {
         neutral: "var(--neutral-default)",
       },
       backgroundColor: {
-        primary: "var(--white)",
-        secondary: "var(--black)",
+        primary: "var(--primary-base)",
+        secondary: "var(--secondary-base)",
         tertiary: "var(--secondary-darker)",
         action: "var(--primary-default)",
         "action-hover": "var(--primary-light)",
@@ -234,7 +234,9 @@ module.exports = {
     plugin(function ({ addBase, theme, apply }) {
       addBase({
         ":root": {
-          "--white": theme("colors.white"),
+          "--primary-base": theme("colors.white"),
+          "--secondary-base": theme("colors.black"),
+
           "--primary-lighest": theme("colors.orange.200"),
           "--primary-lighter": theme("colors.orange.300"),
           "--primary-light": theme("colors.orange.400"),

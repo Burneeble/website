@@ -15,15 +15,23 @@ const Label = (props: LabelProps) => {
         variant: {
           default: `
             label-default tw-text-white tw-shadow secondary-gradient
-            tw-bg-gradient-to-l
+            tw-bg-gradient-to-tl tw-to-70%
+
+            after:tw-bg-gradient-to-r after:tw-to-90%
+            after:primary-light-gradient-to-secondary
           `,
           active: `
-            label-active tw-text-white tw-shadow tertiary-gradient
-            tw-bg-gradient-to-r tw-to-60%
+            label-active tw-text-white tw-shadow primary-gradient-to-secondary
+            tw-bg-gradient-to-tl tw-to-80%
+
+            after:tw-bg-gradient-to-r after:tw-to-90%
+            after:primary-light-gradient-to-secondary
           `,
           disabled: `
             label-disabled tw-text-white tw-shadow-sm secondary-gradient
-            tw-bg-gradient-to-l
+            tw-bg-gradient-to-tl tw-to-70%
+
+            after:tw-bg-[var(--neutral-default)]
           `,
         },
         size: {
