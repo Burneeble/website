@@ -39,7 +39,7 @@ const CustomScrollbar = (props: CustomScrollbarProps) => {
 
   useEffect(() => {
     setTimeout(() => {
-      updateThumbSizes();
+      if (contentRef.current) updateThumbSizes();
     }, 200);
   }, []);
 
@@ -48,6 +48,8 @@ const CustomScrollbar = (props: CustomScrollbarProps) => {
   // Calculate thumb sizes as a percentage of the scrollbar
   const updateThumbSizes = () => {
     const content = contentRef.current;
+
+    if (!content) return;
 
     setVerticalThumbHeight(
       (content!.clientHeight / content!.scrollHeight) * 100
