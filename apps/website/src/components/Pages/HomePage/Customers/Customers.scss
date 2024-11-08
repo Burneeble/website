@@ -1,12 +1,6 @@
 // Customers
 
 .customers {
-  h2 {
-    span {
-      @apply text-color-primary-gradient;
-    }
-  }
-
   .shadow {
     @apply tw-h-full tw-w-16 tw-from-black tw-to-[rgba(0,0,0,0)] tw-bg-gradient-to-r tw-absolute tw-bottom-0 tw-z-[5];
   }
