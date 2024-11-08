@@ -177,13 +177,18 @@ const Customers = (props: CustomersProps) => {
   const phrases = [
     <>
       We have worked on several
-      <br />
-      requests...
+      <br className="xl:tw-hidden" /> requests...
     </>,
     <>Gave advice and indicated the best way...</>,
-    <>Worked hard, without stopping and without EVER saying no to you.</>,
+    <>
+      Worked hard, without stopping and
+      <br className="xl:tw-hidden" /> without EVER saying no to you.
+    </>,
     <>We know, there are so many of them...</>,
-    <>...but it is only thanks to YOU that we can demonstrate</>,
+    <>
+      ...but it is only thanks to YOU
+      <br className="xl:tw-hidden" /> that we can demonstrate
+    </>,
     <>our passion and quality.</>,
   ];
   const [phraseIndex, setPhraseIndex] = useState<number>(0);
@@ -199,7 +204,10 @@ const Customers = (props: CustomersProps) => {
       `}
     >
       <h2 className={`tw-w-fit tw-mx-auto`}>
-        <span className="text-color-primary-gradient">Our customers</span>{" "}
+        {screen !== "sm" && "What "}
+        <span className="text-color-primary-gradient">
+          {screen !== "sm" ? "o" : "O"}ur customers
+        </span>{" "}
         say...
       </h2>
       <div className="tw-relative tw-max-w-full">
@@ -226,7 +234,13 @@ const Customers = (props: CustomersProps) => {
                 </div>
               </>
             ) : (
-              <></>
+              <>
+                <div className="review-row tw-mt-[20px]">
+                  {reviews.map((review, i) => {
+                    return <ReviewCard key={i} {...review} />;
+                  })}
+                </div>
+              </>
             )}
           </div>
         </CustomScrollbar>
@@ -235,6 +249,10 @@ const Customers = (props: CustomersProps) => {
         className={`
           tw-py-[5px] tw-px-[20px] tw-text-end tw-font-inter tw-text-body
           tw-block tw-w-full tw-text-xl
+
+          md:tw-text-2xl md:tw-px-[37px]
+
+          xl:tw-text-3xl xl:tw-px-[103px] xl:tw-whitespace-nowrap
         `}
       >
         {phrases[phraseIndex]}
