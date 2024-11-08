@@ -64,6 +64,11 @@ const CustomScrollbar = (props: CustomScrollbarProps) => {
 
     setVerticalThumbTop((content.scrollTop / content.scrollHeight) * 100);
     setHorizontalThumbLeft((content.scrollLeft / content.scrollWidth) * 100);
+
+    props.onScroll?.(
+      (content.scrollLeft / content.scrollWidth) * 100,
+      (content.scrollTop / content.scrollHeight) * 100
+    );
   };
 
   // Initiates vertical drag and calculates initial offset
