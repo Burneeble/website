@@ -2,10 +2,10 @@ import { createContext } from "react";
 import { Screen } from "./ClientInfoService.types";
 
 export interface ClientInfoServiceContent {
-  width: number;
+  width: number | null;
   screen: Screen;
 }
 
 export const clientInfoServiceContext = createContext<ClientInfoServiceContent>(
-  { width: 0, screen: "2xl" }
+  { width: null, screen: "2xl" }
 );

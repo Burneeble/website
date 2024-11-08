@@ -1,4 +1,6 @@
 // Navbar
+@import "./components/components.scss";
+
 .mobile-navbar-menu-popup {
   background: radial-gradient(
       98.95% 116.6% at 15.38% 1.42%,
@@ -6,4 +8,8 @@
       rgba(43, 43, 43, 0.4) 100%
     ),
     #000;
+}
+
+.burneeble-text-logo {
+  @apply text-color-primary-gradient;
 }

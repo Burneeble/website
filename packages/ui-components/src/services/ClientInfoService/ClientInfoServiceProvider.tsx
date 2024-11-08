@@ -8,7 +8,7 @@ import tailwindConfig from "../../../tailwind.config";
 
 const ClientInfoServiceProvider = (props: ClientInfoServiceProviderProps) => {
   //States
-  const [width, setWidth] = useState<number>(0);
+  const [width, setWidth] = useState<number | null>(null);
   const [screen, setScreen] = useState<Screen>("2xl");
 
   //Hooks
@@ -37,7 +37,8 @@ const ClientInfoServiceProvider = (props: ClientInfoServiceProviderProps) => {
   }, [width]);
 
   //Methods
-  const evaluateScreen = (width: number): Screen => {
+  const evaluateScreen = (width: number | null): Screen => {
+    if (!width) return "2xl";
     const screenWidths = Object.entries(tailwindConfig.theme.screens).map(
       ([key, value]) => ({
         key,

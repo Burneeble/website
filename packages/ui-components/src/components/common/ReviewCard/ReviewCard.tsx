@@ -13,9 +13,8 @@ const ReviewCard = (props: ReviewCardProps) => {
     <>
       <div
         className={`
-          review-card card tw-inline-flex tw-h-[177.40px] tw-w-[325px]
-          tw-flex-col tw-items-start tw-justify-start tw-gap-2 tw-rounded-lg
-          tw-p-5
+          review-card tw-inline-flex tw-h-[177.40px] tw-w-[325px] tw-flex-col
+          tw-items-start tw-justify-start tw-gap-2 tw-rounded-lg tw-p-5
 
           lg:tw-h-[259px] lg:tw-w-[412px]
 
@@ -57,7 +56,7 @@ const ReviewCard = (props: ReviewCardProps) => {
               >
                 {props.user.name}
               </p>
-              {width <= 992 && (
+              {width && width <= 992 && (
                 <>
                   {/* TODO create a flag component */}
                   <img
@@ -70,7 +69,7 @@ const ReviewCard = (props: ReviewCardProps) => {
                 </>
               )}
             </div>
-            {width <= 992 ? (
+            {width && width <= 992 ? (
               <Rating ratingValue={props.rating} />
             ) : (
               <div

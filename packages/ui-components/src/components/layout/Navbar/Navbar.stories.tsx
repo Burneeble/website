@@ -21,6 +21,7 @@ export const simpleNavbar: Story = {
     dropdowns: [
       {
         title: "Showcase",
+        icon: faReact,
         primaryItem: {
           title: "shadcn/ui",
           href: "/",
@@ -52,10 +53,12 @@ export const simpleNavbar: Story = {
       {
         title: "Blog",
         href: "/",
+        icon: faReact,
       },
       {
         title: "About",
         href: "/",
+        icon: faReact,
       },
     ],
   },
