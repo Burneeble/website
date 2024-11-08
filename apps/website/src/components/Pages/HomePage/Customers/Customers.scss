@@ -1,1 +1,13 @@
 // Customers
+
+.customers {
+  h2 {
+    strong {
+      @apply text-color-primary-gradient;
+    }
+  }
+
+  .review-row {
+    @apply tw-flex tw-items-center tw-justify-start tw-gap-[33px];
+  }
+}

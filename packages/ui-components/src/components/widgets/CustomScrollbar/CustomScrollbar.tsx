@@ -26,16 +26,6 @@ const CustomScrollbar = (props: CustomScrollbarProps) => {
     const content = contentRef.current;
     if (!content) return;
 
-    // Calculate thumb sizes as a percentage of the scrollbar
-    const updateThumbSizes = () => {
-      setVerticalThumbHeight(
-        (content.clientHeight / content.scrollHeight) * 100
-      );
-      setHorizontalThumbWidth(
-        (content.clientWidth / content.scrollWidth) * 100
-      );
-    };
-
     updateThumbSizes();
     content.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", updateThumbSizes);
@@ -45,9 +35,27 @@ const CustomScrollbar = (props: CustomScrollbarProps) => {
       content.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", updateThumbSizes);
     };
+  }, [contentRef.current]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      updateThumbSizes();
+    }, 200);
   }, []);
 
   //Methods
+
+  // Calculate thumb sizes as a percentage of the scrollbar
+  const updateThumbSizes = () => {
+    const content = contentRef.current;
+
+    setVerticalThumbHeight(
+      (content!.clientHeight / content!.scrollHeight) * 100
+    );
+    setHorizontalThumbWidth(
+      (content!.clientWidth / content!.scrollWidth) * 100
+    );
+  };
 
   // Scroll event handler to update thumb position based on scroll amount
   const handleScroll = () => {
@@ -138,15 +146,15 @@ const CustomScrollbar = (props: CustomScrollbarProps) => {
       {verticalThumbHeight < 100 && (
         <div
           className={`
-            tw-absolute tw-left-full tw-top-0 tw-h-full tw-w-3 tw-cursor-pointer
-            tw-rounded-md tw-bg-tertiary
+            tw-absolute tw-left-full tw-top-0 tw-h-full tw-w-[22px]
+            tw-cursor-pointer tw-rounded-xl tw-bg-tertiary
           `}
           ref={verticalScrollbarRef}
           onMouseDown={startVerticalDrag}
         >
           <div
             className={`
-              tw-absolute tw-left-0 tw-w-full tw-rounded-md tw-bg-action
+              tw-absolute tw-left-0 tw-w-full tw-rounded-xl tw-bg-action
             `}
             style={{
               height: `${verticalThumbHeight}%`,
@@ -159,14 +167,14 @@ const CustomScrollbar = (props: CustomScrollbarProps) => {
       {horizontalThumbWidth < 100 && (
         <div
           className={`
-            tw-absolute tw-left-0 tw-top-full tw-h-3 tw-w-full tw-cursor-pointer
-            tw-rounded-md tw-bg-tertiary
+            tw-absolute tw-left-0 tw-top-full tw-h-[22px] tw-w-full
+            tw-cursor-pointer tw-rounded-xl tw-bg-tertiary
           `}
           ref={horizontalScrollbarRef}
           onMouseDown={startHorizontalDrag}
         >
           <div
-            className="tw-absolute tw-top-0 tw-h-full tw-rounded-md tw-bg-action"
+            className="tw-absolute tw-top-0 tw-h-full tw-rounded-xl tw-bg-action"
             style={{
               width: `${horizontalThumbWidth}%`,
               left: `${horizontalThumbLeft}%`,
