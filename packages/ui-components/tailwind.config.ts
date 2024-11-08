@@ -151,6 +151,7 @@ const config = {
         warning: "var(--warning-default)",
         neutral: "var(--neutral-default)",
         highlight: "var(--primary-light)",
+        button: "var(--primary-base)",
       },
       borderColor: {
         primary: "var(--primary-light)",

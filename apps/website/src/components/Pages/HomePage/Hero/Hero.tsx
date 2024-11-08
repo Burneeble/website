@@ -37,7 +37,7 @@ const Hero = (props: HeroProps) => {
       className={`
         hero tw-bg-[radial-gradient(_rgba(43,43,43,1),_#000_90%)] tw-w-screen
         tw-flex tw-flex-col tw-justify-center tw-gap-[20px] tw-pt-[86px]
-        tw-px-[20px] tw-pb-[50px] tw-max-w-screen-xl tw-mx-auto
+        tw-px-[20px] tw-pb-[50px] tw-max-w-screen-xl tw-mx-auto tw-min-h-screen
 
         md:tw-px-[31px]
 
@@ -53,8 +53,10 @@ const Hero = (props: HeroProps) => {
           xl:tw-w-[910px] xl:tw-text-6xl
         `}
       >
-        Build and grow your project with <strong>BURNEEBLE</strong>.<br />
-        <strong>No limits</strong>, in every platform and space.
+        Build and grow your project with{" "}
+        <span className="gradient-text">BURNEEBLE</span>.<br />
+        <span className="gradient-text">No limits</span>, in every platform and
+        space.
       </h1>
       <div
         className={`

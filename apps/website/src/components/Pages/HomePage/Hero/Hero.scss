@@ -2,7 +2,7 @@
 
 .hero {
   h1 {
-    strong {
+    .gradient-text {
       @apply text-color-primary-gradient;
     }
   }

@@ -7,18 +7,21 @@ import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
   `
-    6 tw-inline-flex tw-cursor-pointer tw-items-center tw-justify-center
-    tw-gap-2 tw-whitespace-nowrap tw-font-bowlby-one tw-text-lg tw-font-medium
-    tw-transition-colors
+    tw-relative tw-flex tw-cursor-pointer tw-items-center tw-justify-center
+    tw-gap-2 tw-overflow-hidden tw-whitespace-nowrap tw-font-bowlby-one
+    tw-text-lg tw-font-medium tw-transition-all
 
     [&_svg]:tw-pointer-events-none [&_svg]:tw-size-5 [&_svg]:tw-shrink-0
+
+    after:tw-absolute after:tw-inset-0 after:tw-m-auto after:tw-h-0 after:tw-w-0
+    after:tw-duration-300 after:tw-ease-out after:-tw-z-1
 
     disabled:tw-pointer-events-none disabled:tw-opacity-50
 
     focus-visible:tw-outline-none focus-visible:tw-ring-1
     focus-visible:tw-ring-ring
 
-    hover:tw-brightness-90
+    hover:after:tw-h-40 hover:after:tw-w-full
 
     lg:tw-text-2xl
 
@@ -28,20 +31,38 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: `
-          tw-border tw-border-primary tw-bg-button-primary tw-text-white
+          tw-border tw-border-primary tw-bg-button-primary tw-text-button
           tw-shadow
+
+          after:tw-bg-action-hover
+
+          hover:tw-shadow-orange-600
         `,
 
         destructive: `
-          tw-bg-button-text tw-border tw-border-error tw-bg-button-error
-          tw-shadow
+          tw-border tw-border-error tw-bg-button-error tw-text-button tw-shadow
+
+          after:tw-bg-red-400
+
+          hover:tw-shadow-sm hover:tw-shadow-red-600
         `,
-        outline: "tw-border tw-border-input tw-bg-button-primary tw-shadow-sm",
-        secondary: `
-          tw-border tw-border-tertiary tw-bg-button-secondary tw-text-white
+        outline: `
+          tw-border tw-border-input tw-bg-button-primary tw-text-button
           tw-shadow-sm
         `,
-        ghost: "hover:tw-bg-accent hover:tw-text-accent-foreground",
+        secondary: `
+          tw-border tw-border-tertiary tw-bg-button-secondary tw-text-button
+          tw-shadow-sm
+
+          after:tw-bg-action
+
+          hover:tw-shadow-orange-600
+        `,
+        ghost: `
+          tw-text-button
+
+          hover:tw-bg-brown-700/80 hover:tw-text-action
+        `,
         link: `
           tw-text-primary tw-underline-offset-4
 
@@ -59,14 +80,13 @@ const buttonVariants = cva(
         icon: "tw-aspect-square tw-h-12 tw-w-12",
       },
       fit: {
-        default: "tw-w-full",
+        full: "tw-w-full",
         inline: "tw-w-fit",
       },
     },
     defaultVariants: {
       variant: "default",
       size: "default",
-      fit: "default",
       rounded: "default",
     },
   }
@@ -108,7 +128,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         style={customColorClass}
         ref={ref}
         {...props}
-      />
+      >
+        <span className="tw-z-10"> {props.children}</span>
+      </Comp>
     );
   }
 );

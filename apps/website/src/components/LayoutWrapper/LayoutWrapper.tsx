@@ -9,7 +9,12 @@ import { faReact } from "@fortawesome/free-brands-svg-icons";
 const LayoutWrapper = (props: LayoutWrapperProps) => {
   return (
     <>
-      <header>
+      <header
+        className={`
+          tw-absolute tw-top-0 tw-left-0 tw-z-50 tw-w-full tw-pb-2.5 tw-pt-5
+          tw-px-5
+        `}
+      >
         <Navbar
           logo={{
             svg: <div>Logo</div>,
@@ -25,7 +30,10 @@ const LayoutWrapper = (props: LayoutWrapperProps) => {
                 description:
                   "Beautifully designed components that you can copy and paste into your apps. Accessible. Customizable. Open Source.",
                 svg: (
-                  <FontAwesomeIcon icon={faReact} className="tw-h-6 tw-w-6" />
+                  <FontAwesomeIcon
+                    icon={faReact}
+                    className="tw-text-white tw-h-6 tw-w-6"
+                  />
                 ),
               },
               items: [

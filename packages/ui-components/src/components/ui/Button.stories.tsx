@@ -11,6 +11,6 @@ type Story = StoryObj<ButtonProps>;
 
 export const baseButton: Story = {
   render: () => {
-    return <Button disabled>Start</Button>;
+    return <Button fit={"inline"}>Button</Button>;
   },
 };

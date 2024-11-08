@@ -99,7 +99,7 @@ const ReviewCard = (props: ReviewCardProps) => {
             )}
           </div>
         </div>
-        {width > 992 && <Rating ratingValue={props.rating} />}
+        {width && width > 992 && <Rating ratingValue={props.rating} />}
 
         <div
           className={`
