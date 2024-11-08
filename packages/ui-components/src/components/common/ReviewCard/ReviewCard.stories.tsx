@@ -13,7 +13,8 @@ export const simpleReviewCard: Story = {
   args: {
     user: {
       name: "John Smith",
-      country: "United States",
+      countryCode: "IT",
+      countryName: "Italy",
       avatar: "https://picsum.photos/58/58",
     },
     rating: 4.5,

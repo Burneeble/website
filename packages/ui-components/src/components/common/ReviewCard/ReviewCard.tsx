@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ReviewCardProps } from "./ReviewCard.types";
+import { ReviewCardProps, countryNames } from "./ReviewCard.types";
 import { useClientInfoService } from "@/services";
 import { Rating } from "./components";
 
@@ -61,8 +61,11 @@ const ReviewCard = (props: ReviewCardProps) => {
                 <>
                   {/* TODO create a flag component */}
                   <img
-                    className="review-card-country-flag tw-h-4 tw-w-5"
-                    src="https://picsum.photos/20/16"
+                    className={`
+                      review-card-country-flag tw-h-[.9rem] tw-w-5
+                      tw-rounded-[.3rem] tw-object-cover
+                    `}
+                    src={`https://flagsapi.com/${props.user.countryCode}/flat/64.png`}
                   />
                 </>
               )}
@@ -82,13 +85,16 @@ const ReviewCard = (props: ReviewCardProps) => {
                     tw-font-light tw-leading-[30px] tw-text-body
                   `}
                 >
-                  United States
+                  {countryNames[props.user.countryCode]}
                 </div>
                 {/* TODO create a flag component */}
 
                 <img
-                  className="review-card-country-flag tw-h-4 tw-w-5"
-                  src="https://picsum.photos/20/16"
+                  className={`
+                    review-card-country-flag tw-h-[.9rem] tw-w-5
+                    tw-rounded-[.3rem] tw-object-cover
+                  `}
+                  src={`https://flagsapi.com/${props.user.countryCode}/flat/64.png`}
                 />
               </div>
             )}
@@ -106,11 +112,7 @@ const ReviewCard = (props: ReviewCardProps) => {
             md:tw-text-lg md:tw-leading-7
           `}
         >
-          So I started to walk into the water. I wont lie to you boys, I was
-          terrified. But I pressed on, and as I made my way past the breakers a
-          strange calm came over me. I dont know if it was divine intervention
-          or the kinship of all living things but I tell you Jerry at that
-          moment, I was a marine biologist.
+          {props.review}
         </div>
       </div>
     </>
