@@ -66,7 +66,12 @@ const Hero = (props: HeroProps) => {
         `}
       >
         {labels.map((label, i) => (
-          <Label key={i} text={label} size={getLabelSize()} />
+          <Label
+            variant={"default"}
+            key={i}
+            text={label}
+            size={getLabelSize()}
+          />
         ))}
       </div>
       <Button

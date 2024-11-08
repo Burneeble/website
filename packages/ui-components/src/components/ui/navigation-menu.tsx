@@ -60,7 +60,7 @@ const navigationMenuTriggerStyle = cva(
 
     disabled:tw-pointer-events-none disabled:tw-opacity-50
 
-    focus:tw-bg-brown-700 focus:tw-text-accent-foreground focus:tw-outline-none
+    focus:tw-bg-brown-700 focus:tw-text-white focus:tw-outline-none
 
     hover:tw-bg-brown-700 hover:tw-text-white
   `

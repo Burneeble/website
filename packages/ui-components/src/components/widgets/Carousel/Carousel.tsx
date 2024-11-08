@@ -60,11 +60,16 @@ const Carousel = (props: CarouselProps) => {
         })}
         <Button
           size={"icon"}
-          className="custom-next carousel-button tw-right-0 tw-rounded-[50%]"
+          className="custom-next carousel-button tw-right-0"
+          rounded={"circle"}
         >
           <FontAwesomeIcon icon={faChevronRight} />
         </Button>
-        <Button size={"icon"} className="custom-prev carousel-button tw-left-0">
+        <Button
+          size={"icon"}
+          rounded={"circle"}
+          className="custom-prev carousel-button tw-left-0"
+        >
           <FontAwesomeIcon icon={faChevronLeft} />
         </Button>
       </Swiper>

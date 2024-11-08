@@ -24,7 +24,7 @@ const MobileMenu = (props: MobileMenuProps) => {
       {width && width < 768 && (
         <div
           className={`
-            mobile-navbar-menu-popup tw-fixed tw-left-0 tw-top-0 tw-flex
+            mobile-navbar-menu-popup tw-fixed tw-left-0 tw-top-0 tw-z-50 tw-flex
             tw-h-screen tw-w-screen tw-flex-col tw-transition-all
             tw-duration-1000 tw-ease-in-out
 
@@ -57,8 +57,9 @@ const MobileMenu = (props: MobileMenuProps) => {
                 onClick={() => {
                   props.setIsOpen(false);
                 }}
-                className="!tw-rounded-[50%]"
+                rounded={"circle"}
                 size="icon"
+                fit={"inline"}
               >
                 <FontAwesomeIcon icon={faClose} />
               </Button>

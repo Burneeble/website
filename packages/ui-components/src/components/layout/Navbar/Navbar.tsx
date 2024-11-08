@@ -57,7 +57,8 @@ const Navbar = (props: NavbarProps) => {
               onClick={() => {
                 setIsOpen(true);
               }}
-              className="!tw-rounded-[50%]"
+              fit={"inline"}
+              rounded={"circle"}
               size="icon"
               variant={"secondary"}
             >

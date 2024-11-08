@@ -8,8 +8,8 @@ import { cn } from "@/lib/utils";
 const buttonVariants = cva(
   `
     6 tw-inline-flex tw-cursor-pointer tw-items-center tw-justify-center
-    tw-gap-2 tw-whitespace-nowrap tw-rounded-md tw-font-bowlby-one tw-text-lg
-    tw-font-medium tw-transition-colors
+    tw-gap-2 tw-whitespace-nowrap tw-font-bowlby-one tw-text-lg tw-font-medium
+    tw-transition-colors
 
     [&_svg]:tw-pointer-events-none [&_svg]:tw-size-5 [&_svg]:tw-shrink-0
 
@@ -48,11 +48,15 @@ const buttonVariants = cva(
           hover:tw-underline
         `,
       },
+      rounded: {
+        default: "tw-rounded-md",
+        circle: "tw-rounded-[50%]",
+      },
       size: {
         default: "tw-h-12 tw-px-4 tw-py-2",
-        sm: "tw-h-8 tw-rounded-md tw-px-3 tw-text-xs",
-        lg: "tw-h-16 tw-rounded-md tw-px-8",
-        icon: "tw-h-12 tw-w-12",
+        sm: "tw-h-8 tw-px-3 tw-text-xs",
+        lg: "tw-h-16 tw-px-8",
+        icon: "tw-aspect-square tw-h-12 tw-w-12",
       },
       fit: {
         default: "tw-w-full",
@@ -63,6 +67,7 @@ const buttonVariants = cva(
       variant: "default",
       size: "default",
       fit: "default",
+      rounded: "default",
     },
   }
 );
@@ -81,6 +86,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       variant,
       size,
       fit,
+      rounded,
       asChild = false,
       customColorString,
       ...props
@@ -96,7 +102,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       : {};
     return (
       <Comp
-        className={cn(buttonVariants({ variant, size, fit, className }))}
+        className={cn(
+          buttonVariants({ variant, size, fit, className, rounded })
+        )}
         style={customColorClass}
         ref={ref}
         {...props}

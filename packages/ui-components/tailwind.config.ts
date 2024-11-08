@@ -233,12 +233,11 @@ const config = {
   plugins: [
     require("tailwindcss-animate"),
     // @ts-ignore
-    plugin(function ({ addBase, theme, apply }) {
+    plugin(function ({ addBase, theme }) {
       addBase({
         ":root": {
           "--primary-base": theme("colors.white"),
           "--secondary-base": theme("colors.black"),
-
           "--primary-lighest": theme("colors.orange.200"),
           "--primary-lighter": theme("colors.orange.300"),
           "--primary-light": theme("colors.orange.400"),
