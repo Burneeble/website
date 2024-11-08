@@ -1,1 +1,17 @@
 // Customers
+
+.customers {
+  h2 {
+    strong {
+      @apply text-color-primary-gradient;
+    }
+  }
+
+  .shadow {
+    @apply tw-h-full tw-w-16 tw-from-black tw-to-[rgba(0,0,0,0)] tw-bg-gradient-to-r tw-absolute tw-bottom-0 tw-z-[5];
+  }
+
+  .review-row {
+    @apply tw-flex tw-items-center tw-justify-start tw-gap-[33px];
+  }
+}
