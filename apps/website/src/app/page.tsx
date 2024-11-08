@@ -1,4 +1,4 @@
-import { Customers, Hero } from "@/components/Pages";
+import { Contact, Customers, Hero } from "@/components/Pages";
 import React from "react";
 
 export default async function Home() {
@@ -6,6 +6,7 @@ export default async function Home() {
     <div className="home-page tw-h-full">
       <Hero />
       <Customers />
+      <Contact />
     </div>
   );
 }
