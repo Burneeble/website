@@ -1,0 +1,15 @@
+.carousel-wrapper {
+  .carousel {
+    .swiper-slide {
+      &.swiper-slide-active {
+        @apply tw-transform tw-translate-y-6;
+      }
+    }
+
+    .carousel-button {
+      top: calc(100% + 3rem);
+
+      @apply tw-absolute tw-text-[2rem];
+    }
+  }
+}

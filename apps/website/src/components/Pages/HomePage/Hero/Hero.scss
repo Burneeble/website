@@ -1,0 +1,9 @@
+// Hero
+
+.hero {
+  h1 {
+    strong {
+      @apply text-color-primary-gradient;
+    }
+  }
+}

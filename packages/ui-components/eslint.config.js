@@ -32,6 +32,9 @@ module.exports = [
       "plugin:@typescript-eslint/recommended",
       "plugin:react/recommended",
       "plugin:storybook/recommended",
+      "plugin:readable-tailwind/warning",
+      "plugin:readable-tailwind/error",
+      "plugin:tailwindcss/recommended",
     ],
     overrides: [
       {
@@ -55,7 +58,12 @@ module.exports = [
       ecmaVersion: "latest",
       sourceType: "module",
     },
-    plugins: ["@typescript-eslint", "react", "@burneeble/burneeble"],
+    plugins: [
+      "@typescript-eslint",
+      "react",
+      "@burneeble/burneeble",
+      "readable-tailwind",
+    ],
     ignorePatterns: [
       "eslint.config.js",
       "dist/**/*",
@@ -63,14 +71,29 @@ module.exports = [
       "create-component.js",
       "components/ui/**/*",
       "hooks/**/*",
+      "tailwind.config.js",
+      "postcss.config.js",
     ],
   }),
   ...compat.config({
     rules: {
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-empty-object-type": "off",
       "react/jsx-key": "error",
       "storybook/prefer-pascal-case": "off",
+      "tailwindcss/classnames-order": "off",
+      "tailwindcss/no-custom-classname": "off",
+      "tailwindcss/no-arbitrary-value": "off",
+      "tailwindcss/no-contradicting-classname": "error",
       ...customRules,
       ...disabled,
+    },
+  }),
+  ...compat.config({
+    settings: {
+      tailwindcss: {
+        prefix: "tw-",
+      },
     },
   }),
 ];

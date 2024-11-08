@@ -7,21 +7,22 @@ module.exports = {
   content: ["./src/components/**/*.{js,ts,jsx,tsx,mdx,stories.tsx}"],
   theme: {
     container: {
-      center: true,
+      center: "true",
       padding: "2rem",
       screens: {
         "2xl": "1400px",
       },
     },
+
     screens: {
-      mobile: "425px",
-      tablet: "768px",
-      laptop: "992px",
-      desktop: "1300px",
+      sm: "425px",
+      md: "768px",
+      lg: "992px",
+      xl: "1300px",
+      "2xl": "1536px",
     },
 
     colors: {
-      //burneeble palette
       white: "rgba(255, 255, 255, 1)",
       black: "rgba(0, 0, 0, 1)",
       blue: {
@@ -94,56 +95,52 @@ module.exports = {
     },
     extend: {
       colors: {
-        //TODO review these hsl shadcn values
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        border: "rgba(var(--border))",
+        input: "rgba(var(--input))",
+        ring: "rgba(var(--ring))",
+        background: "rgba(var(--secondary-base)",
+        foreground: "rgba(var(--primary-base))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "rgba(var(--primary-default))",
+          foreground: "rgba(var(--secondary-base))",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: "rgba(var(--secondary-default))",
+          foreground: "rgba(var(--primary-base))",
         },
         destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          DEFAULT: "rgba(var(--destructive))",
+          foreground: "rgba(var(--destructive-foreground))",
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: "rgba(var(--muted))",
+          foreground: "rgba(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          DEFAULT: "rgba(var(--accent))",
+          foreground: "rgba(var(--accent-foreground))",
         },
         popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          DEFAULT: "rgba(var(--popover))",
+          foreground: "rgba(var(--popover-foreground))",
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: "rgba(var(--card))",
+          foreground: "rgba(var(--card-foreground))",
         },
         sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
+          DEFAULT: "rgba(var(--sidebar-background))",
+          foreground: "rgba(var(--sidebar-foreground))",
+          primary: "rgba(var(--sidebar-primary))",
+          "primary-foreground": "rgba(var(--sidebar-primary-foreground))",
+          accent: "rgba(var(--sidebar-accent))",
+          "accent-foreground": "rgba(var(--sidebar-accent-foreground))",
+          border: "rgba(var(--sidebar-border))",
+          ring: "rgba(var(--sidebar-ring))",
         },
-        //--- end
       },
-
-      //custom mapping
       textColor: {
-        headings: "var(--white)",
+        headings: "var(--primary-base)",
         body: "var(--neutral-light)",
         action: "var(--primary-default)",
         "action-hover": "var(--primary-lighter)",
@@ -151,13 +148,13 @@ module.exports = {
         success: "var(--success-default)",
         information: "var(--info-default)",
         warning: "var(--warning-default)",
-        neutral: "var(--neutral-light)",
+        neutral: "var(--neutral-default)",
         highlight: "var(--primary-light)",
       },
       borderColor: {
         primary: "var(--primary-light)",
         secondary: "var(--secondary-darker)",
-        tertiary: "var(--white)",
+        tertiary: "var(--primary-base)",
         active: "var(--primary-default)",
         error: "var(--error-default)",
         success: "var(--success-default)",
@@ -165,10 +162,9 @@ module.exports = {
         warning: "var(--warning-default)",
         neutral: "var(--neutral-default)",
       },
-
       backgroundColor: {
-        primary: "var(--white)",
-        secondary: "var(--black)",
+        primary: "var(--primary-base)",
+        secondary: "var(--secondary-base)",
         tertiary: "var(--secondary-darker)",
         action: "var(--primary-default)",
         "action-hover": "var(--primary-light)",
@@ -184,26 +180,35 @@ module.exports = {
           success: "var(--success-default)",
           information: "var(--info-default)",
           warning: "var(--warning-default)",
-          text: "var(--white)",
+          disabled: "var(--neutral-light)",
         },
       },
 
-      borderRadius: {
-        lg: `var(--radius)`,
-        md: `calc(var(--radius) - 2px)`,
-        sm: "calc(var(--radius) - 4px)",
-      },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
+        "bowlby-one": ["Bowlby One", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
       },
       keyframes: {
         "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
+          from: {
+            height: "0",
+            opacity: "0",
+          },
+          to: {
+            height: "var(--radix-accordion-content-height)",
+            opacity: "1",
+          },
         },
         "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
+          from: {
+            height: "var(--radix-accordion-content-height)",
+            opacity: "1",
+          },
+          to: {
+            height: "0",
+            opacity: "0",
+          },
         },
       },
       animation: {
@@ -212,13 +217,26 @@ module.exports = {
       },
     },
   },
+  variants: {
+    extend: {
+      fontWeight: ["responsive", "hover", "focus"],
+      opacity: ["hover"],
+      borderColor: ["hover", "focus"],
+      margin: ["first", "last"],
+      backgroundColor: ["odd", "even"],
+      scale: ["hover", "active", "group-hover"],
+      padding: ["first", "last"],
+    },
+  },
   prefix: "tw-",
   plugins: [
     require("tailwindcss-animate"),
-    plugin(function ({ addBase, theme }) {
+    plugin(function ({ addBase, theme, apply }) {
       addBase({
         ":root": {
-          "--white": theme("colors.white"),
+          "--primary-base": theme("colors.white"),
+          "--secondary-base": theme("colors.black"),
+
           "--primary-lighest": theme("colors.orange.200"),
           "--primary-lighter": theme("colors.orange.300"),
           "--primary-light": theme("colors.orange.400"),
@@ -232,10 +250,10 @@ module.exports = {
           "--neutral-light": theme("colors.gray.400"),
           "--neutral-default": theme("colors.gray.500"),
           "--neutral-dark": theme("colors.gray.600"),
-          "--error-light": theme("colors.red.50"),
           "--success-light": theme("colors.green.50"),
           "--success-default": theme("colors.green.500"),
           "--success-dark": theme("colors.green.900"),
+          "--error-light": theme("colors.red.50"),
           "--error-default": theme("colors.red.500"),
           "--error-dark": theme("colors.red.900"),
           "--warning-light": theme("colors.yellow.50"),

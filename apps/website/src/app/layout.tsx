@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "../styles/main.scss";
 import cn from "classnames";
-import LayoutWrapper from "@/components/LayoutWrapper";
 import dynamic from "next/dynamic";
-import { Sidebar } from "@/components";
+import { LayoutWrapper } from "@/components";
+import { Inter, Bowlby_One } from "next/font/google";
 
 export const metadata: Metadata = {
   title: "Burneeble website",
@@ -15,20 +15,39 @@ const CommonProviders = dynamic(
   () => import("@/components/ProviderWrappers/CommonProviders")
 );
 
+const inter = Inter({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-default",
+});
+const bowlyOne = Bowlby_One({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-title",
+});
+
 export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={cn("burneeble-default-theme")}>
-        <CommonProviders>
-          <Sidebar>
+    <>
+      <html lang="en" className="tw-bg-black">
+        <body
+          className={cn(
+            "burneeble-default-theme",
+            inter.variable,
+            bowlyOne.variable
+          )}
+        >
+          <CommonProviders>
             <LayoutWrapper>{children}</LayoutWrapper>
-          </Sidebar>
-        </CommonProviders>
-      </body>
-    </html>
+          </CommonProviders>
+        </body>
+      </html>
+    </>
   );
 }
