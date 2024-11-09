@@ -13,8 +13,9 @@ const ReviewCard = (props: ReviewCardProps) => {
     <>
       <div
         className={`
-          review-card tw-inline-flex tw-h-[177.40px] tw-w-[325px] tw-flex-col
-          tw-items-start tw-justify-start tw-gap-2 tw-rounded-lg tw-p-5
+          review-card cs-card tw-inline-flex tw-h-[177.40px] tw-w-[325px]
+          tw-flex-col tw-items-start tw-justify-start tw-gap-2 tw-rounded-lg
+          tw-p-5
 
           lg:tw-h-[259px] lg:tw-w-[412px]
 

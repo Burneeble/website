@@ -22,8 +22,13 @@
 
 @layer components {
   //components: set reutilizable base styles to small components; also good to put custom styles for any third-party components you’re using
-  .card {
+  .cs-card {
     @apply secondary-gradient tw-bg-gradient-to-tr tw-p-5 tw-rounded-lg tw-gap-2;
+  }
+
+  .cs-section-structure {
+    @apply tw-mx-auto tw-w-screen tw-max-w-screen-xl tw-px-[20px] tw-py-[50px] tw-min-h-screen
+    md:tw-px-[31px] xl:tw-px-[20px];
   }
 }
 

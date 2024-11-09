@@ -25,12 +25,6 @@ const Navbar = (props: NavbarProps) => {
   //Hooks
   const { width } = useClientInfoService();
 
-  //useEFfects
-  useEffect(() => {
-    console.log("Navbar mounted");
-    console.log(width);
-  }, [width]);
-
   useEffect(() => {
     if (width && width > 768) {
       setIsOpen(false);

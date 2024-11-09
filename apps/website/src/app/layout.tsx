@@ -16,7 +16,7 @@ const CommonProviders = dynamic(
 );
 
 const inter = Inter({
-  weight: ["500", "900"],
+  weight: ["400", "900"],
   subsets: ["latin"],
   display: "swap",
   variable: "--font-default",

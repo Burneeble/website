@@ -11,7 +11,7 @@ const config = {
       center: "true",
       padding: "2rem",
       screens: {
-        "2xl": "1400px",
+        "2xl": "1536px",
       },
     },
 
@@ -95,6 +95,9 @@ const config = {
       },
     },
     extend: {
+      screens: {
+        "2lg": "1100px",
+      },
       colors: {
         border: "rgba(var(--border))",
         input: "rgba(var(--input))",

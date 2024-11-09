@@ -35,14 +35,11 @@ const Hero = (props: HeroProps) => {
   return (
     <section
       className={`
-        hero tw-mx-auto tw-flex tw-w-screen tw-max-w-screen-xl tw-flex-col
-        tw-justify-center tw-gap-[20px]
-        tw-bg-[radial-gradient(_rgba(43,43,43,1),_#000_90%)] tw-px-[20px]
-        tw-pb-[50px] tw-pt-[86px] tw-min-h-screen
+        hero cs-section-structure tw-flex tw-flex-col tw-justify-center
+        tw-bg-[radial-gradient(_rgba(43,43,43,1),_#000_90%)] tw-pt-[86px]
+        tw-gap-[20px]
 
-        md:tw-px-[31px]
-
-        xl:tw-px-[20px] xl:tw-h-[calc(100vh-48px)]
+        xl:tw-h-[calc(100vh-48px)]
       `}
     >
       <h1 className={`xl:tw-w-[910px]`}>
