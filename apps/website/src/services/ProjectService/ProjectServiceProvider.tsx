@@ -5,6 +5,7 @@ import { ProjectServiceProviderProps } from "./ProjectService.types";
 import { projectServiceContext } from "./ProjectServiceContext";
 
 const ProjectServiceProvider = (props: ProjectServiceProviderProps) => {
+  //Methods
   const getProject = async (id: string) => {
     return await ProjectService.instance.getProject(id);
   };
