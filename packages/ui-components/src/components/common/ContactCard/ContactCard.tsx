@@ -49,7 +49,7 @@ const ContactCard = (props: ContactCardProps) => {
                 className={`
                   contact-card-image tw-flex tw-h-[58px] tw-w-[58px]
                   tw-items-center tw-justify-center tw-overflow-hidden
-                  tw-rounded-lg tw-brightness-
+                  tw-rounded-lg
 
                   2lg:tw-h-[124px] 2lg:tw-w-[124px]
 
