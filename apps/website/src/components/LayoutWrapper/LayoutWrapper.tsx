@@ -5,6 +5,7 @@ import { LayoutWrapperProps } from "./LayoutWrapper.types";
 import { ToastContainer } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReact } from "@fortawesome/free-brands-svg-icons";
+import { SkeletonTheme } from "react-loading-skeleton";
 
 const LayoutWrapper = (props: LayoutWrapperProps) => {
   return (
@@ -71,7 +72,11 @@ const LayoutWrapper = (props: LayoutWrapperProps) => {
           ]}
         />
       </header>
-      <main>{props.children}</main>
+      <main>
+        <SkeletonTheme baseColor="#000" highlightColor="#322923">
+          {props.children}
+        </SkeletonTheme>
+      </main>
       <ToastContainer />
     </>
   );
