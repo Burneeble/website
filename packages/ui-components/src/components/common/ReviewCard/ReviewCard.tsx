@@ -36,11 +36,11 @@ const ReviewCard = (props: ReviewCardProps) => {
       {isPopupOpen && (
         <div
           className={`
-            review-popup tw-fixed tw-left-1/2 tw-top-1/2 tw-z-10 tw-inline-flex
-            tw-h-[482.26px] tw-w-[666px] -tw-translate-x-1/2 -tw-translate-y-1/2
-            tw-cursor-pointer tw-flex-col tw-items-center tw-justify-center
-            tw-gap-2 tw-rounded-lg tw-bg-gradient-to-tr tw-from-black
-            tw-to-[#322923] tw-p-5
+            review-popup tw-fixed tw-left-1/2 tw-top-1/2 tw-z-[15]
+            tw-inline-flex tw-h-[482.26px] tw-w-[666px] tw-max-w-[90vw]
+            -tw-translate-x-1/2 -tw-translate-y-1/2 tw-cursor-pointer
+            tw-flex-col tw-items-center tw-justify-center tw-gap-2 tw-rounded-lg
+            tw-bg-gradient-to-tr tw-from-black tw-to-[#322923] tw-p-5
           `}
           ref={reviewPopupRef}
         >
@@ -90,8 +90,9 @@ const ReviewCard = (props: ReviewCardProps) => {
             className={cn(
               props.projectUrl && "tw-flex-1",
               `
-                tw-text-center tw-font-inter tw-text-xl tw-font-normal
-                tw-leading-[30px] tw-text-body
+                tw-max-h-[175px] tw-overflow-y-scroll tw-text-center
+                tw-font-inter tw-text-xl tw-font-normal tw-leading-[30px]
+                tw-text-body
               `
             )}
           >
@@ -101,10 +102,23 @@ const ReviewCard = (props: ReviewCardProps) => {
             <Link
               href={props.projectUrl}
               className={`
-                tw-font-bowlby-one tw-text-2xl tw-font-normal tw-text-button
+                tw-group tw-relative tw-flex tw-h-[58px] tw-w-[216px]
+                tw-items-center tw-justify-center tw-font-bowlby-one tw-text-2xl
+                tw-font-normal tw-text-button
               `}
             >
-              View Project
+              <span className="tw-relative tw-z-[2]">View Project</span>
+              <div
+                className={`
+                  tw-absolute tw-left-0 tw-top-0 tw-inline-flex tw-h-[58px]
+                  tw-w-[58px] tw-items-center tw-justify-start tw-gap-2.5
+                  tw-rounded-full tw-border tw-border-[#f28307]/70
+                  tw-bg-[#ff5c01]/70 tw-transition-all tw-duration-300
+                  tw-ease-in-out
+
+                  group-hover:tw-w-full
+                `}
+              />
             </Link>
           )}
         </div>
