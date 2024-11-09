@@ -106,8 +106,6 @@ const ReviewCard = (props: ReviewCardProps) => {
             review-card-review tw-line-clamp-3 tw-self-stretch tw-font-inter
             tw-text-base tw-font-normal tw-leading-[25px] tw-text-body
 
-            lg:tw-text-xl lg:tw-leading-[30px]
-
             md:tw-text-lg md:tw-leading-7
           `}
         >
