@@ -19,5 +19,6 @@ export const simpleReviewCard: Story = {
     rating: 4.5,
     review:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris auctor, libero euismod luctus tincidunt, libero. lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris auctor, libero euismod luctus tincidunt, libero liberoLorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    projectUrl: "https://www.google.com",
   },
 };
