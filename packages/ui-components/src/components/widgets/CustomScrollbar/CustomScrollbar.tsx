@@ -21,6 +21,20 @@ const CustomScrollbar = (props: CustomScrollbarProps) => {
 
   //Effects
 
+  // Update thumb sizes whenever content or layout changes
+  useEffect(() => {
+    const content = contentRef.current;
+    if (!content) return;
+
+    const observer = new ResizeObserver(updateThumbSizes);
+
+    // Observe content for resizing
+    observer.observe(content);
+
+    // Cleanup on unmount
+    return () => observer.disconnect();
+  }, []);
+
   // Effect to update thumb sizes on load, scroll, or resize
   useEffect(() => {
     const content = contentRef.current;
@@ -36,12 +50,6 @@ const CustomScrollbar = (props: CustomScrollbarProps) => {
       window.removeEventListener("resize", updateThumbSizes);
     };
   }, [contentRef.current]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      if (contentRef.current) updateThumbSizes();
-    }, 200);
-  }, []);
 
   //Methods
 
