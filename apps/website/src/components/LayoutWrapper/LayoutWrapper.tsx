@@ -73,7 +73,7 @@ const LayoutWrapper = (props: LayoutWrapperProps) => {
         />
       </header>
       <main>
-        <SkeletonTheme baseColor="#000" highlightColor="#322923">
+        <SkeletonTheme baseColor="rgba(43,43,43,1)" highlightColor="#322923">
           {props.children}
         </SkeletonTheme>
       </main>

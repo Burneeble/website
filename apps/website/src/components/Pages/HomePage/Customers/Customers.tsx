@@ -11,6 +11,7 @@ import {
 import { CustomersProps } from "./Customers.types";
 import { useEffect, useState } from "react";
 import { useReviewService } from "@/services/ReviewService";
+import Skeleton from "react-loading-skeleton";
 
 const Customers = (props: CustomersProps) => {
   //States
@@ -125,36 +126,53 @@ const Customers = (props: CustomersProps) => {
           }}
         >
           <div className="tw-py-[20px] tw-w-fit tw-overflow-visible">
-            {screen == "sm" || screen == "md" ? (
-              <>
-                {reviews ? (
-                  <>
-                    <div className="review-row tw-pl-[177px]">
-                      {reviews.slice(0, reviews.length / 2).map((review, i) => {
-                        return <ReviewCard key={i} {...review} />;
-                      })}
-                    </div>
-                    <div className="review-row tw-mt-[20px]">
-                      {reviews.slice(reviews.length / 2).map((review, i) => {
-                        return <ReviewCard key={i} {...review} />;
-                      })}
-                    </div>
-                  </>
-                ) : (
-                  <></>
-                )}
-              </>
-            ) : (
-              <>
-                {reviews ? (
+            {reviews ? (
+              screen == "sm" || screen == "md" ? (
+                <>
+                  {reviews ? (
+                    <>
+                      <div className="review-row tw-pl-[177px]">
+                        {reviews
+                          .slice(0, reviews.length / 2)
+                          .map((review, i) => {
+                            return <ReviewCard key={i} {...review} />;
+                          })}
+                      </div>
+                      <div className="review-row tw-mt-[20px]">
+                        {reviews.slice(reviews.length / 2).map((review, i) => {
+                          return <ReviewCard key={i} {...review} />;
+                        })}
+                      </div>
+                    </>
+                  ) : (
+                    <></>
+                  )}
+                </>
+              ) : (
+                <>
                   <div className="review-row tw-mt-[20px]">
                     {reviews.map((review, i) => {
                       return <ReviewCard key={i} {...review} />;
                     })}
                   </div>
-                ) : (
-                  <></>
-                )}
+                </>
+              )
+            ) : (
+              <>
+                <div className="review-row">
+                  {Array.from({ length: 10 }).map((_, index) => (
+                    <Skeleton
+                      key={index}
+                      className={`
+                        tw-block tw-h-[177.40px] tw-w-[325px] tw-rounded-lg
+
+                        lg:tw-h-[259px] lg:tw-w-[412px]
+
+                        md:tw-h-[200px] md:tw-w-[325px]
+                      `}
+                    />
+                  ))}
+                </div>
               </>
             )}
           </div>
