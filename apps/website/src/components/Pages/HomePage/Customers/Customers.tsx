@@ -71,6 +71,7 @@ const Customers = (props: CustomersProps) => {
               },
               rating: 5,
               review: review.review,
+              projectUrl: review.projectUrl || undefined,
             };
           })
         );
@@ -129,24 +130,16 @@ const Customers = (props: CustomersProps) => {
             {reviews ? (
               screen == "sm" || screen == "md" ? (
                 <>
-                  {reviews ? (
-                    <>
-                      <div className="review-row tw-pl-[177px]">
-                        {reviews
-                          .slice(0, reviews.length / 2)
-                          .map((review, i) => {
-                            return <ReviewCard key={i} {...review} />;
-                          })}
-                      </div>
-                      <div className="review-row tw-mt-[20px]">
-                        {reviews.slice(reviews.length / 2).map((review, i) => {
-                          return <ReviewCard key={i} {...review} />;
-                        })}
-                      </div>
-                    </>
-                  ) : (
-                    <></>
-                  )}
+                  <div className="review-row tw-pl-[177px]">
+                    {reviews.slice(0, reviews.length / 2).map((review, i) => {
+                      return <ReviewCard key={i} {...review} />;
+                    })}
+                  </div>
+                  <div className="review-row tw-mt-[20px]">
+                    {reviews.slice(reviews.length / 2).map((review, i) => {
+                      return <ReviewCard key={i} {...review} />;
+                    })}
+                  </div>
                 </>
               ) : (
                 <>
