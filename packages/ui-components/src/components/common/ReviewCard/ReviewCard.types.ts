@@ -10,6 +10,7 @@ export interface ReviewCardProps {
   user: ReviewerInfo;
   rating: number;
   review: string;
+  projectUrl?: string;
 }
 
 export type CountryCode = keyof typeof countryNames;

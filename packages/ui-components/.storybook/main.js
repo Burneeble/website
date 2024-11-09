@@ -51,6 +51,10 @@ module.exports = {
       return item;
     });
 
+    config.resolve.alias = {
+      "next/router": "next-router-mock",
+    };
+
     return config;
   },
 

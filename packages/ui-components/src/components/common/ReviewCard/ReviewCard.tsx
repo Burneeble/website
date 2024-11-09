@@ -1,16 +1,128 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ReviewCardProps, countryNames } from "./ReviewCard.types";
 import { useClientInfoService } from "@/services";
 import { Rating } from "./components";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 const ReviewCard = (props: ReviewCardProps) => {
+  //States
+  const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false);
+
   //Hooks
   const { width } = useClientInfoService();
+  const reviewPopupRef = useRef<HTMLDivElement>(null);
+
+  //Effects
+  useEffect(() => {
+    function handleClickOutside(event: any) {
+      if (
+        reviewPopupRef.current &&
+        !reviewPopupRef.current.contains(event.target)
+      ) {
+        setIsPopupOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [reviewPopupRef]);
 
   return (
     <>
+      {isPopupOpen && (
+        <div
+          className={`
+            review-popup tw-fixed tw-left-1/2 tw-top-1/2 tw-z-[15]
+            tw-inline-flex tw-h-[482.26px] tw-w-[666px] tw-max-w-[90vw]
+            -tw-translate-x-1/2 -tw-translate-y-1/2 tw-cursor-pointer
+            tw-flex-col tw-items-center tw-justify-center tw-gap-2 tw-rounded-lg
+            tw-bg-gradient-to-tr tw-from-black tw-to-[#322923] tw-p-5
+          `}
+          ref={reviewPopupRef}
+        >
+          <img
+            className={`
+              review-card-user-avatar tw-h-[92.26px] tw-w-[92.26px]
+              tw-rounded-full tw-object-cover
+            `}
+            src={
+              props.user.avatar ||
+              "https://fiverr-res.cloudinary.com/npm-assets/layout-service/favicon.52df53a.ico"
+            }
+          />
+          <div className="tw-flex tw-flex-col">
+            <div
+              className={`
+                tw-text-center tw-font-inter tw-text-2xl tw-font-black
+                tw-leading-[35px] tw-text-headings
+              `}
+            >
+              John Smith
+            </div>
+            <div
+              className={`
+                tw-flex tw-items-center tw-justify-center tw-gap-[10px]
+              `}
+            >
+              <div
+                className={`
+                  tw-font-inter tw-text-xl tw-font-light tw-leading-[30px]
+                  tw-text-body
+                `}
+              >
+                {countryNames[props.user.countryCode]}
+              </div>
+              <img
+                className={`
+                  review-card-country-flag tw-h-[.9rem] tw-w-5
+                  tw-rounded-[.3rem] tw-object-cover
+                `}
+                src={`https://flagsapi.com/${props.user.countryCode}/flat/64.png`}
+              />
+            </div>
+          </div>
+          <Rating ratingValue={props.rating} />
+          <div
+            className={cn(
+              props.projectUrl && "tw-flex-1",
+              `
+                tw-max-h-[175px] tw-overflow-y-scroll tw-text-center
+                tw-font-inter tw-text-xl tw-font-normal tw-leading-[30px]
+                tw-text-body
+              `
+            )}
+          >
+            {props.review}
+          </div>
+          {props.projectUrl && (
+            <Link
+              href={props.projectUrl}
+              className={`
+                tw-group tw-relative tw-flex tw-h-[58px] tw-w-[216px]
+                tw-items-center tw-justify-center tw-font-bowlby-one tw-text-2xl
+                tw-font-normal tw-text-button
+              `}
+            >
+              <span className="tw-relative tw-z-[2]">View Project</span>
+              <div
+                className={`
+                  tw-absolute tw-left-0 tw-top-0 tw-inline-flex tw-h-[58px]
+                  tw-w-[58px] tw-items-center tw-justify-start tw-gap-2.5
+                  tw-rounded-full tw-border tw-border-[#f28307]/70
+                  tw-bg-[#ff5c01]/70 tw-transition-all tw-duration-300
+                  tw-ease-in-out
+
+                  group-hover:tw-w-full
+                `}
+              />
+            </Link>
+          )}
+        </div>
+      )}
       <div
         className={`
           review-card cs-card tw-inline-flex tw-h-[177.40px] tw-w-[325px]
@@ -21,6 +133,9 @@ const ReviewCard = (props: ReviewCardProps) => {
 
           md:tw-h-[200px] md:tw-w-[325px]
         `}
+        onClick={() => {
+          if (!isPopupOpen) setIsPopupOpen(true);
+        }}
       >
         <div
           className={`
