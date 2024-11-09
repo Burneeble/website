@@ -238,8 +238,7 @@ const Customers = (props: CustomersProps) => {
         />
         <CustomScrollbar
           onScroll={(hProgress: number) => {
-            setScrollProgress(hProgress);
-            console.log(hProgress);
+            setScrollProgress(Math.ceil(hProgress));
             const clampedValue = Math.max(0, Math.min(100, hProgress));
             setPhraseIndex(Math.round((clampedValue / 100) * 6));
           }}
