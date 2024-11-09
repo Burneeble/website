@@ -16,9 +16,9 @@ const ContactCard = (props: ContactCardProps) => {
         <div
           style={{ borderColor: props.mainColor }}
           className={`
-            contact-card tw-inline-flex tw-h-[116px] tw-w-[424px]
-            tw-items-center tw-justify-center tw-gap-[26px] tw-rounded-lg
-            tw-border-2 tw-bg-gradient-to-l tw-px-9 tw-py-[29px]
+            contact-card tw-inline-flex tw-h-[116px] tw-w-full tw-items-center
+            tw-justify-center tw-gap-[26px] tw-rounded-lg tw-border-2
+            tw-bg-gradient-to-l tw-px-5 tw-py-[29px]
             secondary-gradient-to-custom
 
             2lg:tw-h-[431px] 2lg:tw-w-[335px]

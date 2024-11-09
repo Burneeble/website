@@ -63,7 +63,7 @@ const Contact = (props: ContactProps) => {
       <div
         className={`
           contact-cards tw-justify-center tw-items-center tw-gap-4
-          tw-inline-flex tw-flex-col
+          tw-inline-flex tw-flex-col tw-w-full
 
           2lg:tw-h-[441px] 2lg:tw-flex-row
         `}
