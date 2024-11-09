@@ -5,6 +5,7 @@ import { ContactCardProps, ContactCardStyle } from "./ContactCard.types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useClientInfoService } from "@/services";
 import { Button } from "@/components/ui";
+import Image from "next/image";
 const ContactCard = (props: ContactCardProps) => {
   //Hooks
   const { width } = useClientInfoService();
@@ -47,7 +48,8 @@ const ContactCard = (props: ContactCardProps) => {
               <div
                 className={`
                   contact-card-image tw-flex tw-h-[58px] tw-w-[58px]
-                  tw-items-center tw-justify-center tw-rounded-lg
+                  tw-items-center tw-justify-center tw-overflow-hidden
+                  tw-rounded-lg tw-brightness-
 
                   2lg:tw-h-[124px] 2lg:tw-w-[124px]
 
@@ -56,7 +58,22 @@ const ContactCard = (props: ContactCardProps) => {
                 style={{ backgroundColor: props.mainColor }}
               >
                 {typeof props.icon === "string" ? (
-                  <img src={props.icon} alt={props.title} />
+                  <Image
+                    width={500}
+                    height={500}
+                    className="tw-h-full tw-w-full"
+                    src={props.icon}
+                    alt={
+                      props.title
+                        ? props.title
+                        : props.icon
+                            ?.split("/")
+                            .pop()
+                            ?.split(".")
+                            .slice(0, -1)
+                            .join(".") || "contact-card"
+                    }
+                  />
                 ) : (
                   <FontAwesomeIcon
                     style={{

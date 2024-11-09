@@ -69,10 +69,10 @@ const Contact = (props: ContactProps) => {
         `}
       >
         <ContactCard
-          icon={faEnvelope}
-          title="Email"
+          icon={"/img/logos/fiverr-logo.webp"}
+          title="Fiverr"
           description="You can contact us by email, we will reply you as soon as possible."
-          mainColor="#f28307"
+          mainColor="#1DBF73"
           buttonText="Contact Us"
           onClick={() => {}}
         />
@@ -85,10 +85,10 @@ const Contact = (props: ContactProps) => {
           onClick={() => {}}
         />{" "}
         <ContactCard
-          icon={faEnvelope}
-          title="Email"
+          icon={"/img/logos/upwork-logo.webp"}
+          title="Upwork"
           description="You can contact us by email, we will reply you as soon as possible."
-          mainColor="#f28307"
+          mainColor="#179E00"
           buttonText="Contact Us"
           onClick={() => {}}
         />

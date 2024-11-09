@@ -23,7 +23,7 @@ const LayoutWrapper = (props: LayoutWrapperProps) => {
             svg: (
               <Image
                 className="navbar-logo tw-w-10 tw-h-10"
-                src={"/images/logos/burneeble-logo-one-letter.webp"}
+                src={"/img/logos/burneeble-logo-one-letter.webp"}
                 alt={"burneeble-log"}
                 width={100}
                 height={100}

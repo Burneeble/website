@@ -4,7 +4,7 @@ import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
-
+//TODO change button animation
 const buttonVariants = cva(
   `
     tw-relative tw-flex tw-cursor-pointer tw-items-center tw-justify-center
@@ -13,15 +13,12 @@ const buttonVariants = cva(
 
     [&_svg]:tw-pointer-events-none [&_svg]:tw-size-5 [&_svg]:tw-shrink-0
 
-    after:tw-absolute after:tw-inset-0 after:tw-m-auto after:tw-h-0 after:tw-w-0
-    after:tw-duration-300 after:tw-ease-out after:-tw-z-1
-
     disabled:tw-pointer-events-none disabled:tw-opacity-50
 
     focus-visible:tw-outline-none focus-visible:tw-ring-1
     focus-visible:tw-ring-ring
 
-    hover:after:tw-h-40 hover:after:tw-w-full
+    hover:tw-brightness-110
 
     lg:tw-text-2xl
 
@@ -33,18 +30,10 @@ const buttonVariants = cva(
         default: `
           tw-border tw-border-primary tw-bg-button-primary tw-text-button
           tw-shadow
-
-          after:tw-bg-action-hover
-
-          hover:tw-shadow-orange-600
         `,
 
         destructive: `
           tw-border tw-border-error tw-bg-button-error tw-text-button tw-shadow
-
-          after:tw-bg-red-400
-
-          hover:tw-shadow-sm hover:tw-shadow-red-600
         `,
         outline: `
           tw-border tw-border-input tw-bg-button-primary tw-text-button
@@ -53,10 +42,6 @@ const buttonVariants = cva(
         secondary: `
           tw-border tw-border-tertiary tw-bg-button-secondary tw-text-button
           tw-shadow-sm
-
-          after:tw-bg-action
-
-          hover:tw-shadow-orange-600
         `,
         ghost: `
           tw-text-button
