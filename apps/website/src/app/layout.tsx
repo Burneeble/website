@@ -37,10 +37,12 @@ export default async function RootLayout({
     <>
       <html lang="en" className="tw-bg-black tw-max-w-[100vw]">
         <body
-          className={
-            (cn("burneeble-default-theme", inter.variable, bowlyOne.variable),
-            "tw-max-w-[100vw] tw-overflow-x-hidden")
-          }
+          className={cn(
+            "burneeble-default-theme",
+            inter.variable,
+            bowlyOne.variable,
+            `tw-max-w-[100vw] tw-overflow-x-hidden`
+          )}
         >
           <CommonProviders>
             <LayoutWrapper>{children}</LayoutWrapper>

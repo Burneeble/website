@@ -43,7 +43,7 @@ const Hero = (props: HeroProps) => {
       `}
     >
       <h1 className={`xl:tw-w-[910px]`}>
-        Build and grow your project with
+        Build and grow your project with{" "}
         <span className="gradient-text">BURNEEBLE</span>.<br />
         <span className="gradient-text">No limits</span>, in every platform and
         space.
