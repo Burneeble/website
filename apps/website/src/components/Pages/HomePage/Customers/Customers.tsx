@@ -202,6 +202,7 @@ const Customers = (props: CustomersProps) => {
     <>our passion and quality.</>,
   ];
   const [phraseIndex, setPhraseIndex] = useState<number>(0);
+  const [scrollProgress, setScrollProgress] = useState<number>(0);
 
   //Hooks
   const { screen } = useClientInfoService();
@@ -221,10 +222,24 @@ const Customers = (props: CustomersProps) => {
         say...
       </h2>
       <div className="tw-relative tw-max-w-full">
-        <div className="shadow tw-left-0" />
-        <div className="shadow tw-right-0 tw-rotate-180" />
+        <div
+          className={`
+            shadow tw-left-0
+
+            ${scrollProgress === 0 ? "tw-opacity-0" : "tw-opacity-1"}
+          `}
+        />
+        <div
+          className={`
+            shadow tw-right-0 tw-rotate-180
+
+            ${scrollProgress === 100 ? "tw-opacity-0" : "tw-opacity-1"}
+          `}
+        />
         <CustomScrollbar
           onScroll={(hProgress: number) => {
+            setScrollProgress(hProgress);
+            console.log(hProgress);
             const clampedValue = Math.max(0, Math.min(100, hProgress));
             setPhraseIndex(Math.round((clampedValue / 100) * 6));
           }}

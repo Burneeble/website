@@ -2,7 +2,7 @@
 
 .customers {
   .shadow {
-    @apply tw-h-full tw-w-16 tw-from-black tw-to-[rgba(0,0,0,0)] tw-bg-gradient-to-r tw-absolute tw-bottom-0 tw-z-[5];
+    @apply tw-h-full tw-w-16 tw-from-black tw-to-[rgba(0,0,0,0)] tw-bg-gradient-to-r tw-absolute tw-bottom-0 tw-z-[5] tw-transition-all tw-duration-300 tw-ease-in-out;
   }
 
   .review-row {

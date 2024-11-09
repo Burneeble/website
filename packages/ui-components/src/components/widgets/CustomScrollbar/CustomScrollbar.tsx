@@ -68,8 +68,16 @@ const CustomScrollbar = (props: CustomScrollbarProps) => {
     setHorizontalThumbLeft((content.scrollLeft / content.scrollWidth) * 100);
 
     props.onScroll?.(
-      (content.scrollLeft / content.scrollWidth) * 100,
-      (content.scrollTop / content.scrollHeight) * 100
+      Math.min(
+        (content.scrollLeft / (content.scrollWidth - content.clientWidth)) *
+          100,
+        100
+      ),
+      Math.min(
+        (content.scrollTop / (content.scrollHeight - content.clientHeight)) *
+          100,
+        100
+      )
     );
   };
 
