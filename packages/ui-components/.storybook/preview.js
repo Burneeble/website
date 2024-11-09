@@ -5,6 +5,7 @@ import { ToastContainer } from "react-toastify";
 import "./custom.scss";
 
 import { ClientInfoServiceProvider } from "../src/services/ClientInfoService";
+import { MemoryRouterProvider } from "next-router-mock/MemoryRouterProvider/next-13.5";
 
 export const parameters = {
   controls: {
@@ -29,10 +30,12 @@ export const decorators = [
   (Story) => {
     return (
       <>
-        <ClientInfoServiceProvider>
-          <Story />
-          <ToastContainer />
-        </ClientInfoServiceProvider>
+        <MemoryRouterProvider url="/">
+          <ClientInfoServiceProvider>
+            <Story />
+            <ToastContainer />
+          </ClientInfoServiceProvider>
+        </MemoryRouterProvider>
       </>
     );
   },

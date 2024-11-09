@@ -38,8 +38,9 @@ const ReviewCard = (props: ReviewCardProps) => {
           className={`
             review-popup tw-fixed tw-left-1/2 tw-top-1/2 tw-z-10 tw-inline-flex
             tw-h-[482.26px] tw-w-[666px] -tw-translate-x-1/2 -tw-translate-y-1/2
-            tw-flex-col tw-items-center tw-justify-center tw-gap-2 tw-rounded-lg
-            tw-bg-gradient-to-tr tw-from-black tw-to-[#322923] tw-p-5
+            tw-cursor-pointer tw-flex-col tw-items-center tw-justify-center
+            tw-gap-2 tw-rounded-lg tw-bg-gradient-to-tr tw-from-black
+            tw-to-[#322923] tw-p-5
           `}
           ref={reviewPopupRef}
         >
