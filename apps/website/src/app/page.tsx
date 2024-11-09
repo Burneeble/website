@@ -10,7 +10,7 @@ const HomePageProviders = dynamic(
 export default async function Home() {
   return (
     <HomePageProviders>
-      <div className="home-page tw-h-full">
+      <div className="home-page tw-h-full tw-max-w-[100vw] tw-overflow-x-hidden">
         <Hero />
         <Customers />
         <Contact />

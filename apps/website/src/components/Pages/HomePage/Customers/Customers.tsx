@@ -87,7 +87,15 @@ const Customers = (props: CustomersProps) => {
         tw-gap-[20px] tw-flex-col tw-relative
       `}
     >
-      <h2 className={`tw-w-fit tw-mx-auto`}>
+      <h2
+        className={`
+          tw-w-fit tw-mx-auto tw-max-w-screen-xl tw-px-[20px] tw-text-center
+
+          md:tw-px-[31px]
+
+          xl:tw-px-[20px]
+        `}
+      >
         {screen !== "sm" && "What "}
         <span className="text-color-primary-gradient">
           {screen !== "sm" ? "o" : "O"}ur customers
@@ -154,12 +162,12 @@ const Customers = (props: CustomersProps) => {
       </div>
       <p
         className={`
-          tw-py-[5px] tw-px-[20px] tw-text-end tw-font-inter tw-text-body
-          tw-block tw-w-full tw-text-xl tw-relative
+          tw-py-[.5rem] tw-px-[20px] tw-text-end tw-font-inter tw-text-body
+          tw-block tw-w-full tw-text-xl tw-relative tw-max-w-screen-xl
 
-          md:tw-text-2xl md:tw-px-[37px]
+          md:tw-text-2xl md:tw-px-[31px]
 
-          xl:tw-text-3xl xl:tw-px-[103px] xl:tw-whitespace-nowrap
+          xl:tw-text-3xl xl:tw-px-[20px] xl:tw-whitespace-nowrap
         `}
       >
         {phrases.map((phrase, i) => {
@@ -168,7 +176,11 @@ const Customers = (props: CustomersProps) => {
               key={i}
               className={`
                 tw-transition-all tw-duration-200 tw-ease-in-out tw-absolute
-                tw-top-[5px] tw-right-0
+                tw-top-[.5rem] tw-right-[20px] tw-text-end
+
+                md:tw-right-[31px]
+
+                xl:tw-right-[20px]
 
                 ${phraseIndex === i ? "tw-opacity-1" : "tw-opacity-0"}
               `}
