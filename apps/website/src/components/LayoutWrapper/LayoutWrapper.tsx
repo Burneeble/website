@@ -6,19 +6,29 @@ import { ToastContainer } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReact } from "@fortawesome/free-brands-svg-icons";
 import { SkeletonTheme } from "react-loading-skeleton";
-
+import Image from "next/image";
 const LayoutWrapper = (props: LayoutWrapperProps) => {
   return (
     <>
+      {/* tw-pb-2.5
+    tw-pt-5 tw-px-5 */}
       <header
         className={`
-          tw-absolute tw-top-0 tw-left-0 tw-z-50 tw-w-full tw-pb-2.5 tw-pt-5
-          tw-px-5
+          cs-website-max-width cs-website-horizontal-padding tw-absolute
+          tw-top-0 tw-left-2/4 tw-z-50 -tw-translate-x-2/4
         `}
       >
         <Navbar
           logo={{
-            svg: <div>Logo</div>,
+            svg: (
+              <Image
+                className="navbar-logo tw-w-10 tw-h-10"
+                src={"/images/logos/burneeble-logo-one-letter.webp"}
+                alt={"burneeble-log"}
+                width={100}
+                height={100}
+              />
+            ),
             url: "https://google.com",
           }}
           dropdowns={[

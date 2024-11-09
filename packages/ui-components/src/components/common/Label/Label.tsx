@@ -35,9 +35,9 @@ const Label = (props: LabelProps) => {
           `,
         },
         size: {
-          default: "tw-h-[40px] tw-text-[20px]",
-          sm: "tw-h-[31px] tw-px-3 tw-text-[20px]",
-          lg: "tw-h-[40px] tw-px-8 tw-text-[24px]",
+          default: "tw-h-[40px] tw-text-xl", //small
+          sm: "tw-h-[31px] tw-px-3 tw-text-sm", //smaller
+          lg: "tw-h-[40px] tw-px-8 tw-text-2xl", //default
         },
         clickable: {
           true: "tw-cursor-pointer",

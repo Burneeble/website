@@ -35,10 +35,10 @@ const Navbar = (props: NavbarProps) => {
     <nav
       className={`
         tw-mx-auto tw-flex tw-h-auto tw-w-full tw-max-w-screen-2xl
-        tw-justify-between tw-font-inter
+        tw-justify-between tw-py-6 tw-font-inter
       `}
     >
-      <div className="tw-flex tw-flex-col tw-p-6">
+      <div className="tw-flex tw-flex-col">
         <Link href={props.logo.url || "#"}>{props.logo.svg}</Link>
       </div>
 

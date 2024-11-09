@@ -27,8 +27,18 @@
   }
 
   .cs-section-structure {
-    @apply tw-mx-auto tw-w-screen tw-max-w-screen-xl tw-px-[20px] tw-py-[50px] tw-min-h-screen
-    md:tw-px-[31px] xl:tw-px-[20px];
+    @apply tw-min-h-screen cs-website-horizontal-padding cs-website-vertical-padding cs-website-max-width;
+  }
+
+  .cs-website-max-width {
+    @apply tw-mx-auto tw-w-screen tw-max-w-screen-xl;
+  }
+
+  .cs-website-horizontal-padding {
+    @apply tw-px-[20px] md:tw-px-[31px] xl:tw-px-[20px];
+  }
+  .cs-website-vertical-padding {
+    @apply tw-py-[50px];
   }
 }
 
