@@ -33,6 +33,7 @@ export class ReviewService {
             username: review.reviewFields?.u || "",
             userAvatar: review.reviewFields?.userAvatar?.node.guid || "",
             countryCode: review.reviewFields?.countryCode || "US",
+            projectUrl: review.reviewFields?.projectUrl || null,
           };
         })
       : [];

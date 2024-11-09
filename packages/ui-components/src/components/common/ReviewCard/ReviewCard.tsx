@@ -31,10 +31,14 @@ const ReviewCard = (props: ReviewCardProps) => {
           <img
             className={`
               review-card-user-avatar tw-h-[52px] tw-w-[52px] tw-rounded-full
+              tw-object-cover
 
               md:tw-h-[58px] md:tw-w-[58px]
             `}
-            src="https://picsum.photos/58/58"
+            src={
+              props.user.avatar ||
+              "https://fiverr-res.cloudinary.com/npm-assets/layout-service/favicon.52df53a.ico"
+            }
           />
           <div
             className={`

@@ -13,6 +13,7 @@ export const GET_REVIEWS_QUERY = gql(/* GraphQL */ `
               guid
             }
           }
+          projectUrl
           u
         }
         title

@@ -1,176 +1,16 @@
 "use client";
 
 import {
+  CountryCode,
   CustomScrollbar,
+  NotificationHandler,
   ReviewCard,
   ReviewCardProps,
   useClientInfoService,
 } from "@burneeble/ui-components";
 import { CustomersProps } from "./Customers.types";
-import { useState } from "react";
-
-const reviews: ReviewCardProps[] = [
-  {
-    user: {
-      name: "John Doe",
-      avatar: "https://picsum.photos/40",
-      countryCode: "IT",
-    },
-    rating: 5,
-    review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec odio et est faucibus lacinia. Nullam sit amet nisl nec or",
-  },
-  {
-    user: {
-      name: "John Doe",
-      avatar: "https://picsum.photos/40",
-      countryCode: "IT",
-    },
-    rating: 5,
-    review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec odio et est faucibus lacinia. Nullam sit amet nisl nec or",
-  },
-  {
-    user: {
-      name: "John Doe",
-      avatar: "https://picsum.photos/40",
-      countryCode: "IT",
-    },
-    rating: 5,
-    review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec odio et est faucibus lacinia. Nullam sit amet nisl nec or",
-  },
-  {
-    user: {
-      name: "John Doe",
-      avatar: "https://picsum.photos/40",
-      countryCode: "IT",
-    },
-    rating: 5,
-    review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec odio et est faucibus lacinia. Nullam sit amet nisl nec or",
-  },
-  {
-    user: {
-      name: "John Doe",
-      avatar: "https://picsum.photos/40",
-      countryCode: "IT",
-    },
-    rating: 5,
-    review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec odio et est faucibus lacinia. Nullam sit amet nisl nec or",
-  },
-  {
-    user: {
-      name: "John Doe",
-      avatar: "https://picsum.photos/40",
-      countryCode: "IT",
-    },
-    rating: 5,
-    review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec odio et est faucibus lacinia. Nullam sit amet nisl nec or",
-  },
-  {
-    user: {
-      name: "John Doe",
-      avatar: "https://picsum.photos/40",
-      countryCode: "IT",
-    },
-    rating: 5,
-    review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec odio et est faucibus lacinia. Nullam sit amet nisl nec or",
-  },
-  {
-    user: {
-      name: "John Doe",
-      avatar: "https://picsum.photos/40",
-      countryCode: "IT",
-    },
-    rating: 5,
-    review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec odio et est faucibus lacinia. Nullam sit amet nisl nec or",
-  },
-  {
-    user: {
-      name: "John Doe",
-      avatar: "https://picsum.photos/40",
-      countryCode: "IT",
-    },
-    rating: 5,
-    review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec odio et est faucibus lacinia. Nullam sit amet nisl nec or",
-  },
-  {
-    user: {
-      name: "John Doe",
-      avatar: "https://picsum.photos/40",
-      countryCode: "IT",
-    },
-    rating: 5,
-    review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec odio et est faucibus lacinia. Nullam sit amet nisl nec or",
-  },
-  {
-    user: {
-      name: "John Doe",
-      avatar: "https://picsum.photos/40",
-      countryCode: "IT",
-    },
-    rating: 5,
-    review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec odio et est faucibus lacinia. Nullam sit amet nisl nec or",
-  },
-  {
-    user: {
-      name: "John Doe",
-      avatar: "https://picsum.photos/40",
-      countryCode: "IT",
-    },
-    rating: 5,
-    review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec odio et est faucibus lacinia. Nullam sit amet nisl nec or",
-  },
-  {
-    user: {
-      name: "John Doe",
-      avatar: "https://picsum.photos/40",
-      countryCode: "IT",
-    },
-    rating: 5,
-    review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec odio et est faucibus lacinia. Nullam sit amet nisl nec or",
-  },
-  {
-    user: {
-      name: "John Doe",
-      avatar: "https://picsum.photos/40",
-      countryCode: "IT",
-    },
-    rating: 5,
-    review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec odio et est faucibus lacinia. Nullam sit amet nisl nec or",
-  },
-  {
-    user: {
-      name: "John Doe",
-      avatar: "https://picsum.photos/40",
-      countryCode: "IT",
-    },
-    rating: 5,
-    review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec odio et est faucibus lacinia. Nullam sit amet nisl nec or",
-  },
-  {
-    user: {
-      name: "John Doe",
-      avatar: "https://picsum.photos/40",
-      countryCode: "IT",
-    },
-    rating: 5,
-    review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec odio et est faucibus lacinia. Nullam sit amet nisl nec or",
-  },
-];
+import { useEffect, useState } from "react";
+import { useReviewService } from "@/services/ReviewService";
 
 const Customers = (props: CustomersProps) => {
   //States
@@ -203,9 +43,42 @@ const Customers = (props: CustomersProps) => {
   ];
   const [phraseIndex, setPhraseIndex] = useState<number>(0);
   const [scrollProgress, setScrollProgress] = useState<number>(0);
+  const [reviews, setReviews] = useState<ReviewCardProps[] | null>(null);
 
   //Hooks
   const { screen } = useClientInfoService();
+  const { getReviews } = useReviewService();
+
+  //Effects
+  useEffect(() => {
+    fetchReviews();
+  }, []);
+
+  //Methods
+  const fetchReviews = async () => {
+    try {
+      const res = await getReviews();
+
+      if (res) {
+        setReviews(
+          res.map((review) => {
+            return {
+              user: {
+                avatar: review.userAvatar,
+                name: review.username,
+                countryCode: review.countryCode as CountryCode,
+              },
+              rating: 5,
+              review: review.review,
+            };
+          })
+        );
+      }
+    } catch (e) {
+      console.log(e);
+      NotificationHandler.instance.error("Failed to fetch reviews");
+    }
+  };
 
   return (
     <section
@@ -246,24 +119,34 @@ const Customers = (props: CustomersProps) => {
           <div className="tw-py-[20px] tw-w-fit tw-overflow-visible">
             {screen == "sm" || screen == "md" ? (
               <>
-                <div className="review-row tw-pl-[177px]">
-                  {reviews.slice(0, reviews.length / 2).map((review, i) => {
-                    return <ReviewCard key={i} {...review} />;
-                  })}
-                </div>
-                <div className="review-row tw-mt-[20px]">
-                  {reviews.slice(reviews.length / 2).map((review, i) => {
-                    return <ReviewCard key={i} {...review} />;
-                  })}
-                </div>
+                {reviews ? (
+                  <>
+                    <div className="review-row tw-pl-[177px]">
+                      {reviews.slice(0, reviews.length / 2).map((review, i) => {
+                        return <ReviewCard key={i} {...review} />;
+                      })}
+                    </div>
+                    <div className="review-row tw-mt-[20px]">
+                      {reviews.slice(reviews.length / 2).map((review, i) => {
+                        return <ReviewCard key={i} {...review} />;
+                      })}
+                    </div>
+                  </>
+                ) : (
+                  <></>
+                )}
               </>
             ) : (
               <>
-                <div className="review-row tw-mt-[20px]">
-                  {reviews.map((review, i) => {
-                    return <ReviewCard key={i} {...review} />;
-                  })}
-                </div>
+                {reviews ? (
+                  <div className="review-row tw-mt-[20px]">
+                    {reviews.map((review, i) => {
+                      return <ReviewCard key={i} {...review} />;
+                    })}
+                  </div>
+                ) : (
+                  <></>
+                )}
               </>
             )}
           </div>
