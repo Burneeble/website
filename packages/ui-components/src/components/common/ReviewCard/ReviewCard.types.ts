@@ -1,3 +1,5 @@
+import { cva } from "class-variance-authority";
+
 /**
  * ReviewCard props
  */
@@ -11,7 +13,40 @@ export interface ReviewCardProps {
   rating: number;
   review: string;
   projectUrl?: string;
+  variant?: keyof typeof variants.variant;
+  isOpen?: boolean;
+  setIsOpen?: (isOpen: boolean) => void;
 }
+
+//Variants
+const variants = {
+  variant: {
+    default: `
+      cs-card tw-h-[177.40px] tw-w-[325px] tw-cursor-pointer tw-items-start
+      tw-justify-start
+
+      lg:tw-h-[259px] lg:tw-w-[412px]
+
+      md:tw-h-[200px] md:tw-w-[325px]
+    `,
+    popup: `
+      tw-fixed tw-left-1/2 tw-top-1/2 tw-z-[15] tw-h-[482.26px] tw-w-[666px]
+      tw-max-w-[90vw] -tw-translate-x-1/2 -tw-translate-y-1/2
+      tw-items-center tw-justify-center tw-bg-gradient-to-tr tw-from-black
+      tw-to-[#322923]
+    `,
+  },
+};
+
+export const reviewCardVariants = cva(
+  `tw-inline-flex tw-flex-col tw-gap-2 tw-rounded-lg tw-p-5`,
+  {
+    variants,
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+);
 
 export type CountryCode = keyof typeof countryNames;
 
