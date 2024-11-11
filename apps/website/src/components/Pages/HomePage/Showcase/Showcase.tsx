@@ -9,8 +9,18 @@ const Showcase = (props: ShowcaseProps) => {
       className={`
         showcase cs-section-structure tw-inline-flex tw-h-[844px] tw-flex-col
         tw-items-center tw-justify-center tw-gap-2.5 tw-px-5 tw-py-[50px]
+        tw-relative
       `}
     >
+      <div
+        className={`
+          tw-w-[271.78px] tw-h-[80%] tw-origin-top-left tw-rotate-[-25.59deg]
+          tw-bg-[var(--secondary-default)] tw-rounded-full tw-blur-[434px]
+          tw-absolute -tw-left-40 tw-top-[15rem] tw-z-[-1]
+        `}
+      />
+      {/* <div className="shape tw-w-[206px] tw-h-[207px] tw-blur-[434px]" />
+      <div className="shape tw-w-[207px] tw-h-[206px] tw-blur-[300px]" /> */}
       <div className="tw-w-full tw-h-[33.49px] tw-relative">
         <div
           className={`

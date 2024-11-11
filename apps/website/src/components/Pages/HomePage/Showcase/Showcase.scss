@@ -1,1 +1,7 @@
 // Showcase
+
+.showcase {
+  .shape {
+    @apply tw-bg-[var(--secondary-lighter)] tw-rounded-full tw-absolute;
+  }
+}
