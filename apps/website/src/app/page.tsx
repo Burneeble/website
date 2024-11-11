@@ -1,4 +1,4 @@
-import { Contact, Customers, Hero } from "@/components/Pages";
+import { Contact, Customers, Hero, Showcase } from "@/components/Pages";
 import dynamic from "next/dynamic";
 import React from "react";
 
@@ -13,6 +13,7 @@ export default async function Home() {
       <div className="home-page tw-h-full tw-max-w-[100vw] tw-overflow-x-hidden">
         <Hero />
         <Customers />
+        <Showcase />
         <Contact />
       </div>
     </HomePageProviders>
