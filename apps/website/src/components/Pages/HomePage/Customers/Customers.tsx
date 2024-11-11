@@ -15,7 +15,8 @@ import Skeleton from "react-loading-skeleton";
 
 const Customers = (props: CustomersProps) => {
   //States
-  const phrases = [
+  const sentences = [
+    <></>,
     <>
       We have worked on several
       <br className="xl:tw-hidden" /> requests...
@@ -123,7 +124,7 @@ const Customers = (props: CustomersProps) => {
           onScroll={(hProgress: number) => {
             setScrollProgress(Math.ceil(hProgress));
             const clampedValue = Math.max(0, Math.min(100, hProgress));
-            setPhraseIndex(Math.round((clampedValue / 100) * 5));
+            setPhraseIndex(Math.round((clampedValue / 100) * 6));
           }}
         >
           <div className="tw-py-[20px] tw-w-fit tw-overflow-visible">
@@ -181,7 +182,7 @@ const Customers = (props: CustomersProps) => {
           xl:tw-text-3xl xl:tw-px-[20px] xl:tw-whitespace-nowrap
         `}
       >
-        {phrases.map((phrase, i) => {
+        {sentences.map((phrase, i) => {
           return (
             <span
               key={i}
