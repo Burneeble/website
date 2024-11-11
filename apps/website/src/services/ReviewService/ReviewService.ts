@@ -27,7 +27,6 @@ export class ReviewService {
 
     const reviewsInfo: IReviewModel[] = data.reviews
       ? data.reviews?.nodes.map((review) => {
-          console.log(review.title, review);
           return {
             title: review.title || "",
             review: review.reviewFields?.review || "",

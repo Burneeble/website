@@ -123,7 +123,7 @@ const Customers = (props: CustomersProps) => {
           onScroll={(hProgress: number) => {
             setScrollProgress(Math.ceil(hProgress));
             const clampedValue = Math.max(0, Math.min(100, hProgress));
-            setPhraseIndex(Math.round((clampedValue / 100) * 6));
+            setPhraseIndex(Math.round((clampedValue / 100) * 5));
           }}
         >
           <div className="tw-py-[20px] tw-w-fit tw-overflow-visible">

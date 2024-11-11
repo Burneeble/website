@@ -3,8 +3,12 @@ import { CustomScrollbarProps } from "./CustomScrollbar.types";
 
 const CustomScrollbar = (props: CustomScrollbarProps) => {
   // States
-  const [verticalThumbHeight, setVerticalThumbHeight] = useState<number>(0);
-  const [horizontalThumbWidth, setHorizontalThumbWidth] = useState<number>(0);
+  const [verticalThumbHeight, setVerticalThumbHeight] = useState<number | null>(
+    null
+  );
+  const [horizontalThumbWidth, setHorizontalThumbWidth] = useState<
+    number | null
+  >(null);
   const [verticalThumbTop, setVerticalThumbTop] = useState<number>(0);
   const [horizontalThumbLeft, setHorizontalThumbLeft] = useState<number>(0);
 
@@ -166,7 +170,7 @@ const CustomScrollbar = (props: CustomScrollbarProps) => {
         {props.children}
       </div>
       {/* Vertical scrollbar */}
-      {verticalThumbHeight < 100 && (
+      {verticalThumbHeight && verticalThumbHeight < 100 && (
         <div
           className={`
             tw-absolute tw-left-full tw-top-0 tw-h-full tw-w-[22px]
@@ -187,7 +191,7 @@ const CustomScrollbar = (props: CustomScrollbarProps) => {
         </div>
       )}
       {/* Horizontal scrollbar */}
-      {horizontalThumbWidth < 100 && (
+      {horizontalThumbWidth && horizontalThumbWidth < 100 && (
         <div
           className={`
             tw-absolute tw-left-0 tw-top-full tw-h-[22px] tw-w-full
