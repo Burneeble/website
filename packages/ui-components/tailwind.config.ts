@@ -215,10 +215,36 @@ const config = {
             opacity: "0",
           },
         },
+        "cs-fade-in": {
+          from: {
+            opacity: "0",
+            width: "0",
+            height: "0",
+          },
+          to: {
+            opacity: "1",
+            width: "666px",
+            height: "482px",
+          },
+        },
+        "cs-fade-out": {
+          from: {
+            opacity: "1",
+            width: "666px",
+            height: "482px",
+          },
+          to: {
+            opacity: "0",
+            width: "0",
+            height: "0",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "cs-fade-in": "cs-fade-in 0.2s ease-in-out",
+        "cs-fade-out": "cs-fade-out 0.2s ease-in-out",
       },
     },
   },

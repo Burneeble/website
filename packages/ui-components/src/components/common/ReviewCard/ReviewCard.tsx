@@ -14,6 +14,7 @@ import Link from "next/link";
 const ReviewCard = (props: ReviewCardProps) => {
   //States
   const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false);
+  const [isClosing, setIsClosing] = useState<boolean>(false);
 
   //Hooks
   const { width } = useClientInfoService();
@@ -28,7 +29,12 @@ const ReviewCard = (props: ReviewCardProps) => {
         props.variant === "popup" &&
         props.setIsOpen
       ) {
-        props.setIsOpen(false);
+        setIsClosing(true);
+
+        setTimeout(() => {
+          setIsClosing(false);
+          props.setIsOpen!(false);
+        }, 190);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
@@ -49,7 +55,13 @@ const ReviewCard = (props: ReviewCardProps) => {
       {((props.variant === "popup" && props.isOpen) ||
         props.variant !== "popup") && (
         <div
-          className={reviewCardVariants({ variant: props.variant })}
+          className={cn(
+            reviewCardVariants({ variant: props.variant }),
+            props.variant !== "popup" &&
+              isPopupOpen &&
+              `tw-pointer-events-none`,
+            props.variant === "popup" && isClosing && `tw-animate-cs-fade-out`
+          )}
           onClick={() => {
             if (!isPopupOpen && props.variant !== "popup") setIsPopupOpen(true);
           }}
