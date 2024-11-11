@@ -1,7 +1,7 @@
 import { StoryObj, Meta } from "@storybook/react";
 import Carousel from "./Carousel";
 import { CarouselProps } from "./Carousel.types";
-import React from "react";
+import React, { Children } from "react";
 
 export default {
   title: "burneeble-website-components/widget/Carousel",
@@ -20,6 +20,11 @@ export const simpleCarousel: Story = {
       "https://picsum.photos/100",
       "https://picsum.photos/500/325",
     ],
+    cta: {
+      children: "See All Projects",
+      variant: "secondary",
+      size: "default",
+    },
   },
   render: (props) => {
     return (

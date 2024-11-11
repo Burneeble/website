@@ -114,7 +114,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...props}
       >
-        <span className="tw-z-10"> {props.children}</span>
+        <span className="tw-z-10 tw-flex tw-items-center tw-justify-center">
+          {" "}
+          {props.children}
+        </span>
       </Comp>
     );
   }

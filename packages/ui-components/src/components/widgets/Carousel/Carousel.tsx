@@ -9,14 +9,14 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
-import Image from "next/image";
 import { Button } from "@/components/ui";
+import { cn } from "@/lib/utils";
 
 const Carousel = (props: CarouselProps) => {
   return (
     <div
       className={`
-        carousel-wrapper tw-h-screen tw-w-full tw-max-w-full tw-overflow-hidden
+        carousel-wrapper tw-h-[80vw] tw-w-full tw-max-w-full tw-overflow-hidden
       `}
     >
       <Swiper
@@ -41,13 +41,14 @@ const Carousel = (props: CarouselProps) => {
           return (
             <SwiperSlide
               className={`
-                tw-duration-400 tw-flex tw-aspect-[1920/1080] tw-items-center
-                tw-justify-center tw-border-4 tw-border-solid tw-border-primary
-                tw-bg-black tw-transition-transform tw-ease-in-out
+                tw-duration-400 tw-flex tw-aspect-[1920/1080] !tw-w-full
+                tw-items-center tw-justify-center tw-border-4 tw-border-solid
+                tw-border-primary tw-bg-black tw-transition-transform
+                tw-ease-in-out
               `}
               key={i}
             >
-              <Image
+              <img
                 src={image}
                 alt={""}
                 width={1920}
@@ -60,15 +61,28 @@ const Carousel = (props: CarouselProps) => {
         })}
         <Button
           size={"icon"}
-          className="custom-next carousel-button tw-right-0"
+          className="custom-next carousel-button tw-right-0 tw-text-[2rem]"
           rounded={"circle"}
         >
           <FontAwesomeIcon icon={faChevronRight} />
         </Button>
+        {props.cta && (
+          <Button
+            {...{
+              ...props.cta,
+              ...{
+                className: cn(
+                  props.cta.className,
+                  `carousel-button tw-left-1/2 -tw-translate-x-1/2`
+                ),
+              },
+            }}
+          />
+        )}
         <Button
           size={"icon"}
           rounded={"circle"}
-          className="custom-prev carousel-button tw-left-0"
+          className="custom-prev carousel-button tw-left-0 tw-text-[2rem]"
         >
           <FontAwesomeIcon icon={faChevronLeft} />
         </Button>

@@ -33,8 +33,13 @@ const Showcase = (props: ShowcaseProps) => {
           `}
         />
       </div>
-      <div className="tw-my-[115px]">
-        <div className="tw-text-center">
+      <div
+        className={`
+          tw-my-[115px] tw-flex tw-flex-col tw-items-center tw-justify-center
+          tw-gap-[10px]
+        `}
+      >
+        <div className="tw-text-center tw-h-[38px]">
           <span
             className={`
               tw-text-headings tw-text-2xl tw-font-normal tw-font-bowlby-one
@@ -62,7 +67,7 @@ const Showcase = (props: ShowcaseProps) => {
           <Label text={"Crossmint"} size={"sm"} />
           <Label text={"Ethereum"} size={"sm"} />
         </div>
-        {/* <Carousel
+        <Carousel
           images={[
             "https://picsum.photos/500",
             "https://picsum.photos/600",
@@ -71,7 +76,33 @@ const Showcase = (props: ShowcaseProps) => {
             "https://picsum.photos/100",
             "https://picsum.photos/500/325",
           ]}
-        /> */}
+          cta={{
+            children: "See All Projects",
+            variant: "secondary",
+            size: "default",
+          }}
+        />
+      </div>
+      <div className={`tw-w-full tw-h-[33.49px] tw-relative`}>
+        <div
+          className={`
+            tw-w-[332.77px] tw-h-[3.56px] -tw-right-[10%] tw-top-0 tw-absolute
+            tw-bg-[var(--primary-lighest)]
+          `}
+        />
+        <div
+          className={`
+            tw-w-[128.98px] tw-h-[4.28px] tw-left-[500px] tw-top-[-12.11px]
+            tw-absolute tw-bg-[var(--primary-lighter)] tw-opacity-[.27]
+          `}
+        />
+        <div
+          className={`
+            tw-Rectangle13 tw-w-[332.77px] tw-h-[3.56px] tw-right-full
+            tw-top-[-29.93px] tw-absolute tw-bg-[var(--primary-lighter)]
+            tw-opacity-[.27] tw-translate-x-1/2
+          `}
+        />
       </div>
     </section>
   );

@@ -9,7 +9,7 @@
     .carousel-button {
       top: calc(100% + 3rem);
 
-      @apply tw-absolute tw-text-[2rem];
+      @apply tw-absolute;
     }
   }
 }
