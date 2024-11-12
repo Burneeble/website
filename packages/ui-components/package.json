@@ -70,6 +70,7 @@
     "eslint-plugin-readable-tailwind": "^1.8.1",
     "eslint-plugin-storybook": "^0.8.0",
     "eslint-plugin-tailwindcss": "^3.17.5",
+    "gsap": "^3.12.5",
     "next": "14.2.13",
     "next-router-mock": "^0.9.13",
     "postcss": "^7.0.26",
@@ -135,6 +136,7 @@
     "react-dom": "18.3.1",
     "react-router-dom": "6.3.0",
     "react-router-hash-link": "2.4.3",
-    "react-toastify": "^10.0.4"
+    "react-toastify": "^10.0.4",
+    "gsap": "^3.12.5"
   }
 }

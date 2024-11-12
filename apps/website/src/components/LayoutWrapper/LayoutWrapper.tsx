@@ -1,6 +1,6 @@
 "use client";
 
-import { Navbar } from "@burneeble/ui-components";
+import { Footer, Navbar } from "@burneeble/ui-components";
 import { LayoutWrapperProps } from "./LayoutWrapper.types";
 import { ToastContainer } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -87,6 +87,7 @@ const LayoutWrapper = (props: LayoutWrapperProps) => {
           {props.children}
         </SkeletonTheme>
       </main>
+      <Footer />
       <ToastContainer />
     </>
   );
