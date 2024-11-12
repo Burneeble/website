@@ -1,13 +1,15 @@
 .carousel-wrapper {
   .carousel {
     .swiper-slide {
+      @apply tw-transform tw-translate-y-[-40px];
+
       &.swiper-slide-active {
-        @apply tw-transform tw-translate-y-6;
+        @apply tw-transform tw-translate-y-0;
       }
     }
 
     .carousel-button {
-      top: calc(100% + 3rem);
+      top: calc(100% + 40px);
 
       @apply tw-absolute;
     }

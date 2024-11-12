@@ -1,15 +1,23 @@
 "use client";
 
-import { Carousel, Label } from "@burneeble/ui-components";
+import {
+  Carousel,
+  Label,
+  useClientInfoService,
+} from "@burneeble/ui-components";
 import { ShowcaseProps } from "./Showcase.types";
 
 const Showcase = (props: ShowcaseProps) => {
+  //Hooks
+  const { screen } = useClientInfoService();
+
   return (
     <section
       className={`
         showcase cs-section-structure tw-inline-flex tw-h-[844px] tw-flex-col
-        tw-items-center tw-justify-center tw-gap-2.5 tw-px-5 tw-py-[50px]
-        tw-relative
+        tw-items-center tw-justify-center tw-gap-2.5 tw-relative
+
+        md:tw-h-[1133px]
       `}
     >
       <div
@@ -40,6 +48,8 @@ const Showcase = (props: ShowcaseProps) => {
             tw-w-[332.77px] tw-h-[3.56px] tw-left-[100%] -tw-translate-x-1/8
             tw-top-[29.93px] tw-absolute tw-bg-[var(--primary-lighter)]
             tw-opacity-[.27]
+
+            md:tw-translate-x-[-80%]
           `}
         />
       </div>
@@ -47,25 +57,34 @@ const Showcase = (props: ShowcaseProps) => {
         className={`
           tw-my-[115px] tw-flex tw-flex-col tw-items-center tw-justify-center
           tw-gap-[10px]
+
+          md:tw-my-[189px]
         `}
       >
-        <div className="tw-text-center tw-h-[38px]">
-          <span
+        <div
+          className={`
+            tw-text-center tw-h-[38px]
+
+            md:tw-h-[55px]
+          `}
+        >
+          <h2
             className={`
               tw-text-headings tw-text-2xl tw-font-normal tw-font-bowlby-one
+
+              md:tw-text-4xl
             `}
           >
             Check out{" "}
             <span
               className={`
-                text-color-primary-gradient tw-text-2xl tw-font-normal
-                tw-font-bowlby-one
+                text-color-primary-gradient tw-font-normal tw-font-bowlby-one
               `}
             >
               our work
             </span>
             .
-          </span>
+          </h2>
         </div>
         <div
           className={`
@@ -89,7 +108,7 @@ const Showcase = (props: ShowcaseProps) => {
           cta={{
             children: "See All Projects",
             variant: "secondary",
-            size: "default",
+            size: screen == "md" ? "lg" : "default",
           }}
         />
       </div>
@@ -98,12 +117,16 @@ const Showcase = (props: ShowcaseProps) => {
           className={`
             tw-w-[332.77px] tw-h-[3.56px] -tw-right-[10%] tw-top-0 tw-absolute
             tw-bg-[var(--primary-lighest)]
+
+            md:tw-right-[20%]
           `}
         />
         <div
           className={`
             tw-w-[128.98px] tw-h-[4.28px] tw-left-[500px] tw-top-[-12.11px]
             tw-absolute tw-bg-[var(--primary-lighter)] tw-opacity-[.27]
+
+            md:tw-left-[95%]
           `}
         />
         <div
@@ -111,6 +134,8 @@ const Showcase = (props: ShowcaseProps) => {
             tw-Rectangle13 tw-w-[332.77px] tw-h-[3.56px] tw-right-full
             tw-top-[-29.93px] tw-absolute tw-bg-[var(--primary-lighter)]
             tw-opacity-[.27] tw-translate-x-1/2
+
+            md:tw-translate-x-[80%]
           `}
         />
       </div>

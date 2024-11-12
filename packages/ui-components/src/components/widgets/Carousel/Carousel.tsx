@@ -11,12 +11,28 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "@/components/ui";
 import { cn } from "@/lib/utils";
+import { useClientInfoService } from "@/services";
 
 const Carousel = (props: CarouselProps) => {
+  //Hooks
+  const { screen } = useClientInfoService();
+
+  //Methods
+  const getButtonSize = () => {
+    switch (screen) {
+      case "md":
+        return "icon-lg";
+      default:
+        return "icon";
+    }
+  };
+
   return (
     <div
       className={`
-        carousel-wrapper tw-h-[80vw] tw-w-full tw-max-w-full tw-overflow-hidden
+        carousel-wrapper tw-h-[80vw] tw-w-full tw-max-w-full
+
+        md:tw-h-[60vw]
       `}
     >
       <Swiper
@@ -60,11 +76,14 @@ const Carousel = (props: CarouselProps) => {
           );
         })}
         <Button
-          size={"icon"}
-          className="custom-next carousel-button tw-right-0 tw-text-[2rem]"
+          size={getButtonSize()}
+          className="custom-next carousel-button tw-right-0"
           rounded={"circle"}
         >
-          <FontAwesomeIcon icon={faChevronRight} />
+          <FontAwesomeIcon
+            icon={faChevronRight}
+            className={`!tw-h-3/5 !tw-w-3/5`}
+          />
         </Button>
         {props.cta && (
           <Button
@@ -80,11 +99,14 @@ const Carousel = (props: CarouselProps) => {
           />
         )}
         <Button
-          size={"icon"}
+          size={getButtonSize()}
           rounded={"circle"}
-          className="custom-prev carousel-button tw-left-0 tw-text-[2rem]"
+          className="custom-prev carousel-button tw-left-0"
         >
-          <FontAwesomeIcon icon={faChevronLeft} />
+          <FontAwesomeIcon
+            icon={faChevronLeft}
+            className="!tw-h-3/5 !tw-w-3/5"
+          />
         </Button>
       </Swiper>
     </div>

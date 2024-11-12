@@ -63,6 +63,8 @@ const buttonVariants = cva(
         sm: "tw-h-8 tw-px-3 tw-text-xs",
         lg: "tw-h-16 tw-px-8",
         icon: "tw-aspect-square tw-h-12 tw-w-12",
+        "icon-lg": "tw-aspect-square tw-h-16 tw-w-16",
+        "icon-sm": "tw-aspect-square tw-h-8 tw-w-8",
       },
       fit: {
         full: "tw-w-full",
@@ -114,8 +116,12 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...props}
       >
-        <span className="tw-z-10 tw-flex tw-items-center tw-justify-center">
-          {" "}
+        <span
+          className={`
+            tw-z-10 tw-flex tw-h-full tw-w-full tw-items-center
+            tw-justify-center
+          `}
+        >
           {props.children}
         </span>
       </Comp>
