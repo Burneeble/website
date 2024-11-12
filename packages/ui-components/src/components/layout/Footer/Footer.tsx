@@ -8,7 +8,7 @@ const Footer = (props: FooterProps) => {
   const [isBottom, setIsBottom] = useState<boolean>(false);
 
   //Hooks
-  const { scrollPos } = useClientInfoService();
+  const { scrollPos, isClient } = useClientInfoService();
 
   //Effects
   useEffect(() => {
@@ -27,51 +27,78 @@ const Footer = (props: FooterProps) => {
   }, [scrollPos]);
 
   useEffect(() => {
-    if (isBottom) {
+    if (isBottom && isClient) {
       const tl = gsap.timeline();
+      console.log("timeline", tl);
 
       tl.to(".gradient-three", {
-        duration: 1,
+        duration: 0.2,
         height: "95px",
         ease: "power2.out",
       })
         .to(
           ".gradient-two",
           {
-            duration: 1,
+            duration: 0.2,
             height: "110px",
             ease: "power2.out",
           },
-          "-=0.5"
+          "-=0.1"
+        )
+        .to(
+          ".gradient-one",
+          {
+            duration: 0.2,
+            height: "125px",
+            ease: "power2.out",
+          },
+          "-=0.1"
+        );
+    } else {
+      const tl = gsap.timeline();
+
+      tl.to(".gradient-one", {
+        duration: 0.2,
+        height: "0px",
+        ease: "power2.in",
+      })
+        .to(
+          ".gradient-two",
+          {
+            duration: 0.2,
+            height: "0px",
+            ease: "power2.in",
+          },
+          "-=0.1"
         )
         .to(
           ".gradient-three",
           {
-            duration: 1,
-            height: "95px",
-            ease: "power2.out",
+            duration: 0.2,
+            height: "0px",
+            ease: "power2.in",
           },
-          "-=0.5"
+          "-=0.1"
         );
     }
-  }, [isBottom]);
+  }, [isBottom, isClient]);
 
   return (
     <>
       <div className="footer tw-relative tw-h-[125px]">
         <div
           className={`
-            gradient gradient-one tw-h-[125px] tw-bg-[var(--primary-lighest)]
+            gradient gradient-one tw-h-[0px] tw-bg-[var(--primary-lighest)]
           `}
         />
         <div
           className={`
-            gradient gradient-two tw-h-[110px] tw-bg-[var(--primary-lighter)]
+            gradient gradient-two tw-h-[0px] tw-bg-[var(--primary-lighter)]
           `}
         />
         <div
           className={`
-            gradient gradient-three tw-h-[95px] tw-bg-[var(--primary-light)]
+            gradient gradient-three tw-h-[0px] tw-bg-[var(--primary-light)]
           `}
         />
         <div
