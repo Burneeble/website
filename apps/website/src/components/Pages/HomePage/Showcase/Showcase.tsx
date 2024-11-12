@@ -20,16 +20,31 @@ const Showcase = (props: ShowcaseProps) => {
         md:tw-h-[1133px]
       `}
     >
-      <div
-        className={`
-          tw-w-[400.78px] tw-h-[90%] tw-origin-top-left tw-rotate-[-30.59deg]
-          tw-bg-[radial-gradient(_var(--secondary-lighter)_10%,_rgba(1,1,1,0)_80%)]
-          tw-rounded-full tw-absolute tw-blur-[100px] -tw-left-[10rem]
-          tw-top-[15rem] tw-z-[-1] tw-opacity-[.6]
-        `}
-      />
-      {/* <div className="shape tw-w-[206px] tw-h-[207px] tw-blur-[434px]" />
-      <div className="shape tw-w-[207px] tw-h-[206px] tw-blur-[300px]" /> */}
+      {screen == "sm" ? (
+        <div
+          className={`
+            tw-w-[400.78px] tw-h-[90%] tw-origin-top-left tw-rotate-[-30.59deg]
+            tw-bg-[radial-gradient(_var(--secondary-lighter)_10%,_rgba(1,1,1,0)_80%)]
+            tw-rounded-full tw-absolute tw-blur-[100px] -tw-left-[10rem]
+            tw-top-[15rem] tw-z-[-1] tw-opacity-[.6]
+          `}
+        />
+      ) : (
+        <>
+          <div
+            className={`
+              shape tw-w-[306px] tw-h-[307px] tw-left-0 -tw-translate-x-[40%]
+              tw-top-[10rem] tw-opacity-[.4]
+            `}
+          />
+          <div
+            className={`
+              shape tw-w-[257px] tw-h-[256px] tw-right-0 tw-translate-x-[40%]
+              tw-top-[10rem] tw-opacity-[.6]
+            `}
+          />
+        </>
+      )}
       {["sm", "md", "lg"].includes(screen) && (
         <div className="tw-w-full tw-h-[33.49px] tw-relative">
           <div
