@@ -6,10 +6,96 @@ import {
   useClientInfoService,
 } from "@burneeble/ui-components";
 import { ShowcaseProps } from "./Showcase.types";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 
 const Showcase = (props: ShowcaseProps) => {
   //Hooks
-  const { screen } = useClientInfoService();
+  const { screen, width, isClient } = useClientInfoService();
+  const bottomBars = useRef<Array<HTMLDivElement>>([]);
+
+  //Effetcs
+  useEffect(() => {
+    if (!width || !isClient) return;
+
+    const bars = ["top-bar-one", "top-bar-two", "top-bar-three"];
+
+    let offset: number;
+
+    switch (screen) {
+      case "sm":
+        offset = 335;
+        break;
+      case "md":
+      case "lg":
+        offset = 470;
+        break;
+      default:
+        offset = 740;
+        break;
+    }
+
+    const timeline = ["sm", "md", "lg"].includes(screen)
+      ? gsap.context(() => {
+          bars.forEach((bar) => {
+            gsap.to(`.${bar}`, {
+              x: `+=${width + offset}`,
+              duration: 4 + Math.random() * 2,
+              ease: "in",
+              repeat: -1,
+              delay: Math.random() * 3,
+              modifiers: {
+                x: (x) => `${parseFloat(x) % (width + offset)}px`,
+              },
+            });
+          });
+        })
+      : null;
+
+    return () => {
+      timeline?.revert();
+    };
+  }, [width, isClient, screen]);
+
+  useEffect(() => {
+    if (!width || !isClient) return;
+
+    const bars = ["bottom-bar-one", "bottom-bar-two", "bottom-bar-three"];
+
+    let offset: number;
+
+    switch (screen) {
+      case "sm":
+        offset = 335;
+        break;
+      case "md":
+      case "lg":
+        offset = 470;
+        break;
+      default:
+        offset = 740;
+        break;
+    }
+
+    const timeline = gsap.context(() => {
+      bars.forEach((bar) => {
+        gsap.to(`.${bar}`, {
+          x: `+=${width + offset}`,
+          duration: 4 + Math.random() * 2,
+          ease: "in",
+          repeat: -1,
+          delay: Math.random() * 3,
+          modifiers: {
+            x: (x) => `${parseFloat(x) % (width + offset)}px`,
+          },
+        });
+      });
+    });
+
+    return () => {
+      timeline.revert();
+    };
+  }, [width, isClient, screen]);
 
   return (
     <section
@@ -52,32 +138,31 @@ const Showcase = (props: ShowcaseProps) => {
         </>
       )}
       {["sm", "md", "lg"].includes(screen) && (
-        <div className="tw-w-full tw-h-[33.49px] tw-relative">
+        <div className="tw-w-screen tw-h-[33.49px] tw-relative">
           <div
             className={`
-              tw-w-[332.77px] tw-h-[3.56px] tw-left-[190.26px] tw-top-0
-              tw-absolute tw-bg-[var(--primary-lighest)]
+              top-bar-one tw-w-[332.77px] tw-h-[3.56px] tw-top-0 tw-absolute
+              tw-bg-[var(--primary-lighest)] tw-right-full
 
               md:tw-h-[5px] md:tw-w-[467px]
             `}
           />
           <div
             className={`
-              tw-w-[128.98px] tw-h-[4.28px] tw-right-[100%] tw-translate-x-1/2
-              tw-top-[12.11px] tw-absolute tw-bg-[var(--primary-lighter)]
-              tw-opacity-[.27]
+              top-bar-two tw-w-[128.98px] tw-h-[4.28px] tw-top-[12.11px]
+              tw-absolute tw-bg-[var(--primary-lighter)] tw-opacity-[.27]
+              tw-right-full
 
               md:tw-h-[5px] md:tw-w-[181px] md:tw-top-[17px]
             `}
           />
           <div
             className={`
-              tw-w-[332.77px] tw-h-[3.56px] tw-left-[100%] -tw-translate-x-1/8
-              tw-top-[29.93px] tw-absolute tw-bg-[var(--primary-lighter)]
-              tw-opacity-[.27]
+              top-bar-three tw-w-[332.77px] tw-h-[3.56px] tw-top-[29.93px]
+              tw-absolute tw-bg-[var(--primary-lighter)] tw-opacity-[.27]
+              tw-right-full
 
-              md:tw-translate-x-[-80%] md:tw-h-[5px] md:tw-w-[467px]
-              md:tw-top-[42px]
+              md:tw-h-[5px] md:tw-w-[467px] md:tw-top-[42px]
             `}
           />
         </div>
@@ -147,38 +232,47 @@ const Showcase = (props: ShowcaseProps) => {
           }}
         />
       </div>
-      <div className={`tw-w-full tw-h-[33.49px] tw-relative`}>
+      <div className={`tw-w-screen tw-h-[33.49px] tw-relative`}>
         <div
           className={`
-            tw-w-[332.77px] tw-h-[3.56px] -tw-right-[10%] tw-top-0 tw-absolute
-            tw-bg-[var(--primary-lighest)]
+            bottom-bar-one tw-w-[332.77px] tw-h-[3.56px] tw-right-full tw-top-0
+            tw-absolute tw-bg-[var(--primary-lighest)]
 
-            md:tw-right-[20%] md:tw-h-[5px] md:tw-w-[467px]
+            md:tw-h-[5px] md:tw-w-[467px]
 
             xl:tw-h-2 xl:tw-w-[736px]
           `}
+          ref={(el) => {
+            if (el) bottomBars.current.push(el);
+          }}
         />
         <div
           className={`
-            tw-w-[128.98px] tw-h-[4.28px] tw-left-[500px] tw-top-[-12.11px]
+            bottom-bar-two tw-w-[128.98px] tw-h-[4.28px] tw-top-[-12.11px]
             tw-absolute tw-bg-[var(--primary-lighter)] tw-opacity-[.27]
+            tw-right-full
 
-            md:tw-left-[95%] md:tw-h-[5px] md:tw-w-[181px] md:tw-top-[-17px]
+            md:tw-h-[5px] md:tw-w-[181px] md:tw-top-[-17px]
 
             xl:tw-h-2 xl:tw-w-[736px] xl:tw-top-[27px]
           `}
+          ref={(el) => {
+            if (el) bottomBars.current.push(el);
+          }}
         />
         <div
           className={`
-            tw-Rectangle13 tw-w-[332.77px] tw-h-[3.56px] tw-right-full
+            bottom-bar-three tw-w-[332.77px] tw-h-[3.56px] tw-right-full
             tw-top-[-29.93px] tw-absolute tw-bg-[var(--primary-lighter)]
-            tw-opacity-[.27] tw-translate-x-1/2
+            tw-opacity-[.27]
 
-            md:tw-translate-x-[80%] md:tw-h-[5px] md:tw-w-[467px]
-            md:tw-top-[-42px]
+            md:tw-h-[5px] md:tw-w-[467px] md:tw-top-[-42px]
 
             xl:tw-h-2 xl:tw-w-[285px] xl:tw-top-[65px]
           `}
+          ref={(el) => {
+            if (el) bottomBars.current.push(el);
+          }}
         />
       </div>
     </section>

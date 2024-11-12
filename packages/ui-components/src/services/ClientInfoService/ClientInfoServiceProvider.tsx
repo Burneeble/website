@@ -10,9 +10,15 @@ const ClientInfoServiceProvider = (props: ClientInfoServiceProviderProps) => {
   //States
   const [width, setWidth] = useState<number | null>(null);
   const [screen, setScreen] = useState<Screen>("2xl");
+  const [isClient, setIsClient] = useState<boolean>(false);
 
   //Hooks
   const widthRef = useRef<number | null>(null);
+
+  //Effects
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -58,7 +64,7 @@ const ClientInfoServiceProvider = (props: ClientInfoServiceProviderProps) => {
   };
 
   return (
-    <clientInfoServiceContext.Provider value={{ width, screen }}>
+    <clientInfoServiceContext.Provider value={{ width, screen, isClient }}>
       {props.children}
     </clientInfoServiceContext.Provider>
   );
