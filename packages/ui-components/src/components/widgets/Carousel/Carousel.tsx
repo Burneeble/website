@@ -31,7 +31,7 @@ const Carousel = (props: CarouselProps) => {
     <div
       className={`
         carousel-wrapper tw-h-[calc((80vw*1080/1920)+90px)] tw-max-h-[43rem]
-        tw-w-full tw-max-w-full
+        tw-max-w-full
       `}
     >
       <Swiper

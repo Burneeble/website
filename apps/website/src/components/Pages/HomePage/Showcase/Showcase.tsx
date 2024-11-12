@@ -22,9 +22,10 @@ const Showcase = (props: ShowcaseProps) => {
     >
       <div
         className={`
-          tw-w-[271.78px] tw-h-[80%] tw-origin-top-left tw-rotate-[-25.59deg]
-          tw-bg-[var(--secondary-default)] tw-rounded-full tw-blur-[434px]
-          tw-absolute -tw-left-40 tw-top-[15rem] tw-z-[-1]
+          tw-w-[400.78px] tw-h-[90%] tw-origin-top-left tw-rotate-[-30.59deg]
+          tw-bg-[radial-gradient(_var(--secondary-lighter)_10%,_rgba(1,1,1,0)_80%)]
+          tw-rounded-full tw-absolute tw-blur-[100px] -tw-left-[10rem]
+          tw-top-[15rem] tw-z-[-1] tw-opacity-[.6]
         `}
       />
       {/* <div className="shape tw-w-[206px] tw-h-[207px] tw-blur-[434px]" />
@@ -63,7 +64,7 @@ const Showcase = (props: ShowcaseProps) => {
       <div
         className={`
           tw-my-[115px] tw-flex tw-flex-col tw-items-center tw-justify-center
-          tw-gap-[10px] tw-mx-auto
+          tw-gap-[10px]
 
           md:tw-my-[189px]
 
