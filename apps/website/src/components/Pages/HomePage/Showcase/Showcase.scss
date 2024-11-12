@@ -2,6 +2,8 @@
 
 .showcase {
   .shape {
-    @apply tw-bg-[radial-gradient(_var(--secondary-lighter)_10%,_rgba(1,1,1,0)_80%)] tw-rounded-full tw-blur-[100px] tw-absolute;
+    @apply tw-bg-[radial-gradient(_var(--secondary-lighter)_20%,_rgba(1,1,1,0)_90%)] tw-rounded-full tw-blur-[100px] tw-absolute tw-z-[-1]
+    
+    xl:tw-bg-[radial-gradient(_var(--secondary-lighter)_0%,_rgba(1,1,1,0)_100%)];
   }
 }
