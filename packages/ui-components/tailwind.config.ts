@@ -239,12 +239,42 @@ const config = {
             height: "0",
           },
         },
+        "cs-pulse": {
+          "0%": {
+            transform: "scale(1)",
+          },
+          "50%": {
+            transform: "scale(1.2)",
+          },
+          "100%": {
+            transform: "scale(1)",
+          },
+        },
+        "cs-wrong": {
+          "0%": {
+            transform: "translateX(0)",
+          },
+          "25%": {
+            transform: "translateX(10px)",
+          },
+          "50%": {
+            transform: "translateX(-10px)",
+          },
+          "75%": {
+            transform: "translateX(10px)",
+          },
+          "100%": {
+            transform: "translateX(0)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "cs-fade-in": "cs-fade-in 0.2s ease-in-out",
         "cs-fade-out": "cs-fade-out 0.2s ease-in-out",
+        "cs-pulse": "cs-pulse 0.5s ease-in-out",
+        "cs-wrong": "cs-wrong 0.5s ease-in-out",
       },
     },
   },

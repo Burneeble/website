@@ -87,7 +87,14 @@ const LayoutWrapper = (props: LayoutWrapperProps) => {
           {props.children}
         </SkeletonTheme>
       </main>
-      <Footer />
+      <div
+        className={`
+          footer-wrapper tw-absolute tw-top-[calc(100%-45px)] tw-left-0
+          tw-w-full
+        `}
+      >
+        <Footer />
+      </div>
       <ToastContainer />
     </>
   );

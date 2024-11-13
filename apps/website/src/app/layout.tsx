@@ -41,7 +41,7 @@ export default async function RootLayout({
             "burneeble-default-theme",
             inter.variable,
             bowlyOne.variable,
-            `tw-max-w-[100vw] tw-overflow-x-hidden`
+            `tw-max-w-[100vw] tw-overflow-x-hidden tw-relative`
           )}
         >
           <CommonProviders>

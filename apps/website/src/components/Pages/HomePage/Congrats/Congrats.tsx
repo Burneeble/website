@@ -9,13 +9,14 @@ import {
   faArrowUp,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 const Congrats = (props: CongratsProps) => {
   //States
-  const [currentIndex, setCurrentIndex] = useState<number>(3);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [userInput, setUserInput] = useState<string | null>(null);
+  const [wrongCode, setWrongCode] = useState<boolean>(false);
   const combination = [
     "ArrowUp",
     "B",
@@ -34,44 +35,78 @@ const Congrats = (props: CongratsProps) => {
     ArrowLeft: faArrowLeft,
     ArrowRight: faArrowRight,
   };
+  let listenerFlag: boolean = false;
 
   //Hooks
-  const { screen } = useClientInfoService();
+  const { screen, scrollPos } = useClientInfoService();
+  const congrats = useRef<HTMLDivElement>(null);
 
   //useEffect
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      setUserInput(e.key.length === 1 ? e.key.toUpperCase() : e.key);
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
+    if (congrats.current) {
+      if (
+        !["sm", "md"].includes(screen) &&
+        scrollPos + window.innerHeight >=
+          congrats.current.getBoundingClientRect().top + scrollPos
+      ) {
+        if (!listenerFlag) {
+          window.addEventListener("keydown", handleKeyDown);
+          listenerFlag = true;
+        }
+      } else {
+        if (listenerFlag) {
+          window.removeEventListener("keydown", handleKeyDown);
+          listenerFlag = false;
+        }
+      }
+    }
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [scrollPos, congrats.current]);
 
   useEffect(() => {
-    if (userInput) {
+    if (userInput && currentIndex < combination.length) {
       if (userInput === combination[currentIndex]) {
         setCurrentIndex((prev) => prev + 1);
       } else {
         setCurrentIndex(0);
-        setUserInput(null);
+        setWrongCode(true);
+        setTimeout(() => {
+          setWrongCode(false);
+        }, 500);
       }
+      setUserInput(null);
     }
   }, [userInput]);
+
+  useEffect(() => {
+    if (currentIndex >= combination.length) {
+      setTimeout(() => {
+        alert("You win a prize");
+      }, 500);
+    }
+  }, [currentIndex]);
+
+  //Methods
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key.includes("Arrow")) e.preventDefault();
+    setUserInput(e.key.length === 1 ? e.key.toUpperCase() : e.key);
+  };
 
   return (
     <section
       className={`
         congrats cs-section-structure tw-h-[314px] !tw-min-h-[unset] tw-flex-col
-        tw-justify-center tw-items-center tw-gap-[10px] tw-flex
+        tw-justify-center tw-items-center tw-gap-[10px] tw-flex tw-relative
+        tw-z-10
 
         lg:tw-h-[302px] lg:tw-gap-[10px]
 
         md:tw-h-[624px] md:tw-gap-[20px]
       `}
+      ref={congrats}
     >
       <div
         className={`
@@ -103,10 +138,13 @@ const Congrats = (props: CongratsProps) => {
         <Button size="lg">Start Building</Button>
       ) : (
         <div
-          className={`
-            tw-text-center tw-text-[#acacac] tw-text-6xl tw-font-inter tw-flex
-            tw-gap-[10px]
-          `}
+          className={cn(
+            `
+              tw-text-center tw-text-[#acacac] tw-text-6xl tw-font-inter tw-flex
+              tw-gap-[10px] tw-transition-all tw-duration-500 tw-ease-in-out
+            `,
+            wrongCode && "tw-animate-cs-wrong tw-text-error"
+          )}
         >
           {combination.map((item, i) => {
             switch (item) {
@@ -117,7 +155,8 @@ const Congrats = (props: CongratsProps) => {
                 return (
                   <FontAwesomeIcon
                     className={cn(
-                      currentIndex > i && `fontawesome-gradient-icon`
+                      currentIndex > i &&
+                        `fontawesome-gradient-icon tw-animate-cs-pulse`
                     )}
                     key={i}
                     icon={arrowsIcons[item]}
@@ -127,7 +166,8 @@ const Congrats = (props: CongratsProps) => {
                 return (
                   <span
                     className={cn(
-                      currentIndex > i && `text-color-primary-gradient`
+                      currentIndex > i &&
+                        `text-color-primary-gradient tw-animate-cs-pulse`
                     )}
                     key={i}
                   >
