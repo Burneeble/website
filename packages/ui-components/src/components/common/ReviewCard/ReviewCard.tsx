@@ -172,8 +172,8 @@ const ReviewCard = (props: ReviewCardProps) => {
               "tw-font-inter tw-font-normal tw-text-body",
               props.variant === "popup"
                 ? `
-                  tw-h-[175px] tw-max-h-[175px] tw-overflow-y-scroll
-                  tw-text-center tw-text-xl tw-leading-[30px]
+                  tw-overflow-y-scroll no-scrollbar tw-mt-[16px] tw-text-center
+                  tw-text-xl tw-leading-[30px]
                 `
                 : `
                   review-card-review tw-line-clamp-3 tw-self-stretch
@@ -181,7 +181,7 @@ const ReviewCard = (props: ReviewCardProps) => {
 
                   md:tw-text-lg md:tw-leading-7
                 `,
-              props.variant === "popup" && props.projectUrl && "tw-flex-1"
+              props.variant === "popup" && props.projectUrl && "tw-mb-[16px]"
             )}
           >
             {props.review}
@@ -206,7 +206,8 @@ const ReviewCard = (props: ReviewCardProps) => {
                   tw-bg-[#ff5c01]/70 tw-transition-all tw-duration-300
                   tw-ease-in-out
 
-                  group-hover:tw-w-full
+                  group-hover:tw-w-full group-hover:tw-border-[#f28307]/100
+                  group-hover:tw-bg-[#ff5c01]/100
                 `}
               />
             </Link>

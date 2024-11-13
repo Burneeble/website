@@ -30,7 +30,7 @@ const variants = {
       md:tw-h-[200px] md:tw-w-[325px]
     `,
     popup: `
-      tw-fixed tw-left-1/2 tw-top-1/2 tw-z-[15] tw-h-[482.26px] tw-w-[666px]
+      tw-fixed tw-left-1/2 tw-top-1/2 tw-z-[15] tw-h-fit tw-w-[666px]
       tw-max-w-[90vw] -tw-translate-x-1/2 -tw-translate-y-1/2
       tw-items-center tw-justify-center tw-bg-gradient-to-tr tw-from-black
       tw-to-[#322923] tw-shadow-[0_0_0_500vmax_rgba(0,0,0,0.652)] tw-animate-cs-fade-in
