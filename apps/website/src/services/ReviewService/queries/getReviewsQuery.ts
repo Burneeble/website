@@ -14,7 +14,7 @@ export const GET_REVIEWS_QUERY = gql(/* GraphQL */ `
             }
           }
           projectUrl
-          u
+          username
         }
         title
       }

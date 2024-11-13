@@ -30,7 +30,7 @@ export class ReviewService {
           return {
             title: review.title || "",
             review: review.reviewFields?.review || "",
-            username: review.reviewFields?.u || "",
+            username: review.reviewFields?.username || "",
             userAvatar: review.reviewFields?.userAvatar?.node.guid || "",
             countryCode: review.reviewFields?.countryCode || "US",
             projectUrl: review.reviewFields?.projectUrl || null,
