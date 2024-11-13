@@ -110,7 +110,7 @@ const Congrats = (props: CongratsProps) => {
     >
       <div
         className={`
-          tw-text-center tw-font-bowlby-one tw-text-2xl
+          title tw-text-center tw-font-bowlby-one tw-text-2xl
 
           lg:tw-text-5xl lg:tw-leading-[60px]
 
@@ -122,8 +122,8 @@ const Congrats = (props: CongratsProps) => {
       </div>
       <p
         className={`
-          tw-self-stretch tw-text-center tw-text-body tw-text-xl tw-font-normal
-          tw-font-inter tw-leading-[30px]
+          text tw-self-stretch tw-text-center tw-text-body tw-text-xl
+          tw-font-normal tw-font-inter tw-leading-[30px]
 
           lg:tw-text-3xl
 
@@ -140,8 +140,9 @@ const Congrats = (props: CongratsProps) => {
         <div
           className={cn(
             `
-              tw-text-center tw-text-[#acacac] tw-text-6xl tw-font-inter tw-flex
-              tw-gap-[10px] tw-transition-all tw-duration-500 tw-ease-in-out
+              code tw-text-center tw-text-[#acacac] tw-text-6xl tw-font-inter
+              tw-flex tw-gap-[10px] tw-transition-all tw-duration-500
+              tw-ease-in-out
             `,
             wrongCode && "tw-animate-cs-wrong tw-text-error"
           )}
@@ -156,7 +157,7 @@ const Congrats = (props: CongratsProps) => {
                   <FontAwesomeIcon
                     className={cn(
                       currentIndex > i &&
-                        `fontawesome-gradient-icon tw-animate-cs-pulse`
+                        `digit fontawesome-gradient-icon tw-animate-cs-pulse`
                     )}
                     key={i}
                     icon={arrowsIcons[item]}
@@ -167,7 +168,10 @@ const Congrats = (props: CongratsProps) => {
                   <span
                     className={cn(
                       currentIndex > i &&
-                        `cs-text-color-primary-gradient tw-animate-cs-pulse`
+                        `
+                          digit cs-text-color-primary-gradient
+                          tw-animate-cs-pulse
+                        `
                     )}
                     key={i}
                   >

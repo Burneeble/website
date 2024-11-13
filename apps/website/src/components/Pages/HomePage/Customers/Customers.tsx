@@ -93,7 +93,14 @@ const Customers = (props: CustomersProps) => {
     >
       <h2
         className={`
-          cs-website-horizontal-padding cs-website-max-width tw-text-center
+          <<<<<<< HEAD cs-website-horizontal-padding cs-website-max-width
+          tw-text-center ======= title tw-w-fit tw-mx-auto tw-max-w-screen-xl
+          tw-px-[20px] tw-text-center >>>>>>>
+          e49aaf65625de523df5f5505538b7dd3d79ec073
+
+          md:tw-px-[31px]
+
+          xl:tw-px-[20px]
         `}
       >
         {screen !== "sm" && "What "}
@@ -102,7 +109,7 @@ const Customers = (props: CustomersProps) => {
         </span>{" "}
         say...
       </h2>
-      <div className="tw-relative tw-max-w-full">
+      <div className="wrapper tw-relative tw-max-w-full">
         <div
           className={`
             shadow tw-left-0
@@ -171,8 +178,8 @@ const Customers = (props: CustomersProps) => {
       </div>
       <p
         className={`
-          tw-py-2 cs-website-horizontal-padding tw-text-end tw-font-inter
-          tw-text-body tw-block tw-w-full tw-text-xl tw-relative
+          sentences tw-py-2 cs-website-horizontal-padding tw-text-end
+          tw-font-inter tw-text-body tw-block tw-w-full tw-text-xl tw-relative
           tw-max-w-screen-xl
 
           md:tw-text-2xl
@@ -185,8 +192,8 @@ const Customers = (props: CustomersProps) => {
             <span
               key={i}
               className={`
-                tw-transition-all tw-duration-200 tw-ease-in-out tw-absolute
-                tw-top-[.5rem] tw-right-[20px] tw-text-end
+                sentence tw-transition-all tw-duration-200 tw-ease-in-out
+                tw-absolute tw-top-[.5rem] tw-right-[20px] tw-text-end
 
                 md:tw-right-[31px]
 

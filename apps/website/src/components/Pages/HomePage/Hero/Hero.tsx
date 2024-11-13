@@ -40,7 +40,13 @@ const Hero = (props: HeroProps) => {
         tw-bg-[radial-gradient(_rgba(43,43,43,1)_10%,_#000_80%)] tw-pt-[86px]
       `}
     >
-      <h1 className={`xl:tw-w-[910px]`}>
+      <h1
+        className={`
+          title
+
+          xl:tw-w-[910px]
+        `}
+      >
         Build and grow your project with{" "}
         <span className="gradient-text">BURNEEBLE</span>.<br />
         <span className="gradient-text">No limits</span>, in every platform and
@@ -48,7 +54,7 @@ const Hero = (props: HeroProps) => {
       </h1>
       <div
         className={`
-          tw-relative tw-z-[1] tw-flex tw-flex-wrap tw-gap-[13px]
+          labels tw-relative tw-z-[1] tw-flex tw-flex-wrap tw-gap-[13px]
 
           md:tw-gap-5
 

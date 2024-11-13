@@ -107,7 +107,8 @@ const Showcase = (props: ShowcaseProps) => {
       {screen == "sm" ? (
         <div
           className={`
-            tw-w-[400.78px] tw-h-[90%] tw-origin-top-left tw-rotate-[-30.59deg]
+            bg-shadow tw-w-[400.78px] tw-h-[90%] tw-origin-top-left
+            tw-rotate-[-30.59deg]
             tw-bg-[radial-gradient(_var(--secondary-lighter)_10%,_rgba(1,1,1,0)_80%)]
             tw-rounded-full tw-absolute tw-blur-[100px] -tw-left-[10rem]
             tw-top-[15rem] tw-z-[-1] tw-opacity-[.6]
@@ -137,7 +138,7 @@ const Showcase = (props: ShowcaseProps) => {
       )}
 
       {["sm", "md", "lg"].includes(screen) && (
-        <div className="tw-w-screen tw-h-[33.49px] tw-relative">
+        <div className="top-bars tw-w-screen tw-h-[33.49px] tw-relative">
           <div
             className={`
               top-bar-one tw-w-[332.77px] tw-h-[3.56px] tw-top-0 tw-absolute
@@ -169,13 +170,14 @@ const Showcase = (props: ShowcaseProps) => {
 
       <div
         className={`
-          tw-flex tw-flex-col tw-items-center tw-justify-center tw-gap-[10px]
+          wrapper tw-flex tw-flex-col tw-items-center tw-justify-center
+          tw-gap-[10px]
 
           xl:tw-gap-5
         `}
       >
-        <div className={`tw-text-center`}>
-          <h2 className={``}>
+        <div className={`title-wrapper tw-text-center`}>
+          <h2 className={`title`}>
             Check out{" "}
             <span
               className={`
@@ -188,7 +190,9 @@ const Showcase = (props: ShowcaseProps) => {
           </h2>
         </div>
         <div
-          className={`tw-justify-center tw-items-center tw-gap-3 tw-inline-flex`}
+          className={`
+            labels tw-justify-center tw-items-center tw-gap-3 tw-inline-flex
+          `}
         >
           <Label text={"Mint DApp"} />
           <Label text={"Crossmint"} />
@@ -213,7 +217,7 @@ const Showcase = (props: ShowcaseProps) => {
 
       <div
         className={`
-          tw-w-screen
+          bottom-bars tw-w-screen
 
           first-letter:tw-relative
         `}
