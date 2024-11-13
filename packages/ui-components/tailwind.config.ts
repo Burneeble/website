@@ -218,25 +218,21 @@ const config = {
         "cs-fade-in": {
           from: {
             opacity: "0",
-            width: "0",
-            height: "0",
+            scale: "0",
           },
           to: {
             opacity: "1",
-            width: "666px",
-            height: "482px",
+            scale: "1",
           },
         },
         "cs-fade-out": {
           from: {
             opacity: "1",
-            width: "666px",
-            height: "482px",
+            scale: "1",
           },
           to: {
             opacity: "0",
-            width: "0",
-            height: "0",
+            scale: "0",
           },
         },
         "cs-pulse": {
