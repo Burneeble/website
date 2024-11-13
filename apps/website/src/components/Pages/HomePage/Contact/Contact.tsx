@@ -14,7 +14,7 @@ const Contact = (props: ContactProps) => {
     <section
       className={`
         contact-section cs-section-structure tw-flex tw-items-center
-        tw-justify-center tw-gap-[20px] tw-flex-col tw-relative
+        tw-justify-center tw-gap-5 tw-flex-col tw-relative
       `}
     >
       <div
@@ -30,7 +30,7 @@ const Contact = (props: ContactProps) => {
           `}
         >
           Your Project {""}
-          <span className="text-color-primary-gradient">
+          <span className="cs-text-color-primary-gradient">
             is just a click away.
           </span>{" "}
         </h2>

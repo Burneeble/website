@@ -86,21 +86,19 @@ const Customers = (props: CustomersProps) => {
   return (
     <section
       className={`
-        customers tw-px-5 tw-py-[50px] tw-flex tw-items-center tw-justify-center
-        tw-gap-[20px] tw-flex-col tw-relative
+        customers cs-website-horizontal-padding cs-website-vertical-padding
+        cs-gap-between-content tw-flex tw-items-center tw-justify-center
+        tw-flex-col tw-relative
       `}
     >
       <h2
         className={`
-          tw-w-fit tw-mx-auto tw-max-w-screen-xl tw-px-[20px] tw-text-center
-
-          md:tw-px-[31px]
-
-          xl:tw-px-[20px]
+          cs-website-horizontal-padding tw-mx-auto tw-w-screen
+          tw-max-w-screen-xl tw-text-center
         `}
       >
         {screen !== "sm" && "What "}
-        <span className="text-color-primary-gradient">
+        <span className="cs-text-color-primary-gradient">
           {screen !== "sm" ? "o" : "O"}ur customers
         </span>{" "}
         say...
@@ -127,7 +125,7 @@ const Customers = (props: CustomersProps) => {
             setPhraseIndex(Math.round((clampedValue / 100) * 6));
           }}
         >
-          <div className="tw-py-[20px] tw-w-fit tw-overflow-visible">
+          <div className="tw-w-fit tw-overflow-visible">
             {reviews ? (
               screen == "sm" || screen == "md" ? (
                 <>
@@ -174,12 +172,13 @@ const Customers = (props: CustomersProps) => {
       </div>
       <p
         className={`
-          tw-py-[.5rem] tw-px-[20px] tw-text-end tw-font-inter tw-text-body
-          tw-block tw-w-full tw-text-xl tw-relative tw-max-w-screen-xl
+          tw-py-2 cs-website-horizontal-padding tw-text-end tw-font-inter
+          tw-text-body tw-block tw-w-full tw-text-xl tw-relative
+          tw-max-w-screen-xl
 
-          md:tw-text-2xl md:tw-px-[31px]
+          md:tw-text-2xl
 
-          xl:tw-text-3xl xl:tw-px-[20px] xl:tw-whitespace-nowrap
+          xl:tw-text-3xl xl:tw-whitespace-nowrap
         `}
       >
         {sentences.map((phrase, i) => {

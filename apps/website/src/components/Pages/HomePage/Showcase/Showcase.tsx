@@ -174,7 +174,7 @@ const Showcase = (props: ShowcaseProps) => {
 
           md:tw-my-[189px]
 
-          xl:tw-gap-[20px] xl:tw-my-[33px]
+          xl:tw-gap-5 xl:tw-my-[33px]
         `}
       >
         <div
@@ -198,7 +198,7 @@ const Showcase = (props: ShowcaseProps) => {
             Check out{" "}
             <span
               className={`
-                text-color-primary-gradient tw-font-normal tw-font-bowlby-one
+                cs-text-color-primary-gradient tw-font-normal tw-font-bowlby-one
               `}
             >
               our work

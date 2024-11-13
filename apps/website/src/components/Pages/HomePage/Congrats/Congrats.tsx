@@ -104,7 +104,7 @@ const Congrats = (props: CongratsProps) => {
 
         lg:tw-h-[302px] lg:tw-gap-[10px]
 
-        md:tw-h-[624px] md:tw-gap-[20px]
+        md:tw-h-[624px] md:tw-gap-5
       `}
       ref={congrats}
     >
@@ -117,7 +117,7 @@ const Congrats = (props: CongratsProps) => {
           md:tw-flex md:tw-text-4xl md:tw-gap-[15px]
         `}
       >
-        <p className="text-color-primary-gradient">Congrats,</p>
+        <p className="cs-text-color-primary-gradient">Congrats,</p>
         <p className="tw-text-headings">you reached the end.</p>
       </div>
       <p
@@ -167,7 +167,7 @@ const Congrats = (props: CongratsProps) => {
                   <span
                     className={cn(
                       currentIndex > i &&
-                        `text-color-primary-gradient tw-animate-cs-pulse`
+                        `cs-text-color-primary-gradient tw-animate-cs-pulse`
                     )}
                     key={i}
                   >

@@ -36,11 +36,18 @@
   }
 
   .cs-website-horizontal-padding {
-    @apply tw-px-[20px] md:tw-px-[31px] xl:tw-px-[20px];
+    @apply tw-px-5 md:tw-px-[31px] xl:tw-px-5;
   }
 
   .cs-website-vertical-padding {
     @apply tw-py-[50px];
+  }
+
+  .cs-gap-between-text {
+    @apply tw-gap-[10px];
+  }
+  .cs-gap-between-content {
+    @apply tw-gap-5;
   }
 }
 
@@ -60,7 +67,7 @@
     scrollbar-width: none; /* Firefox */
   }
 
-  .text-color-primary-gradient {
+  .cs-text-color-primary-gradient {
     background: linear-gradient(
       90deg,
       var(--primary-default) 0%,
