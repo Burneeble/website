@@ -100,10 +100,8 @@ const Showcase = (props: ShowcaseProps) => {
   return (
     <section
       className={`
-        showcase cs-section-structure tw-flex tw-h-[844px] tw-flex-col
+        showcase cs-section-structure tw-flex tw-h-fit tw-flex-col
         tw-items-center tw-justify-center tw-gap-2.5 tw-relative
-
-        md:tw-h-[1133px]
       `}
     >
       {screen == "sm" ? (
@@ -137,6 +135,7 @@ const Showcase = (props: ShowcaseProps) => {
           />
         </>
       )}
+
       {["sm", "md", "lg"].includes(screen) && (
         <div className="tw-w-screen tw-h-[33.49px] tw-relative">
           <div
@@ -167,34 +166,16 @@ const Showcase = (props: ShowcaseProps) => {
           />
         </div>
       )}
+
       <div
         className={`
-          tw-my-[115px] tw-flex tw-flex-col tw-items-center tw-justify-center
-          tw-gap-[10px]
+          tw-flex tw-flex-col tw-items-center tw-justify-center tw-gap-[10px]
 
-          md:tw-my-[189px]
-
-          xl:tw-gap-5 xl:tw-my-[33px]
+          xl:tw-gap-5
         `}
       >
-        <div
-          className={`
-            tw-text-center tw-h-[38px]
-
-            md:tw-h-[55px]
-
-            xl:tw-h-[70px]
-          `}
-        >
-          <h2
-            className={`
-              tw-text-headings tw-text-2xl tw-font-normal tw-font-bowlby-one
-
-              md:tw-text-4xl
-
-              xl:tw-text-5xl
-            `}
-          >
+        <div className={`tw-text-center`}>
+          <h2 className={``}>
             Check out{" "}
             <span
               className={`
@@ -207,14 +188,11 @@ const Showcase = (props: ShowcaseProps) => {
           </h2>
         </div>
         <div
-          className={`
-            tw-h-[31px] tw-justify-center tw-items-center tw-gap-[11.90px]
-            tw-inline-flex
-          `}
+          className={`tw-justify-center tw-items-center tw-gap-3 tw-inline-flex`}
         >
-          <Label text={"Mint DApp"} size={"sm"} />
-          <Label text={"Crossmint"} size={"sm"} />
-          <Label text={"Ethereum"} size={"sm"} />
+          <Label text={"Mint DApp"} />
+          <Label text={"Crossmint"} />
+          <Label text={"Ethereum"} />
         </div>
         <Carousel
           images={[
@@ -232,15 +210,18 @@ const Showcase = (props: ShowcaseProps) => {
           }}
         />
       </div>
-      <div className={`tw-w-screen tw-h-[33.49px] tw-relative`}>
+
+      <div
+        className={`
+          tw-w-screen
+
+          first-letter:tw-relative
+        `}
+      >
         <div
           className={`
-            bottom-bar-one tw-w-[332.77px] tw-h-[3.56px] tw-right-full tw-top-0
-            tw-absolute tw-bg-[var(--primary-lighest)]
-
-            md:tw-h-[5px] md:tw-w-[467px]
-
-            xl:tw-h-2 xl:tw-w-[736px]
+            bottom-bar-one tw-right-full tw-top-0 tw-absolute
+            tw-bg-[var(--primary-lighest)]
           `}
           ref={(el) => {
             if (el) bottomBars.current.push(el);
@@ -248,13 +229,12 @@ const Showcase = (props: ShowcaseProps) => {
         />
         <div
           className={`
-            bottom-bar-two tw-w-[128.98px] tw-h-[4.28px] tw-top-[-12.11px]
-            tw-absolute tw-bg-[var(--primary-lighter)] tw-opacity-[.27]
-            tw-right-full
+            bottom-bar-two tw-top-[-12.11px] tw-absolute
+            tw-bg-[var(--primary-lighter)] tw-opacity-[.27] tw-right-full
 
-            md:tw-h-[5px] md:tw-w-[181px] md:tw-top-[-17px]
+            md:tw-top-[-17px]
 
-            xl:tw-h-2 xl:tw-w-[736px] xl:tw-top-[27px]
+            xl:tw-top-[27px]
           `}
           ref={(el) => {
             if (el) bottomBars.current.push(el);
@@ -262,13 +242,12 @@ const Showcase = (props: ShowcaseProps) => {
         />
         <div
           className={`
-            bottom-bar-three tw-w-[332.77px] tw-h-[3.56px] tw-right-full
-            tw-top-[-29.93px] tw-absolute tw-bg-[var(--primary-lighter)]
-            tw-opacity-[.27]
+            bottom-bar-three tw-right-full tw-top-[-29.93px] tw-absolute
+            tw-bg-[var(--primary-lighter)] tw-opacity-[.27]
 
-            md:tw-h-[5px] md:tw-w-[467px] md:tw-top-[-42px]
+            md:tw-top-[-42px]
 
-            xl:tw-h-2 xl:tw-w-[285px] xl:tw-top-[65px]
+            xl:tw-top-[65px]
           `}
           ref={(el) => {
             if (el) bottomBars.current.push(el);

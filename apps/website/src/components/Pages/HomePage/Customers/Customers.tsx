@@ -93,8 +93,7 @@ const Customers = (props: CustomersProps) => {
     >
       <h2
         className={`
-          cs-website-horizontal-padding tw-mx-auto tw-w-screen
-          tw-max-w-screen-xl tw-text-center
+          cs-website-horizontal-padding cs-website-max-width tw-text-center
         `}
       >
         {screen !== "sm" && "What "}

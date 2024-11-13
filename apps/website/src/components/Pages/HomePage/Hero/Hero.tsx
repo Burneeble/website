@@ -35,9 +35,9 @@ const Hero = (props: HeroProps) => {
   return (
     <section
       className={`
-        hero cs-section-structure tw-flex tw-flex-col tw-justify-center
+        hero cs-section-structure cs-gap-between-content tw-flex tw-flex-col
+        tw-justify-center
         tw-bg-[radial-gradient(_rgba(43,43,43,1)_10%,_#000_80%)] tw-pt-[86px]
-        tw-gap-5
       `}
     >
       <h1 className={`xl:tw-w-[910px]`}>
