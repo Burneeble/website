@@ -68,7 +68,7 @@ const Carousel = (props: CarouselProps) => {
                 alt={""}
                 width={1920}
                 height={1080}
-                className="tw-h-full tw-w-auto"
+                className="carousel-image tw-h-full tw-w-auto"
                 loading="lazy"
               />
             </SwiperSlide>

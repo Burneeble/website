@@ -92,7 +92,8 @@ const Customers = (props: CustomersProps) => {
     >
       <h2
         className={`
-          tw-w-fit tw-mx-auto tw-max-w-screen-xl tw-px-[20px] tw-text-center
+          title tw-w-fit tw-mx-auto tw-max-w-screen-xl tw-px-[20px]
+          tw-text-center
 
           md:tw-px-[31px]
 
@@ -105,7 +106,7 @@ const Customers = (props: CustomersProps) => {
         </span>{" "}
         say...
       </h2>
-      <div className="tw-relative tw-max-w-full">
+      <div className="wrapper tw-relative tw-max-w-full">
         <div
           className={`
             shadow tw-left-0
@@ -174,8 +175,9 @@ const Customers = (props: CustomersProps) => {
       </div>
       <p
         className={`
-          tw-py-[.5rem] tw-px-[20px] tw-text-end tw-font-inter tw-text-body
-          tw-block tw-w-full tw-text-xl tw-relative tw-max-w-screen-xl
+          sentences tw-py-[.5rem] tw-px-[20px] tw-text-end tw-font-inter
+          tw-text-body tw-block tw-w-full tw-text-xl tw-relative
+          tw-max-w-screen-xl
 
           md:tw-text-2xl md:tw-px-[31px]
 
@@ -187,8 +189,8 @@ const Customers = (props: CustomersProps) => {
             <span
               key={i}
               className={`
-                tw-transition-all tw-duration-200 tw-ease-in-out tw-absolute
-                tw-top-[.5rem] tw-right-[20px] tw-text-end
+                sentence tw-transition-all tw-duration-200 tw-ease-in-out
+                tw-absolute tw-top-[.5rem] tw-right-[20px] tw-text-end
 
                 md:tw-right-[31px]
 

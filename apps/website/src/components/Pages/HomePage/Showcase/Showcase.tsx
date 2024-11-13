@@ -109,7 +109,8 @@ const Showcase = (props: ShowcaseProps) => {
       {screen == "sm" ? (
         <div
           className={`
-            tw-w-[400.78px] tw-h-[90%] tw-origin-top-left tw-rotate-[-30.59deg]
+            bg-shadow tw-w-[400.78px] tw-h-[90%] tw-origin-top-left
+            tw-rotate-[-30.59deg]
             tw-bg-[radial-gradient(_var(--secondary-lighter)_10%,_rgba(1,1,1,0)_80%)]
             tw-rounded-full tw-absolute tw-blur-[100px] -tw-left-[10rem]
             tw-top-[15rem] tw-z-[-1] tw-opacity-[.6]
@@ -138,7 +139,7 @@ const Showcase = (props: ShowcaseProps) => {
         </>
       )}
       {["sm", "md", "lg"].includes(screen) && (
-        <div className="tw-w-screen tw-h-[33.49px] tw-relative">
+        <div className="top-bars tw-w-screen tw-h-[33.49px] tw-relative">
           <div
             className={`
               top-bar-one tw-w-[332.77px] tw-h-[3.56px] tw-top-0 tw-absolute
@@ -169,8 +170,8 @@ const Showcase = (props: ShowcaseProps) => {
       )}
       <div
         className={`
-          tw-my-[115px] tw-flex tw-flex-col tw-items-center tw-justify-center
-          tw-gap-[10px]
+          wrapper tw-my-[115px] tw-flex tw-flex-col tw-items-center
+          tw-justify-center tw-gap-[10px]
 
           md:tw-my-[189px]
 
@@ -179,7 +180,7 @@ const Showcase = (props: ShowcaseProps) => {
       >
         <div
           className={`
-            tw-text-center tw-h-[38px]
+            title-wrapper tw-text-center tw-h-[38px]
 
             md:tw-h-[55px]
 
@@ -188,7 +189,8 @@ const Showcase = (props: ShowcaseProps) => {
         >
           <h2
             className={`
-              tw-text-headings tw-text-2xl tw-font-normal tw-font-bowlby-one
+              title tw-text-headings tw-text-2xl tw-font-normal
+              tw-font-bowlby-one
 
               md:tw-text-4xl
 
@@ -208,8 +210,8 @@ const Showcase = (props: ShowcaseProps) => {
         </div>
         <div
           className={`
-            tw-h-[31px] tw-justify-center tw-items-center tw-gap-[11.90px]
-            tw-inline-flex
+            labels tw-h-[31px] tw-justify-center tw-items-center
+            tw-gap-[11.90px] tw-inline-flex
           `}
         >
           <Label text={"Mint DApp"} size={"sm"} />
@@ -232,7 +234,7 @@ const Showcase = (props: ShowcaseProps) => {
           }}
         />
       </div>
-      <div className={`tw-w-screen tw-h-[33.49px] tw-relative`}>
+      <div className={`bottom-bars tw-w-screen tw-h-[33.49px] tw-relative`}>
         <div
           className={`
             bottom-bar-one tw-w-[332.77px] tw-h-[3.56px] tw-right-full tw-top-0
