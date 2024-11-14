@@ -1,1 +1,1 @@
-export * from "./projectQuery";
+export * from "./getProjectQuery";

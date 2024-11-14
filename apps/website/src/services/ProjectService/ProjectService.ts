@@ -2,8 +2,9 @@
 
 import { GraphQLService } from "../GraphQLService";
 import { GET_PROJECT_QUERY } from "./queries";
-import { IProjectModel, ProjectCategory, ProjectModel } from "./models";
+import { IProjectModel, ProjectModel } from "./models";
 import { JsonSerializer } from "typescript-json-serializer";
+import { GET_PROJECTS_QUERY } from "./queries/getProjectsQuery";
 
 const serializer = new JsonSerializer();
 export class ProjectService {
@@ -33,11 +34,11 @@ export class ProjectService {
       projectUrl: data.projectBy?.projectFields?.projectUrl || "",
       thumbnailUrl:
         data.projectBy?.projectFields?.thumbnail?.node.sourceUrl || "",
-      category:
-        // @ts-ignore
-        ProjectCategory[
-          data.projectBy?.projectFields?.category?.edges[0].node.name || "Dapp"
-        ],
+      categories: data.projectBy?.projectFields?.category?.edges
+        .map((c) => c.node.name)
+        .filter((c) => {
+          return typeof c === "string";
+        }) || ["Dapp"],
     };
 
     const project =
@@ -45,5 +46,38 @@ export class ProjectService {
       null;
 
     return project;
+  }
+
+  public async getProjects(): Promise<Array<ProjectModel>> {
+    const { data } = await GraphQLService.instance.client.query({
+      query: GET_PROJECTS_QUERY,
+    });
+
+    if (!data) return [];
+
+    const projectsInfo: IProjectModel[] | null = data.projects
+      ? data.projects?.edges.map((edge) => {
+          return {
+            title: edge.node.title || "",
+            description: edge.node.projectFields?.description || "",
+            projectUrl: edge.node.projectFields?.projectUrl || "",
+            thumbnailUrl: edge.node.projectFields?.thumbnail?.node.guid || "",
+            categories: edge.node.projectFields?.category?.edges
+              .map((c) => c.node.name)
+              .filter((c) => {
+                return typeof c === "string";
+              }) || ["Dapp"],
+          };
+        })
+      : null;
+
+    if (!projectsInfo) return [];
+
+    const projects = (serializer.deserializeObjectArray<ProjectModel>(
+      projectsInfo,
+      ProjectModel
+    ) || []) as Array<ProjectModel>;
+
+    return projects;
   }
 }
