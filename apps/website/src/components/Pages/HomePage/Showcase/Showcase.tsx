@@ -163,28 +163,20 @@ const Showcase = (props: ShowcaseProps) => {
           />
         </div>
       )}
-
-      <div
-        className={`
-          wrapper tw-flex tw-flex-col tw-items-center tw-justify-center
-          tw-gap-[10px]
-
-          xl:tw-gap-5
-        `}
-      >
-        <div className={`title-wrapper tw-text-center`}>
-          <h2 className={`title`}>
-            Check out{" "}
-            <span
-              className={`
-                cs-text-color-primary-gradient tw-font-normal tw-font-bowlby-one
-              `}
-            >
-              our work
-            </span>
-            .
-          </h2>
-        </div>
+      <div className={`title-wrapper tw-text-center`}>
+        <h2 className={`title`}>
+          Check out{" "}
+          <span
+            className={`
+              cs-text-color-primary-gradient tw-font-normal tw-font-bowlby-one
+            `}
+          >
+            our work
+          </span>
+          .
+        </h2>{" "}
+      </div>
+      <div className={`carousel-wrapper tw-w-full tw-max-w-full`}>
         <Carousel
           projects={[
             {
@@ -219,7 +211,6 @@ const Showcase = (props: ShowcaseProps) => {
           }}
         />
       </div>
-
       <div
         className={`
           bottom-bars tw-w-screen
