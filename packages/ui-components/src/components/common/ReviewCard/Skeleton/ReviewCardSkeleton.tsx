@@ -63,11 +63,11 @@ const ReviewCardSkeleton = (props: ReviewCardSkeletonProps) => {
               <Skeleton
                 className={cn(
                   `
-                    review-card-user-name tw-mb-[6px] tw-h-[35px] tw-w-[150px]
+                    review-card-user-name tw-mb-[6px] tw-h-[25px] tw-w-[150px]
                     tw-self-stretch tw-font-inter tw-text-2xl tw-font-black
                     tw-leading-[35px] tw-text-headings
 
-                    lg:tw-h-[35px] lg:tw-w-[305px]
+                    lg:tw-h-[30px] lg:tw-w-[305px]
                   `
                 )}
               />
@@ -75,16 +75,23 @@ const ReviewCardSkeleton = (props: ReviewCardSkeletonProps) => {
                 <>
                   <Skeleton
                     className={`
-                      review-card-country-flag tw-h-[.9rem] tw-w-5
-                      tw-rounded-[.3rem] tw-object-cover
+                      review-card-country-flag tw-mb-[6px] tw-h-[25px]
+                      tw-w-[34.7px] tw-rounded-[.3rem] tw-object-cover
                     `}
                   />
                 </>
               )}
             </div>
-            {width && width <= 992 ? (
+            <div
+              className={cn(`
+                tw-block
+
+                lg:tw-hidden
+              `)}
+            >
               <Rating ratingValue={5} isSkeleton />
-            ) : (
+            </div>
+            {(!width || width > 992) && (
               <div
                 className={cn(
                   `
@@ -112,32 +119,39 @@ const ReviewCardSkeleton = (props: ReviewCardSkeletonProps) => {
             )}
           </div>
         </div>
-        {width && width > 992 && <Rating ratingValue={5} isSkeleton />}
+        <div
+          className={cn(`
+            tw-hidden
 
+            lg:tw-block
+          `)}
+        >
+          <Rating ratingValue={5} isSkeleton />
+        </div>
         <Skeleton
           className={`
-            tw-h-[16px] tw-w-[285px] tw-rounded-lg
-
-            lg:tw-h-[20px] lg:tw-w-[372px]
-          `}
-        />
-        <Skeleton
-          className={`
-            tw-h-[16px] tw-w-[285px] tw-rounded-lg
-
-            lg:tw-h-[20px] lg:tw-w-[372px]
-          `}
-        />
-        <Skeleton
-          className={`
-            tw-h-[16px] tw-w-[285px] tw-rounded-lg
+            tw-h-[14px] tw-w-[285px] tw-rounded-lg
 
             lg:tw-h-[20px] lg:tw-w-[372px]
           `}
         />
         <Skeleton
           className={`
-            tw-h-[16px] tw-w-[200px] tw-rounded-lg
+            tw-h-[14px] tw-w-[285px] tw-rounded-lg
+
+            lg:tw-h-[20px] lg:tw-w-[372px]
+          `}
+        />
+        <Skeleton
+          className={`
+            tw-h-[14px] tw-w-[285px] tw-rounded-lg
+
+            lg:tw-h-[20px] lg:tw-w-[372px]
+          `}
+        />
+        <Skeleton
+          className={`
+            tw-h-[14px] tw-w-[200px] tw-rounded-lg
 
             lg:tw-h-[20px] lg:tw-w-[253px]
           `}
