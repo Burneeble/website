@@ -10,6 +10,7 @@ import { useClientInfoService } from "@/services";
 import { Rating } from "./components";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { useScrollLock } from "@/hooks/useScrollLock";
 
 const ReviewCard = (props: ReviewCardProps) => {
   //States
@@ -19,6 +20,7 @@ const ReviewCard = (props: ReviewCardProps) => {
   //Hooks
   const { width } = useClientInfoService();
   const reviewPopupRef = useRef<HTMLDivElement>(null);
+  const { lockScroll, unlockScroll } = useScrollLock();
 
   //Effects
   useEffect(() => {
@@ -201,6 +203,11 @@ const ReviewCard = (props: ReviewCardProps) => {
       )}
     </div>
   );
+
+  useEffect(() => {
+    if (isPopupOpen) lockScroll();
+    else unlockScroll();
+  }, [isPopupOpen]);
 
   return (
     <>
