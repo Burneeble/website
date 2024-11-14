@@ -189,23 +189,14 @@ const Showcase = (props: ShowcaseProps) => {
             .
           </h2>
         </div>
-        <div
-          className={`
-            labels tw-justify-center tw-items-center tw-gap-3 tw-inline-flex
-          `}
-        >
-          <Label text={"Mint DApp"} />
-          <Label text={"Crossmint"} />
-          <Label text={"Ethereum"} />
-        </div>
         <Carousel
-          images={[
-            "https://picsum.photos/500",
-            "https://picsum.photos/600",
-            "https://picsum.photos/1920/1080",
-            "https://picsum.photos/800/900",
-            "https://picsum.photos/100",
-            "https://picsum.photos/500/325",
+          projects={[
+            { thumbnail: "https://picsum.photos/500", categories: [] },
+            { thumbnail: "https://picsum.photos/600", categories: [] },
+            { thumbnail: "https://picsum.photos/1920/1080", categories: [] },
+            { thumbnail: "https://picsum.photos/800/900", categories: [] },
+            { thumbnail: "https://picsum.photos/100", categories: [] },
+            { thumbnail: "https://picsum.photos/500/325", categories: [] },
           ]}
           cta={{
             children: "See All Projects",

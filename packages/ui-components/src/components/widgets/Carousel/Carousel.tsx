@@ -12,6 +12,7 @@ import {
 import { Button } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import { useClientInfoService } from "@/services";
+import { Label } from "@/components/common";
 
 const Carousel = (props: CarouselProps) => {
   //Hooks
@@ -52,25 +53,41 @@ const Carousel = (props: CarouselProps) => {
         loopAdditionalSlides={2}
         lazyPreloadPrevNext={1}
       >
-        {props.images.map((image, i) => {
+        {props.projects.map((proj, i) => {
           return (
             <SwiperSlide
               className={`
-                corousel-slide tw-duration-400 tw-flex tw-aspect-[1920/1080]
-                !tw-w-full tw-items-center tw-justify-center tw-border-4
-                tw-border-solid tw-border-primary tw-bg-black
-                tw-transition-transform tw-ease-in-out
+                corousel-slide tw-duration-400 tw-flex !tw-w-full
+                tw-items-center tw-justify-center tw-transition-transform
+                tw-ease-in-out
               `}
               key={i}
             >
-              <img
-                src={image}
-                alt={""}
-                width={1920}
-                height={1080}
-                className="carousel-image tw-h-full tw-w-auto"
-                loading="lazy"
-              />
+              <div
+                className={`
+                  labels tw-inline-flex tw-items-center tw-justify-center
+                  tw-gap-3
+                `}
+              >
+                {proj.categories.map((category, i) => {
+                  return <Label key={i} text={category} />;
+                })}
+              </div>
+              <div
+                className={`
+                  carousel-image-wrapper tw-aspect-[1920/1080] tw-border-4
+                  tw-border-solid tw-border-primary tw-bg-black
+                `}
+              >
+                <img
+                  src={proj.thumbnail}
+                  alt={""}
+                  width={1920}
+                  height={1080}
+                  className="carousel-image tw-h-full tw-w-auto"
+                  loading="lazy"
+                />
+              </div>
             </SwiperSlide>
           );
         })}
