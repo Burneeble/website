@@ -31,11 +31,20 @@ const Footer = (props: FooterProps) => {
       const tl = gsap.timeline();
       console.log("timeline", tl);
 
-      tl.to(".gradient-three", {
+      tl.to(".footer-content", {
         duration: 0.2,
-        height: "95px",
+        backgroundColor: "rgba(255, 92, 1, 1)",
         ease: "power2.out",
       })
+        .to(
+          ".gradient-three",
+          {
+            duration: 0.2,
+            height: "95px",
+            ease: "power2.out",
+          },
+          "-=0.1"
+        )
         .to(
           ".gradient-two",
           {
@@ -59,14 +68,14 @@ const Footer = (props: FooterProps) => {
 
       tl.to(".gradient-one", {
         duration: 0.2,
-        height: "0px",
+        height: "80px",
         ease: "power2.in",
       })
         .to(
           ".gradient-two",
           {
             duration: 0.2,
-            height: "0px",
+            height: "80px",
             ease: "power2.in",
           },
           "-=0.1"
@@ -75,8 +84,17 @@ const Footer = (props: FooterProps) => {
           ".gradient-three",
           {
             duration: 0.2,
-            height: "0px",
+            height: "80px",
             ease: "power2.in",
+          },
+          "-=0.1"
+        )
+        .to(
+          ".footer-content",
+          {
+            duration: 0.2,
+            backgroundColor: "rgba(0, 0, 0, 1)",
+            ease: "power2.out",
           },
           "-=0.1"
         );
@@ -88,24 +106,23 @@ const Footer = (props: FooterProps) => {
       <div className="footer tw-relative tw-h-[125px]">
         <div
           className={`
-            gradient gradient-one tw-h-[0px] tw-bg-[var(--primary-lighest)]
+            gradient gradient-one tw-h-[80px] tw-bg-[var(--primary-lighest)]
           `}
         />
         <div
           className={`
-            gradient gradient-two tw-h-[0px] tw-bg-[var(--primary-lighter)]
+            gradient gradient-two tw-h-[80px] tw-bg-[var(--primary-lighter)]
           `}
         />
         <div
           className={`
-            gradient gradient-three tw-h-[0px] tw-bg-[var(--primary-light)]
+            gradient gradient-three tw-h-[80px] tw-bg-[var(--primary-light)]
           `}
         />
         <div
           className={`
-            content gradient tw-z-10 tw-flex tw-h-[80px] tw-items-center
-            tw-justify-center tw-bg-gradient-to-t tw-from-[#FF5C01]
-            tw-to-[var(--primary-default)]
+            footer-content gradient tw-z-10 tw-flex tw-h-[80px] tw-items-center
+            tw-justify-center tw-transition-all
           `}
         >
           <h2
