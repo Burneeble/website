@@ -11,6 +11,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+import { Flame } from "@burneeble/icons";
 
 const Congrats = (props: CongratsProps) => {
   //States
@@ -72,22 +73,16 @@ const Congrats = (props: CongratsProps) => {
         setCurrentIndex((prev) => prev + 1);
       } else {
         setCurrentIndex(0);
-        setWrongCode(true);
-        setTimeout(() => {
-          setWrongCode(false);
-        }, 500);
+        if (currentIndex > 0) {
+          setWrongCode(true);
+          setTimeout(() => {
+            setWrongCode(false);
+          }, 500);
+        }
       }
       setUserInput(null);
     }
   }, [userInput]);
-
-  useEffect(() => {
-    if (currentIndex >= combination.length) {
-      setTimeout(() => {
-        alert("You win a prize");
-      }, 500);
-    }
-  }, [currentIndex]);
 
   //Methods
   const handleKeyDown = (e: KeyboardEvent) => {
@@ -148,36 +143,42 @@ const Congrats = (props: CongratsProps) => {
           )}
         >
           {combination.map((item, i) => {
-            switch (item) {
-              case "ArrowUp":
-              case "ArrowDown":
-              case "ArrowLeft":
-              case "ArrowRight":
-                return (
-                  <FontAwesomeIcon
-                    className={cn(
-                      currentIndex > i &&
-                        `digit fontawesome-gradient-icon tw-animate-cs-pulse`
-                    )}
-                    key={i}
-                    icon={arrowsIcons[item]}
-                  />
-                );
-              default:
-                return (
-                  <span
-                    className={cn(
-                      currentIndex > i &&
-                        `
-                          digit cs-text-color-primary-gradient
-                          tw-animate-cs-pulse
-                        `
-                    )}
-                    key={i}
-                  >
-                    {item}
-                  </span>
-                );
+            if (currentIndex >= combination.length) {
+              return <Flame className="tw-w-[60px] tw-aspect-square" key={i} />;
+            } else {
+              switch (item) {
+                case "ArrowUp":
+                case "ArrowDown":
+                case "ArrowLeft":
+                case "ArrowRight":
+                  return (
+                    <FontAwesomeIcon
+                      className={cn(
+                        "tw-w-[60px] tw-aspect-square",
+                        currentIndex > i &&
+                          `digit fontawesome-gradient-icon tw-animate-cs-pulse`
+                      )}
+                      key={i}
+                      icon={arrowsIcons[item]}
+                    />
+                  );
+                default:
+                  return (
+                    <span
+                      className={cn(
+                        "tw-w-[60px] tw-aspect-square",
+                        currentIndex > i &&
+                          `
+                            digit cs-text-color-primary-gradient
+                            tw-animate-cs-pulse
+                          `
+                      )}
+                      key={i}
+                    >
+                      {item}
+                    </span>
+                  );
+              }
             }
           })}
         </div>
