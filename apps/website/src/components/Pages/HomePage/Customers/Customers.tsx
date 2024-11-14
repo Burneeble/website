@@ -184,10 +184,6 @@ const Customers = (props: CustomersProps) => {
                 sentence tw-transition-all tw-duration-200 tw-ease-in-out
                 tw-absolute tw-top-[.5rem] tw-right-0 tw-text-end
 
-                md:tw-right-[31px]
-
-                xl:tw-right-[20px]
-
                 ${phraseIndex === i ? "tw-opacity-1" : "tw-opacity-0"}
               `}
             >
