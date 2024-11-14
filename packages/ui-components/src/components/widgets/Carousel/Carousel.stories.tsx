@@ -13,12 +13,30 @@ type Story = StoryObj<CarouselProps>;
 export const simpleCarousel: Story = {
   args: {
     projects: [
-      { thumbnail: "https://picsum.photos/500", categories: [] },
-      { thumbnail: "https://picsum.photos/600", categories: [] },
-      { thumbnail: "https://picsum.photos/1920/1080", categories: [] },
-      { thumbnail: "https://picsum.photos/800/900", categories: [] },
-      { thumbnail: "https://picsum.photos/100", categories: [] },
-      { thumbnail: "https://picsum.photos/500/325", categories: [] },
+      {
+        thumbnail: "https://picsum.photos/500",
+        categories: ["Mint Dapp", "Crossmint Integration", "Ethereum"],
+      },
+      {
+        thumbnail: "https://picsum.photos/600",
+        categories: ["Mint Dapp", "Crossmint Integration", "Ethereum"],
+      },
+      {
+        thumbnail: "https://picsum.photos/1920/1080",
+        categories: ["Mint Dapp", "Crossmint Integration", "Ethereum"],
+      },
+      {
+        thumbnail: "https://picsum.photos/800/900",
+        categories: ["Mint Dapp", "Crossmint Integration", "Ethereum"],
+      },
+      {
+        thumbnail: "https://picsum.photos/100",
+        categories: ["Mint Dapp", "Crossmint Integration", "Ethereum"],
+      },
+      {
+        thumbnail: "https://picsum.photos/500/325",
+        categories: ["Mint Dapp", "Crossmint Integration", "Ethereum"],
+      },
     ],
     cta: {
       children: "See All Projects",

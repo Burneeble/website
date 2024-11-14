@@ -1,10 +1,18 @@
 .carousel-wrapper {
   .carousel {
-    .swiper-slide {
-      @apply tw-transform tw-translate-y-[-40px];
+    .corousel-slide {
+      @apply tw-transform tw-translate-y-[-66.4px];
+
+      .labels {
+        @apply tw-opacity-0;
+      }
 
       &.swiper-slide-active {
         @apply tw-transform tw-translate-y-0;
+
+        .labels {
+          @apply tw-opacity-100;
+        }
       }
     }
 

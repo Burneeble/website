@@ -57,16 +57,16 @@ const Carousel = (props: CarouselProps) => {
           return (
             <SwiperSlide
               className={`
-                corousel-slide tw-duration-400 tw-flex !tw-w-full
-                tw-items-center tw-justify-center tw-transition-transform
-                tw-ease-in-out
+                corousel-slide tw-duration-400 tw-flex !tw-w-full tw-flex-col
+                tw-items-center tw-justify-center tw-gap-[20px]
+                tw-transition-transform tw-ease-in-out
               `}
               key={i}
             >
               <div
                 className={`
                   labels tw-inline-flex tw-items-center tw-justify-center
-                  tw-gap-3
+                  tw-gap-3 tw-transition-all tw-duration-200 tw-ease-in-out
                 `}
               >
                 {proj.categories.map((category, i) => {
@@ -75,8 +75,9 @@ const Carousel = (props: CarouselProps) => {
               </div>
               <div
                 className={`
-                  carousel-image-wrapper tw-aspect-[1920/1080] tw-border-4
-                  tw-border-solid tw-border-primary tw-bg-black
+                  carousel-image-wrapper tw-flex tw-aspect-[1920/1080] tw-w-full
+                  tw-items-center tw-justify-center tw-border-4 tw-border-solid
+                  tw-border-primary tw-bg-black
                 `}
               >
                 <img
