@@ -2,6 +2,7 @@ import React from "react";
 import { RatingProps } from "./Rating.types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faStarHalf } from "@fortawesome/free-solid-svg-icons";
+import { cn } from "@/lib/utils";
 
 const Rating = (props: RatingProps) => {
   const roundedRating = Math.round(props.ratingValue * 2) / 2;
@@ -11,11 +12,14 @@ const Rating = (props: RatingProps) => {
     if (starIndex <= roundedRating) {
       return (
         <FontAwesomeIcon
-          className={`
-            fontawesome-gradient-icon tw-h-5 tw-w-5
+          className={cn(
+            `
+              tw-h-5 tw-w-5
 
-            lg:tw-h-8 lg:tw-w-8
-          `}
+              lg:tw-h-8 lg:tw-w-8
+            `,
+            props.isSkeleton ? "skeleton-gradient" : "fontawesome-gradient-icon"
+          )}
           key={starIndex}
           icon={faStar}
           style={{ color: "#ffce00" }}

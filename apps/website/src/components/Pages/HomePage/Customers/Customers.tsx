@@ -6,12 +6,12 @@ import {
   NotificationHandler,
   ReviewCard,
   ReviewCardProps,
+  ReviewCardSkeleton,
   useClientInfoService,
 } from "@burneeble/ui-components";
 import { CustomersProps } from "./Customers.types";
 import { useEffect, useState } from "react";
 import { useReviewService } from "@/services/ReviewService";
-import Skeleton from "react-loading-skeleton";
 
 const Customers = (props: CustomersProps) => {
   //States
@@ -93,10 +93,8 @@ const Customers = (props: CustomersProps) => {
     >
       <h2
         className={`
-          <<<<<<< HEAD cs-website-horizontal-padding cs-website-max-width
-          tw-text-center ======= title tw-w-fit tw-mx-auto tw-max-w-screen-xl
-          tw-px-[20px] tw-text-center >>>>>>>
-          e49aaf65625de523df5f5505538b7dd3d79ec073
+          cs-website-horizontal-padding cs-website-max-width title
+          tw-text-center
 
           md:tw-px-[31px]
 
@@ -131,7 +129,7 @@ const Customers = (props: CustomersProps) => {
             setPhraseIndex(Math.round((clampedValue / 100) * 6));
           }}
         >
-          <div className="tw-w-fit tw-overflow-visible">
+          <div className="tw-w-fit tw-overflow-visible tw-py-[20px]">
             {reviews ? (
               screen == "sm" || screen == "md" ? (
                 <>
@@ -148,7 +146,7 @@ const Customers = (props: CustomersProps) => {
                 </>
               ) : (
                 <>
-                  <div className="review-row tw-mt-[20px]">
+                  <div className="review-row">
                     {reviews.map((review, i) => {
                       return <ReviewCard key={i} {...review} />;
                     })}
@@ -158,17 +156,8 @@ const Customers = (props: CustomersProps) => {
             ) : (
               <>
                 <div className="review-row">
-                  {Array.from({ length: 10 }).map((_, index) => (
-                    <Skeleton
-                      key={index}
-                      className={`
-                        tw-block tw-h-[177.40px] tw-w-[325px] tw-rounded-lg
-
-                        lg:tw-h-[259px] lg:tw-w-[412px]
-
-                        md:tw-h-[200px] md:tw-w-[325px]
-                      `}
-                    />
+                  {Array.from({ length: 10 }).map((_, i) => (
+                    <ReviewCardSkeleton key={i} />
                   ))}
                 </div>
               </>
@@ -193,7 +182,7 @@ const Customers = (props: CustomersProps) => {
               key={i}
               className={`
                 sentence tw-transition-all tw-duration-200 tw-ease-in-out
-                tw-absolute tw-top-[.5rem] tw-right-[20px] tw-text-end
+                tw-absolute tw-top-[.5rem] tw-right-0 tw-text-end
 
                 md:tw-right-[31px]
 
