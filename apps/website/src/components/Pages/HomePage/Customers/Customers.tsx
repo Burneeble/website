@@ -88,7 +88,7 @@ const Customers = (props: CustomersProps) => {
       className={`
         customers cs-website-horizontal-padding cs-website-vertical-padding
         cs-gap-between-content tw-flex tw-items-center tw-justify-center
-        tw-flex-col tw-relative
+        tw-flex-col tw-relative tw-z-[2]
       `}
     >
       <h2

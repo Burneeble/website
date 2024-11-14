@@ -186,8 +186,8 @@ const Showcase = (props: ShowcaseProps) => {
               shape tw-w-[306px] tw-h-[307px] tw-left-0 -tw-translate-x-[40%]
               tw-top-[10rem] tw-opacity-[.4]
 
-              xl:tw-w-[597] xl:tw-h-[597px] xl:tw-top-0 xl:-tw-left-[150px]
-              xl:-tw-translate-y-[30%]
+              xl:tw-w-[897px] xl:tw-h-[897px] xl:tw-top-0 xl:-tw-left-[150px]
+              xl:-tw-translate-y-[40%]
             `}
           />
           <div
@@ -195,8 +195,8 @@ const Showcase = (props: ShowcaseProps) => {
               shape tw-w-[257px] tw-h-[256px] tw-right-0 tw-translate-x-[40%]
               tw-top-[10rem] tw-opacity-[.6]
 
-              xl:tw-w-[447] xl:tw-h-[447px] xl:tw-top-0 xl:-tw-right-[150px]
-              xl:-tw-translate-y-[30%]
+              xl:tw-w-[647px] xl:tw-h-[647px] xl:tw-top-0 xl:-tw-right-[150px]
+              xl:-tw-translate-y-1/2
             `}
           />
         </>
