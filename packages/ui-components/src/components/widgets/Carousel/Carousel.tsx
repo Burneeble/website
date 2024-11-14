@@ -31,8 +31,8 @@ const Carousel = (props: CarouselProps) => {
   return (
     <div
       className={`
-        carousel-wrapper tw-h-[calc((80vw*1080/1920)+90px)] tw-max-h-[43rem]
-        tw-max-w-full
+        carousel-wrapper tw-h-[calc((80vw*1080/1920)+90px)] tw-w-full
+        tw-max-w-[100vw]
       `}
     >
       <Swiper
@@ -66,7 +66,7 @@ const Carousel = (props: CarouselProps) => {
               <div
                 className={`
                   labels tw-inline-flex tw-items-center tw-justify-center
-                  tw-gap-3 tw-transition-all tw-duration-200 tw-ease-in-out
+                  tw-gap-3 tw-transition-all tw-duration-500 tw-ease-in-out
                 `}
               >
                 {proj.categories.map((category, i) => {
