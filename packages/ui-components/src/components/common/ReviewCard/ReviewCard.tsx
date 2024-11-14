@@ -45,6 +45,11 @@ const ReviewCard = (props: ReviewCardProps) => {
     };
   }, [reviewPopupRef]);
 
+  useEffect(() => {
+    if (isPopupOpen) lockScroll();
+    else unlockScroll();
+  }, [isPopupOpen]);
+
   const component = (
     <div
       className={cn(
@@ -128,10 +133,15 @@ const ReviewCard = (props: ReviewCardProps) => {
             <Rating ratingValue={props.rating} />
           ) : (
             <div
-              className={`
-                review-card-user-country tw-inline-flex tw-items-center
-                tw-justify-start tw-gap-2.5 tw-self-stretch
-              `}
+              className={cn(
+                `
+                  review-card-user-country tw-inline-flex tw-items-center
+                  tw-gap-2.5 tw-self-stretch
+                `,
+                props.variant === "popup"
+                  ? "tw-justify-center"
+                  : `tw-justify-start`
+              )}
             >
               <div
                 className={`
@@ -203,11 +213,6 @@ const ReviewCard = (props: ReviewCardProps) => {
       )}
     </div>
   );
-
-  useEffect(() => {
-    if (isPopupOpen) lockScroll();
-    else unlockScroll();
-  }, [isPopupOpen]);
 
   return (
     <>
