@@ -56,10 +56,10 @@ const Carousel = (props: CarouselProps) => {
           return (
             <SwiperSlide
               className={`
-                tw-duration-400 tw-flex tw-aspect-[1920/1080] !tw-w-full
-                tw-items-center tw-justify-center tw-border-4 tw-border-solid
-                tw-border-primary tw-bg-black tw-transition-transform
-                tw-ease-in-out
+                corousel-slide tw-duration-400 tw-flex tw-aspect-[1920/1080]
+                !tw-w-full tw-items-center tw-justify-center tw-border-4
+                tw-border-solid tw-border-primary tw-bg-black
+                tw-transition-transform tw-ease-in-out
               `}
               key={i}
             >
@@ -81,7 +81,7 @@ const Carousel = (props: CarouselProps) => {
         >
           <FontAwesomeIcon
             icon={faChevronRight}
-            className={`!tw-h-3/5 !tw-w-3/5`}
+            className={`next-icon !tw-h-3/5 !tw-w-3/5`}
           />
         </Button>
         {props.cta && (
@@ -91,7 +91,10 @@ const Carousel = (props: CarouselProps) => {
               ...{
                 className: cn(
                   props.cta.className,
-                  `carousel-button tw-left-1/2 -tw-translate-x-1/2`
+                  `
+                    carousel-button custom-button tw-left-1/2
+                    -tw-translate-x-1/2
+                  `
                 ),
               },
             }}
@@ -104,7 +107,7 @@ const Carousel = (props: CarouselProps) => {
         >
           <FontAwesomeIcon
             icon={faChevronLeft}
-            className="!tw-h-3/5 !tw-w-3/5"
+            className="prev-icon !tw-h-3/5 !tw-w-3/5"
           />
         </Button>
       </Swiper>
