@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { CustomScrollbarProps } from "./CustomScrollbar.types";
+import { useClientInfoService } from "@/services";
 
 const CustomScrollbar = (props: CustomScrollbarProps) => {
   // States
@@ -13,6 +14,8 @@ const CustomScrollbar = (props: CustomScrollbarProps) => {
   const [horizontalThumbLeft, setHorizontalThumbLeft] = useState<number>(0);
 
   //Hooks
+
+  const { isClient } = useClientInfoService();
 
   // Refs to track content and scrollbar elements
   const contentRef = useRef<HTMLDivElement>(null);
@@ -28,16 +31,17 @@ const CustomScrollbar = (props: CustomScrollbarProps) => {
   // Update thumb sizes whenever content or layout changes
   useEffect(() => {
     const content = contentRef.current;
-    if (!content) return;
+    if (!content || !isClient) return;
 
     const observer = new ResizeObserver(updateThumbSizes);
 
+    content.childNodes.forEach((node) => observer.observe(node as Element));
     // Observe content for resizing
     observer.observe(content);
 
     // Cleanup on unmount
     return () => observer.disconnect();
-  }, []);
+  }, [contentRef.current, isClient]);
 
   // Effect to update thumb sizes on load, scroll, or resize
   useEffect(() => {

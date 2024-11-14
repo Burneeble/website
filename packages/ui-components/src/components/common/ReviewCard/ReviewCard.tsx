@@ -16,6 +16,7 @@ const ReviewCard = (props: ReviewCardProps) => {
   //States
   const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false);
   const [isClosing, setIsClosing] = useState<boolean>(false);
+  const [isFirstRender, setFirstRender] = useState<boolean>(true);
 
   //Hooks
   const { width } = useClientInfoService();
@@ -46,8 +47,11 @@ const ReviewCard = (props: ReviewCardProps) => {
   }, [reviewPopupRef]);
 
   useEffect(() => {
-    if (isPopupOpen) lockScroll();
-    else unlockScroll();
+    if (isFirstRender) setFirstRender(false);
+    else {
+      if (isPopupOpen) lockScroll();
+      else unlockScroll();
+    }
   }, [isPopupOpen]);
 
   const component = (
