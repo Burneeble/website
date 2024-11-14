@@ -16,22 +16,14 @@ const Label = (props: LabelProps) => {
           default: `
             label-default tw-text-white tw-shadow secondary-gradient
             tw-bg-gradient-to-tl tw-to-70%
-
-            before:tw-bg-gradient-to-r before:tw-to-90%
-            before:primary-light-gradient-to-secondary
           `,
           active: `
             label-active tw-text-white tw-shadow primary-gradient-to-secondary
             tw-bg-gradient-to-tl tw-to-80%
-
-            before:tw-bg-gradient-to-r before:tw-to-90%
-            before:primary-light-gradient-to-secondary
           `,
           disabled: `
             label-disabled tw-text-white tw-shadow-sm secondary-gradient
             tw-bg-gradient-to-tl tw-to-70%
-
-            before:tw-bg-[var(--neutral-default)]
           `,
         },
         size: {
@@ -53,19 +45,30 @@ const Label = (props: LabelProps) => {
   );
 
   return (
-    <label
+    <div
       className={cn(
-        "label",
-        labelVariants({
-          variant: props.variant,
-          size: props.size,
-          className: props.className,
-        }),
-        "tw-relative"
+        `label-wrapper tw-inline-block tw-rounded-[9px] tw-p-[0.1rem]`,
+        (props.variant === "default" || !props.variant) &&
+          "tw-bg-gradient-to-r tw-to-90% primary-light-gradient-to-secondary",
+        props.variant === "active" &&
+          `tw-bg-gradient-to-r tw-to-90% primary-light-gradient-to-secondary`,
+        props.variant === "disabled" && "tw-bg-[var(--neutral-default)]"
       )}
     >
-      {props.text}
-    </label>
+      <label
+        className={cn(
+          "label",
+          labelVariants({
+            variant: props.variant,
+            size: props.size,
+            className: props.className,
+          }),
+          "tw-relative"
+        )}
+      >
+        {props.text}
+      </label>
+    </div>
   );
 };
 
