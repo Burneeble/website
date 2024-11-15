@@ -15,6 +15,7 @@ import {
 const Projects = (props: ProjectsProps) => {
   //States
   const [projects, setProjects] = useState<Array<ProjectModel> | null>(null);
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
   //Hooks
   const { getProjects } = useProjectService();
@@ -65,25 +66,75 @@ const Projects = (props: ProjectsProps) => {
           className={`
             header tw-h-[58px] tw-justify-between tw-items-center tw-inline-flex
             tw-w-full tw-gap-[20px]
+
+            md:tw-flex-col md:tw-gap-[10px] md:tw-h-[123px] md:tw-items-start
           `}
         >
           <div
             className={`
               title tw-text-white tw-text-2xl tw-font-normal tw-font-bowlby-one
+
+              lg:tw-text-5xl
+
+              md:tw-text-4xl
             `}
           >
-            GALLERY
+            {screen === "sm" ? (
+              "GALLERY"
+            ) : (
+              <>
+                Gallery{" "}
+                <span className={`cs-text-color-primary-gradient`}>
+                  on Fire!
+                </span>
+              </>
+            )}
           </div>
           <div
             className={`
               icons tw-justify-end tw-items-center tw-gap-[5px] tw-flex
+
+              md:tw-w-full
             `}
           >
-            <div className={`icon`}>
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
+            <div
+              className={`
+                icon
+
+                md:tw-flex-1
+              `}
+            >
+              {screen !== "sm" && (
+                <input
+                  value={searchQuery}
+                  onChange={(e) => {
+                    setSearchQuery(e.target.value);
+                  }}
+                  placeholder="Search..."
+                  className={`
+                    tw-flex-1 tw-bg-[rgba(0,0,0,0)] tw-text-2xl tw-font-inter
+                    tw-outline-none
+                  `}
+                />
+              )}
+              <FontAwesomeIcon
+                icon={faMagnifyingGlass}
+                className={`
+                  tw-transition-all tw-duration-200 tw-ease-in-out
+
+                  hover:tw-text-headings
+                `}
+              />
             </div>
             <div className={`icon`}>
-              <FontAwesomeIcon icon={faFilter} />
+              <FontAwesomeIcon
+                icon={faFilter}
+                className={`
+                  tw-transition-all tw-duration-200 tw-ease-in-out
+
+                  hover:tw-text-headings
+                `}
+              />
             </div>
           </div>
         </div>
