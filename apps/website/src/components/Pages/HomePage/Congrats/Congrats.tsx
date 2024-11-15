@@ -144,7 +144,16 @@ const Congrats = (props: CongratsProps) => {
         >
           {combination.map((item, i) => {
             if (currentIndex >= combination.length) {
-              return <Flame className="tw-w-[60px] tw-aspect-square" key={i} />;
+              return (
+                <Flame
+                  className={`
+                    tw-w-[60px] tw-aspect-square tw-animate-cs-zoom-in
+                    tw-animate tw-scale-0
+                  `}
+                  style={{ animationDelay: `${0.075 * i}s` }}
+                  key={i}
+                />
+              );
             } else {
               switch (item) {
                 case "ArrowUp":

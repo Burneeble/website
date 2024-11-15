@@ -263,6 +263,17 @@ const config = {
             transform: "translateX(0)",
           },
         },
+        "cs-zoom-in": {
+          "0%": {
+            transform: "scale(0)",
+          },
+          "95%": {
+            transform: "scale(1.2)",
+          },
+          "100%": {
+            transform: "scale(1)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -271,6 +282,7 @@ const config = {
         "cs-fade-out": "cs-fade-out 0.2s ease-in-out",
         "cs-pulse": "cs-pulse 0.5s ease-in-out",
         "cs-wrong": "cs-wrong 0.5s ease-in-out",
+        "cs-zoom-in": "cs-zoom-in 0.15s ease-in-out forwards",
       },
     },
   },
