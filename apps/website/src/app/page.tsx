@@ -2,6 +2,7 @@ import {
   Congrats,
   Contact,
   Customers,
+  Emoji,
   Hero,
   Showcase,
 } from "@/components/Pages";
@@ -39,6 +40,7 @@ export default async function Home() {
       >
         <Hero />
         <Customers />
+        <Emoji />
         <Showcase projects={projects} />
         <Contact />
         <Congrats />
