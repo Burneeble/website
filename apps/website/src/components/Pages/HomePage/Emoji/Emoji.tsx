@@ -18,8 +18,12 @@ const Emoji = (props: EmojiProps) => {
       ></div>
       <div
         className={`
-          text tw-text-center cs-s tw-font-bowlby-one tw-font-normal tw-text-7xl
+          text tw-text-center cs-s tw-font-bowlby-one tw-font-normal tw-text-3xl
           tw-text-headings tw-z-[2]
+
+          md:tw-text-5xl
+
+          xl:tw-text-7xl
         `}
       >
         Still{" "}
