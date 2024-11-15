@@ -67,12 +67,15 @@ const Projects = (props: ProjectsProps) => {
             header tw-h-[58px] tw-justify-between tw-items-center tw-inline-flex
             tw-w-full tw-gap-[20px]
 
+            lg:tw-flex-row lg:tw-h-[70px]
+
             md:tw-flex-col md:tw-gap-[10px] md:tw-h-[123px] md:tw-items-start
           `}
         >
           <div
             className={`
               title tw-text-white tw-text-2xl tw-font-normal tw-font-bowlby-one
+              tw-whitespace-nowrap
 
               lg:tw-text-5xl
 
@@ -101,6 +104,8 @@ const Projects = (props: ProjectsProps) => {
               className={`
                 icon
 
+                lg:tw-max-w-[630px]
+
                 md:tw-flex-1
               `}
             >
@@ -113,7 +118,7 @@ const Projects = (props: ProjectsProps) => {
                   placeholder="Search..."
                   className={`
                     tw-flex-1 tw-bg-[rgba(0,0,0,0)] tw-text-2xl tw-font-inter
-                    tw-outline-none
+                    tw-outline-none tw-text-headings
                   `}
                 />
               )}
@@ -126,16 +131,18 @@ const Projects = (props: ProjectsProps) => {
                 `}
               />
             </div>
-            <div className={`icon`}>
-              <FontAwesomeIcon
-                icon={faFilter}
-                className={`
-                  tw-transition-all tw-duration-200 tw-ease-in-out
+            {["sm", "md"].includes(screen) && (
+              <div className={`icon`}>
+                <FontAwesomeIcon
+                  icon={faFilter}
+                  className={`
+                    tw-transition-all tw-duration-200 tw-ease-in-out
 
-                  hover:tw-text-headings
-                `}
-              />
-            </div>
+                    hover:tw-text-headings
+                  `}
+                />
+              </div>
+            )}
           </div>
         </div>
         <div
@@ -162,7 +169,11 @@ const Projects = (props: ProjectsProps) => {
         <Button
           variant="secondary"
           fit={screen === "sm" ? "full" : "inline"}
-          className="!tw-bg-black tw-mx-auto tw-px-[75px]"
+          className={`
+            !tw-bg-black tw-mx-auto tw-px-[75px]
+
+            lg:tw-mr-0
+          `}
         >
           See More
         </Button>
