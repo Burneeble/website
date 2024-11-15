@@ -5,13 +5,13 @@ const ProjectPreview = (props: ProjectPreviewProps) => {
   return (
     <div
       className={`
-        tw-inline-flex tw-h-[279px] tw-w-[350px] tw-flex-col tw-items-start
-        tw-justify-start tw-gap-[10px] tw-rounded-lg
+        tw-inline-flex tw-w-full tw-flex-col tw-items-start tw-justify-start
+        tw-gap-[10px] tw-rounded-lg
       `}
     >
       <img
         className={`
-          tw-h-[199px] tw-w-full tw-self-stretch tw-rounded-tl-lg
+          tw-aspect-[1920/1080] tw-w-full tw-self-stretch tw-rounded-tl-lg
           tw-rounded-tr-lg tw-border tw-border-[var(--neutral-default)]
         `}
         src={props.thumbnail}
@@ -26,6 +26,8 @@ const ProjectPreview = (props: ProjectPreviewProps) => {
           className={`
             tw-font-inter tw-text-xl tw-font-black tw-leading-loose
             tw-text-headings
+
+            xl:tw-text-2xl
           `}
         >
           {props.title}
@@ -34,6 +36,8 @@ const ProjectPreview = (props: ProjectPreviewProps) => {
           className={`
             tw-self-stretch tw-font-inter tw-text-lg tw-font-normal tw-leading-7
             tw-text-headings
+
+            xl:tw-text-xl
           `}
         >
           {props.categories.join(" - ")}

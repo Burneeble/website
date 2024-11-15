@@ -6,15 +6,16 @@ const ProjectPreviewSkeleton = (props: ProjectPreviewSkeletonProps) => {
   return (
     <div
       className={`
-        project-preview-skeleton tw-flex tw-h-[279px] tw-w-[350px] tw-flex-col
-        tw-items-start tw-gap-[10px] tw-rounded-lg tw-border tw-border-red-300
+        project-preview-skeleton tw-flex tw-w-full tw-flex-col tw-items-start
+        tw-gap-[10px] tw-rounded-lg
       `}
     >
       <Skeleton
         className={`
-          tw-h-[199px] tw-w-[350px] tw-self-stretch tw-rounded-tl-lg
+          tw-aspect-[1920/1080] tw-w-full tw-self-stretch tw-rounded-tl-lg
           tw-rounded-tr-lg
         `}
+        containerClassName="!tw-w-full tw-aspect-[1920/1080]"
       />
 
       <div
