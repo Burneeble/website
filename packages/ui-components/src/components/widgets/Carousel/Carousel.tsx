@@ -50,8 +50,8 @@ const Carousel = (props: CarouselProps) => {
 
           max-sm:tw-w-full
         `}
-        loopAdditionalSlides={2}
-        lazyPreloadPrevNext={1}
+        loopAdditionalSlides={1}
+        lazyPreloadPrevNext={2}
       >
         {props.projects.map((proj, i) => {
           return (
@@ -69,7 +69,10 @@ const Carousel = (props: CarouselProps) => {
                   tw-gap-3 tw-transition-all tw-duration-500 tw-ease-in-out
                 `}
               >
-                {proj.categories.map((category, i) => {
+                {(proj.categories.length <= 3
+                  ? proj.categories
+                  : proj.categories.slice(0, 3)
+                ).map((category, i) => {
                   return <Label key={i} text={category} />;
                 })}
               </div>

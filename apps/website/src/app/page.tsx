@@ -5,6 +5,7 @@ import {
   Hero,
   Showcase,
 } from "@/components/Pages";
+import { ProjectService } from "@/services/ProjectService";
 import dynamic from "next/dynamic";
 import React from "react";
 
@@ -14,10 +15,21 @@ const HomePageProviders = dynamic(
 );
 
 export default async function Home() {
+  //SSR data fetching
+  const res = await ProjectService.instance.getProjects();
+  const projects = JSON.parse(
+    JSON.stringify(
+      res.map((project) => {
+        return {
+          thumbnail: project.thumbnailUrl,
+          categories: project.categories,
+        };
+      })
+    )
+  );
+
   return (
     <HomePageProviders>
-      {/* tw-from-0% tw-to-[8%] were in conflict with tw-from-[var(--secondary-darker)]
-          tw-to-[var(--secondary-base)]  */}
       <div
         className={`
           home-page tw-h-full tw-max-w-[100vw] tw-overflow-x-hidden
@@ -27,7 +39,7 @@ export default async function Home() {
       >
         <Hero />
         <Customers />
-        <Showcase />
+        <Showcase projects={projects} />
         <Contact />
         <Congrats />
       </div>

@@ -222,32 +222,7 @@ const Showcase = (props: ShowcaseProps) => {
       </div>
       <div className={`carousel-wrapper tw-w-full tw-max-w-full`}>
         <Carousel
-          projects={[
-            {
-              thumbnail: "https://picsum.photos/500",
-              categories: ["Mint Dapp", "Crossmint Integration", "Ethereum"],
-            },
-            {
-              thumbnail: "https://picsum.photos/600",
-              categories: ["Mint Dapp", "Crossmint Integration", "Ethereum"],
-            },
-            {
-              thumbnail: "https://picsum.photos/1920/1080",
-              categories: ["Mint Dapp", "Crossmint Integration", "Ethereum"],
-            },
-            {
-              thumbnail: "https://picsum.photos/800/900",
-              categories: ["Mint Dapp", "Crossmint Integration", "Ethereum"],
-            },
-            {
-              thumbnail: "https://picsum.photos/100",
-              categories: ["Mint Dapp", "Crossmint Integration", "Ethereum"],
-            },
-            {
-              thumbnail: "https://picsum.photos/500/325",
-              categories: ["Mint Dapp", "Crossmint Integration", "Ethereum"],
-            },
-          ]}
+          projects={props.projects}
           cta={{
             children: "See All Projects",
             variant: "secondary",
