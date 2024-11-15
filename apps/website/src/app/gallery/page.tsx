@@ -5,7 +5,7 @@ const GalleryPage = () => {
     <div
       className={`
         gallery-page cs-page tw-from-[var(--secondary-darker)]
-        tw-to-[var(--secondary-base)] tw-from-[20%] tw-to-[20%]
+        tw-to-[var(--secondary-base)] tw-from-[50%] tw-to-[50%]
         tw-bg-gradient-to-t
       `}
     >
