@@ -15,6 +15,8 @@ const Landing = (props: LandingProps) => {
         tw-items-center
         tw-bg-[linear-gradient(180deg,_black_0%,_rgba(102,102,102,0)_100%),url('/img/gallery-page/landing/bg-sm.png')]
         tw-bg-no-repeat tw-bg-cover tw-bg-center
+
+        md:tw-bg-[linear-gradient(180deg,_black_0%,_rgba(102,102,102,0)_100%),url('/img/gallery-page/landing/bg-md.png')]
       `}
     >
       <div
@@ -23,7 +25,9 @@ const Landing = (props: LandingProps) => {
           tw-flex tw-text-5xl tw-font-bowlby-one
         `}
       >
-        <FlameSymbol />
+        <div className="tw-font-[60px]">
+          <FlameSymbol className="tw-h-[60px] tw-w-[60px]" />
+        </div>
         <div
           className={`
             tw-text-[var(--primary-lighter)] tw-font-normal tw-opacity-70
