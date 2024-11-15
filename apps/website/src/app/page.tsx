@@ -1,4 +1,5 @@
 import {
+  Abilities,
   Congrats,
   Contact,
   Customers,
@@ -40,6 +41,7 @@ export default async function Home() {
       >
         <Hero />
         <Customers />
+        <Abilities />
         <Emoji />
         <Showcase projects={projects} />
         <Contact />
