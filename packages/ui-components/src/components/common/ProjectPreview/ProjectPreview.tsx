@@ -11,8 +11,8 @@ const ProjectPreview = (props: ProjectPreviewProps) => {
     >
       <img
         className={`
-          tw-h-[199px] tw-self-stretch tw-rounded-tl-lg tw-rounded-tr-lg
-          tw-border tw-border-[var(--neutral-default)]
+          tw-h-[199px] tw-w-full tw-self-stretch tw-rounded-tl-lg
+          tw-rounded-tr-lg tw-border tw-border-[var(--neutral-default)]
         `}
         src={props.thumbnail}
       />

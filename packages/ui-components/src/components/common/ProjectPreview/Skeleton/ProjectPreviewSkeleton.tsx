@@ -1,21 +1,40 @@
 import React from "react";
 import { ProjectPreviewSkeletonProps } from "./ProjectPreviewSkeleton.types";
 import Skeleton from "react-loading-skeleton";
-import { cn } from "@/lib/utils";
 
 const ProjectPreviewSkeleton = (props: ProjectPreviewSkeletonProps) => {
   return (
     <div
       className={`
-        review-card-skeleton tw-relative tw-h-[177.40px] tw-w-[325px]
-
-        lg:tw-h-[259px] lg:tw-w-[412px]
-
-        md:tw-h-[200px] md:tw-w-[325px]
+        project-preview-skeleton tw-flex tw-h-[279px] tw-w-[350px] tw-flex-col
+        tw-items-start tw-gap-[10px] tw-rounded-lg tw-border tw-border-red-300
       `}
     >
-      <Skeleton className={`tw-block tw-h-full tw-w-full tw-rounded-lg`} />
-      <div className={cn(`tw-absolute tw-left-0 tw-top-0`)}></div>
+      <Skeleton
+        className={`
+          tw-h-[199px] tw-w-[350px] tw-self-stretch tw-rounded-tl-lg
+          tw-rounded-tr-lg
+        `}
+      />
+
+      <div
+        className={`
+          tw-flex tw-h-[60px] tw-flex-col tw-items-start tw-justify-around
+        `}
+      >
+        <Skeleton
+          className={`
+            tw-h-[30px] tw-w-[200px] tw-font-inter tw-text-xl tw-font-black
+            tw-leading-loose tw-text-headings
+          `}
+        />
+        <Skeleton
+          className={`
+            tw-h-[25px] tw-w-[350px] tw-self-stretch tw-font-inter tw-text-lg
+            tw-font-normal tw-leading-7 tw-text-headings
+          `}
+        />
+      </div>
     </div>
   );
 };
