@@ -1,1 +1,3 @@
-export interface ProjectsProps {}
+export interface ProjectsProps {
+  categories: string[];
+}

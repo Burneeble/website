@@ -1,6 +1,8 @@
 import { Landing, Projects } from "@/components/Pages";
 
 const GalleryPage = () => {
+  const categories = [""];
+
   return (
     <div
       className={`
@@ -10,7 +12,7 @@ const GalleryPage = () => {
       `}
     >
       <Landing />
-      <Projects />
+      <Projects categories={categories} />
     </div>
   );
 };

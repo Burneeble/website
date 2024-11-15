@@ -1,10 +1,13 @@
 // singleton of ProjectService class
 
 import { GraphQLService } from "../GraphQLService";
-import { GET_PROJECT_QUERY } from "./queries";
+import {
+  GET_CATEGORIES_QUERY,
+  GET_PROJECT_QUERY,
+  GET_PROJECTS_QUERY,
+} from "./queries";
 import { IProjectModel, ProjectModel } from "./models";
 import { JsonSerializer } from "typescript-json-serializer";
-import { GET_PROJECTS_QUERY } from "./queries/getProjectsQuery";
 
 const serializer = new JsonSerializer();
 export class ProjectService {
@@ -79,5 +82,23 @@ export class ProjectService {
     ) || []) as Array<ProjectModel>;
 
     return projects;
+  }
+
+  public async getCategories(): Promise<Array<string>> {
+    const { data } = await GraphQLService.instance.client.query({
+      query: GET_CATEGORIES_QUERY,
+    });
+
+    if (!data) return [];
+
+    const categories: string[] = data.projectCategories
+      ? data.projectCategories?.edges
+          .map((edge) => {
+            return edge.node.name || "";
+          })
+          .filter((c) => c !== "")
+      : [];
+
+    return categories;
   }
 }
