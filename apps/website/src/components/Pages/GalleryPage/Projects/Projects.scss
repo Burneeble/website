@@ -1,1 +1,17 @@
 // Projects
+
+.projects-section {
+  .content {
+    .header {
+      .icons {
+        .icon {
+          @apply tw-w-[58px] tw-h-[58px] tw-px-2.5 tw-py-0.5
+                tw-bg-[var(--secondary-base)] tw-rounded-lg tw-border
+                tw-border-[var(--neutral-default)] tw-justify-center tw-items-center
+                tw-gap-2.5 tw-flex tw-text-[var(--neutral-default)] tw-text-3xl tw-cursor-pointer
+                tw-transition-all tw-duration-200 tw-ease-in-out hover:tw-text-headings;
+        }
+      }
+    }
+  }
+}
