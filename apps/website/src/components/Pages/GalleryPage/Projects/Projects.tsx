@@ -3,7 +3,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ProjectsProps } from "./Projects.types";
 import { faFilter, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { GET_PROJECTS_QUERY, ProjectModel } from "@/services/ProjectService";
+import {
+  GET_PROJECTS_BY_CATEGORIES_QUERY,
+  GET_PROJECTS_QUERY,
+  ProjectModel,
+} from "@/services/ProjectService";
 import { useEffect, useState } from "react";
 import {
   Button,
@@ -14,7 +18,10 @@ import {
   useClientInfoService,
 } from "@burneeble/ui-components";
 import { useQuery } from "@apollo/client";
-import { GetProjectsQueryQuery } from "@/__generated__/graphql";
+import {
+  GetProjectsByCategoriesQueryQuery,
+  GetProjectsQueryQuery,
+} from "@/__generated__/graphql";
 
 const Projects = (props: ProjectsProps) => {
   //States
@@ -25,46 +32,85 @@ const Projects = (props: ProjectsProps) => {
   >([]);
   const [hasNextPage, setHasNextPage] = useState<boolean>(true);
   const [endCursor, setEndCursor] = useState<string>("0");
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const batchSize = 1;
+  const [isFirstRender, setIsFirstRender] = useState<boolean>(true);
 
   //Hooks
   const { screen } = useClientInfoService();
-  const { data, fetchMore } = useQuery(GET_PROJECTS_QUERY, {
-    variables: {
-      limit: batchSize,
-      offset: endCursor,
-    },
-  });
+  const { data: projectsData, fetchMore: fetchMoreProjects } = useQuery(
+    GET_PROJECTS_QUERY,
+    {
+      variables: {
+        limit: batchSize,
+        offset: endCursor,
+      },
+    }
+  );
+  const { fetchMore: fetchMoreProjectsByCategories } = useQuery(
+    GET_PROJECTS_BY_CATEGORIES_QUERY,
+    {
+      variables: {
+        categories: activeCategories,
+        limit: batchSize,
+        offset: endCursor,
+      },
+    }
+  );
 
   //Effects
+  useEffect(() => {
+    if (isFirstRender) setIsFirstRender(false);
+    else {
+      setProjects([]);
+      setEndCursor("0");
+      fetchProjects();
+    }
+  }, [activeCategories]);
 
   useEffect(() => {
-    if (data && !projects) {
-      setEndCursor(data!.projects?.pageInfo.endCursor || "0");
-      const projectsInfo = projectFormatter(data!);
+    if (projectsData && !projects) {
+      setEndCursor(projectsData!.projects?.pageInfo.endCursor || "0");
+      setHasNextPage(projectsData!.projects?.pageInfo.hasNextPage || false);
+      const projectsInfo = projectFormatter(projectsData!);
 
       setProjects(projectsInfo);
     }
-  }, [data]);
+  }, [projectsData]);
 
   //Methods
   const fetchProjects = async () => {
     try {
-      if (!fetchMore) return;
+      let data: GetProjectsQueryQuery | GetProjectsByCategoriesQueryQuery;
+      if (activeCategories.length <= 0) {
+        if (!fetchMoreProjects) return;
 
-      const { data } = await fetchMore({
-        variables: {
-          limit: batchSize,
-          offset: endCursor,
-        },
-      });
+        const { data: res } = await fetchMoreProjects({
+          variables: {
+            limit: batchSize,
+            offset: endCursor,
+          },
+        });
+        data = res;
+      } else {
+        if (!fetchMoreProjectsByCategories) return;
+
+        const { data: res } = await fetchMoreProjectsByCategories({
+          variables: {
+            limit: batchSize,
+            offset: endCursor,
+            categories: activeCategories,
+          },
+        });
+        data = res;
+      }
 
       setEndCursor(data.projects?.pageInfo.endCursor || "0");
+      setHasNextPage(data.projects?.pageInfo.hasNextPage || false);
       const res = projectFormatter(data);
 
       if (res) {
-        setProjects((prev) => [...prev!, ...res]);
+        setProjects((prev) => [...(prev ? prev : []), ...res]);
       }
     } catch (e) {
       console.log(e);
@@ -233,20 +279,21 @@ const Projects = (props: ProjectsProps) => {
             md:tw-gap-[30px]
           `}
         >
-          {projects
-            ? projects.map((project, i) => {
-                return (
-                  <ProjectPreview
-                    key={i}
-                    thumbnail={project.thumbnailUrl}
-                    title={project.title}
-                    categories={project.categories}
-                  />
-                );
-              })
-            : Array.from({ length: batchSize }).map((_, i) => {
-                return <ProjectPreviewSkeleton key={i} />;
-              })}
+          {projects &&
+            projects.map((project, i) => {
+              return (
+                <ProjectPreview
+                  key={i}
+                  thumbnail={project.thumbnailUrl}
+                  title={project.title}
+                  categories={project.categories}
+                />
+              );
+            })}
+          {isLoading &&
+            Array.from({ length: batchSize }).map((_, i) => {
+              return <ProjectPreviewSkeleton key={i} />;
+            })}
         </div>
         {hasNextPage && (
           <Button
@@ -257,8 +304,10 @@ const Projects = (props: ProjectsProps) => {
 
               lg:tw-mr-0
             `}
-            onClick={() => {
+            onClick={async () => {
+              setIsLoading(true);
               fetchProjects();
+              setIsLoading(false);
             }}
           >
             See More
