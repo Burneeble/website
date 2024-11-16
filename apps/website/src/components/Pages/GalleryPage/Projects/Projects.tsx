@@ -20,6 +20,9 @@ const Projects = (props: ProjectsProps) => {
   const [activeCategories, setActiveCategories] = useState<
     Array<(typeof props.categories)[number]>
   >([]);
+  const [endCursor, setEndCursor] = useState<string>(
+    "YXJyYXljb25uZWN0aW9uOjY4"
+  );
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const batchSize = 1;
 
@@ -35,10 +38,16 @@ const Projects = (props: ProjectsProps) => {
   //Methods
   const fetchProjects = async () => {
     try {
+      console.log(batchSize, endCursor);
       const res = await getProjects(
-        activeCategories.length > 0 ? activeCategories : undefined
+        activeCategories.length > 0 ? activeCategories : undefined,
+        batchSize,
+        endCursor
       );
-      setProjects(res);
+      if (res) {
+        console.log(res);
+        setProjects(res);
+      }
     } catch (e) {
       console.log(e);
       NotificationHandler.instance.error("Error fetching projects");
