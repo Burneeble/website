@@ -34,7 +34,7 @@ const Projects = (props: ProjectsProps) => {
   const [endCursor, setEndCursor] = useState<string>("0");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const batchSize = 1;
-  const [isFirstRender, setIsFirstRender] = useState<boolean>(true);
+  const [isFirstRender, setIsFirstRender] = useState<number>(0);
 
   //Hooks
   const { screen } = useClientInfoService();
@@ -60,13 +60,19 @@ const Projects = (props: ProjectsProps) => {
 
   //Effects
   useEffect(() => {
-    if (isFirstRender) setIsFirstRender(false);
+    if (isFirstRender < 2) setIsFirstRender((prev) => prev + 1);
     else {
       setProjects([]);
       setEndCursor("0");
-      fetchProjects();
     }
   }, [activeCategories]);
+
+  useEffect(() => {
+    if (isFirstRender < 2) setIsFirstRender((prev) => prev + 1);
+    else {
+      if (endCursor === "0") fetchProjects();
+    }
+  }, [endCursor]);
 
   useEffect(() => {
     if (projectsData && !projects) {
