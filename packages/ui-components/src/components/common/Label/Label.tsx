@@ -63,8 +63,14 @@ const Label = (props: LabelProps) => {
             size: props.size,
             className: props.className,
           }),
-          "tw-relative"
+          "tw-relative",
+          props.onClick && "tw-cursor-pointer"
         )}
+        onClick={(e) => {
+          if (props.onClick) {
+            props.onClick(e);
+          }
+        }}
       >
         {props.text}
       </label>

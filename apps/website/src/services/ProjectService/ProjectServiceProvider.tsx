@@ -15,8 +15,14 @@ const ProjectServiceProvider = (props: ProjectServiceProviderProps) => {
     return await ProjectService.instance.getProjects();
   };
 
+  const getCategories = async (): Promise<Array<string>> => {
+    return await ProjectService.instance.getCategories();
+  };
+
   return (
-    <projectServiceContext.Provider value={{ getProject, getProjects }}>
+    <projectServiceContext.Provider
+      value={{ getProject, getProjects, getCategories }}
+    >
       {props.children}
     </projectServiceContext.Provider>
   );

@@ -6,4 +6,5 @@ export interface LabelProps {
   variant?: "default" | "active" | "disabled" | null;
   size?: "default" | "sm" | "lg" | null;
   className?: string | null;
+  onClick?: (e?: any) => void;
 }

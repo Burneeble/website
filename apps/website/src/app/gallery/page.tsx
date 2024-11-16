@@ -1,7 +1,9 @@
 import { Landing, Projects } from "@/components/Pages";
+import { ProjectService } from "@/services/ProjectService";
 
-const GalleryPage = () => {
-  const categories = [""];
+const GalleryPage = async () => {
+  const res = await ProjectService.instance.getCategories();
+  const categories = JSON.parse(JSON.stringify(res));
 
   return (
     <div

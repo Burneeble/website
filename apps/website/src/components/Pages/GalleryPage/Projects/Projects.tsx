@@ -7,6 +7,7 @@ import { ProjectModel, useProjectService } from "@/services/ProjectService";
 import { useEffect, useState } from "react";
 import {
   Button,
+  Label,
   NotificationHandler,
   ProjectPreview,
   useClientInfoService,
@@ -16,6 +17,9 @@ const Projects = (props: ProjectsProps) => {
   //States
   const [projects, setProjects] = useState<Array<ProjectModel> | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [currentCategory, setCurrentCategory] = useState<
+    (typeof props.categories)[number]
+  >(props.categories[0]);
 
   //Hooks
   const { getProjects } = useProjectService();
@@ -145,6 +149,22 @@ const Projects = (props: ProjectsProps) => {
             )}
           </div>
         </div>
+        {!["sm", "md"].includes(screen) && (
+          <div className="categories tw-flex tw-flex-wrap tw-gap-[17px]">
+            {props.categories.map((category, i) => {
+              return (
+                <Label
+                  key={i}
+                  text={category}
+                  onClick={() => {
+                    setCurrentCategory(category);
+                  }}
+                  variant={currentCategory === category ? "active" : "disabled"}
+                />
+              );
+            })}
+          </div>
+        )}
         <div
           className={`
             projects tw-flex tw-flex-col tw-gap-[20px]
