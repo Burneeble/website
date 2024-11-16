@@ -3,15 +3,18 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ProjectsProps } from "./Projects.types";
 import { faFilter, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { ProjectModel, useProjectService } from "@/services/ProjectService";
+import { GET_PROJECTS_QUERY, ProjectModel } from "@/services/ProjectService";
 import { useEffect, useState } from "react";
 import {
   Button,
   Label,
   NotificationHandler,
   ProjectPreview,
+  ProjectPreviewSkeleton,
   useClientInfoService,
 } from "@burneeble/ui-components";
+import { useQuery } from "@apollo/client";
+import { GetProjectsQueryQuery } from "@/__generated__/graphql";
 
 const Projects = (props: ProjectsProps) => {
   //States
@@ -20,38 +23,75 @@ const Projects = (props: ProjectsProps) => {
   const [activeCategories, setActiveCategories] = useState<
     Array<(typeof props.categories)[number]>
   >([]);
-  const [endCursor, setEndCursor] = useState<string>(
-    "YXJyYXljb25uZWN0aW9uOjY4"
-  );
+  const [hasNextPage, setHasNextPage] = useState<boolean>(true);
+  const [endCursor, setEndCursor] = useState<string>("0");
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const batchSize = 1;
 
   //Hooks
-  const { getProjects } = useProjectService();
   const { screen } = useClientInfoService();
+  const { data, fetchMore } = useQuery(GET_PROJECTS_QUERY, {
+    variables: {
+      limit: batchSize,
+      offset: endCursor,
+    },
+  });
 
   //Effects
+
   useEffect(() => {
-    fetchProjects();
-  }, [activeCategories]);
+    if (data && !projects) {
+      setEndCursor(data!.projects?.pageInfo.endCursor || "0");
+      const projectsInfo = projectFormatter(data!);
+
+      setProjects(projectsInfo);
+    }
+  }, [data]);
 
   //Methods
   const fetchProjects = async () => {
     try {
-      console.log(batchSize, endCursor);
-      const res = await getProjects(
-        activeCategories.length > 0 ? activeCategories : undefined,
-        batchSize,
-        endCursor
-      );
+      if (!fetchMore) return;
+
+      const { data } = await fetchMore({
+        variables: {
+          limit: batchSize,
+          offset: endCursor,
+        },
+      });
+
+      setEndCursor(data.projects?.pageInfo.endCursor || "0");
+      const res = projectFormatter(data);
+
       if (res) {
-        console.log(res);
-        setProjects(res);
+        setProjects((prev) => [...prev!, ...res]);
       }
     } catch (e) {
       console.log(e);
       NotificationHandler.instance.error("Error fetching projects");
     }
+  };
+
+  const projectFormatter = (
+    data: GetProjectsQueryQuery
+  ): ProjectModel[] | null => {
+    const projectsInfo: ProjectModel[] | null = data.projects
+      ? data.projects?.edges.map((edge) => {
+          const project = new ProjectModel();
+          project.title = edge.node.title || "";
+          project.description = edge.node.projectFields?.description || "";
+          project.projectUrl = edge.node.projectFields?.projectUrl || "";
+          project.thumbnailUrl =
+            edge.node.projectFields?.thumbnail?.node.guid || "";
+          project.categories = edge.node.projectFields?.category?.edges
+            .map((c) => c.node.name)
+            .filter((c) => {
+              return typeof c === "string";
+            }) || ["Dapp"];
+          return project;
+        })
+      : null;
+    return projectsInfo;
   };
 
   return (
@@ -193,29 +233,37 @@ const Projects = (props: ProjectsProps) => {
             md:tw-gap-[30px]
           `}
         >
-          {projects &&
-            projects.map((project, i) => {
-              return (
-                <ProjectPreview
-                  key={i}
-                  thumbnail={project.thumbnailUrl}
-                  title={project.title}
-                  categories={project.categories}
-                />
-              );
-            })}
+          {projects
+            ? projects.map((project, i) => {
+                return (
+                  <ProjectPreview
+                    key={i}
+                    thumbnail={project.thumbnailUrl}
+                    title={project.title}
+                    categories={project.categories}
+                  />
+                );
+              })
+            : Array.from({ length: batchSize }).map((_, i) => {
+                return <ProjectPreviewSkeleton key={i} />;
+              })}
         </div>
-        <Button
-          variant="secondary"
-          fit={screen === "sm" ? "full" : "inline"}
-          className={`
-            !tw-bg-black tw-mx-auto tw-px-[75px]
+        {hasNextPage && (
+          <Button
+            variant="secondary"
+            fit={screen === "sm" ? "full" : "inline"}
+            className={`
+              !tw-bg-black tw-mx-auto tw-px-[75px]
 
-            lg:tw-mr-0
-          `}
-        >
-          See More
-        </Button>
+              lg:tw-mr-0
+            `}
+            onClick={() => {
+              fetchProjects();
+            }}
+          >
+            See More
+          </Button>
+        )}
       </div>
     </section>
   );

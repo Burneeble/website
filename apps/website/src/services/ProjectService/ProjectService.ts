@@ -4,6 +4,7 @@ import { GraphQLService } from "../GraphQLService";
 import {
   GET_CATEGORIES_QUERY,
   GET_PROJECT_QUERY,
+  GET_PROJECTS_BY_CATEGORIES_QUERY,
   GET_PROJECTS_QUERY,
 } from "./queries";
 import { IProjectModel, ProjectModel } from "./models";
@@ -54,10 +55,14 @@ export class ProjectService {
   public async getProjects(
     categories?: string[]
   ): Promise<Array<ProjectModel>> {
-    const { data } = await GraphQLService.instance.client.query({
-      query: GET_PROJECTS_QUERY,
-      variables: { categories },
-    });
+    const { data } = await GraphQLService.instance.client.query(
+      categories
+        ? {
+            query: GET_PROJECTS_QUERY,
+            variables: { categories },
+          }
+        : { query: GET_PROJECTS_BY_CATEGORIES_QUERY }
+    );
 
     if (!data) return [];
 

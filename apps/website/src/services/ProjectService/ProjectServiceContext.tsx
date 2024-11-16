@@ -5,11 +5,7 @@ import { ProjectModel } from "./models";
 
 export interface ProjectServiceContent {
   getProject(id: string): Promise<ProjectModel | null>;
-  getProjects(
-    categories?: string[],
-    batchSize?: number,
-    endCursor?: string
-  ): Promise<Array<ProjectModel>>;
+  getProjects(categories?: string[]): Promise<Array<ProjectModel>>;
   getCategories(): Promise<Array<string>>;
 }
 
