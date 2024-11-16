@@ -17,9 +17,11 @@ const Projects = (props: ProjectsProps) => {
   //States
   const [projects, setProjects] = useState<Array<ProjectModel> | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [currentCategory, setCurrentCategory] = useState<
-    (typeof props.categories)[number]
-  >(props.categories[0]);
+  const [activeCategories, setActiveCategories] = useState<
+    Array<(typeof props.categories)[number]>
+  >([]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const batchSize = 1;
 
   //Hooks
   const { getProjects } = useProjectService();
@@ -28,12 +30,14 @@ const Projects = (props: ProjectsProps) => {
   //Effects
   useEffect(() => {
     fetchProjects();
-  }, []);
+  }, [activeCategories]);
 
   //Methods
   const fetchProjects = async () => {
     try {
-      const res = await getProjects();
+      const res = await getProjects(
+        activeCategories.length > 0 ? activeCategories : undefined
+      );
       setProjects(res);
     } catch (e) {
       console.log(e);
@@ -157,9 +161,15 @@ const Projects = (props: ProjectsProps) => {
                   key={i}
                   text={category}
                   onClick={() => {
-                    setCurrentCategory(category);
+                    if (activeCategories.includes(category)) {
+                      setActiveCategories((prev) =>
+                        prev.filter((c) => c !== category)
+                      );
+                    } else setActiveCategories((prev) => [...prev, category]);
                   }}
-                  variant={currentCategory === category ? "active" : "disabled"}
+                  variant={
+                    activeCategories.includes(category) ? "active" : "disabled"
+                  }
                 />
               );
             })}

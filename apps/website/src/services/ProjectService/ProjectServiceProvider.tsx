@@ -11,8 +11,10 @@ const ProjectServiceProvider = (props: ProjectServiceProviderProps) => {
     return await ProjectService.instance.getProject(id);
   };
 
-  const getProjects = async (): Promise<Array<ProjectModel>> => {
-    return await ProjectService.instance.getProjects();
+  const getProjects = async (
+    categories?: string[]
+  ): Promise<Array<ProjectModel>> => {
+    return await ProjectService.instance.getProjects(categories);
   };
 
   const getCategories = async (): Promise<Array<string>> => {
