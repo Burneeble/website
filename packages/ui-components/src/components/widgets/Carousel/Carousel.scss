@@ -14,6 +14,12 @@
           @apply tw-opacity-100;
         }
       }
+
+      &:not(.swiper-slide-active) {
+        .hover-layer {
+          @apply tw-opacity-0;
+        }
+      }
     }
 
     .carousel-button {

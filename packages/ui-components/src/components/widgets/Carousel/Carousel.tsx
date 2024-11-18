@@ -1,7 +1,7 @@
 "use client";
 
 import { CarouselProps } from "./Carousel.types";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper/modules";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,8 +15,27 @@ import { useClientInfoService } from "@/services";
 import { CTA, Label } from "@/components/common";
 
 const Carousel = (props: CarouselProps) => {
+  //States
+  const [showHover, setShowHover] = useState<boolean>(false);
+
   //Hooks
   const { screen } = useClientInfoService();
+  const hoverLayer = useRef<HTMLDivElement>(null);
+
+  //Effects
+  useEffect(() => {
+    const handleClickOutside = (event: any) => {
+      if (hoverLayer.current && !hoverLayer.current.contains(event.target)) {
+        setShowHover(false);
+      }
+    };
+
+    if (screen === "sm" || screen === "md")
+      document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [hoverLayer, screen]);
 
   //Methods
   const getButtonSize = () => {
@@ -97,33 +116,54 @@ const Carousel = (props: CarouselProps) => {
                 `}
               >
                 <div
-                  className={`
+                  className={cn(
+                    `
                     hover-layer tw-absolute tw-left-0 tw-top-0 tw-h-full
                     tw-w-full tw-bg-black/60 tw-opacity-0 tw-backdrop-blur-sm
                     tw-transition-all tw-duration-500 tw-ease-in-out
 
                     hover:tw-opacity-100
-                  `}
+                  `,
+                    (screen === "sm" || screen === "md") &&
+                      showHover &&
+                      "tw-opacity-100"
+                  )}
+                  onClick={() => {
+                    if (screen === "sm" || screen === "md") {
+                      setShowHover(true);
+                    }
+                  }}
+                  ref={hoverLayer}
                 >
                   <div
                     className={`
                       content tw-mx-auto tw-flex tw-h-full tw-w-full
                       tw-max-w-[80%] tw-flex-col tw-items-center
-                      tw-justify-center tw-gap-[20px]
+                      tw-justify-center tw-gap-[10px]
+
+                      md:tw-gap-[20px]
                     `}
                   >
                     <h2
                       className={`
                         project-title tw-text-center tw-font-bowlby-one
-                        tw-text-5xl tw-font-normal tw-text-headings
+                        tw-text-2xl tw-font-normal tw-text-headings
+
+                        md:tw-text-4xl
+
+                        lg:tw-text-5xl
                       `}
                     >
                       {proj.title}
                     </h2>
                     <p
                       className={`
-                        desc tw- tw-text-center tw-font-inter tw-text-2xl
-                        tw-font-normal tw-leading-[35px] tw-text-body
+                        desc tw- tw-text-center tw-font-inter tw-text-md
+                        tw-font-normal tw-text-body
+
+                        md:tw-text-lg md:tw-leading-[35px]
+
+                        lg:tw-text-2xl
                       `}
                     >
                       {proj.description}
