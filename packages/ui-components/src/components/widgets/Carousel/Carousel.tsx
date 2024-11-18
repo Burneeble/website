@@ -136,13 +136,18 @@ const Carousel = (props: CarouselProps) => {
                   ref={hoverLayer}
                 >
                   <div
-                    className={`
+                    className={cn(
+                      `
                       content tw-mx-auto tw-flex tw-h-full tw-w-full
-                      tw-max-w-[80%] tw-flex-col tw-items-center
+                      tw-flex-col tw-items-center
                       tw-justify-center tw-gap-[10px]
 
                       md:tw-gap-[20px]
-                    `}
+                    `,
+                      screen === "sm" || screen === "md"
+                        ? "tw-max-w-[95%]"
+                        : "tw-max-w-[80%]"
+                    )}
                   >
                     <h2
                       className={`
@@ -172,6 +177,9 @@ const Carousel = (props: CarouselProps) => {
                       projectUrl={proj.projectUrl}
                       text={"View Details"}
                       target="_blank"
+                      size={
+                        screen === "sm" || screen === "md" ? "sm" : "default"
+                      }
                     />
                   </div>
                 </div>

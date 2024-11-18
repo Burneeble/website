@@ -16,3 +16,12 @@ export const simpleCTA: Story = {
     target: "_blank",
   },
 };
+
+export const smallCTA: Story = {
+  args: {
+    text: "View Project",
+    projectUrl: "https://www.google.com",
+    target: "_blank",
+    size: "sm",
+  },
+};
