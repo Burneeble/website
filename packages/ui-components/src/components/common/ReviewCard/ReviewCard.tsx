@@ -9,8 +9,8 @@ import {
 import { useClientInfoService } from "@/services";
 import { Rating } from "./components";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 import { useScrollLock } from "@/hooks/useScrollLock";
+import CTA from "../CTA";
 
 const ReviewCard = (props: ReviewCardProps) => {
   //States
@@ -194,30 +194,7 @@ const ReviewCard = (props: ReviewCardProps) => {
         {props.review}
       </div>
       {props.variant === "popup" && props.projectUrl && (
-        <Link
-          href={props.projectUrl}
-          className={`
-            website-cta-wrapper tw-group tw-relative tw-flex tw-h-[58px]
-            tw-w-[216px] tw-items-center tw-justify-center tw-font-bowlby-one
-            tw-text-2xl tw-font-normal tw-text-button
-          `}
-        >
-          <span className="cta tw-relative tw-z-[2] tw-font-bowlby-one">
-            View Project
-          </span>
-          <div
-            className={`
-              background-effect tw-absolute tw-left-0 tw-top-0 tw-inline-flex
-              tw-h-[58px] tw-w-[58px] tw-items-center tw-justify-start
-              tw-gap-2.5 tw-rounded-full tw-border tw-border-[#f28307]/70
-              tw-bg-[#ff5c01]/70 tw-transition-all tw-duration-300
-              tw-ease-in-out
-
-              group-hover:tw-w-full group-hover:tw-border-[#f28307]/100
-              group-hover:tw-bg-[#ff5c01]/100
-            `}
-          />
-        </Link>
+        <CTA projectUrl={props.projectUrl} text={"View Project"} />
       )}
     </div>
   );

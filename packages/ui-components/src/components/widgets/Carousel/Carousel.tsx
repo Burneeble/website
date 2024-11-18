@@ -12,7 +12,7 @@ import {
 import { Button } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import { useClientInfoService } from "@/services";
-import { Label } from "@/components/common";
+import { CTA, Label } from "@/components/common";
 
 const Carousel = (props: CarouselProps) => {
   //Hooks
@@ -25,6 +25,16 @@ const Carousel = (props: CarouselProps) => {
         return "icon-lg";
       default:
         return "icon";
+    }
+  };
+
+  const getLabelSize = () => {
+    switch (screen) {
+      case "sm":
+      case "md":
+        return "sm";
+      default:
+        return "default";
     }
   };
 
@@ -57,8 +67,8 @@ const Carousel = (props: CarouselProps) => {
           return (
             <SwiperSlide
               className={`
-                corousel-slide tw-duration-400 tw-flex !tw-w-full tw-flex-col
-                tw-items-center tw-justify-center tw-gap-[20px]
+                corousel-slide tw-duration-400 tw-relative tw-flex !tw-w-full
+                tw-flex-col tw-items-center tw-justify-center tw-gap-[20px]
                 tw-transition-transform tw-ease-in-out
               `}
               key={i}
@@ -73,16 +83,58 @@ const Carousel = (props: CarouselProps) => {
                   ? proj.categories
                   : proj.categories.slice(0, 3)
                 ).map((category, i) => {
-                  return <Label key={i} text={category} />;
+                  return (
+                    <Label key={i} text={category} size={getLabelSize()} />
+                  );
                 })}
               </div>
               <div
                 className={`
-                  carousel-image-wrapper tw-flex tw-aspect-[1920/1080] tw-w-full
-                  tw-items-center tw-justify-center tw-border-4 tw-border-solid
+                  carousel-image-wrapper tw-relative tw-flex
+                  tw-aspect-[1920/1080] tw-w-full tw-items-center
+                  tw-justify-center tw-border-4 tw-border-solid
                   tw-border-primary tw-bg-black
                 `}
               >
+                <div
+                  className={`
+                    hover-layer tw-absolute tw-left-0 tw-top-0 tw-h-full
+                    tw-w-full tw-bg-black/60 tw-opacity-0 tw-backdrop-blur-sm
+                    tw-transition-all tw-duration-500 tw-ease-in-out
+
+                    hover:tw-opacity-100
+                  `}
+                >
+                  <div
+                    className={`
+                      content tw-mx-auto tw-flex tw-h-full tw-w-full
+                      tw-max-w-[80%] tw-flex-col tw-items-center
+                      tw-justify-center tw-gap-[20px]
+                    `}
+                  >
+                    <h2
+                      className={`
+                        project-title tw-text-center tw-font-bowlby-one
+                        tw-text-5xl tw-font-normal tw-text-headings
+                      `}
+                    >
+                      {proj.title}
+                    </h2>
+                    <p
+                      className={`
+                        desc tw- tw-text-center tw-font-inter tw-text-2xl
+                        tw-font-normal tw-leading-[35px] tw-text-body
+                      `}
+                    >
+                      {proj.description}
+                    </p>
+                    <CTA
+                      projectUrl={proj.projectUrl}
+                      text={"View Details"}
+                      target="_blank"
+                    />
+                  </div>
+                </div>
                 <img
                   src={proj.thumbnail}
                   alt={""}
