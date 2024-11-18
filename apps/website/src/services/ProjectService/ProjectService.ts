@@ -58,10 +58,10 @@ export class ProjectService {
     const { data } = await GraphQLService.instance.client.query(
       categories
         ? {
-            query: GET_PROJECTS_QUERY,
+            query: GET_PROJECTS_BY_CATEGORIES_QUERY,
             variables: { categories },
           }
-        : { query: GET_PROJECTS_BY_CATEGORIES_QUERY }
+        : { query: GET_PROJECTS_QUERY }
     );
 
     if (!data) return [];

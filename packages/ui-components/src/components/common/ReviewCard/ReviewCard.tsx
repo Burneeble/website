@@ -57,6 +57,7 @@ const ReviewCard = (props: ReviewCardProps) => {
   const component = (
     <div
       className={cn(
+        "review-card",
         reviewCardVariants({ variant: props.variant }),
         props.variant !== "popup" && isPopupOpen && `tw-pointer-events-none`,
         props.variant === "popup" && isClosing && `tw-animate-cs-fade-out`
@@ -133,7 +134,7 @@ const ReviewCard = (props: ReviewCardProps) => {
               </>
             )}
           </div>
-          {width && width <= 992 ? (
+          {width && width <= 992 && props.variant !== "popup" ? (
             <Rating ratingValue={props.rating} />
           ) : (
             <div
@@ -168,14 +169,17 @@ const ReviewCard = (props: ReviewCardProps) => {
           )}
         </div>
       </div>
-      {width && width > 992 && <Rating ratingValue={props.rating} />}
+      {((width && width > 992) || props.variant === "popup") && (
+        <Rating ratingValue={props.rating} />
+      )}
 
       <div
         className={cn(
+          "review",
           "tw-font-inter tw-font-normal tw-text-body",
           props.variant === "popup"
             ? `
-              tw-overflow-y-scroll no-scrollbar tw-mt-[16px] tw-text-center
+              tw-overflow-y-scroll no-scrollbar tw-max-h-[150px] tw-text-center
               tw-text-xl tw-leading-[30px]
             `
             : `
@@ -193,19 +197,19 @@ const ReviewCard = (props: ReviewCardProps) => {
         <Link
           href={props.projectUrl}
           className={`
-            tw-group tw-relative tw-flex tw-h-[58px] tw-w-[216px]
-            tw-items-center tw-justify-center tw-font-bowlby-one tw-text-2xl
-            tw-font-normal tw-text-button
+            website-cta-wrapper tw-group tw-relative tw-flex tw-h-[58px]
+            tw-w-[216px] tw-items-center tw-justify-center tw-font-bowlby-one
+            tw-text-2xl tw-font-normal tw-text-button
           `}
         >
-          <span className="tw-relative tw-z-[2] tw-font-bowlby-one">
+          <span className="cta tw-relative tw-z-[2] tw-font-bowlby-one">
             View Project
           </span>
           <div
             className={`
-              tw-absolute tw-left-0 tw-top-0 tw-inline-flex tw-h-[58px]
-              tw-w-[58px] tw-items-center tw-justify-start tw-gap-2.5
-              tw-rounded-full tw-border tw-border-[#f28307]/70
+              background-effect tw-absolute tw-left-0 tw-top-0 tw-inline-flex
+              tw-h-[58px] tw-w-[58px] tw-items-center tw-justify-start
+              tw-gap-2.5 tw-rounded-full tw-border tw-border-[#f28307]/70
               tw-bg-[#ff5c01]/70 tw-transition-all tw-duration-300
               tw-ease-in-out
 

@@ -118,7 +118,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       >
         <span
           className={`
-            tw-z-10 tw-flex tw-h-full tw-w-full tw-items-center
+            tw-z-[2] tw-flex tw-h-full tw-w-full tw-items-center
             tw-justify-center
           `}
         >
