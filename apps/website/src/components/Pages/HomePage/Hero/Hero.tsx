@@ -36,13 +36,21 @@ const Hero = (props: HeroProps) => {
     <section
       className={`
         hero cs-section-structure cs-gap-between-content tw-flex tw-flex-col
-        tw-justify-center
-        tw-bg-[radial-gradient(_rgba(43,43,43,1)_10%,_#000_80%)] tw-pt-[86px]
+        tw-justify-center tw-pt-[86px] tw-relative
       `}
     >
+      <div
+        className={`
+          hero-shape tw-absolute tw-top-[50%] tw-left-[50%]
+          -tw-translate-x-[50%] -tw-translate-y-[50%] tw-w-[80rem] tw-h-[40rem]
+          tw-bg-[radial-gradient(_rgba(80,80,80,1)_10%,_#000_80%)]
+          tw-opacity-[.5] tw-blur-[100px] tw-rotate-[30deg]
+        `}
+      ></div>
+
       <h1
         className={`
-          title
+          title tw-z-[2]
 
           xl:tw-w-[910px]
         `}
@@ -55,6 +63,7 @@ const Hero = (props: HeroProps) => {
       <div
         className={`
           labels tw-relative tw-z-[1] tw-flex tw-flex-wrap tw-gap-[13px]
+          tw-z-[2]
 
           md:tw-gap-5
 
