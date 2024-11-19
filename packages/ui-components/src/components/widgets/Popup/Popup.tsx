@@ -11,15 +11,17 @@ const Popup = (props: PopupProps) => {
       <div
         className={cn(
           `
-            popup tw-relative tw-flex tw-max-h-[80vh] tw-min-h-[30vh]
-            tw-w-[30rem] tw-max-w-[90vw] tw-animate-cs-fade-in tw-items-center
+            popup tw-flex tw-max-h-[80vh] tw-min-h-[30vh] tw-w-[30rem]
+            tw-max-w-[90vw] tw-animate-cs-fade-in tw-items-center
             tw-justify-center tw-overflow-auto tw-rounded-lg tw-border-[1px]
             tw-border-[var(--secondary-lighter)] tw-bg-[var(--primary-bg-color)]
             tw-bg-gradient-to-b tw-p-[20px]
             tw-shadow-[0_5px_5px_rgba(0,0,0,0.26)] secondary-gradient-to-custom
             tw-border-solid tw-text-headings
           `,
-          type === PopupType.Fixed && "tw-absolute",
+          type === PopupType.Absolute
+            ? "tw-absolute tw-z-[200]"
+            : "tw-relative",
           props.className
         )}
         onClick={(e) => {

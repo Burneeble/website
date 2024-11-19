@@ -2,7 +2,12 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ProjectsProps } from "./Projects.types";
-import { faFilter, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCircleXmark,
+  faEraser,
+  faFilter,
+  faMagnifyingGlass,
+} from "@fortawesome/free-solid-svg-icons";
 import {
   GET_PROJECTS_BY_CATEGORIES_QUERY,
   ProjectModel,
@@ -12,9 +17,13 @@ import {
   Button,
   Label,
   NotificationHandler,
+  Popup,
+  PopupType,
   ProjectPreview,
   ProjectPreviewSkeleton,
   useClientInfoService,
+  usePopup,
+  useScrollLock,
 } from "@burneeble/ui-components";
 import { useQuery } from "@apollo/client";
 import { GetProjectsQueryQuery } from "@/__generated__/graphql";
@@ -34,6 +43,8 @@ const Projects = (props: ProjectsProps) => {
 
   //Hooks
   const { screen } = useClientInfoService();
+  const popupLogic = usePopup();
+  const { lockScroll, unlockScroll } = useScrollLock();
   const { data: projectsData, fetchMore: fetchMoreProjects } = useQuery(
     GET_PROJECTS_BY_CATEGORIES_QUERY,
     {
@@ -49,6 +60,7 @@ const Projects = (props: ProjectsProps) => {
 
   //Effects
   useEffect(() => {
+    if (popupLogic.isPopupOpen) popupLogic.closePopup();
     if (isFirstRender < 2) setIsFirstRender((prev) => prev + 1);
     else {
       triggerRefresh();
@@ -83,6 +95,14 @@ const Projects = (props: ProjectsProps) => {
       setProjects(projectsInfo);
     }
   }, [projectsData]);
+
+  useEffect(() => {
+    if (popupLogic.isPopupOpen) {
+      lockScroll();
+    } else {
+      unlockScroll();
+    }
+  }, [popupLogic.isPopupOpen]);
 
   //Methods
   const fetchProjects = async () => {
@@ -238,7 +258,14 @@ const Projects = (props: ProjectsProps) => {
               />
             </div>
             {["sm", "md"].includes(screen) && (
-              <div className={`icon`}>
+              <div
+                className={`icon tw-relative`}
+                onClick={() => {
+                  if (!popupLogic.isPopupOpen) {
+                    popupLogic.openPopup();
+                  }
+                }}
+              >
                 <FontAwesomeIcon
                   icon={faFilter}
                   className={`
@@ -247,6 +274,60 @@ const Projects = (props: ProjectsProps) => {
                     hover:tw-text-headings
                   `}
                 />
+                <Popup
+                  logic={popupLogic}
+                  type={PopupType.Absolute}
+                  className={`tw-top-[calc(100%+.5rem)] tw-right-0`}
+                >
+                  <div
+                    className={`
+                      filter-popup tw-w-full tw-flex tw-flex-col tw-gap-[20px]
+                    `}
+                  >
+                    <div
+                      className={`
+                        header tw-flex tw-items-center tw-justify-between
+                        tw-pb-[15px] tw-border-b-[1px] tw-border-solid
+                        tw-border-neutral
+                      `}
+                    >
+                      <Button variant="secondary">
+                        <FontAwesomeIcon icon={faEraser} className="tw-mr-2" />{" "}
+                        Remove All Filters
+                      </Button>
+                      <FontAwesomeIcon icon={faCircleXmark} />
+                    </div>
+                    <div
+                      className={`categories tw-flex tw-gap-[10px] tw-flex-wrap`}
+                    >
+                      {props.categories.map((category, i) => {
+                        return (
+                          <Label
+                            key={i}
+                            text={category}
+                            onClick={() => {
+                              if (activeCategories.includes(category)) {
+                                setActiveCategories((prev) =>
+                                  prev.filter((c) => c !== category)
+                                );
+                              } else
+                                setActiveCategories((prev) => [
+                                  ...prev,
+                                  category,
+                                ]);
+                            }}
+                            variant={
+                              activeCategories.includes(category)
+                                ? "active"
+                                : "disabled"
+                            }
+                            size={screen === "sm" ? "sm" : "default"}
+                          />
+                        );
+                      })}
+                    </div>
+                  </div>
+                </Popup>
               </div>
             )}
           </div>
