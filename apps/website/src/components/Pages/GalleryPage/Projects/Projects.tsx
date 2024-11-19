@@ -3,10 +3,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ProjectsProps } from "./Projects.types";
 import {
-  faCircleXmark,
   faEraser,
   faFilter,
   faMagnifyingGlass,
+  faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   GET_PROJECTS_BY_CATEGORIES_QUERY,
@@ -27,6 +27,7 @@ import {
 } from "@burneeble/ui-components";
 import { useQuery } from "@apollo/client";
 import { GetProjectsQueryQuery } from "@/__generated__/graphql";
+import { cn } from "@/lib/utils";
 
 const Projects = (props: ProjectsProps) => {
   //States
@@ -259,7 +260,11 @@ const Projects = (props: ProjectsProps) => {
             </div>
             {["sm", "md"].includes(screen) && (
               <div
-                className={`icon tw-relative`}
+                className={cn(
+                  `icon tw-relative`,
+                  popupLogic.isPopupOpen && "opened",
+                  activeCategories.length > 0 && "active"
+                )}
                 onClick={() => {
                   if (!popupLogic.isPopupOpen) {
                     popupLogic.openPopup();
@@ -268,11 +273,7 @@ const Projects = (props: ProjectsProps) => {
               >
                 <FontAwesomeIcon
                   icon={faFilter}
-                  className={`
-                    tw-transition-all tw-duration-200 tw-ease-in-out
-
-                    hover:tw-text-headings
-                  `}
+                  className={`tw-transition-all tw-duration-200 tw-ease-in-out`}
                 />
                 <Popup
                   logic={popupLogic}
@@ -291,11 +292,25 @@ const Projects = (props: ProjectsProps) => {
                         tw-border-neutral
                       `}
                     >
-                      <Button variant="secondary">
+                      <Button
+                        variant="secondary"
+                        onClick={() => {
+                          setActiveCategories([]);
+                        }}
+                      >
                         <FontAwesomeIcon icon={faEraser} className="tw-mr-2" />{" "}
                         Remove All Filters
                       </Button>
-                      <FontAwesomeIcon icon={faCircleXmark} />
+                      <Button
+                        onClick={() => {
+                          popupLogic.closePopup();
+                        }}
+                        variant="secondary"
+                        size="icon"
+                        className="!tw-rounded-full"
+                      >
+                        <FontAwesomeIcon icon={faXmark} />
+                      </Button>
                     </div>
                     <div
                       className={`categories tw-flex tw-gap-[10px] tw-flex-wrap`}
