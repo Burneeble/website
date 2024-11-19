@@ -19,12 +19,16 @@ const HomePageProviders = dynamic(
 export default async function Home() {
   //SSR data fetching
   const res = await ProjectService.instance.getProjects();
+
   const projects = JSON.parse(
     JSON.stringify(
       res.map((project) => {
         return {
           thumbnail: project.thumbnailUrl,
           categories: project.categories,
+          title: project.title,
+          description: project.description,
+          projectUrl: project.projectUrl,
         };
       })
     )
