@@ -1,4 +1,5 @@
 // Projects
+@import "./components/components";
 
 .projects-section {
   .content {
@@ -20,6 +21,22 @@
             @apply tw-border-[var(--primary-base)] tw-text-headings;
           }
         }
+      }
+    }
+  }
+}
+
+.search-popup {
+  .results {
+    .search-section {
+      @apply tw-py-[10px] tw-flex tw-flex-col tw-gap-[5px];
+
+      &:not(:last-child) {
+        @apply tw-border-b tw-border-neutral;
+      }
+
+      .section-name {
+        @apply tw-text-body tw-text-base tw-font-inter;
       }
     }
   }

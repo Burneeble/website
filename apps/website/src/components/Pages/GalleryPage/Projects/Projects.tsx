@@ -12,7 +12,7 @@ import {
   GET_PROJECTS_BY_CATEGORIES_QUERY,
   ProjectModel,
 } from "@/services/ProjectService";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   Button,
   Label,
@@ -28,6 +28,7 @@ import {
 import { useQuery } from "@apollo/client";
 import { GetProjectsQueryQuery } from "@/__generated__/graphql";
 import { cn } from "@/lib/utils";
+import { SearchPopup } from "./components";
 
 const Projects = (props: ProjectsProps) => {
   //States
@@ -79,8 +80,10 @@ const Projects = (props: ProjectsProps) => {
 
   useEffect(() => {
     const handler = setTimeout(() => {
-      if (searchQuery === null) return;
-      triggerRefresh();
+      if (!["sm", "md"].includes(screen)) {
+        if (searchQuery === null) return;
+        triggerRefresh();
+      }
     }, 1000);
 
     return () => {
@@ -115,11 +118,10 @@ const Projects = (props: ProjectsProps) => {
   }, [searchPopupLogic.isPopupOpen]);
 
   //Methods
-  const fetchProjects = async () => {
+  const fetchProjects = useCallback(async () => {
     setIsLoading(true);
     try {
       if (!fetchMoreProjects) return;
-
       const { data: res } = await fetchMoreProjects({
         variables: {
           categories:
@@ -129,21 +131,21 @@ const Projects = (props: ProjectsProps) => {
           search: searchQuery,
         },
       });
-      const data = res;
 
+      const data = res;
       setEndCursor(data.projects?.pageInfo.endCursor || "0");
       setHasNextPage(data.projects?.pageInfo.hasNextPage || false);
       const tmp = projectFormatter(data);
 
       if (tmp) {
-        setProjects((prev) => [...(prev ? prev : []), ...tmp]);
+        setProjects((prev) => [...(prev || []), ...tmp]);
       }
     } catch (e) {
       console.log(e);
       NotificationHandler.instance.error("Error fetching projects");
     }
     setIsLoading(false);
-  };
+  }, [activeCategories, batchSize, endCursor, fetchMoreProjects, searchQuery]);
 
   const triggerRefresh = () => {
     setIsLoading(true);
@@ -175,7 +177,16 @@ const Projects = (props: ProjectsProps) => {
 
   return (
     <>
-      <Popup logic={searchPopupLogic}>search</Popup>
+      {["sm", "md"].includes(screen) && (
+        <SearchPopup
+          categories={props.categories}
+          activeCategories={activeCategories}
+          setActiveCategories={(categories: string[]) => {
+            setActiveCategories(categories);
+          }}
+          popupLogic={searchPopupLogic}
+        />
+      )}
       <section
         className={`
           projects-section tw-relative tw-top-[-35px] tw-rounded-t-[30px]
