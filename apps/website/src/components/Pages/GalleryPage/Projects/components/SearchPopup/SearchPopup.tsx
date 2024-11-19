@@ -13,6 +13,9 @@ const SearchPopup = (props: SearchPopupProps) => {
   const [debouncedSearchQuery, setDebouncedSearchQuery] = useState<
     string | null
   >(null);
+  const [categoriesSearchResults, setCategoriesSearchResults] = useState<
+    string[]
+  >([]);
 
   //Hooks
   const { screen } = useClientInfoService();
@@ -29,6 +32,23 @@ const SearchPopup = (props: SearchPopupProps) => {
       clearTimeout(handler);
     };
   }, [searchQuery]);
+
+  useEffect(() => {
+    if (debouncedSearchQuery) {
+      setCategoriesSearchResults(
+        props.categories.filter((category) => {
+          return category
+            .toLowerCase()
+            .includes(debouncedSearchQuery?.toLowerCase() || "");
+        })
+      );
+    }
+  }, [debouncedSearchQuery]);
+
+  useEffect(() => {
+    setDebouncedSearchQuery(null);
+    setSearchQuery(null);
+  }, [props.popupLogic.isPopupOpen]);
 
   return (
     <Popup logic={props.popupLogic}>
@@ -56,34 +76,32 @@ const SearchPopup = (props: SearchPopupProps) => {
         <div className="results">
           <div className="search-section">
             <h3 className="section-name">Categories</h3>
-            {props.categories
-              .filter((category) => {
-                return category
-                  .toLowerCase()
-                  .includes(debouncedSearchQuery?.toLowerCase() || "");
-              })
-              .map((category, i) => {
-                return (
-                  <MobileSearchResult
-                    key={i}
-                    text={category}
-                    isActive={props.activeCategories.includes(category)}
-                    onClick={() => {
-                      props.popupLogic.closePopup();
-                      props.setActiveCategories((prev) =>
-                        prev.includes(category)
-                          ? prev.filter((c) => c !== category)
-                          : [...prev, category]
-                      );
-                    }}
-                  />
-                );
-              })}
-            <MobileSearchResult
-              text={"Blockchain"}
-              isActive={true}
-              onClick={() => {}}
-            />
+            {debouncedSearchQuery ? (
+              categoriesSearchResults.length > 0 ? (
+                categoriesSearchResults.map((category, i) => {
+                  console.log("Cat", category);
+                  return (
+                    <MobileSearchResult
+                      key={i}
+                      text={category}
+                      isActive={props.activeCategories.includes(category)}
+                      onClick={() => {
+                        props.popupLogic.closePopup();
+                        props.setActiveCategories((prev) =>
+                          prev.includes(category)
+                            ? prev.filter((c) => c !== category)
+                            : [...prev, category]
+                        );
+                      }}
+                    />
+                  );
+                })
+              ) : (
+                <p className="fallback">No Results</p>
+              )
+            ) : (
+              <p className="fallback">Search for categories</p>
+            )}
           </div>
           <div className="search-section">
             <h3 className="section-name">Project Names</h3>
