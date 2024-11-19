@@ -2,10 +2,16 @@
 
 import { useEffect, useState } from "react";
 import { SearchPopupProps } from "./SearchPopup.types";
-import { Popup, useClientInfoService } from "@burneeble/ui-components";
+import {
+  NotificationHandler,
+  Popup,
+  useClientInfoService,
+} from "@burneeble/ui-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { MobileSearchResult } from "./components";
+import { useQuery } from "@apollo/client";
+import { GET_PROJECTS_QUERY } from "@/services/ProjectService";
 
 const SearchPopup = (props: SearchPopupProps) => {
   //States
@@ -16,9 +22,19 @@ const SearchPopup = (props: SearchPopupProps) => {
   const [categoriesSearchResults, setCategoriesSearchResults] = useState<
     string[]
   >([]);
+  const [projectsSearchResults, setProjectsSearchResults] = useState<
+    Array<string>
+  >([]);
 
   //Hooks
   const { screen } = useClientInfoService();
+  const { fetchMore } = useQuery(GET_PROJECTS_QUERY, {
+    variables: {
+      limit: 0,
+      offset: "0",
+      search: debouncedSearchQuery || "",
+    },
+  });
 
   //Effects
   useEffect(() => {
@@ -46,9 +62,34 @@ const SearchPopup = (props: SearchPopupProps) => {
   }, [debouncedSearchQuery]);
 
   useEffect(() => {
+    if (props.popupLogic.isPopupOpen && debouncedSearchQuery) searchProjects();
+  }, [debouncedSearchQuery]);
+
+  useEffect(() => {
     setDebouncedSearchQuery(null);
     setSearchQuery(null);
   }, [props.popupLogic.isPopupOpen]);
+
+  //Methods
+  const searchProjects = async () => {
+    try {
+      const { data } = await fetchMore({
+        variables: {
+          limit: 0,
+          offset: "0",
+          search: debouncedSearchQuery || "",
+        },
+      });
+
+      const projects = data.projects
+        ? data.projects.edges.map((edge) => edge.node.title || "")
+        : [];
+      setProjectsSearchResults(projects || []);
+    } catch (err) {
+      console.log(err);
+      NotificationHandler.instance.error("Failed to search projects");
+    }
+  };
 
   return (
     <Popup logic={props.popupLogic}>
@@ -79,7 +120,6 @@ const SearchPopup = (props: SearchPopupProps) => {
             {debouncedSearchQuery ? (
               categoriesSearchResults.length > 0 ? (
                 categoriesSearchResults.map((category, i) => {
-                  console.log("Cat", category);
                   return (
                     <MobileSearchResult
                       key={i}
@@ -105,11 +145,24 @@ const SearchPopup = (props: SearchPopupProps) => {
           </div>
           <div className="search-section">
             <h3 className="section-name">Project Names</h3>
-            <MobileSearchResult
-              text={"Blockchain"}
-              isActive={false}
-              onClick={() => {}}
-            />
+            {debouncedSearchQuery ? (
+              projectsSearchResults.length > 0 ? (
+                projectsSearchResults.map((proj, i) => {
+                  return (
+                    <MobileSearchResult
+                      key={i}
+                      text={proj}
+                      isActive={false}
+                      onClick={() => {}}
+                    />
+                  );
+                })
+              ) : (
+                <p className="fallback">No Results</p>
+              )
+            ) : (
+              <p className="fallback">Search for categories</p>
+            )}
           </div>
         </div>
       </div>

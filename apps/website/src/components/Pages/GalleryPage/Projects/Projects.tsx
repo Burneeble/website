@@ -181,9 +181,7 @@ const Projects = (props: ProjectsProps) => {
         <SearchPopup
           categories={props.categories}
           activeCategories={activeCategories}
-          setActiveCategories={(categories: string[]) => {
-            setActiveCategories(categories);
-          }}
+          setActiveCategories={setActiveCategories}
           popupLogic={searchPopupLogic}
         />
       )}
