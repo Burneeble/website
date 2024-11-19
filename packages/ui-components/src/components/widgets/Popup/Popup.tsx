@@ -1,30 +1,33 @@
-import React, { useEffect, useRef } from "react";
+import React, { RefObject, useEffect, useRef } from "react";
 import { PopupProps, PopupType, PopupVariants } from "./Popup.types";
 import { cn } from "@/lib/utils";
+
+const PopupComponent = (
+  props: PopupProps & { ref: RefObject<HTMLDivElement> }
+) => {
+  //States
+  const type = props.type || PopupType.Fixed;
+
+  return (
+    <div
+      className={cn(
+        PopupVariants({ variant: props.variant }),
+        type === PopupType.Absolute ? "tw-absolute tw-z-[200]" : "tw-relative",
+        props.className
+      )}
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
+      ref={props.ref}
+    >
+      {props.children}
+    </div>
+  );
+};
 
 const Popup = (props: PopupProps) => {
   //States
   const type = props.type || PopupType.Fixed;
-
-  const PopupComponent = (props: PopupProps) => {
-    return (
-      <div
-        className={cn(
-          PopupVariants({ variant: props.variant }),
-          type === PopupType.Absolute
-            ? "tw-absolute tw-z-[200]"
-            : "tw-relative",
-          props.className
-        )}
-        onClick={(e) => {
-          e.stopPropagation();
-        }}
-        ref={popup}
-      >
-        {props.children}
-      </div>
-    );
-  };
 
   //Hooks
   const popup = useRef<HTMLDivElement>(null);
@@ -56,10 +59,10 @@ const Popup = (props: PopupProps) => {
               props.logic.closePopup();
             }}
           >
-            <PopupComponent {...props} />
+            <PopupComponent {...props} ref={popup} />
           </div>
         ) : (
-          <PopupComponent {...props} />
+          <PopupComponent {...props} ref={popup} />
         ))}
     </>
   );

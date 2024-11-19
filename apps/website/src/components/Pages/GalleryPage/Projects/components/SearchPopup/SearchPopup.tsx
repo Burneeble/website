@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SearchPopupProps } from "./SearchPopup.types";
-import { Popup } from "@burneeble/ui-components";
+import { Popup, useClientInfoService } from "@burneeble/ui-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { MobileSearchResult } from "./components";
@@ -10,22 +10,25 @@ import { MobileSearchResult } from "./components";
 const SearchPopup = (props: SearchPopupProps) => {
   //States
   const [searchQuery, setSearchQuery] = useState<string | null>(null);
-  //   const [debouncedSearchQuery, setDebouncedSearchQuery] = useState<
-  //     string | null
-  //   >(null);
+  const [debouncedSearchQuery, setDebouncedSearchQuery] = useState<
+    string | null
+  >(null);
+
+  //Hooks
+  const { screen } = useClientInfoService();
 
   //Effects
-  // useEffect(() => {
-  //     const handler = setTimeout(() => {
-  //       if (["sm", "md"].includes(screen)) {
-  //         setDebouncedSearchQuery(popupSearchQuery);
-  //       }
-  //     }, 1000);
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      if (["sm", "md"].includes(screen)) {
+        setDebouncedSearchQuery(searchQuery);
+      }
+    }, 1000);
 
-  //     return () => {
-  //       clearTimeout(handler);
-  //     };
-  //   }, [popupSearchQuery]);
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [searchQuery]);
 
   return (
     <Popup logic={props.popupLogic}>
@@ -51,49 +54,45 @@ const SearchPopup = (props: SearchPopupProps) => {
           />
         </div>
         <div className="results">
-          {/* {searchQuery && (
-            <>
-              <div className="search-section">
-                <h3 className="section-name">Categories</h3>
-                {props.categories
-                  .filter((category) => {
-                    return category
-                      .toLowerCase()
-                      .includes(searchQuery?.toLowerCase());
-                  })
-                  .map((category, i) => {
-                    return (
-                      <MobileSearchResult
-                        key={i}
-                        text={category}
-                        isActive={props.activeCategories.includes(category)}
-                        onClick={() => {
-                          props.popupLogic.closePopup();
-                          props.setActiveCategories((prev) =>
-                            prev.includes(category)
-                              ? prev.filter((c) => c !== category)
-                              : [...prev, category]
-                          );
-                        }}
-                      />
-                    );
-                  })}
-                <MobileSearchResult
-                  text={"Blockchain"}
-                  isActive={true}
-                  onClick={() => {}}
-                />
-              </div>
-              <div className="search-section">
-                <h3 className="section-name">Project Names</h3>
-                <MobileSearchResult
-                  text={"Blockchain"}
-                  isActive={false}
-                  onClick={() => {}}
-                />
-              </div>
-            </>
-          )} */}
+          <div className="search-section">
+            <h3 className="section-name">Categories</h3>
+            {props.categories
+              .filter((category) => {
+                return category
+                  .toLowerCase()
+                  .includes(debouncedSearchQuery?.toLowerCase() || "");
+              })
+              .map((category, i) => {
+                return (
+                  <MobileSearchResult
+                    key={i}
+                    text={category}
+                    isActive={props.activeCategories.includes(category)}
+                    onClick={() => {
+                      props.popupLogic.closePopup();
+                      props.setActiveCategories((prev) =>
+                        prev.includes(category)
+                          ? prev.filter((c) => c !== category)
+                          : [...prev, category]
+                      );
+                    }}
+                  />
+                );
+              })}
+            <MobileSearchResult
+              text={"Blockchain"}
+              isActive={true}
+              onClick={() => {}}
+            />
+          </div>
+          <div className="search-section">
+            <h3 className="section-name">Project Names</h3>
+            <MobileSearchResult
+              text={"Blockchain"}
+              isActive={false}
+              onClick={() => {}}
+            />
+          </div>
         </div>
       </div>
     </Popup>
