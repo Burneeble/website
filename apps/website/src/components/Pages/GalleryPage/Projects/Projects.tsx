@@ -5,7 +5,6 @@ import { ProjectsProps } from "./Projects.types";
 import { faFilter, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import {
   GET_PROJECTS_BY_CATEGORIES_QUERY,
-  GET_PROJECTS_QUERY,
   ProjectModel,
 } from "@/services/ProjectService";
 import { useEffect, useState } from "react";
@@ -18,10 +17,7 @@ import {
   useClientInfoService,
 } from "@burneeble/ui-components";
 import { useQuery } from "@apollo/client";
-import {
-  GetProjectsByCategoriesQueryQuery,
-  GetProjectsQueryQuery,
-} from "@/__generated__/graphql";
+import { GetProjectsQueryQuery } from "@/__generated__/graphql";
 
 const Projects = (props: ProjectsProps) => {
   //States
@@ -39,19 +35,11 @@ const Projects = (props: ProjectsProps) => {
   //Hooks
   const { screen } = useClientInfoService();
   const { data: projectsData, fetchMore: fetchMoreProjects } = useQuery(
-    GET_PROJECTS_QUERY,
-    {
-      variables: {
-        limit: batchSize,
-        offset: endCursor,
-      },
-    }
-  );
-  const { fetchMore: fetchMoreProjectsByCategories } = useQuery(
     GET_PROJECTS_BY_CATEGORIES_QUERY,
     {
       variables: {
-        categories: activeCategories,
+        categories:
+          activeCategories.length > 0 ? activeCategories : props.categories,
         limit: batchSize,
         offset: endCursor,
       },
@@ -62,14 +50,16 @@ const Projects = (props: ProjectsProps) => {
   useEffect(() => {
     if (isFirstRender < 2) setIsFirstRender((prev) => prev + 1);
     else {
+      setIsLoading(true);
+      setEndCursor("tmp");
       setProjects([]);
-      setEndCursor("0");
     }
   }, [activeCategories]);
 
   useEffect(() => {
     if (isFirstRender < 2) setIsFirstRender((prev) => prev + 1);
     else {
+      if (endCursor === "tmp") setEndCursor("0");
       if (endCursor === "0") fetchProjects();
     }
   }, [endCursor]);
@@ -86,42 +76,32 @@ const Projects = (props: ProjectsProps) => {
 
   //Methods
   const fetchProjects = async () => {
+    setIsLoading(true);
     try {
-      let data: GetProjectsQueryQuery | GetProjectsByCategoriesQueryQuery;
-      if (activeCategories.length <= 0) {
-        if (!fetchMoreProjects) return;
+      if (!fetchMoreProjects) return;
 
-        const { data: res } = await fetchMoreProjects({
-          variables: {
-            limit: batchSize,
-            offset: endCursor,
-          },
-        });
-        data = res;
-      } else {
-        if (!fetchMoreProjectsByCategories) return;
-
-        const { data: res } = await fetchMoreProjectsByCategories({
-          variables: {
-            limit: batchSize,
-            offset: endCursor,
-            categories: activeCategories,
-          },
-        });
-        data = res;
-      }
+      const { data: res } = await fetchMoreProjects({
+        variables: {
+          categories:
+            activeCategories.length > 0 ? activeCategories : props.categories,
+          limit: batchSize,
+          offset: endCursor,
+        },
+      });
+      const data = res;
 
       setEndCursor(data.projects?.pageInfo.endCursor || "0");
       setHasNextPage(data.projects?.pageInfo.hasNextPage || false);
-      const res = projectFormatter(data);
+      const tmp = projectFormatter(data);
 
-      if (res) {
-        setProjects((prev) => [...(prev ? prev : []), ...res]);
+      if (tmp) {
+        setProjects((prev) => [...(prev ? prev : []), ...tmp]);
       }
     } catch (e) {
       console.log(e);
       NotificationHandler.instance.error("Error fetching projects");
     }
+    setIsLoading(false);
   };
 
   const projectFormatter = (
@@ -301,12 +281,17 @@ const Projects = (props: ProjectsProps) => {
               return <ProjectPreviewSkeleton key={i} />;
             })}
         </div>
+        {projects && projects.length <= 0 && !isLoading && (
+          <p className="tw-text-center tw-font-bowlby-one tw-text-headings">
+            No projects found
+          </p>
+        )}
         {hasNextPage && (
           <Button
             variant="secondary"
             fit={screen === "sm" ? "full" : "inline"}
             className={`
-              !tw-bg-black tw-mx-auto tw-px-[75px]
+              !tw-bg-black tw-mx-auto tw-px-[75px] tw-mt-auto
 
               lg:tw-mr-0
             `}
