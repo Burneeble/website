@@ -44,7 +44,8 @@ const Projects = (props: ProjectsProps) => {
 
   //Hooks
   const { screen } = useClientInfoService();
-  const popupLogic = usePopup();
+  const categoriesPopupLogic = usePopup();
+  const searchPopupLogic = usePopup();
   const { lockScroll, unlockScroll } = useScrollLock();
   const { data: projectsData, fetchMore: fetchMoreProjects } = useQuery(
     GET_PROJECTS_BY_CATEGORIES_QUERY,
@@ -61,7 +62,7 @@ const Projects = (props: ProjectsProps) => {
 
   //Effects
   useEffect(() => {
-    if (popupLogic.isPopupOpen) popupLogic.closePopup();
+    if (categoriesPopupLogic.isPopupOpen) categoriesPopupLogic.closePopup();
     if (isFirstRender < 2) setIsFirstRender((prev) => prev + 1);
     else {
       triggerRefresh();
@@ -98,12 +99,20 @@ const Projects = (props: ProjectsProps) => {
   }, [projectsData]);
 
   useEffect(() => {
-    if (popupLogic.isPopupOpen) {
+    if (categoriesPopupLogic.isPopupOpen) {
       lockScroll();
     } else {
       unlockScroll();
     }
-  }, [popupLogic.isPopupOpen]);
+  }, [categoriesPopupLogic.isPopupOpen]);
+
+  useEffect(() => {
+    if (searchPopupLogic.isPopupOpen) {
+      lockScroll();
+    } else {
+      unlockScroll();
+    }
+  }, [searchPopupLogic.isPopupOpen]);
 
   //Methods
   const fetchProjects = async () => {
@@ -165,260 +174,280 @@ const Projects = (props: ProjectsProps) => {
   };
 
   return (
-    <section
-      className={`
-        projects-section tw-relative tw-top-[-35px] tw-rounded-t-[30px]
-        tw-bg-gradient-to-b tw-from-[var(--secondary-base)]
-        tw-to-[var(--secondary-darker)] tw-overflow-hidden tw-border-t-2
-        tw-border-[var(--primary-light)]
-      `}
-    >
-      <div
+    <>
+      <Popup logic={searchPopupLogic}>search</Popup>
+      <section
         className={`
-          shape tw-absolute tw-top-0 tw-left-0 -tw-translate-x-[50%]
-          -tw-translate-y-[50%] tw-w-[200vw] tw-h-[200vw]
-          tw-bg-[radial-gradient(circle,var(--primary-light)_0%,_rgba(0,0,0,0)_70%)]
-          tw-opacity-[.7] tw-blur-[100px] tw-max-w-[1000px] tw-max-h-[1000px]
-        `}
-      />
-      <div
-        className={`
-          content cs-section-structure tw-relative tw-z-[2] tw-flex tw-flex-col
-          tw-gap-[20px]
-
-          md:tw-gap-[30px]
+          projects-section tw-relative tw-top-[-35px] tw-rounded-t-[30px]
+          tw-bg-gradient-to-b tw-from-[var(--secondary-base)]
+          tw-to-[var(--secondary-darker)] tw-overflow-hidden tw-border-t-2
+          tw-border-[var(--primary-light)]
         `}
       >
         <div
           className={`
-            header tw-h-[58px] tw-justify-between tw-items-center tw-inline-flex
-            tw-w-full tw-gap-[20px]
-
-            lg:tw-flex-row lg:tw-h-[70px]
-
-            md:tw-flex-col md:tw-gap-[10px] md:tw-h-[123px] md:tw-items-start
+            shape tw-absolute tw-top-0 tw-left-0 -tw-translate-x-[50%]
+            -tw-translate-y-[50%] tw-w-[200vw] tw-h-[200vw]
+            tw-bg-[radial-gradient(circle,var(--primary-light)_0%,_rgba(0,0,0,0)_70%)]
+            tw-opacity-[.7] tw-blur-[100px] tw-max-w-[1000px] tw-max-h-[1000px]
           `}
-        >
-          <div
-            className={`
-              title tw-text-white tw-text-2xl tw-font-normal tw-font-bowlby-one
-              tw-whitespace-nowrap
-
-              lg:tw-text-5xl
-
-              md:tw-text-4xl
-            `}
-          >
-            {screen === "sm" ? (
-              "GALLERY"
-            ) : (
-              <>
-                Gallery{" "}
-                <span className={`cs-text-color-primary-gradient`}>
-                  on Fire!
-                </span>
-              </>
-            )}
-          </div>
-          <div
-            className={`
-              icons tw-justify-end tw-items-center tw-gap-[5px] tw-flex
-
-              md:tw-w-full
-            `}
-          >
-            <div
-              className={`
-                icon
-
-                lg:tw-max-w-[630px]
-
-                md:tw-flex-1
-              `}
-            >
-              {screen !== "sm" && (
-                <input
-                  value={searchQuery || ""}
-                  onChange={(e) => {
-                    setSearchQuery(e.target.value);
-                  }}
-                  placeholder="Search..."
-                  className={`
-                    tw-flex-1 tw-bg-[rgba(0,0,0,0)] tw-text-2xl tw-font-inter
-                    tw-outline-none tw-text-headings
-                  `}
-                />
-              )}
-              <FontAwesomeIcon
-                icon={faMagnifyingGlass}
-                className={`
-                  tw-transition-all tw-duration-200 tw-ease-in-out
-
-                  hover:tw-text-headings
-                `}
-              />
-            </div>
-            {["sm", "md"].includes(screen) && (
-              <div
-                className={cn(
-                  `icon tw-relative`,
-                  popupLogic.isPopupOpen && "opened",
-                  activeCategories.length > 0 && "active"
-                )}
-                onClick={() => {
-                  if (!popupLogic.isPopupOpen) {
-                    popupLogic.openPopup();
-                  }
-                }}
-              >
-                <FontAwesomeIcon
-                  icon={faFilter}
-                  className={`tw-transition-all tw-duration-200 tw-ease-in-out`}
-                />
-                <Popup
-                  logic={popupLogic}
-                  type={PopupType.Absolute}
-                  className={`tw-top-[calc(100%+.5rem)] tw-right-0`}
-                >
-                  <div
-                    className={`
-                      filter-popup tw-w-full tw-flex tw-flex-col tw-gap-[20px]
-                    `}
-                  >
-                    <div
-                      className={`
-                        header tw-flex tw-items-center tw-justify-between
-                        tw-pb-[15px] tw-border-b-[1px] tw-border-solid
-                        tw-border-neutral
-                      `}
-                    >
-                      <Button
-                        variant="secondary"
-                        onClick={() => {
-                          setActiveCategories([]);
-                        }}
-                      >
-                        <FontAwesomeIcon icon={faEraser} className="tw-mr-2" />{" "}
-                        Remove All Filters
-                      </Button>
-                      <Button
-                        onClick={() => {
-                          popupLogic.closePopup();
-                        }}
-                        variant="secondary"
-                        size="icon"
-                        className="!tw-rounded-full"
-                      >
-                        <FontAwesomeIcon icon={faXmark} />
-                      </Button>
-                    </div>
-                    <div
-                      className={`categories tw-flex tw-gap-[10px] tw-flex-wrap`}
-                    >
-                      {props.categories.map((category, i) => {
-                        return (
-                          <Label
-                            key={i}
-                            text={category}
-                            onClick={() => {
-                              if (activeCategories.includes(category)) {
-                                setActiveCategories((prev) =>
-                                  prev.filter((c) => c !== category)
-                                );
-                              } else
-                                setActiveCategories((prev) => [
-                                  ...prev,
-                                  category,
-                                ]);
-                            }}
-                            variant={
-                              activeCategories.includes(category)
-                                ? "active"
-                                : "disabled"
-                            }
-                            size={screen === "sm" ? "sm" : "default"}
-                          />
-                        );
-                      })}
-                    </div>
-                  </div>
-                </Popup>
-              </div>
-            )}
-          </div>
-        </div>
-        {!["sm", "md"].includes(screen) && (
-          <div className="categories tw-flex tw-flex-wrap tw-gap-[17px]">
-            {props.categories.map((category, i) => {
-              return (
-                <Label
-                  key={i}
-                  text={category}
-                  onClick={() => {
-                    if (activeCategories.includes(category)) {
-                      setActiveCategories((prev) =>
-                        prev.filter((c) => c !== category)
-                      );
-                    } else setActiveCategories((prev) => [...prev, category]);
-                  }}
-                  variant={
-                    activeCategories.includes(category) ? "active" : "disabled"
-                  }
-                />
-              );
-            })}
-          </div>
-        )}
+        />
         <div
           className={`
-            projects tw-flex tw-flex-col tw-gap-[20px]
-
-            lg:tw-grid lg:tw-grid-cols-3
+            content cs-section-structure tw-relative tw-z-[2] tw-flex
+            tw-flex-col tw-gap-[20px]
 
             md:tw-gap-[30px]
           `}
         >
-          {projects &&
-            projects.map((project, i) => {
-              return (
-                <ProjectPreview
-                  key={i}
-                  thumbnail={project.thumbnailUrl}
-                  title={project.title}
-                  categories={project.categories}
-                />
-              );
-            })}
-          {isLoading &&
-            Array.from({ length: batchSize }).map((_, i) => {
-              return <ProjectPreviewSkeleton key={i} />;
-            })}
-        </div>
-        {projects && projects.length <= 0 && !isLoading && (
-          <p className="tw-text-center tw-font-bowlby-one tw-text-headings">
-            No projects found
-          </p>
-        )}
-        {hasNextPage && (
-          <Button
-            variant="secondary"
-            fit={screen === "sm" ? "full" : "inline"}
+          <div
             className={`
-              !tw-bg-black tw-mx-auto tw-px-[75px] tw-mt-auto
+              header tw-h-[58px] tw-justify-between tw-items-center
+              tw-inline-flex tw-w-full tw-gap-[20px]
 
-              lg:tw-mr-0
+              lg:tw-flex-row lg:tw-h-[70px]
+
+              md:tw-flex-col md:tw-gap-[10px] md:tw-h-[123px] md:tw-items-start
             `}
-            onClick={async () => {
-              setIsLoading(true);
-              fetchProjects();
-              setIsLoading(false);
-            }}
           >
-            See More
-          </Button>
-        )}
-      </div>
-    </section>
+            <div
+              className={`
+                title tw-text-white tw-text-2xl tw-font-normal
+                tw-font-bowlby-one tw-whitespace-nowrap
+
+                lg:tw-text-5xl
+
+                md:tw-text-4xl
+              `}
+            >
+              {screen === "sm" ? (
+                "GALLERY"
+              ) : (
+                <>
+                  Gallery{" "}
+                  <span className={`cs-text-color-primary-gradient`}>
+                    on Fire!
+                  </span>
+                </>
+              )}
+            </div>
+            <div
+              className={`
+                icons tw-justify-end tw-items-center tw-gap-[5px] tw-flex
+
+                md:tw-w-full
+              `}
+            >
+              <div
+                className={cn(
+                  `
+                    icon
+
+                    lg:tw-max-w-[630px]
+
+                    md:tw-flex-1
+                  `,
+                  searchPopupLogic.isPopupOpen && "opened"
+                )}
+                onClick={() => {
+                  if (["sm", "md"].includes(screen)) {
+                    searchPopupLogic.openPopup();
+                  }
+                }}
+              >
+                {!["sm", "md"].includes(screen) && (
+                  <input
+                    value={searchQuery || ""}
+                    onChange={(e) => {
+                      setSearchQuery(e.target.value);
+                    }}
+                    placeholder="Search..."
+                    className={`
+                      tw-flex-1 tw-bg-[rgba(0,0,0,0)] tw-text-2xl tw-font-inter
+                      tw-outline-none tw-text-headings
+                    `}
+                  />
+                )}
+                <FontAwesomeIcon
+                  icon={faMagnifyingGlass}
+                  className={`
+                    tw-transition-all tw-duration-200 tw-ease-in-out
+
+                    hover:tw-text-headings
+                  `}
+                />
+              </div>
+              {["sm", "md"].includes(screen) && (
+                <div
+                  className={cn(
+                    `icon tw-relative`,
+                    categoriesPopupLogic.isPopupOpen && "opened",
+                    activeCategories.length > 0 && "active"
+                  )}
+                  onClick={() => {
+                    if (!categoriesPopupLogic.isPopupOpen) {
+                      categoriesPopupLogic.openPopup();
+                    }
+                  }}
+                >
+                  <FontAwesomeIcon
+                    icon={faFilter}
+                    className={`
+                      tw-transition-all tw-duration-200 tw-ease-in-out
+                    `}
+                  />
+                  <Popup
+                    logic={categoriesPopupLogic}
+                    type={PopupType.Absolute}
+                    className={`tw-top-[calc(100%+.5rem)] tw-right-0`}
+                  >
+                    <div
+                      className={`
+                        filter-popup tw-w-full tw-flex tw-flex-col tw-gap-[20px]
+                      `}
+                    >
+                      <div
+                        className={`
+                          header tw-flex tw-items-center tw-justify-between
+                          tw-pb-[15px] tw-border-b-[1px] tw-border-solid
+                          tw-border-neutral
+                        `}
+                      >
+                        <Button
+                          variant="secondary"
+                          onClick={() => {
+                            setActiveCategories([]);
+                          }}
+                        >
+                          <FontAwesomeIcon
+                            icon={faEraser}
+                            className="tw-mr-2"
+                          />{" "}
+                          Remove All Filters
+                        </Button>
+                        <Button
+                          onClick={() => {
+                            categoriesPopupLogic.closePopup();
+                          }}
+                          variant="secondary"
+                          size="icon"
+                          className="!tw-rounded-full"
+                        >
+                          <FontAwesomeIcon icon={faXmark} />
+                        </Button>
+                      </div>
+                      <div
+                        className={`
+                          categories tw-flex tw-gap-[10px] tw-flex-wrap
+                        `}
+                      >
+                        {props.categories.map((category, i) => {
+                          return (
+                            <Label
+                              key={i}
+                              text={category}
+                              onClick={() => {
+                                if (activeCategories.includes(category)) {
+                                  setActiveCategories((prev) =>
+                                    prev.filter((c) => c !== category)
+                                  );
+                                } else
+                                  setActiveCategories((prev) => [
+                                    ...prev,
+                                    category,
+                                  ]);
+                              }}
+                              variant={
+                                activeCategories.includes(category)
+                                  ? "active"
+                                  : "disabled"
+                              }
+                              size={screen === "sm" ? "sm" : "default"}
+                            />
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </Popup>
+                </div>
+              )}
+            </div>
+          </div>
+          {!["sm", "md"].includes(screen) && (
+            <div className="categories tw-flex tw-flex-wrap tw-gap-[17px]">
+              {props.categories.map((category, i) => {
+                return (
+                  <Label
+                    key={i}
+                    text={category}
+                    onClick={() => {
+                      if (activeCategories.includes(category)) {
+                        setActiveCategories((prev) =>
+                          prev.filter((c) => c !== category)
+                        );
+                      } else setActiveCategories((prev) => [...prev, category]);
+                    }}
+                    variant={
+                      activeCategories.includes(category)
+                        ? "active"
+                        : "disabled"
+                    }
+                  />
+                );
+              })}
+            </div>
+          )}
+          <div
+            className={`
+              projects tw-flex tw-flex-col tw-gap-[20px]
+
+              lg:tw-grid lg:tw-grid-cols-3
+
+              md:tw-gap-[30px]
+            `}
+          >
+            {projects &&
+              projects.map((project, i) => {
+                return (
+                  <ProjectPreview
+                    key={i}
+                    thumbnail={project.thumbnailUrl}
+                    title={project.title}
+                    categories={project.categories}
+                  />
+                );
+              })}
+            {isLoading &&
+              Array.from({ length: batchSize }).map((_, i) => {
+                return <ProjectPreviewSkeleton key={i} />;
+              })}
+          </div>
+          {projects && projects.length <= 0 && !isLoading && (
+            <p className="tw-text-center tw-font-bowlby-one tw-text-headings">
+              No projects found
+            </p>
+          )}
+          {hasNextPage && (
+            <Button
+              variant="secondary"
+              fit={screen === "sm" ? "full" : "inline"}
+              className={`
+                !tw-bg-black tw-mx-auto tw-px-[75px] tw-mt-auto
+
+                lg:tw-mr-0
+              `}
+              onClick={async () => {
+                setIsLoading(true);
+                fetchProjects();
+                setIsLoading(false);
+              }}
+            >
+              See More
+            </Button>
+          )}
+        </div>
+      </section>
+    </>
   );
 };
 
