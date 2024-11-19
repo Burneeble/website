@@ -6,6 +6,7 @@ export const GET_PROJECTS_BY_CATEGORIES_QUERY = gql(/* GraphQL */ `
     $categories: [String]!
     $limit: Int
     $offset: String
+    $search: String
   ) {
     projects(
       first: $limit
@@ -18,6 +19,7 @@ export const GET_PROJECTS_BY_CATEGORIES_QUERY = gql(/* GraphQL */ `
             field: NAME
           }
         }
+        search: $search
       }
     ) {
       edges {

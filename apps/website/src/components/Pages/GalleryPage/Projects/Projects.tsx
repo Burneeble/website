@@ -22,7 +22,7 @@ import { GetProjectsQueryQuery } from "@/__generated__/graphql";
 const Projects = (props: ProjectsProps) => {
   //States
   const [projects, setProjects] = useState<Array<ProjectModel> | null>(null);
-  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [searchQuery, setSearchQuery] = useState<string | null>(null);
   const [activeCategories, setActiveCategories] = useState<
     Array<(typeof props.categories)[number]>
   >([]);
@@ -42,6 +42,7 @@ const Projects = (props: ProjectsProps) => {
           activeCategories.length > 0 ? activeCategories : props.categories,
         limit: batchSize,
         offset: endCursor,
+        search: searchQuery,
       },
     }
   );
@@ -50,9 +51,7 @@ const Projects = (props: ProjectsProps) => {
   useEffect(() => {
     if (isFirstRender < 2) setIsFirstRender((prev) => prev + 1);
     else {
-      setIsLoading(true);
-      setEndCursor("tmp");
-      setProjects([]);
+      triggerRefresh();
     }
   }, [activeCategories]);
 
@@ -63,6 +62,17 @@ const Projects = (props: ProjectsProps) => {
       if (endCursor === "0") fetchProjects();
     }
   }, [endCursor]);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      if (searchQuery === null) return;
+      triggerRefresh();
+    }, 1000);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [searchQuery]);
 
   useEffect(() => {
     if (projectsData && !projects) {
@@ -86,6 +96,7 @@ const Projects = (props: ProjectsProps) => {
             activeCategories.length > 0 ? activeCategories : props.categories,
           limit: batchSize,
           offset: endCursor,
+          search: searchQuery,
         },
       });
       const data = res;
@@ -102,6 +113,12 @@ const Projects = (props: ProjectsProps) => {
       NotificationHandler.instance.error("Error fetching projects");
     }
     setIsLoading(false);
+  };
+
+  const triggerRefresh = () => {
+    setIsLoading(true);
+    setEndCursor("tmp");
+    setProjects([]);
   };
 
   const projectFormatter = (
@@ -200,7 +217,7 @@ const Projects = (props: ProjectsProps) => {
             >
               {screen !== "sm" && (
                 <input
-                  value={searchQuery}
+                  value={searchQuery || ""}
                   onChange={(e) => {
                     setSearchQuery(e.target.value);
                   }}
