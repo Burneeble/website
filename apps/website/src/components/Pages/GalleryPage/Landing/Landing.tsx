@@ -7,7 +7,7 @@ import { useClientInfoService } from "@burneeble/ui-components";
 const Landing = (props: LandingProps) => {
   //Hooks
   const { screen } = useClientInfoService();
-  //linear-gradient(180deg, black 0%, rgba(102, 102, 102, 0) 100%)
+
   return (
     <section
       className={`
