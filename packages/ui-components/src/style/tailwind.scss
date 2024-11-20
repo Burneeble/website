@@ -98,6 +98,11 @@
     -webkit-text-fill-color: transparent;
   }
 
+  .custom-placeholder-border {
+    border: 1px solid var(--neutral-default);
+    height: 58px;
+  }
+
   // full orange gradient
   .primary-gradient {
     @apply tw-from-[var(--primary-default)] tw-to-[var(--primary-lighter)];

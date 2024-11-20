@@ -118,7 +118,7 @@ const config = {
         },
         muted: {
           DEFAULT: "rgba(var(--muted))",
-          foreground: "rgba(var(--muted-foreground))",
+          foreground: "var(--neutral-default)",
         },
         accent: {
           DEFAULT: "rgba(var(--accent))",
@@ -146,6 +146,7 @@ const config = {
       textColor: {
         headings: "var(--primary-base)",
         body: "var(--neutral-light)",
+        "body-active": "var(--primary-base)",
         action: "var(--primary-default)",
         "action-hover": "var(--primary-lighter)",
         error: "var(--error-default)",
