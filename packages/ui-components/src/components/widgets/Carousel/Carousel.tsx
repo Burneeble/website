@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper/modules";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faArrowUpRightFromSquare,
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
@@ -118,12 +119,12 @@ const Carousel = (props: CarouselProps) => {
                 <div
                   className={cn(
                     `
-                    hover-layer tw-absolute tw-left-0 tw-top-0 tw-h-full
-                    tw-w-full tw-bg-black/60 tw-opacity-0 tw-backdrop-blur-sm
-                    tw-transition-all tw-duration-500 tw-ease-in-out
+                      hover-layer tw-absolute tw-left-0 tw-top-0 tw-h-full
+                      tw-w-full tw-bg-black/60 tw-opacity-0 tw-backdrop-blur-sm
+                      tw-transition-all tw-duration-500 tw-ease-in-out
 
-                    hover:tw-opacity-100
-                  `,
+                      hover:tw-opacity-100
+                    `,
                     (screen === "sm" || screen === "md") &&
                       showHover &&
                       "tw-opacity-100"
@@ -138,12 +139,12 @@ const Carousel = (props: CarouselProps) => {
                   <div
                     className={cn(
                       `
-                      content tw-mx-auto tw-flex tw-h-full tw-w-full
-                      tw-flex-col tw-items-center
-                      tw-justify-center tw-gap-[10px]
+                        content tw-mx-auto tw-flex tw-h-full tw-w-full
+                        tw-flex-col tw-items-center tw-justify-center
+                        tw-gap-[10px]
 
-                      md:tw-gap-[20px]
-                    `,
+                        md:tw-gap-[20px]
+                      `,
                       screen === "sm" || screen === "md"
                         ? "tw-max-w-[95%]"
                         : "tw-max-w-[80%]"
@@ -151,24 +152,41 @@ const Carousel = (props: CarouselProps) => {
                   >
                     <h2
                       className={`
-                        project-title tw-text-center tw-font-bowlby-one
-                        tw-text-2xl tw-font-normal tw-text-headings
-
-                        md:tw-text-4xl
+                        project-title tw-flex tw-items-center tw-gap-[10px]
+                        tw-text-center tw-font-bowlby-one tw-text-2xl
+                        tw-font-normal tw-text-headings
 
                         lg:tw-text-5xl
+
+                        md:tw-text-4xl
                       `}
                     >
                       {proj.title}
+                      <FontAwesomeIcon
+                        onClick={() => {
+                          window.open(proj.projectUrl, "_blank");
+                        }}
+                        icon={faArrowUpRightFromSquare}
+                        className={`
+                          tw-cursor-pointer tw-text-xl tw-text-primary
+                          tw-transition-all tw-duration-200 tw-ease-in-out
+
+                          hover:tw-brightness-125 hover:tw-filter
+
+                          lg:tw-text-4xl
+
+                          md:tw-text-3xl
+                        `}
+                      />
                     </h2>
                     <p
                       className={`
                         desc tw- tw-text-center tw-font-inter tw-text-md
                         tw-font-normal tw-text-body
 
-                        md:tw-text-lg md:tw-leading-[35px]
-
                         lg:tw-text-2xl
+
+                        md:tw-text-lg md:tw-leading-[35px]
                       `}
                     >
                       {proj.description}
