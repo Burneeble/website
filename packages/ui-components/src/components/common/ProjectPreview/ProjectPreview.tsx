@@ -12,8 +12,7 @@ const ProjectPreview = (props: ProjectPreviewProps) => {
       <div
         className={`
           image-wrapper tw-aspect-[1920/1080] tw-w-full tw-overflow-hidden
-          tw-rounded-tl-lg tw-rounded-tr-lg tw-border
-          tw-border-[var(--neutral-default)]
+          tw-rounded-lg tw-border tw-border-[var(--neutral-default)]
         `}
       >
         <img
