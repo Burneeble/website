@@ -19,6 +19,21 @@
   h3 {
     @apply tw-text-xl tw-text-headings tw-font-bowlby-one md:tw-text-2xl lg:tw-text-3xl !tw-leading-tight;
   }
+
+  //body website
+  .p-default {
+    @apply tw-text-xl tw-leading-[30px] tw-font-inter tw-text-body md:tw-text-2xl md:tw-leading-[35px] lg:tw-text-3xl lg:tw-leading-10;
+  }
+
+  //text inside cards, or inputs
+  .p-small {
+    @apply tw-text-lg tw-leading-7 tw-font-inter tw-text-body md:tw-text-xl md:tw-leading-8 lg:tw-text-2xl lg:tw-leading-[35px];
+  }
+
+  //smaller text for superficial information or small details
+  .p-smaller {
+    @apply tw-text-base tw-leading-[25px] tw-font-inter tw-text-body md:tw-text-lg md:tw-leading-7 lg:tw-text-xl lg:tw-leading-[30px];
+  }
 }
 
 @layer components {

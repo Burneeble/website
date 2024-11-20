@@ -100,7 +100,7 @@ const config = {
       },
       colors: {
         border: "rgba(var(--border))",
-        input: "rgba(var(--input))",
+        input: "var(--primary-base)",
         ring: "rgba(var(--ring))",
         background: "rgba(var(--secondary-base)",
         foreground: "rgba(var(--primary-base))",
