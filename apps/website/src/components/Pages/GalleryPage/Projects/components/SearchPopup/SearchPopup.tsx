@@ -93,7 +93,11 @@ const SearchPopup = (props: SearchPopupProps) => {
 
   return (
     <Popup logic={props.popupLogic}>
-      <div className="search-popup tw-font-inter tw-text-lg tw-w-full">
+      <div
+        className={`
+          search-popup tw-font-inter tw-text-lg tw-w-full tw-flex tw-flex-col
+        `}
+      >
         <div
           className={`
             search tw-pb-[15px] tw-flex tw-gap-[10px] tw-items-center
@@ -114,7 +118,7 @@ const SearchPopup = (props: SearchPopupProps) => {
             placeholder="Search..."
           />
         </div>
-        <div className="results">
+        <div className="results tw-flex-1 tw-overflow-y-scroll">
           <div className="search-section">
             <h3 className="section-name">Categories</h3>
             {debouncedSearchQuery ? (
@@ -140,7 +144,7 @@ const SearchPopup = (props: SearchPopupProps) => {
                 <p className="fallback">No Results</p>
               )
             ) : (
-              <p className="fallback">Search for categories</p>
+              <p className="fallback">Search for Categories</p>
             )}
           </div>
           <div className="search-section">
@@ -161,7 +165,7 @@ const SearchPopup = (props: SearchPopupProps) => {
                 <p className="fallback">No Results</p>
               )
             ) : (
-              <p className="fallback">Search for categories</p>
+              <p className="fallback">Search for Projects</p>
             )}
           </div>
         </div>

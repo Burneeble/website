@@ -61,3 +61,25 @@ export const absolutePopup: Story = {
     );
   },
 };
+
+export const secondaryPopup: Story = {
+  render: () => {
+    //Hooks
+    const logic = usePopup();
+
+    return (
+      <>
+        <Popup logic={logic} variant="secondary">
+          <div>Hello World</div>
+        </Popup>
+        <Button
+          onClick={() => {
+            logic.openPopup();
+          }}
+        >
+          Open Popup
+        </Button>
+      </>
+    );
+  },
+};

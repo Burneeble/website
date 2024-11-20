@@ -58,18 +58,18 @@ export interface PopupLogic {
  */
 
 const variant = {
-  default: "tw-bg-[var(--primary-bg-color)]",
-  secondary: "",
+  default:
+    "tw-bg-gradient-to-b secondary-gradient-to-custom tw-border-[var(--secondary-lighter)]",
+  secondary: "tw-border-neutral secondary-gradient tw-bg-gradient-to-tr",
 };
 
 // eslint-disable-next-line @burneeble/burneeble/camel-case-vars
 export const PopupVariants = cva(
   `
     popup tw-flex tw-max-h-[80vh] tw-min-h-[30vh] tw-w-[30rem] tw-max-w-[90vw]
-    tw-animate-cs-fade-in tw-items-center tw-justify-center tw-overflow-auto
-    tw-rounded-lg tw-border-[1px] tw-border-[var(--secondary-lighter)]
-    tw-bg-gradient-to-b tw-p-[20px] tw-shadow-[0_5px_5px_rgba(0,0,0,0.26)]
-    secondary-gradient-to-custom tw-border-solid tw-text-headings
+    tw-animate-cs-fade-in tw-overflow-auto tw-rounded-lg tw-border-[1px]
+    tw-border-solid tw-p-[20px] tw-text-headings
+    tw-shadow-[0_5px_5px_rgba(0,0,0,0.26)]
   `,
   {
     variants: {
