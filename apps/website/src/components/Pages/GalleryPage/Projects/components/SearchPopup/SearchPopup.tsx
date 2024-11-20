@@ -92,7 +92,7 @@ const SearchPopup = (props: SearchPopupProps) => {
   };
 
   return (
-    <Popup logic={props.popupLogic}>
+    <Popup logic={props.popupLogic} variant="secondary">
       <div
         className={`
           search-popup tw-font-inter tw-text-lg tw-w-full tw-flex tw-flex-col
