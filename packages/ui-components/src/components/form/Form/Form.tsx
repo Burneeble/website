@@ -45,7 +45,9 @@ const Form = (props: FormProps) => {
             />
           );
         })}
-        <Button type="submit">Submit</Button>
+        <Button type="submit" fit="full">
+          Submit
+        </Button>
       </form>
     </FormComponent>
   );
