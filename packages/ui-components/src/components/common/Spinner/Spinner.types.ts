@@ -14,7 +14,7 @@ export const spinnerVariants = cva(
   `
     spinner tw-box-border tw-inline-block
     tw-animate-[rotate-spinner_1s_linear_infinite] tw-rounded-full
-    tw-bg-[linear-gradient(0deg,_rgba(255,61,0,0.2)_33%,_#ff3d00_100%)]
+    tw-bg-[linear-gradient(0deg,_rgba(255,255,255,0.2)_33%,_#fff_100%)]
   `,
   {
     variants: {
