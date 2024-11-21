@@ -15,6 +15,16 @@ const FilterPopup = (props: FilterPopupProps) => {
   //Hooks
   const { screen } = useClientInfoService();
 
+  //Methods
+  const getButtonSize = () => {
+    switch (screen) {
+      case "sm":
+        return "sm";
+      default:
+        return "default";
+    }
+  };
+
   return (
     <Popup
       logic={props.popupLogic}
@@ -32,6 +42,7 @@ const FilterPopup = (props: FilterPopupProps) => {
         >
           <Button
             variant="secondary-outline"
+            size={getButtonSize()}
             onClick={() => {
               props.setActiveCategories([]);
             }}
@@ -44,8 +55,8 @@ const FilterPopup = (props: FilterPopupProps) => {
               props.popupLogic.closePopup();
             }}
             variant="secondary-outline"
-            size="icon"
-            className="!tw-rounded-full"
+            size={getButtonSize()}
+            className="!tw-rounded-full tw-aspect-square"
           >
             <FontAwesomeIcon icon={faXmark} />
           </Button>

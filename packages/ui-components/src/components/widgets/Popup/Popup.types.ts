@@ -59,7 +59,7 @@ export interface PopupLogic {
 
 const variant = {
   default:
-    "tw-bg-gradient-to-b secondary-gradient-to-custom tw-border-[var(--secondary-lighter)]",
+    "tw-bg-gradient-to-b secondary-gradient-to-custom tw-border-[var(--secondary-default)]",
   secondary: "tw-border-neutral secondary-gradient tw-bg-gradient-to-tr",
 };
 
