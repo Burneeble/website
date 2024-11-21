@@ -34,7 +34,7 @@ const Projects = (props: ProjectsProps) => {
   const [hasNextPage, setHasNextPage] = useState<boolean>(true);
   const [endCursor, setEndCursor] = useState<string>("0");
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const batchSize = 1;
+  const batchSize = 3;
   const [isFirstRender, setIsFirstRender] = useState<number>(0);
 
   //Hooks

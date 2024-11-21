@@ -12,14 +12,9 @@ const size = {
 
 export const spinnerVariants = cva(
   `
-    spinner tw-relative tw-block
-
-    after:tw-absolute after:tw-inset-0
-    after:tw-animate-[rotate-spinner_2s_linear_infinite] after:tw-rounded-full
-    after:tw-shadow-[inset_0_2px_0_var(--primary-base)] after:tw-content-['']
-
-    before:tw-absolute before:tw-inset-0 before:tw-rounded-full
-    before:tw-shadow-[inset_0_0_10px_2px_rgba(0,0,0,0.3)] before:tw-content-['']
+    spinner tw-box-border tw-inline-block
+    tw-animate-[rotate-spinner_1s_linear_infinite] tw-rounded-full
+    tw-bg-[linear-gradient(0deg,_rgba(255,61,0,0.2)_33%,_#ff3d00_100%)]
   `,
   {
     variants: {

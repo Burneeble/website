@@ -1,11 +1,18 @@
 // Spinner
 
-@keyframes rotate-spinner {
-  0% {
-    transform: rotate(0);
-  }
+.spinner {
+  -webkit-mask-image: radial-gradient(circle, transparent 60%, black 61%);
+  mask-image: radial-gradient(circle, transparent 60%, black 61%);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
 
-  100% {
-    transform: rotate(360deg);
+  @keyframes rotate-spinner {
+    0% {
+      transform: rotate(0);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
   }
 }
