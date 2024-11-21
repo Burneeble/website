@@ -13,6 +13,13 @@ export const simpleProjectPreview: Story = {
   args: {
     thumbnail: "https://picsum.photos/1920/1080",
     title: "Fighter Punks",
-    categories: ["Blockchain", "Ethereum", "Website"],
+    categories: [
+      "Blockchain",
+      "Ethereum",
+      "Website",
+      "Dapp",
+      "Crossmint",
+      "Dashboard",
+    ],
   },
 };
