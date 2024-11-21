@@ -22,6 +22,7 @@ import { useQuery } from "@apollo/client";
 import { GetProjectsQueryQuery } from "@/__generated__/graphql";
 import { cn } from "@/lib/utils";
 import { FilterPopup, SearchPopup } from "./components";
+import { NotFoundIcon } from "@burneeble/icons";
 
 const Projects = (props: ProjectsProps) => {
   //States
@@ -32,7 +33,7 @@ const Projects = (props: ProjectsProps) => {
   >([]);
   const [hasNextPage, setHasNextPage] = useState<boolean>(true);
   const [endCursor, setEndCursor] = useState<string>("0");
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const batchSize = 1;
   const [isFirstRender, setIsFirstRender] = useState<number>(0);
 
@@ -90,6 +91,7 @@ const Projects = (props: ProjectsProps) => {
       const projectsInfo = projectFormatter(projectsData!);
 
       setProjects(projectsInfo);
+      setIsLoading(false);
     }
   }, [projectsData]);
 
@@ -353,9 +355,32 @@ const Projects = (props: ProjectsProps) => {
               })}
           </div>
           {projects && projects.length <= 0 && !isLoading && (
-            <p className="tw-text-center tw-font-bowlby-one tw-text-headings">
-              No projects found
-            </p>
+            <div
+              className={`
+                not-found tw-inline-flex tw-h-[261px] tw-flex-col
+                tw-items-center tw-justify-center tw-gap-[5px]
+              `}
+            >
+              <NotFoundIcon className="tw-text-body tw-text-[100px]" />
+              <div
+                className={`
+                  tw-self-stretch tw-text-center tw-text-body tw-font-inter
+                  tw-text-3xl tw-font-black tw-leading-10
+                `}
+              >
+                No Project Found
+              </div>
+              <div
+                className={`
+                  tw-w-[738px] tw-text-center tw-text-body tw-font-inter
+                  tw-text-2xl tw-font-normal tw-leading-[35px]
+                `}
+              >
+                {
+                  " It looks like we haven't developed any projects with this information yet. Want to be the first?"
+                }
+              </div>
+            </div>
           )}
           {hasNextPage && (
             <Button
