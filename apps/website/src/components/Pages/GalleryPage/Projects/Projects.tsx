@@ -278,9 +278,11 @@ const Projects = (props: ProjectsProps) => {
                     activeCategories.length > 0 && "active"
                   )}
                   onClick={() => {
-                    if (!categoriesPopupLogic.isPopupOpen) {
-                      categoriesPopupLogic.openPopup();
-                    }
+                    setTimeout(() => {
+                      if (!categoriesPopupLogic.isPopupOpen) {
+                        categoriesPopupLogic.openPopup();
+                      }
+                    }, 500);
                   }}
                 >
                   <FontAwesomeIcon
