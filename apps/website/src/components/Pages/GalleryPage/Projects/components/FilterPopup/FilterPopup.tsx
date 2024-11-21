@@ -31,7 +31,7 @@ const FilterPopup = (props: FilterPopupProps) => {
           `}
         >
           <Button
-            variant="secondary"
+            variant="secondary-outline"
             onClick={() => {
               props.setActiveCategories([]);
             }}
@@ -43,7 +43,7 @@ const FilterPopup = (props: FilterPopupProps) => {
             onClick={() => {
               props.popupLogic.closePopup();
             }}
-            variant="secondary"
+            variant="secondary-outline"
             size="icon"
             className="!tw-rounded-full"
           >

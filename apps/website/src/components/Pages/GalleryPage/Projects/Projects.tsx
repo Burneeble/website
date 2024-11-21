@@ -56,7 +56,6 @@ const Projects = (props: ProjectsProps) => {
 
   //Effects
   useEffect(() => {
-    if (categoriesPopupLogic.isPopupOpen) categoriesPopupLogic.closePopup();
     if (isFirstRender < 2) setIsFirstRender((prev) => prev + 1);
     else {
       triggerRefresh();
@@ -93,14 +92,6 @@ const Projects = (props: ProjectsProps) => {
       setProjects(projectsInfo);
     }
   }, [projectsData]);
-
-  useEffect(() => {
-    if (categoriesPopupLogic.isPopupOpen) {
-      lockScroll();
-    } else {
-      unlockScroll();
-    }
-  }, [categoriesPopupLogic.isPopupOpen]);
 
   useEffect(() => {
     if (searchPopupLogic.isPopupOpen) {
@@ -167,10 +158,6 @@ const Projects = (props: ProjectsProps) => {
       : null;
     return projectsInfo;
   };
-
-  useEffect(() => {
-    console.log("SCREEN", screen);
-  }, [screen]);
 
   return (
     <>

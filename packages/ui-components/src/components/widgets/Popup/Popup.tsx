@@ -1,10 +1,9 @@
-import React, { RefObject, useEffect, useRef } from "react";
+import React, { forwardRef, useEffect, useRef } from "react";
 import { PopupProps, PopupType, PopupVariants } from "./Popup.types";
 import { cn } from "@/lib/utils";
 
-const PopupComponent = (
-  props: PopupProps & { ref: RefObject<HTMLDivElement> }
-) => {
+// eslint-disable-next-line @burneeble/burneeble/camel-case-vars
+const PopupComponent = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
   //States
   const type = props.type || PopupType.Fixed;
 
@@ -18,12 +17,14 @@ const PopupComponent = (
       onClick={(e) => {
         e.stopPropagation();
       }}
-      ref={props.ref}
+      ref={ref}
     >
       {props.children}
     </div>
   );
-};
+});
+
+PopupComponent.displayName = "PopupComponent";
 
 const Popup = (props: PopupProps) => {
   //States
