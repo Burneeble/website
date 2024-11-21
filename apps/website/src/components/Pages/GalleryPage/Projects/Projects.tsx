@@ -168,6 +168,10 @@ const Projects = (props: ProjectsProps) => {
     return projectsInfo;
   };
 
+  useEffect(() => {
+    console.log("SCREEN", screen);
+  }, [screen]);
+
   return (
     <>
       {["sm", "md"].includes(screen) && (
@@ -207,9 +211,9 @@ const Projects = (props: ProjectsProps) => {
               header tw-h-[58px] tw-justify-between tw-items-center
               tw-inline-flex tw-w-full tw-gap-[20px]
 
-              lg:tw-flex-row lg:tw-h-[70px]
-
               md:tw-flex-col md:tw-gap-[10px] md:tw-h-[123px] md:tw-items-start
+
+              xl:tw-flex-row xl:tw-h-[70px]
             `}
           >
             <div
@@ -217,9 +221,9 @@ const Projects = (props: ProjectsProps) => {
                 title tw-text-white tw-text-2xl tw-font-normal
                 tw-font-bowlby-one tw-whitespace-nowrap
 
-                lg:tw-text-5xl
-
                 md:tw-text-4xl
+
+                xl:tw-text-5xl
               `}
             >
               {screen === "sm" ? (
@@ -245,9 +249,9 @@ const Projects = (props: ProjectsProps) => {
                   `
                     icon
 
-                    lg:tw-max-w-[630px]
-
                     md:tw-flex-1
+
+                    xl:tw-max-w-[630px]
                   `,
                   searchPopupLogic.isPopupOpen && "opened"
                 )}
@@ -279,7 +283,7 @@ const Projects = (props: ProjectsProps) => {
                   `}
                 />
               </div>
-              {["sm", "md"].includes(screen) && (
+              {["sm", "md", "lg"].includes(screen) && (
                 <div
                   className={cn(
                     `icon tw-relative`,
@@ -298,7 +302,7 @@ const Projects = (props: ProjectsProps) => {
                       tw-transition-all tw-duration-200 tw-ease-in-out
                     `}
                   />
-                  {["sm", "md"].includes(screen) && (
+                  {["sm", "md", "lg"].includes(screen) && (
                     <FilterPopup
                       popupLogic={categoriesPopupLogic}
                       categories={props.categories}
@@ -310,7 +314,7 @@ const Projects = (props: ProjectsProps) => {
               )}
             </div>
           </div>
-          {!["sm", "md"].includes(screen) && (
+          {!["sm", "md", "lg"].includes(screen) && (
             <div className="categories tw-flex tw-flex-wrap tw-gap-[17px]">
               {props.categories.map((category, i) => {
                 return (

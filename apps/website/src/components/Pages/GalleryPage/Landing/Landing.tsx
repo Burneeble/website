@@ -1,6 +1,6 @@
 "use client";
 
-import { FlameSymbol } from "@burneeble/icons";
+import { Flame } from "@burneeble/icons";
 import { LandingProps } from "./Landing.types";
 import { useClientInfoService } from "@burneeble/ui-components";
 
@@ -32,14 +32,19 @@ const Landing = (props: LandingProps) => {
         `}
       >
         <div className="tw-font-[60px]">
-          <FlameSymbol className="tw-h-[60px] tw-w-[60px]" />
+          <Flame className="tw-h-[60px] tw-w-[60px]" />
         </div>
         <div
           className={`
             tw-text-[var(--primary-lighter)] tw-font-normal tw-opacity-70
+            tw-text-center
           `}
         >
-          {["md", "sm"].includes(screen) ? "Showcase" : "Discover our Showcase"}
+          {["md", "sm"].includes(screen) ? (
+            "Showcase"
+          ) : (
+            <>Discover our{screen === "lg" && <br />} Showcase</>
+          )}
         </div>
         <div
           className={`
@@ -51,7 +56,11 @@ const Landing = (props: LandingProps) => {
             xl:tw-text-[60px] xl:-tw-top-[40%]
           `}
         >
-          {["md", "sm"].includes(screen) ? "Showcase" : "Discover our Showcase"}
+          {["md", "sm"].includes(screen) ? (
+            "Showcase"
+          ) : (
+            <>Discover our{screen === "lg" && <br />} Showcase</>
+          )}
         </div>
       </div>
     </section>
