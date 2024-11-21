@@ -1,6 +1,6 @@
 "use client";
 
-import { Flame } from "@burneeble/icons";
+import { FlameIcon } from "@burneeble/icons";
 import { LandingProps } from "./Landing.types";
 import { useClientInfoService } from "@burneeble/ui-components";
 
@@ -32,7 +32,7 @@ const Landing = (props: LandingProps) => {
         `}
       >
         <div className="tw-font-[60px]">
-          <Flame className="tw-h-[60px] tw-w-[60px]" />
+          <FlameIcon className="tw-h-[60px] tw-w-[60px]" />
         </div>
         <div
           className={`
