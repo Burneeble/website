@@ -184,7 +184,7 @@ const Projects = (props: ProjectsProps) => {
             shape tw-absolute tw-top-0 tw-left-0 -tw-translate-x-[50%]
             -tw-translate-y-[50%] tw-w-[200vw] tw-h-[200vw]
             tw-bg-[radial-gradient(circle,var(--primary-light)_0%,_rgba(0,0,0,0)_70%)]
-            tw-opacity-[.7] tw-blur-[100px] tw-max-w-[1000px] tw-max-h-[1000px]
+            tw-opacity-[.7] tw-blur-[100px] tw-max-w-[190%] tw-max-h-[190%]
           `}
         />
         <div
