@@ -1,5 +1,6 @@
 import React from "react";
 import { ProjectPreviewProps } from "./ProjectPreview.types";
+import { cn } from "@/lib/utils";
 
 const ProjectPreview = (props: ProjectPreviewProps) => {
   //Methods
@@ -19,17 +20,18 @@ const ProjectPreview = (props: ProjectPreviewProps) => {
   return (
     <div
       className={`
-        project-preview tw-group tw-inline-flex tw-w-full tw-cursor-pointer
-        tw-flex-col tw-items-start tw-justify-start tw-gap-[10px] tw-rounded-lg
+        project-preview tw-inline-flex tw-w-full tw-flex-col tw-items-start
+        tw-justify-start tw-gap-[10px] tw-rounded-lg
       `}
     >
       <div
         className={`
-          image-wrapper tw-aspect-[1920/1080] tw-w-full tw-overflow-hidden
-          tw-rounded-lg tw-border tw-border-[var(--neutral-default)]
-          tw-transition-all tw-duration-200 tw-ease-in-out
+          image-wrapper tw-group tw-aspect-[1920/1080] tw-w-full
+          tw-cursor-pointer tw-overflow-hidden tw-rounded-lg tw-border
+          tw-border-[var(--neutral-default)] tw-transition-all tw-duration-200
+          tw-ease-in-out
 
-          group-hover:tw-border-tertiary
+          hover:tw-border-tertiary
         `}
       >
         <img
@@ -50,8 +52,11 @@ const ProjectPreview = (props: ProjectPreviewProps) => {
       >
         <div
           className={`
-            title tw-max-w-full tw-truncate tw-font-inter tw-text-xl
-            tw-font-black tw-leading-loose tw-text-headings
+            title tw-max-w-full tw-cursor-pointer tw-truncate tw-font-inter
+            tw-text-xl tw-font-black tw-leading-loose tw-text-headings
+            tw-transition-all tw-duration-200 tw-ease-in-out
+
+            hover:tw-text-primary
 
             xl:tw-text-2xl
           `}
@@ -62,8 +67,7 @@ const ProjectPreview = (props: ProjectPreviewProps) => {
         <div
           className={`
             categories tw-flex tw-max-w-full tw-flex-wrap tw-gap-[5px]
-            tw-self-stretch tw-font-inter tw-text-lg tw-font-normal tw-leading-7
-            tw-text-body
+            tw-font-inter tw-text-lg tw-font-normal tw-leading-7 tw-text-body
 
             xl:tw-text-xl
           `}
@@ -75,13 +79,27 @@ const ProjectPreview = (props: ProjectPreviewProps) => {
             return (
               <span
                 key={i}
-                className={`
-                  tw-rounded-lg tw-border tw-border-neutral category tw-px-[5px]
-                  tw-font-inter tw-text-lg tw-font-normal tw-leading-[30px]
-                  tw-text-body
+                className={cn(
+                  `
+                    tw-h-fit tw-cursor-pointer tw-rounded-lg tw-border
+                    tw-border-neutral category tw-px-[5px] tw-font-inter
+                    tw-text-lg tw-font-normal tw-leading-[30px] tw-text-body
+                    tw-transition-all tw-duration-200 tw-ease-in-out
 
-                  xl:tw-text-xl
-                `}
+                    xl:tw-text-xl
+                  `,
+                  props.activeCategories.includes(category) &&
+                    `tw-border-primary`
+                )}
+                onClick={() => {
+                  if (props.activeCategories.includes(category)) {
+                    props.setActiveCategories((prev) =>
+                      prev.filter((cat) => cat !== category)
+                    );
+                  } else {
+                    props.setActiveCategories((prev) => [...prev, category]);
+                  }
+                }}
               >
                 {category}
               </span>

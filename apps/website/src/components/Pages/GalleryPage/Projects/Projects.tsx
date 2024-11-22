@@ -253,7 +253,7 @@ const Projects = (props: ProjectsProps) => {
                     onChange={(e) => {
                       setSearchQuery(e.target.value);
                     }}
-                    placeholder="Search..."
+                    placeholder="Search Project Name..."
                     className={`
                       tw-flex-1 tw-bg-[rgba(0,0,0,0)] tw-text-2xl tw-font-inter
                       tw-outline-none tw-text-headings
@@ -335,6 +335,8 @@ const Projects = (props: ProjectsProps) => {
                     title={project.title}
                     categories={project.categories}
                     query={searchQuery || ""}
+                    activeCategories={activeCategories}
+                    setActiveCategories={setActiveCategories}
                   />
                 );
               })}

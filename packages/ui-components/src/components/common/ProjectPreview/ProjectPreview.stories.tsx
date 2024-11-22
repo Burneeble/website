@@ -1,6 +1,7 @@
 import { StoryObj, Meta } from "@storybook/react";
 import ProjectPreview from "./ProjectPreview";
 import { ProjectPreviewProps } from "./ProjectPreview.types";
+import React, { useState } from "react";
 
 export default {
   title: "burneeble-website-components/common/ProjectPreview",
@@ -21,5 +22,18 @@ export const simpleProjectPreview: Story = {
       "Crossmint",
       "Dashboard",
     ],
+  },
+
+  render: (props) => {
+    //States
+    const [activeCategories, setActiveCategories] = useState<string[]>([]);
+
+    return (
+      <ProjectPreview
+        {...props}
+        activeCategories={activeCategories}
+        setActiveCategories={setActiveCategories}
+      />
+    );
   },
 };
