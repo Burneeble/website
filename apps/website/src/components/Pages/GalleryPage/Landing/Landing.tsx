@@ -40,10 +40,10 @@ const Landing = (props: LandingProps) => {
             md:tw-text-6xl
           `}
         >
-          {["md", "sm"].includes(screen) ? (
+          {["md", "sm", "lg"].includes(screen) ? (
             "Showcase"
           ) : (
-            <>Discover our{screen === "lg" && <br />} Showcase</>
+            <>Discover our Showcase</>
           )}
         </span>
         <h1
@@ -53,13 +53,13 @@ const Landing = (props: LandingProps) => {
 
             lg:-tw-top-[40%]
 
-            md:-tw-top-[60%]
+            md:-tw-top-[35%]
           `}
         >
-          {["md", "sm"].includes(screen) ? (
+          {["md", "sm", "lg"].includes(screen) ? (
             "Showcase"
           ) : (
-            <>Discover our{screen === "lg" && <br />} Showcase</>
+            <>Discover our Showcase</>
           )}
         </h1>
       </div>
