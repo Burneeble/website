@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { SearchPopupProps } from "./SearchPopup.types";
 import {
+  NotFound,
   NotificationHandler,
   Popup,
   Spinner,
@@ -14,7 +15,6 @@ import { MobileSearchResult } from "./components";
 import { useQuery } from "@apollo/client";
 import { GET_PROJECTS_QUERY } from "@/services/ProjectService";
 import { cn } from "@/lib/utils";
-import { NotFoundIcon } from "@burneeble/icons";
 
 const SearchPopup = (props: SearchPopupProps) => {
   //States
@@ -126,13 +126,11 @@ const SearchPopup = (props: SearchPopupProps) => {
         </div>
         <div
           className={cn(
-            `results tw-transition-all tw-duration-1000 tw-ease-in-out`,
+            `results tw-transition-[height] tw-duration-1000 tw-ease-in-out`,
             !searchQuery && !isLoading
               ? `tw-h-0 tw-overflow-hidden tw-mt-0`
-              : `
-                tw-h-[270px] tw-overflow-y-scroll tw-mt-[15px] tw-border-t-[1px]
-                tw-border-solid tw-border-neutral
-              `
+              : `tw-h-[270px] tw-overflow-y-scroll tw-mt-[15px]`,
+            searchQuery && `tw-border-t-[1px] tw-border-solid tw-border-neutral`
           )}
         >
           {isLoading || searchQuery !== debouncedSearchQuery ? (
@@ -148,30 +146,7 @@ const SearchPopup = (props: SearchPopupProps) => {
             <>
               {categoriesSearchResults.length <= 0 &&
               projectsSearchResults.length <= 0 ? (
-                <div
-                  className={`
-                    not-found tw-w-full tw-h-full tw-flex tw-flex-col
-                    tw-items-center tw-justify-center tw-gap-[5px]
-                  `}
-                >
-                  <NotFoundIcon className="tw-text-[80px] tw-text-body" />
-                  <h3
-                    className={`
-                      tw-text-center tw-text-body tw-text-xl tw-font-black
-                      tw-font-Inter tw-leading-[30px]
-                    `}
-                  >
-                    Oops!
-                  </h3>
-                  <p
-                    className={`
-                      tw-text-center tw-text-body tw-text-base tw-font-normal
-                      tw-font-Inter tw-leading-[25px]
-                    `}
-                  >
-                    No Element Found
-                  </p>
-                </div>
+                <NotFound title={"Oops!"} text={"No Element Found"} />
               ) : (
                 <>
                   {categoriesSearchResults.length > 0 && (

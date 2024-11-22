@@ -11,6 +11,7 @@ import { useCallback, useEffect, useState } from "react";
 import {
   Button,
   Label,
+  NotFound,
   NotificationHandler,
   ProjectPreview,
   ProjectPreviewSkeleton,
@@ -22,7 +23,6 @@ import { useQuery } from "@apollo/client";
 import { GetProjectsQueryQuery } from "@/__generated__/graphql";
 import { cn } from "@/lib/utils";
 import { FilterPopup, SearchPopup } from "./components";
-import { NotFoundIcon } from "@burneeble/icons";
 
 const Projects = (props: ProjectsProps) => {
   //States
@@ -190,7 +190,7 @@ const Projects = (props: ProjectsProps) => {
         <div
           className={`
             content cs-section-structure tw-relative tw-z-[2] tw-flex
-            tw-flex-col tw-gap-[20px]
+            tw-flex-col tw-gap-[20px] tw-min-h-0
 
             md:tw-gap-[30px]
           `}
@@ -202,7 +202,7 @@ const Projects = (props: ProjectsProps) => {
 
               md:tw-flex-col md:tw-gap-[10px] md:tw-h-[123px] md:tw-items-start
 
-              xl:tw-flex-row xl:tw-h-[70px]
+              xl:tw-flex-row xl:tw-h-[70px] xl:tw-items-center
             `}
           >
             <div
@@ -263,14 +263,7 @@ const Projects = (props: ProjectsProps) => {
                     `}
                   />
                 )}
-                <FontAwesomeIcon
-                  icon={faMagnifyingGlass}
-                  className={`
-                    tw-transition-all tw-duration-200 tw-ease-in-out
-
-                    hover:tw-text-headings
-                  `}
-                />
+                <FontAwesomeIcon icon={faMagnifyingGlass} />
               </div>
               {["sm", "md", "lg"].includes(screen) && (
                 <div
@@ -287,12 +280,7 @@ const Projects = (props: ProjectsProps) => {
                     }, 500);
                   }}
                 >
-                  <FontAwesomeIcon
-                    icon={faFilter}
-                    className={`
-                      tw-transition-all tw-duration-200 tw-ease-in-out
-                    `}
-                  />
+                  <FontAwesomeIcon icon={faFilter} />
                   {["sm", "md", "lg"].includes(screen) && (
                     <FilterPopup
                       popupLogic={categoriesPopupLogic}
@@ -355,32 +343,12 @@ const Projects = (props: ProjectsProps) => {
               })}
           </div>
           {projects && projects.length <= 0 && !isLoading && (
-            <div
-              className={`
-                not-found tw-inline-flex tw-h-[261px] tw-flex-col
-                tw-items-center tw-justify-center tw-gap-[5px]
-              `}
-            >
-              <NotFoundIcon className="tw-text-body tw-text-[100px]" />
-              <div
-                className={`
-                  tw-self-stretch tw-text-center tw-text-body tw-font-inter
-                  tw-text-3xl tw-font-black tw-leading-10
-                `}
-              >
-                No Project Found
-              </div>
-              <div
-                className={`
-                  tw-w-[738px] tw-text-center tw-text-body tw-font-inter
-                  tw-text-2xl tw-font-normal tw-leading-[35px]
-                `}
-              >
-                {
-                  " It looks like we haven't developed any projects with this information yet. Want to be the first?"
-                }
-              </div>
-            </div>
+            <NotFound
+              title={"No Project Found"}
+              text={
+                "It looks like we haven't developed any projects with this information yet. Want to be the first?"
+              }
+            />
           )}
           {hasNextPage && (
             <Button

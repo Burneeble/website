@@ -4,3 +4,4 @@ export * from "./Label";
 export * from "./ProjectPreview";
 export * from "./CTA";
 export * from "./Spinner";
+export * from "./NotFound";
