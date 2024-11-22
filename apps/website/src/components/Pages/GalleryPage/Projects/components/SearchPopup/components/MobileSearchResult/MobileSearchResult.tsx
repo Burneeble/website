@@ -27,12 +27,11 @@ const MobileSearchResult = (props: MobileSearchResultProps) => {
     >
       <div
         className={`
-          tw-grow tw-shrink tw-basis-0 tw-text-text-body-active tw-text-lg
+          name tw-grow tw-shrink tw-basis-0 tw-text-text-body-active tw-text-lg
           tw-font-normal tw-font-inter tw-leading-7
         `}
-      >
-        {props.text}
-      </div>
+        dangerouslySetInnerHTML={{ __html: props.text }}
+      />
       <FontAwesomeIcon icon={faLayerGroup} />
     </div>
   );

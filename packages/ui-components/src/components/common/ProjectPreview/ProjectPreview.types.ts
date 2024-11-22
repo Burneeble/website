@@ -5,4 +5,5 @@ export interface ProjectPreviewProps {
   thumbnail: string;
   title: string;
   categories: string[];
+  query?: string;
 }

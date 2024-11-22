@@ -2,11 +2,25 @@ import React from "react";
 import { ProjectPreviewProps } from "./ProjectPreview.types";
 
 const ProjectPreview = (props: ProjectPreviewProps) => {
+  //Methods
+  const highlightText = (text: string, query: string) => {
+    const words = query.split(" ").filter((word) => word.trim() !== "");
+    let highlightedText = text;
+    words.forEach((word) => {
+      const regex = new RegExp(`(${word})`, "gi");
+      highlightedText = highlightedText.replace(
+        regex,
+        '<span class="highlight">$1</span>'
+      );
+    });
+    return highlightedText;
+  };
+
   return (
     <div
       className={`
-        tw-group tw-inline-flex tw-w-full tw-cursor-pointer tw-flex-col
-        tw-items-start tw-justify-start tw-gap-[10px] tw-rounded-lg
+        project-preview tw-group tw-inline-flex tw-w-full tw-cursor-pointer
+        tw-flex-col tw-items-start tw-justify-start tw-gap-[10px] tw-rounded-lg
       `}
     >
       <div
@@ -41,9 +55,10 @@ const ProjectPreview = (props: ProjectPreviewProps) => {
 
             xl:tw-text-2xl
           `}
-        >
-          {props.title}
-        </div>
+          dangerouslySetInnerHTML={{
+            __html: highlightText(props.title, props.query || ""),
+          }}
+        />
         <div
           className={`
             categories tw-flex tw-max-w-full tw-flex-wrap tw-gap-[5px]

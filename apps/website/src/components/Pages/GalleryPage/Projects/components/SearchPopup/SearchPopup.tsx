@@ -98,6 +98,19 @@ const SearchPopup = (props: SearchPopupProps) => {
     }
   };
 
+  const highlightText = (text: string, query: string) => {
+    const words = query.split(" ").filter((word) => word.trim() !== "");
+    let highlightedText = text;
+    words.forEach((word) => {
+      const regex = new RegExp(`(${word})`, "gi");
+      highlightedText = highlightedText.replace(
+        regex,
+        '<span class="highlight">$1</span>'
+      );
+    });
+    return highlightedText;
+  };
+
   return (
     <Popup logic={props.popupLogic} variant="secondary" className="!tw-min-h-0">
       <div
@@ -152,56 +165,44 @@ const SearchPopup = (props: SearchPopupProps) => {
                   {categoriesSearchResults.length > 0 && (
                     <div className="search-section">
                       <h3 className="section-name">Categories</h3>
-                      {debouncedSearchQuery ? (
-                        categoriesSearchResults.length > 0 ? (
-                          categoriesSearchResults.map((category, i) => {
-                            return (
-                              <MobileSearchResult
-                                key={i}
-                                text={category}
-                                isActive={props.activeCategories.includes(
-                                  category
-                                )}
-                                onClick={() => {
-                                  props.popupLogic.closePopup();
-                                  props.setActiveCategories((prev) =>
-                                    prev.includes(category)
-                                      ? prev.filter((c) => c !== category)
-                                      : [...prev, category]
-                                  );
-                                }}
-                              />
-                            );
-                          })
-                        ) : (
-                          <p className="fallback">No Results</p>
-                        )
-                      ) : (
-                        <p className="fallback">Search for Categories</p>
-                      )}
+                      {categoriesSearchResults.map((category, i) => {
+                        return (
+                          <MobileSearchResult
+                            key={i}
+                            text={highlightText(
+                              category,
+                              debouncedSearchQuery || ""
+                            )}
+                            isActive={props.activeCategories.includes(category)}
+                            onClick={() => {
+                              props.popupLogic.closePopup();
+                              props.setActiveCategories((prev) =>
+                                prev.includes(category)
+                                  ? prev.filter((c) => c !== category)
+                                  : [...prev, category]
+                              );
+                            }}
+                          />
+                        );
+                      })}
                     </div>
                   )}
                   {projectsSearchResults.length > 0 && (
                     <div className="search-section">
                       <h3 className="section-name">Project Names</h3>
-                      {debouncedSearchQuery ? (
-                        projectsSearchResults.length > 0 ? (
-                          projectsSearchResults.map((proj, i) => {
-                            return (
-                              <MobileSearchResult
-                                key={i}
-                                text={proj}
-                                isActive={false}
-                                onClick={() => {}}
-                              />
-                            );
-                          })
-                        ) : (
-                          <p className="fallback">No Results</p>
-                        )
-                      ) : (
-                        <p className="fallback">Search for Projects</p>
-                      )}
+                      {projectsSearchResults.map((proj, i) => {
+                        return (
+                          <MobileSearchResult
+                            key={i}
+                            text={highlightText(
+                              proj,
+                              debouncedSearchQuery || ""
+                            )}
+                            isActive={false}
+                            onClick={() => {}}
+                          />
+                        );
+                      })}
                     </div>
                   )}
                 </>

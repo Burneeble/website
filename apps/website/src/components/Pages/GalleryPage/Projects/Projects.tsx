@@ -205,14 +205,10 @@ const Projects = (props: ProjectsProps) => {
               xl:tw-flex-row xl:tw-h-[70px] xl:tw-items-center
             `}
           >
-            <div
+            <h2
               className={`
-                title tw-text-white tw-text-2xl tw-font-normal
-                tw-font-bowlby-one tw-whitespace-nowrap
-
-                md:tw-text-4xl
-
-                xl:tw-text-5xl
+                title tw-text-white tw-font-normal tw-font-bowlby-one
+                tw-whitespace-nowrap
               `}
             >
               {screen === "sm" ? (
@@ -225,7 +221,7 @@ const Projects = (props: ProjectsProps) => {
                   </span>
                 </>
               )}
-            </div>
+            </h2>
             <div
               className={`
                 icons tw-justify-end tw-items-center tw-gap-[5px] tw-flex
@@ -263,7 +259,10 @@ const Projects = (props: ProjectsProps) => {
                     `}
                   />
                 )}
-                <FontAwesomeIcon icon={faMagnifyingGlass} />
+                <FontAwesomeIcon
+                  icon={faMagnifyingGlass}
+                  className={`tw-max-h-[1.875rem]`}
+                />
               </div>
               {["sm", "md", "lg"].includes(screen) && (
                 <div
@@ -334,6 +333,7 @@ const Projects = (props: ProjectsProps) => {
                     thumbnail={project.thumbnailUrl}
                     title={project.title}
                     categories={project.categories}
+                    query={searchQuery || ""}
                   />
                 );
               })}

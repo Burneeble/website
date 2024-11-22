@@ -24,17 +24,13 @@ const Landing = (props: LandingProps) => {
       <div
         className={`
           tw-h-[151px] tw-flex-col tw-justify-center tw-items-center tw-gap-2.5
-          tw-flex tw-text-5xl tw-font-bowlby-one
-
-          md:tw-text-[65px]
-
-          xl:tw-text-[80px]
+          tw-flex tw-font-bowlby-one
         `}
       >
         <div className="tw-font-[60px]">
           <FlameIcon className="tw-h-[60px] tw-w-[60px]" />
         </div>
-        <div
+        <h1
           className={`
             tw-text-[var(--primary-lighter)] tw-font-normal tw-opacity-70
             tw-text-center
@@ -45,15 +41,15 @@ const Landing = (props: LandingProps) => {
           ) : (
             <>Discover our{screen === "lg" && <br />} Showcase</>
           )}
-        </div>
-        <div
+        </h1>
+        <h2
           className={`
-            tw-text-center tw-text-headings tw-text-3xl tw-font-normal
-            tw-relative -tw-top-1/4
+            tw-text-center tw-text-headings tw-font-normal tw-relative
+            -tw-top-1/4
 
-            md:tw-text-5xl md:-tw-top-[30%]
+            lg:-tw-top-[40%]
 
-            xl:tw-text-[60px] xl:-tw-top-[40%]
+            md:-tw-top-[60%]
           `}
         >
           {["md", "sm"].includes(screen) ? (
@@ -61,7 +57,7 @@ const Landing = (props: LandingProps) => {
           ) : (
             <>Discover our{screen === "lg" && <br />} Showcase</>
           )}
-        </div>
+        </h2>
       </div>
     </section>
   );
