@@ -30,6 +30,12 @@ export const GET_PROJECT_QUERY = gql(/* GraphQL */ `
             }
           }
         }
+        favicon {
+          node {
+            guid
+          }
+        }
+        mainColor
       }
     }
   }

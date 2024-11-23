@@ -42,6 +42,8 @@ export class ProjectService {
         .filter((c) => {
           return typeof c === "string";
         }) || ["Dapp"],
+      favicon: data.project?.projectFields?.favicon?.node.guid || "",
+      mainColor: data.project?.projectFields?.mainColor || "",
     };
 
     const project =

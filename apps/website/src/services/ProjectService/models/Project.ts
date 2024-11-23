@@ -6,6 +6,8 @@ export interface IProjectModel {
   projectUrl: string;
   thumbnailUrl: string;
   categories: string[];
+  favicon?: string;
+  mainColor?: string;
 }
 
 @JsonObject()
@@ -25,11 +27,19 @@ export class ProjectModel implements IProjectModel {
   @JsonProperty()
   categories: string[];
 
+  @JsonProperty()
+  favicon?: string;
+
+  @JsonProperty()
+  mainColor?: string;
+
   constructor(obj?: Partial<IProjectModel>) {
     this.title = obj?.title ?? "";
     this.description = obj?.description ?? "";
     this.projectUrl = obj?.projectUrl ?? "";
     this.thumbnailUrl = obj?.thumbnailUrl ?? "";
     this.categories = obj?.categories ?? [];
+    this.favicon = obj?.favicon;
+    this.mainColor = obj?.mainColor;
   }
 }
