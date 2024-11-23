@@ -1,4 +1,4 @@
-import { ProjectLogo } from "@/components/Pages";
+import { ProjectLogo, Technologies } from "@/components/Pages";
 import { IProjectModel, ProjectService } from "@/services/ProjectService";
 
 const ProjectPage = async ({ params }: { params: { projectName: string } }) => {
@@ -17,6 +17,7 @@ const ProjectPage = async ({ params }: { params: { projectName: string } }) => {
         title={project.title}
         mainColor={project.mainColor || "#000"}
       />
+      <Technologies technologies={project.technologies || []} />
     </div>
   );
 };

@@ -1,1 +1,3 @@
-export interface TechnologiesProps {}
+export interface TechnologiesProps {
+  technologies: string[];
+}
