@@ -5,6 +5,8 @@ import { ToastContainer } from "react-toastify";
 import "./custom.scss";
 
 import { ClientInfoServiceProvider } from "../src/services/ClientInfoService";
+import { MemoryRouterProvider } from "next-router-mock/MemoryRouterProvider/next-13.5";
+import { SkeletonTheme } from "react-loading-skeleton";
 
 export const parameters = {
   controls: {
@@ -29,10 +31,17 @@ export const decorators = [
   (Story) => {
     return (
       <>
-        <ClientInfoServiceProvider>
-          <Story />
-          <ToastContainer />
-        </ClientInfoServiceProvider>
+        <MemoryRouterProvider url="/">
+          <ClientInfoServiceProvider>
+            <SkeletonTheme
+              baseColor="rgba(43,43,43,1)"
+              highlightColor="#322923"
+            >
+              <Story />
+            </SkeletonTheme>
+            <ToastContainer />
+          </ClientInfoServiceProvider>
+        </MemoryRouterProvider>
       </>
     );
   },

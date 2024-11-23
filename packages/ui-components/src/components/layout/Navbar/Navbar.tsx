@@ -18,18 +18,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "@/components/ui";
 import { MobileMenu } from "./components";
+import { useScrollLock } from "@/hooks";
 
 const Navbar = (props: NavbarProps) => {
   //States
   const [isOpen, setIsOpen] = useState<boolean>(false);
   //Hooks
   const { width } = useClientInfoService();
-
-  //useEFfects
-  useEffect(() => {
-    console.log("Navbar mounted");
-    console.log(width);
-  }, [width]);
+  const { lockScroll, unlockScroll } = useScrollLock();
 
   useEffect(() => {
     if (width && width > 768) {
@@ -37,14 +33,23 @@ const Navbar = (props: NavbarProps) => {
     }
   }, [width]);
 
+  useEffect(() => {
+    if (isOpen) {
+      window.scrollTo(0, 0);
+      lockScroll();
+    } else {
+      unlockScroll();
+    }
+  }, [isOpen]);
+
   return (
     <nav
       className={`
         tw-mx-auto tw-flex tw-h-auto tw-w-full tw-max-w-screen-2xl
-        tw-justify-between tw-font-inter
+        tw-justify-between tw-py-6 tw-font-inter
       `}
     >
-      <div className="tw-flex tw-flex-col tw-p-6">
+      <div className="tw-flex tw-flex-col">
         <Link href={props.logo.url || "#"}>{props.logo.svg}</Link>
       </div>
 
@@ -57,7 +62,8 @@ const Navbar = (props: NavbarProps) => {
               onClick={() => {
                 setIsOpen(true);
               }}
-              className="!tw-rounded-[50%]"
+              fit={"inline"}
+              rounded={"circle"}
               size="icon"
               variant={"secondary"}
             >

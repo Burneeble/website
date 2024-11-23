@@ -12,14 +12,61 @@ type Story = StoryObj<CarouselProps>;
 
 export const simpleCarousel: Story = {
   args: {
-    images: [
-      "https://picsum.photos/500",
-      "https://picsum.photos/600",
-      "https://picsum.photos/1920/1080",
-      "https://picsum.photos/800/900",
-      "https://picsum.photos/100",
-      "https://picsum.photos/500/325",
+    projects: [
+      {
+        thumbnail: "https://picsum.photos/500",
+        categories: ["Mint Dapp", "Crossmint Integration", "Ethereum"],
+        title: "Project",
+        description:
+          "The Greens NFT Club is lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        projectUrl: "https://www.google.com",
+      },
+      {
+        thumbnail: "https://picsum.photos/600",
+        categories: ["Mint Dapp", "Crossmint Integration", "Ethereum"],
+        title: "Project",
+        description:
+          "The Greens NFT Club is lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        projectUrl: "https://www.google.com",
+      },
+      {
+        thumbnail: "https://picsum.photos/1920/1080",
+        categories: ["Mint Dapp", "Crossmint Integration", "Ethereum"],
+        title: "Project",
+        description:
+          "The Greens NFT Club is lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        projectUrl: "https://www.google.com",
+      },
+      {
+        thumbnail: "https://picsum.photos/800/900",
+        categories: ["Mint Dapp", "Crossmint Integration", "Ethereum"],
+        title: "Project",
+        description:
+          "The Greens NFT Club is lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        projectUrl: "https://www.google.com",
+      },
+      {
+        thumbnail: "https://picsum.photos/100",
+        categories: ["Mint Dapp", "Crossmint Integration", "Ethereum"],
+        title: "Project",
+        description:
+          "The Greens NFT Club is lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        projectUrl: "https://www.google.com",
+      },
+      {
+        thumbnail: "https://picsum.photos/500/325",
+        categories: ["Mint Dapp", "Crossmint Integration", "Ethereum"],
+        title: "Project",
+        description:
+          "The Greens NFT Club is lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        projectUrl: "https://www.google.com",
+      },
     ],
+    cta: {
+      children: "See All Projects",
+      variant: "secondary",
+      size: "default",
+    },
   },
   render: (props) => {
     return (

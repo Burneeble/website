@@ -1,6 +1,3 @@
 // ReviewCard
-@import "./components/components.scss";
-
-.review-card {
-  @apply card;
-}
+@import "./components/components";
+@import "./Skeleton/ReviewCardSkeleton";

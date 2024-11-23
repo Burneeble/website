@@ -2,8 +2,8 @@
 
 .hero {
   h1 {
-    strong {
-      @apply text-color-primary-gradient;
+    .gradient-text {
+      @apply cs-text-color-primary-gradient;
     }
   }
 }

@@ -12,15 +12,13 @@ import postcss from "postcss";
 import autoprefixer from "autoprefixer";
 import tailwindcss from "tailwindcss";
 import copy from "rollup-plugin-copy";
+// import tailwindConfig from "./tailwind.config.ts";
 
 const packageJson = require("./package.json");
-const tailwindConfig = require("./tailwind.config.js");
-
-console.log(__dirname);
 
 export default [
   {
-    input: "src/index.ts",
+    input: "./src/index.ts",
     output: [
       {
         file: packageJson.main,
@@ -37,13 +35,13 @@ export default [
       copy({
         targets: [
           {
-            src: "./tailwind.config.js",
+            src: "./tailwind.config.ts",
             dest: "./dist/css/",
           },
         ],
       }),
       postcss({
-        plugins: [tailwindcss(tailwindConfig), autoprefixer()],
+        plugins: [autoprefixer()],
         extract: true,
         minimize: true,
       }),
@@ -57,7 +55,9 @@ export default [
       }),
       rollupJson(),
       commonjs(),
-      typescript({ tsconfig: "./tsconfig.json" }),
+      typescript({
+        tsconfig: "./tsconfig.json",
+      }),
       terser(),
       svg(),
     ],
@@ -72,7 +72,7 @@ export default [
     ],
   },
   {
-    input: "dist/esm/index.d.ts",
+    input: "dist/esm//src/index.d.ts",
     output: [{ file: "dist/index.d.ts", format: "esm" }],
     plugins: [dts()],
   },

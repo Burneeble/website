@@ -21,6 +21,10 @@ Install the following plugins through the WordPress admin panel:
 - [Contact Form 7](https://wordpress.org/plugins/contact-form-7/)
 - [Flamingo](https://wordpress.org/plugins/flamingo/)
 
+Upload the following plugin:
+
+- [WPGraphQL Tax Query](https://github.com/wp-graphql/wp-graphql-tax-query?tab=readme-ov-file)
+
 ### 2. ACF Configuration
 
 The next step is to create the custom fields that will be used for handling custom data types required by the Burneeble site, such as Portfolio Projects.

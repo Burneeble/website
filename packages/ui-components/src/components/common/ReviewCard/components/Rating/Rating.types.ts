@@ -3,4 +3,5 @@
  */
 export interface RatingProps {
   ratingValue: number;
+  isSkeleton?: boolean;
 }

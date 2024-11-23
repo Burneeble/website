@@ -1,15 +1,31 @@
 .carousel-wrapper {
   .carousel {
-    .swiper-slide {
+    .corousel-slide {
+      @apply tw-transform tw-translate-y-[-66.4px];
+
+      .labels {
+        @apply tw-opacity-0;
+      }
+
       &.swiper-slide-active {
-        @apply tw-transform tw-translate-y-6;
+        @apply tw-transform tw-translate-y-0;
+
+        .labels {
+          @apply tw-opacity-100;
+        }
+      }
+
+      &:not(.swiper-slide-active) {
+        .hover-layer {
+          @apply tw-opacity-0;
+        }
       }
     }
 
     .carousel-button {
-      top: calc(100% + 3rem);
+      top: calc(100% + 40px);
 
-      @apply tw-absolute tw-text-[2rem];
+      @apply tw-absolute;
     }
   }
 }

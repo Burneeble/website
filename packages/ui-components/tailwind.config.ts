@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 const { fontFamily } = require("tailwindcss/defaultTheme");
 const plugin = require("tailwindcss/plugin");
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const config = {
   darkMode: ["class"],
   content: ["./src/components/**/*.{js,ts,jsx,tsx,mdx,stories.tsx}"],
   theme: {
@@ -10,7 +11,7 @@ module.exports = {
       center: "true",
       padding: "2rem",
       screens: {
-        "2xl": "1400px",
+        "2xl": "1536px",
       },
     },
 
@@ -94,19 +95,22 @@ module.exports = {
       },
     },
     extend: {
+      screens: {
+        "2lg": "1100px",
+      },
       colors: {
         border: "rgba(var(--border))",
         input: "rgba(var(--input))",
         ring: "rgba(var(--ring))",
-        background: "rgba(var(--secondary-base)",
-        foreground: "rgba(var(--primary-base))",
+        background: "var(--secondary-base)",
+        foreground: "var(--primary-base)",
         primary: {
-          DEFAULT: "rgba(var(--primary-default))",
-          foreground: "rgba(var(--secondary-base))",
+          DEFAULT: "var(--primary-default)",
+          foreground: "var(--secondary-base)",
         },
         secondary: {
-          DEFAULT: "rgba(var(--secondary-default))",
-          foreground: "rgba(var(--primary-base))",
+          DEFAULT: "var(--secondary-default)",
+          foreground: "var(--primary-base)",
         },
         destructive: {
           DEFAULT: "rgba(var(--destructive))",
@@ -150,6 +154,7 @@ module.exports = {
         warning: "var(--warning-default)",
         neutral: "var(--neutral-default)",
         highlight: "var(--primary-light)",
+        button: "var(--primary-base)",
       },
       borderColor: {
         primary: "var(--primary-light)",
@@ -210,10 +215,74 @@ module.exports = {
             opacity: "0",
           },
         },
+        "cs-fade-in": {
+          from: {
+            opacity: "0",
+            scale: "0",
+          },
+          to: {
+            opacity: "1",
+            scale: "1",
+          },
+        },
+        "cs-fade-out": {
+          from: {
+            opacity: "1",
+            scale: "1",
+          },
+          to: {
+            opacity: "0",
+            scale: "0",
+          },
+        },
+        "cs-pulse": {
+          "0%": {
+            transform: "scale(1)",
+          },
+          "50%": {
+            transform: "scale(1.2)",
+          },
+          "100%": {
+            transform: "scale(1)",
+          },
+        },
+        "cs-wrong": {
+          "0%": {
+            transform: "translateX(0)",
+          },
+          "25%": {
+            transform: "translateX(10px)",
+          },
+          "50%": {
+            transform: "translateX(-10px)",
+          },
+          "75%": {
+            transform: "translateX(10px)",
+          },
+          "100%": {
+            transform: "translateX(0)",
+          },
+        },
+        "cs-zoom-in": {
+          "0%": {
+            transform: "scale(0)",
+          },
+          "95%": {
+            transform: "scale(1.2)",
+          },
+          "100%": {
+            transform: "scale(1)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "cs-fade-in": "cs-fade-in 0.2s ease-in-out",
+        "cs-fade-out": "cs-fade-out 0.2s ease-in-out",
+        "cs-pulse": "cs-pulse 0.5s ease-in-out",
+        "cs-wrong": "cs-wrong 0.5s ease-in-out",
+        "cs-zoom-in": "cs-zoom-in 0.15s ease-in-out forwards",
       },
     },
   },
@@ -231,12 +300,12 @@ module.exports = {
   prefix: "tw-",
   plugins: [
     require("tailwindcss-animate"),
-    plugin(function ({ addBase, theme, apply }) {
+    // @ts-ignore
+    plugin(function ({ addBase, theme }) {
       addBase({
         ":root": {
           "--primary-base": theme("colors.white"),
           "--secondary-base": theme("colors.black"),
-
           "--primary-lighest": theme("colors.orange.200"),
           "--primary-lighter": theme("colors.orange.300"),
           "--primary-light": theme("colors.orange.400"),
@@ -267,3 +336,5 @@ module.exports = {
     }),
   ],
 };
+
+export default config;

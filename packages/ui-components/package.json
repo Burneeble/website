@@ -70,7 +70,9 @@
     "eslint-plugin-readable-tailwind": "^1.8.1",
     "eslint-plugin-storybook": "^0.8.0",
     "eslint-plugin-tailwindcss": "^3.17.5",
+    "gsap": "^3.12.5",
     "next": "14.2.13",
+    "next-router-mock": "^0.9.13",
     "postcss": "^7.0.26",
     "react": "18.3.1",
     "react-dom": "18.3.1",
@@ -87,6 +89,7 @@
     "rollup-plugin-scss": "^3.0.0",
     "rollup-plugin-svg": "^2.0.0",
     "rollup-plugin-terser": "^7.0.2",
+    "react-loading-skeleton": "^3.4.0",
     "sass": "^1.54.0",
     "sass-loader": "10.0.0",
     "storybook": "^8.3.2",
@@ -129,11 +132,13 @@
     "@fortawesome/free-regular-svg-icons": "^6.1.2",
     "@fortawesome/free-solid-svg-icons": "^6.1.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "react-loading-skeleton": "^3.4.0",
     "next": "14.2.13",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-router-dom": "6.3.0",
     "react-router-hash-link": "2.4.3",
-    "react-toastify": "^10.0.4"
+    "react-toastify": "^10.0.4",
+    "gsap": "^3.12.5"
   }
 }

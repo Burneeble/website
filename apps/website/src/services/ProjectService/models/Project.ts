@@ -1,15 +1,11 @@
 import { JsonObject, JsonProperty } from "typescript-json-serializer";
 
-export enum ProjectCategory {
-  Dapp = "Dapp",
-}
-
 export interface IProjectModel {
   title: string;
   description: string;
   projectUrl: string;
   thumbnailUrl: string;
-  category: ProjectCategory;
+  categories: string[];
 }
 
 @JsonObject()
@@ -27,13 +23,13 @@ export class ProjectModel implements IProjectModel {
   thumbnailUrl: string;
 
   @JsonProperty()
-  category: ProjectCategory;
+  categories: string[];
 
   constructor(obj?: Partial<IProjectModel>) {
     this.title = obj?.title ?? "";
     this.description = obj?.description ?? "";
     this.projectUrl = obj?.projectUrl ?? "";
     this.thumbnailUrl = obj?.thumbnailUrl ?? "";
-    this.category = obj?.category ?? ProjectCategory.Dapp;
+    this.categories = obj?.categories ?? [];
   }
 }

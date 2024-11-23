@@ -3386,6 +3386,14 @@
   resolved "https://registry.yarnpkg.com/@graphql-typed-document-node/core/-/core-3.2.0.tgz#5f3d96ec6b2354ad6d8a28bf216a1d97b5426861"
   integrity sha512-mB9oAsNCm9aM3/SOv4YtBMqZbYj10R7dkq8byBqxGY/ncFwhf2oQzMV+LCRlWoDSEBJ3COiR1yeDvMtsoOsuFQ==
 
+"@gsap/react@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@gsap/react/-/react-2.1.1.tgz#219a81c84f93a2631c8aa324c0f5cce03cdf2ed9"
+  integrity sha512-apGPRrmpqxvl1T6Io1KgT8tFU+IuACI6z4zmT7t8+PASserJeLVRFJdSNUFA2Xb/eVkZI1noE8LIrY/w/oJECw==
+  dependencies:
+    gsap "^3.12.5"
+    react ">=16"
+
 "@hapi/accept@^5.0.2":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@hapi/accept/-/accept-5.0.2.tgz#ab7043b037e68b722f93f376afb05e85c0699523"
@@ -11709,6 +11717,11 @@ eslint-plugin-readable-tailwind@^1.8.1:
   resolved "https://registry.yarnpkg.com/eslint-plugin-readable-tailwind/-/eslint-plugin-readable-tailwind-1.8.1.tgz#6e02f834205c5569b86b8511cdd8fd52bf861d1b"
   integrity sha512-s6RXLVhaPIX+T/a485a4G60wtqd1SzHn24ayKKBHKkzGB97tXt1L9akeX01gMGdWshDghYZrlqJe6bc22/BO/g==
 
+eslint-plugin-readable-tailwind@^1.8.2:
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-readable-tailwind/-/eslint-plugin-readable-tailwind-1.8.2.tgz#bca00350ffcbca219c2aa0620fb53def3d5536d3"
+  integrity sha512-YJ0nDFhuahZZNPgEMwSw4/Ri87qg7Z6YFLTOUam3PBDFomIXAJG89cvFmZg1R2InpEmHAvVRh3QqcoKbkZZM3g==
+
 eslint-plugin-storybook@^0.8.0:
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-storybook/-/eslint-plugin-storybook-0.8.0.tgz#23185ecabdc289cae55248c090f0c1d8fbae6c41"
@@ -13166,6 +13179,11 @@ graphql@^16.9.0:
   version "16.9.0"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-16.9.0.tgz#1c310e63f16a49ce1fbb230bd0a000e99f6f115f"
   integrity sha512-GGTKBX4SD7Wdb8mqeDLni2oaRGYQWjWHGKPQ24ZMnUtKfcsVoiv4uX8+LJr1K6U5VW2Lu1BwJnj7uiori0YtRw==
+
+gsap@^3.12.5:
+  version "3.12.5"
+  resolved "https://registry.yarnpkg.com/gsap/-/gsap-3.12.5.tgz#136c02dad4c673b441bdb1ca00104bfcb4eae7f4"
+  integrity sha512-srBfnk4n+Oe/ZnMIOXt3gT605BX9x5+rh/prT2F1SsNJsU1XuMiP0E2aptW481OnonOGACZWBqseH5Z7csHxhQ==
 
 gunzip-maybe@^1.4.2:
   version "1.4.2"
@@ -16422,6 +16440,11 @@ netmask@^2.0.2:
   resolved "https://registry.yarnpkg.com/netmask/-/netmask-2.0.2.tgz#8b01a07644065d536383835823bc52004ebac5e7"
   integrity sha512-dBpDMdxv9Irdq66304OLfEmQ9tbNRFnFTuZiLo+bD+r332bBmMJ8GBLXklIXXgxd3+v9+KUnZaUR5PJMa75Gsg==
 
+next-router-mock@^0.9.13:
+  version "0.9.13"
+  resolved "https://registry.yarnpkg.com/next-router-mock/-/next-router-mock-0.9.13.tgz#bdee2011ea6c09e490121c354ef917f339767f72"
+  integrity sha512-906n2RRaE6Y28PfYJbaz5XZeJ6Tw8Xz1S6E31GGwZ0sXB6/XjldD1/2azn1ZmBmRk5PQRkzjg+n+RHZe5xQzWA==
+
 next-sitemap@^4.2.3:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/next-sitemap/-/next-sitemap-4.2.3.tgz#5db3f650351a51e84b9fd6b58c5af2f9257b5058"
@@ -18851,6 +18874,11 @@ react-is@^18.0.0, react-is@^18.3.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.3.1.tgz#e83557dc12eae63a99e003a46388b1dcbb44db7e"
   integrity sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==
 
+react-loading-skeleton@^3.4.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/react-loading-skeleton/-/react-loading-skeleton-3.5.0.tgz#da2090355b4dedcad5c53cb3f0ed364e3a76d6ca"
+  integrity sha512-gxxSyLbrEAdXTKgfbpBEFZCO/P153DnqSCQau2+o6lNy1jgMRr2MmRmOzMmyrwSaSYLRB8g7b0waYPmUjz7IhQ==
+
 react-meta-tags@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-meta-tags/-/react-meta-tags-1.0.1.tgz#be18e88adafca280d6bd12839b530f9cfb7edbab"
@@ -18939,7 +18967,7 @@ react-transition-group@^4.4.2, react-transition-group@^4.4.5:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react@18.3.1, "react@^16.8.0 || ^17.0.0 || ^18.0.0":
+react@18.3.1, react@>=16, "react@^16.8.0 || ^17.0.0 || ^18.0.0":
   version "18.3.1"
   resolved "https://registry.yarnpkg.com/react/-/react-18.3.1.tgz#49ab892009c53933625bd16b2533fc754cab2891"
   integrity sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==

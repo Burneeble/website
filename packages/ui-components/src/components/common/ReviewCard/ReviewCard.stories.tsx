@@ -13,11 +13,12 @@ export const simpleReviewCard: Story = {
   args: {
     user: {
       name: "John Smith",
-      country: "United States",
+      countryCode: "US",
       avatar: "https://picsum.photos/58/58",
     },
     rating: 4.5,
     review:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris auctor, libero euismod luctus tincidunt, libero. lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris auctor, libero euismod luctus tincidunt, libero liberoLorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    projectUrl: "https://www.google.com",
   },
 };

@@ -1,10 +1,1 @@
 // Label
-
-.label {
-  &::after {
-    content: "";
-    width: calc(100% + 0.2rem);
-    height: calc(100% + 0.2rem);
-    @apply tw-block tw-absolute tw-top-[50%] tw-left-[50%] -tw-translate-x-[50%] -tw-translate-y-[50%] tw-z-[-1] tw-rounded-[9px];
-  }
-}
