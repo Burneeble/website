@@ -5,3 +5,4 @@ export * from "./ProjectPreview";
 export * from "./CTA";
 export * from "./Spinner";
 export * from "./NotFound";
+export * from "./Bars";
