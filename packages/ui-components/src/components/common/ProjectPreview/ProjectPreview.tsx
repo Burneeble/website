@@ -86,10 +86,12 @@ const ProjectPreview = (props: ProjectPreviewProps) => {
                     tw-text-lg tw-font-normal tw-leading-[30px] tw-text-body
                     tw-transition-all tw-duration-200 tw-ease-in-out
 
+                    hover:tw-border-white hover:tw-text-headings
+
                     xl:tw-text-xl
                   `,
                   props.activeCategories.includes(category) &&
-                    `tw-border-primary`
+                    `tw-border-primary tw-text-primary`
                 )}
                 onClick={() => {
                   if (props.activeCategories.includes(category)) {
