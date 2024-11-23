@@ -6,9 +6,9 @@ import { cn } from "@/lib/utils";
 const Label = (props: LabelProps) => {
   const labelVariants = cva(
     `
-      tw-m-[0.1rem] tw-inline-flex tw-items-center tw-justify-center
-      tw-whitespace-nowrap tw-rounded-[8px] tw-px-[10px] tw-py-[2px]
-      tw-font-bowlby-one
+      tw-m-[0.1rem] tw-m-[0.1rem] tw-inline-flex tw-items-center
+      tw-justify-center tw-whitespace-nowrap tw-rounded-[8px] tw-px-[10px]
+      tw-py-[2px] tw-font-bowlby-one
     `,
     {
       variants: {
@@ -47,7 +47,10 @@ const Label = (props: LabelProps) => {
   return (
     <div
       className={cn(
-        `label-wrapper tw-inline-block tw-rounded-[9px] tw-p-[0.1rem]`,
+        `
+          label-wrapper tw-inline-flex tw-items-center tw-justify-center
+          tw-rounded-[9px]
+        `,
         (props.variant === "default" || !props.variant) &&
           "tw-bg-gradient-to-r tw-to-90% primary-light-gradient-to-secondary",
         props.variant === "active" &&
@@ -63,8 +66,14 @@ const Label = (props: LabelProps) => {
             size: props.size,
             className: props.className,
           }),
-          "tw-relative"
+          "tw-relative",
+          props.onClick && "tw-cursor-pointer"
         )}
+        onClick={(e) => {
+          if (props.onClick) {
+            props.onClick(e);
+          }
+        }}
       >
         {props.text}
       </label>

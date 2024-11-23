@@ -59,6 +59,18 @@ const CustomScrollbar = (props: CustomScrollbarProps) => {
     };
   }, [contentRef.current]);
 
+  useEffect(() => {
+    if (props.readHThumbWidth && horizontalThumbWidth) {
+      props.readHThumbWidth(horizontalThumbWidth);
+    }
+  }, [horizontalThumbWidth]);
+
+  useEffect(() => {
+    if (props.readVThumbHeight && verticalThumbHeight) {
+      props.readVThumbHeight(verticalThumbHeight);
+    }
+  }, [verticalThumbHeight]);
+
   //Methods
 
   // Calculate thumb sizes as a percentage of the scrollbar

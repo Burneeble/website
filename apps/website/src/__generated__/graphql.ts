@@ -124,6 +124,7 @@ export type CategoryToContentNodeConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -190,6 +191,7 @@ export type CategoryToPostConnectionWhereArgs = {
   tagSlugAnd?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Array of tag slugs, used to include objects in ANY specified tags */
   tagSlugIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -442,6 +444,7 @@ export type ContentTypeToContentNodeConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -918,6 +921,7 @@ export type HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -958,6 +962,7 @@ export type HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -1430,6 +1435,7 @@ export type PageToRevisionConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -1522,6 +1528,7 @@ export type PostFormatToContentNodeConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -1588,6 +1595,7 @@ export type PostFormatToPostConnectionWhereArgs = {
   tagSlugAnd?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Array of tag slugs, used to include objects in ANY specified tags */
   tagSlugIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -1940,6 +1948,7 @@ export type PostToRevisionConnectionWhereArgs = {
   tagSlugAnd?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Array of tag slugs, used to include objects in ANY specified tags */
   tagSlugIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -2088,6 +2097,7 @@ export type ProjectCategoryToContentNodeConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -2172,6 +2182,7 @@ export type ProjectCategoryToProjectConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -2524,6 +2535,7 @@ export type RootQueryToContentNodeConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -2570,6 +2582,7 @@ export type RootQueryToMediaItemConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -2638,6 +2651,7 @@ export type RootQueryToPageConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -2714,6 +2728,7 @@ export type RootQueryToPostConnectionWhereArgs = {
   tagSlugAnd?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Array of tag slugs, used to include objects in ANY specified tags */
   tagSlugIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -2844,6 +2859,7 @@ export type RootQueryToProjectConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -2882,6 +2898,7 @@ export type RootQueryToReviewConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -2922,6 +2939,7 @@ export type RootQueryToRevisionsConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -3120,6 +3138,7 @@ export type TagToContentNodeConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -3186,9 +3205,42 @@ export type TagToPostConnectionWhereArgs = {
   tagSlugAnd?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Array of tag slugs, used to include objects in ANY specified tags */
   tagSlugIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type TaxArray = {
+  field?: InputMaybe<TaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<TaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type TaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<TaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum TaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum TaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** Allowed taxonomies */
 export enum TaxonomyEnum {
@@ -3708,6 +3760,7 @@ export type UserToMediaItemConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -3754,6 +3807,7 @@ export type UserToPageConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -3820,6 +3874,7 @@ export type UserToPostConnectionWhereArgs = {
   tagSlugAnd?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Array of tag slugs, used to include objects in ANY specified tags */
   tagSlugIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -3860,6 +3915,7 @@ export type UserToRevisionsConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -3906,6 +3962,21 @@ export enum UsersConnectionSearchColumnEnum {
   Url = 'URL'
 }
 
+export type GetCategoriesQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetCategoriesQueryQuery = { __typename?: 'RootQuery', projectCategories?: { __typename?: 'RootQueryToProjectCategoryConnection', edges: Array<{ __typename?: 'RootQueryToProjectCategoryConnectionEdge', node: { __typename?: 'ProjectCategory', name?: string | null } }> } | null };
+
+export type GetProjectsByCategoriesQueryQueryVariables = Exact<{
+  categories: Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['String']['input']>;
+  search?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+
+export type GetProjectsByCategoriesQueryQuery = { __typename?: 'RootQuery', projects?: { __typename?: 'RootQueryToProjectConnection', edges: Array<{ __typename?: 'RootQueryToProjectConnectionEdge', node: { __typename?: 'Project', title?: string | null, projectFields?: { __typename?: 'ProjectFields', description?: string | null, projectUrl?: string | null, category?: { __typename?: 'AcfTermNodeConnection', edges: Array<{ __typename?: 'AcfTermNodeConnectionEdge', node: { __typename?: 'Category', name?: string | null } | { __typename?: 'PostFormat', name?: string | null } | { __typename?: 'ProjectCategory', name?: string | null } | { __typename?: 'Tag', name?: string | null } }> } | null, thumbnail?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', guid?: string | null } } | null } | null } }>, pageInfo: { __typename?: 'RootQueryToProjectConnectionPageInfo', endCursor?: string | null, hasNextPage: boolean } } | null };
+
 export type GetProjectQueryQueryVariables = Exact<{
   id: Scalars['ID']['input'];
 }>;
@@ -3913,10 +3984,14 @@ export type GetProjectQueryQueryVariables = Exact<{
 
 export type GetProjectQueryQuery = { __typename?: 'RootQuery', projectBy?: { __typename?: 'Project', id: string, title?: string | null, projectFields?: { __typename?: 'ProjectFields', description?: string | null, fieldGroupName?: string | null, projectUrl?: string | null, thumbnail?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null, category?: { __typename?: 'AcfTermNodeConnection', edges: Array<{ __typename?: 'AcfTermNodeConnectionEdge', node: { __typename?: 'Category', name?: string | null } | { __typename?: 'PostFormat', name?: string | null } | { __typename?: 'ProjectCategory', name?: string | null } | { __typename?: 'Tag', name?: string | null } }> } | null } | null } | null };
 
-export type GetProjectsQueryQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetProjectsQueryQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['String']['input']>;
+  search?: InputMaybe<Scalars['String']['input']>;
+}>;
 
 
-export type GetProjectsQueryQuery = { __typename?: 'RootQuery', projects?: { __typename?: 'RootQueryToProjectConnection', edges: Array<{ __typename?: 'RootQueryToProjectConnectionEdge', node: { __typename?: 'Project', title?: string | null, projectFields?: { __typename?: 'ProjectFields', description?: string | null, projectUrl?: string | null, category?: { __typename?: 'AcfTermNodeConnection', edges: Array<{ __typename?: 'AcfTermNodeConnectionEdge', node: { __typename?: 'Category', name?: string | null } | { __typename?: 'PostFormat', name?: string | null } | { __typename?: 'ProjectCategory', name?: string | null } | { __typename?: 'Tag', name?: string | null } }> } | null, thumbnail?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', guid?: string | null } } | null } | null } }> } | null };
+export type GetProjectsQueryQuery = { __typename?: 'RootQuery', projects?: { __typename?: 'RootQueryToProjectConnection', edges: Array<{ __typename?: 'RootQueryToProjectConnectionEdge', node: { __typename?: 'Project', title?: string | null, projectFields?: { __typename?: 'ProjectFields', description?: string | null, projectUrl?: string | null, category?: { __typename?: 'AcfTermNodeConnection', edges: Array<{ __typename?: 'AcfTermNodeConnectionEdge', node: { __typename?: 'Category', name?: string | null } | { __typename?: 'PostFormat', name?: string | null } | { __typename?: 'ProjectCategory', name?: string | null } | { __typename?: 'Tag', name?: string | null } }> } | null, thumbnail?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', guid?: string | null } } | null } | null } }>, pageInfo: { __typename?: 'RootQueryToProjectConnectionPageInfo', endCursor?: string | null, hasNextPage: boolean } } | null };
 
 export type GetReviewsQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -3924,6 +3999,8 @@ export type GetReviewsQueryQueryVariables = Exact<{ [key: string]: never; }>;
 export type GetReviewsQueryQuery = { __typename?: 'RootQuery', reviews?: { __typename?: 'RootQueryToReviewConnection', nodes: Array<{ __typename?: 'Review', title?: string | null, reviewFields?: { __typename?: 'ReviewFields', countryCode?: string | null, review?: string | null, projectUrl?: string | null, username?: string | null, userAvatar?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', guid?: string | null } } | null } | null }> } | null };
 
 
+export const GetCategoriesQueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getCategoriesQuery"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"projectCategories"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetCategoriesQueryQuery, GetCategoriesQueryQueryVariables>;
+export const GetProjectsByCategoriesQueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetProjectsByCategoriesQuery"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"categories"}},"type":{"kind":"NonNullType","type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"offset"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"search"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"projects"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}},{"kind":"Argument","name":{"kind":"Name","value":"after"},"value":{"kind":"Variable","name":{"kind":"Name","value":"offset"}}},{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"taxQuery"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"taxArray"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"taxonomy"},"value":{"kind":"EnumValue","value":"PROJECTCATEGORY"}},{"kind":"ObjectField","name":{"kind":"Name","value":"terms"},"value":{"kind":"Variable","name":{"kind":"Name","value":"categories"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"field"},"value":{"kind":"EnumValue","value":"NAME"}}]}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"search"},"value":{"kind":"Variable","name":{"kind":"Name","value":"search"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"projectFields"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"category"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"projectUrl"}},{"kind":"Field","name":{"kind":"Name","value":"thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"guid"}}]}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"pageInfo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"endCursor"}},{"kind":"Field","name":{"kind":"Name","value":"hasNextPage"}}]}}]}}]}}]} as unknown as DocumentNode<GetProjectsByCategoriesQueryQuery, GetProjectsByCategoriesQueryQueryVariables>;
 export const GetProjectQueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetProjectQuery"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"projectBy"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"projectFields"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"fieldGroupName"}},{"kind":"Field","name":{"kind":"Name","value":"projectUrl"}},{"kind":"Field","name":{"kind":"Name","value":"thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sourceUrl"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"category"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetProjectQueryQuery, GetProjectQueryQueryVariables>;
-export const GetProjectsQueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetProjectsQuery"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"projects"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"projectFields"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"category"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"projectUrl"}},{"kind":"Field","name":{"kind":"Name","value":"thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"guid"}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetProjectsQueryQuery, GetProjectsQueryQueryVariables>;
+export const GetProjectsQueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetProjectsQuery"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"offset"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"search"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"projects"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}},{"kind":"Argument","name":{"kind":"Name","value":"after"},"value":{"kind":"Variable","name":{"kind":"Name","value":"offset"}}},{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"search"},"value":{"kind":"Variable","name":{"kind":"Name","value":"search"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"projectFields"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"category"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"projectUrl"}},{"kind":"Field","name":{"kind":"Name","value":"thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"guid"}}]}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"pageInfo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"endCursor"}},{"kind":"Field","name":{"kind":"Name","value":"hasNextPage"}}]}}]}}]}}]} as unknown as DocumentNode<GetProjectsQueryQuery, GetProjectsQueryQueryVariables>;
 export const GetReviewsQueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getReviewsQuery"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"reviews"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"reviewFields"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"countryCode"}},{"kind":"Field","name":{"kind":"Name","value":"review"}},{"kind":"Field","name":{"kind":"Name","value":"userAvatar"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"guid"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"projectUrl"}},{"kind":"Field","name":{"kind":"Name","value":"username"}}]}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}}]}}]}}]} as unknown as DocumentNode<GetReviewsQueryQuery, GetReviewsQueryQueryVariables>;

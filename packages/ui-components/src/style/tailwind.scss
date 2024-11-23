@@ -46,8 +46,13 @@
   .cs-gap-between-text {
     @apply tw-gap-[10px];
   }
+
   .cs-gap-between-content {
     @apply tw-gap-5;
+  }
+
+  .cs-page {
+    @apply tw-h-full tw-max-w-[100vw] tw-overflow-x-hidden tw-pb-[45px];
   }
 }
 

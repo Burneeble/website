@@ -46,6 +46,7 @@ const Customers = (props: CustomersProps) => {
   const [phraseIndex, setPhraseIndex] = useState<number>(0);
   const [scrollProgress, setScrollProgress] = useState<number>(0);
   const [reviews, setReviews] = useState<ReviewCardProps[] | null>(null);
+  const [canShowShadows, setCanShowShadows] = useState<boolean>(false);
 
   //Hooks
   const { screen } = useClientInfoService();
@@ -108,28 +109,35 @@ const Customers = (props: CustomersProps) => {
         say...
       </h2>
       <div className="wrapper tw-relative tw-max-w-full">
-        <div
-          className={`
-            shadow tw-left-0
+        {canShowShadows && (
+          <>
+            <div
+              className={`
+                shadow tw-left-0
 
-            ${scrollProgress === 0 ? "tw-opacity-0" : "tw-opacity-1"}
-          `}
-        />
-        <div
-          className={`
-            shadow tw-right-0 tw-rotate-180
+                ${scrollProgress === 0 ? "tw-opacity-0" : "tw-opacity-1"}
+              `}
+            />
+            <div
+              className={`
+                shadow tw-right-0 tw-rotate-180
 
-            ${scrollProgress === 100 ? "tw-opacity-0" : "tw-opacity-1"}
-          `}
-        />
+                ${scrollProgress === 100 ? "tw-opacity-0" : "tw-opacity-1"}
+              `}
+            />
+          </>
+        )}
         <CustomScrollbar
           onScroll={(hProgress: number) => {
             setScrollProgress(Math.ceil(hProgress));
             const clampedValue = Math.max(0, Math.min(100, hProgress));
             setPhraseIndex(Math.round((clampedValue / 100) * 6));
           }}
+          readHThumbWidth={(hThumbWidth: number) => {
+            setCanShowShadows(hThumbWidth < 100);
+          }}
         >
-          <div className="tw-w-fit tw-overflow-visible tw-py-[20px]">
+          <div className="wrapper tw-w-fit tw-overflow-visible tw-py-[20px]">
             {reviews ? (
               screen == "sm" || screen == "md" ? (
                 <>

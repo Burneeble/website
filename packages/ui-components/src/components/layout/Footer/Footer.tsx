@@ -13,7 +13,7 @@ const Footer = (props: FooterProps) => {
   //Effects
   useEffect(() => {
     if (
-      Math.ceil(scrollPos + window.innerHeight) >=
+      Math.ceil(scrollPos + window.innerHeight + 1) >=
       document.documentElement.scrollHeight
     ) {
       if (!isBottom) {
@@ -27,24 +27,22 @@ const Footer = (props: FooterProps) => {
   }, [scrollPos]);
 
   useEffect(() => {
-    if (isBottom && isClient) {
-      const tl = gsap.timeline();
-      console.log("timeline", tl);
+    let tl = gsap.timeline();
 
-      tl.to(".footer-content", {
-        duration: 0.2,
-        backgroundColor: "rgba(255, 92, 1, 1)",
-        ease: "power2.out",
-      })
-        .to(
-          ".gradient-three",
-          {
-            duration: 0.2,
-            height: "95px",
-            ease: "power2.out",
-          },
-          "-=0.1"
-        )
+    tl.kill();
+
+    if (isBottom && isClient) {
+      tl = gsap.timeline();
+
+      tl.to(
+        ".gradient-three",
+        {
+          duration: 0.2,
+          height: "95px",
+          ease: "power2.out",
+        },
+        "-=0.1"
+      )
         .to(
           ".gradient-two",
           {
@@ -64,7 +62,7 @@ const Footer = (props: FooterProps) => {
           "-=0.1"
         );
     } else {
-      const tl = gsap.timeline();
+      tl = gsap.timeline();
 
       tl.to(".gradient-one", {
         duration: 0.2,
@@ -88,17 +86,14 @@ const Footer = (props: FooterProps) => {
             ease: "power2.in",
           },
           "-=0.1"
-        )
-        .to(
-          ".footer-content",
-          {
-            duration: 0.2,
-            backgroundColor: "rgba(0, 0, 0, 1)",
-            ease: "power2.out",
-          },
-          "-=0.1"
         );
     }
+
+    return () => {
+      if (tl) {
+        tl.kill();
+      }
+    };
   }, [isBottom, isClient]);
 
   return (
@@ -122,7 +117,7 @@ const Footer = (props: FooterProps) => {
         <div
           className={`
             footer-content gradient tw-z-10 tw-flex tw-h-[80px] tw-items-center
-            tw-justify-center tw-transition-all
+            tw-justify-center tw-bg-[var(--primary-default)] tw-transition-all
           `}
         >
           <h2

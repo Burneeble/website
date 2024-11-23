@@ -15,7 +15,7 @@ const Emoji = (props: EmojiProps) => {
           tw-bg-[radial-gradient(circle,var(--primary-light)_0%,_rgba(0,0,0,0)_70%)]
           tw-opacity-[.5] tw-blur-[100px]
         `}
-      ></div>
+      />
       <div
         className={`
           text tw-text-center cs-s tw-font-bowlby-one tw-font-normal tw-text-3xl

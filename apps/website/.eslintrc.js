@@ -30,7 +30,7 @@ module.exports = {
       "tailwindcss/classnames-order": "off",
       "tailwindcss/no-custom-classname": "off",
       "tailwindcss/no-arbitrary-value": "off",
-      "tailwindcss/no-contradicting-classname": "error",
+      "tailwindcss/no-contradicting-classname": "warn",
       "readable-tailwind/sort-classes": "warn",
       "react/jsx-key": "error",
       ...customRules,

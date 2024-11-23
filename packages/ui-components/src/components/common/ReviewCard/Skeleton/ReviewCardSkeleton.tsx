@@ -20,13 +20,7 @@ const ReviewCardSkeleton = (props: ReviewCardSkeletonProps) => {
         md:tw-h-[200px] md:tw-w-[325px]
       `}
     >
-      <Skeleton className={`tw-block tw-h-full tw-w-full tw-rounded-lg`} />
-      <div
-        className={cn(
-          reviewCardVariants({ variant: "default" }),
-          `tw-absolute tw-left-0 tw-top-0`
-        )}
-      >
+      <div className={cn(reviewCardVariants({ variant: "default" }))}>
         <div
           className={cn(
             `

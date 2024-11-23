@@ -19,12 +19,16 @@ const HomePageProviders = dynamic(
 export default async function Home() {
   //SSR data fetching
   const res = await ProjectService.instance.getProjects();
+
   const projects = JSON.parse(
     JSON.stringify(
       res.map((project) => {
         return {
           thumbnail: project.thumbnailUrl,
           categories: project.categories,
+          title: project.title,
+          description: project.description,
+          projectUrl: project.projectUrl,
         };
       })
     )
@@ -34,9 +38,9 @@ export default async function Home() {
     <HomePageProviders>
       <div
         className={`
-          home-page tw-h-full tw-max-w-[100vw] tw-overflow-x-hidden
-          tw-bg-gradient-to-t tw-from-[var(--secondary-darker)]
-          tw-to-[var(--secondary-base)] tw-pb-[45px] tw-from-0% tw-to-[8%]
+          home-page cs-page tw-bg-gradient-to-t
+          tw-from-[var(--secondary-darker)] tw-to-[var(--secondary-base)]
+          tw-from-0% tw-to-[8%]
         `}
       >
         <Hero />

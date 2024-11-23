@@ -29,7 +29,7 @@ const LayoutWrapper = (props: LayoutWrapperProps) => {
                 height={100}
               />
             ),
-            url: "https://google.com",
+            url: "/",
           }}
           dropdowns={[
             {
