@@ -3,16 +3,24 @@ import { gql } from "@/__generated__";
 
 export const GET_PROJECT_QUERY = gql(/* GraphQL */ `
   query GetProjectQuery($id: ID!) {
-    projectBy(id: $id) {
-      id
+    project(id: $id, idType: SLUG) {
       title
       projectFields {
         description
-        fieldGroupName
         projectUrl
         thumbnail {
           node {
-            sourceUrl
+            guid
+          }
+        }
+        sections {
+          nodes {
+            ... on Section {
+              title
+              sections {
+                text
+              }
+            }
           }
         }
         category {

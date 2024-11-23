@@ -33,12 +33,11 @@ export class ProjectService {
     if (!data) return null;
 
     const projectInfo: IProjectModel = {
-      title: data.projectBy?.title || "",
-      description: data.projectBy?.projectFields?.description || "",
-      projectUrl: data.projectBy?.projectFields?.projectUrl || "",
-      thumbnailUrl:
-        data.projectBy?.projectFields?.thumbnail?.node.sourceUrl || "",
-      categories: data.projectBy?.projectFields?.category?.edges
+      title: data.project?.title || "",
+      description: data.project?.projectFields?.description || "",
+      projectUrl: data.project?.projectFields?.projectUrl || "",
+      thumbnailUrl: data.project?.projectFields?.thumbnail?.node.guid || "",
+      categories: data.project?.projectFields?.category?.edges
         .map((c) => c.node.name)
         .filter((c) => {
           return typeof c === "string";
