@@ -319,7 +319,8 @@ const Projects = (props: ProjectsProps) => {
           )}
           <div
             className={`
-              projects tw-flex tw-flex-col tw-gap-[20px]
+              projects tw-flex tw-flex-col tw-gap-[20px] tw-transition-all
+              tw-duration-200 tw-ease-in-out
 
               lg:tw-grid lg:tw-grid-cols-3
 
@@ -353,15 +354,27 @@ const Projects = (props: ProjectsProps) => {
               }
             />
           )}
-          {hasNextPage && (
+          <div
+            className={cn(
+              `
+                button-wrapper tw-w-full tw-flex tw-justify-end tw-items-center
+                tw-transition-all tw-duration-500 tw-ease-in-out
+                tw-overflow-hidden
+              `,
+              hasNextPage ? "tw-h-[48px] tw-opacity-100" : "tw-h-0 tw-opacity-0"
+            )}
+          >
             <Button
               variant="secondary"
               fit={screen === "sm" ? "full" : "inline"}
-              className={`
-                !tw-bg-black tw-mx-auto tw-px-[75px] tw-mt-auto
+              className={cn(
+                `
+                  !tw-bg-black tw-mx-auto tw-px-[75px] tw-mt-auto
 
-                lg:tw-mr-0
-              `}
+                  lg:tw-mr-0
+                `,
+                !hasNextPage && "tw-pointer-events-none"
+              )}
               onClick={async () => {
                 setIsLoading(true);
                 fetchProjects();
@@ -370,7 +383,7 @@ const Projects = (props: ProjectsProps) => {
             >
               See More
             </Button>
-          )}
+          </div>
         </div>
       </section>
     </>
