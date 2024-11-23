@@ -36,6 +36,11 @@ export const GET_PROJECT_QUERY = gql(/* GraphQL */ `
           }
         }
         mainColor
+        technologies {
+          nodes {
+            name
+          }
+        }
       }
     }
   }

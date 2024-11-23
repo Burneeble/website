@@ -44,6 +44,12 @@ export class ProjectService {
         }) || ["Dapp"],
       favicon: data.project?.projectFields?.favicon?.node.guid || "",
       mainColor: data.project?.projectFields?.mainColor || "",
+      technologies:
+        data.project?.projectFields?.technologies?.nodes
+          .map((t) => t.name)
+          .filter((t) => {
+            return typeof t === "string";
+          }) || [],
     };
 
     const project =

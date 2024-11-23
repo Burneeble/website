@@ -8,6 +8,7 @@ export interface IProjectModel {
   categories: string[];
   favicon?: string;
   mainColor?: string;
+  technologies?: string[];
 }
 
 @JsonObject()
@@ -33,6 +34,9 @@ export class ProjectModel implements IProjectModel {
   @JsonProperty()
   mainColor?: string;
 
+  @JsonProperty()
+  technologies?: string[];
+
   constructor(obj?: Partial<IProjectModel>) {
     this.title = obj?.title ?? "";
     this.description = obj?.description ?? "";
@@ -41,5 +45,6 @@ export class ProjectModel implements IProjectModel {
     this.categories = obj?.categories ?? [];
     this.favicon = obj?.favicon;
     this.mainColor = obj?.mainColor;
+    this.technologies = obj?.technologies;
   }
 }

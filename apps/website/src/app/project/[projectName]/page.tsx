@@ -8,6 +8,8 @@ const ProjectPage = async ({ params }: { params: { projectName: string } }) => {
 
   const project: IProjectModel = JSON.parse(JSON.stringify(res));
 
+  console.log(JSON.stringify(project, null, 2));
+
   return (
     <div className="cs-page project-page">
       <ProjectLogo
