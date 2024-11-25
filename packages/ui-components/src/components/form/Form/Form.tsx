@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { FormProps } from "./Form.types";
+import { FormProps, InputType } from "./Form.types";
 import {
   FormComponent,
   FormControl,
@@ -11,6 +11,7 @@ import {
 } from "../../ui/form";
 import React from "react";
 import { Button, Input } from "@/components/ui";
+import { Textarea } from "@/components/ui/textarea";
 
 const Form = (props: FormProps) => {
   //Hooks
@@ -34,7 +35,16 @@ const Form = (props: FormProps) => {
                 <FormItem>
                   <FormLabel>{fieldInfo.label}</FormLabel>
                   <FormControl>
-                    <Input placeholder={fieldInfo.placeholder} {...field} />
+                    {fieldInfo.inputType === InputType.text ? (
+                      <Input placeholder={fieldInfo.placeholder} {...field} />
+                    ) : fieldInfo.inputType === InputType.textarea ? (
+                      <Textarea
+                        placeholder={fieldInfo.placeholder}
+                        {...field}
+                      />
+                    ) : (
+                      <Input placeholder={fieldInfo.placeholder} {...field} />
+                    )}
                   </FormControl>
                   {fieldInfo.description && (
                     <FormDescription>{fieldInfo.description}</FormDescription>
@@ -45,6 +55,7 @@ const Form = (props: FormProps) => {
             />
           );
         })}
+
         <Button type="submit" fit="full">
           Submit
         </Button>

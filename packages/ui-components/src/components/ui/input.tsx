@@ -41,8 +41,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         className={cn(
           `
             p-small input-placeholder tw-flex tw-h-[58px] tw-w-full
-            tw-rounded-lg tw-text-body-active tw-border secondary-gradient
-            tw-border-tertiary tw-bg-gradient-to-r tw-px-3 tw-shadow-sm
+            tw-rounded-lg tw-border tw-border-tertiary tw-bg-gradient-to-r
+            tw-text-body-active secondary-gradient tw-px-3 tw-shadow-sm
             tw-outline-none tw-transition-colors
 
             disabled:tw-cursor-not-allowed disabled:tw-opacity-50

@@ -2,6 +2,7 @@ import { StoryObj, Meta } from "@storybook/react";
 import Form from "./Form";
 import { ComponentProps } from "react";
 import React from "react";
+import { InputType } from "./Form.types";
 
 export default {
   title: "burneeble-website-components/form/Form",
@@ -20,24 +21,14 @@ export const baseForm: Story = {
             label: "Name",
             placeholder: "your name...",
             description: "This is your name.",
+            inputType: InputType.text,
           },
           {
-            key: "your-email",
-            label: "Email",
-            placeholder: "your email...",
-            description: "This is your email",
-          },
-          {
-            key: "your-subject",
-            label: "Subject",
-            placeholder: "your subject...",
-            description: "This is your subject.",
-          },
-          {
-            key: "your-message",
-            label: "Message",
-            placeholder: "your message...",
-            description: "This is your message",
+            key: "your-name",
+            label: "Name",
+            placeholder: "your name...",
+            description: "This is your name.",
+            inputType: InputType.textarea,
           },
         ]}
         onSubmit={(values) => {
