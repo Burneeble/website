@@ -16,9 +16,10 @@ export const GET_PROJECT_QUERY = gql(/* GraphQL */ `
         sections {
           nodes {
             ... on Section {
-              title
+              slug
               sections {
                 text
+                title
               }
             }
           }

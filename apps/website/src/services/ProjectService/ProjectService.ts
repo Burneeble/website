@@ -7,7 +7,12 @@ import {
   GET_PROJECTS_BY_CATEGORIES_QUERY,
   GET_PROJECTS_QUERY,
 } from "./queries";
-import { IProjectModel, ProjectModel } from "./models";
+import {
+  IProjectModel,
+  ISectionModel,
+  ProjectModel,
+  SectionModel,
+} from "./models";
 import { JsonSerializer } from "typescript-json-serializer";
 
 const serializer = new JsonSerializer();
@@ -32,6 +37,27 @@ export class ProjectService {
 
     if (!data) return null;
 
+    const sectionsInfo: ISectionModel[] | undefined = data.project
+      ?.projectFields?.sections
+      ? data.project?.projectFields?.sections.nodes.map((node) => {
+          return {
+            // @ts-ignore
+            slug: node.slug || "",
+            // @ts-ignore
+            title: node.sections?.title || "",
+            // @ts-ignore
+            text: node.sections?.text || "",
+          };
+        })
+      : undefined;
+
+    const sections: SectionModel[] | undefined = sectionsInfo
+      ? ((serializer.deserializeObjectArray<SectionModel>(
+          sectionsInfo || [],
+          SectionModel
+        ) || []) as SectionModel[])
+      : undefined;
+
     const projectInfo: IProjectModel = {
       title: data.project?.title || "",
       description: data.project?.projectFields?.description || "",
@@ -50,6 +76,7 @@ export class ProjectService {
           .filter((t) => {
             return typeof t === "string";
           }) || [],
+      sections: sections,
     };
 
     const project =

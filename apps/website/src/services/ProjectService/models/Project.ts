@@ -1,4 +1,5 @@
 import { JsonObject, JsonProperty } from "typescript-json-serializer";
+import { SectionModel } from "./Section";
 
 export interface IProjectModel {
   title: string;
@@ -9,6 +10,7 @@ export interface IProjectModel {
   favicon?: string;
   mainColor?: string;
   technologies?: string[];
+  sections?: SectionModel[];
 }
 
 @JsonObject()
@@ -37,6 +39,9 @@ export class ProjectModel implements IProjectModel {
   @JsonProperty()
   technologies?: string[];
 
+  @JsonProperty()
+  sections?: SectionModel[];
+
   constructor(obj?: Partial<IProjectModel>) {
     this.title = obj?.title ?? "";
     this.description = obj?.description ?? "";
@@ -46,5 +51,6 @@ export class ProjectModel implements IProjectModel {
     this.favicon = obj?.favicon;
     this.mainColor = obj?.mainColor;
     this.technologies = obj?.technologies;
+    this.sections = obj?.sections;
   }
 }

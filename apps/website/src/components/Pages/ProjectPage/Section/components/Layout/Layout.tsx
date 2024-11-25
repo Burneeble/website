@@ -1,14 +1,19 @@
+import { LayoutType } from "../../Section.types";
+import { FigmaLayout } from "./components";
 import { LayoutProps } from "./Layout.types";
 
 const Layout = (props: LayoutProps) => {
   //Methods
-  const getImageLayout = () => {
-    switch (props.imageLayoutType) {
+  const getLayout = () => {
+    switch (props.layoutType) {
+      case LayoutType.FigmaLayout:
+        return <FigmaLayout {...props} />;
       default:
-        return <div className="layout"></div>;
+        return <></>;
     }
   };
-  return <div className="layout">{getImageLayout()}</div>;
+
+  return getLayout();
 };
 
 export default Layout;

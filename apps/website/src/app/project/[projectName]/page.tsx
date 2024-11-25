@@ -1,4 +1,5 @@
 import { ProjectLogo, Technologies } from "@/components/Pages";
+import Section, { LayoutType } from "@/components/Pages/ProjectPage/Section";
 import { IProjectModel, ProjectService } from "@/services/ProjectService";
 
 const ProjectPage = async ({ params }: { params: { projectName: string } }) => {
@@ -18,6 +19,19 @@ const ProjectPage = async ({ params }: { params: { projectName: string } }) => {
         mainColor={project.mainColor || "#000"}
       />
       <Technologies technologies={project.technologies || []} />
+      {project.sections?.map((section, i) => {
+        console.log(section.slug);
+        return (
+          <>
+            <Section
+              key={i}
+              layoutType={section.slug as LayoutType}
+              title={section.title}
+              text={section.text}
+            />
+          </>
+        );
+      })}
     </div>
   );
 };
