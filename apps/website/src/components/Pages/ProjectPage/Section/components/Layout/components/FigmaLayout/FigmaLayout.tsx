@@ -3,7 +3,7 @@ import { FigmaLayoutProps } from "./FigmaLayout.types";
 
 const FigmaLayout = (props: FigmaLayoutProps) => {
   return (
-    <section
+    <div
       className={`
         figma-layout section-layout tw-flex tw-flex-col tw-justify-center
         tw-items-center tw-gap-[10px]
@@ -15,7 +15,7 @@ const FigmaLayout = (props: FigmaLayoutProps) => {
       />
       <p className="text tw-text-center">{props.text}</p>
       <ImageLayout {...props} />
-    </section>
+    </div>
   );
 };
 

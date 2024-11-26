@@ -19,6 +19,17 @@ const ProjectPage = async ({ params }: { params: { projectName: string } }) => {
         title={project.title}
         mainColor={project.mainColor || "#000"}
       />
+      <Section
+        layoutType={LayoutType.TextTopStartFullImageBottomCenter}
+        title={
+          '<span class="cs-text-color-primary-gradient">Title</span> Goes Here'
+        }
+        text={
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
+        }
+        imageLayoutType={"" as ImageLayoutType}
+        imageLayoutInfo={"" as any}
+      />
       <Technologies technologies={project.technologies || []} />
       {project.sections?.map((section, i) => {
         return (

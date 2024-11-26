@@ -2,7 +2,13 @@
 
 import { useClientInfoService } from "@burneeble/ui-components";
 import { LayoutType } from "../../Section.types";
-import { FigmaLayout } from "./components";
+import {
+  FigmaLayout,
+  TextTopCenterFullImageBottomCenter,
+  TextTopCenterImageBottomCenter,
+  TextTopStartFullImageBottomCenter,
+  TextTopStartImageBottomCenter,
+} from "./components";
 import { LayoutProps } from "./Layout.types";
 import { useEffect, useState } from "react";
 
@@ -42,6 +48,14 @@ const Layout = (props: LayoutProps) => {
     switch (props.layoutType) {
       case LayoutType.FigmaLayout:
         return <FigmaLayout {...props} {...images} />;
+      case LayoutType.TextTopCenterImageBottomCenter:
+        return <TextTopCenterImageBottomCenter {...props} {...images} />;
+      case LayoutType.TextTopStartImageBottomCenter:
+        return <TextTopStartImageBottomCenter {...props} {...images} />;
+      case LayoutType.TextTopCenterFullImageBottomCenter:
+        return <TextTopCenterFullImageBottomCenter {...props} {...images} />;
+      case LayoutType.TextTopStartFullImageBottomCenter:
+        return <TextTopStartFullImageBottomCenter {...props} {...images} />;
       default:
         return <></>;
     }
