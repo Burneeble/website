@@ -2,6 +2,7 @@ import { JsonObject, JsonProperty } from "typescript-json-serializer";
 import { ScreenImagesLayoutModel } from "./ScreenImageLayoutModel";
 
 export interface IImageLayout {
+  slug: string;
   imagesLayoutSm: ScreenImagesLayoutModel;
   imagesLayoutMd: ScreenImagesLayoutModel;
   imagesLayoutLg: ScreenImagesLayoutModel;
@@ -9,6 +10,9 @@ export interface IImageLayout {
 
 @JsonObject()
 export class ImageLayoutModel implements IImageLayout {
+  @JsonProperty()
+  slug: string;
+
   @JsonProperty()
   imagesLayoutSm: ScreenImagesLayoutModel;
 
@@ -19,6 +23,7 @@ export class ImageLayoutModel implements IImageLayout {
   imagesLayoutLg: ScreenImagesLayoutModel;
 
   constructor(obj?: Partial<IImageLayout>) {
+    this.slug = obj?.slug || "";
     this.imagesLayoutSm = obj?.imagesLayoutSm || new ScreenImagesLayoutModel();
     this.imagesLayoutMd = obj?.imagesLayoutMd || new ScreenImagesLayoutModel();
     this.imagesLayoutLg = obj?.imagesLayoutLg || new ScreenImagesLayoutModel();

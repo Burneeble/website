@@ -31,7 +31,7 @@ const ProjectPage = async ({ params }: { params: { projectName: string } }) => {
               layoutType={section.slug as LayoutType}
               title={section.title}
               text={section.text}
-              imageLayoutType={ImageLayoutType.FigmaImageLayout}
+              imageLayoutType={section.imageLayout.slug as ImageLayoutType}
             />
           </>
         );

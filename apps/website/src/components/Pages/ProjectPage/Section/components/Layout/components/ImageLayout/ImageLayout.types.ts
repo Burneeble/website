@@ -1,1 +1,3 @@
-export interface ImageLayoutProps {}
+import { SectionProps } from "../../../../Section.types";
+
+export interface ImageLayoutProps extends SectionProps {}

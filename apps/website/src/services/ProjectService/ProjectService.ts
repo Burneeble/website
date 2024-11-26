@@ -87,13 +87,14 @@ export class ProjectService {
           }
 
           const imageLayout = new ImageLayoutModel({
+            // @ts-ignore
+            slug: node.sectionsFields?.imagesLayout?.nodes[0].slug || "",
             imagesLayoutSm: layoutSm,
             imagesLayoutMd: layoutMd,
             imagesLayoutLg: layoutXl,
           });
 
           return {
-            // @ts-ignore
             slug: node.slug || "",
             // @ts-ignore
             title: node.sectionsFields?.title || "",

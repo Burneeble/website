@@ -1,3 +1,4 @@
+import ImageLayout from "../ImageLayout";
 import { FigmaLayoutProps } from "./FigmaLayout.types";
 
 const FigmaLayout = (props: FigmaLayoutProps) => {
@@ -9,6 +10,7 @@ const FigmaLayout = (props: FigmaLayoutProps) => {
     >
       <h1 className="title" dangerouslySetInnerHTML={{ __html: props.title }} />
       <p className="text">{props.text}</p>
+      <ImageLayout {...props} />
     </div>
   );
 };
