@@ -38,4 +38,3 @@ const textarea = React.forwardRef<
 textarea.displayName = "Textarea";
 
 export { textarea as Textarea };
-// "placeholder:tw-text-muted-foreground focus-visible:tw-outline-none focus-visible:tw-ring-1 focus-visible:tw-ring-ring disabled:tw-cursor-not-allowed disabled:tw-opacity-50 md:tw-text-sm",

@@ -3,7 +3,7 @@ import { FormProps, InputType } from "./Form.types";
 import { FormComponent, FormField } from "../../ui/form";
 import React from "react";
 import { Button } from "@/components/ui";
-import { TextFormField } from "../Formfields";
+import { TextFormField, TextAreaFormField } from "../Formfields";
 
 const Form = (props: FormProps) => {
   //Hooks
@@ -27,6 +27,13 @@ const Form = (props: FormProps) => {
                 <>
                   {fieldInfo.inputType === InputType.text ? (
                     <TextFormField
+                      key={fieldInfo.key}
+                      label={fieldInfo.label}
+                      placeholder={fieldInfo.placeholder}
+                      {...field}
+                    />
+                  ) : fieldInfo.inputType === InputType.textarea ? (
+                    <TextAreaFormField
                       key={fieldInfo.key}
                       label={fieldInfo.label}
                       placeholder={fieldInfo.placeholder}
