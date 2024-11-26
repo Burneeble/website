@@ -5,7 +5,6 @@ import { LayoutProps } from "./Layout.types";
 const Layout = (props: LayoutProps) => {
   //Methods
   const getLayout = () => {
-    console.log(props.layoutType);
     switch (props.layoutType) {
       case LayoutType.FigmaLayout:
         return <FigmaLayout {...props} />;

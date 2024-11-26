@@ -1,3 +1,7 @@
 // Layout
 
 @import "./components/components";
+
+.section-layout {
+  @apply cs-section-structure;
+}

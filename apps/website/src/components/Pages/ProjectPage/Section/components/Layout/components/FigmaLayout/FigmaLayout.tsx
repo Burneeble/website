@@ -3,15 +3,19 @@ import { FigmaLayoutProps } from "./FigmaLayout.types";
 
 const FigmaLayout = (props: FigmaLayoutProps) => {
   return (
-    <div
+    <section
       className={`
-        figma-layout tw-flex tw-flex-col tw-justify-center tw-items-center
+        figma-layout section-layout tw-flex tw-flex-col tw-justify-center
+        tw-items-center tw-gap-[10px]
       `}
     >
-      <h1 className="title" dangerouslySetInnerHTML={{ __html: props.title }} />
-      <p className="text">{props.text}</p>
+      <h2
+        className="title tw-text-center"
+        dangerouslySetInnerHTML={{ __html: props.title }}
+      />
+      <p className="text tw-text-center tw-mb-[30px]">{props.text}</p>
       <ImageLayout {...props} />
-    </div>
+    </section>
   );
 };
 

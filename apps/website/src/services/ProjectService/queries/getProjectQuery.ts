@@ -20,6 +20,11 @@ export const GET_PROJECT_QUERY = gql(/* GraphQL */ `
               sectionsFields {
                 text
                 title
+                layout {
+                  nodes {
+                    slug
+                  }
+                }
                 imagesLayout {
                   nodes {
                     ... on ImagesLayout {

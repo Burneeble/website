@@ -95,7 +95,8 @@ export class ProjectService {
           });
 
           return {
-            slug: node.slug || "",
+            // @ts-ignore
+            layout: node.sectionsFields?.layout.nodes[0].slug || "",
             // @ts-ignore
             title: node.sectionsFields?.title || "",
             // @ts-ignore

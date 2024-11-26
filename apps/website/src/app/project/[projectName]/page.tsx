@@ -12,8 +12,6 @@ const ProjectPage = async ({ params }: { params: { projectName: string } }) => {
 
   const project: IProjectModel = JSON.parse(JSON.stringify(res));
 
-  console.log(JSON.stringify(project, null, 2));
-
   return (
     <div className="cs-page project-page">
       <ProjectLogo
@@ -23,12 +21,11 @@ const ProjectPage = async ({ params }: { params: { projectName: string } }) => {
       />
       <Technologies technologies={project.technologies || []} />
       {project.sections?.map((section, i) => {
-        console.log(section.slug);
         return (
           <>
             <Section
               key={i}
-              layoutType={section.slug as LayoutType}
+              layoutType={section.layout as LayoutType}
               title={section.title}
               text={section.text}
               imageLayoutType={section.imageLayout.slug as ImageLayoutType}

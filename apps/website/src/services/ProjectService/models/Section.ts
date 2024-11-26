@@ -2,7 +2,7 @@ import { JsonObject, JsonProperty } from "typescript-json-serializer";
 import { ImageLayoutModel } from "./ImageLayoutModel";
 
 export interface ISectionModel {
-  slug: string;
+  layout: string;
   title: string;
   text: string;
   imageLayout: ImageLayoutModel;
@@ -11,7 +11,7 @@ export interface ISectionModel {
 @JsonObject()
 export class SectionModel implements ISectionModel {
   @JsonProperty()
-  slug: string;
+  layout: string;
 
   @JsonProperty()
   title: string;
@@ -23,7 +23,7 @@ export class SectionModel implements ISectionModel {
   imageLayout: ImageLayoutModel;
 
   constructor(obj?: Partial<ISectionModel>) {
-    this.slug = obj?.slug ?? "";
+    this.layout = obj?.layout ?? "";
     this.title = obj?.title ?? "";
     this.text = obj?.text ?? "";
     this.imageLayout = obj?.imageLayout || new ImageLayoutModel();
