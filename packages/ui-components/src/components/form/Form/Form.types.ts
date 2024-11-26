@@ -11,6 +11,7 @@ export interface Field {
   label: string;
   placeholder?: string;
   description?: string;
+  disabled?: boolean;
   inputType: InputType;
 }
 

@@ -12,10 +12,10 @@ import { Textarea } from "@/components/ui/textarea";
 const TextAreaFormField = (props: TextAreaFormFieldProps) => {
   return (
     <>
-      <FormItem>
+      <FormItem key={props.key}>
         <FormLabel>{props.label}</FormLabel>
         <FormControl>
-          <Textarea placeholder={props.placeholder} />
+          <Textarea disabled={props.disabled} placeholder={props.placeholder} />
         </FormControl>
         {props.description && (
           <FormDescription>{props.description}</FormDescription>

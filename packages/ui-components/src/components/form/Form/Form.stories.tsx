@@ -25,9 +25,10 @@ export const baseForm: Story = {
           },
           {
             key: "your-last-name",
-            label: "Lastname",
-            placeholder: "Your lastname...",
+            label: "Last name",
+            placeholder: "Your last name...",
             description: "This is your lastname.",
+            disabled: true,
             inputType: InputType.text,
           },
           {
@@ -40,7 +41,7 @@ export const baseForm: Story = {
           {
             key: "terms-codition",
             label: "Terms",
-            description: "This is your bio.",
+            // description: "This is your bio.",
             inputType: InputType.checkbox,
           },
         ]}

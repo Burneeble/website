@@ -3,7 +3,11 @@ import { FormProps, InputType } from "./Form.types";
 import { FormComponent, FormField } from "../../ui/form";
 import React from "react";
 import { Button } from "@/components/ui";
-import { TextFormField, TextAreaFormField } from "../Formfields";
+import {
+  TextFormField,
+  TextAreaFormField,
+  CheckboxFormField,
+} from "../Formfields";
 
 const Form = (props: FormProps) => {
   //Hooks
@@ -18,6 +22,7 @@ const Form = (props: FormProps) => {
         className="tw-space-y-3"
       >
         {props.fields.map((fieldInfo, i) => {
+          const disabled = fieldInfo.disabled || false;
           return (
             <FormField
               key={i}
@@ -30,6 +35,7 @@ const Form = (props: FormProps) => {
                       key={fieldInfo.key}
                       label={fieldInfo.label}
                       placeholder={fieldInfo.placeholder}
+                      disabled={disabled}
                       {...field}
                     />
                   ) : fieldInfo.inputType === InputType.textarea ? (
@@ -37,6 +43,15 @@ const Form = (props: FormProps) => {
                       key={fieldInfo.key}
                       label={fieldInfo.label}
                       placeholder={fieldInfo.placeholder}
+                      disabled={disabled}
+                      {...field}
+                    />
+                  ) : fieldInfo.inputType === InputType.checkbox ? (
+                    <CheckboxFormField
+                      key={fieldInfo.key}
+                      label={fieldInfo.label}
+                      description={fieldInfo.description}
+                      disabled={disabled}
                       {...field}
                     />
                   ) : null}

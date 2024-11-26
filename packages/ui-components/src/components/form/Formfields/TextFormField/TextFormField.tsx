@@ -12,10 +12,10 @@ import { TextFormFieldProps } from "./TextFormField.types";
 const TextFormField = (props: TextFormFieldProps) => {
   return (
     <>
-      <FormItem>
+      <FormItem key={props.key}>
         <FormLabel>{props.label}</FormLabel>
         <FormControl>
-          <Input placeholder={props.placeholder} />
+          <Input disabled={props.disabled} placeholder={props.placeholder} />
         </FormControl>
         {props.description && (
           <FormDescription>{props.description}</FormDescription>
