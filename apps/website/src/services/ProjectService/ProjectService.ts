@@ -91,7 +91,7 @@ export class ProjectService {
             slug: node.sectionsFields?.imagesLayout?.nodes[0].slug || "",
             imagesLayoutSm: layoutSm,
             imagesLayoutMd: layoutMd,
-            imagesLayoutLg: layoutXl,
+            imagesLayoutXl: layoutXl,
           });
 
           return {

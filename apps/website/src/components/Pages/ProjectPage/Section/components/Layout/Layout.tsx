@@ -4,10 +4,19 @@ import { useClientInfoService } from "@burneeble/ui-components";
 import { LayoutType } from "../../Section.types";
 import { FigmaLayout } from "./components";
 import { LayoutProps } from "./Layout.types";
+import { useEffect, useState } from "react";
 
 const Layout = (props: LayoutProps) => {
+  //States
+  const [comp, setComp] = useState<JSX.Element>(<></>);
+
   //Hooks
   const { screen } = useClientInfoService();
+
+  //Effects
+  useEffect(() => {
+    setComp(getLayout());
+  }, [screen]);
 
   //Methods
   const getLayout = () => {
@@ -26,7 +35,7 @@ const Layout = (props: LayoutProps) => {
         images = props.imageLayoutInfo.imagesLayoutMd;
         break;
       default:
-        images = props.imageLayoutInfo.imagesLayoutMd;
+        images = props.imageLayoutInfo.imagesLayoutXl;
         break;
     }
 
@@ -38,7 +47,7 @@ const Layout = (props: LayoutProps) => {
     }
   };
 
-  return getLayout();
+  return <>{comp}</>;
 };
 
 export default Layout;

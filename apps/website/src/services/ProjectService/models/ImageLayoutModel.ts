@@ -5,7 +5,7 @@ export interface IImageLayout {
   slug: string;
   imagesLayoutSm: ScreenImagesLayoutModel;
   imagesLayoutMd: ScreenImagesLayoutModel;
-  imagesLayoutLg: ScreenImagesLayoutModel;
+  imagesLayoutXl: ScreenImagesLayoutModel;
 }
 
 @JsonObject()
@@ -20,12 +20,12 @@ export class ImageLayoutModel implements IImageLayout {
   imagesLayoutMd: ScreenImagesLayoutModel;
 
   @JsonProperty()
-  imagesLayoutLg: ScreenImagesLayoutModel;
+  imagesLayoutXl: ScreenImagesLayoutModel;
 
   constructor(obj?: Partial<IImageLayout>) {
     this.slug = obj?.slug || "";
     this.imagesLayoutSm = obj?.imagesLayoutSm || new ScreenImagesLayoutModel();
     this.imagesLayoutMd = obj?.imagesLayoutMd || new ScreenImagesLayoutModel();
-    this.imagesLayoutLg = obj?.imagesLayoutLg || new ScreenImagesLayoutModel();
+    this.imagesLayoutXl = obj?.imagesLayoutXl || new ScreenImagesLayoutModel();
   }
 }
