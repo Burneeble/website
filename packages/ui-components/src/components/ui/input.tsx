@@ -2,38 +2,14 @@
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
-import { useEffect, useRef } from "react";
+import { useCustomPlaceholder } from "@/hooks/useCustomPlaceholderStyle";
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {}
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, ...props }) => {
-    const inputRef = useRef<HTMLInputElement>(null);
-
-    //handle input to add custom class when input is empty or not to add a different border style
-    useEffect(() => {
-      const handleInput = () => {
-        if (inputRef.current) {
-          if (inputRef.current.value === "") {
-            inputRef.current.classList.add("custom-placeholder-border");
-          } else {
-            inputRef.current.classList.remove("custom-placeholder-border");
-          }
-        }
-      };
-
-      if (inputRef.current) {
-        inputRef.current.addEventListener("input", handleInput);
-        handleInput();
-      }
-
-      return () => {
-        if (inputRef.current) {
-          inputRef.current.removeEventListener("input", handleInput);
-        }
-      };
-    }, []);
+    const inputRef = useCustomPlaceholder<HTMLInputElement>();
 
     return (
       <input

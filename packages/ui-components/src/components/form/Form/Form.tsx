@@ -1,17 +1,9 @@
 import { useForm } from "react-hook-form";
 import { FormProps, InputType } from "./Form.types";
-import {
-  FormComponent,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "../../ui/form";
+import { FormComponent, FormField } from "../../ui/form";
 import React from "react";
-import { Button, Input } from "@/components/ui";
-import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui";
+import { TextFormField } from "../Formfields";
 
 const Form = (props: FormProps) => {
   //Hooks
@@ -23,7 +15,7 @@ const Form = (props: FormProps) => {
         onSubmit={form.handleSubmit(async () => {
           await props.onSubmit(form.getValues());
         })}
-        className="space-y-8"
+        className="tw-space-y-3"
       >
         {props.fields.map((fieldInfo, i) => {
           return (
@@ -32,31 +24,22 @@ const Form = (props: FormProps) => {
               control={form.control}
               name={fieldInfo.key}
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{fieldInfo.label}</FormLabel>
-                  <FormControl>
-                    {fieldInfo.inputType === InputType.text ? (
-                      <Input placeholder={fieldInfo.placeholder} {...field} />
-                    ) : fieldInfo.inputType === InputType.textarea ? (
-                      <Textarea
-                        placeholder={fieldInfo.placeholder}
-                        {...field}
-                      />
-                    ) : (
-                      <Input placeholder={fieldInfo.placeholder} {...field} />
-                    )}
-                  </FormControl>
-                  {fieldInfo.description && (
-                    <FormDescription>{fieldInfo.description}</FormDescription>
-                  )}
-                  <FormMessage />
-                </FormItem>
+                <>
+                  {fieldInfo.inputType === InputType.text ? (
+                    <TextFormField
+                      key={fieldInfo.key}
+                      label={fieldInfo.label}
+                      placeholder={fieldInfo.placeholder}
+                      {...field}
+                    />
+                  ) : null}
+                </>
               )}
             />
           );
         })}
 
-        <Button type="submit" fit="full">
+        <Button type="submit" fit="full" className="tw-mt-0">
           Submit
         </Button>
       </form>

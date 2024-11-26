@@ -19,16 +19,29 @@ export const baseForm: Story = {
           {
             key: "your-name",
             label: "Name",
-            placeholder: "your name...",
+            placeholder: "Your name...",
             description: "This is your name.",
             inputType: InputType.text,
           },
           {
-            key: "your-name",
-            label: "Name",
-            placeholder: "your name...",
-            description: "This is your name.",
+            key: "your-last-name",
+            label: "Lastname",
+            placeholder: "Your lastname...",
+            description: "This is your lastname.",
+            inputType: InputType.text,
+          },
+          {
+            key: "your-bio",
+            label: "Bio",
+            placeholder: "Write something about you...",
+            description: "This is your bio.",
             inputType: InputType.textarea,
+          },
+          {
+            key: "terms-codition",
+            label: "Terms",
+            description: "This is your bio.",
+            inputType: InputType.checkbox,
           },
         ]}
         onSubmit={(values) => {
