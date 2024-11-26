@@ -1,3 +1,3 @@
-import { ImageLayoutProps } from "../../ImageLayout.types";
+import { SubLayoutProps } from "../../../../Layout.types";
 
-export interface FigmaImagesLayoutProps extends ImageLayoutProps {}
+export interface FigmaImagesLayoutProps extends SubLayoutProps {}

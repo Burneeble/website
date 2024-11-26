@@ -13,7 +13,7 @@ const FigmaLayout = (props: FigmaLayoutProps) => {
         className="title tw-text-center"
         dangerouslySetInnerHTML={{ __html: props.title }}
       />
-      <p className="text tw-text-center tw-mb-[30px]">{props.text}</p>
+      <p className="text tw-text-center">{props.text}</p>
       <ImageLayout {...props} />
     </section>
   );

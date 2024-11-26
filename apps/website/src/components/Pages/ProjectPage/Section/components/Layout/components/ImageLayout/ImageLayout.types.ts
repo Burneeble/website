@@ -1,3 +1,3 @@
-import { SectionProps } from "../../../../Section.types";
+import { SubLayoutProps } from "../../Layout.types";
 
-export interface ImageLayoutProps extends SectionProps {}
+export interface ImageLayoutProps extends SubLayoutProps {}

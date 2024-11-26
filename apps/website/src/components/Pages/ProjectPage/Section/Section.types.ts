@@ -1,3 +1,5 @@
+import { ImageLayoutModel } from "@/services/ProjectService";
+
 export enum LayoutType {
   FigmaLayout = "figma-layout",
 }
@@ -11,4 +13,5 @@ export interface SectionProps {
   title: string;
   text: string;
   imageLayoutType: ImageLayoutType;
+  imageLayoutInfo: ImageLayoutModel;
 }

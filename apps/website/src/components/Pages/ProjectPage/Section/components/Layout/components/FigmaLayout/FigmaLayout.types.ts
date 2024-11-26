@@ -1,3 +1,3 @@
-import { LayoutProps } from "../../Layout.types";
+import { SubLayoutProps } from "../../Layout.types";
 
-export interface FigmaLayoutProps extends LayoutProps {}
+export interface FigmaLayoutProps extends SubLayoutProps {}
