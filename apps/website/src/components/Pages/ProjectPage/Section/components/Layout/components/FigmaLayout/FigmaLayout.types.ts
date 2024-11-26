@@ -1,3 +1,3 @@
-import { SectionProps } from "../../../../Section.types";
+import { LayoutProps } from "../../Layout.types";
 
-export interface FigmaLayoutProps extends SectionProps {}
+export interface FigmaLayoutProps extends LayoutProps {}

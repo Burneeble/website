@@ -8,6 +8,7 @@ import {
   GET_PROJECTS_QUERY,
 } from "./queries";
 import {
+  ImageLayoutModel,
   IProjectModel,
   ISectionModel,
   ProjectModel,
@@ -40,6 +41,8 @@ export class ProjectService {
     const sectionsInfo: ISectionModel[] | undefined = data.project
       ?.projectFields?.sections
       ? data.project?.projectFields?.sections.nodes.map((node) => {
+          console.log(JSON.stringify(node, null, 2));
+
           return {
             // @ts-ignore
             slug: node.slug || "",
@@ -47,6 +50,7 @@ export class ProjectService {
             title: node.sections?.title || "",
             // @ts-ignore
             text: node.sections?.text || "",
+            imageLayout: new ImageLayoutModel(),
           };
         })
       : undefined;

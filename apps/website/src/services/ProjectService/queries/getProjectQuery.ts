@@ -15,11 +15,104 @@ export const GET_PROJECT_QUERY = gql(/* GraphQL */ `
         }
         sections {
           nodes {
+            slug
             ... on Section {
-              slug
-              sections {
+              sectionsFields {
                 text
                 title
+                imagesLayout {
+                  nodes {
+                    ... on ImagesLayout {
+                      slug
+                      imagesLayoutFields {
+                        imagesLayoutSm {
+                          nodes {
+                            ... on ScreenImagesLayout {
+                              screenImagesLayoutFields {
+                                image1 {
+                                  node {
+                                    sourceUrl
+                                  }
+                                }
+                                image2 {
+                                  node {
+                                    sourceUrl
+                                  }
+                                }
+                                image3 {
+                                  node {
+                                    sourceUrl
+                                  }
+                                }
+                                image4 {
+                                  node {
+                                    sourceUrl
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                        imagesLayoutMd {
+                          nodes {
+                            ... on ScreenImagesLayout {
+                              screenImagesLayoutFields {
+                                image1 {
+                                  node {
+                                    sourceUrl
+                                  }
+                                }
+                                image2 {
+                                  node {
+                                    sourceUrl
+                                  }
+                                }
+                                image3 {
+                                  node {
+                                    sourceUrl
+                                  }
+                                }
+                                image4 {
+                                  node {
+                                    sourceUrl
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                        imagesLayoutXl {
+                          nodes {
+                            ... on ScreenImagesLayout {
+                              screenImagesLayoutFields {
+                                image1 {
+                                  node {
+                                    sourceUrl
+                                  }
+                                }
+                                image2 {
+                                  node {
+                                    sourceUrl
+                                  }
+                                }
+                                image3 {
+                                  node {
+                                    sourceUrl
+                                  }
+                                }
+                                image4 {
+                                  node {
+                                    sourceUrl
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           }
