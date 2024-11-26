@@ -12,6 +12,7 @@ import {
   IProjectModel,
   ISectionModel,
   ProjectModel,
+  ScreenImagesLayoutModel,
   SectionModel,
 } from "./models";
 import { JsonSerializer } from "typescript-json-serializer";
@@ -41,16 +42,64 @@ export class ProjectService {
     const sectionsInfo: ISectionModel[] | undefined = data.project
       ?.projectFields?.sections
       ? data.project?.projectFields?.sections.nodes.map((node) => {
-          console.log(JSON.stringify(node, null, 2));
+          const layoutSm = new ScreenImagesLayoutModel();
+          const layoutMd = new ScreenImagesLayoutModel();
+          const layoutXl = new ScreenImagesLayoutModel();
+
+          const sm =
+            // @ts-ignore
+            node.sectionsFields?.imagesLayout?.nodes[0].imagesLayoutFields
+              .imagesLayoutSm.nodes[0].screenImagesLayoutFields;
+          const md =
+            // @ts-ignore
+            node.sectionsFields?.imagesLayout?.nodes[0].imagesLayoutFields
+              .imagesLayoutMd.nodes[0].screenImagesLayoutFields;
+          const xl =
+            // @ts-ignore
+            node.sectionsFields?.imagesLayout?.nodes[0].imagesLayoutFields
+              .imagesLayoutXl.nodes[0].screenImagesLayoutFields;
+
+          if (sm) {
+            Object.keys(sm).forEach((key) => {
+              if (key !== "__typename" && sm[key]) {
+                // @ts-ignore
+                layoutSm[key] = sm[key].node.sourceUrl;
+              }
+            });
+          }
+
+          if (md) {
+            Object.keys(md).forEach((key) => {
+              if (key !== "__typename" && md[key]) {
+                // @ts-ignore
+                layoutMd[key] = md[key].node.sourceUrl;
+              }
+            });
+          }
+
+          if (xl) {
+            Object.keys(xl).forEach((key) => {
+              if (key !== "__typename" && xl[key]) {
+                // @ts-ignore
+                layoutXl[key] = xl[key].node.sourceUrl;
+              }
+            });
+          }
+
+          const imageLayout = new ImageLayoutModel({
+            imagesLayoutSm: layoutSm,
+            imagesLayoutMd: layoutMd,
+            imagesLayoutLg: layoutXl,
+          });
 
           return {
             // @ts-ignore
             slug: node.slug || "",
             // @ts-ignore
-            title: node.sections?.title || "",
+            title: node.sectionsFields?.title || "",
             // @ts-ignore
-            text: node.sections?.text || "",
-            imageLayout: new ImageLayoutModel(),
+            text: node.sectionsFields?.text || "",
+            imageLayout: imageLayout,
           };
         })
       : undefined;
