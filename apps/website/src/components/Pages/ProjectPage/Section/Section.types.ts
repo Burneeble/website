@@ -8,6 +8,8 @@ export enum LayoutType {
   TextTopStartFullImageBottomCenter = "text_top_start-full_image_bottom_center",
   TextTopCenterComputerDeviceBottomCenterShapeHorizontalBottom = "text_top_center-computer_device_bottom_center-shape_horizontal_bottom",
   TextTopStartComputerDeviceBottomCenterShapeHorizontalBottom = "text_top_start-computer_device_bottom_center-shape_horizontal_bottom",
+  TextLeftCenterImageRightCenter = "text_left_center-image_right_center",
+  TextLeftStartImageRightCenter = "text_left_start-image_right_center",
 }
 
 export enum ImageLayoutType {

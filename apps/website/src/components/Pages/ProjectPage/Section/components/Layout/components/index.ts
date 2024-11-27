@@ -6,3 +6,4 @@ export * from "./TextTopCenterFullImageBottomCenter";
 export * from "./TextTopStartFullImageBottomCenter";
 export * from "./TextTopCenterComputerDeviceBottomCenterShapeHorizontalBottom";
 export * from "./TextTopStartComputerDeviceBottomCenterShapeHorizontalBottom";
+export * from "./TextLeftCenterImageRightCenter";
