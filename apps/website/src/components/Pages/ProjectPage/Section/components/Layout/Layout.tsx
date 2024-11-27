@@ -5,6 +5,7 @@ import { LayoutType } from "../../Section.types";
 import {
   FigmaLayout,
   TextLeftCenterImageRightCenter,
+  TextRightCenterImageLeftCenter,
   TextTopCenterComputerDeviceBottomCenterShapeHorizontalBottom,
   TextTopCenterFullImageBottomCenter,
   TextTopCenterImageBottomCenter,
@@ -67,10 +68,6 @@ const Layout = (props: LayoutProps) => {
             {...images}
           />
         );
-      case LayoutType.TextLeftCenterImageRightCenter:
-        return <TextLeftCenterImageRightCenter {...props} {...images} />;
-      case LayoutType.TextLeftStartImageRightCenter:
-        return <TextLeftStartImageRightCenter {...props} {...images} />;
       case LayoutType.TextTopStartComputerDeviceBottomCenterShapeHorizontalBottom:
         return (
           <TextTopStartComputerDeviceBottomCenterShapeHorizontalBottom
@@ -78,6 +75,12 @@ const Layout = (props: LayoutProps) => {
             {...images}
           />
         );
+      case LayoutType.TextLeftCenterImageRightCenter:
+        return <TextLeftCenterImageRightCenter {...props} {...images} />;
+      case LayoutType.TextLeftStartImageRightCenter:
+        return <TextLeftStartImageRightCenter {...props} {...images} />;
+      case LayoutType.TextRightCenterImageLeftCenter:
+        return <TextRightCenterImageLeftCenter {...props} {...images} />;
       default:
         return <></>;
     }
