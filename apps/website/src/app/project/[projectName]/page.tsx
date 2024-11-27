@@ -20,7 +20,7 @@ const ProjectPage = async ({ params }: { params: { projectName: string } }) => {
         mainColor={project.mainColor || "#000"}
       />
       <Section
-        layoutType={LayoutType.TextRightCenterImageLeftCenter}
+        layoutType={LayoutType.TextRightCenterFullImageLeftCenter}
         title={
           '<span class="cs-text-color-primary-gradient">Title</span> Goes Here'
         }

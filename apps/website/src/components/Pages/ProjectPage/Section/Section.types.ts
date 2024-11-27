@@ -11,6 +11,9 @@ export enum LayoutType {
   TextLeftCenterImageRightCenter = "text_left_center-image_right_center",
   TextLeftStartImageRightCenter = "text_left_start-image_right_center",
   TextRightCenterImageLeftCenter = "text_right_center-image_left_center",
+  TextLeftCenterFullImageRightCenter = "text_left_center-full_image_right_center",
+  TextLeftStartFullImageRightCenter = "text_left_start-full_image_right_center",
+  TextRightCenterFullImageLeftCenter = "text_right_center-full_image_left_center",
 }
 
 export enum ImageLayoutType {

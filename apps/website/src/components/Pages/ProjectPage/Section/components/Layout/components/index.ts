@@ -8,3 +8,7 @@ export * from "./TextTopCenterComputerDeviceBottomCenterShapeHorizontalBottom";
 export * from "./TextTopStartComputerDeviceBottomCenterShapeHorizontalBottom";
 export * from "./TextLeftCenterImageRightCenter";
 export * from "./TextRightCenterImageLeftCenter";
+export * from "./TextLeftCenterFullImageRightCenter";
+export * from "./TextLeftStartFullImageRightCenter";
+export * from "./TextLeftStartImageRightCenter";
+export * from "./TextRightCenterFullImageLeftCenter";
