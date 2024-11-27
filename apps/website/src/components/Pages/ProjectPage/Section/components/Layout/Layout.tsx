@@ -4,8 +4,10 @@ import { useClientInfoService } from "@burneeble/ui-components";
 import { LayoutType } from "../../Section.types";
 import {
   FigmaLayout,
+  TextTopCenterComputerDeviceBottomCenterShapeHorizontalBottom,
   TextTopCenterFullImageBottomCenter,
   TextTopCenterImageBottomCenter,
+  TextTopStartComputerDeviceBottomCenterShapeHorizontalBottom,
   TextTopStartFullImageBottomCenter,
   TextTopStartImageBottomCenter,
 } from "./components";
@@ -56,6 +58,20 @@ const Layout = (props: LayoutProps) => {
         return <TextTopCenterFullImageBottomCenter {...props} {...images} />;
       case LayoutType.TextTopStartFullImageBottomCenter:
         return <TextTopStartFullImageBottomCenter {...props} {...images} />;
+      case LayoutType.TextTopCenterComputerDeviceBottomCenterShapeHorizontalBottom:
+        return (
+          <TextTopCenterComputerDeviceBottomCenterShapeHorizontalBottom
+            {...props}
+            {...images}
+          />
+        );
+      case LayoutType.TextTopStartComputerDeviceBottomCenterShapeHorizontalBottom:
+        return (
+          <TextTopStartComputerDeviceBottomCenterShapeHorizontalBottom
+            {...props}
+            {...images}
+          />
+        );
       default:
         return <></>;
     }
