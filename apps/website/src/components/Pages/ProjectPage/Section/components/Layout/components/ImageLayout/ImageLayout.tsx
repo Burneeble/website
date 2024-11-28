@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { ImageLayoutType } from "../../../../Section.types";
-import { FigmaImagesLayout } from "./components";
+import { FigmaImagesLayout, LaptopImageLayout } from "./components";
 import { ImageLayoutProps } from "./ImageLayout.types";
 import { useClientInfoService } from "@burneeble/ui-components";
 
@@ -21,8 +21,10 @@ const ImageLayout = (props: ImageLayoutProps) => {
   //Methods
   const getImageLayout = () => {
     switch (props.imageLayoutType) {
-      case ImageLayoutType.FigmaImageLayout:
+      case ImageLayoutType.FigmaImagesLayout:
         return <FigmaImagesLayout {...props} />;
+      case ImageLayoutType.LaptopImageLayout:
+        return <LaptopImageLayout {...props} />;
       default:
         return <></>;
     }
