@@ -5,8 +5,11 @@ import { ImageLayoutType } from "../../../../Section.types";
 import {
   FigmaImagesLayout,
   LargeImageLayout,
+  OneImageLayout,
+  OneSquareImageLayout,
   ThreeImagesLayout,
   TwoImagesLayout,
+  VeryLargeImageLayout,
 } from "./components";
 import { ImageLayoutProps } from "./ImageLayout.types";
 import { useClientInfoService } from "@burneeble/ui-components";
@@ -34,6 +37,12 @@ const ImageLayout = (props: ImageLayoutProps) => {
         return <TwoImagesLayout {...props} />;
       case ImageLayoutType.LargeImageLayout:
         return <LargeImageLayout {...props} />;
+      case ImageLayoutType.VeryLargeImageLayout:
+        return <VeryLargeImageLayout {...props} />;
+      case ImageLayoutType.OneImageLayout:
+        return <OneImageLayout {...props} />;
+      case ImageLayoutType.OneSquareImageLayout:
+        return <OneSquareImageLayout {...props} />;
       default:
         return <></>;
     }
