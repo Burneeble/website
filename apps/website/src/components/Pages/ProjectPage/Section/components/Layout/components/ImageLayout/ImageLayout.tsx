@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { ImageLayoutType } from "../../../../Section.types";
 import {
   FigmaImagesLayout,
+  LargeImageLayout,
   ThreeImagesLayout,
   TwoImagesLayout,
 } from "./components";
@@ -31,6 +32,8 @@ const ImageLayout = (props: ImageLayoutProps) => {
         return <ThreeImagesLayout {...props} />;
       case ImageLayoutType.TwoImagesLayout:
         return <TwoImagesLayout {...props} />;
+      case ImageLayoutType.LargeImageLayout:
+        return <LargeImageLayout {...props} />;
       default:
         return <></>;
     }

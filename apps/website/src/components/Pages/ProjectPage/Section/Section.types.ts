@@ -30,6 +30,7 @@ export enum ImageLayoutType {
   FigmaImagesLayout = "figma-images-layout",
   ThreeImagesLayout = "three-images-layout",
   TwoImagesLayout = "two-images-layout",
+  LargeImageLayout = "large-image-layout",
   LaptopImagesLayout = "laptop-images-layout",
 }
 

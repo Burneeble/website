@@ -28,9 +28,8 @@ const ProjectPage = async ({ params }: { params: { projectName: string } }) => {
         text={
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
         }
-        imageLayoutType={ImageLayoutType.TwoImagesLayout}
-        image1={"https://picsum.photos/365/230"}
-        image2={"https://picsum.photos/425/340"}
+        imageLayoutType={ImageLayoutType.LargeImageLayout}
+        image1={"https://picsum.photos/1300/480"}
       />
 
       <Technologies technologies={project.technologies || []} />
