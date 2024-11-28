@@ -16,3 +16,5 @@ export * from "./TextLeftCenterImageRightCenterShapeVerticalRight";
 export * from "./TextLeftStartImageRightCenterShapeVerticalRight";
 export * from "./TextRightCenterImageLeftCenterShapeVerticalLeft";
 export * from "./TextRightCenterShapeHorizontalRight";
+export * from "./TextRightStartShapeHorizontalRight";
+export * from "./TextRightCenterShapeHorizontalLeft";

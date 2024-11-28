@@ -20,6 +20,8 @@ import {
   TextTopStartShapeHorizontalBottom,
   TextTopStartFullImageBottomCenter,
   TextTopStartImageBottomCenter,
+  TextRightStartShapeHorizontalRight,
+  TextRightCenterShapeHorizontalLeft,
 } from "./components";
 import { LayoutProps } from "./Layout.types";
 import { useEffect, useState } from "react";
@@ -107,6 +109,10 @@ const Layout = (props: LayoutProps) => {
         );
       case LayoutType.TextRightCenterShapeHorizontalRight:
         return <TextRightCenterShapeHorizontalRight {...props} {...images} />;
+      case LayoutType.TextRightStartShapeHorizontalRight:
+        return <TextRightStartShapeHorizontalRight {...props} {...images} />;
+      case LayoutType.TextRightCenterShapeHorizontalLeft:
+        return <TextRightCenterShapeHorizontalLeft {...props} {...images} />;
       default:
         return <></>;
     }

@@ -2,10 +2,6 @@
 
 @import "./components/components";
 
-.section-layout {
-  @apply cs-section-structure;
-}
-
 .layout-shape {
   @apply tw-absolute tw-bg-gradient-to-b primary-gradient;
 }
