@@ -4,7 +4,6 @@ import * as React from "react";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import { cn } from "@/lib/utils";
 import { DotFilledIcon } from "@radix-ui/react-icons";
-
 const radioGroup = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>
@@ -28,8 +27,8 @@ const radioGroupItem = React.forwardRef<
       ref={ref}
       className={cn(
         `
-          tw-z-[2] tw-aspect-square tw-h-4 tw-w-4 tw-rounded-full tw-border
-          tw-border-primary tw-text-primary tw-shadow
+          tw-z-[2] tw-aspect-square tw-h-4 tw-w-auto tw-overflow-hidden
+          tw-rounded-full tw-border tw-border-active tw-text-primary tw-shadow
 
           disabled:tw-cursor-not-allowed disabled:tw-opacity-50
 
@@ -42,9 +41,12 @@ const radioGroupItem = React.forwardRef<
       {...props}
     >
       <RadioGroupPrimitive.Indicator
-        className={`tw-z-[2] tw-flex tw-items-center tw-justify-center`}
+        className={`
+          tw-z-[2] tw-flex tw-h-full tw-w-full tw-items-center tw-justify-center
+          tw-bg-white
+        `}
       >
-        <DotFilledIcon className="tw-h-3.5 tw-w-3.5 tw-fill-primary" />
+        <DotFilledIcon className={`tw-h-3.5 tw-w-3.5 tw-fill-primary`} />
       </RadioGroupPrimitive.Indicator>
     </RadioGroupPrimitive.Item>
   );
