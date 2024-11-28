@@ -28,7 +28,9 @@ export enum LayoutType {
 
 export enum ImageLayoutType {
   FigmaImagesLayout = "figma-images-layout",
-  LaptopImageLayout = "laptop-image-layout",
+  ThreeImagesLayout = "three-images-layout",
+  TwoImagesLayout = "two-images-layout",
+  LaptopImagesLayout = "laptop-images-layout",
 }
 
 export interface SectionProps {

@@ -1,10 +1,10 @@
-import { LaptopImageLayoutProps } from "./LaptopImageLayout.types";
+import { ThreeImagesLayoutProps } from "./ThreeImagesLayout.types";
 
-const LaptopImageLayout = (props: LaptopImageLayoutProps) => {
+const ThreeImagesLayout = (props: ThreeImagesLayoutProps) => {
   return (
     <div
       className={`
-        images-layout tw-relative tw-w-[365px] tw-h-[370px]
+        images-layout three-images-layout tw-relative tw-w-[365px] tw-h-[370px]
 
         md:tw-w-[710px] md:tw-h-[440px]
 
@@ -49,4 +49,4 @@ const LaptopImageLayout = (props: LaptopImageLayoutProps) => {
   );
 };
 
-export default LaptopImageLayout;
+export default ThreeImagesLayout;

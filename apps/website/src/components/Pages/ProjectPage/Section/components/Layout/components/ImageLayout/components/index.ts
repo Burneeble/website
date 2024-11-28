@@ -1,2 +1,3 @@
 export * from "./FigmaImagesLayout";
-export * from "./LaptopImageLayout";
+export * from "./ThreeImagesLayout";
+export * from "./TwoImagesLayout";
