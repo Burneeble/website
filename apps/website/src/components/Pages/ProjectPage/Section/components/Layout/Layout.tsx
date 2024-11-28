@@ -10,13 +10,14 @@ import {
   TextLeftStartFullImageRightCenter,
   TextLeftStartImageRightCenter,
   TextLeftStartImageRightCenterShapeVerticalRight,
+  TextRightCenterShapeHorizontalRight,
   TextRightCenterFullImageLeftCenter,
   TextRightCenterImageLeftCenter,
   TextRightCenterImageLeftCenterShapeVerticalLeft,
-  TextTopCenterComputerDeviceBottomCenterShapeHorizontalBottom,
+  TextTopCenterShapeHorizontalBottom,
   TextTopCenterFullImageBottomCenter,
   TextTopCenterImageBottomCenter,
-  TextTopStartComputerDeviceBottomCenterShapeHorizontalBottom,
+  TextTopStartShapeHorizontalBottom,
   TextTopStartFullImageBottomCenter,
   TextTopStartImageBottomCenter,
 } from "./components";
@@ -67,20 +68,10 @@ const Layout = (props: LayoutProps) => {
         return <TextTopCenterFullImageBottomCenter {...props} {...images} />;
       case LayoutType.TextTopStartFullImageBottomCenter:
         return <TextTopStartFullImageBottomCenter {...props} {...images} />;
-      case LayoutType.TextTopCenterComputerDeviceBottomCenterShapeHorizontalBottom:
-        return (
-          <TextTopCenterComputerDeviceBottomCenterShapeHorizontalBottom
-            {...props}
-            {...images}
-          />
-        );
-      case LayoutType.TextTopStartComputerDeviceBottomCenterShapeHorizontalBottom:
-        return (
-          <TextTopStartComputerDeviceBottomCenterShapeHorizontalBottom
-            {...props}
-            {...images}
-          />
-        );
+      case LayoutType.TextTopCenterShapeHorizontalBottom:
+        return <TextTopCenterShapeHorizontalBottom {...props} {...images} />;
+      case LayoutType.TextTopStartShapeHorizontalBottom:
+        return <TextTopStartShapeHorizontalBottom {...props} {...images} />;
       case LayoutType.TextLeftCenterImageRightCenter:
         return <TextLeftCenterImageRightCenter {...props} {...images} />;
       case LayoutType.TextLeftStartImageRightCenter:
@@ -114,6 +105,8 @@ const Layout = (props: LayoutProps) => {
             {...images}
           />
         );
+      case LayoutType.TextRightCenterShapeHorizontalRight:
+        return <TextRightCenterShapeHorizontalRight {...props} {...images} />;
       default:
         return <></>;
     }

@@ -1,5 +1,0 @@
-import TextTopStartComputerDeviceBottomCenterShapeHorizontalBottom from "./TextTopStartComputerDeviceBottomCenterShapeHorizontalBottom";
-
-export default TextTopStartComputerDeviceBottomCenterShapeHorizontalBottom;
-export { TextTopStartComputerDeviceBottomCenterShapeHorizontalBottom };
-export * from "./TextTopStartComputerDeviceBottomCenterShapeHorizontalBottom.types";

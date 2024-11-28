@@ -6,8 +6,8 @@ export enum LayoutType {
   TextTopStartImageBottomCenter = "text_top_start-image_bottom_center",
   TextTopCenterFullImageBottomCenter = "text_top_center-full_image_bottom_center",
   TextTopStartFullImageBottomCenter = "text_top_start-full_image_bottom_center",
-  TextTopCenterComputerDeviceBottomCenterShapeHorizontalBottom = "text_top_center-computer_device_bottom_center-shape_horizontal_bottom",
-  TextTopStartComputerDeviceBottomCenterShapeHorizontalBottom = "text_top_start-computer_device_bottom_center-shape_horizontal_bottom",
+  TextTopCenterShapeHorizontalBottom = "text_top_center-shape_horizontal_bottom",
+  TextTopStartShapeHorizontalBottom = "text_top_start-shape_horizontal_bottom",
   TextLeftCenterImageRightCenter = "text_left_center-image_right_center",
   TextLeftStartImageRightCenter = "text_left_start-image_right_center",
   TextRightCenterImageLeftCenter = "text_right_center-image_left_center",
@@ -17,7 +17,8 @@ export enum LayoutType {
   TextLeftCenterImageRightCenterShapeVerticalRight = "text_left_center-image_right_center-shape_vertical-right",
   TextLeftStartImageRightCenterShapeVerticalRight = "text_left_start-image_right_center-shape_vertical-right",
   TextRightCenterImageLeftCenterShapeVerticalLeft = "text_right_center-image_left_center-shape_vertical-left",
-  TextRightCenterComputerDeviceRightShapeHorizontalRight = "text_right_center-computer-device-right-shape_horizontal_right",
+  TextRightCenterShapeHorizontalRight = "text_right_center-shape_horizontal_right",
+  TextRightStartShapeHorizontalRight = "text_right_start-shape_horizontal_right",
 }
 
 export enum ImageLayoutType {

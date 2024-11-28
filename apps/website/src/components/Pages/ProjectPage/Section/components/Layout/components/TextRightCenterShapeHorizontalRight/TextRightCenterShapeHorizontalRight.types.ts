@@ -1,4 +1,4 @@
 import { SubLayoutProps } from "../../Layout.types";
 
-export interface TextTopStartComputerDeviceBottomCenterShapeHorizontalBottomProps
+export interface TextRightCenterShapeHorizontalRightProps
   extends SubLayoutProps {}

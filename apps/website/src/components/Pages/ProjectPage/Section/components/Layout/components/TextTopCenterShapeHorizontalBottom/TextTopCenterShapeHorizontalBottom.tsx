@@ -1,15 +1,14 @@
 import ImageLayout from "../ImageLayout";
-import { TextTopCenterComputerDeviceBottomCenterShapeHorizontalBottomProps } from "./TextTopCenterComputerDeviceBottomCenterShapeHorizontalBottom.types";
+import { TextTopCenterShapeHorizontalBottomProps } from "./TextTopCenterShapeHorizontalBottom.types";
 
-const TextTopCenterComputerDeviceBottomCenterShapeHorizontalBottom = (
-  props: TextTopCenterComputerDeviceBottomCenterShapeHorizontalBottomProps
+const TextTopCenterShapeHorizontalBottom = (
+  props: TextTopCenterShapeHorizontalBottomProps
 ) => {
   return (
     <div
       className={`
-        text-top-center-computer-device-bottom-center-shape-horizontal-bottom
-        section-layout tw-flex tw-flex-col tw-items-center tw-justify-end
-        tw-gap-[10px]
+        text-top-center-shape-horizontal-bottom section-layout tw-flex
+        tw-flex-col tw-items-center tw-justify-end tw-gap-[10px]
       `}
     >
       <h1
@@ -50,4 +49,4 @@ const TextTopCenterComputerDeviceBottomCenterShapeHorizontalBottom = (
   );
 };
 
-export default TextTopCenterComputerDeviceBottomCenterShapeHorizontalBottom;
+export default TextTopCenterShapeHorizontalBottom;
