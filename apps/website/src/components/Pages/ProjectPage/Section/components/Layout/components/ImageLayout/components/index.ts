@@ -5,3 +5,4 @@ export * from "./LargeImageLayout";
 export * from "./VeryLargeImageLayout";
 export * from "./OneImageLayout";
 export * from "./OneSquareImageLayout";
+export * from "./LaptopImageLayout";

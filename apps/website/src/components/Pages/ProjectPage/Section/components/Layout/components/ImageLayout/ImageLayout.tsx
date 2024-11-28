@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { ImageLayoutType } from "../../../../Section.types";
 import {
   FigmaImagesLayout,
+  LaptopImageLayout,
   LargeImageLayout,
   OneImageLayout,
   OneSquareImageLayout,
@@ -29,7 +30,7 @@ const ImageLayout = (props: ImageLayoutProps) => {
   //Methods
   const getImageLayout = () => {
     switch (props.imageLayoutType) {
-      case ImageLayoutType.FigmaImagesLayout:
+      case ImageLayoutType.FigmaImageLayout:
         return <FigmaImagesLayout {...props} />;
       case ImageLayoutType.ThreeImagesLayout:
         return <ThreeImagesLayout {...props} />;
@@ -43,6 +44,8 @@ const ImageLayout = (props: ImageLayoutProps) => {
         return <OneImageLayout {...props} />;
       case ImageLayoutType.OneSquareImageLayout:
         return <OneSquareImageLayout {...props} />;
+      case ImageLayoutType.LaptopImageLayout:
+        return <LaptopImageLayout {...props} />;
       default:
         return <></>;
     }
