@@ -41,8 +41,18 @@ export const baseForm: Story = {
           {
             key: "terms-codition",
             label: "Terms",
-            // description: "This is your bio.",
             inputType: InputType.checkbox,
+          },
+          {
+            key: "terms-codition",
+            label: "Terms",
+            attributes: {
+              items: [
+                { label: "Option 1", value: "option-1" },
+                { label: "Option 2", value: "option-2" },
+              ],
+            },
+            inputType: InputType.radio,
           },
         ]}
         onSubmit={(values) => {

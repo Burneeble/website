@@ -13,6 +13,7 @@ export interface Field {
   description?: string;
   disabled?: boolean;
   inputType: InputType;
+  attributes?: any;
 }
 
 export interface FormProps {

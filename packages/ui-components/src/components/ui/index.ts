@@ -11,3 +11,4 @@ export * from "./navigation-menu";
 export * from "./accordion";
 export * from "./checkbox";
 export * from "./textarea";
+export * from "./radio-group";

@@ -8,6 +8,7 @@ import {
   TextAreaFormField,
   CheckboxFormField,
 } from "../Formfields";
+import RadioGroupFormField from "../Formfields/RadioGroupFormField";
 
 const Form = (props: FormProps) => {
   //Hooks
@@ -51,6 +52,15 @@ const Form = (props: FormProps) => {
                       key={fieldInfo.key}
                       label={fieldInfo.label}
                       description={fieldInfo.description}
+                      disabled={disabled}
+                      {...field}
+                    />
+                  ) : fieldInfo.inputType === InputType.radio ? (
+                    <RadioGroupFormField
+                      key={fieldInfo.key}
+                      label={fieldInfo.label}
+                      description={fieldInfo.description}
+                      items={fieldInfo.attributes.items}
                       disabled={disabled}
                       {...field}
                     />
