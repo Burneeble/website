@@ -1,5 +1,6 @@
 import { ProjectLogo, Technologies } from "@/components/Pages";
 import Section, {
+  ImageLayout,
   ImageLayoutType,
   LayoutType,
 } from "@/components/Pages/ProjectPage/Section";
@@ -19,7 +20,7 @@ const ProjectPage = async ({ params }: { params: { projectName: string } }) => {
         title={project.title}
         mainColor={project.mainColor || "#000"}
       />
-      <Section
+      <ImageLayout
         layoutType={LayoutType.TextTopStartShapeHorizontalBottom}
         title={
           '<span class="cs-text-color-primary-gradient">Title</span> Goes Here'
@@ -27,9 +28,12 @@ const ProjectPage = async ({ params }: { params: { projectName: string } }) => {
         text={
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
         }
-        imageLayoutType={"" as ImageLayoutType}
-        imageLayoutInfo={"" as any}
+        imageLayoutType={ImageLayoutType.LaptopImageLayout}
+        image1={"https://picsum.photos/1920/1080"}
+        image2={"https://picsum.photos/600/450"}
+        image3={"https://picsum.photos/205/445"}
       />
+
       <Technologies technologies={project.technologies || []} />
       {project.sections?.map((section, i) => {
         return (
