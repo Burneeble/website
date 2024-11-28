@@ -21,3 +21,4 @@ export * from "./TextRightCenterShapeHorizontalLeft";
 export * from "./TextRightCenterShapeVerticalRight";
 export * from "./TextRightStartShapeVerticalRight";
 export * from "./TextRightCenterShapeVerticalLeft";
+export * from "./TextCenterCenterImageBackground";

@@ -23,6 +23,7 @@ export enum LayoutType {
   TextRightCenterShapeVerticalRight = "text_right_center-shape_vertical_right",
   TextRightStartShapeVerticalRight = "text_right_start-shape_vertical_right",
   TextRightCenterShapeVerticalLeft = "text_right_center-shape_vertical_left",
+  TextCenterCenterImageBackground = "text_center_center-image_background",
 }
 
 export enum ImageLayoutType {

@@ -25,6 +25,7 @@ import {
   TextRightCenterShapeVerticalRight,
   TextRightStartShapeVerticalRight,
   TextRightCenterShapeVerticalLeft,
+  TextCenterCenterImageBackground,
 } from "./components";
 import { LayoutProps } from "./Layout.types";
 import { useEffect, useState } from "react";
@@ -122,6 +123,8 @@ const Layout = (props: LayoutProps) => {
         return <TextRightStartShapeVerticalRight {...props} {...images} />;
       case LayoutType.TextRightCenterShapeVerticalLeft:
         return <TextRightCenterShapeVerticalLeft {...props} {...images} />;
+      case LayoutType.TextCenterCenterImageBackground:
+        return <TextCenterCenterImageBackground {...props} {...images} />;
       default:
         return <></>;
     }
