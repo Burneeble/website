@@ -44,8 +44,8 @@ export const baseForm: Story = {
             inputType: InputType.checkbox,
           },
           {
-            key: "terms-codition",
-            label: "Terms",
+            key: "option1-option2",
+            label: "Options",
             attributes: {
               items: [
                 { label: "Option 1", value: "option-1" },

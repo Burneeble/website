@@ -28,7 +28,7 @@ const radioGroupItem = React.forwardRef<
       ref={ref}
       className={cn(
         `
-          tw-aspect-square tw-h-4 tw-w-4 tw-rounded-full tw-border
+          tw-z-[2] tw-aspect-square tw-h-4 tw-w-4 tw-rounded-full tw-border
           tw-border-primary tw-text-primary tw-shadow
 
           disabled:tw-cursor-not-allowed disabled:tw-opacity-50
@@ -42,7 +42,7 @@ const radioGroupItem = React.forwardRef<
       {...props}
     >
       <RadioGroupPrimitive.Indicator
-        className={`tw-flex tw-items-center tw-justify-center`}
+        className={`tw-z-[2] tw-flex tw-items-center tw-justify-center`}
       >
         <DotFilledIcon className="tw-h-3.5 tw-w-3.5 tw-fill-primary" />
       </RadioGroupPrimitive.Indicator>
