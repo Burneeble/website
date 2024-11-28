@@ -54,6 +54,17 @@ export const baseForm: Story = {
             },
             inputType: InputType.radio,
           },
+          {
+            key: "languages",
+            label: "Languages",
+            attributes: {
+              items: [
+                { label: "Language 1", value: "language-1" },
+                { label: "Language 2", value: "language-2" },
+              ],
+            },
+            inputType: InputType.select,
+          },
         ]}
         onSubmit={(values) => {
           console.log(values);
