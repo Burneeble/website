@@ -14,6 +14,10 @@ export enum LayoutType {
   TextLeftCenterFullImageRightCenter = "text_left_center-full_image_right_center",
   TextLeftStartFullImageRightCenter = "text_left_start-full_image_right_center",
   TextRightCenterFullImageLeftCenter = "text_right_center-full_image_left_center",
+  TextLeftCenterImageRightCenterShapeVerticalRight = "text_left_center-image_right_center-shape_vertical-right",
+  TextLeftStartImageRightCenterShapeVerticalRight = "text_left_start-image_right_center-shape_vertical-right",
+  TextRightCenterImageLeftCenterShapeVerticalLeft = "text_right_center-image_left_center-shape_vertical-left",
+  TextRightCenterComputerDeviceRightShapeHorizontalRight = "text_right_center-computer-device-right-shape_horizontal_right",
 }
 
 export enum ImageLayoutType {

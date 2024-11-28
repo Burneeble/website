@@ -6,10 +6,13 @@ import {
   FigmaLayout,
   TextLeftCenterFullImageRightCenter,
   TextLeftCenterImageRightCenter,
+  TextLeftCenterImageRightCenterShapeVerticalRight,
   TextLeftStartFullImageRightCenter,
   TextLeftStartImageRightCenter,
+  TextLeftStartImageRightCenterShapeVerticalRight,
   TextRightCenterFullImageLeftCenter,
   TextRightCenterImageLeftCenter,
+  TextRightCenterImageLeftCenterShapeVerticalLeft,
   TextTopCenterComputerDeviceBottomCenterShapeHorizontalBottom,
   TextTopCenterFullImageBottomCenter,
   TextTopCenterImageBottomCenter,
@@ -90,6 +93,27 @@ const Layout = (props: LayoutProps) => {
         return <TextLeftStartFullImageRightCenter {...props} {...images} />;
       case LayoutType.TextRightCenterFullImageLeftCenter:
         return <TextRightCenterFullImageLeftCenter {...props} {...images} />;
+      case LayoutType.TextLeftCenterImageRightCenterShapeVerticalRight:
+        return (
+          <TextLeftCenterImageRightCenterShapeVerticalRight
+            {...props}
+            {...images}
+          />
+        );
+      case LayoutType.TextLeftStartImageRightCenterShapeVerticalRight:
+        return (
+          <TextLeftStartImageRightCenterShapeVerticalRight
+            {...props}
+            {...images}
+          />
+        );
+      case LayoutType.TextRightCenterImageLeftCenterShapeVerticalLeft:
+        return (
+          <TextRightCenterImageLeftCenterShapeVerticalLeft
+            {...props}
+            {...images}
+          />
+        );
       default:
         return <></>;
     }

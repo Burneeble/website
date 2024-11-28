@@ -12,3 +12,6 @@ export * from "./TextLeftCenterFullImageRightCenter";
 export * from "./TextLeftStartFullImageRightCenter";
 export * from "./TextLeftStartImageRightCenter";
 export * from "./TextRightCenterFullImageLeftCenter";
+export * from "./TextLeftCenterImageRightCenterShapeVerticalRight";
+export * from "./TextLeftStartImageRightCenterShapeVerticalRight";
+export * from "./TextRightCenterImageLeftCenterShapeVerticalLeft";

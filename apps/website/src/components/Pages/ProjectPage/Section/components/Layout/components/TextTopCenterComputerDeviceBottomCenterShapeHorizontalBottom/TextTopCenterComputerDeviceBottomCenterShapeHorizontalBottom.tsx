@@ -40,7 +40,10 @@ const TextTopCenterComputerDeviceBottomCenterShapeHorizontalBottom = (
           `}
         />
         <div
-          className={`layout-shape tw-w-full tw-h-[411px] tw-left-0 tw-bottom-0`}
+          className={`
+            layout-shape tw-rounded-t-lg tw-w-full tw-h-[411px] tw-left-0
+            tw-bottom-0
+          `}
         ></div>
       </div>
     </div>
