@@ -8,6 +8,7 @@ import {
   LargeImageLayout,
   OneImageLayout,
   OneSquareImageLayout,
+  SmarthphoneImageLayout,
   ThreeImagesLayout,
   TwoImagesLayout,
   VeryLargeImageLayout,
@@ -46,6 +47,8 @@ const ImageLayout = (props: ImageLayoutProps) => {
         return <OneSquareImageLayout {...props} />;
       case ImageLayoutType.LaptopImageLayout:
         return <LaptopImageLayout {...props} />;
+      case ImageLayoutType.SmarthphoneImageLayout:
+        return <SmarthphoneImageLayout {...props} />;
       default:
         return <></>;
     }

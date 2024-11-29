@@ -4,7 +4,7 @@ const LaptopImageLayout = (props: LaptopImageLayoutProps) => {
   return (
     <div
       className={`
-        images-layout one-square-image-layout tw-relative tw-h-full
+        images-layout laptop-image-layout tw-relative tw-h-full
         tw-aspect-[950/678]
       `}
     >

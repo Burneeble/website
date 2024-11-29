@@ -35,6 +35,7 @@ export enum ImageLayoutType {
   OneImageLayout = "one-image-layout",
   OneSquareImageLayout = "one-square-image-layout",
   LaptopImageLayout = "laptop-image-layout",
+  SmarthphoneImageLayout = "smarthphone-image-layout",
 }
 
 export interface SectionProps {

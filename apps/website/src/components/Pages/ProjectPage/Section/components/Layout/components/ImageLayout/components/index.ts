@@ -6,3 +6,4 @@ export * from "./VeryLargeImageLayout";
 export * from "./OneImageLayout";
 export * from "./OneSquareImageLayout";
 export * from "./LaptopImageLayout";
+export * from "./SmarthphoneImageLayout";
