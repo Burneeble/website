@@ -27,7 +27,7 @@ const Technologies = (props: TechnologiesProps) => {
         <div
           className={`
             technologies tw-flex tw-flex-wrap tw-items-center tw-justify-center
-            tw-gap-[20px]
+            tw-gap-[20px] tw-relative
           `}
         >
           {props.technologies.map((technology, i) => {
