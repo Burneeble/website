@@ -9,7 +9,11 @@ export interface IProjectModel {
   categories: string[];
   favicon?: string;
   mainColor?: string;
-  technologies?: string[];
+  technologies?: {
+    slug: string;
+    name: string;
+    description: string;
+  }[];
   sections?: SectionModel[];
 }
 
@@ -37,7 +41,11 @@ export class ProjectModel implements IProjectModel {
   mainColor?: string;
 
   @JsonProperty()
-  technologies?: string[];
+  technologies?: {
+    slug: string;
+    name: string;
+    description: string;
+  }[];
 
   @JsonProperty()
   sections?: SectionModel[];

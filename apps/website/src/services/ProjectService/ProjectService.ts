@@ -128,11 +128,11 @@ export class ProjectService {
       favicon: data.project?.projectFields?.favicon?.node.guid || "",
       mainColor: data.project?.projectFields?.mainColor || "",
       technologies:
-        data.project?.projectFields?.technologies?.nodes
-          .map((t) => t.name)
-          .filter((t) => {
-            return typeof t === "string";
-          }) || [],
+        data.project?.projectFields?.technologies?.nodes.map((t) => ({
+          name: t.name || "",
+          slug: t.slug || "",
+          description: t.description || "",
+        })) || [],
       sections: sections,
     };
 

@@ -1,3 +1,7 @@
 export interface TechnologiesProps {
-  technologies: string[];
+  technologies: {
+    name: string;
+    description: string;
+    slug: string;
+  }[];
 }

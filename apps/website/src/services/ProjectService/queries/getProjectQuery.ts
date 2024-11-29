@@ -146,6 +146,8 @@ export const GET_PROJECT_QUERY = gql(/* GraphQL */ `
         technologies {
           nodes {
             name
+            slug
+            description
           }
         }
       }

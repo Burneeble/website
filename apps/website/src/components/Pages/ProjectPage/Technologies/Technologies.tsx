@@ -31,7 +31,7 @@ const Technologies = (props: TechnologiesProps) => {
           `}
         >
           {props.technologies.map((technology, i) => {
-            return <Technology key={i} technology={technology} />;
+            return <Technology key={i} {...technology} />;
           })}
         </div>
       </div>
