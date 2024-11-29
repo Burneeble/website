@@ -11,7 +11,7 @@ const ProjectPage = async ({ params }: { params: { projectName: string } }) => {
   const res = await ProjectService.instance.getProject(projectName);
 
   const project: IProjectModel = JSON.parse(JSON.stringify(res));
-
+  console.log(project);
   return (
     <div className="cs-page project-page">
       <ProjectLogo

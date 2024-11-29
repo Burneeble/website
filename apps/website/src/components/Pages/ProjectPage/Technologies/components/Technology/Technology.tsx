@@ -3,9 +3,12 @@
 import {
   AwsIcon,
   CrossmintIcon,
+  EthereumIcon,
+  FigmaIcon,
   NextJsIcon,
   StripeIcon,
   TailwindIcon,
+  WordpressIcon,
 } from "@burneeble/icons";
 import { TechnologyProps } from "./Technology.types";
 import {
@@ -34,6 +37,12 @@ const Technology = (props: TechnologyProps) => {
         return <CrossmintIcon />;
       case "tailwind":
         return <TailwindIcon />;
+      case "figma":
+        return <FigmaIcon />;
+      case "wordpress":
+        return <WordpressIcon />;
+      case "ethereum":
+        return <EthereumIcon />;
       default:
         return <>not found</>;
     }
