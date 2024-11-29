@@ -32,11 +32,10 @@ const selectTrigger = React.forwardRef<
 
         [&>span]:tw-line-clamp-1
 
-        disabled:tw-cursor-not-allowed disabled:tw-opacity-50
+        disabled:tw-cursor-not-allowed disabled:tw-italic
+        disabled:tw-text-muted-foreground disabled:tw-opacity-50
 
         focus:tw-outline-none focus:tw-ring-1 focus:tw-ring-ring
-
-        placeholder:tw-text-muted-foreground
       `,
       className
     )}
@@ -175,7 +174,8 @@ const selectItem = React.forwardRef<
         before:tw-inset-0 before:tw-z-[1] before:tw-opacity-40
         before:tw-content-['']
 
-        data-[disabled]:tw-pointer-events-none data-[disabled]:tw-opacity-50
+        data-[disabled]:tw-pointer-events-none data-[disabled]:tw-italic
+        data-[disabled]:tw-opacity-50
 
         focus:tw-border-active focus:tw-bg-gradient-to-r
         focus:tw-text-body-active focus:before:tw-absolute

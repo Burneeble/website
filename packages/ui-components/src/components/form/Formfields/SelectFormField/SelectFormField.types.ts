@@ -1,10 +1,12 @@
 export interface SelectItem {
   value: string;
   label: string;
+  disabled: boolean;
 }
 
 export interface SelectFormFieldProps {
   key: string;
+  placeholder?: string;
   description?: string;
   items: SelectItem[];
   value: string;

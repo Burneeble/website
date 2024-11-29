@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   FormControl,
   FormDescription,
@@ -18,14 +18,23 @@ import {
 
 const SelectFormField = (props: SelectFormFieldProps) => {
   const disabled = props.disabled || false;
+  const placeholder = props.placeholder || "Select an option";
+
   return (
     <>
       <FormItem>
         <FormLabel>{props.label}</FormLabel>
         <Select onValueChange={props.onChange} defaultValue={props.value}>
           <FormControl>
-            <SelectTrigger>
-              <SelectValue placeholder="Select a verified email to display" />
+            <SelectTrigger
+              className={cn(
+                props.value === undefined
+                  ? "tw-text-body"
+                  : `tw-text-body-active`
+              )}
+              disabled={disabled}
+            >
+              <SelectValue placeholder={placeholder} />
             </SelectTrigger>
           </FormControl>
           <SelectContent
@@ -34,7 +43,11 @@ const SelectFormField = (props: SelectFormFieldProps) => {
             `}
           >
             {props.items.map((item, i) => (
-              <SelectItem key={i} value={item.value}>
+              <SelectItem
+                key={i}
+                value={item.value}
+                disabled={item.disabled || false}
+              >
                 <span className="tw-relative tw-z-[2]"> {item.label}</span>
               </SelectItem>
             ))}
