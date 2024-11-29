@@ -15,7 +15,6 @@ export const GET_PROJECT_QUERY = gql(/* GraphQL */ `
         }
         sections {
           nodes {
-            slug
             ... on Section {
               sectionsFields {
                 text
@@ -28,7 +27,6 @@ export const GET_PROJECT_QUERY = gql(/* GraphQL */ `
                 imagesLayout {
                   nodes {
                     ... on ImagesLayout {
-                      slug
                       imagesLayoutFields {
                         imagesLayoutSm {
                           nodes {
@@ -114,9 +112,19 @@ export const GET_PROJECT_QUERY = gql(/* GraphQL */ `
                             }
                           }
                         }
+                        imagesLayoutType {
+                          nodes {
+                            slug
+                          }
+                        }
                       }
                     }
                   }
+                }
+              }
+              sectionLayouts {
+                nodes {
+                  slug
                 }
               }
             }
