@@ -1,4 +1,10 @@
-import { AwsIcon, NextJsIcon, StripeIcon } from "@burneeble/icons";
+import {
+  AwsIcon,
+  CrossmintIcon,
+  NextJsIcon,
+  StripeIcon,
+  TailwindIcon,
+} from "@burneeble/icons";
 import { TechnologyProps } from "./Technology.types";
 
 const Technology = (props: TechnologyProps) => {
@@ -11,6 +17,10 @@ const Technology = (props: TechnologyProps) => {
         return <NextJsIcon />;
       case "Stripe":
         return <StripeIcon />;
+      case "Crossmint":
+        return <CrossmintIcon />;
+      case "Tailwind":
+        return <TailwindIcon />;
       default:
         return <>not found</>;
     }
@@ -22,7 +32,7 @@ const Technology = (props: TechnologyProps) => {
         technology tw-w-[164.92px] tw-h-[58px] tw-py-[15.27px]
         tw-bg-gradient-to-r tw-from-[var(--primary-default)]
         tw-to-[var(--primary-lighter)] tw-rounded tw-flex-col tw-justify-center
-        tw-items-center tw-inline-flex tw-text-[100px]
+        tw-items-center tw-inline-flex tw-text-[100px] tw-text-headings
 
         md:tw-w-[188.35px] md:tw-h-[62px] md:tw-text-[106px]
 
