@@ -45,7 +45,7 @@ const ProjectPage = async ({ params }: { params: { projectName: string } }) => {
                 text={section.text}
                 imageLayoutType={section.imageLayout.slug as ImageLayoutType}
                 imageLayoutInfo={section.imageLayout}
-                enableBars={i !== project.sections!.length - 2}
+                enableBars={i < project.sections!.length - 2}
               />
             </>
           );
