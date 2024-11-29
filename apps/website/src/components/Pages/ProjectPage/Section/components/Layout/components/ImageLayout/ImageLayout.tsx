@@ -27,7 +27,14 @@ const ImageLayout = (props: ImageLayoutProps) => {
   //Effects
   useEffect(() => {
     setComp(getImageLayout());
-  }, [screen, props.image1, props.image2, props.image3, props.image4]);
+  }, [
+    screen,
+    props.imageLayoutType,
+    props.image1,
+    props.image2,
+    props.image3,
+    props.image4,
+  ]);
 
   //Methods
   const getImageLayout = () => {

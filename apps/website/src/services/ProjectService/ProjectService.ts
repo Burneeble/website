@@ -89,8 +89,8 @@ export class ProjectService {
           const imageLayout = new ImageLayoutModel({
             slug:
               // @ts-ignore
-              node.sectionsFields?.imagesLayoutType?.nodes[0].imagesLayoutType
-                .nodes[0].slug || "",
+              node.sectionsFields.imagesLayout.nodes[0].imagesLayoutFields
+                .imagesLayoutType.nodes[0].slug || "",
             imagesLayoutSm: layoutSm,
             imagesLayoutMd: layoutMd,
             imagesLayoutXl: layoutXl,
