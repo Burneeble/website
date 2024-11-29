@@ -18,7 +18,7 @@ const SmarthphoneImageLayout = (props: SmarthphoneImageLayoutProps) => {
       <img
         src={props.image1}
         className={`
-          tw-object-cover tw-w-[calc(100%-24px)] tw-rounded-[50px]
+          tw-object-cover tw-w-[calc(100%-24px)] tw-rounded-[20px]
           tw-h-[calc(100%-24px)] tw-absolute tw-top-1/2 tw-left-1/2
           -tw-translate-x-1/2 -tw-translate-y-1/2
         `}

@@ -5,6 +5,7 @@ import { ImageLayoutType } from "../../../../Section.types";
 import {
   FigmaImagesLayout,
   LaptopImageLayout,
+  LaptopSmarthphoneImagesLayout,
   LargeImageLayout,
   OneImageLayout,
   OneSquareImageLayout,
@@ -49,6 +50,8 @@ const ImageLayout = (props: ImageLayoutProps) => {
         return <LaptopImageLayout {...props} />;
       case ImageLayoutType.SmarthphoneImageLayout:
         return <SmarthphoneImageLayout {...props} />;
+      case ImageLayoutType.LaptopSmarthphoneImagesLayout:
+        return <LaptopSmarthphoneImagesLayout {...props} />;
       default:
         return <></>;
     }
