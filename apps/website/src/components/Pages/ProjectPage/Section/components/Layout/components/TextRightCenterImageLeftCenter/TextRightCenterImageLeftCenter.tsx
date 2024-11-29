@@ -13,8 +13,7 @@ const TextRightCenterImageLeftCenter = (
     >
       <div
         className={`
-          images tw-flex-1 tw-flex tw-items-center tw-justify-center
-          tw-border-[1px] tw-border-solid tw-border-red-400 tw-w-full
+          images tw-flex-1 tw-flex tw-items-center tw-justify-center tw-w-full
           tw-aspect-square
         `}
       >

@@ -20,8 +20,7 @@ const TextRightCenterShapeVerticalLeft = (
         />
         <div
           className={`
-            images tw-flex tw-items-center tw-justify-center tw-border-[1px]
-            tw-border-solid tw-border-red-400 tw-min-w-[320px]
+            images tw-flex tw-items-center tw-justify-center tw-min-w-[320px]
             tw-aspect-[328/675] tw-absolute tw-top-1/2 -tw-translate-y-1/2
             tw-w-fit tw-right-[calc((100vw/2)-20px-450px)] tw-translate-x-1/2
           `}

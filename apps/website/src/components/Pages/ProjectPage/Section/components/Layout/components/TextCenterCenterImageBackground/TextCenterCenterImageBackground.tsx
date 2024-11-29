@@ -20,9 +20,8 @@ const TextCenterCenterImageBackground = (
       <div
         className={`
           images tw-w-screen tw-h-screen tw-flex tw-items-center
-          tw-justify-center tw-border-[1px] tw-border-solid tw-border-red-400
-          tw-z-[-1] tw-absolute tw-top-1/2 tw-left-1/2 -tw-translate-x-1/2
-          -tw-translate-y-1/2
+          tw-justify-center tw-z-[-1] tw-absolute tw-top-1/2 tw-left-1/2
+          -tw-translate-x-1/2 -tw-translate-y-1/2
         `}
       >
         <ImageLayout {...props} />

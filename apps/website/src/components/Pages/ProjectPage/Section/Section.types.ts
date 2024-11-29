@@ -45,4 +45,5 @@ export interface SectionProps {
   text: string;
   imageLayoutType: ImageLayoutType;
   imageLayoutInfo: ImageLayoutModel;
+  enableBars?: boolean;
 }

@@ -17,16 +17,12 @@ const TextTopStartShapeHorizontalBottom = (
       />
       <p className="tw-mb-[50px]">{props.text}</p>
       <div
-        className={`
-          wrapper tw-relative tw-w-full tw-mt-[30px] tw-h-[600px]
-          tw-border-solid tw-border-blue-400 tw-border-[1px]
-        `}
+        className={`wrapper tw-relative tw-w-full tw-mt-[30px] tw-h-[600px]`}
       >
         <div
           className={`
-            images tw-flex tw-items-center tw-justify-center tw-border-[1px]
-            tw-border-solid tw-border-red-400 tw-w-fit tw-h-full tw-z-[5]
-            tw-absolute tw-left-1/2 -tw-translate-x-1/2 tw-top-0
+            images tw-flex tw-items-center tw-justify-center tw-w-fit tw-h-full
+            tw-z-[5] tw-absolute tw-left-1/2 -tw-translate-x-1/2 tw-top-0
           `}
         >
           <ImageLayout {...props} />

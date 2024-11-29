@@ -19,8 +19,7 @@ const TextTopStartImageBottomCenter = (
       <div
         className={`
           images tw-w-full tw-mt-[30px] tw-flex tw-items-center
-          tw-justify-center tw-border-[1px] tw-border-solid tw-border-red-400
-          tw-h-[480px]
+          tw-justify-center tw-h-[480px]
         `}
       >
         <ImageLayout {...props} />

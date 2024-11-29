@@ -19,21 +19,37 @@ const ProjectPage = async ({ params }: { params: { projectName: string } }) => {
         title={project.title}
         mainColor={project.mainColor || "#000"}
       />
+      {project.sections && project.sections[0] && (
+        <>
+          <Section
+            layoutType={project.sections[0].layout as LayoutType}
+            title={project.sections[0].title}
+            text={project.sections[0].text}
+            imageLayoutType={
+              project.sections[0].imageLayout.slug as ImageLayoutType
+            }
+            imageLayoutInfo={project.sections[0].imageLayout}
+            enableBars
+          />
+        </>
+      )}
       <Technologies technologies={project.technologies || []} />
-      {project.sections?.map((section, i) => {
-        return (
-          <>
-            <Section
-              key={i}
-              layoutType={section.layout as LayoutType}
-              title={section.title}
-              text={section.text}
-              imageLayoutType={section.imageLayout.slug as ImageLayoutType}
-              imageLayoutInfo={section.imageLayout}
-            />
-          </>
-        );
-      })}
+      {project.sections &&
+        project.sections.slice(1, project.sections.length).map((section, i) => {
+          return (
+            <>
+              <Section
+                key={i}
+                layoutType={section.layout as LayoutType}
+                title={section.title}
+                text={section.text}
+                imageLayoutType={section.imageLayout.slug as ImageLayoutType}
+                imageLayoutInfo={section.imageLayout}
+                enableBars={i !== project.sections!.length - 2}
+              />
+            </>
+          );
+        })}
     </div>
   );
 };
