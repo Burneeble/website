@@ -3,12 +3,17 @@
 import * as React from "react";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { cn } from "@/lib/utils";
-import { CheckIcon } from "@radix-ui/react-icons";
+import { CheckIcon, Cross2Icon } from "@radix-ui/react-icons";
+
+interface CheckboxProps
+  extends React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> {
+  booleanType?: boolean;
+}
 
 const checkbox = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>
->(({ className, ...props }, ref) => (
+  CheckboxProps
+>(({ className, booleanType = false, ...props }, ref) => (
   <CheckboxPrimitive.Root
     ref={ref}
     className={cn(
@@ -33,7 +38,11 @@ const checkbox = React.forwardRef<
         "tw-flex tw-items-center tw-justify-center tw-text-current"
       )}
     >
-      <CheckIcon className="tw-h-4 tw-w-4" />
+      {booleanType === true ? (
+        <CheckIcon className="tw-h-4 tw-w-4" />
+      ) : (
+        <Cross2Icon className={`tw-h-4 tw-w-4`} />
+      )}
     </CheckboxPrimitive.Indicator>
   </CheckboxPrimitive.Root>
 ));

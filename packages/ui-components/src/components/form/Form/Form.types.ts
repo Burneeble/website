@@ -2,8 +2,9 @@ export enum InputType {
   text = "text",
   textarea = "textarea",
   select = "select",
-  radio = "radio",
+  radioGroup = "radioGroup",
   checkbox = "checkbox",
+  checkboxGroup = "checkboxGroup",
 }
 
 export interface Field {

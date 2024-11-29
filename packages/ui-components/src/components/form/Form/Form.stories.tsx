@@ -44,6 +44,18 @@ export const baseForm: Story = {
             inputType: InputType.checkbox,
           },
           {
+            key: "multiple-options",
+            label: "choose one or more options",
+            attributes: {
+              items: [
+                { label: "Option 1", value: "option-1" },
+                { label: "Option 2", value: "option-2" },
+                { label: "Option 3", value: "option-3" },
+              ],
+            },
+            inputType: InputType.checkboxGroup,
+          },
+          {
             key: "option1-option2",
             label: "Options",
             attributes: {
@@ -52,7 +64,7 @@ export const baseForm: Story = {
                 { label: "Option 2", value: "option-2" },
               ],
             },
-            inputType: InputType.radio,
+            inputType: InputType.radioGroup,
           },
           {
             key: "languages",

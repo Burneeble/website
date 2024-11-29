@@ -36,6 +36,7 @@ const CheckboxFormField = (props: CheckboxFormFieldProps) => {
       >
         <FormControl>
           <Checkbox
+            booleanType={true}
             disabled={disabled}
             checked={props.value}
             onCheckedChange={props.onChange}

@@ -16,11 +16,7 @@ const RadioGroupFormField = (props: RadioGroupFormFieldProps) => {
       <FormItem className="space-y-3">
         <FormLabel>{props.label}</FormLabel>
         <FormControl>
-          <RadioGroup
-            onValueChange={props.onChange}
-            defaultValue={props.value}
-            className="flex flex-col space-y-1"
-          >
+          <RadioGroup onValueChange={props.onChange} defaultValue={props.value}>
             {props.items.map((item, i) => (
               <FormItem
                 key={i}
