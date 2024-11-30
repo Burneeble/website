@@ -19,6 +19,19 @@ const ProjectPage = async ({ params }: { params: { projectName: string } }) => {
         title={project.title}
         mainColor={project.mainColor || "#000"}
       />
+      <Section
+        layoutType={LayoutType.TextLeftStartImageRightCenterShapeVerticalRight}
+        title={"Title"}
+        text="lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        imageLayoutType={"" as any}
+        imageLayoutInfo={{
+          imagesLayoutSm: { image1: "" },
+          imagesLayoutMd: { image1: "" },
+          imagesLayoutXl: { image1: "" },
+          slug: "",
+        }}
+        enableBars={["sm", "md"]}
+      />
       {project.sections && project.sections[0] && (
         <>
           <Section
