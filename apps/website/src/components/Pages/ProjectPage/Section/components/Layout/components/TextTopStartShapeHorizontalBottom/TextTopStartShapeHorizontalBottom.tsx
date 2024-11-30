@@ -27,6 +27,8 @@ const TextTopStartShapeHorizontalBottom = (
           onClick={() => {
             window.open(props.buttonUrl, "_blank");
           }}
+          size={props.buttonSize}
+          className="tw-mt-[20px]"
         >
           {props.buttonText}
         </Button>

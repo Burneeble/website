@@ -31,7 +31,7 @@ const TextRightCenterImageLeftCenterShapeVerticalLeft = (
 
       <div
         className={`
-          info tw-flex-1 tw-flex tw-flex-col tw-justify-center tw-items-center
+          info tw-flex-1 tw-flex tw-flex-col tw-justify-center tw-items-start
         `}
       >
         <h1
@@ -44,6 +44,8 @@ const TextRightCenterImageLeftCenterShapeVerticalLeft = (
             onClick={() => {
               window.open(props.buttonUrl, "_blank");
             }}
+            size={props.buttonSize}
+            className="tw-mt-[20px]"
           >
             {props.buttonText}
           </Button>
