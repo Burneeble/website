@@ -1,3 +1,6 @@
+"use client";
+
+import { Button } from "@burneeble/ui-components";
 import ImageLayout from "../ImageLayout";
 import { FigmaLayoutProps } from "./FigmaLayout.types";
 
@@ -13,7 +16,19 @@ const FigmaLayout = (props: FigmaLayoutProps) => {
         className="title tw-text-center"
         dangerouslySetInnerHTML={{ __html: props.title }}
       />
-      <p className="text tw-text-center">{props.text}</p>
+      <p
+        className="text tw-text-center"
+        dangerouslySetInnerHTML={{ __html: props.text }}
+      />
+      {props.buttonText && props.buttonUrl && (
+        <Button
+          onClick={() => {
+            window.open(props.buttonUrl, "_blank");
+          }}
+        >
+          {props.buttonText}
+        </Button>
+      )}
       <ImageLayout {...props} />
     </div>
   );

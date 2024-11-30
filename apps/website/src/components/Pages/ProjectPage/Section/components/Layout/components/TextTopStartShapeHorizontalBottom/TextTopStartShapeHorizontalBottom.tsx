@@ -1,3 +1,6 @@
+"use client";
+
+import { Button } from "@burneeble/ui-components";
 import ImageLayout from "../ImageLayout";
 import { TextTopStartShapeHorizontalBottomProps } from "./TextTopStartShapeHorizontalBottom.types";
 
@@ -15,7 +18,19 @@ const TextTopStartShapeHorizontalBottom = (
         className="title tw-w-full"
         dangerouslySetInnerHTML={{ __html: props.title }}
       />
-      <p className="tw-mb-[50px]">{props.text}</p>
+      <p
+        className="tw-mb-[50px]"
+        dangerouslySetInnerHTML={{ __html: props.text }}
+      />
+      {props.buttonText && props.buttonUrl && (
+        <Button
+          onClick={() => {
+            window.open(props.buttonUrl, "_blank");
+          }}
+        >
+          {props.buttonText}
+        </Button>
+      )}
       <div
         className={`wrapper tw-relative tw-w-full tw-mt-[30px] tw-h-[600px]`}
       >

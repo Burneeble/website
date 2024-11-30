@@ -11,7 +11,7 @@ const ProjectPage = async ({ params }: { params: { projectName: string } }) => {
   const res = await ProjectService.instance.getProject(projectName);
 
   const project: IProjectModel = JSON.parse(JSON.stringify(res));
-  console.log(project);
+  console.log(JSON.stringify(project.sections, null, 2));
   return (
     <div className="cs-page project-page">
       <ProjectLogo
@@ -30,6 +30,8 @@ const ProjectPage = async ({ params }: { params: { projectName: string } }) => {
             }
             imageLayoutInfo={project.sections[0].imageLayout}
             enableBars
+            buttonText={project.sections[0].buttonText}
+            buttonUrl={project.sections[0].buttonUrl}
           />
         </>
       )}

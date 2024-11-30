@@ -121,6 +121,8 @@ export const GET_PROJECT_QUERY = gql(/* GraphQL */ `
                     }
                   }
                 }
+                buttonText
+                buttonUrl
               }
               sectionLayouts {
                 nodes {

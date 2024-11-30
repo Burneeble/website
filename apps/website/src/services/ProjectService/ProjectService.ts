@@ -104,6 +104,10 @@ export class ProjectService {
             // @ts-ignore
             text: node.sectionsFields?.text || "",
             imageLayout: imageLayout,
+            // @ts-ignore
+            buttonText: node.sectionsFields?.buttonText || undefined,
+            // @ts-ignore
+            buttonUrl: node.sectionsFields?.buttonUrl || undefined,
           };
         })
       : undefined;

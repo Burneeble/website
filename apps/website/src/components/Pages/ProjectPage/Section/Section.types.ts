@@ -43,6 +43,8 @@ export interface SectionProps {
   layoutType: LayoutType;
   title: string;
   text: string;
+  buttonText?: string;
+  buttonUrl?: string;
   imageLayoutType: ImageLayoutType;
   imageLayoutInfo: ImageLayoutModel;
   enableBars?: boolean;

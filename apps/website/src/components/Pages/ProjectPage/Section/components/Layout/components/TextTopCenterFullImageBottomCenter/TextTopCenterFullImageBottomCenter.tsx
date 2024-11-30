@@ -1,3 +1,6 @@
+"use client";
+
+import { Button } from "@burneeble/ui-components";
 import ImageLayout from "../ImageLayout";
 import { TextTopCenterFullImageBottomCenterProps } from "./TextTopCenterFullImageBottomCenter.types";
 
@@ -15,7 +18,19 @@ const TextTopCenterFullImageBottomCenter = (
         className="title tw-w-full tw-text-center"
         dangerouslySetInnerHTML={{ __html: props.title }}
       />
-      <p className="tw-text-center tw-mb-[50px]">{props.text}</p>
+      <p
+        className="tw-text-center tw-mb-[50px]"
+        dangerouslySetInnerHTML={{ __html: props.text }}
+      />
+      {props.buttonText && props.buttonUrl && (
+        <Button
+          onClick={() => {
+            window.open(props.buttonUrl, "_blank");
+          }}
+        >
+          {props.buttonText}
+        </Button>
+      )}
       <div
         className={`
           images tw-w-full tw-mt-[30px] tw-flex tw-items-center

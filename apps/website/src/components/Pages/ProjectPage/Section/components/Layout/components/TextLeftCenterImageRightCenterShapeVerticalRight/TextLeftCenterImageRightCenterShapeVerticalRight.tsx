@@ -1,3 +1,6 @@
+"use client";
+
+import { Button } from "@burneeble/ui-components";
 import ImageLayout from "../ImageLayout";
 import { TextLeftCenterImageRightCenterShapeVerticalRightProps } from "./TextLeftCenterImageRightCenterShapeVerticalRight.types";
 
@@ -20,7 +23,19 @@ const TextLeftCenterImageRightCenterShapeVerticalRight = (
           className="title tw-w-full tw-text-center"
           dangerouslySetInnerHTML={{ __html: props.title }}
         />
-        <p className="tw-text-center">{props.text}</p>
+        <p
+          className="tw-text-center"
+          dangerouslySetInnerHTML={{ __html: props.text }}
+        />
+        {props.buttonText && props.buttonUrl && (
+          <Button
+            onClick={() => {
+              window.open(props.buttonUrl, "_blank");
+            }}
+          >
+            {props.buttonText}
+          </Button>
+        )}
       </div>
       <div
         className={`

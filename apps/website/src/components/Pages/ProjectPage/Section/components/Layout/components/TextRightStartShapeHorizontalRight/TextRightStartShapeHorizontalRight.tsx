@@ -1,9 +1,14 @@
+"use client";
+
+import { Button } from "@burneeble/ui-components";
 import ImageLayout from "../ImageLayout";
 import { TextRightStartShapeHorizontalRightProps } from "./TextRightStartShapeHorizontalRight.types";
 
 const TextRightStartShapeHorizontalRight = (
   props: TextRightStartShapeHorizontalRightProps
 ) => {
+  console.log(props.buttonText, props.buttonUrl);
+
   return (
     <div
       className={`
@@ -20,7 +25,16 @@ const TextRightStartShapeHorizontalRight = (
           className="title tw-w-full"
           dangerouslySetInnerHTML={{ __html: props.title }}
         />
-        <p>{props.text}</p>
+        <p dangerouslySetInnerHTML={{ __html: props.text }} />
+        {props.buttonText && props.buttonUrl && (
+          <Button
+            onClick={() => {
+              window.open(props.buttonUrl, "_blank");
+            }}
+          >
+            {props.buttonText}
+          </Button>
+        )}
       </div>
       <div className="wrapper tw-relative tw-flex-1">
         <div
