@@ -12,7 +12,6 @@ const Section = (props: SectionProps) => {
   const getButtonSize = () => {
     switch (screen) {
       case "sm":
-        return "sm";
       case "md":
         return "default";
       default:

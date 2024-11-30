@@ -19,7 +19,7 @@ const TextRightStartShapeVerticalRight = (
           info tw-flex-1 tw-flex tw-flex-col tw-justify-center tw-items-start
         `}
       >
-        <h1
+        <h2
           className="title tw-w-full"
           dangerouslySetInnerHTML={{ __html: props.title }}
         />

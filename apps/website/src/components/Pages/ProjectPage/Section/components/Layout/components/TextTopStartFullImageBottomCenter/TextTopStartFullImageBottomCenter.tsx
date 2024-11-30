@@ -14,7 +14,7 @@ const TextTopStartFullImageBottomCenter = (
         tw-flex-col tw-items-center tw-justify-end tw-gap-[10px]
       `}
     >
-      <h1
+      <h2
         className="title tw-w-full"
         dangerouslySetInnerHTML={{ __html: props.title }}
       />
