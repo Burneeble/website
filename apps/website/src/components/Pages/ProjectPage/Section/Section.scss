@@ -1,3 +1,7 @@
 // Section
 
 @import "./components/components";
+
+.section-layout {
+  @apply tw-w-full;
+}

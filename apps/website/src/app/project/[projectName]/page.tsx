@@ -29,7 +29,7 @@ const ProjectPage = async ({ params }: { params: { projectName: string } }) => {
               project.sections[0].imageLayout.slug as ImageLayoutType
             }
             imageLayoutInfo={project.sections[0].imageLayout}
-            enableBars
+            enableBars={["sm", "md"]}
             buttonText={project.sections[0].buttonText}
             buttonUrl={project.sections[0].buttonUrl}
           />

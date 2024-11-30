@@ -27,7 +27,9 @@ const Section = (props: SectionProps) => {
       >
         <Layout buttonSize={getButtonSize()} {...props} />
       </section>
-      {props.enableBars && <Bars />}
+      {(Array.isArray(props.enableBars)
+        ? !props.enableBars.includes(screen)
+        : props.enableBars) && <Bars />}
     </>
   );
 };

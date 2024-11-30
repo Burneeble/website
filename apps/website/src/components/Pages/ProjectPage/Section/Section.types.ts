@@ -1,4 +1,5 @@
 import { ImageLayoutModel } from "@/services/ProjectService";
+import { Screen } from "@burneeble/ui-components";
 
 export enum LayoutType {
   FigmaLayout = "figma-layout",
@@ -47,5 +48,5 @@ export interface SectionProps {
   buttonUrl?: string;
   imageLayoutType: ImageLayoutType;
   imageLayoutInfo: ImageLayoutModel;
-  enableBars?: boolean;
+  enableBars?: boolean | Screen[];
 }

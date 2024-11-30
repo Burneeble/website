@@ -7,13 +7,11 @@ import { TextRightStartShapeHorizontalRightProps } from "./TextRightStartShapeHo
 const TextRightStartShapeHorizontalRight = (
   props: TextRightStartShapeHorizontalRightProps
 ) => {
-  console.log(props.buttonText, props.buttonUrl);
-
   return (
     <div
       className={`
         text-right-center-shape-horizontal-right section-layout tw-flex
-        tw-items-center tw-justify-center tw-gap-[30px] tw-flex-col tw-w-full
+        tw-items-center tw-justify-center tw-gap-[30px] tw-flex-col
 
         xl:tw-flex-row xl:tw-gap-0
       `}
