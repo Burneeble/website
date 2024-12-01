@@ -3,12 +3,11 @@
 import { ContactCard } from "@burneeble/ui-components";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { ContactProps } from "./Contact.types";
+import { useState } from "react";
+import { ContactPopup } from "./components";
 
 const Contact = (props: ContactProps) => {
-  //States
-
-  //Hooks
-  // const { screen } = useClientInfoService();
+  const [isContactPopupOpen, setIsContactPopupOpen] = useState<boolean>(false);
 
   return (
     <section
@@ -17,6 +16,8 @@ const Contact = (props: ContactProps) => {
         tw-justify-center tw-gap-5 tw-flex-col tw-relative
       `}
     >
+      {isContactPopupOpen && <ContactPopup />}
+
       <div
         className={`
           contact-text-content tw-w-full tw-flex-col tw-justify-center
@@ -82,8 +83,10 @@ const Contact = (props: ContactProps) => {
           description="You can contact us by email, we will reply you as soon as possible."
           mainColor="#f28307"
           buttonText="Contact Us"
-          onClick={() => {}}
-        />{" "}
+          onClick={() => {
+            setIsContactPopupOpen(true);
+          }}
+        />
         <ContactCard
           icon={"/img/logos/upwork-logo.webp"}
           title="Upwork"
