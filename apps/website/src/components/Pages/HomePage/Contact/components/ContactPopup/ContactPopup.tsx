@@ -26,15 +26,15 @@ const ContactPopup = (props: ContactPopupProps) => {
       <div
         onClick={() => setIsContactPopupOpen(false)}
         className={`
-          contact-popup-wrapper tw-fixed tw-left-0 tw-top-0 tw-z-[15] tw-flex
-          tw-h-screen tw-w-screen tw-items-center tw-justify-center
-          tw-bg-[rgba(0,0,0,0.652)]
+          contact-popup-wrapper tw-fixed tw-left-0 tw-top-0 tw-flex tw-h-screen
+          tw-w-screen tw-items-center tw-justify-center
+          tw-bg-[rgba(0,0,0,0.652)] tw-z-[55]
         `}
       >
         <div
-          onClick={(e) => e.stopPropagation()}
+          // onClick={(e) => e.stopPropagation()}
           className={`
-            contact-popup tw-h-fit tw-p-5 tw-w-[700px] tw-min-w-[500px]
+            contact-popup tw-h-fit tw-p-5 tw-w-[700px] tw-max-w-[90%]
             tw-bg-gradient-to-b secondary-gradient-to-custom tw-rounded-lg
             tw-border tw-border-[#483a32] tw-flex-col tw-justify-start
             tw-items-center tw-gap-5 tw-inline-flex
@@ -46,36 +46,32 @@ const ContactPopup = (props: ContactPopupProps) => {
               tw-items-start tw-justify-start tw-gap-2.5 tw-self-stretch
             `}
           >
-            <div
+            <h2
               className={`
-                contact-popup-title tw-inline-flex tw-items-center
-                tw-justify-center tw-gap-2.5 tw-self-stretch
+                contact-popup-title tw-text-center tw-inline-flex
+                tw-items-center tw-justify-center tw-gap-2.5 tw-self-stretch
               `}
             >
-              <h2 className={`contact-popup-title tw-text-center`}>
-                Get in Touch 🔥
-              </h2>
-            </div>
-            <div
+              Get in Touch 🔥
+            </h2>
+            <p
               className={`
-                contact-paragraph-content tw-self-stretch tw-text-center
+                p-small contact-paragraph-content tw-self-stretch tw-text-center
               `}
             >
-              <p className={`p-small`}>
-                You can reach us by filling out this form or contacting us via
-                our email:{" "}
-                <a
-                  href="mailto:burneeble@example.com"
-                  className={`
-                    p-small tw-font-extrabold tw-transition-colors
+              You can reach us by filling out this form or contacting us via our
+              email:{" "}
+              <a
+                href="mailto:burneeble@example.com"
+                className={`
+                  p-small tw-font-extrabold tw-transition-colors
 
-                    hover:tw-text-action hover:tw-underline
-                  `}
-                >
-                  burneeble@example.com
-                </a>
-              </p>
-            </div>
+                  hover:tw-text-action hover:tw-underline
+                `}
+              >
+                burneeble@example.com
+              </a>
+            </p>
           </div>
         </div>
       </div>
