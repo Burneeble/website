@@ -11,7 +11,9 @@ const TextLeftCenterImageRightCenterShapeVerticalRight = (
     <div
       className={`
         text-left-center-image-right-center-shape-vertical-right section-layout
-        tw-flex tw-items-center tw-justify-center tw-gap-[40px]
+        tw-flex tw-items-center tw-justify-center tw-gap-[40px] tw-flex-col
+
+        xl:tw-flex-row
       `}
     >
       <div
@@ -41,17 +43,35 @@ const TextLeftCenterImageRightCenterShapeVerticalRight = (
       </div>
       <div
         className={`
-          images tw-flex-1 tw-flex tw-items-center tw-justify-center tw-w-full
-          tw-aspect-[630/532] tw-relative
+          wrapper tw-w-screen tw-flex tw-items-center tw-justify-center
+          tw-relative tw-h-[350px]
+
+          md:tw-h-[515px]
+
+          xl:tw-h-auto xl:tw-flex-1
         `}
       >
         <div
           className={`
-            layout-shape tw-rounded-l-lg tw-left-[calc((100vw/2)-20px-200px)]
-            tw-top-1/2 -tw-translate-y-1/2 tw-w-[200px] tw-h-[675px] tw-z-[-1]
+            layout-shape tw-rounded-l-lg tw-top-1/2 -tw-translate-y-1/2
+            tw-z-[-1] tw-left-[calc(100vw-110px)] tw-w-[110px] tw-h-[350px]
+
+            md:tw-left-[calc(100vw-250px)] md:tw-w-[250px] md:tw-h-[515px]
+
+            xl:tw-left-[calc((100vw/2)-20px-200px)] xl:tw-w-[200px]
+            xl:tw-h-[675px] xl:tw-max-w-[unset]
           `}
         />
-        <ImageLayout {...props} />
+        <div
+          className={`
+            images tw-flex tw-items-center tw-justify-center tw-w-full
+            tw-aspect-[630/532] tw-relative tw-max-w-[450px] tw-mx-[20px]
+
+            xl:tw-max-w-[unset] xl:tw-mx-0
+          `}
+        >
+          <ImageLayout {...props} />
+        </div>
       </div>
     </div>
   );
