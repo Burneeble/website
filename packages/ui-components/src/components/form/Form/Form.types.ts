@@ -14,10 +14,12 @@ export interface Field {
   description?: string;
   disabled?: boolean;
   inputType: InputType;
+  className?: string;
   attributes?: any;
 }
 
 export interface FormProps {
   fields: Field[];
   onSubmit: (values: Record<string, string>) => Promise<void> | void;
+  className?: string;
 }

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { ContactPopupProps } from "./ContactPopup.types";
-import { useScrollLock } from "@burneeble/ui-components";
+import { Form, InputType, useScrollLock } from "@burneeble/ui-components";
 
 const ContactPopup = (props: ContactPopupProps) => {
   //States
@@ -42,8 +42,8 @@ const ContactPopup = (props: ContactPopupProps) => {
         >
           <div
             className={`
-              contact-text-content-wrapper tw-flex tw-h-[150px] tw-flex-col
-              tw-items-start tw-justify-start tw-gap-2.5 tw-self-stretch
+              contact-text-content-wrapper tw-flex tw-flex-col tw-items-center
+              tw-justify-center tw-gap-2.5 tw-self-stretch
             `}
           >
             <h2
@@ -72,6 +72,57 @@ const ContactPopup = (props: ContactPopupProps) => {
                 burneeble@example.com
               </a>
             </p>
+            <Form
+              className={`
+                tw-grid tw-grid-cols-2 tw-grid-rows-auto tw-gap-[20px]
+                !tw-space-y-0
+              `}
+              fields={[
+                {
+                  key: "name",
+                  label: "",
+                  placeholder: "First Name",
+                  inputType: InputType.text,
+                  className: "tw-col-[1] tw-row-[1]",
+                },
+                {
+                  key: "lastName",
+                  label: "",
+                  placeholder: "Last Name",
+                  inputType: InputType.text,
+                  className: "tw-col-[2] tw-row-[1]",
+                },
+                {
+                  key: "email",
+                  label: "",
+                  placeholder: "Your Email",
+                  inputType: InputType.text,
+                  className: "tw-col-[1/span_2] tw-row-[2]",
+                },
+                {
+                  key: "interest",
+                  label: "What are you interested in?",
+                  placeholder: "Select your interest",
+                  inputType: InputType.select,
+                  className: "tw-col-[1] tw-row-[3]",
+                },
+                {
+                  key: "budget",
+                  label: "Project Budget",
+                  placeholder: "Select your budget",
+                  inputType: InputType.select,
+                  className: "tw-col-[2] tw-row-[3]",
+                },
+                {
+                  key: "textarea",
+                  label: "",
+                  placeholder: "Tell us more about your project",
+                  inputType: InputType.textarea,
+                  className: "tw-col-[1/span_2] tw-row-[4]",
+                },
+              ]}
+              onSubmit={() => {}}
+            />
           </div>
         </div>
       </div>
