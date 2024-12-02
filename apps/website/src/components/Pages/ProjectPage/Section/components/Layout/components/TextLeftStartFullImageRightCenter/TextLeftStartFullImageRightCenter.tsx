@@ -11,7 +11,9 @@ const TextLeftStartFullImageRightCenter = (
     <div
       className={`
         text-left-start-full-image-right-center section-layout tw-flex
-        tw-items-center tw-justify-center tw-gap-[40px]
+        tw-items-center tw-justify-center tw-gap-[40px] tw-flex-col
+
+        xl:tw-flex-row
       `}
     >
       <div
@@ -36,12 +38,21 @@ const TextLeftStartFullImageRightCenter = (
           </Button>
         )}
       </div>
-      <div className="wrapper tw-flex-1 tw-h-full tw-relative">
+      <div
+        className={`
+          wrapper tw-flex-1 tw-w-full tw-relative tw-aspect-square
+          tw-max-w-[454px]
+
+          xl:tw-h-full xl:tw-w-auto xl:tw-max-w-[unset]
+        `}
+      >
         <div
           className={`
             images tw-flex tw-items-center tw-justify-center tw-aspect-square
-            tw-absolute tw-top-1/2 -tw-translate-y-1/2 tw-left-0
-            tw-w-[calc(100vw/2-20px)]
+            tw-absolute tw-top-1/2 -tw-translate-y-1/2 tw-left-0 tw-w-full
+            tw-max-w-[454px]
+
+            xl:tw-w-[calc(100vw/2-20px)] xl:tw-max-w-[unset]
           `}
         >
           <ImageLayout {...props} />
