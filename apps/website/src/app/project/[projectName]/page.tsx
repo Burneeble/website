@@ -20,7 +20,7 @@ const ProjectPage = async ({ params }: { params: { projectName: string } }) => {
         mainColor={project.mainColor || "#000"}
       />
       <Section
-        layoutType={LayoutType.TextLeftStartImageRightCenterShapeVerticalRight}
+        layoutType={LayoutType.TextTopCenterShapeHorizontalBottom}
         title={"Title"}
         text="lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
         imageLayoutType={"" as any}
