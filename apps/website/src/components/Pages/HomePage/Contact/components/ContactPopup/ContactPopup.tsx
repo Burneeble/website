@@ -105,6 +105,20 @@ const ContactPopup = (props: ContactPopupProps) => {
                   placeholder: "Select your interest",
                   inputType: InputType.select,
                   className: "tw-col-[1] tw-row-[3]",
+                  attributes: {
+                    items: [
+                      { label: "Web Development", value: "web-development" },
+                      {
+                        label: "Mobile Development",
+                        value: "mobile-development",
+                      },
+                      { label: "UI/UX Design", value: "ui-ux-design" },
+                      {
+                        label: "Digital Marketing",
+                        value: "digital-marketing",
+                      },
+                    ],
+                  },
                 },
                 {
                   key: "budget",
@@ -112,6 +126,15 @@ const ContactPopup = (props: ContactPopupProps) => {
                   placeholder: "Select your budget",
                   inputType: InputType.select,
                   className: "tw-col-[2] tw-row-[3]",
+                  attributes: {
+                    items: [
+                      { label: "Less than $500", value: "less-than-500" },
+                      { label: "$500 - $1000", value: "500-1000" },
+                      { label: "$1000 - $5000", value: "1000-5000" },
+                      { label: "$5000 - $10000", value: "5000-10000" },
+                      { label: "More than $10000", value: "more-than-10000" },
+                    ],
+                  },
                 },
                 {
                   key: "textarea",

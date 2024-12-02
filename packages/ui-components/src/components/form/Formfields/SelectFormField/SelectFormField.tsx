@@ -39,7 +39,8 @@ const SelectFormField = (props: SelectFormFieldProps) => {
           </FormControl>
           <SelectContent
             className={`
-              secondary-gradient tw-border-neutral tw-bg-gradient-to-r
+              secondary-gradient tw-z-[100] tw-border-neutral
+              tw-bg-gradient-to-r
             `}
           >
             {props.items.map((item, i) => (
