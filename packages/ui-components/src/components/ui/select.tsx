@@ -23,12 +23,11 @@ const selectTrigger = React.forwardRef<
     ref={ref}
     className={cn(
       `
-        p-small tw-relative tw-flex tw-min-h-[58px] tw-w-full tw-flex-row
+        p-small tw-relative tw-flex tw-min-h-[50px] tw-w-full tw-flex-row
         tw-items-center tw-justify-between tw-space-x-3 tw-space-y-0
         tw-whitespace-nowrap tw-rounded-lg tw-border tw-border-neutral
-        tw-bg-gradient-to-r tw-p-4 tw-px-3 tw-py-2 tw-shadow-sm
-        tw-ring-offset-background tw-outline-none tw-transition-colors
-        secondary-gradient
+        tw-bg-gradient-to-r tw-p-4 tw-px-3 tw-py-2 tw-shadow-sm tw-outline-none
+        tw-transition-colors tw-ring-offset-background secondary-gradient
 
         [&>span]:tw-line-clamp-1
 
@@ -36,6 +35,8 @@ const selectTrigger = React.forwardRef<
         disabled:tw-text-muted-foreground disabled:tw-opacity-50
 
         focus:tw-outline-none focus:tw-ring-1 focus:tw-ring-ring
+
+        sm:tw-min-h-[58px]
       `,
       className
     )}

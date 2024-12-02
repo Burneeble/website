@@ -16,10 +16,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         type={type}
         className={cn(
           `
-            p-small input-placeholder tw-flex tw-h-[58px] tw-w-full
+            p-small input-placeholder tw-flex tw-h-[50px] tw-w-full
             tw-rounded-lg tw-border tw-border-tertiary tw-bg-gradient-to-r
-            tw-text-body-active secondary-gradient tw-px-3 tw-shadow-sm
-            tw-outline-none tw-transition-colors
+            tw-px-3 tw-text-body-active tw-shadow-sm tw-outline-none
+            tw-transition-colors secondary-gradient
 
             disabled:tw-cursor-not-allowed disabled:tw-opacity-50
 
@@ -30,6 +30,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             focus-visible:tw-ring-1 focus-visible:tw-ring-ring
 
             placeholder:tw-italic placeholder:tw-text-muted-foreground
+
+            sm:tw-h-[58px]
           `,
           className
         )}

@@ -17,10 +17,12 @@ const CheckboxFormField = (props: CheckboxFormFieldProps) => {
         key={props.key}
         className={cn(
           `
-            tw-relative tw-flex tw-min-h-[58px] tw-flex-row tw-items-center
+            tw-relative tw-flex tw-min-h-[50px] tw-flex-row tw-items-center
             tw-space-x-3 tw-space-y-0 tw-overflow-hidden tw-rounded-lg tw-border
             tw-p-4 tw-px-3 tw-py-2 tw-shadow-sm tw-outline-none
             tw-transition-colors
+
+            sm:tw-min-h-[58px]
           `,
           props.value === true
             ? `

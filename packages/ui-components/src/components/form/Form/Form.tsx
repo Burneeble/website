@@ -23,7 +23,7 @@ const Form = (props: FormProps) => {
         onSubmit={form.handleSubmit(async () => {
           await props.onSubmit(form.getValues());
         })}
-        className={"tw-space-y-3"}
+        className={"tw-w-full tw-space-y-3"}
       >
         <div className={cn("fields tw-space-y-3", props.className)}>
           {props.fields.map((fieldInfo, i) => {
