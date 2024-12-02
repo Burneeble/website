@@ -1,13 +1,27 @@
 "use client";
 
-import { ContactCard } from "@burneeble/ui-components";
+import { ContactCard, useScrollLock } from "@burneeble/ui-components";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { ContactProps } from "./Contact.types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ContactPopup } from "./components";
 
 const Contact = (props: ContactProps) => {
+  //States
   const [isContactPopupOpen, setIsContactPopupOpen] = useState<boolean>(false);
+  const [isFirstRender, setFirstRender] = useState<boolean>(true);
+
+  //Hooks
+  const { lockScroll, unlockScroll } = useScrollLock();
+
+  //Effect
+  useEffect(() => {
+    if (isFirstRender) setFirstRender(false);
+    else {
+      if (isContactPopupOpen) lockScroll();
+      else unlockScroll();
+    }
+  }, [isContactPopupOpen]);
 
   return (
     <section
@@ -16,7 +30,12 @@ const Contact = (props: ContactProps) => {
         tw-justify-center tw-gap-5 tw-flex-col tw-relative
       `}
     >
-      {isContactPopupOpen && <ContactPopup />}
+      {isContactPopupOpen && (
+        <ContactPopup
+          isContactPopupOpen={isContactPopupOpen}
+          setIsContactPopupOpen={setIsContactPopupOpen}
+        />
+      )}
 
       <div
         className={`

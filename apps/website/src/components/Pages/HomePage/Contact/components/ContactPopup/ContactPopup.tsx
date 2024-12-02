@@ -1,36 +1,24 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React from "react";
 import { ContactPopupProps } from "./ContactPopup.types";
 import {
   Form,
   InputType,
   useClientInfoService,
-  useScrollLock,
 } from "@burneeble/ui-components";
 import { cn } from "@/lib/utils";
 
 const ContactPopup = (props: ContactPopupProps) => {
   //States
-  const [isContactPopupOpen, setIsContactPopupOpen] = useState<boolean>(false);
-  const [isFirstRender, setFirstRender] = useState<boolean>(true);
 
   //Hooks
-  const { lockScroll, unlockScroll } = useScrollLock();
   const { width } = useClientInfoService();
-
-  useEffect(() => {
-    if (isFirstRender) setFirstRender(false);
-    else {
-      if (isContactPopupOpen) lockScroll();
-      else unlockScroll();
-    }
-  }, [isContactPopupOpen]);
 
   return (
     <>
       <div
-        onClick={() => setIsContactPopupOpen(false)}
+        onClick={() => props.setIsContactPopupOpen(false)}
         className={`
           contact-popup-wrapper tw-fixed tw-left-0 tw-top-0 tw-flex tw-h-screen
           tw-w-screen tw-items-center tw-justify-center
@@ -38,7 +26,7 @@ const ContactPopup = (props: ContactPopupProps) => {
         `}
       >
         <div
-          // onClick={(e) => e.stopPropagation()}
+          onClick={(e) => e.stopPropagation()}
           className={`
             contact-popup no-scrollbar tw-h-fit tw-max-h-[80%] tw-p-5
             tw-w-[700px] tw-overflow-scroll tw-max-w-[90%] tw-bg-gradient-to-b
@@ -156,7 +144,9 @@ const ContactPopup = (props: ContactPopupProps) => {
                   className: "tw-content-end tw-col-[1/span_2] tw-row-[4]",
                 },
               ]}
-              onSubmit={() => {}}
+              onSubmit={() => {
+                props.setIsContactPopupOpen(false);
+              }}
             />
           </div>
         </div>
