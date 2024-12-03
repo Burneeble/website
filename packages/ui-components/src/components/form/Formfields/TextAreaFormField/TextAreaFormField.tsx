@@ -15,7 +15,7 @@ const TextAreaFormField = (props: TextAreaFormFieldProps) => {
       <FormItem key={props.key}>
         <FormLabel>{props.label}</FormLabel>
         <FormControl>
-          <Textarea disabled={props.disabled} placeholder={props.placeholder} />
+          <Textarea {...props} />
         </FormControl>
         {props.description && (
           <FormDescription>{props.description}</FormDescription>

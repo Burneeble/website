@@ -4,6 +4,8 @@ import { ComponentProps } from "react";
 import React from "react";
 import { InputType } from "./Form.types";
 
+import { z } from "zod";
+
 export default {
   title: "burneeble-website-components/form/Form",
   component: Form,
@@ -17,11 +19,14 @@ export const baseForm: Story = {
       <Form
         fields={[
           {
-            key: "your-name",
+            key: "first-name",
             label: "Name",
             placeholder: "Your name...",
             description: "This is your name.",
             inputType: InputType.text,
+            validation: z
+              .string()
+              .min(2, "First Name must be at least 2 characters"),
           },
           {
             key: "your-last-name",
@@ -37,6 +42,10 @@ export const baseForm: Story = {
             placeholder: "Write something about you...",
             description: "This is your bio.",
             inputType: InputType.textarea,
+            validation: z
+              .string()
+              .min(10, "Bio must be at least 10 characters")
+              .max(20, "Bio must be at most 20 characters"),
           },
           {
             key: "terms-codition",

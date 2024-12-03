@@ -15,7 +15,7 @@ const TextFormField = (props: TextFormFieldProps) => {
       <FormItem key={props.key}>
         <FormLabel>{props.label}</FormLabel>
         <FormControl>
-          <Input disabled={props.disabled} placeholder={props.placeholder} />
+          <Input {...props} />
         </FormControl>
         {props.description && (
           <FormDescription>{props.description}</FormDescription>

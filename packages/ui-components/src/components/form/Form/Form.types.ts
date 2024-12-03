@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 export enum InputType {
   text = "text",
   textarea = "textarea",
@@ -16,6 +18,7 @@ export interface Field {
   inputType: InputType;
   className?: string;
   attributes?: any;
+  validation?: z.ZodType<any, any>;
 }
 
 export interface FormProps {

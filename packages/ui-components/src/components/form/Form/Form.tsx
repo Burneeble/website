@@ -1,7 +1,6 @@
-import { useForm } from "react-hook-form";
+import React from "react";
 import { FormProps, InputType } from "./Form.types";
 import { FormComponent, FormField } from "../../ui/form";
-import React from "react";
 import { Button } from "@/components/ui";
 import {
   TextFormField,
@@ -13,16 +12,47 @@ import RadioGroupFormField from "../Formfields/RadioGroupFormField";
 import SelectFormField from "../Formfields/SelectFormField";
 import { cn } from "@/lib/utils";
 
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+
 const Form = (props: FormProps) => {
   //Hooks
-  const form = useForm();
+  const formSchema = z.object(
+    props.fields.reduce((acc, fieldInfo) => {
+      if (fieldInfo.validation) {
+        acc[fieldInfo.key] = fieldInfo.validation;
+      }
+      return acc;
+    }, {} as { [key: string]: z.ZodType<any, any> })
+  );
+
+  type DefaultValues = {
+    [key: string]: string | string[] | boolean;
+  };
+
+  const defaultValues: DefaultValues = props.fields.reduce((acc, fieldInfo) => {
+    if (fieldInfo.inputType === InputType.checkboxGroup) {
+      acc[fieldInfo.key] = [];
+    } else if (fieldInfo.inputType === InputType.checkbox) {
+      acc[fieldInfo.key] = false;
+    } else acc[fieldInfo.key] = "";
+    return acc;
+  }, {} as DefaultValues);
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: defaultValues,
+  });
+
+  function onSubmit(data: z.infer<typeof formSchema>) {
+    console.log("data", data);
+  }
 
   return (
     <FormComponent {...form}>
       <form
-        onSubmit={form.handleSubmit(async () => {
-          await props.onSubmit(form.getValues());
-        })}
+        onSubmit={form.handleSubmit(onSubmit)}
         className={"tw-w-full tw-space-y-3"}
       >
         <div className={cn("fields tw-space-y-3", props.className)}>

@@ -79,7 +79,7 @@ const ContactPopup = (props: ContactPopupProps) => {
               )}
               fields={[
                 {
-                  key: "name",
+                  key: "firstName",
                   label: "",
                   placeholder: "First Name",
                   inputType: InputType.text,
@@ -144,9 +144,7 @@ const ContactPopup = (props: ContactPopupProps) => {
                   className: "tw-content-end tw-col-[1/span_2] tw-row-[4]",
                 },
               ]}
-              onSubmit={() => {
-                props.setIsContactPopupOpen(false);
-              }}
+              onSubmit={() => {}}
             />
           </div>
         </div>
