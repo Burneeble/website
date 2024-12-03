@@ -46,6 +46,7 @@ const TextRightStartShapeHorizontalRight = (
       <div
         className={`
           wrapper tw-relative tw-flex-1 tw-w-screen tw-aspect-[390/241]
+          tw-mt-[40px]
 
           md:tw-aspect-[744/530]
 
@@ -54,21 +55,21 @@ const TextRightStartShapeHorizontalRight = (
       >
         <div
           className={`
-            layout-shape tw-rounded-l-lg tw-bottom-1/2 tw-z-[-1] tw-h-[265px]
-            tw-w-[111px] tw-translate-y-1/2 tw-right-0
+            layout-shape tw-rounded-l-lg tw-bottom-1/2 tw-z-[-1] tw-h-[364px]
+            tw-w-[202px] tw-translate-y-1/2 tw-right-0
 
-            md:tw-h-[447px] md:tw-w-[185px] md:tw-translate-y-0
-            md:tw-bottom-[115px]
+            md:tw-h-[340px] md:tw-w-[545px] md:tw-translate-y-0
+            md:tw-bottom-[unset] md:tw-top-[-20px]
 
-            xl:tw-right-[unset] xl:tw-w-[50vw] xl:tw-h-[275px] xl:tw-left-0
-            xl:tw-top-0 xl:tw-bottom-[unset]
+            xl:tw-right-[unset] xl:tw-w-[50vw] xl:tw-h-[372px] xl:tw-left-0
+            xl:tw-top-0
           `}
         />
         <div
           className={`
             images tw-flex tw-items-center tw-justify-center tw-absolute
             tw-left-1/2 -tw-translate-x-1/2 tw-top-1/2 -tw-translate-y-1/2
-            tw-min-w-[50vw] tw-w-fit tw-h-full
+            tw-min-w-[50vw] tw-w-[calc(100%-40px)] tw-aspect-[350/230]
 
             md:tw-py-[30px]
 
