@@ -1,3 +1,6 @@
+"use client";
+
+import { useClientInfoService } from "@burneeble/ui-components";
 import LaptopImageLayout from "../LaptopImageLayout";
 import SmarthphoneImageLayout from "../SmarthphoneImageLayout";
 import { LaptopSmarthphoneImagesLayoutProps } from "./LaptopSmarthphoneImagesLayout.types";
@@ -5,6 +8,9 @@ import { LaptopSmarthphoneImagesLayoutProps } from "./LaptopSmarthphoneImagesLay
 const LaptopSmarthphoneImagesLayout = (
   props: LaptopSmarthphoneImagesLayoutProps
 ) => {
+  //Hooks
+  const { screen } = useClientInfoService();
+
   return (
     <div
       className={`
@@ -13,9 +19,11 @@ const LaptopSmarthphoneImagesLayout = (
       `}
     >
       <LaptopImageLayout {...props} />
-      <div className="tw-h-[66%]">
-        <SmarthphoneImageLayout {...props} image1={props.image2!} />
-      </div>
+      {!["sm", "md"].includes(screen) && (
+        <div className="tw-h-[66%]">
+          <SmarthphoneImageLayout {...props} image1={props.image2!} />
+        </div>
+      )}
     </div>
   );
 };
