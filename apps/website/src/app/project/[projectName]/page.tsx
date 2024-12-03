@@ -1,6 +1,5 @@
 import { ProjectLogo, Technologies } from "@/components/Pages";
 import Section, {
-  ImageLayout,
   ImageLayoutType,
   LayoutType,
 } from "@/components/Pages/ProjectPage/Section";
@@ -20,16 +19,6 @@ const ProjectPage = async ({ params }: { params: { projectName: string } }) => {
         title={project.title}
         mainColor={project.mainColor || "#000"}
       />
-      <ImageLayout
-        layoutType={LayoutType.TextRightCenterShapeVerticalLeft}
-        title={"Title"}
-        text="lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-        imageLayoutType={ImageLayoutType.LaptopSmarthphoneImagesLayout}
-        enableBars={["sm", "md"]}
-        image1={"https://picsum.photos/380/555"}
-        buttonSize={""}
-      />
-
       {project.sections && project.sections[0] && (
         <>
           <Section
