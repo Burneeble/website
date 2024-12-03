@@ -11,7 +11,9 @@ const TextRightCenterShapeVerticalRight = (
     <div
       className={`
         text-right-center-shape-vertical-right section-layout tw-flex
-        tw-items-center tw-justify-center tw-gap-[40px]
+        tw-items-center tw-justify-center tw-gap-[40px] tw-flex-col tw-relative
+
+        xl:tw-flex-row
       `}
     >
       <div
@@ -39,18 +41,36 @@ const TextRightCenterShapeVerticalRight = (
           </Button>
         )}
       </div>
-      <div className="wrapper tw-relative tw-flex-1 tw-h-[780px]">
+      <div
+        className={`
+          wrapper tw-relative tw-w-screen tw-aspect-[350/230]
+
+          md:tw-h-[535px] md:tw-aspect-auto
+
+          xl:tw-flex-1 xl:tw-h-[780px]
+        `}
+      >
         <div
           className={`
-            layout-shape tw-rounded-l-lg tw-left-[calc((100vw/2)-20px-450px)]
-            tw-top-1/2 -tw-translate-y-1/2 tw-w-[450px] tw-h-full tw-z-[-1]
+            layout-shape tw-rounded-l-lg tw-right-0 tw-top-1/2
+            -tw-translate-y-1/2 tw-z-[-1] tw-h-[320px] tw-w-[200px]
+
+            md:tw-h-[600px] md:tw-w-[375px]
+
+            xl:tw-right-[unset] xl:tw-left-[calc((100vw/2)-20px-450px)]
+            xl:tw-w-[450px] xl:tw-h-full
           `}
         />
         <div
           className={`
-            images tw-flex tw-items-center tw-justify-center tw-min-w-[320px]
-            tw-aspect-[328/675] tw-absolute tw-top-1/2 -tw-translate-y-1/2
-            tw-w-fit tw-left-[calc((100vw/2)-20px-450px)] -tw-translate-x-1/2
+            images tw-flex tw-items-center tw-justify-center tw-aspect-[350/230]
+            tw-absolute tw-top-1/2 -tw-translate-y-1/2 tw-left-1/2
+            -tw-translate-x-1/2 tw-w-[calc(100%-40px)] tw-max-w-[385px]
+
+            md:tw-aspect-[385/535]
+
+            xl:tw-left-[calc((100vw/2)-20px-450px)] xl:tw-aspect-[328/675]
+            xl:tw-min-w-[320px] xl:tw-w-fit
           `}
         >
           <ImageLayout {...props} />
