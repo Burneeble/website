@@ -192,9 +192,11 @@ const Carousel = (props: CarouselProps) => {
                       {proj.description}
                     </p>
                     <CTA
-                      projectUrl={proj.projectUrl}
+                      projectUrl={`/project/${proj.title
+                        .toLowerCase()
+                        .replace(/[^a-zA-Z0-9\s]/g, "")
+                        .replaceAll(" ", "-")}`}
                       text={"View Details"}
-                      target="_blank"
                       size={
                         screen === "sm" || screen === "md" ? "sm" : "default"
                       }

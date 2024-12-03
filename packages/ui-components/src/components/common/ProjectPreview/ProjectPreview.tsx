@@ -1,8 +1,12 @@
 import React from "react";
 import { ProjectPreviewProps } from "./ProjectPreview.types";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 const ProjectPreview = (props: ProjectPreviewProps) => {
+  //Hooks
+  const router = useRouter();
+
   //Methods
   const highlightText = (text: string, query: string) => {
     const words = query.split(" ").filter((word) => word.trim() !== "");
@@ -15,6 +19,15 @@ const ProjectPreview = (props: ProjectPreviewProps) => {
       );
     });
     return highlightedText;
+  };
+
+  const openProject = () => {
+    router.push(
+      `/projects/${props.title
+        .toLowerCase()
+        .replace(/[^a-zA-Z0-9\s]/g, "")
+        .replaceAll(" ", "-")}`
+    );
   };
 
   return (
@@ -33,6 +46,9 @@ const ProjectPreview = (props: ProjectPreviewProps) => {
 
           hover:tw-border-tertiary
         `}
+        onClick={() => {
+          openProject();
+        }}
       >
         <img
           className={`
@@ -62,6 +78,9 @@ const ProjectPreview = (props: ProjectPreviewProps) => {
           `}
           dangerouslySetInnerHTML={{
             __html: highlightText(props.title, props.query || ""),
+          }}
+          onClick={() => {
+            openProject();
           }}
         />
         <div

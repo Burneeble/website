@@ -7,7 +7,14 @@ import {
   GET_PROJECTS_BY_CATEGORIES_QUERY,
   GET_PROJECTS_QUERY,
 } from "./queries";
-import { IProjectModel, ProjectModel } from "./models";
+import {
+  ImageLayoutModel,
+  IProjectModel,
+  ISectionModel,
+  ProjectModel,
+  ScreenImagesLayoutModel,
+  SectionModel,
+} from "./models";
 import { JsonSerializer } from "typescript-json-serializer";
 
 const serializer = new JsonSerializer();
@@ -32,17 +39,105 @@ export class ProjectService {
 
     if (!data) return null;
 
+    const sectionsInfo: ISectionModel[] | undefined = data.project
+      ?.projectFields?.sections
+      ? data.project?.projectFields?.sections.nodes.map((node) => {
+          const layoutSm = new ScreenImagesLayoutModel();
+          const layoutMd = new ScreenImagesLayoutModel();
+          const layoutXl = new ScreenImagesLayoutModel();
+
+          const sm =
+            // @ts-ignore
+            node.sectionsFields?.imagesLayout?.nodes[0].imagesLayoutFields
+              .imagesLayoutSm.nodes[0].screenImagesLayoutFields;
+          const md =
+            // @ts-ignore
+            node.sectionsFields?.imagesLayout?.nodes[0].imagesLayoutFields
+              .imagesLayoutMd.nodes[0].screenImagesLayoutFields;
+          const xl =
+            // @ts-ignore
+            node.sectionsFields?.imagesLayout?.nodes[0].imagesLayoutFields
+              .imagesLayoutXl.nodes[0].screenImagesLayoutFields;
+
+          if (sm) {
+            Object.keys(sm).forEach((key) => {
+              if (key !== "__typename" && sm[key]) {
+                // @ts-ignore
+                layoutSm[key] = sm[key].node.sourceUrl;
+              }
+            });
+          }
+
+          if (md) {
+            Object.keys(md).forEach((key) => {
+              if (key !== "__typename" && md[key]) {
+                // @ts-ignore
+                layoutMd[key] = md[key].node.sourceUrl;
+              }
+            });
+          }
+
+          if (xl) {
+            Object.keys(xl).forEach((key) => {
+              if (key !== "__typename" && xl[key]) {
+                // @ts-ignore
+                layoutXl[key] = xl[key].node.sourceUrl;
+              }
+            });
+          }
+
+          const imageLayout = new ImageLayoutModel({
+            slug:
+              // @ts-ignore
+              node.sectionsFields.imagesLayout.nodes[0].imagesLayoutFields
+                .imagesLayoutType.nodes[0].slug || "",
+            imagesLayoutSm: layoutSm,
+            imagesLayoutMd: layoutMd,
+            imagesLayoutXl: layoutXl,
+          });
+
+          return {
+            // @ts-ignore
+            layout: node.sectionsFields?.layout.nodes[0].slug || "",
+            // @ts-ignore
+            title: node.sectionsFields?.title || "",
+            // @ts-ignore
+            text: node.sectionsFields?.text || "",
+            imageLayout: imageLayout,
+            // @ts-ignore
+            buttonText: node.sectionsFields?.buttonText || undefined,
+            // @ts-ignore
+            buttonUrl: node.sectionsFields?.buttonUrl || undefined,
+          };
+        })
+      : undefined;
+
+    const sections: SectionModel[] | undefined = sectionsInfo
+      ? ((serializer.deserializeObjectArray<SectionModel>(
+          sectionsInfo || [],
+          SectionModel
+        ) || []) as SectionModel[])
+      : undefined;
+
     const projectInfo: IProjectModel = {
-      title: data.projectBy?.title || "",
-      description: data.projectBy?.projectFields?.description || "",
-      projectUrl: data.projectBy?.projectFields?.projectUrl || "",
-      thumbnailUrl:
-        data.projectBy?.projectFields?.thumbnail?.node.sourceUrl || "",
-      categories: data.projectBy?.projectFields?.category?.edges
+      title: data.project?.title || "",
+      description: data.project?.projectFields?.description || "",
+      projectUrl: data.project?.projectFields?.projectUrl || "",
+      thumbnailUrl: data.project?.projectFields?.thumbnail?.node.guid || "",
+      categories: data.project?.projectFields?.category?.edges
         .map((c) => c.node.name)
         .filter((c) => {
           return typeof c === "string";
         }) || ["Dapp"],
+      favicon: data.project?.projectFields?.favicon?.node.guid || "",
+      mainColor: data.project?.projectFields?.mainColor || "",
+      technologies:
+        data.project?.projectFields?.technologies?.nodes.map((t) => ({
+          name: t.name || "",
+          slug: t.slug || "",
+          description: t.description || "",
+        })) || [],
+      sections: sections,
     };
 
     const project =
