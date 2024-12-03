@@ -25,9 +25,9 @@ const selectTrigger = React.forwardRef<
       `
         p-small tw-relative tw-flex tw-min-h-[50px] tw-w-full tw-flex-row
         tw-items-center tw-justify-between tw-space-x-3 tw-space-y-0
-        tw-whitespace-nowrap tw-rounded-lg tw-border tw-border-neutral
-        tw-bg-gradient-to-r tw-p-4 tw-px-3 tw-py-2 tw-shadow-sm tw-outline-none
-        tw-transition-colors tw-ring-offset-background secondary-gradient
+        tw-whitespace-nowrap tw-rounded-lg tw-border tw-bg-gradient-to-r tw-p-4
+        tw-px-3 tw-py-2 tw-shadow-sm tw-outline-none tw-transition-colors
+        tw-ring-offset-background secondary-gradient
 
         [&>span]:tw-line-clamp-1
 
@@ -38,7 +38,8 @@ const selectTrigger = React.forwardRef<
 
         sm:tw-min-h-[58px]
       `,
-      className
+      className,
+      props["aria-invalid"] === true ? "tw-border-error" : `tw-border-neutral`
     )}
     {...props}
   >

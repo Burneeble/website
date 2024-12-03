@@ -8,7 +8,7 @@ import {
   useClientInfoService,
 } from "@burneeble/ui-components";
 import { cn } from "@/lib/utils";
-
+import z from "zod";
 const ContactPopup = (props: ContactPopupProps) => {
   //States
 
@@ -80,24 +80,33 @@ const ContactPopup = (props: ContactPopupProps) => {
               fields={[
                 {
                   key: "firstName",
-                  label: "",
+                  label: "Your first name",
                   placeholder: "First Name",
                   inputType: InputType.text,
                   className: "tw-content-end tw-col-[1] tw-row-[1]",
+                  validation: z
+                    .string()
+                    .min(2, "Must be at least 2 characters")
+                    .regex(/^[a-zA-Z]+$/, "Can only contain letters"),
                 },
                 {
                   key: "lastName",
-                  label: "",
+                  label: "Your last name",
                   placeholder: "Last Name",
                   inputType: InputType.text,
                   className: "tw-content-end tw-col-[2] tw-row-[1]",
+                  validation: z
+                    .string()
+                    .min(2, "Must be at least 2 characters")
+                    .regex(/^[a-zA-Z]+$/, "Can only contain letters"),
                 },
                 {
                   key: "email",
-                  label: "",
+                  label: "Your Email",
                   placeholder: "Your Email",
                   inputType: InputType.text,
                   className: "tw-content-end tw-col-[1/span_2] tw-row-[2]",
+                  validation: z.string().email("Invalid email"),
                 },
                 {
                   key: "interest",
@@ -117,8 +126,13 @@ const ContactPopup = (props: ContactPopupProps) => {
                         label: "Digital Marketing",
                         value: "digital-marketing",
                       },
+                      {
+                        label: "Other",
+                        value: "other",
+                      },
                     ],
                   },
+                  validation: z.string().min(1, "Please select an option."),
                 },
                 {
                   key: "budget",
@@ -135,13 +149,17 @@ const ContactPopup = (props: ContactPopupProps) => {
                       { label: "More than $10000", value: "more-than-10000" },
                     ],
                   },
+                  validation: z.string().min(1, "Please select an option."),
                 },
                 {
                   key: "textarea",
-                  label: "",
+                  label: "Talk about your project",
                   placeholder: "Tell us more about your project",
                   inputType: InputType.textarea,
                   className: "tw-content-end tw-col-[1/span_2] tw-row-[4]",
+                  validation: z
+                    .string()
+                    .min(10, "Bio must be at least 10 characters"),
                 },
               ]}
               onSubmit={() => {}}

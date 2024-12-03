@@ -124,7 +124,7 @@ const Form = (props: FormProps) => {
             );
           })}
         </div>
-        <Button type="submit" fit="full" className="tw-mt-0">
+        <Button type="submit" fit="full" className="!tw-mt-8">
           Submit
         </Button>
       </form>

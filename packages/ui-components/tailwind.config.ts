@@ -75,7 +75,7 @@ const config = {
         200: "rgba(229, 165, 155, 1)",
         300: "rgba(218, 119, 103, 1)",
         400: "rgba(209, 77, 57, 1)",
-        500: "rgba(170, 55, 38, 1)",
+        500: "rgba(205, 34, 8,1)",
         600: "rgba(136, 43, 30, 1)",
         700: "rgba(103, 32, 22, 1)",
         800: "rgba(70, 22, 15, 1)",
@@ -113,8 +113,8 @@ const config = {
           foreground: "rgba(var(--primary-base))",
         },
         destructive: {
-          DEFAULT: "rgba(var(--destructive))",
-          foreground: "rgba(var(--destructive-foreground))",
+          DEFAULT: "var(--error-default)",
+          foreground: "var(--error-dark)",
         },
         muted: {
           DEFAULT: "rgba(var(--muted))",
