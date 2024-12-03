@@ -1,1 +1,4 @@
-export interface SkillProps {}
+export interface SkillProps {
+  title: string;
+  categories: string[];
+}

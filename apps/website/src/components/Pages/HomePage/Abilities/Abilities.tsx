@@ -1,4 +1,5 @@
 import { AbilitiesProps } from "./Abilities.types";
+import { SkillsParallax } from "./components";
 
 const Abilities = (props: AbilitiesProps) => {
   return (
@@ -11,6 +12,7 @@ const Abilities = (props: AbilitiesProps) => {
           tw-left-0 -tw-translate-x-1/2
         `}
       />
+      <SkillsParallax />
     </section>
   );
 };

@@ -46,8 +46,7 @@ const Hero = (props: HeroProps) => {
           tw-bg-[radial-gradient(_rgba(80,80,80,1)_10%,_#000_80%)]
           tw-opacity-[.5] tw-blur-[100px] tw-rotate-[30deg]
         `}
-      ></div>
-
+      />
       <h1
         className={`
           title tw-z-[2]
@@ -62,8 +61,7 @@ const Hero = (props: HeroProps) => {
       </h1>
       <div
         className={`
-          labels tw-relative tw-z-[1] tw-flex tw-flex-wrap tw-gap-[13px]
-          tw-z-[2]
+          labels tw-relative tw-flex tw-flex-wrap tw-gap-[13px] tw-z-[2]
 
           md:tw-gap-5
 
