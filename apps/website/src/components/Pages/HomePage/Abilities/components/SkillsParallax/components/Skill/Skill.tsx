@@ -63,20 +63,14 @@ const Skill = (props: SkillProps) => {
                 rod tw-absolute tw-bottom-[-15px] tw-left-1/2
                 -tw-translate-x-1/2 tw-h-[calc(100%-11px)] tw-w-[8px]
 
-                xl:tw-h-[calc(100%-20px)]
+                xl:tw-h-[calc(100%-20px)] xl:tw-transition-all
+                xl:tw-duration-500 xl:tw-ease-in-out
               `,
               props.index == props.amount - 1 &&
                 "xl:tw-h-[calc(100%-40px)] xl:tw-bottom-0",
-              (
-                !["sm", "md"].includes(screen)
-                  ? props.currentIndex >= props.index
-                  : true
-              )
-                ? `
-                  tw-bg-gradient-to-b tw-from-[var(--primary-default)]
-                  tw-to-[var(--primary-lighest)]
-                `
-                : `tw-bg-[var(--secondary-darker)]`
+              (!["sm", "md"].includes(screen)
+                ? props.currentIndex >= props.index
+                : true) && `active`
             )}
           />
         </div>
@@ -108,15 +102,25 @@ const Skill = (props: SkillProps) => {
           )}
           {props.title}
         </h3>
-        <div className="categories tw-flex tw-flex-wrap tw-gap-[10px]">
-          {(!["sm", "md"].includes(screen)
-            ? props.currentIndex === props.index
-            : true) &&
-            props.categories.map((category, index) => {
-              return (
-                <Label key={index} text={category} size={getLabelSize()} />
-              );
-            })}
+        <div
+          className={cn(
+            `
+              categories tw-flex tw-flex-wrap tw-gap-[10px] tw-overflow-hidden
+              tw-transition-all tw-duration-500
+              tw-animation-timing-[cubic-bezier(0.68,-0.55,0.27,1.55)]
+            `,
+            (
+              !["sm", "md"].includes(screen)
+                ? props.currentIndex === props.index
+                : true
+            )
+              ? "tw-max-h-[20rem]"
+              : "tw-max-h-0"
+          )}
+        >
+          {props.categories.map((category, index) => {
+            return <Label key={index} text={category} size={getLabelSize()} />;
+          })}
         </div>
       </div>
     </div>

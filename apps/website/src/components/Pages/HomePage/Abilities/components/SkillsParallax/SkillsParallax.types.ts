@@ -1,1 +1,3 @@
-export interface SkillsParallaxProps {}
+export interface SkillsParallaxProps {
+  currentIndex: number;
+}

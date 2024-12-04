@@ -4,12 +4,8 @@ import { useClientInfoService } from "@burneeble/ui-components";
 import { Skill } from "./components";
 import { SkillsParallaxProps } from "./SkillsParallax.types";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
 
 const SkillsParallax = (props: SkillsParallaxProps) => {
-  //States
-  const [currentIndex] = useState<number>(1);
-
   //Hooks
   const { screen } = useClientInfoService();
 
@@ -86,7 +82,7 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
                       "Optimization & Reliable Code",
                     ]}
                     index={i}
-                    currentIndex={currentIndex}
+                    currentIndex={props.currentIndex}
                     amount={4}
                   />
                 </div>
@@ -98,9 +94,10 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
               className={cn(
                 `
                   end-bar tw-absolute tw-h-[8px] tw-w-[50vw] tw-left-[17px]
-                  tw-bottom-0 tw-bg-[var(--primary-lighest)]
+                  tw-bottom-0 tw-bg-[var(--primary-lighest)] tw-transition-all
+                  tw-duration-500 tw-ease-in-out
                 `,
-                currentIndex === 4
+                props.currentIndex === 4 - 1
                   ? `tw-bg-[var(--primary-lighest)]`
                   : "tw-bg-[var(--secondary-darker)]"
               )}
