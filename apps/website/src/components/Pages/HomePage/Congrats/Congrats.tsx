@@ -105,15 +105,19 @@ const Congrats = (props: CongratsProps) => {
     >
       <div
         className={`
-          title tw-text-center tw-font-bowlby-one tw-text-2xl
+          title tw-text-center tw-text-2xl
 
           lg:tw-text-5xl lg:tw-leading-[60px]
 
           md:tw-flex md:tw-text-4xl md:tw-gap-[15px]
         `}
       >
-        <p className="cs-text-color-primary-gradient">Congrats,</p>
-        <p className="tw-text-headings">you reached the end.</p>
+        <p className="cs-text-color-primary-gradient tw-font-bowlby-one">
+          Congrats,
+        </p>
+        <p className="tw-text-headings tw-font-bowlby-one">
+          you reached the end.
+        </p>
       </div>
       <p
         className={`

@@ -23,7 +23,7 @@ const ProjectPreview = (props: ProjectPreviewProps) => {
 
   const openProject = () => {
     router.push(
-      `/projects/${props.title
+      `/project/${props.title
         .toLowerCase()
         .replace(/[^a-zA-Z0-9\s]/g, "")
         .replaceAll(" ", "-")}`
