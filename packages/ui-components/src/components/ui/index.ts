@@ -9,3 +9,7 @@ export * from "./skeleton";
 export * from "./tooltip";
 export * from "./navigation-menu";
 export * from "./accordion";
+export * from "./checkbox";
+export * from "./textarea";
+export * from "./radio-group";
+export * from "./select";

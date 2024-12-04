@@ -1,14 +1,27 @@
 "use client";
 
-import { ContactCard } from "@burneeble/ui-components";
+import { ContactCard, useScrollLock } from "@burneeble/ui-components";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { ContactProps } from "./Contact.types";
+import { useEffect, useState } from "react";
+import { ContactPopup } from "./components";
 
 const Contact = (props: ContactProps) => {
   //States
+  const [isContactPopupOpen, setIsContactPopupOpen] = useState<boolean>(false);
+  const [isFirstRender, setFirstRender] = useState<boolean>(true);
 
   //Hooks
-  // const { screen } = useClientInfoService();
+  const { lockScroll, unlockScroll } = useScrollLock();
+
+  //Effect
+  useEffect(() => {
+    if (isFirstRender) setFirstRender(false);
+    else {
+      if (isContactPopupOpen) lockScroll();
+      else unlockScroll();
+    }
+  }, [isContactPopupOpen]);
 
   return (
     <section
@@ -17,6 +30,13 @@ const Contact = (props: ContactProps) => {
         tw-justify-center tw-gap-5 tw-flex-col tw-relative
       `}
     >
+      {isContactPopupOpen && (
+        <ContactPopup
+          isContactPopupOpen={isContactPopupOpen}
+          setIsContactPopupOpen={setIsContactPopupOpen}
+        />
+      )}
+
       <div
         className={`
           contact-shape tw-absolute tw-top-[50%] tw-left-[50%]
@@ -91,8 +111,10 @@ const Contact = (props: ContactProps) => {
           description="You can contact us by email, we will reply you as soon as possible."
           mainColor="#f28307"
           buttonText="Contact Us"
-          onClick={() => {}}
-        />{" "}
+          onClick={() => {
+            setIsContactPopupOpen(true);
+          }}
+        />
         <ContactCard
           icon={"/img/logos/upwork-logo.webp"}
           title="Upwork"
