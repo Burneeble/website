@@ -5,7 +5,7 @@ import { SkillsParallaxProps } from "./SkillsParallax.types";
 
 const SkillsParallax = (props: SkillsParallaxProps) => {
   return (
-    <div className="skills-parallax">
+    <div className="skills-parallax tw-w-full tw-flex tw-gap-[10px] tw-flex-col">
       <div
         className={`
           skill-info tw-flex tw-items-start tw-justify-center tw-flex-col
@@ -19,32 +19,36 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
           : Headless or Traditional Development
         </h2>
         <p className="text">
-          {`As experienced developers, we specialize in seamless Shopify
-          integrations that transform your e-commerce experience. Whether you're
-          looking to harness the flexibility of a headless architecture or
-          prefer the simplicity of a traditional Shopify setup, we’ve got you
-          covered.`}
-          <br />
-          <br />
-          {`Our tailored solutions ensure blazing-fast performance, fully
+          Our tailored solutions ensure blazing-fast performance, fully
           customized user interfaces, and the scalability to grow with your
-          business. We partner with you to build a future-proof platform that
-          elevates your brand, providing the freedom to innovate and deliver
-          exceptional customer experiences—whatever path you choose`}
+          business.
+          <br />
+          <br />
+          We partner with you to build a future-proof platform that elevates
+          your brand, providing the freedom to innovate and deliver exceptional
+          customer experiences.
         </p>
       </div>
-      <div className="skills">
-        <div className="skill-wrapper">
-          <Skill title="Web Development" categories={[]} />
-        </div>
-        <div className="skill-wrapper">
-          <Skill title="Blockchain" categories={[]} />
-        </div>
-        <div className="skill-wrapper">
-          <Skill title="Saas Application" categories={[]} />
-        </div>
-        <div className="skill-wrapper">
-          <Skill title="Shopify" categories={[]} />
+      <div className={`skills tw-overflow-y-hidden tw-max-w-full no-scrollbar`}>
+        <div className="wrapper tw-w-[calc(100%*4)] tw-justify-between tw-flex">
+          {["Web Development", "Blockchain", "Saas Application", "Shopify"].map(
+            (t, i) => {
+              return (
+                <div key={i} className="skill-wrapper tw-flex-1">
+                  <Skill
+                    title={t}
+                    categories={[
+                      "Custom Development",
+                      "Architecture Design",
+                      "API Development",
+                      "Automation with Scripts",
+                      "Optimization & Reliable Code",
+                    ]}
+                  />
+                </div>
+              );
+            }
+          )}
         </div>
       </div>
     </div>

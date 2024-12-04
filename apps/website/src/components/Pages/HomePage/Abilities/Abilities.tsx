@@ -3,7 +3,12 @@ import { SkillsParallax } from "./components";
 
 const Abilities = (props: AbilitiesProps) => {
   return (
-    <section className="abilities-section cs-section-structure tw-relative">
+    <section
+      className={`
+        abilities-section cs-section-structure tw-relative tw-justify-center
+        tw-items-center
+      `}
+    >
       <div
         className={`
           tw-w-[700px] tw-h-[700px]
