@@ -3,8 +3,13 @@
 import { useClientInfoService } from "@burneeble/ui-components";
 import { Skill } from "./components";
 import { SkillsParallaxProps } from "./SkillsParallax.types";
+import { cn } from "@/lib/utils";
+import { useState } from "react";
 
 const SkillsParallax = (props: SkillsParallaxProps) => {
+  //States
+  const [currentIndex] = useState<number>(1);
+
   //Hooks
   const { screen } = useClientInfoService();
 
@@ -81,7 +86,7 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
                       "Optimization & Reliable Code",
                     ]}
                     index={i}
-                    currentIndex={1}
+                    currentIndex={currentIndex}
                     amount={4}
                   />
                 </div>
@@ -90,19 +95,27 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
           </div>
           {!["sm", "md"].includes(screen) && (
             <div
-              className={`
-                end-bar tw-absolute tw-h-[8px] tw-w-[50vw] tw-left-[17px]
-                tw-bottom-0 tw-bg-[var(--primary-lighest)]
-              `}
+              className={cn(
+                `
+                  end-bar tw-absolute tw-h-[8px] tw-w-[50vw] tw-left-[17px]
+                  tw-bottom-0 tw-bg-[var(--primary-lighest)]
+                `,
+                currentIndex === 4
+                  ? `tw-bg-[var(--primary-lighest)]`
+                  : "tw-bg-[var(--secondary-darker)]"
+              )}
             />
           )}
         </div>
         {screen === "md" && (
           <div
-            className={`
-              bar tw-translate-x-[-50%] tw-absolute tw-bottom-0 tw-left-1/2
-              tw-h-[8px] tw-bg-[var(--primary-lighest)] tw-w-screen tw-block
-            `}
+            className={cn(
+              `
+                bar tw-translate-x-[-50%] tw-bg-[var(--primary-lighest)]
+                tw-absolute tw-bottom-0 tw-left-1/2 tw-h-[8px] tw-w-screen
+                tw-block
+              `
+            )}
           />
         )}
       </div>
