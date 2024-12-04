@@ -1,11 +1,21 @@
 "use client";
 
+import { useClientInfoService } from "@burneeble/ui-components";
 import { Skill } from "./components";
 import { SkillsParallaxProps } from "./SkillsParallax.types";
 
 const SkillsParallax = (props: SkillsParallaxProps) => {
+  //Hooks
+  const { screen } = useClientInfoService();
+
   return (
-    <div className="skills-parallax tw-w-full tw-flex tw-gap-[10px] tw-flex-col">
+    <div
+      className={`
+        skills-parallax tw-w-full tw-flex tw-gap-[10px] tw-flex-col
+
+        md:tw-gap-[30px]
+      `}
+    >
       <div
         className={`
           skill-info tw-flex tw-items-start tw-justify-center tw-flex-col
@@ -29,10 +39,20 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
           customer experiences.
         </p>
       </div>
-      <div className={`skills tw-overflow-y-hidden tw-max-w-full no-scrollbar`}>
-        <div className="wrapper tw-w-[calc(100%*4)] tw-justify-between tw-flex">
-          {["Web Development", "Blockchain", "Saas Application", "Shopify"].map(
-            (t, i) => {
+      <div className="skill-section tw-relative">
+        <div className={`skills tw-overflow-hidden tw-max-w-full no-scrollbar`}>
+          <div
+            className={`
+              wrapper tw-w-[calc(100%*4)] tw-justify-between tw-relative tw-flex
+              tw-pb-[30px]
+            `}
+          >
+            {[
+              "Web Development",
+              "Blockchain",
+              "Saas Application",
+              "Shopify",
+            ].map((t, i) => {
               return (
                 <div key={i} className="skill-wrapper tw-flex-1">
                   <Skill
@@ -47,9 +67,17 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
                   />
                 </div>
               );
-            }
-          )}
+            })}
+          </div>
         </div>
+        {screen === "md" && (
+          <div
+            className={`
+              bar tw-translate-x-[-50%] tw-absolute tw-bottom-0 tw-left-1/2
+              tw-h-[8px] tw-bg-[var(--primary-lighest)] tw-w-screen tw-block
+            `}
+          />
+        )}
       </div>
     </div>
   );
