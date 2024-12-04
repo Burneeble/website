@@ -6,7 +6,7 @@ const Abilities = (props: AbilitiesProps) => {
     <section
       className={`
         abilities-section cs-section-structure tw-relative tw-justify-center
-        tw-items-center
+        tw-items-center tw-flex tw-flex-col
       `}
     >
       <div

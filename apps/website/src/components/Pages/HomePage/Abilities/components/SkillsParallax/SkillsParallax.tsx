@@ -14,6 +14,8 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
         skills-parallax tw-w-full tw-flex tw-gap-[10px] tw-flex-col
 
         md:tw-gap-[30px]
+
+        xl:tw-flex-row xl:tw-gap-[70px] xl:tw-h-[calc(100vh-60px)]
       `}
     >
       <div
@@ -22,12 +24,12 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
           tw-gap-[10px]
         `}
       >
-        <h2 className="title">
+        <h1 className="title">
           <span className="cs-text-color-primary-gradient">
             Shopify Integration
           </span>
           : Headless or Traditional Development
-        </h2>
+        </h1>
         <p className="text">
           Our tailored solutions ensure blazing-fast performance, fully
           customized user interfaces, and the scalability to grow with your
@@ -39,12 +41,26 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
           customer experiences.
         </p>
       </div>
-      <div className="skill-section tw-relative">
-        <div className={`skills tw-overflow-hidden tw-max-w-full no-scrollbar`}>
+      <div
+        className={`
+          skill-section tw-relative
+
+          xl:tw-min-h-full
+        `}
+      >
+        <div
+          className={`
+            skills tw-overflow-hidden tw-max-w-full no-scrollbar
+
+            xl:tw-h-full xl:tw-relative xl:tw-overflow-visible
+          `}
+        >
           <div
             className={`
               wrapper tw-w-[calc(100%*4)] tw-justify-between tw-relative tw-flex
               tw-pb-[30px]
+
+              xl:tw-w-[490px] xl:tw-flex-col xl:tw-pb-0 xl:tw-h-full
             `}
           >
             {[
@@ -54,7 +70,7 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
               "Shopify",
             ].map((t, i) => {
               return (
-                <div key={i} className="skill-wrapper tw-flex-1">
+                <div key={i} className={`skill-wrapper tw-flex-1`}>
                   <Skill
                     title={t}
                     categories={[
@@ -64,11 +80,22 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
                       "Automation with Scripts",
                       "Optimization & Reliable Code",
                     ]}
+                    index={i}
+                    currentIndex={1}
+                    amount={4}
                   />
                 </div>
               );
             })}
           </div>
+          {!["sm", "md"].includes(screen) && (
+            <div
+              className={`
+                end-bar tw-absolute tw-h-[8px] tw-w-[50vw] tw-left-[17px]
+                tw-bottom-0 tw-bg-[var(--primary-lighest)]
+              `}
+            />
+          )}
         </div>
         {screen === "md" && (
           <div
