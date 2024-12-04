@@ -5,6 +5,7 @@ import { SkillProps } from "./Skill.types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFire } from "@fortawesome/free-solid-svg-icons";
 import { cn } from "@/lib/utils";
+import { useEffect } from "react";
 
 const Skill = (props: SkillProps) => {
   //Hooks
@@ -21,6 +22,9 @@ const Skill = (props: SkillProps) => {
         return "lg";
     }
   };
+
+  //Effects
+  useEffect(() => {}, []);
 
   return (
     <div
@@ -60,14 +64,14 @@ const Skill = (props: SkillProps) => {
           <div
             className={cn(
               `
-                rod tw-absolute tw-bottom-[-15px] tw-left-1/2
+                rod tw-absolute tw-bottom-[-25px] tw-left-1/2
                 -tw-translate-x-1/2 tw-h-[calc(100%-11px)] tw-w-[8px]
 
                 xl:tw-h-[calc(100%-20px)] xl:tw-transition-all
-                xl:tw-duration-500 xl:tw-ease-in-out
+                xl:tw-duration-500 xl:tw-ease-in-out xl:tw-bottom-[-15px]
               `,
               props.index == props.amount - 1 &&
-                "xl:tw-h-[calc(100%-40px)] xl:tw-bottom-0",
+                "xl:tw-h-[calc(100%-40px)] xl:!tw-bottom-0",
               (!["sm", "md"].includes(screen)
                 ? props.currentIndex >= props.index
                 : true) && `active`

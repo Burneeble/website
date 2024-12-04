@@ -4,10 +4,23 @@ import { useClientInfoService } from "@burneeble/ui-components";
 import { Skill } from "./components";
 import { SkillsParallaxProps } from "./SkillsParallax.types";
 import { cn } from "@/lib/utils";
+import { useEffect, useRef } from "react";
 
 const SkillsParallax = (props: SkillsParallaxProps) => {
   //Hooks
   const { screen } = useClientInfoService();
+  const skills = useRef<HTMLDivElement>(null);
+
+  //Effects
+  useEffect(() => {
+    if (skills.current) {
+      skills.current.scrollTo({
+        top: 0,
+        left: (skills.current.scrollWidth / 4) * props.currentIndex,
+        behavior: "smooth",
+      });
+    }
+  }, [props.currentIndex, skills]);
 
   return (
     <div
@@ -25,13 +38,13 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
           tw-gap-[10px]
         `}
       >
-        <h1 className="title">
+        <h1 className="title tw-text-3xl">
           <span className="cs-text-color-primary-gradient">
             Shopify Integration
           </span>
           : Headless or Traditional Development
         </h1>
-        <p className="text">
+        <p className="text tw-text-lg">
           Our tailored solutions ensure blazing-fast performance, fully
           customized user interfaces, and the scalability to grow with your
           business.
@@ -55,6 +68,7 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
 
             xl:tw-h-full xl:tw-relative xl:tw-overflow-visible
           `}
+          ref={skills}
         >
           <div
             className={`
