@@ -391,13 +391,19 @@ export enum ContentTypeEnum {
   /** The Type of Content object */
   Attachment = 'ATTACHMENT',
   /** The Type of Content object */
+  ImagesLayout = 'IMAGES_LAYOUT',
+  /** The Type of Content object */
   Page = 'PAGE',
   /** The Type of Content object */
   Post = 'POST',
   /** The Type of Content object */
   Project = 'PROJECT',
   /** The Type of Content object */
-  Review = 'REVIEW'
+  Review = 'REVIEW',
+  /** The Type of Content object */
+  ScreenImagesLayout = 'SCREEN_IMAGES_LAYOUT',
+  /** The Type of Content object */
+  Section = 'SECTION'
 }
 
 /** The Type of Identifier used to fetch a single Content Type node. To be used along with the "id" field. Default is "ID". */
@@ -455,6 +461,12 @@ export enum ContentTypesOfCategoryEnum {
   Post = 'POST'
 }
 
+/** Allowed Content Types of the ImagesLayoutValue taxonomy. */
+export enum ContentTypesOfImagesLayoutValueEnum {
+  /** The Type of Content object */
+  ImagesLayout = 'IMAGES_LAYOUT'
+}
+
 /** Allowed Content Types of the PostFormat taxonomy. */
 export enum ContentTypesOfPostFormatEnum {
   /** The Type of Content object */
@@ -465,6 +477,18 @@ export enum ContentTypesOfPostFormatEnum {
 export enum ContentTypesOfProjectCategoryEnum {
   /** The Type of Content object */
   Project = 'PROJECT'
+}
+
+/** Allowed Content Types of the ProjectTechnology taxonomy. */
+export enum ContentTypesOfProjectTechnologyEnum {
+  /** The Type of Content object */
+  Project = 'PROJECT'
+}
+
+/** Allowed Content Types of the SectionLayout taxonomy. */
+export enum ContentTypesOfSectionLayoutEnum {
+  /** The Type of Content object */
+  Section = 'SECTION'
 }
 
 /** Allowed Content Types of the Tag taxonomy. */
@@ -513,6 +537,40 @@ export type CreateCommentInput = {
   status?: InputMaybe<CommentStatusEnum>;
   /** Type of comment. */
   type?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Input for the createImagesLayout mutation. */
+export type CreateImagesLayoutInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  date?: InputMaybe<Scalars['String']['input']>;
+  /** Set connections between the imagesLayout and imagesLayoutsValues */
+  imagesLayoutsValues?: InputMaybe<ImagesLayoutImagesLayoutsValuesInput>;
+  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
+  menuOrder?: InputMaybe<Scalars['Int']['input']>;
+  /** The password used to protect the content of the object */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** The slug of the object */
+  slug?: InputMaybe<Scalars['String']['input']>;
+  /** The status of the object */
+  status?: InputMaybe<PostStatusEnum>;
+  /** The title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Input for the createImagesLayoutValue mutation. */
+export type CreateImagesLayoutValueInput = {
+  /** The slug that the images-layout-value will be an alias of */
+  aliasOf?: InputMaybe<Scalars['String']['input']>;
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The description of the images-layout-value object */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The name of the images-layout-value object to mutate */
+  name: Scalars['String']['input'];
+  /** If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name. */
+  slug?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** Input for the createMediaItem mutation. */
@@ -655,12 +713,28 @@ export type CreateProjectInput = {
   password?: InputMaybe<Scalars['String']['input']>;
   /** Set connections between the project and projectCategories */
   projectCategories?: InputMaybe<ProjectProjectCategoriesInput>;
+  /** Set connections between the project and projectTechnologies */
+  projectTechnologies?: InputMaybe<ProjectProjectTechnologiesInput>;
   /** The slug of the object */
   slug?: InputMaybe<Scalars['String']['input']>;
   /** The status of the object */
   status?: InputMaybe<PostStatusEnum>;
   /** The title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Input for the createProjectTechnology mutation. */
+export type CreateProjectTechnologyInput = {
+  /** The slug that the project-technology will be an alias of */
+  aliasOf?: InputMaybe<Scalars['String']['input']>;
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The description of the project-technology object */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The name of the project-technology object to mutate */
+  name: Scalars['String']['input'];
+  /** If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name. */
+  slug?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** Input for the createReview mutation. */
@@ -679,6 +753,58 @@ export type CreateReviewInput = {
   status?: InputMaybe<PostStatusEnum>;
   /** The title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Input for the createScreenImagesLayout mutation. */
+export type CreateScreenImagesLayoutInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  date?: InputMaybe<Scalars['String']['input']>;
+  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
+  menuOrder?: InputMaybe<Scalars['Int']['input']>;
+  /** The password used to protect the content of the object */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** The slug of the object */
+  slug?: InputMaybe<Scalars['String']['input']>;
+  /** The status of the object */
+  status?: InputMaybe<PostStatusEnum>;
+  /** The title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Input for the createSection mutation. */
+export type CreateSectionInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  date?: InputMaybe<Scalars['String']['input']>;
+  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
+  menuOrder?: InputMaybe<Scalars['Int']['input']>;
+  /** The password used to protect the content of the object */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Set connections between the section and sectionLayouts */
+  sectionLayouts?: InputMaybe<SectionSectionLayoutsInput>;
+  /** The slug of the object */
+  slug?: InputMaybe<Scalars['String']['input']>;
+  /** The status of the object */
+  status?: InputMaybe<PostStatusEnum>;
+  /** The title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Input for the createSectionLayout mutation. */
+export type CreateSectionLayoutInput = {
+  /** The slug that the section-layout will be an alias of */
+  aliasOf?: InputMaybe<Scalars['String']['input']>;
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The description of the section-layout object */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The name of the section-layout object to mutate */
+  name: Scalars['String']['input'];
+  /** If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name. */
+  slug?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** Input for the createTag mutation. */
@@ -793,6 +919,26 @@ export type DeleteCommentInput = {
   id: Scalars['ID']['input'];
 };
 
+/** Input for the deleteImagesLayout mutation. */
+export type DeleteImagesLayoutInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** Whether the object should be force deleted instead of being moved to the trash */
+  forceDelete?: InputMaybe<Scalars['Boolean']['input']>;
+  /** The ID of the imagesLayout to delete */
+  id: Scalars['ID']['input'];
+  /** Override the edit lock when another user is editing the post */
+  ignoreEditLock?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Input for the deleteImagesLayoutValue mutation. */
+export type DeleteImagesLayoutValueInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the imagesLayoutValue to delete */
+  id: Scalars['ID']['input'];
+};
+
 /** Input for the deleteMediaItem mutation. */
 export type DeleteMediaItemInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
@@ -855,6 +1001,14 @@ export type DeleteProjectInput = {
   ignoreEditLock?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+/** Input for the deleteProjectTechnology mutation. */
+export type DeleteProjectTechnologyInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the projectTechnology to delete */
+  id: Scalars['ID']['input'];
+};
+
 /** Input for the deleteReview mutation. */
 export type DeleteReviewInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
@@ -865,6 +1019,38 @@ export type DeleteReviewInput = {
   id: Scalars['ID']['input'];
   /** Override the edit lock when another user is editing the post */
   ignoreEditLock?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Input for the deleteScreenImagesLayout mutation. */
+export type DeleteScreenImagesLayoutInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** Whether the object should be force deleted instead of being moved to the trash */
+  forceDelete?: InputMaybe<Scalars['Boolean']['input']>;
+  /** The ID of the screenImagesLayout to delete */
+  id: Scalars['ID']['input'];
+  /** Override the edit lock when another user is editing the post */
+  ignoreEditLock?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Input for the deleteSection mutation. */
+export type DeleteSectionInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** Whether the object should be force deleted instead of being moved to the trash */
+  forceDelete?: InputMaybe<Scalars['Boolean']['input']>;
+  /** The ID of the section to delete */
+  id: Scalars['ID']['input'];
+  /** Override the edit lock when another user is editing the post */
+  ignoreEditLock?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Input for the deleteSectionLayout mutation. */
+export type DeleteSectionLayoutInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the sectionLayout to delete */
+  id: Scalars['ID']['input'];
 };
 
 /** Input for the deleteTag mutation. */
@@ -930,6 +1116,226 @@ export type HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgs = {
 export type HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgs = {
   /** The Types of content to filter */
   contentTypes?: InputMaybe<Array<InputMaybe<ContentTypeEnum>>>;
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']['input']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** The Type of Identifier used to fetch a single resource. Default is ID. */
+export enum ImagesLayoutIdType {
+  /** Identify a resource by the Database ID. */
+  DatabaseId = 'DATABASE_ID',
+  /** Identify a resource by the (hashed) Global ID. */
+  Id = 'ID',
+  /** Identify a resource by the slug. Available to non-hierarchcial Types where the slug is a unique identifier. */
+  Slug = 'SLUG',
+  /** Identify a resource by the URI. */
+  Uri = 'URI'
+}
+
+/** Set relationships between the imagesLayout to imagesLayoutsValues */
+export type ImagesLayoutImagesLayoutsValuesInput = {
+  /** If true, this will append the imagesLayoutValue to existing related imagesLayoutsValues. If false, this will replace existing relationships. Default true. */
+  append?: InputMaybe<Scalars['Boolean']['input']>;
+  /** The input list of items to set. */
+  nodes?: InputMaybe<Array<InputMaybe<ImagesLayoutImagesLayoutsValuesNodeInput>>>;
+};
+
+/** List of imagesLayoutsValues to connect the imagesLayout to. If an ID is set, it will be used to create the connection. If not, it will look for a slug. If neither are valid existing terms, and the site is configured to allow terms to be created during post mutations, a term will be created using the Name if it exists in the input, then fallback to the slug if it exists. */
+export type ImagesLayoutImagesLayoutsValuesNodeInput = {
+  /** The description of the imagesLayoutValue. This field is used to set a description of the imagesLayoutValue if a new one is created during the mutation. */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the imagesLayoutValue. If present, this will be used to connect to the imagesLayout. If no existing imagesLayoutValue exists with this ID, no connection will be made. */
+  id?: InputMaybe<Scalars['ID']['input']>;
+  /** The name of the imagesLayoutValue. This field is used to create a new term, if term creation is enabled in nested mutations, and if one does not already exist with the provided slug or ID or if a slug or ID is not provided. If no name is included and a term is created, the creation will fallback to the slug field. */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** The slug of the imagesLayoutValue. If no ID is present, this field will be used to make a connection. If no existing term exists with this slug, this field will be used as a fallback to the Name field when creating a new term to connect to, if term creation is enabled as a nested mutation. */
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Arguments for filtering the ImagesLayoutToImagesLayoutValueConnection connection */
+export type ImagesLayoutToImagesLayoutValueConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']['input']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']['input']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Arguments for filtering the ImagesLayoutToTermNodeConnection connection */
+export type ImagesLayoutToTermNodeConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']['input']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']['input']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** The Taxonomy to filter terms by */
+  taxonomies?: InputMaybe<Array<InputMaybe<TaxonomyEnum>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** The Type of Identifier used to fetch a single resource. Default is ID. */
+export enum ImagesLayoutValueIdType {
+  /** The Database ID for the node */
+  DatabaseId = 'DATABASE_ID',
+  /** The hashed Global ID */
+  Id = 'ID',
+  /** The name of the node */
+  Name = 'NAME',
+  /** Url friendly name of the node */
+  Slug = 'SLUG',
+  /** The URI for the node */
+  Uri = 'URI'
+}
+
+/** Arguments for filtering the ImagesLayoutValueToContentNodeConnection connection */
+export type ImagesLayoutValueToContentNodeConnectionWhereArgs = {
+  /** The Types of content to filter */
+  contentTypes?: InputMaybe<Array<InputMaybe<ContentTypesOfImagesLayoutValueEnum>>>;
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']['input']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Arguments for filtering the ImagesLayoutValueToImagesLayoutConnection connection */
+export type ImagesLayoutValueToImagesLayoutConnectionWhereArgs = {
   /** Filter the connection based on dates */
   dateQuery?: InputMaybe<DateQueryInput>;
   /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
@@ -2219,8 +2625,168 @@ export type ProjectProjectCategoriesNodeInput = {
   slug?: InputMaybe<Scalars['String']['input']>;
 };
 
+/** Set relationships between the project to projectTechnologies */
+export type ProjectProjectTechnologiesInput = {
+  /** If true, this will append the projectTechnology to existing related projectTechnologies. If false, this will replace existing relationships. Default true. */
+  append?: InputMaybe<Scalars['Boolean']['input']>;
+  /** The input list of items to set. */
+  nodes?: InputMaybe<Array<InputMaybe<ProjectProjectTechnologiesNodeInput>>>;
+};
+
+/** List of projectTechnologies to connect the project to. If an ID is set, it will be used to create the connection. If not, it will look for a slug. If neither are valid existing terms, and the site is configured to allow terms to be created during post mutations, a term will be created using the Name if it exists in the input, then fallback to the slug if it exists. */
+export type ProjectProjectTechnologiesNodeInput = {
+  /** The description of the projectTechnology. This field is used to set a description of the projectTechnology if a new one is created during the mutation. */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the projectTechnology. If present, this will be used to connect to the project. If no existing projectTechnology exists with this ID, no connection will be made. */
+  id?: InputMaybe<Scalars['ID']['input']>;
+  /** The name of the projectTechnology. This field is used to create a new term, if term creation is enabled in nested mutations, and if one does not already exist with the provided slug or ID or if a slug or ID is not provided. If no name is included and a term is created, the creation will fallback to the slug field. */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** The slug of the projectTechnology. If no ID is present, this field will be used to make a connection. If no existing term exists with this slug, this field will be used as a fallback to the Name field when creating a new term to connect to, if term creation is enabled as a nested mutation. */
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** The Type of Identifier used to fetch a single resource. Default is ID. */
+export enum ProjectTechnologyIdType {
+  /** The Database ID for the node */
+  DatabaseId = 'DATABASE_ID',
+  /** The hashed Global ID */
+  Id = 'ID',
+  /** The name of the node */
+  Name = 'NAME',
+  /** Url friendly name of the node */
+  Slug = 'SLUG',
+  /** The URI for the node */
+  Uri = 'URI'
+}
+
+/** Arguments for filtering the ProjectTechnologyToContentNodeConnection connection */
+export type ProjectTechnologyToContentNodeConnectionWhereArgs = {
+  /** The Types of content to filter */
+  contentTypes?: InputMaybe<Array<InputMaybe<ContentTypesOfProjectTechnologyEnum>>>;
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']['input']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Arguments for filtering the ProjectTechnologyToProjectConnection connection */
+export type ProjectTechnologyToProjectConnectionWhereArgs = {
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']['input']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
 /** Arguments for filtering the ProjectToProjectCategoryConnection connection */
 export type ProjectToProjectCategoryConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']['input']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']['input']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Arguments for filtering the ProjectToProjectTechnologyConnection connection */
+export type ProjectToProjectTechnologyConnectionWhereArgs = {
   /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
   cacheDomain?: InputMaybe<Scalars['String']['input']>;
   /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
@@ -2538,6 +3104,91 @@ export type RootQueryToContentNodeConnectionWhereArgs = {
   taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Arguments for filtering the RootQueryToImagesLayoutConnection connection */
+export type RootQueryToImagesLayoutConnectionWhereArgs = {
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']['input']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Arguments for filtering the RootQueryToImagesLayoutValueConnection connection */
+export type RootQueryToImagesLayoutValueConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']['input']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']['input']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 /** Arguments for filtering the RootQueryToMediaItemConnection connection */
@@ -2864,6 +3515,52 @@ export type RootQueryToProjectConnectionWhereArgs = {
   title?: InputMaybe<Scalars['String']['input']>;
 };
 
+/** Arguments for filtering the RootQueryToProjectTechnologyConnection connection */
+export type RootQueryToProjectTechnologyConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']['input']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']['input']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
 /** Arguments for filtering the RootQueryToReviewConnection connection */
 export type RootQueryToReviewConnectionWhereArgs = {
   /** Filter the connection based on dates */
@@ -2942,6 +3639,130 @@ export type RootQueryToRevisionsConnectionWhereArgs = {
   taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Arguments for filtering the RootQueryToScreenImagesLayoutConnection connection */
+export type RootQueryToScreenImagesLayoutConnectionWhereArgs = {
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']['input']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Arguments for filtering the RootQueryToSectionConnection connection */
+export type RootQueryToSectionConnectionWhereArgs = {
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']['input']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Arguments for filtering the RootQueryToSectionLayoutConnection connection */
+export type RootQueryToSectionLayoutConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']['input']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']['input']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 /** Arguments for filtering the RootQueryToTagConnection connection */
@@ -3072,6 +3893,18 @@ export type RootQueryToUserConnectionWhereArgs = {
   searchColumns?: InputMaybe<Array<InputMaybe<UsersConnectionSearchColumnEnum>>>;
 };
 
+/** The Type of Identifier used to fetch a single resource. Default is ID. */
+export enum ScreenImagesLayoutIdType {
+  /** Identify a resource by the Database ID. */
+  DatabaseId = 'DATABASE_ID',
+  /** Identify a resource by the (hashed) Global ID. */
+  Id = 'ID',
+  /** Identify a resource by the slug. Available to non-hierarchcial Types where the slug is a unique identifier. */
+  Slug = 'SLUG',
+  /** Identify a resource by the URI. */
+  Uri = 'URI'
+}
+
 /** The strategy to use when loading the script */
 export enum ScriptLoadingStrategyEnum {
   /** Use the script `async` attribute */
@@ -3079,6 +3912,226 @@ export enum ScriptLoadingStrategyEnum {
   /** Use the script `defer` attribute */
   Defer = 'DEFER'
 }
+
+/** The Type of Identifier used to fetch a single resource. Default is ID. */
+export enum SectionIdType {
+  /** Identify a resource by the Database ID. */
+  DatabaseId = 'DATABASE_ID',
+  /** Identify a resource by the (hashed) Global ID. */
+  Id = 'ID',
+  /** Identify a resource by the slug. Available to non-hierarchcial Types where the slug is a unique identifier. */
+  Slug = 'SLUG',
+  /** Identify a resource by the URI. */
+  Uri = 'URI'
+}
+
+/** The Type of Identifier used to fetch a single resource. Default is ID. */
+export enum SectionLayoutIdType {
+  /** The Database ID for the node */
+  DatabaseId = 'DATABASE_ID',
+  /** The hashed Global ID */
+  Id = 'ID',
+  /** The name of the node */
+  Name = 'NAME',
+  /** Url friendly name of the node */
+  Slug = 'SLUG',
+  /** The URI for the node */
+  Uri = 'URI'
+}
+
+/** Arguments for filtering the SectionLayoutToContentNodeConnection connection */
+export type SectionLayoutToContentNodeConnectionWhereArgs = {
+  /** The Types of content to filter */
+  contentTypes?: InputMaybe<Array<InputMaybe<ContentTypesOfSectionLayoutEnum>>>;
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']['input']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Arguments for filtering the SectionLayoutToSectionConnection connection */
+export type SectionLayoutToSectionConnectionWhereArgs = {
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']['input']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Set relationships between the section to sectionLayouts */
+export type SectionSectionLayoutsInput = {
+  /** If true, this will append the sectionLayout to existing related sectionLayouts. If false, this will replace existing relationships. Default true. */
+  append?: InputMaybe<Scalars['Boolean']['input']>;
+  /** The input list of items to set. */
+  nodes?: InputMaybe<Array<InputMaybe<SectionSectionLayoutsNodeInput>>>;
+};
+
+/** List of sectionLayouts to connect the section to. If an ID is set, it will be used to create the connection. If not, it will look for a slug. If neither are valid existing terms, and the site is configured to allow terms to be created during post mutations, a term will be created using the Name if it exists in the input, then fallback to the slug if it exists. */
+export type SectionSectionLayoutsNodeInput = {
+  /** The description of the sectionLayout. This field is used to set a description of the sectionLayout if a new one is created during the mutation. */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the sectionLayout. If present, this will be used to connect to the section. If no existing sectionLayout exists with this ID, no connection will be made. */
+  id?: InputMaybe<Scalars['ID']['input']>;
+  /** The name of the sectionLayout. This field is used to create a new term, if term creation is enabled in nested mutations, and if one does not already exist with the provided slug or ID or if a slug or ID is not provided. If no name is included and a term is created, the creation will fallback to the slug field. */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** The slug of the sectionLayout. If no ID is present, this field will be used to make a connection. If no existing term exists with this slug, this field will be used as a fallback to the Name field when creating a new term to connect to, if term creation is enabled as a nested mutation. */
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Arguments for filtering the SectionToSectionLayoutConnection connection */
+export type SectionToSectionLayoutConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']['input']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']['input']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Arguments for filtering the SectionToTermNodeConnection connection */
+export type SectionToTermNodeConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']['input']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']['input']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** The Taxonomy to filter terms by */
+  taxonomies?: InputMaybe<Array<InputMaybe<TaxonomyEnum>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
+};
 
 /** Input for the sendPasswordResetEmail mutation. */
 export type SendPasswordResetEmailInput = {
@@ -3246,10 +4299,16 @@ export enum TaxQueryOperator {
 export enum TaxonomyEnum {
   /** Taxonomy enum category */
   Category = 'CATEGORY',
+  /** Taxonomy enum images-layout-value */
+  Imageslayoutvalue = 'IMAGESLAYOUTVALUE',
   /** Taxonomy enum post_format */
   Postformat = 'POSTFORMAT',
   /** Taxonomy enum project-category */
   Projectcategory = 'PROJECTCATEGORY',
+  /** Taxonomy enum project-technology */
+  Projecttechnology = 'PROJECTTECHNOLOGY',
+  /** Taxonomy enum section-layout */
+  Sectionlayout = 'SECTIONLAYOUT',
   /** Taxonomy enum post_tag */
   Tag = 'TAG'
 }
@@ -3338,6 +4397,46 @@ export type UpdateCommentInput = {
   status?: InputMaybe<CommentStatusEnum>;
   /** Type of comment. */
   type?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Input for the updateImagesLayout mutation. */
+export type UpdateImagesLayoutInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  date?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the imagesLayout object */
+  id: Scalars['ID']['input'];
+  /** Override the edit lock when another user is editing the post */
+  ignoreEditLock?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Set connections between the imagesLayout and imagesLayoutsValues */
+  imagesLayoutsValues?: InputMaybe<ImagesLayoutImagesLayoutsValuesInput>;
+  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
+  menuOrder?: InputMaybe<Scalars['Int']['input']>;
+  /** The password used to protect the content of the object */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** The slug of the object */
+  slug?: InputMaybe<Scalars['String']['input']>;
+  /** The status of the object */
+  status?: InputMaybe<PostStatusEnum>;
+  /** The title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Input for the updateImagesLayoutValue mutation. */
+export type UpdateImagesLayoutValueInput = {
+  /** The slug that the images-layout-value will be an alias of */
+  aliasOf?: InputMaybe<Scalars['String']['input']>;
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The description of the images-layout-value object */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the imagesLayoutValue object to update */
+  id: Scalars['ID']['input'];
+  /** The name of the images-layout-value object to mutate */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name. */
+  slug?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** Input for the updateMediaItem mutation. */
@@ -3498,12 +4597,30 @@ export type UpdateProjectInput = {
   password?: InputMaybe<Scalars['String']['input']>;
   /** Set connections between the project and projectCategories */
   projectCategories?: InputMaybe<ProjectProjectCategoriesInput>;
+  /** Set connections between the project and projectTechnologies */
+  projectTechnologies?: InputMaybe<ProjectProjectTechnologiesInput>;
   /** The slug of the object */
   slug?: InputMaybe<Scalars['String']['input']>;
   /** The status of the object */
   status?: InputMaybe<PostStatusEnum>;
   /** The title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Input for the updateProjectTechnology mutation. */
+export type UpdateProjectTechnologyInput = {
+  /** The slug that the project-technology will be an alias of */
+  aliasOf?: InputMaybe<Scalars['String']['input']>;
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The description of the project-technology object */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the projectTechnology object to update */
+  id: Scalars['ID']['input'];
+  /** The name of the project-technology object to mutate */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name. */
+  slug?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** Input for the updateReview mutation. */
@@ -3526,6 +4643,68 @@ export type UpdateReviewInput = {
   status?: InputMaybe<PostStatusEnum>;
   /** The title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Input for the updateScreenImagesLayout mutation. */
+export type UpdateScreenImagesLayoutInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  date?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the screenImagesLayout object */
+  id: Scalars['ID']['input'];
+  /** Override the edit lock when another user is editing the post */
+  ignoreEditLock?: InputMaybe<Scalars['Boolean']['input']>;
+  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
+  menuOrder?: InputMaybe<Scalars['Int']['input']>;
+  /** The password used to protect the content of the object */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** The slug of the object */
+  slug?: InputMaybe<Scalars['String']['input']>;
+  /** The status of the object */
+  status?: InputMaybe<PostStatusEnum>;
+  /** The title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Input for the updateSection mutation. */
+export type UpdateSectionInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  date?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the section object */
+  id: Scalars['ID']['input'];
+  /** Override the edit lock when another user is editing the post */
+  ignoreEditLock?: InputMaybe<Scalars['Boolean']['input']>;
+  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
+  menuOrder?: InputMaybe<Scalars['Int']['input']>;
+  /** The password used to protect the content of the object */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Set connections between the section and sectionLayouts */
+  sectionLayouts?: InputMaybe<SectionSectionLayoutsInput>;
+  /** The slug of the object */
+  slug?: InputMaybe<Scalars['String']['input']>;
+  /** The status of the object */
+  status?: InputMaybe<PostStatusEnum>;
+  /** The title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Input for the updateSectionLayout mutation. */
+export type UpdateSectionLayoutInput = {
+  /** The slug that the section-layout will be an alias of */
+  aliasOf?: InputMaybe<Scalars['String']['input']>;
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The description of the section-layout object */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the sectionLayout object to update */
+  id: Scalars['ID']['input'];
+  /** The name of the section-layout object to mutate */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name. */
+  slug?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** Input for the updateSettings mutation. */
@@ -3974,14 +5153,14 @@ export type GetProjectsByCategoriesQueryQueryVariables = Exact<{
 }>;
 
 
-export type GetProjectsByCategoriesQueryQuery = { __typename?: 'RootQuery', projects?: { __typename?: 'RootQueryToProjectConnection', edges: Array<{ __typename?: 'RootQueryToProjectConnectionEdge', node: { __typename?: 'Project', title?: string | null, projectFields?: { __typename?: 'ProjectFields', description?: string | null, projectUrl?: string | null, category?: { __typename?: 'AcfTermNodeConnection', edges: Array<{ __typename?: 'AcfTermNodeConnectionEdge', node: { __typename?: 'Category', name?: string | null } | { __typename?: 'PostFormat', name?: string | null } | { __typename?: 'ProjectCategory', name?: string | null } | { __typename?: 'Tag', name?: string | null } }> } | null, thumbnail?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', guid?: string | null } } | null } | null } }>, pageInfo: { __typename?: 'RootQueryToProjectConnectionPageInfo', endCursor?: string | null, hasNextPage: boolean } } | null };
+export type GetProjectsByCategoriesQueryQuery = { __typename?: 'RootQuery', projects?: { __typename?: 'RootQueryToProjectConnection', edges: Array<{ __typename?: 'RootQueryToProjectConnectionEdge', node: { __typename?: 'Project', title?: string | null, projectFields?: { __typename?: 'ProjectFields', description?: string | null, projectUrl?: string | null, category?: { __typename?: 'AcfTermNodeConnection', edges: Array<{ __typename?: 'AcfTermNodeConnectionEdge', node: { __typename?: 'Category', name?: string | null } | { __typename?: 'ImagesLayoutValue', name?: string | null } | { __typename?: 'PostFormat', name?: string | null } | { __typename?: 'ProjectCategory', name?: string | null } | { __typename?: 'ProjectTechnology', name?: string | null } | { __typename?: 'SectionLayout', name?: string | null } | { __typename?: 'Tag', name?: string | null } }> } | null, thumbnail?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', guid?: string | null } } | null } | null } }>, pageInfo: { __typename?: 'RootQueryToProjectConnectionPageInfo', endCursor?: string | null, hasNextPage: boolean } } | null };
 
 export type GetProjectQueryQueryVariables = Exact<{
   id: Scalars['ID']['input'];
 }>;
 
 
-export type GetProjectQueryQuery = { __typename?: 'RootQuery', projectBy?: { __typename?: 'Project', id: string, title?: string | null, projectFields?: { __typename?: 'ProjectFields', description?: string | null, fieldGroupName?: string | null, projectUrl?: string | null, thumbnail?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null, category?: { __typename?: 'AcfTermNodeConnection', edges: Array<{ __typename?: 'AcfTermNodeConnectionEdge', node: { __typename?: 'Category', name?: string | null } | { __typename?: 'PostFormat', name?: string | null } | { __typename?: 'ProjectCategory', name?: string | null } | { __typename?: 'Tag', name?: string | null } }> } | null } | null } | null };
+export type GetProjectQueryQuery = { __typename?: 'RootQuery', projectBy?: { __typename?: 'Project', id: string, title?: string | null, projectFields?: { __typename?: 'ProjectFields', description?: string | null, fieldGroupName?: string | null, projectUrl?: string | null, thumbnail?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null, category?: { __typename?: 'AcfTermNodeConnection', edges: Array<{ __typename?: 'AcfTermNodeConnectionEdge', node: { __typename?: 'Category', name?: string | null } | { __typename?: 'ImagesLayoutValue', name?: string | null } | { __typename?: 'PostFormat', name?: string | null } | { __typename?: 'ProjectCategory', name?: string | null } | { __typename?: 'ProjectTechnology', name?: string | null } | { __typename?: 'SectionLayout', name?: string | null } | { __typename?: 'Tag', name?: string | null } }> } | null } | null } | null };
 
 export type GetProjectsQueryQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -3989,7 +5168,7 @@ export type GetProjectsQueryQueryVariables = Exact<{
 }>;
 
 
-export type GetProjectsQueryQuery = { __typename?: 'RootQuery', projects?: { __typename?: 'RootQueryToProjectConnection', edges: Array<{ __typename?: 'RootQueryToProjectConnectionEdge', node: { __typename?: 'Project', title?: string | null, projectFields?: { __typename?: 'ProjectFields', description?: string | null, projectUrl?: string | null, category?: { __typename?: 'AcfTermNodeConnection', edges: Array<{ __typename?: 'AcfTermNodeConnectionEdge', node: { __typename?: 'Category', name?: string | null } | { __typename?: 'PostFormat', name?: string | null } | { __typename?: 'ProjectCategory', name?: string | null } | { __typename?: 'Tag', name?: string | null } }> } | null, thumbnail?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', guid?: string | null } } | null } | null } }>, pageInfo: { __typename?: 'RootQueryToProjectConnectionPageInfo', endCursor?: string | null, hasNextPage: boolean } } | null };
+export type GetProjectsQueryQuery = { __typename?: 'RootQuery', projects?: { __typename?: 'RootQueryToProjectConnection', edges: Array<{ __typename?: 'RootQueryToProjectConnectionEdge', node: { __typename?: 'Project', title?: string | null, projectFields?: { __typename?: 'ProjectFields', description?: string | null, projectUrl?: string | null, category?: { __typename?: 'AcfTermNodeConnection', edges: Array<{ __typename?: 'AcfTermNodeConnectionEdge', node: { __typename?: 'Category', name?: string | null } | { __typename?: 'ImagesLayoutValue', name?: string | null } | { __typename?: 'PostFormat', name?: string | null } | { __typename?: 'ProjectCategory', name?: string | null } | { __typename?: 'ProjectTechnology', name?: string | null } | { __typename?: 'SectionLayout', name?: string | null } | { __typename?: 'Tag', name?: string | null } }> } | null, thumbnail?: { __typename?: 'AcfMediaItemConnectionEdge', node: { __typename?: 'MediaItem', guid?: string | null } } | null } | null } }>, pageInfo: { __typename?: 'RootQueryToProjectConnectionPageInfo', endCursor?: string | null, hasNextPage: boolean } } | null };
 
 export type GetReviewsQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
