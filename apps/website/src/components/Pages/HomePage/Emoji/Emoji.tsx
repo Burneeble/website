@@ -10,8 +10,8 @@ const Emoji = (props: EmojiProps) => {
     >
       <div
         className={`
-          shape tw-absolute tw-top-[50%] tw-left-[50%] -tw-translate-x-[50%]
-          -tw-translate-y-[50%] tw-w-[40rem] tw-h-[40rem]
+          emoji-shape tw-absolute tw-top-[50%] tw-left-[50%]
+          -tw-translate-x-[50%] -tw-translate-y-[50%] tw-w-[40rem] tw-h-[40rem]
           tw-bg-[radial-gradient(circle,var(--primary-light)_0%,_rgba(0,0,0,0)_70%)]
           tw-opacity-[.5] tw-blur-[100px]
         `}

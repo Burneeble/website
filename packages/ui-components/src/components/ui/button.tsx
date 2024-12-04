@@ -9,7 +9,7 @@ const buttonVariants = cva(
   `
     tw-relative tw-flex tw-cursor-pointer tw-items-center tw-justify-center
     tw-gap-2 tw-overflow-hidden tw-whitespace-nowrap tw-font-bowlby-one
-    tw-text-lg tw-font-medium tw-transition-all
+    tw-text-lg tw-font-medium tw-transition-all tw-duration-200 tw-ease-in-out
 
     [&_svg]:tw-pointer-events-none [&_svg]:tw-size-5 [&_svg]:tw-shrink-0
 
@@ -42,6 +42,12 @@ const buttonVariants = cva(
         secondary: `
           tw-border tw-border-tertiary tw-bg-button-secondary tw-text-button
           tw-shadow-sm
+        `,
+        "secondary-outline": `
+          tw-border tw-border-[rgba(0,0,0,0)] tw-bg-button-secondary
+          tw-text-button tw-shadow-sm
+
+          hover:tw-border-tertiary
         `,
         ghost: `
           tw-text-button

@@ -39,8 +39,17 @@ const Contact = (props: ContactProps) => {
 
       <div
         className={`
+          contact-shape tw-absolute tw-top-[50%] tw-left-[50%]
+          -tw-translate-x-[50%] -tw-translate-y-[50%] tw-w-[80rem] tw-h-[40rem]
+          tw-bg-[radial-gradient(_rgba(115,80,61,1)_10%,_#000_80%)]
+          tw-opacity-[.5] tw-blur-[100px]
+        `}
+      ></div>
+
+      <div
+        className={`
           contact-text-content tw-w-full tw-flex-col tw-justify-center
-          tw-items-center tw-gap-2.5 tw-inline-flex
+          tw-items-center tw-gap-2.5 tw-inline-flex tw-z-[2]
         `}
       >
         <h2
@@ -83,7 +92,7 @@ const Contact = (props: ContactProps) => {
       <div
         className={`
           contact-cards tw-justify-center tw-items-center tw-gap-4
-          tw-inline-flex tw-flex-col tw-w-full
+          tw-inline-flex tw-flex-col tw-w-full tw-z-[2]
 
           2lg:tw-h-[441px] 2lg:tw-flex-row
         `}

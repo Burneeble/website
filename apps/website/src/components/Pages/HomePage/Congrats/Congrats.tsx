@@ -11,7 +11,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
-import { Flame } from "@burneeble/icons";
+import { FlameIcon } from "@burneeble/icons";
 
 const Congrats = (props: CongratsProps) => {
   //States
@@ -145,7 +145,7 @@ const Congrats = (props: CongratsProps) => {
           {combination.map((item, i) => {
             if (currentIndex >= combination.length) {
               return (
-                <Flame
+                <FlameIcon
                   className={`
                     tw-w-[60px] tw-aspect-square tw-animate-cs-zoom-in
                     tw-animate tw-scale-0

@@ -102,15 +102,15 @@ const config = {
         border: "rgba(var(--border))",
         input: "var(--primary-base)",
         ring: "rgba(var(--ring))",
-        background: "rgba(var(--secondary-base)",
-        foreground: "rgba(var(--primary-base))",
+        background: "var(--secondary-base)",
+        foreground: "var(--primary-base)",
         primary: {
           DEFAULT: "var(--primary-default)",
-          foreground: "rgba(var(--secondary-base))",
+          foreground: "var(--secondary-base)",
         },
         secondary: {
-          DEFAULT: "rgba(var(--secondary-default))",
-          foreground: "rgba(var(--primary-base))",
+          DEFAULT: "var(--secondary-default)",
+          foreground: "var(--primary-base)",
         },
         destructive: {
           DEFAULT: "var(--error-default)",

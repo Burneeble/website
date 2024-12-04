@@ -1,13 +1,13 @@
 "use client";
 
-import { FlameSymbol } from "@burneeble/icons";
+import { FlameIcon } from "@burneeble/icons";
 import { LandingProps } from "./Landing.types";
 import { useClientInfoService } from "@burneeble/ui-components";
 
 const Landing = (props: LandingProps) => {
   //Hooks
   const { screen } = useClientInfoService();
-  //linear-gradient(180deg, black 0%, rgba(102, 102, 102, 0) 100%)
+
   return (
     <section
       className={`
@@ -24,35 +24,44 @@ const Landing = (props: LandingProps) => {
       <div
         className={`
           tw-h-[151px] tw-flex-col tw-justify-center tw-items-center tw-gap-2.5
-          tw-flex tw-text-5xl tw-font-bowlby-one
-
-          md:tw-text-[65px]
-
-          xl:tw-text-[80px]
+          tw-flex tw-font-bowlby-one
         `}
       >
         <div className="tw-font-[60px]">
-          <FlameSymbol className="tw-h-[60px] tw-w-[60px]" />
+          <FlameIcon className="tw-h-[60px] tw-w-[60px]" />
         </div>
-        <div
+        <span
           className={`
             tw-text-[var(--primary-lighter)] tw-font-normal tw-opacity-70
+            tw-text-center tw-text-5xl tw-whitespace-nowrap
+
+            lg:tw-text-7xl
+
+            md:tw-text-6xl
           `}
         >
-          {["md", "sm"].includes(screen) ? "Showcase" : "Discover our Showcase"}
-        </div>
-        <div
+          {["md", "sm", "lg"].includes(screen) ? (
+            "Showcase"
+          ) : (
+            <>Discover our Showcase</>
+          )}
+        </span>
+        <h1
           className={`
-            tw-text-center tw-text-headings tw-text-3xl tw-font-normal
-            tw-relative -tw-top-1/4
+            tw-text-center tw-text-headings tw-font-normal tw-relative
+            -tw-top-1/4
 
-            md:tw-text-5xl md:-tw-top-[30%]
+            lg:-tw-top-[40%]
 
-            xl:tw-text-[60px] xl:-tw-top-[40%]
+            md:-tw-top-[35%]
           `}
         >
-          {["md", "sm"].includes(screen) ? "Showcase" : "Discover our Showcase"}
-        </div>
+          {["md", "sm", "lg"].includes(screen) ? (
+            "Showcase"
+          ) : (
+            <>Discover our Showcase</>
+          )}
+        </h1>
       </div>
     </section>
   );

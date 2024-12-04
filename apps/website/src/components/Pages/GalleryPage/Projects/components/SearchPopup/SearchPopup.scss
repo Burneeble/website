@@ -1,0 +1,21 @@
+@import "./components/components";
+
+.search-popup {
+  .results {
+    .search-section {
+      @apply tw-py-[10px] tw-flex tw-flex-col tw-gap-[5px];
+
+      &:not(:last-child) {
+        @apply tw-border-b tw-border-neutral;
+      }
+
+      .section-name {
+        @apply tw-text-body tw-text-base tw-font-inter;
+      }
+
+      .fallback {
+        @apply tw-text-body tw-text-center tw-py-[2rem];
+      }
+    }
+  }
+}

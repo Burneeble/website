@@ -18,18 +18,29 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "@/components/ui";
 import { MobileMenu } from "./components";
+import { useScrollLock } from "@/hooks";
 
 const Navbar = (props: NavbarProps) => {
   //States
   const [isOpen, setIsOpen] = useState<boolean>(false);
   //Hooks
   const { width } = useClientInfoService();
+  const { lockScroll, unlockScroll } = useScrollLock();
 
   useEffect(() => {
     if (width && width > 768) {
       setIsOpen(false);
     }
   }, [width]);
+
+  useEffect(() => {
+    if (isOpen) {
+      window.scrollTo(0, 0);
+      lockScroll();
+    } else {
+      unlockScroll();
+    }
+  }, [isOpen]);
 
   return (
     <nav

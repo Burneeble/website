@@ -1,3 +1,13 @@
 // ProjectPreview
 
 @import "./Skeleton/ProjectPreviewSkeleton";
+
+.project-preview {
+  .project-info {
+    .title {
+      .highlight {
+        @apply tw-bg-gradient-to-r primary-gradient tw-rounded-sm;
+      }
+    }
+  }
+}

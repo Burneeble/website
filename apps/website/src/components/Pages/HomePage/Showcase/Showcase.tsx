@@ -5,12 +5,13 @@ import { ShowcaseProps } from "./Showcase.types";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 const Showcase = (props: ShowcaseProps) => {
   //States
   const [topBarsElements] = useState<JSX.Element>(
     <>
-      {Array.from({ length: 5 }).map((_, i) => {
+      {Array.from({ length: 3 }).map((_, i) => {
         const offset = Math.round(Math.random() * 100);
 
         return (
@@ -38,7 +39,7 @@ const Showcase = (props: ShowcaseProps) => {
   );
   const [bottomBarsElements] = useState<JSX.Element>(
     <>
-      {Array.from({ length: 5 }).map((_, i) => {
+      {Array.from({ length: 3 }).map((_, i) => {
         const offset = Math.round(Math.random() * 100);
 
         return (
@@ -70,6 +71,7 @@ const Showcase = (props: ShowcaseProps) => {
   const { screen, width, isClient } = useClientInfoService();
   const topBars = useRef<Array<HTMLDivElement>>([]);
   const bottomBars = useRef<Array<HTMLDivElement>>([]);
+  const router = useRouter();
 
   //Effetcs
   useEffect(() => {
@@ -165,8 +167,8 @@ const Showcase = (props: ShowcaseProps) => {
   return (
     <section
       className={`
-        showcase cs-section-structure tw-flex tw-h-fit tw-flex-col
-        tw-items-center tw-justify-center tw-gap-2.5 tw-relative
+        showcase tw-flex tw-h-fit tw-flex-col tw-items-center tw-justify-center
+        tw-gap-2.5 tw-relative
       `}
     >
       {screen == "sm" ? (
@@ -183,8 +185,8 @@ const Showcase = (props: ShowcaseProps) => {
         <>
           <div
             className={`
-              shape tw-w-[306px] tw-h-[307px] tw-left-0 -tw-translate-x-[40%]
-              tw-top-[10rem] tw-opacity-[.4]
+              showcase-shape tw-w-[306px] tw-h-[307px] tw-left-0
+              -tw-translate-x-[40%] tw-top-[10rem] tw-opacity-[.4]
 
               xl:tw-w-[897px] xl:tw-h-[897px] xl:tw-top-0 xl:-tw-left-[150px]
               xl:-tw-translate-y-[40%]
@@ -192,8 +194,8 @@ const Showcase = (props: ShowcaseProps) => {
           />
           <div
             className={`
-              shape tw-w-[257px] tw-h-[256px] tw-right-0 tw-translate-x-[40%]
-              tw-top-[10rem] tw-opacity-[.6]
+              showcase-shape tw-w-[257px] tw-h-[256px] tw-right-0
+              tw-translate-x-[40%] tw-top-[10rem] tw-opacity-[.6]
 
               xl:tw-w-[647px] xl:tw-h-[647px] xl:tw-top-0 xl:-tw-right-[150px]
               xl:-tw-translate-y-1/2
@@ -227,6 +229,9 @@ const Showcase = (props: ShowcaseProps) => {
             children: "See All Projects",
             variant: "secondary",
             size: screen == "md" ? "lg" : "default",
+            onClick: () => {
+              router.push("/gallery");
+            },
           }}
         />
       </div>

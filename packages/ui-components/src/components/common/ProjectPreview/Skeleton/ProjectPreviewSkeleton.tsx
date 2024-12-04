@@ -12,15 +12,16 @@ const ProjectPreviewSkeleton = (props: ProjectPreviewSkeletonProps) => {
     >
       <Skeleton
         className={`
-          tw-aspect-[1920/1080] tw-w-full tw-self-stretch tw-rounded-tl-lg
-          tw-rounded-tr-lg
+          tw-aspect-[1920/1080] tw-w-full tw-self-stretch tw-rounded-lg
+          tw-rounded-tl-lg
         `}
         containerClassName="!tw-w-full tw-aspect-[1920/1080]"
       />
 
       <div
         className={`
-          tw-flex tw-h-[60px] tw-flex-col tw-items-start tw-justify-around
+          tw-flex tw-h-[146px] tw-flex-col tw-items-start tw-justify-start
+          tw-gap-[5px]
         `}
       >
         <Skeleton
