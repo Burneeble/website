@@ -63,7 +63,7 @@ const Showcase = (props: ShowcaseProps) => {
           .
         </h2>{" "}
       </div>
-      <div className={`carousel-wrapper tw-w-full tw-max-w-full`}>
+      <div className={`carousel-wrapper tw-w-full tw-max-w-[1200px]`}>
         <Carousel
           projects={props.projects}
           cta={{
