@@ -1,3 +1,14 @@
+/* stylelint-disable media-feature-range-notation */
 // SkillsParallax
 
 @import "./components/components";
+
+.skills-parallax {
+  .skill-info {
+    .title {
+      @media only screen and (max-width: 768px) {
+        @apply tw-text-3xl !important;
+      }
+    }
+  }
+}

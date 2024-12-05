@@ -36,6 +36,10 @@ const Abilities = (props: AbilitiesProps) => {
     };
   }, []);
 
+  useEffect(() => {
+    console.log("Skills", JSON.stringify(props.skills, null, 2));
+  }, [props.skills]);
+
   return (
     <section
       ref={sectionRef}

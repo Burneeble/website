@@ -7,6 +7,7 @@ import {
   Hero,
   Showcase,
 } from "@/components/Pages";
+import { SkillService } from "@/services";
 import { ProjectService } from "@/services/ProjectService";
 import dynamic from "next/dynamic";
 import React from "react";
@@ -18,17 +19,34 @@ const HomePageProviders = dynamic(
 
 export default async function Home() {
   //SSR data fetching
-  const res = await ProjectService.instance.getProjects();
+
+  const [projectsInfo, skillsInfo] = await Promise.all([
+    ProjectService.instance.getProjects(),
+    SkillService.instance.getSkills(),
+  ]);
 
   const projects = JSON.parse(
     JSON.stringify(
-      res.map((project) => {
+      projectsInfo.map((project) => {
         return {
           thumbnail: project.thumbnailUrl,
           categories: project.categories,
           title: project.title,
           description: project.description,
           projectUrl: project.projectUrl,
+        };
+      })
+    )
+  );
+
+  const skills = JSON.parse(
+    JSON.stringify(
+      skillsInfo.map((skill) => {
+        return {
+          title: skill.title,
+          description: skill.description,
+          extendedTitle: skill.extendedTitle,
+          labels: skill.labels,
         };
       })
     )
@@ -45,7 +63,7 @@ export default async function Home() {
       >
         <Hero />
         <Customers />
-        <Abilities />
+        <Abilities skills={skills} />
         <Emoji />
         <Showcase projects={projects} />
         <Contact />

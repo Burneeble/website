@@ -19,6 +19,7 @@ const documents = {
     "\n  query GetProjectsByCategoriesQuery(\n    $categories: [String]!\n    $limit: Int\n    $offset: String\n    $search: String\n  ) {\n    projects(\n      first: $limit\n      after: $offset\n      where: {\n        taxQuery: {\n          taxArray: {\n            taxonomy: PROJECTCATEGORY\n            terms: $categories\n            field: NAME\n          }\n        }\n        search: $search\n      }\n    ) {\n      edges {\n        node {\n          title\n          projectFields {\n            description\n            category {\n              edges {\n                node {\n                  name\n                }\n              }\n            }\n            projectUrl\n            thumbnail {\n              node {\n                guid\n              }\n            }\n          }\n        }\n      }\n      pageInfo {\n        endCursor\n        hasNextPage\n      }\n    }\n  }\n": types.GetProjectsByCategoriesQueryDocument,
     "\n  query GetProjectsQuery($limit: Int, $offset: String, $search: String) {\n    projects(first: $limit, after: $offset, where: { search: $search }) {\n      edges {\n        node {\n          title\n          projectFields {\n            description\n            category {\n              edges {\n                node {\n                  name\n                }\n              }\n            }\n            projectUrl\n            thumbnail {\n              node {\n                guid\n              }\n            }\n          }\n        }\n      }\n      pageInfo {\n        endCursor\n        hasNextPage\n      }\n    }\n  }\n": types.GetProjectsQueryDocument,
     "\n  query getReviewsQuery {\n    reviews {\n      nodes {\n        reviewFields {\n          countryCode\n          review\n          userAvatar {\n            node {\n              guid\n            }\n          }\n          projectUrl\n          username\n        }\n        title\n      }\n    }\n  }\n": types.GetReviewsQueryDocument,
+    "\n  query getSkillsQuery {\n    skills {\n      nodes {\n        title\n        skillFields {\n          description\n          extendedTitle\n          labels\n        }\n      }\n    }\n  }\n": types.GetSkillsQueryDocument,
 };
 
 /**
@@ -55,6 +56,10 @@ export function gql(source: "\n  query GetProjectsQuery($limit: Int, $offset: St
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function gql(source: "\n  query getReviewsQuery {\n    reviews {\n      nodes {\n        reviewFields {\n          countryCode\n          review\n          userAvatar {\n            node {\n              guid\n            }\n          }\n          projectUrl\n          username\n        }\n        title\n      }\n    }\n  }\n"): (typeof documents)["\n  query getReviewsQuery {\n    reviews {\n      nodes {\n        reviewFields {\n          countryCode\n          review\n          userAvatar {\n            node {\n              guid\n            }\n          }\n          projectUrl\n          username\n        }\n        title\n      }\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  query getSkillsQuery {\n    skills {\n      nodes {\n        title\n        skillFields {\n          description\n          extendedTitle\n          labels\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query getSkillsQuery {\n    skills {\n      nodes {\n        title\n        skillFields {\n          description\n          extendedTitle\n          labels\n        }\n      }\n    }\n  }\n"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};

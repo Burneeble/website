@@ -38,13 +38,13 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
           tw-gap-[10px]
         `}
       >
-        <h1 className="title tw-text-3xl">
+        <h2 className={`title`}>
           <span className="cs-text-color-primary-gradient">
             Shopify Integration
           </span>
           : Headless or Traditional Development
-        </h1>
-        <p className="text tw-text-lg">
+        </h2>
+        <p className={`text`}>
           Our tailored solutions ensure blazing-fast performance, fully
           customized user interfaces, and the scalability to grow with your
           business.
