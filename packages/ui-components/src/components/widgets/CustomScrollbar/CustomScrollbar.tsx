@@ -190,15 +190,17 @@ const CustomScrollbar = (props: CustomScrollbarProps) => {
         <div
           className={`
             vertical-scrollbar tw-absolute tw-left-full tw-top-0 tw-h-full
-            tw-w-[22px] tw-cursor-pointer tw-rounded-xl tw-bg-tertiary
+            tw-w-[22px] tw-rounded-xl tw-bg-tertiary
           `}
           ref={verticalScrollbarRef}
-          onMouseDown={startVerticalDrag}
         >
           <div
+            onMouseDown={startVerticalDrag}
             className={`
-              vertical-thumb tw-absolute tw-left-0 tw-w-full tw-rounded-xl
-              tw-bg-action
+              vertical-thumb tw-absolute tw-left-0 tw-w-full tw-cursor-grab
+              tw-rounded-xl tw-bg-action
+
+              active:tw-cursor-grabbing
             `}
             style={{
               height: `${verticalThumbHeight}%`,
@@ -212,15 +214,17 @@ const CustomScrollbar = (props: CustomScrollbarProps) => {
         <div
           className={`
             horizontal-scrollbar tw-absolute tw-left-0 tw-top-full tw-h-[22px]
-            tw-w-full tw-cursor-pointer tw-rounded-xl tw-bg-tertiary
+            tw-w-full tw-rounded-xl tw-bg-tertiary
           `}
           ref={horizontalScrollbarRef}
-          onMouseDown={startHorizontalDrag}
         >
           <div
+            onMouseDown={startHorizontalDrag}
             className={`
-              horizontal-thumb tw-absolute tw-top-0 tw-h-full tw-rounded-xl
-              tw-bg-action
+              horizontal-thumb tw-absolute tw-top-0 tw-h-full tw-cursor-grab
+              tw-rounded-xl tw-bg-action
+
+              active:tw-cursor-grabbing
             `}
             style={{
               width: `${horizontalThumbWidth}%`,
