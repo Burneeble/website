@@ -22,11 +22,14 @@ const Abilities = (props: AbilitiesProps) => {
     ScrollTrigger.create({
       trigger: section,
       start: "top top",
-      end: () => `+=${5 * window.innerHeight}`,
+      end: () => `+=${(props.skills.length + 1) * window.innerHeight}`,
       pin: true,
       scrub: true,
       onUpdate: (self) => {
-        const newCounter = Math.min(3, Math.floor(self.progress * 4));
+        const newCounter = Math.min(
+          props.skills.length - 1,
+          Math.floor(self.progress * props.skills.length)
+        );
         setCurrentIndex(newCounter);
       },
     });
@@ -35,10 +38,6 @@ const Abilities = (props: AbilitiesProps) => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
-
-  useEffect(() => {
-    console.log("Skills", JSON.stringify(props.skills, null, 2));
-  }, [props.skills]);
 
   return (
     <section
@@ -56,7 +55,7 @@ const Abilities = (props: AbilitiesProps) => {
           tw-left-0 -tw-translate-x-1/2
         `}
       />
-      <SkillsParallax currentIndex={currentIndex} />
+      <SkillsParallax currentIndex={currentIndex} skills={props.skills} />
     </section>
   );
 };

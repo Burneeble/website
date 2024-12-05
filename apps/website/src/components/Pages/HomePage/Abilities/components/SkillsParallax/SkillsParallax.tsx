@@ -16,11 +16,13 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
     if (skills.current) {
       skills.current.scrollTo({
         top: 0,
-        left: (skills.current.scrollWidth / 4) * props.currentIndex,
+        left:
+          (skills.current.scrollWidth / props.skills.length) *
+          props.currentIndex,
         behavior: "smooth",
       });
     }
-  }, [props.currentIndex, skills]);
+  }, [props.currentIndex, props.skills, skills]);
 
   return (
     <div
@@ -38,22 +40,18 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
           tw-gap-[10px]
         `}
       >
-        <h2 className={`title`}>
-          <span className="cs-text-color-primary-gradient">
-            Shopify Integration
-          </span>
-          : Headless or Traditional Development
-        </h2>
-        <p className={`text`}>
-          Our tailored solutions ensure blazing-fast performance, fully
-          customized user interfaces, and the scalability to grow with your
-          business.
-          <br />
-          <br />
-          We partner with you to build a future-proof platform that elevates
-          your brand, providing the freedom to innovate and deliver exceptional
-          customer experiences.
-        </p>
+        <h2
+          className={`title`}
+          dangerouslySetInnerHTML={{
+            __html: props.skills[props.currentIndex].extendedTitle,
+          }}
+        />
+        <p
+          className={`text`}
+          dangerouslySetInnerHTML={{
+            __html: props.skills[props.currentIndex].description,
+          }}
+        />
       </div>
       <div
         className={`
@@ -72,32 +70,21 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
         >
           <div
             className={`
-              wrapper tw-w-[calc(100%*4)] tw-justify-between tw-relative tw-flex
-              tw-pb-[30px]
+              wrapper tw-justify-between tw-relative tw-flex tw-pb-[30px]
 
-              xl:tw-w-[490px] xl:tw-flex-col xl:tw-pb-0 xl:tw-h-full
+              xl:!tw-w-[490px] xl:tw-flex-col xl:tw-pb-0 xl:tw-h-full
             `}
+            style={{ width: `${100 * props.skills.length}%` }}
           >
-            {[
-              "Web Development",
-              "Blockchain",
-              "Saas Application",
-              "Shopify",
-            ].map((t, i) => {
+            {props.skills.map((skill, i) => {
               return (
                 <div key={i} className={`skill-wrapper tw-flex-1`}>
                   <Skill
-                    title={t}
-                    categories={[
-                      "Custom Development",
-                      "Architecture Design",
-                      "API Development",
-                      "Automation with Scripts",
-                      "Optimization & Reliable Code",
-                    ]}
+                    title={skill.title}
+                    categories={skill.labels}
                     index={i}
                     currentIndex={props.currentIndex}
-                    amount={4}
+                    amount={props.skills.length}
                   />
                 </div>
               );
@@ -111,7 +98,7 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
                   tw-bottom-0 tw-bg-[var(--primary-lighest)] tw-transition-all
                   tw-duration-500 tw-ease-in-out
                 `,
-                props.currentIndex === 4 - 1
+                props.currentIndex === props.skills.length - 1
                   ? `tw-bg-[var(--primary-lighest)]`
                   : "tw-bg-[var(--secondary-darker)]"
               )}
