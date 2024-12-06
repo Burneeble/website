@@ -111,6 +111,21 @@ Additional settings/configuration:
        - Show in GraphQL: `True`
      - Visibility - Metabox: `No Metabox`
 
+   And Insert these values:
+
+   | Name                            | Slug                             |
+   | ------------------------------- | -------------------------------- |
+   | Figma Image Layout              | figma-image-layout               |
+   | Three Images Layout             | three-images-layout              |
+   | Two Images Layout               | two-images-layout                |
+   | Large Image Layout              | large-image-layout               |
+   | Very Large Image Layout         | very-large-image-layout          |
+   | One Image Layout                | one-image-layout                 |
+   | One Square Image Layout         | one-square-image-layout          |
+   | Laptop Image Layout             | laptop-image-layout              |
+   | Smartphone Image Layout         | smarthphone-image-layout         |
+   | Laptop Smartphone Images Layout | laptop-smarthphone-images-layout |
+
 6. Create the custom fields for the `Images Layout` post type. Name it `Images Layout`
 
    Inside the `Images Layout` group, create the following fields:
@@ -183,6 +198,31 @@ Additional settings/configuration:
      - GraphQL
        - Show in GraphQL: `True`
      - Visibility - Metabox: `No Metabox`
+
+   And Insert these values:
+
+   | Name                                                     | Slug                                                     |
+   | -------------------------------------------------------- | -------------------------------------------------------- |
+   | Figma Layout                                             | figma-layout                                             |
+   | Text Center Center Image Background                      | text_center_center-image_background                      |
+   | Text Left Center Image Right Center                      | text_left_center-image_right_center                      |
+   | Text Left Center Image Right Center Shape Vertical Right | text_left_center-image_right_center-shape_vertical-right |
+   | Text Left Start Image Right Center                       | text_left_start-image_right_center                       |
+   | Text Left Start Image Right Center Shape Vertical Right  | text_left_start-image_right_center-shape_vertical-right  |
+   | Text Right Center Image Left Center                      | text_right_center-image_left_center                      |
+   | Text Right Center Image Left Center Shape Vertical Left  | text_right_center-image_left_center-shape_vertical-left  |
+   | Text Right Center Shape Horizontal Left                  | text_right_center-shape_horizontal_left                  |
+   | Text Right Center Shape Horizontal Right                 | text_right_center-shape_horizontal_right                 |
+   | Text Right Center Shape Vertical Left                    | text_right_center-shape_vertical_left                    |
+   | Text Right Center Shape Vertical Right                   | text_right_center-shape_vertical_right                   |
+   | Text Right Start Shape Horizontal Right                  | text_right_start-shape_horizontal_right                  |
+   | Text Right Start Shape Vertical Right                    | text_right_start-shape_vertical_right                    |
+   | Text Top Center Full Image Bottom Center                 | text_top_center-full_image_bottom_center                 |
+   | Text Top Center Image Bottom Center                      | text_top_center-image_bottom_center                      |
+   | Text Top Center Shape Horizontal Bottom                  | text_top_center-shape_horizontal_bottom                  |
+   | Text Top Start Full Image Bottom Center                  | text_top_start-full_image_bottom_center                  |
+   | Text Top Start Image Bottom Center                       | text_top_start-image_bottom_center                       |
+   | Text Top Start Shape Horizontal Bottom                   | text_top_start-shape_horizontal_bottom                   |
 
 9. Create the custom fields for the `Section` post type. Name it `Section Fields`
 
