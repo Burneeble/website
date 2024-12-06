@@ -27,7 +27,7 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
   return (
     <div
       className={`
-        skills-parallax tw-w-full tw-flex tw-gap-[10px] tw-flex-col
+        skills-parallax tw-w-full tw-h-full tw-flex tw-gap-[10px] tw-flex-col
 
         md:tw-gap-[30px]
 
@@ -37,21 +37,40 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
       <div
         className={`
           skill-info tw-flex tw-items-start tw-justify-center tw-flex-col
-          tw-gap-[10px]
+          tw-gap-[10px] tw-w-full tw-relative tw-flex-1
+
+          md:tw-flex-[unset]
         `}
       >
-        <h2
-          className={`title`}
-          dangerouslySetInnerHTML={{
-            __html: props.skills[props.currentIndex].extendedTitle,
-          }}
-        />
-        <p
-          className={`text`}
-          dangerouslySetInnerHTML={{
-            __html: props.skills[props.currentIndex].description,
-          }}
-        />
+        {props.skills.map((skill, i) => {
+          return (
+            <>
+              <div
+                className={cn(
+                  `
+                    wrapper tw-absolute tw-left-0 tw-top-0 tw-transition-all
+                    tw-duration-500 tw-ease-in-out tw-w-full tw-h-full
+                  `,
+                  props.currentIndex !== i ? `tw-opacity-0` : "tw-opacity-100"
+                )}
+                key={i}
+              >
+                <h2
+                  className={`title`}
+                  dangerouslySetInnerHTML={{
+                    __html: skill.extendedTitle,
+                  }}
+                />
+                <p
+                  className={`text`}
+                  dangerouslySetInnerHTML={{
+                    __html: skill.description,
+                  }}
+                />
+              </div>
+            </>
+          );
+        })}
       </div>
       <div
         className={`
@@ -70,7 +89,9 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
         >
           <div
             className={`
-              wrapper tw-justify-between tw-relative tw-flex tw-pb-[30px]
+              wrapper tw-justify-between tw-relative tw-flex
+
+              sm:tw-pb-[30px]
 
               xl:!tw-w-[490px] xl:tw-flex-col xl:tw-pb-0 xl:tw-h-full
             `}

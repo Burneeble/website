@@ -31,7 +31,7 @@ const Skill = (props: SkillProps) => {
       className={`
         skill tw-flex tw-gap-[26px]
 
-        xl:tw-h-full
+        sm:tw-h-full
       `}
     >
       {screen !== "sm" && (
@@ -83,6 +83,8 @@ const Skill = (props: SkillProps) => {
         className={cn(
           `
             info tw-flex tw-flex-col tw-gap-[10px]
+
+            md:tw-h-full
 
             xl:tw-pb-[30px] xl:tw-transition-all xl:tw-duration-200
             xl:tw-ease-in-out
