@@ -21,7 +21,7 @@ export class GraphQLService {
 
   private constructor() {
     GraphQLService._client = new ApolloClient({
-      uri: "http://test01.local/graphql",
+      uri: "https://burneeble.com/graphql",
       cache: new InMemoryCache(),
     });
   }

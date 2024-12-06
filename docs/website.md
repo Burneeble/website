@@ -413,6 +413,59 @@ Additional settings/configuration:
 - GraphQL
   - Show in GraphQL: `True`
 
+15. Create a Post Type named `Reviews`.
+    Configuration:
+
+- Plural label: `Reviews`
+- Singular label: `Review`
+- Post Type Key: `review`
+- Public: `True`
+- Hierarchical: `False`
+- Advanced Configuration: `True`
+  - General
+    - Supports: `Title`, `Custom Fields`
+  - GraphQL
+    - Show in GraphQL: `True`
+
+16. Create the custom fields for the `Reviews` post type. Name it `Review Fields`
+
+Inside the `Review Fields` group, create the following fields:
+
+- Review
+  - Field Type: `Text Area`
+  - Label: `Review`
+  - Name: `review`
+  - Required: `True`
+- Country Code
+  - Field Type: `Text`
+  - Label: `Country Code`
+  - Name: `country_code`
+  - Required: `True`
+- Username
+  - Field Type: `Text`
+  - Label: `Username`
+  - Name: `username`
+  - Required: `True`
+- User Avatar
+  - Field Type: `Image`
+  - Label: `User Avatar`
+  - Name: `user_Avatar`
+  - Required: `True`
+- Project url
+  - Field Type: `Text`
+  - Label: `Project url`
+  - Name: `project_url`
+  - Required: `True`
+
+Additional settings/configuration:
+
+- Location Rules
+  - `Post Type` is equal to `Review`
+- Presentation
+  - Style: `Seamless (no metabox)`
+- GraphQL
+  - Show in GraphQL: `True`
+
 ### 3. Contact Form 7 & Flamingo check
 
 The Contact Form 7 plugin is used to manage the contact form on the Burneeble site. The Flamingo plugin is used to store the form submissions in the WordPress database.
