@@ -488,6 +488,15 @@ If everything is working properly, you should receive a `200 OK` and you should 
 
 - Check `Enable Public Introspection`
 
+### 5. Yoast SEO settings
+
+We need to disable indexing for custom post types and taxonomies that are not meant to be indexed by search engines.
+
+1. Go to the `Yoast SEO > Settings > Content Types > [Custom Content Type] > Search Appearance` section in the WordPress admin panel.
+2. Disable the `Show in search results` option that are not meant to be indexed by search engines.
+3. Go to the `Yoast SEO > Settings > Categories & tags > [Taxonomy] > Search Appearance` section in the WordPress admin panel.
+4. Disable the `Show in search results` option that are not meant to be indexed by search engines.
+
 ## Reverse Proxy Configuration
 
 In order to maintain the existing URLs for the blog section, we need to configure a reverse proxy in the Next.js app. The goal is to redirect requests from the `/blog/**` path to the WordPress installation, and at the same time, maintain the same URL in the browser.
