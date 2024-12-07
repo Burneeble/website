@@ -13,7 +13,7 @@ const TextRightStartShapeHorizontalRight = (
         text-right-center-shape-horizontal-right section-layout tw-flex
         tw-items-center tw-justify-center tw-gap-[30px] tw-flex-col
 
-        xl:tw-flex-row xl:tw-gap-0
+        lg:tw-flex-row lg:tw-gap-0
       `}
     >
       <div
@@ -48,9 +48,9 @@ const TextRightStartShapeHorizontalRight = (
           wrapper tw-relative tw-flex-1 tw-w-screen tw-aspect-[390/241]
           tw-mt-[40px]
 
-          md:tw-aspect-[744/530]
+          lg:tw-aspect-auto lg:tw-h-screen
 
-          xl:tw-aspect-auto xl:tw-h-screen
+          md:tw-aspect-[744/530]
         `}
       >
         <div
@@ -58,11 +58,11 @@ const TextRightStartShapeHorizontalRight = (
             layout-shape tw-rounded-l-lg tw-bottom-1/2 tw-z-[-1] tw-h-[364px]
             tw-w-[202px] tw-translate-y-1/2 tw-right-0
 
+            lg:tw-right-[unset] lg:tw-w-[50vw] lg:tw-h-[372px] lg:tw-left-0
+            lg:tw-top-0
+
             md:tw-h-[340px] md:tw-w-[545px] md:tw-translate-y-0
             md:tw-bottom-[unset] md:tw-top-[-20px]
-
-            xl:tw-right-[unset] xl:tw-w-[50vw] xl:tw-h-[372px] xl:tw-left-0
-            xl:tw-top-0
           `}
         />
         <div
@@ -71,9 +71,9 @@ const TextRightStartShapeHorizontalRight = (
             tw-left-1/2 -tw-translate-x-1/2 tw-top-1/2 -tw-translate-y-1/2
             tw-min-w-[50vw] tw-w-[calc(100%-40px)] tw-aspect-[350/230]
 
-            md:tw-py-[30px]
+            lg:tw-left-0 lg:tw-h-[800px] lg:tw-translate-x-0 lg:tw-w-auto
 
-            xl:tw-left-0 xl:tw-h-[800px] xl:tw-translate-x-0 xl:tw-w-auto
+            md:tw-py-[30px] md:tw-top-[40%]
           `}
         >
           <ImageLayout {...props} />

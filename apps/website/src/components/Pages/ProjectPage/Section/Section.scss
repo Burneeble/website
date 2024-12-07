@@ -1,7 +1,12 @@
+/* stylelint-disable media-feature-range-notation */
 // Section
 
 @import "./components/components";
 
 .section-layout {
-  @apply tw-w-full;
+  width: 100%;
+
+  @media only screen and (min-width: 992px) {
+    max-height: 100vh;
+  }
 }
