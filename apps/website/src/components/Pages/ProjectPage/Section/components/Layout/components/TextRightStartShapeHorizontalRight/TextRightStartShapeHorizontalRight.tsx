@@ -1,12 +1,15 @@
 "use client";
 
-import { Button } from "@burneeble/ui-components";
+import { Button, useClientInfoService } from "@burneeble/ui-components";
 import ImageLayout from "../ImageLayout";
 import { TextRightStartShapeHorizontalRightProps } from "./TextRightStartShapeHorizontalRight.types";
 
 const TextRightStartShapeHorizontalRight = (
   props: TextRightStartShapeHorizontalRightProps
 ) => {
+  //Hooks
+  const { screen } = useClientInfoService();
+
   return (
     <div
       className={`
@@ -33,6 +36,7 @@ const TextRightStartShapeHorizontalRight = (
               window.open(props.buttonUrl, "_blank");
             }}
             size={props.buttonSize}
+            fit={screen == "sm" ? "full" : "inline"}
             className={`
               tw-mt-[10px]
 

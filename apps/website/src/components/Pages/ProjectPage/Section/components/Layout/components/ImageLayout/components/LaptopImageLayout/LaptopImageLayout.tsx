@@ -30,12 +30,11 @@ const LaptopImageLayout = (props: LaptopImageLayoutProps) => {
       <img
         src={props.image1}
         className={`
-          tw-object-cover tw-mx-auto tw-rounded-lg tw-w-[calc(100%-42px)]
-          tw-aspect-[348/204]
+          tw-object-cover tw-rounded-lg tw-w-full tw-aspect-[348/204]
 
           sm:tw-rounded-none sm:tw-top-[10.5%] sm:tw-w-[75%]
           sm:tw-aspect-[645/405] sm:tw-left-1/2 sm:tw-absolute
-          sm:-tw-translate-x-1/2 sm:tw-mx-0
+          sm:-tw-translate-x-1/2
         `}
       />
     </div>
