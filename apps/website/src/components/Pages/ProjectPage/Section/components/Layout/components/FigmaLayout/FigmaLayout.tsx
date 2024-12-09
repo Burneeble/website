@@ -9,17 +9,24 @@ const FigmaLayout = (props: FigmaLayoutProps) => {
     <div
       className={`
         figma-layout section-layout tw-flex tw-flex-col tw-justify-center
-        tw-items-center tw-gap-[10px]
+        tw-items-center cs-gap-between-content
       `}
     >
-      <h2
-        className="title tw-text-center"
-        dangerouslySetInnerHTML={{ __html: props.title }}
-      />
-      <p
-        className="text tw-text-center"
-        dangerouslySetInnerHTML={{ __html: props.text }}
-      />
+      <div
+        className={`
+          info tw-flex tw-items-center tw-justify-center tw-flex-col
+          cs-gap-between-text
+        `}
+      >
+        <h2
+          className="title tw-text-center"
+          dangerouslySetInnerHTML={{ __html: props.title }}
+        />
+        <p
+          className="text tw-text-center"
+          dangerouslySetInnerHTML={{ __html: props.text }}
+        />
+      </div>
       {props.buttonText && props.buttonUrl && (
         <Button
           onClick={() => {
