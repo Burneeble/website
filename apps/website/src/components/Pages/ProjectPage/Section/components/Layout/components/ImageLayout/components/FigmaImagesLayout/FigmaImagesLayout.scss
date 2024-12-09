@@ -2,6 +2,6 @@
 
 .figma-images-layout {
   .figma-icon {
-    @apply tw-absolute;
+    @apply tw-absolute tw-animate-cs-float;
   }
 }

@@ -13,8 +13,9 @@ const FigmaImagesLayout = (props: FigmaImagesLayoutProps) => {
     >
       <img
         src="/img/project/sections/figma-icon.png"
+        style={{ rotate: "12deg" }}
         className={`
-          figma-icon tw-rotate-[15deg] tw-top-[-15%] tw-right-[7%] tw-w-[90px]
+          figma-icon tw-top-[-15%] tw-right-[7%] tw-w-[90px] !tw-delay-800
 
           md:tw-w-[120px]
 
@@ -23,9 +24,9 @@ const FigmaImagesLayout = (props: FigmaImagesLayoutProps) => {
       />
       <img
         src="/img/project/sections/figma-icon.png"
+        style={{ rotate: "-15deg" }}
         className={`
-          figma-icon tw-rotate-[-12deg] tw-bottom-[-17.5%] tw-left-[4%]
-          tw-w-[100px]
+          figma-icon tw-bottom-[-17.5%] tw-left-[4%] tw-w-[100px]
 
           md:tw-w-[155px]
 
