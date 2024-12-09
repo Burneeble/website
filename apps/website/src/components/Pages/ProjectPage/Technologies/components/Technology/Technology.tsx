@@ -11,17 +11,15 @@ import {
   WordpressIcon,
 } from "@burneeble/icons";
 import { TechnologyProps } from "./Technology.types";
-import {
-  Popup,
-  PopupType,
-  useClientInfoService,
-  usePopup,
-} from "@burneeble/ui-components";
+import { useClientInfoService } from "@burneeble/ui-components";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
 
 const Technology = (props: TechnologyProps) => {
+  //States
+  const [isHovered, setIsHovered] = useState<boolean>(false);
+
   //Hooks
-  const popupLogic = usePopup();
   const { screen } = useClientInfoService();
 
   //Methods
@@ -52,7 +50,7 @@ const Technology = (props: TechnologyProps) => {
     <div
       className={cn(
         `
-          technology tw-w-[164.92px] tw-h-[58px] tw-py-[15.27px]
+          technology tw-w-[157px] tw-h-[58px] tw-py-[15.27px]
           tw-bg-gradient-to-r tw-from-[var(--primary-default)]
           tw-to-[var(--primary-lighter)] tw-rounded tw-flex-col
           tw-justify-center tw-items-center tw-inline-flex tw-text-[100px]
@@ -69,36 +67,51 @@ const Technology = (props: TechnologyProps) => {
         !["sm", "md"].includes(screen) && "tw-relative"
       )}
       onMouseEnter={() => {
-        popupLogic.openPopup();
+        setIsHovered(true);
       }}
       onMouseLeave={() => {
-        popupLogic.closePopup();
+        setIsHovered(false);
       }}
       onClick={() => {
         console.log(screen);
         if (["sm", "md"].includes(screen)) {
-          if (popupLogic.isPopupOpen) {
-            popupLogic.closePopup();
-          } else popupLogic.openPopup();
+          if (isHovered) {
+            setIsHovered(false);
+          } else setIsHovered(true);
         }
       }}
     >
       {getIcon()}
-      <Popup
-        logic={popupLogic}
-        type={PopupType.Absolute}
+      <div
         className={cn(
           `
-            tw-left-1/2 -tw-translate-x-1/2 tw-flex tw-justify-start
-            tw-items-center tw-flex-col !tw-min-h-0 tw-top-[calc(100%+10px)]
-          `
+            tw-absolute tw-left-1/2 -tw-translate-x-1/2 tw-justify-start
+            tw-items-center tw-flex-col tw-top-full tw-transition-opacity
+            tw-duration-200 tw-ease-in-out tw-opacity-0 tw-flex tw-w-[30rem]
+            tw-max-w-[90vw] tw-rounded-lg tw-border-[1px] tw-border-solid
+            tw-text-headings tw-shadow-[0_5px_5px_rgba(0,0,0,0.26)]
+            tw-bg-gradient-to-b secondary-gradient-to-custom
+            tw-border-[var(--secondary-default)] tw-z-[2] tw-h-0 tw-max-h-0
+            tw-overflow-hidden tw-pointer-events-none
+
+            hover:tw-opacity-100 hover:tw-h-auto hover:tw-p-[20px]
+            hover:tw-max-h-[unset] hover:tw-overflow-visible
+            hover:tw-pointer-events-auto
+          `,
+          isHovered &&
+            `
+              tw-opacity-100 tw-h-auto tw-p-[20px] tw-overflow-visible
+              tw-max-h-[unset] tw-pointer-events-auto
+            `
         )}
       >
-        <h3 className="tw-text-center">{props.name}</h3>
-        <p className="tw-text-center tw-font-light !tw-text-xl">
+        <p className="tw-text-center tw-text-headings tw-font-bold">
+          {props.name}
+        </p>
+        <p className="tw-text-center p-small tw-font-light !tw-text-xl">
           {props.description}
         </p>
-      </Popup>
+      </div>
     </div>
   );
 };

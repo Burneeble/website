@@ -6,7 +6,7 @@ const Technologies = (props: TechnologiesProps) => {
     <section
       className={`
         technologies-section cs-section-structure
-        tw-bg-[radial-gradient(circle,_#523424_4px,_transparent_4px)]
+        tw-bg-[radial-gradient(circle,_rgba(255,92,1,0.23)_4px,_transparent_4px)]
         tw-bg-center tw-flex tw-items-center tw-justify-center tw-min-h-0
         tw-max-w-full
 
