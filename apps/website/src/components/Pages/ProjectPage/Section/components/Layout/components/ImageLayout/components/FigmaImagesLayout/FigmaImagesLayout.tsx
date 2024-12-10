@@ -5,7 +5,7 @@ const FigmaImagesLayout = (props: FigmaImagesLayoutProps) => {
     <div
       className={`
         figma-images-layout images-layout tw-w-screen tw-relative tw-my-[2.5rem]
-        tw-shadow-[0px_0px_100px_rgba(242, 163, 7, .6)]
+        tw-shadow-[0px_0px_100px_rgba(242,_163,_7,_.6)]
 
         md:tw-my-[3.5rem]
 

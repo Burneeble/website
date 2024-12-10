@@ -26,18 +26,18 @@ const FigmaLayout = (props: FigmaLayoutProps) => {
           className="text tw-text-center"
           dangerouslySetInnerHTML={{ __html: props.text }}
         />
+        {props.buttonText && props.buttonUrl && (
+          <Button
+            onClick={() => {
+              window.open(props.buttonUrl, "_blank");
+            }}
+            size={props.buttonSize}
+            className="tw-mt-[20px]"
+          >
+            {props.buttonText}
+          </Button>
+        )}
       </div>
-      {props.buttonText && props.buttonUrl && (
-        <Button
-          onClick={() => {
-            window.open(props.buttonUrl, "_blank");
-          }}
-          size={props.buttonSize}
-          className="tw-mt-[20px]"
-        >
-          {props.buttonText}
-        </Button>
-      )}
       <ImageLayout {...props} />
     </div>
   );

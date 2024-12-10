@@ -11,7 +11,7 @@ const TextLeftStartFullImageRightCenter = (
     <div
       className={`
         text-left-start-full-image-right-center section-layout tw-flex
-        tw-items-center tw-justify-center tw-gap-[40px] tw-flex-col
+        tw-items-center tw-justify-center cs-gap-between-content tw-flex-col
 
         xl:tw-flex-row
       `}
@@ -19,6 +19,7 @@ const TextLeftStartFullImageRightCenter = (
       <div
         className={`
           info tw-flex-1 tw-flex tw-flex-col tw-justify-center tw-items-center
+          cs-gap-between-text
         `}
       >
         <h2

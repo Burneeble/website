@@ -11,8 +11,8 @@ const TextRightCenterImageLeftCenterShapeVerticalLeft = (
     <div
       className={`
         text-left-start-image-right-center-shape-vertical-right section-layout
-        tw-flex tw-items-center tw-justify-center tw-gap-[40px]
-        tw-flex-col-reverse
+        tw-flex tw-items-center tw-justify-center tw-flex-col-reverse
+        cs-gap-between-content
 
         xl:tw-flex-row
       `}
@@ -53,6 +53,7 @@ const TextRightCenterImageLeftCenterShapeVerticalLeft = (
       <div
         className={`
           info tw-flex-1 tw-flex tw-flex-col tw-justify-center tw-items-start
+          cs-gap-between-text
         `}
       >
         <h2
