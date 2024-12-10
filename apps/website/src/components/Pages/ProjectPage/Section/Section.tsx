@@ -23,6 +23,8 @@ const Section = (props: SectionProps) => {
       <section
         className={`
           section cs-section-structure tw-flex tw-items-center tw-justify-center
+
+          lg:tw-max-h-[100vh]
         `}
       >
         <Layout buttonSize={getButtonSize()} {...props} />
