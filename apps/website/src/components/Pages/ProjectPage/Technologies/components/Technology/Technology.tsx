@@ -59,12 +59,13 @@ const Technology = (props: TechnologyProps) => {
       const containerRect = container.current.getBoundingClientRect();
       const wrapperRect = props.wrapperRef.current.getBoundingClientRect();
 
-      if (["sm"].includes(screen)) {
-        tooltip.current.style.left = "0px";
+      if (["sm", "md"].includes(screen)) {
+        tooltip.current.style.left = "50%";
         tooltip.current.style.right = `unset`;
         tooltip.current.style.top = `${
           containerRect.top - wrapperRect.top + containerRect.height / 3.1
         }px`;
+        tooltip.current.style.transform = "translateX(-50%)";
       } else {
         tooltip.current.style.top = "100%";
         tooltip.current.style.left = "50%";
@@ -83,7 +84,13 @@ const Technology = (props: TechnologyProps) => {
         }
       }
     }
-  }, [width, tooltip.current, container.current, props.wrapperRef.current]);
+  }, [
+    width,
+    screen,
+    tooltip.current,
+    container.current,
+    props.wrapperRef.current,
+  ]);
 
   return (
     <div
@@ -103,7 +110,7 @@ const Technology = (props: TechnologyProps) => {
 
           xl:tw-w-[324px] xl:tw-h-[106.06px] xl:tw-text-[152px]
         `,
-        !["sm"].includes(screen) && "tw-relative"
+        !["sm", "md"].includes(screen) && "tw-relative"
       )}
       ref={container}
       onMouseEnter={() => {
