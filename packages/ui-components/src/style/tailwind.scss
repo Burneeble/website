@@ -24,6 +24,10 @@
   //   @apply tw-text-body tw-text-lg tw-font-inter md:tw-text-2xl xl:tw-text-3xl;
   // }
 
+  .p-default {
+    @apply tw-text-xl tw-leading-[30px] tw-font-inter tw-text-body md:tw-text-2xl md:tw-leading-[35px] lg:tw-text-3xl lg:tw-leading-10;
+  }
+
   //text inside cards, or inputs
   .p-small {
     @apply tw-text-lg tw-leading-7 tw-font-inter tw-text-body md:tw-text-xl md:tw-leading-8 lg:tw-text-2xl lg:tw-leading-[35px];
