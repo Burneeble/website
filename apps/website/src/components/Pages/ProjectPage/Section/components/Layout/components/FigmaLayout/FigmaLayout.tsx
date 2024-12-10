@@ -9,7 +9,7 @@ const FigmaLayout = (props: FigmaLayoutProps) => {
     <div
       className={`
         figma-layout section-layout tw-flex tw-flex-col tw-justify-center
-        tw-items-center cs-gap-between-content
+        tw-items-center
       `}
     >
       <div
