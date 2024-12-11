@@ -3,6 +3,7 @@
 import { Button } from "@burneeble/ui-components";
 import ImageLayout from "../ImageLayout";
 import { TextTopCenterFullImageBottomCenterProps } from "./TextTopCenterFullImageBottomCenter.types";
+import { cn } from "@/lib/utils";
 
 const TextTopCenterFullImageBottomCenter = (
   props: TextTopCenterFullImageBottomCenterProps
@@ -15,10 +16,12 @@ const TextTopCenterFullImageBottomCenter = (
       `}
     >
       <div
-        className={`
-          info tw-flex tw-items-center tw-justify-center tw-flex-col
-          cs-gap-between-text
-        `}
+        className={cn(
+          `
+            info tw-flex tw-items-center tw-justify-center tw-flex-col
+            cs-gap-between-text tw-flex-1
+          `
+        )}
       >
         <h2
           className="title tw-w-full tw-text-center"
