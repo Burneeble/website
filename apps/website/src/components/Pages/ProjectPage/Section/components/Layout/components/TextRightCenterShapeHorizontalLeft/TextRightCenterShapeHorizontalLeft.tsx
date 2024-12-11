@@ -14,7 +14,7 @@ const TextRightCenterShapeHorizontalLeft = (
         tw-items-center tw-justify-center cs-gap-between-content
         tw-flex-col-reverse
 
-        xl:tw-flex-row xl:tw-gap-0
+        xl:tw-flex-row
       `}
     >
       <div

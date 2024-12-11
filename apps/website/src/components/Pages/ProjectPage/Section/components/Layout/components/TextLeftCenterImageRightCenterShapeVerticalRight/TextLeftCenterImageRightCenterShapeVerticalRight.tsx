@@ -60,7 +60,7 @@ const TextLeftCenterImageRightCenterShapeVerticalRight = (
 
             md:tw-left-[calc(100vw-250px)] md:tw-w-[250px] md:tw-h-[515px]
 
-            xl:tw-left-[calc((100vw/2)-20px-200px)] xl:tw-w-[200px]
+            xl:tw-left-[calc((100vw/2)-10px-200px)] xl:tw-w-[200px]
             xl:tw-h-[675px] xl:tw-max-w-[unset]
           `}
         />

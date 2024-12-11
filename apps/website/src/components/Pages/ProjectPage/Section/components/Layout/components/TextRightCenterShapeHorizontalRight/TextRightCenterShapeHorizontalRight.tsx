@@ -13,7 +13,7 @@ const TextRightCenterShapeHorizontalRight = (
         text-right-center-shape-horizontal-right section-layout tw-flex
         tw-items-center tw-justify-center cs-gap-between-content tw-flex-col
 
-        xl:tw-flex-row xl:tw-gap-0
+        xl:tw-flex-row
       `}
     >
       <div

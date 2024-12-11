@@ -16,7 +16,7 @@ const TextRightStartShapeHorizontalRight = (
         text-right-center-shape-horizontal-right section-layout tw-flex
         tw-items-center tw-justify-center cs-gap-between-content tw-flex-col
 
-        lg:tw-flex-row lg:tw-gap-0
+        lg:tw-flex-row
       `}
     >
       <div

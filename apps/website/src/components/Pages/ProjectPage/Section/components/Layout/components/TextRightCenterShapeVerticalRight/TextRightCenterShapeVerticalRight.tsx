@@ -59,7 +59,7 @@ const TextRightCenterShapeVerticalRight = (
 
             md:tw-h-[600px] md:tw-w-[375px]
 
-            xl:tw-right-[unset] xl:tw-left-[calc((100vw/2)-20px-450px)]
+            xl:tw-right-[unset] xl:tw-left-[calc((100vw/2)-10px-450px)]
             xl:tw-w-[450px] xl:tw-h-full
           `}
         />
@@ -71,7 +71,7 @@ const TextRightCenterShapeVerticalRight = (
 
             md:tw-aspect-[385/535]
 
-            xl:tw-left-[calc((100vw/2)-20px-450px)] xl:tw-aspect-[328/675]
+            xl:tw-left-[calc((100vw/2)-10px-450px)] xl:tw-aspect-[328/675]
             xl:tw-min-w-[320px] xl:tw-w-fit
           `}
         >

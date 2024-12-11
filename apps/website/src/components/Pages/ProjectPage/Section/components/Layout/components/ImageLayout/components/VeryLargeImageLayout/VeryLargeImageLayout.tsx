@@ -4,7 +4,8 @@ const VeryLargeImageLayout = (props: VeryLargeImageLayoutProps) => {
   return (
     <div
       className={`
-        images-layout very-large-image-layout tw-relative tw-w-full tw-h-[410px]
+        images-layout very-large-image-layout tw-relative tw-w-full
+        tw-max-h-full tw-h-[410px]
 
         md:tw-h-[600px]
       `}

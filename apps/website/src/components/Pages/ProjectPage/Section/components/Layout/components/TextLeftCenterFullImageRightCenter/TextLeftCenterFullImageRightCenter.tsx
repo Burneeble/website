@@ -56,7 +56,7 @@ const TextLeftCenterFullImageRightCenter = (
             tw-absolute tw-top-1/2 -tw-translate-y-1/2 tw-left-0 tw-w-full
             tw-max-w-[454px]
 
-            xl:tw-w-[calc(100vw/2-20px)] xl:tw-max-w-[unset]
+            xl:tw-w-[calc(100vw/2-10px)] xl:tw-max-w-[unset]
           `}
         >
           <ImageLayout {...props} />

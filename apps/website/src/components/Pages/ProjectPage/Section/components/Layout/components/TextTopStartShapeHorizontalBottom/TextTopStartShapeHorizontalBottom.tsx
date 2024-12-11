@@ -43,8 +43,14 @@ const TextTopStartShapeHorizontalBottom = (
       <div className={`wrapper tw-relative tw-w-full tw-h-[600px]`}>
         <div
           className={`
-            images tw-flex tw-items-center tw-justify-center tw-w-fit tw-h-full
-            tw-z-[5] tw-absolute tw-left-1/2 -tw-translate-x-1/2 tw-top-0
+            images tw-flex tw-items-center tw-justify-center tw-z-[5]
+            tw-absolute tw-left-1/2 -tw-translate-x-1/2 tw-top-0
+            tw-w-[calc(100vw-40px)] tw-aspect-[350/230]
+
+            md:tw-bottom-[50px] md:tw-top-[unset] md:tw-w-[100%]
+            md:tw-aspect-[680/485]
+
+            xl:tw-h-full xl:tw-w-fit
           `}
         >
           <ImageLayout {...props} />
