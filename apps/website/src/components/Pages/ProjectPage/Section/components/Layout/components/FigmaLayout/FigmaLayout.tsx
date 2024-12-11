@@ -38,7 +38,18 @@ const FigmaLayout = (props: FigmaLayoutProps) => {
           </Button>
         )}
       </div>
-      <ImageLayout {...props} />
+      <div
+        className={`
+          tw-flex tw-items-center tw-justify-center images tw-w-screen
+          tw-h-[345px]
+
+          md:tw-h-[485px]
+
+          xl:tw-h-[375px]
+        `}
+      >
+        <ImageLayout {...props} />
+      </div>
     </div>
   );
 };
