@@ -44,7 +44,7 @@ const TextRightCenterImageLeftCenterShapeVerticalLeft = (
             images tw-flex-1 tw-flex tw-items-center tw-justify-center tw-w-full
             tw-aspect-[630/532] tw-relative tw-max-w-[450px] tw-mx-[20px]
 
-            xl:tw-max-w-[unset] xl:tw-mx-0
+            xl:tw-mx-0
           `}
         >
           <ImageLayout {...props} />

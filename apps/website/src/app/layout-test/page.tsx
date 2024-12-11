@@ -17,13 +17,13 @@ const LayoutTestPage = () => {
                 slug: "slug",
                 imagesLayoutSm: { image1: "https://picsum.photos/1300/480" },
                 imagesLayoutMd: { image1: "https://picsum.photos/682/480" },
-                imagesLayoutXl: { image1: "https://picsum.photos/350/290" },
+                imagesLayoutXl: { image1: "https://picsum.photos/1512/375" },
               }}
               title={"Title goes here"}
               text={
                 "We created custom designs from scratch to bring ZIP.Link digital vision to life. Using Figma we defined the optimal structure and flow of the application, ensuring an intuitive and engaging user experience"
               }
-              imageLayoutType={ImageLayoutType.VeryLargeImageLayout}
+              imageLayoutType={ImageLayoutType.FigmaImageLayout}
             />
           </>
         );

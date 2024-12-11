@@ -43,8 +43,6 @@ const TextLeftStartImageRightCenter = (
         className={`
           images tw-flex-1 tw-flex tw-items-center tw-justify-center tw-w-full
           tw-aspect-square tw-max-w-[454px]
-
-          xl:tw-max-w-[unset]
         `}
       >
         <ImageLayout {...props} />
