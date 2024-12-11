@@ -25,7 +25,7 @@ const TextTopCenterFullImageBottomCenter = (
           dangerouslySetInnerHTML={{ __html: props.title }}
         />
         <p
-          className="text tw-text-center tw-mb-[50px]"
+          className="text tw-text-center"
           dangerouslySetInnerHTML={{ __html: props.text }}
         />
         {props.buttonText && props.buttonUrl && (
@@ -34,7 +34,6 @@ const TextTopCenterFullImageBottomCenter = (
               window.open(props.buttonUrl, "_blank");
             }}
             size={props.buttonSize}
-            className="tw-mt-[20px]"
           >
             {props.buttonText}
           </Button>
