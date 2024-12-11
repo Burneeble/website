@@ -40,9 +40,7 @@ const TextTopStartShapeHorizontalBottom = (
           </Button>
         )}
       </div>
-      <div
-        className={`wrapper tw-relative tw-w-full tw-mt-[30px] tw-h-[600px]`}
-      >
+      <div className={`wrapper tw-relative tw-w-full tw-h-[600px]`}>
         <div
           className={`
             images tw-flex tw-items-center tw-justify-center tw-w-fit tw-h-full

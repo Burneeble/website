@@ -39,8 +39,8 @@ const TextTopStartImageBottomCenter = (
       </div>
       <div
         className={`
-          images tw-w-full tw-mt-[30px] tw-flex tw-items-center
-          tw-justify-center tw-h-[293px]
+          images tw-w-full tw-flex tw-items-center tw-justify-center
+          tw-h-[293px]
 
           md:tw-h-[480px]
         `}

@@ -42,8 +42,7 @@ const TextTopCenterShapeHorizontalBottom = (
       </div>
       <div
         className={`
-          wrapper tw-relative tw-w-full tw-mt-[30px]
-          tw-h-[calc(82px+(230/350*(100vw-40px)))]
+          wrapper tw-relative tw-w-full tw-h-[calc(82px+(230/350*(100vw-40px)))]
 
           md:tw-h-[600px]
         `}
@@ -71,7 +70,7 @@ const TextTopCenterShapeHorizontalBottom = (
 
             xl:tw-h-[411px]
           `}
-        ></div>
+        />
       </div>
     </div>
   );
