@@ -25,7 +25,7 @@ const TextTopStartShapeHorizontalBottom = (
           dangerouslySetInnerHTML={{ __html: props.title }}
         />
         <p
-          className="tw-mb-[50px]"
+          className="text tw-mb-[50px]"
           dangerouslySetInnerHTML={{ __html: props.text }}
         />
         {props.buttonText && props.buttonUrl && (

@@ -29,7 +29,7 @@ const TextRightStartShapeHorizontalRight = (
           className="title tw-w-full"
           dangerouslySetInnerHTML={{ __html: props.title }}
         />
-        <p dangerouslySetInnerHTML={{ __html: props.text }} />
+        <p className="text" dangerouslySetInnerHTML={{ __html: props.text }} />
         {props.buttonText && props.buttonUrl && (
           <Button
             onClick={() => {
