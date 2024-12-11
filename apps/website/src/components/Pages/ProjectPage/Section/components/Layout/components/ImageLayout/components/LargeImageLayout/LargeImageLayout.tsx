@@ -5,6 +5,7 @@ const LargeImageLayout = (props: LargeImageLayoutProps) => {
     <div
       className={`
         images-layout large-image-layout tw-relative tw-w-full tw-h-[293px]
+        tw-max-h-full
 
         md:tw-h-[480px]
       `}
