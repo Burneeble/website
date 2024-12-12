@@ -121,12 +121,10 @@ const Congrats = (props: CongratsProps) => {
       </div>
       <p
         className={`
-          text tw-self-stretch tw-text-center tw-text-body tw-text-xl
-          tw-font-normal tw-font-inter tw-leading-[30px]
+          text p-default tw-self-stretch tw-text-center tw-text-body
+          tw-font-normal
 
-          lg:tw-text-3xl
-
-          md:tw-text-2xl md:tw-mb-[10px]
+          md:tw-mb-[10px]
         `}
       >
         {["sm", "md"].includes(screen)
