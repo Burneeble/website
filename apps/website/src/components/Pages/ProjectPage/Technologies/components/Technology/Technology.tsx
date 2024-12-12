@@ -13,14 +13,16 @@ import {
 import { TechnologyProps } from "./Technology.types";
 import { useClientInfoService } from "@burneeble/ui-components";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Technology = (props: TechnologyProps) => {
   //States
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
   //Hooks
-  const { screen } = useClientInfoService();
+  const { screen, width } = useClientInfoService();
+  const tooltip = useRef<HTMLDivElement>(null);
+  const container = useRef<HTMLDivElement>(null);
 
   //Methods
   const getIcon = () => {
@@ -46,6 +48,50 @@ const Technology = (props: TechnologyProps) => {
     }
   };
 
+  useEffect(() => {
+    if (
+      tooltip.current &&
+      container.current &&
+      props.wrapperRef.current &&
+      width
+    ) {
+      const tooltipRect = tooltip.current.getBoundingClientRect();
+      const containerRect = container.current.getBoundingClientRect();
+      const wrapperRect = props.wrapperRef.current.getBoundingClientRect();
+
+      if (["sm", "md"].includes(screen)) {
+        tooltip.current.style.left = "50%";
+        tooltip.current.style.right = `unset`;
+        tooltip.current.style.top = `${
+          containerRect.top - wrapperRect.top + containerRect.height / 3.1
+        }px`;
+        tooltip.current.style.transform = "translateX(-50%)";
+      } else {
+        tooltip.current.style.top = "100%";
+        tooltip.current.style.left = "50%";
+        tooltip.current.style.right = `unset`;
+        tooltip.current.style.transform = "translateX(-50%)";
+
+        if (tooltipRect.right > width) {
+          tooltip.current.style.left = "unset";
+          tooltip.current.style.right = `0px`;
+          tooltip.current.style.transform = "translateX(0)";
+        }
+
+        if (tooltipRect.left < 0) {
+          tooltip.current.style.left = "0px";
+          tooltip.current.style.transform = "translateX(0)";
+        }
+      }
+    }
+  }, [
+    width,
+    screen,
+    tooltip.current,
+    container.current,
+    props.wrapperRef.current,
+  ]);
+
   return (
     <div
       className={cn(
@@ -55,7 +101,7 @@ const Technology = (props: TechnologyProps) => {
           tw-to-[var(--primary-lighter)] tw-rounded tw-flex-col
           tw-justify-center tw-items-center tw-inline-flex tw-text-[100px]
           tw-text-headings tw-transition-all tw-duration-200 tw-ease-in-out
-          tw-cursor-help
+          tw-cursor-help tw-max-w-[90vw]
 
           hover:tw-bg-gradient-to-r hover:tw-from-brown-500
           hover:tw-to-brown-200
@@ -66,6 +112,7 @@ const Technology = (props: TechnologyProps) => {
         `,
         !["sm", "md"].includes(screen) && "tw-relative"
       )}
+      ref={container}
       onMouseEnter={() => {
         setIsHovered(true);
       }}
@@ -83,16 +130,16 @@ const Technology = (props: TechnologyProps) => {
     >
       {getIcon()}
       <div
+        ref={tooltip}
         className={cn(
           `
-            tw-absolute tw-left-1/2 -tw-translate-x-1/2 tw-justify-start
-            tw-items-center tw-flex-col tw-top-full tw-transition-opacity
-            tw-duration-200 tw-ease-in-out tw-opacity-0 tw-flex tw-w-[30rem]
-            tw-max-w-[90vw] tw-rounded-lg tw-border-[1px] tw-border-solid
-            tw-text-headings tw-shadow-[0_5px_5px_rgba(0,0,0,0.26)]
-            tw-bg-gradient-to-b secondary-gradient-to-custom
-            tw-border-[var(--secondary-default)] tw-z-[2] tw-h-0 tw-max-h-0
-            tw-overflow-hidden tw-pointer-events-none
+            tw-absolute tw-justify-start tw-items-center tw-flex-col tw-top-full
+            tw-transition-opacity tw-duration-200 tw-ease-in-out tw-opacity-0
+            tw-flex tw-w-[30rem] tw-max-w-[90vw] tw-rounded-lg tw-border-[1px]
+            tw-border-solid tw-text-headings
+            tw-shadow-[0_5px_5px_rgba(0,0,0,0.26)] tw-bg-gradient-to-b
+            secondary-gradient-to-custom tw-border-[var(--secondary-default)]
+            tw-z-[2] tw-h-0 tw-max-h-0 tw-overflow-hidden tw-pointer-events-none
 
             hover:tw-opacity-100 hover:tw-h-auto hover:tw-p-[20px]
             hover:tw-max-h-[unset] hover:tw-overflow-visible

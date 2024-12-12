@@ -11,7 +11,8 @@ const TextLeftCenterImageRightCenterShapeVerticalRight = (
     <div
       className={`
         text-left-center-image-right-center-shape-vertical-right section-layout
-        tw-flex tw-items-center tw-justify-center tw-gap-[40px] tw-flex-col
+        tw-flex tw-items-center tw-justify-center cs-gap-between-content
+        tw-flex-col
 
         xl:tw-flex-row
       `}
@@ -19,6 +20,7 @@ const TextLeftCenterImageRightCenterShapeVerticalRight = (
       <div
         className={`
           info tw-flex-1 tw-flex tw-flex-col tw-justify-center tw-items-center
+          cs-gap-between-text
         `}
       >
         <h2
@@ -26,7 +28,7 @@ const TextLeftCenterImageRightCenterShapeVerticalRight = (
           dangerouslySetInnerHTML={{ __html: props.title }}
         />
         <p
-          className="tw-text-center"
+          className="text tw-text-center"
           dangerouslySetInnerHTML={{ __html: props.text }}
         />
         {props.buttonText && props.buttonUrl && (
@@ -58,7 +60,7 @@ const TextLeftCenterImageRightCenterShapeVerticalRight = (
 
             md:tw-left-[calc(100vw-250px)] md:tw-w-[250px] md:tw-h-[515px]
 
-            xl:tw-left-[calc((100vw/2)-20px-200px)] xl:tw-w-[200px]
+            xl:tw-left-[calc((100vw/2)-10px-200px)] xl:tw-w-[200px]
             xl:tw-h-[675px] xl:tw-max-w-[unset]
           `}
         />
@@ -67,7 +69,7 @@ const TextLeftCenterImageRightCenterShapeVerticalRight = (
             images tw-flex tw-items-center tw-justify-center tw-w-full
             tw-aspect-[630/532] tw-relative tw-max-w-[450px] tw-mx-[20px]
 
-            xl:tw-max-w-[unset] xl:tw-mx-0
+            xl:tw-mx-0
           `}
         >
           <ImageLayout {...props} />

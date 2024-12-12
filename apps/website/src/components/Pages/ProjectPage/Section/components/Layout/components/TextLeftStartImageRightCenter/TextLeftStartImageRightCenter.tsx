@@ -11,7 +11,7 @@ const TextLeftStartImageRightCenter = (
     <div
       className={`
         text-left-start-image-right-center section-layout tw-flex
-        tw-items-center tw-justify-center tw-gap-[40px] tw-flex-col
+        tw-items-center tw-justify-center tw-flex-col cs-gap-between-content
 
         xl:tw-flex-row
       `}
@@ -19,13 +19,14 @@ const TextLeftStartImageRightCenter = (
       <div
         className={`
           info tw-flex-1 tw-flex tw-flex-col tw-justify-center tw-items-start
+          cs-gap-between-text
         `}
       >
         <h2
           className="title tw-w-full"
           dangerouslySetInnerHTML={{ __html: props.title }}
         />
-        <p dangerouslySetInnerHTML={{ __html: props.text }} />
+        <p className="text" dangerouslySetInnerHTML={{ __html: props.text }} />
         {props.buttonText && props.buttonUrl && (
           <Button
             onClick={() => {
@@ -42,8 +43,6 @@ const TextLeftStartImageRightCenter = (
         className={`
           images tw-flex-1 tw-flex tw-items-center tw-justify-center tw-w-full
           tw-aspect-square tw-max-w-[454px]
-
-          xl:tw-max-w-[unset]
         `}
       >
         <ImageLayout {...props} />

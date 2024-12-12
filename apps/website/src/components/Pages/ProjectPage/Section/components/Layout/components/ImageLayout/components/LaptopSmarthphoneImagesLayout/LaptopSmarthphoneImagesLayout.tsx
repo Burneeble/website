@@ -15,7 +15,9 @@ const LaptopSmarthphoneImagesLayout = (
     <div
       className={`
         images-layout laptop-smarthphone-images-layout tw-h-[20rem]
-        tw-max-h-screen tw-flex tw-items-center tw-justify-center
+        tw-max-h-screen tw-flex tw-items-center tw-justify-center tw-w-full
+
+        md:tw-h-full
       `}
     >
       <LaptopImageLayout {...props} />

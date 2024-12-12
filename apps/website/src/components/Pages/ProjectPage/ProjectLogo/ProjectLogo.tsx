@@ -31,6 +31,7 @@ const ProjectLogo = (props: ProjectLogoProps) => {
       className={`
         cs-section-structure tw-flex tw-flex-col tw-justify-center
         tw-items-center tw-gap-[10px] tw-max-w-full tw-h-[688px]
+        !tw-min-h-[unset]
 
         lg:tw-h-[597px] lg:tw-min-h-0
       `}

@@ -11,7 +11,8 @@ const TextRightCenterFullImageLeftCenter = (
     <div
       className={`
         text-right-center-full-image-left-center section-layout tw-flex
-        tw-items-center tw-justify-center tw-gap-[40px] tw-flex-col-reverse
+        tw-items-center tw-justify-center tw-flex-col-reverse
+        cs-gap-between-content
 
         xl:tw-flex-row
       `}
@@ -19,7 +20,7 @@ const TextRightCenterFullImageLeftCenter = (
       <div
         className={`
           wrapper tw-flex-1 tw-w-full tw-relative tw-aspect-square
-          tw-max-w-[454px]
+          tw-max-w-[454px] cs-gap-between-text
 
           xl:tw-h-full xl:tw-w-auto xl:tw-max-w-[unset]
         `}
@@ -30,7 +31,7 @@ const TextRightCenterFullImageLeftCenter = (
             tw-absolute tw-top-1/2 -tw-translate-y-1/2 tw-right-0 tw-w-full
             tw-max-w-[454px]
 
-            xl:tw-w-[calc(100vw/2-20px)] xl:tw-max-w-[unset]
+            xl:tw-w-[calc(100vw/2-10px)] xl:tw-max-w-[unset]
           `}
         >
           <ImageLayout {...props} />
@@ -45,7 +46,7 @@ const TextRightCenterFullImageLeftCenter = (
           className="title tw-w-full"
           dangerouslySetInnerHTML={{ __html: props.title }}
         />
-        <p dangerouslySetInnerHTML={{ __html: props.text }} />
+        <p className="text" dangerouslySetInnerHTML={{ __html: props.text }} />
         {props.buttonText && props.buttonUrl && (
           <Button
             onClick={() => {

@@ -9,7 +9,7 @@ const FigmaLayout = (props: FigmaLayoutProps) => {
     <div
       className={`
         figma-layout section-layout tw-flex tw-flex-col tw-justify-center
-        tw-items-center cs-gap-between-content
+        tw-items-center
       `}
     >
       <div
@@ -26,19 +26,30 @@ const FigmaLayout = (props: FigmaLayoutProps) => {
           className="text tw-text-center"
           dangerouslySetInnerHTML={{ __html: props.text }}
         />
+        {props.buttonText && props.buttonUrl && (
+          <Button
+            onClick={() => {
+              window.open(props.buttonUrl, "_blank");
+            }}
+            size={props.buttonSize}
+            className="tw-mt-[20px]"
+          >
+            {props.buttonText}
+          </Button>
+        )}
       </div>
-      {props.buttonText && props.buttonUrl && (
-        <Button
-          onClick={() => {
-            window.open(props.buttonUrl, "_blank");
-          }}
-          size={props.buttonSize}
-          className="tw-mt-[20px]"
-        >
-          {props.buttonText}
-        </Button>
-      )}
-      <ImageLayout {...props} />
+      <div
+        className={`
+          tw-flex tw-items-center tw-justify-center images tw-w-screen
+          tw-h-[345px]
+
+          md:tw-h-[485px]
+
+          xl:tw-h-[375px]
+        `}
+      >
+        <ImageLayout {...props} />
+      </div>
     </div>
   );
 };

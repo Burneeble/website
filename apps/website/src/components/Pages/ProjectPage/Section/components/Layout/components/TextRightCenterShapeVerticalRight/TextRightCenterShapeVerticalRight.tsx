@@ -11,7 +11,8 @@ const TextRightCenterShapeVerticalRight = (
     <div
       className={`
         text-right-center-shape-vertical-right section-layout tw-flex
-        tw-items-center tw-justify-center tw-gap-[40px] tw-flex-col tw-relative
+        tw-items-center tw-justify-center cs-gap-between-content tw-flex-col
+        tw-relative
 
         xl:tw-flex-row
       `}
@@ -19,6 +20,7 @@ const TextRightCenterShapeVerticalRight = (
       <div
         className={`
           info tw-flex-1 tw-flex tw-flex-col tw-justify-center tw-items-center
+          cs-gap-between-text
         `}
       >
         <h2
@@ -26,7 +28,7 @@ const TextRightCenterShapeVerticalRight = (
           dangerouslySetInnerHTML={{ __html: props.title }}
         />
         <p
-          className="tw-text-center"
+          className="text tw-text-center"
           dangerouslySetInnerHTML={{ __html: props.text }}
         />
         {props.buttonText && props.buttonUrl && (
@@ -57,7 +59,7 @@ const TextRightCenterShapeVerticalRight = (
 
             md:tw-h-[600px] md:tw-w-[375px]
 
-            xl:tw-right-[unset] xl:tw-left-[calc((100vw/2)-20px-450px)]
+            xl:tw-right-[unset] xl:tw-left-[calc((100vw/2)-10px-450px)]
             xl:tw-w-[450px] xl:tw-h-full
           `}
         />
@@ -69,7 +71,7 @@ const TextRightCenterShapeVerticalRight = (
 
             md:tw-aspect-[385/535]
 
-            xl:tw-left-[calc((100vw/2)-20px-450px)] xl:tw-aspect-[328/675]
+            xl:tw-left-[calc((100vw/2)-10px-450px)] xl:tw-aspect-[328/675]
             xl:tw-min-w-[320px] xl:tw-w-fit
           `}
         >

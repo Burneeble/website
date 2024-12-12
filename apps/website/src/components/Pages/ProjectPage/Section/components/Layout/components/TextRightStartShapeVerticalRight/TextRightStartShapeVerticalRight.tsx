@@ -11,7 +11,8 @@ const TextRightStartShapeVerticalRight = (
     <div
       className={`
         text-right-start-shape-vertical-right section-layout tw-flex
-        tw-items-center tw-justify-center tw-gap-[40px] tw-flex-col tw-relative
+        tw-items-center tw-justify-center cs-gap-between-content tw-flex-col
+        tw-relative
 
         xl:tw-flex-row
       `}
@@ -19,13 +20,14 @@ const TextRightStartShapeVerticalRight = (
       <div
         className={`
           info tw-flex-1 tw-flex tw-flex-col tw-justify-center tw-items-start
+          cs-gap-between-text
         `}
       >
         <h2
           className="title tw-w-full"
           dangerouslySetInnerHTML={{ __html: props.title }}
         />
-        <p dangerouslySetInnerHTML={{ __html: props.text }} />
+        <p className="text" dangerouslySetInnerHTML={{ __html: props.text }} />
         {props.buttonText && props.buttonUrl && (
           <Button
             onClick={() => {
@@ -54,7 +56,7 @@ const TextRightStartShapeVerticalRight = (
 
             md:tw-h-[600px] md:tw-w-[375px]
 
-            xl:tw-right-[unset] xl:tw-left-[calc((100vw/2)-20px-450px)]
+            xl:tw-right-[unset] xl:tw-left-[calc((100vw/2)-10px-450px)]
             xl:tw-w-[450px] xl:tw-h-full
           `}
         />
@@ -66,7 +68,7 @@ const TextRightStartShapeVerticalRight = (
 
             md:tw-aspect-[385/535]
 
-            xl:tw-left-[calc((100vw/2)-20px-450px)] xl:tw-aspect-[328/675]
+            xl:tw-left-[calc((100vw/2)-10px-450px)] xl:tw-aspect-[328/675]
             xl:tw-min-w-[320px] xl:tw-w-fit
           `}
         >

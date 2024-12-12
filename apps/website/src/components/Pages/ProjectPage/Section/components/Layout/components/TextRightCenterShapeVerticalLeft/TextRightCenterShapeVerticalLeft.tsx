@@ -11,8 +11,8 @@ const TextRightCenterShapeVerticalLeft = (
     <div
       className={`
         text-right-center-shape-vertical-left section-layout tw-flex
-        tw-items-center tw-justify-center tw-gap-[40px] tw-flex-col-reverse
-        tw-relative
+        tw-items-center tw-justify-center cs-gap-between-content
+        tw-flex-col-reverse tw-relative
 
         xl:tw-flex-row
       `}
@@ -33,7 +33,7 @@ const TextRightCenterShapeVerticalLeft = (
 
             md:tw-h-[600px] md:tw-w-[375px]
 
-            xl:tw-right-[calc((100vw/2)-20px-450px)] xl:tw-w-[450px]
+            xl:tw-right-[calc((100vw/2)-10px-450px)] xl:tw-w-[450px]
             xl:tw-h-full xl:tw-rounded-r-lg xl:tw-rounded-l-none
           `}
         />
@@ -42,12 +42,12 @@ const TextRightCenterShapeVerticalLeft = (
             images tw-flex tw-items-center tw-justify-center tw-aspect-[350/230]
             tw-absolute tw-top-1/2 -tw-translate-y-1/2 tw-left-1/2
             -tw-translate-x-1/2 tw-w-[calc(100%-40px)] tw-max-w-[385px]
-            tw-right-[calc((100vw/2)-20px-450px)]
 
             md:tw-aspect-[385/535]
 
-            xl:tw-left-[unset] xl:tw-aspect-[328/675] xl:tw-min-w-[320px]
-            xl:tw-w-fit
+            xl:tw-right-[calc((100vw/2)-10px-450px)] xl:tw-aspect-[328/675]
+            xl:tw-min-w-[320px] xl:tw-w-fit xl:tw-left-[unset]
+            xl:tw-translate-x-1/2
           `}
         >
           <ImageLayout {...props} />
@@ -56,6 +56,7 @@ const TextRightCenterShapeVerticalLeft = (
       <div
         className={`
           info tw-flex-1 tw-flex tw-flex-col tw-justify-center tw-items-center
+          cs-gap-between-text
         `}
       >
         <h2
@@ -63,7 +64,7 @@ const TextRightCenterShapeVerticalLeft = (
           dangerouslySetInnerHTML={{ __html: props.title }}
         />
         <p
-          className="tw-text-center"
+          className="text tw-text-center"
           dangerouslySetInnerHTML={{ __html: props.text }}
         />
         {props.buttonText && props.buttonUrl && (

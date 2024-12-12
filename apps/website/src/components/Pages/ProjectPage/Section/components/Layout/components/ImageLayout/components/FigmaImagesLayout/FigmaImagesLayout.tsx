@@ -5,11 +5,11 @@ const FigmaImagesLayout = (props: FigmaImagesLayoutProps) => {
     <div
       className={`
         figma-images-layout images-layout tw-w-screen tw-relative tw-my-[2.5rem]
-        tw-shadow-[0px_0px_100px_rgba(242, 163, 7, .6)]
+        tw-shadow-[0px_0px_100px_rgba(242,_163,_7,_.6)] tw-max-h-[345px]
 
-        md:tw-my-[3.5rem]
+        md:tw-my-[3.5rem] md:tw-max-h-[485px]
 
-        xl:tw-my-[2rem]
+        xl:tw-my-[2rem] xl:tw-max-h-[375px]
       `}
     >
       <img
@@ -34,7 +34,7 @@ const FigmaImagesLayout = (props: FigmaImagesLayoutProps) => {
           xl:tw-w-[130px]
         `}
       />
-      <img src={props.image1} className="tw-w-full" />
+      <img src={props.image1} className="tw-w-full tw-max-h-full" />
     </div>
   );
 };

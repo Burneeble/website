@@ -11,9 +11,10 @@ const TextRightCenterShapeHorizontalLeft = (
     <div
       className={`
         text-right-center-shape-horizontal-left section-layout tw-flex
-        tw-items-center tw-justify-center tw-gap-[30px] tw-flex-col-reverse
+        tw-items-center tw-justify-center cs-gap-between-content
+        tw-flex-col-reverse
 
-        xl:tw-flex-row xl:tw-gap-0
+        xl:tw-flex-row
       `}
     >
       <div
@@ -56,7 +57,7 @@ const TextRightCenterShapeHorizontalLeft = (
       <div
         className={`
           info tw-flex-1 tw-flex tw-flex-col tw-justify-center tw-items-center
-          tw-gap-[10px]
+          cs-gap-between-text
         `}
       >
         <h2
@@ -64,7 +65,7 @@ const TextRightCenterShapeHorizontalLeft = (
           dangerouslySetInnerHTML={{ __html: props.title }}
         />
         <p
-          className="tw-text-center"
+          className="text tw-text-center"
           dangerouslySetInnerHTML={{ __html: props.text }}
         />
         {props.buttonText && props.buttonUrl && (
