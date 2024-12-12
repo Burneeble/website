@@ -27,7 +27,10 @@ const TextLeftStartImageRightCenterShapeVerticalRight = (
           className="title tw-w-full"
           dangerouslySetInnerHTML={{ __html: props.title }}
         />
-        <p className="text" dangerouslySetInnerHTML={{ __html: props.text }} />
+        <p
+          className="text p-default"
+          dangerouslySetInnerHTML={{ __html: props.text }}
+        />
         {props.buttonText && props.buttonUrl && (
           <Button
             onClick={() => {

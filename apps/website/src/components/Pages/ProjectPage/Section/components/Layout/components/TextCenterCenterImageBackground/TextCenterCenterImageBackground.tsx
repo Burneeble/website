@@ -26,7 +26,7 @@ const TextCenterCenterImageBackground = (
           dangerouslySetInnerHTML={{ __html: props.title }}
         />
         <p
-          className="text tw-text-center tw-mb-[50px]"
+          className="text p-default tw-text-center tw-mb-[50px]"
           dangerouslySetInnerHTML={{ __html: props.text }}
         />
         {props.buttonText && props.buttonUrl && (

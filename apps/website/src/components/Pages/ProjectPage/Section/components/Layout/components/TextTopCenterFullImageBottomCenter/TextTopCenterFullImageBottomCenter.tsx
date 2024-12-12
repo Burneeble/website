@@ -28,7 +28,7 @@ const TextTopCenterFullImageBottomCenter = (
           dangerouslySetInnerHTML={{ __html: props.title }}
         />
         <p
-          className="text tw-text-center"
+          className="text p-default tw-text-center"
           dangerouslySetInnerHTML={{ __html: props.text }}
         />
         {props.buttonText && props.buttonUrl && (
