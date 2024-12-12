@@ -152,10 +152,10 @@ const Technology = (props: TechnologyProps) => {
             `
         )}
       >
-        <p className="tw-text-center tw-text-headings tw-font-bold">
+        <p className="p-small tw-text-center tw-text-headings tw-font-bold">
           {props.name}
         </p>
-        <p className="tw-text-center p-small tw-font-light !tw-text-xl">
+        <p className="p-smaller tw-text-center tw-font-light">
           {props.description}
         </p>
       </div>
