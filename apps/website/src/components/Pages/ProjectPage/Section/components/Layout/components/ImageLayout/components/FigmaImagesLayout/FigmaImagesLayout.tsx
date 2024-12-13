@@ -4,12 +4,12 @@ const FigmaImagesLayout = (props: FigmaImagesLayoutProps) => {
   return (
     <div
       className={`
-        figma-images-layout images-layout tw-w-screen tw-relative tw-my-[2.5rem]
-        tw-shadow-[0px_0px_100px_rgba(242,_163,_7,_.6)] tw-max-h-[345px]
+        figma-images-layout images-layout tw-w-screen tw-relative tw-my-[3rem]
+        tw-shadow-[0px_0px_100px_rgba(242,_163,_7,_.6)] tw-aspect-[390/345]
 
-        md:tw-my-[3.5rem] md:tw-max-h-[485px]
+        md:tw-my-[2.3rem] md:tw-aspect-[1512/375]
 
-        xl:tw-my-[2rem] xl:tw-max-h-[375px]
+        sm:tw-my-[3.8rem] sm:tw-aspect-[744/485]
       `}
     >
       <img

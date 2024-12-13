@@ -41,11 +41,11 @@ const FigmaLayout = (props: FigmaLayoutProps) => {
       <div
         className={`
           tw-flex tw-items-center tw-justify-center images tw-w-screen
-          tw-h-[345px]
+          tw-aspect-[390/345]
 
-          md:tw-h-[485px]
+          md:tw-aspect-[744/485]
 
-          xl:tw-h-[375px]
+          sm:tw-aspect-[1512/375]
         `}
       >
         <ImageLayout {...props} />

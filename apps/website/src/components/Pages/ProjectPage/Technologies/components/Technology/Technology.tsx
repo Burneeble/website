@@ -55,6 +55,11 @@ const Technology = (props: TechnologyProps) => {
       props.wrapperRef.current &&
       width
     ) {
+      tooltip.current.style.top = "100%";
+      tooltip.current.style.left = "50%";
+      tooltip.current.style.right = `unset`;
+      tooltip.current.style.transform = "translateX(-50%)";
+
       const tooltipRect = tooltip.current.getBoundingClientRect();
       const containerRect = container.current.getBoundingClientRect();
       const wrapperRect = props.wrapperRef.current.getBoundingClientRect();
@@ -67,18 +72,13 @@ const Technology = (props: TechnologyProps) => {
         }px`;
         tooltip.current.style.transform = "translateX(-50%)";
       } else {
-        tooltip.current.style.top = "100%";
-        tooltip.current.style.left = "50%";
-        tooltip.current.style.right = `unset`;
-        tooltip.current.style.transform = "translateX(-50%)";
-
-        if (tooltipRect.right > width) {
+        if (tooltipRect.right > width - 20) {
           tooltip.current.style.left = "unset";
           tooltip.current.style.right = `0px`;
           tooltip.current.style.transform = "translateX(0)";
         }
 
-        if (tooltipRect.left < 0) {
+        if (tooltipRect.left < 20) {
           tooltip.current.style.left = "0px";
           tooltip.current.style.transform = "translateX(0)";
         }
@@ -91,6 +91,10 @@ const Technology = (props: TechnologyProps) => {
     container.current,
     props.wrapperRef.current,
   ]);
+
+  useEffect(() => {
+    console.log(width);
+  }, [width]);
 
   return (
     <div
