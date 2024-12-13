@@ -1,3 +1,3 @@
-import { SubLayoutProps } from "../../../../Layout.types";
+import { ImageLayoutProps } from "../../ImageLayout.types";
 
-export interface LaptopImageLayoutProps extends SubLayoutProps {}
+export interface LaptopImageLayoutProps extends ImageLayoutProps {}

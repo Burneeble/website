@@ -20,7 +20,6 @@ const TextRightCenterShapeHorizontalLeft = (
       <div
         className={`
           wrapper tw-relative tw-flex-1 tw-w-screen tw-aspect-[390/241]
-          tw-mt-[40px]
 
           md:tw-aspect-[744/530]
 
@@ -47,8 +46,8 @@ const TextRightCenterShapeHorizontalLeft = (
 
             md:tw-py-[30px]
 
-            xl:tw-right-0 xl:tw-left-[unset] xl:tw-h-[800px] xl:tw-translate-x-0
-            xl:tw-w-auto
+            xl:tw-right-0 xl:tw-left-[unset] xl:tw-translate-x-0 xl:tw-w-auto
+            xl:tw-py-0 xl:tw-h-[95%]
           `}
         >
           <ImageLayout {...props} />

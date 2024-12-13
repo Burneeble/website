@@ -49,7 +49,7 @@ const TextRightStartShapeVerticalRight = (
 
           md:tw-h-[535px] md:tw-aspect-auto
 
-          xl:tw-flex-1 xl:tw-h-[780px]
+          xl:tw-flex-1 xl:tw-h-[90vh]
         `}
       >
         <div
@@ -75,7 +75,7 @@ const TextRightStartShapeVerticalRight = (
             xl:tw-min-w-[320px] xl:tw-w-fit
           `}
         >
-          <ImageLayout {...props} />
+          <ImageLayout {...props} mainAxis="width" />
         </div>
       </div>
     </div>

@@ -59,7 +59,7 @@ const TextLeftStartFullImageRightCenter = (
             xl:tw-w-[calc(100vw/2-10px)] xl:tw-max-w-[unset]
           `}
         >
-          <ImageLayout {...props} />
+          <ImageLayout {...props} mainAxis="width" />
         </div>
       </div>
     </div>

@@ -19,15 +19,17 @@ const TextRightCenterImageLeftCenter = (
     >
       <div
         className={`
-          images tw-flex-1 tw-flex tw-items-center tw-justify-center tw-w-full
+          images tw-flex tw-items-center tw-justify-center tw-w-full
           tw-aspect-square tw-max-w-[454px] cs-gap-between-text
         `}
       >
-        <ImageLayout {...props} />
+        <ImageLayout {...props} mainAxis="width" />
       </div>
       <div
         className={`
           info tw-flex-1 tw-flex tw-flex-col tw-justify-center tw-items-start
+
+          md:tw-w-[calc(50%-.75rem)] md:tw-flex-[unset]
         `}
       >
         <h2

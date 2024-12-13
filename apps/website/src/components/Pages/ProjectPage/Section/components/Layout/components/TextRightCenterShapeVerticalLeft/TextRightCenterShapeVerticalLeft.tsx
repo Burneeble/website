@@ -23,7 +23,7 @@ const TextRightCenterShapeVerticalLeft = (
 
           md:tw-h-[535px] md:tw-aspect-auto
 
-          xl:tw-flex-1 xl:tw-h-[780px]
+          xl:tw-flex-1 xl:tw-h-[90vh]
         `}
       >
         <div
@@ -50,7 +50,7 @@ const TextRightCenterShapeVerticalLeft = (
             xl:tw-translate-x-1/2
           `}
         >
-          <ImageLayout {...props} />
+          <ImageLayout {...props} mainAxis="width" />
         </div>
       </div>
       <div
