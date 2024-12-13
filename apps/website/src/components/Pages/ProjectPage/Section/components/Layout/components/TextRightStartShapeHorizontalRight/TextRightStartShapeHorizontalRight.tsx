@@ -79,7 +79,7 @@ const TextRightStartShapeHorizontalRight = (
             tw-min-w-[50vw] tw-w-[calc(100%-40px)] tw-aspect-[350/230]
 
             lg:tw-left-0 lg:tw-h-[95%] lg:tw-translate-x-0 lg:tw-w-auto
-            lg:tw-py-0
+            lg:tw-py-0 lg:tw-justify-start
 
             md:tw-py-[30px] md:tw-top-[50%]
           `}

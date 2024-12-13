@@ -14,16 +14,16 @@ const TextRightCenterShapeHorizontalLeft = (
         tw-items-center tw-justify-center cs-gap-between-content
         tw-flex-col-reverse
 
-        xl:tw-flex-row
+        lg:tw-flex-row
       `}
     >
       <div
         className={`
           wrapper tw-relative tw-flex-1 tw-w-screen tw-aspect-[390/241]
 
-          md:tw-aspect-[744/530]
+          lg:tw-aspect-auto lg:tw-h-screen
 
-          xl:tw-aspect-auto xl:tw-h-screen
+          md:tw-aspect-[744/530]
         `}
       >
         <div
@@ -31,11 +31,11 @@ const TextRightCenterShapeHorizontalLeft = (
             layout-shape tw-rounded-l-lg tw-right-0 tw-bottom-1/2 tw-h-[364px]
             tw-w-[202px] tw-translate-y-1/2 tw-z-[-1]
 
+            lg:tw-right-0 lg:tw-w-[50vw] lg:tw-h-[372px] lg:tw-top-0
+            lg:tw-rounded-r-lg lg:tw-rounded-l-none
+
             md:tw-h-[340px] md:tw-w-[545px] md:tw-translate-y-0
             md:tw-bottom-[unset] md:tw-top-[-20px]
-
-            xl:tw-right-0 xl:tw-w-[50vw] xl:tw-h-[372px] xl:tw-top-0
-            xl:tw-rounded-r-lg xl:tw-rounded-l-none
           `}
         />
         <div
@@ -44,10 +44,10 @@ const TextRightCenterShapeHorizontalLeft = (
             tw-left-1/2 -tw-translate-x-1/2 tw-top-1/2 -tw-translate-y-1/2
             tw-min-w-[50vw] tw-w-[calc(100%-40px)] tw-aspect-[350/230]
 
-            md:tw-py-[30px]
+            lg:tw-right-0 lg:tw-left-[unset] lg:tw-translate-x-0 lg:tw-w-auto
+            lg:tw-py-0 lg:tw-h-[95%] lg:tw-justify-end
 
-            xl:tw-right-0 xl:tw-left-[unset] xl:tw-translate-x-0 xl:tw-w-auto
-            xl:tw-py-0 xl:tw-h-[95%]
+            md:tw-py-[30px]
           `}
         >
           <ImageLayout {...props} />
