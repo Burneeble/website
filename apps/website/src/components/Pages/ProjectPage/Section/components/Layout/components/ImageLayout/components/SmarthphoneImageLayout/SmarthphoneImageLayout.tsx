@@ -55,8 +55,8 @@ const SmarthphoneImageLayout = (props: SmarthphoneImageLayoutProps) => {
           md:tw-rounded-[30px] md:tw-h-[calc(100%-24px)]
           md:tw-w-[calc(48.5%-24px)]
 
-          sm:tw-rounded-[8px] sm:tw-top-[50.3%] sm:tw-w-[calc(72%-37px)]
-          sm:tw-h-[calc(100%-37px)]
+          sm:tw-rounded-[8px] sm:tw-top-[50.3%] sm:tw-w-auto sm:tw-h-[93%]
+          sm:tw-aspect-[275/400]
         `)}
       />
       {!["sm", "md"].includes(screen) && (

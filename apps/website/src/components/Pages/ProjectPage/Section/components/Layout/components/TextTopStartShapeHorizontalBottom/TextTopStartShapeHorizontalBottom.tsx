@@ -40,7 +40,13 @@ const TextTopStartShapeHorizontalBottom = (
           </Button>
         )}
       </div>
-      <div className={`wrapper tw-relative tw-w-full tw-h-[600px]`}>
+      <div
+        className={`
+          wrapper tw-relative tw-w-full tw-h-[calc(82px+(230/350*(100vw-40px)))]
+
+          md:tw-h-[600px]
+        `}
+      >
         <div
           className={`
             images tw-flex tw-items-center tw-justify-center tw-z-[5]
@@ -57,8 +63,12 @@ const TextTopStartShapeHorizontalBottom = (
         </div>
         <div
           className={`
-            layout-shape tw-rounded-t-lg tw-w-full tw-h-[411px] tw-left-0
-            tw-bottom-0
+            layout-shape tw-rounded-t-lg tw-left-1/2 tw-bottom-0 tw-h-[164px]
+            tw-w-screen -tw-translate-x-1/2
+
+            md:tw-h-[250px] md:tw-w-full
+
+            xl:tw-h-[411px]
           `}
         ></div>
       </div>

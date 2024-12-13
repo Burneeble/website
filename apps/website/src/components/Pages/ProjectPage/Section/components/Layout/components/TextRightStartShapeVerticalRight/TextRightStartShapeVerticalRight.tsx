@@ -14,7 +14,7 @@ const TextRightStartShapeVerticalRight = (
         tw-items-center tw-justify-center cs-gap-between-content tw-flex-col
         tw-relative
 
-        xl:tw-flex-row
+        lg:tw-flex-row
       `}
     >
       <div
@@ -47,9 +47,9 @@ const TextRightStartShapeVerticalRight = (
         className={`
           wrapper tw-relative tw-w-screen tw-aspect-[350/230]
 
-          md:tw-h-[535px] md:tw-aspect-auto
+          lg:tw-flex-1 lg:tw-h-[90vh]
 
-          xl:tw-flex-1 xl:tw-h-[90vh]
+          md:tw-h-[535px] md:tw-aspect-auto
         `}
       >
         <div
@@ -57,10 +57,10 @@ const TextRightStartShapeVerticalRight = (
             layout-shape tw-rounded-l-lg tw-right-0 tw-top-1/2
             -tw-translate-y-1/2 tw-z-[-1] tw-h-[320px] tw-w-[200px]
 
-            md:tw-h-[600px] md:tw-w-[375px]
+            lg:tw-right-[unset] lg:tw-left-[calc((100vw/2)-10px-450px)]
+            lg:tw-w-[450px] lg:tw-h-full
 
-            xl:tw-right-[unset] xl:tw-left-[calc((100vw/2)-10px-450px)]
-            xl:tw-w-[450px] xl:tw-h-full
+            md:tw-h-[600px] md:tw-w-[375px]
           `}
         />
         <div
@@ -69,10 +69,10 @@ const TextRightStartShapeVerticalRight = (
             tw-absolute tw-top-1/2 -tw-translate-y-1/2 tw-left-1/2
             -tw-translate-x-1/2 tw-w-[calc(100%-40px)] tw-max-w-[385px]
 
-            md:tw-aspect-[385/535]
+            lg:tw-left-[calc((100vw/2)-10px-450px)] lg:tw-aspect-[328/675]
+            lg:tw-min-w-[320px] lg:tw-w-fit
 
-            xl:tw-left-[calc((100vw/2)-10px-450px)] xl:tw-aspect-[328/675]
-            xl:tw-min-w-[320px] xl:tw-w-fit
+            md:tw-aspect-[385/535]
           `}
         >
           <ImageLayout {...props} mainAxis="width" />

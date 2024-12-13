@@ -13,7 +13,7 @@ const TextLeftStartImageRightCenter = (
         text-left-start-image-right-center section-layout tw-flex
         tw-items-center tw-justify-center tw-flex-col cs-gap-between-content
 
-        xl:tw-flex-row
+        lg:tw-flex-row
       `}
     >
       <div

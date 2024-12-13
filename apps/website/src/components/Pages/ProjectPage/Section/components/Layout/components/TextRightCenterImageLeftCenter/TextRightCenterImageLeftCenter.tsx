@@ -14,7 +14,7 @@ const TextRightCenterImageLeftCenter = (
         tw-items-center tw-justify-center tw-flex-col-reverse
         cs-gap-between-content
 
-        xl:tw-flex-row
+        lg:tw-flex-row
       `}
     >
       <div

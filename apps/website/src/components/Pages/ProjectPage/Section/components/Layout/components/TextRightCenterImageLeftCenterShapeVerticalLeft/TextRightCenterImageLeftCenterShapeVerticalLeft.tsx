@@ -14,7 +14,7 @@ const TextRightCenterImageLeftCenterShapeVerticalLeft = (
         tw-flex tw-items-center tw-justify-center tw-flex-col-reverse
         cs-gap-between-content
 
-        xl:tw-flex-row
+        lg:tw-flex-row
       `}
     >
       <div
@@ -22,9 +22,9 @@ const TextRightCenterImageLeftCenterShapeVerticalLeft = (
           wrapper tw-w-screen tw-flex tw-items-center tw-justify-center
           tw-relative tw-h-[350px]
 
-          md:tw-h-[515px]
+          lg:tw-h-auto lg:tw-flex-1
 
-          xl:tw-h-auto xl:tw-flex-1
+          md:tw-h-[515px]
         `}
       >
         <div
@@ -32,11 +32,11 @@ const TextRightCenterImageLeftCenterShapeVerticalLeft = (
             layout-shape tw-rounded-l-lg tw-left-[calc(100vw-110px)] tw-top-1/2
             -tw-translate-y-1/2 tw-w-[110px] tw-h-[350px] tw-z-[-1]
 
-            md:tw-left-[calc(100vw-250px)] md:tw-w-[250px] md:tw-h-[515px]
+            lg:tw-right-[calc((100vw/2)-10px-200px)] lg:tw-w-[200px]
+            lg:tw-h-[675px] lg:tw-max-w-[unset] lg:tw-rounded-r-lg
+            lg:tw-rounded-l-none lg:tw-left-[unset]
 
-            xl:tw-right-[calc((100vw/2)-10px-200px)] xl:tw-w-[200px]
-            xl:tw-h-[675px] xl:tw-max-w-[unset] xl:tw-rounded-r-lg
-            xl:tw-rounded-l-none xl:tw-left-[unset]
+            md:tw-left-[calc(100vw-250px)] md:tw-w-[250px] md:tw-h-[515px]
           `}
         />
         <div
@@ -44,10 +44,10 @@ const TextRightCenterImageLeftCenterShapeVerticalLeft = (
             images tw-flex-1 tw-flex tw-items-center tw-justify-center tw-w-full
             tw-aspect-[630/532] tw-relative tw-max-w-[450px] tw-mx-[20px]
 
-            xl:tw-mx-0
+            lg:tw-mx-0
           `}
         >
-          <ImageLayout {...props} />
+          <ImageLayout {...props} mainAxis="width" />
         </div>
       </div>
       <div

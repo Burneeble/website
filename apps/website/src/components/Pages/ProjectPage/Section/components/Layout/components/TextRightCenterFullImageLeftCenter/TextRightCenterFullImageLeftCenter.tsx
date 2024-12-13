@@ -14,7 +14,7 @@ const TextRightCenterFullImageLeftCenter = (
         tw-items-center tw-justify-center tw-flex-col-reverse
         cs-gap-between-content
 
-        xl:tw-flex-row
+        lg:tw-flex-row
       `}
     >
       <div
@@ -22,7 +22,7 @@ const TextRightCenterFullImageLeftCenter = (
           wrapper tw-flex-1 tw-w-full tw-relative tw-aspect-square
           tw-max-w-[454px] cs-gap-between-text
 
-          xl:tw-h-full xl:tw-w-auto xl:tw-max-w-[unset]
+          lg:tw-h-full lg:tw-w-auto lg:tw-max-w-[unset]
         `}
       >
         <div
@@ -31,7 +31,7 @@ const TextRightCenterFullImageLeftCenter = (
             tw-absolute tw-top-1/2 -tw-translate-y-1/2 tw-right-0 tw-w-full
             tw-max-w-[454px]
 
-            xl:tw-w-[calc(100vw/2-10px)] xl:tw-max-w-[unset]
+            lg:tw-w-[calc(100vw/2-10px)] lg:tw-max-w-[unset]
           `}
         >
           <ImageLayout {...props} mainAxis="width" />
