@@ -27,7 +27,7 @@ const Section = (props: SectionProps) => {
             section cs-section-structure tw-flex tw-items-center
             tw-justify-center tw-flex-col
 
-            lg:tw-max-h-[100vh]
+            lg:tw-max-h-screen lg:tw-w-screen
           `,
           [
             LayoutType.TextTopStartFullImageBottomCenter,

@@ -14,15 +14,21 @@ const LaptopSmarthphoneImagesLayout = (
   return (
     <div
       className={`
-        images-layout laptop-smarthphone-images-layout tw-h-[20rem]
-        tw-max-h-screen tw-flex tw-items-center tw-justify-center tw-w-full
-
-        md:tw-h-full
+        images-layout laptop-smarthphone-images-layout tw-h-full tw-max-h-screen
+        tw-flex tw-items-center tw-justify-center tw-aspect-[2/1]
       `}
     >
       <LaptopImageLayout {...props} />
       {!["sm", "md"].includes(screen) && (
-        <div className="tw-h-[66%]">
+        <div
+          className={`
+            tw-h-[66%] tw-aspect-[350/230]
+
+            md:tw-aspect-[224/462]
+
+            sm:tw-aspect-[380/535]
+          `}
+        >
           <SmarthphoneImageLayout {...props} image1={props.image2!} />
         </div>
       )}
