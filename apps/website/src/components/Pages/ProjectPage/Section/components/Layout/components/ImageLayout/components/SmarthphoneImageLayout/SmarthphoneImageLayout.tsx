@@ -73,7 +73,7 @@ const SmarthphoneImageLayout = (props: SmarthphoneImageLayoutProps) => {
           -tw-translate-y-1/2 tw-w-full tw-aspect-[350/230] tw-top-1/2
           tw-rounded-lg
 
-          md:tw-h-[94%] md:tw-w-[calc(43%)]
+          md:tw-h-[94%] md:tw-w-[41%]
 
           sm:tw-top-[50.3%] sm:tw-w-auto sm:tw-h-[94%] sm:tw-aspect-[280/400]
         `)}

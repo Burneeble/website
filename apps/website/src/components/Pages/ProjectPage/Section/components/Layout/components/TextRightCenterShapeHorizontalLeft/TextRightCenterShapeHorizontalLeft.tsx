@@ -29,7 +29,7 @@ const TextRightCenterShapeHorizontalLeft = (
         <div
           className={`
             layout-shape tw-rounded-l-lg tw-right-0 tw-bottom-1/2 tw-h-[364px]
-            tw-w-[202px] tw-translate-y-1/2 tw-z-[-1]
+            tw-aspect-[202/318] tw-translate-y-1/2 tw-z-[-1]
 
             lg:tw-right-0 lg:tw-w-[50vw] lg:tw-h-[372px] lg:tw-top-0
             lg:tw-rounded-r-lg lg:tw-rounded-l-none

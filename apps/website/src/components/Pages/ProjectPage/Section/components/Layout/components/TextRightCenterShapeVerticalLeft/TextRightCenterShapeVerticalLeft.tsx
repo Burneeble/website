@@ -3,6 +3,8 @@
 import { Button } from "@burneeble/ui-components";
 import ImageLayout from "../ImageLayout";
 import { TextRightCenterShapeVerticalLeftProps } from "./TextRightCenterShapeVerticalLeft.types";
+import { cn } from "@/lib/utils";
+import { ImageLayoutType } from "../../../../Section.types";
 
 const TextRightCenterShapeVerticalLeft = (
   props: TextRightCenterShapeVerticalLeftProps
@@ -38,17 +40,24 @@ const TextRightCenterShapeVerticalLeft = (
           `}
         />
         <div
-          className={`
-            images tw-flex tw-items-center tw-justify-center tw-aspect-[350/230]
-            tw-absolute tw-top-1/2 -tw-translate-y-1/2 tw-left-1/2
-            -tw-translate-x-1/2 tw-w-[calc(100%-40px)] tw-max-w-[385px]
+          className={cn(
+            `
+              images tw-flex tw-items-center tw-justify-center
+              tw-aspect-[350/230] tw-absolute tw-top-1/2 -tw-translate-y-1/2
+              tw-left-1/2 -tw-translate-x-1/2 tw-w-[calc(100%-40px)]
+              tw-max-w-[385px]
 
-            lg:tw-right-[calc((100vw/2)-10px-450px)] lg:tw-aspect-[328/675]
-            lg:tw-min-w-[320px] lg:tw-w-fit lg:tw-left-[unset]
-            lg:tw-translate-x-1/2
+              lg:tw-right-[calc((100vw/2)-10px-450px)] lg:tw-aspect-[328/675]
+              lg:tw-min-w-[320px] lg:tw-left-[unset] lg:tw-translate-x-1/2
 
-            md:tw-aspect-[385/535]
-          `}
+              md:tw-aspect-[385/535]
+            `,
+            [ImageLayoutType.SmarthphoneImageLayout].includes(
+              props.imageLayoutType
+            )
+              ? `lg:tw-w-[600px] lg:tw-max-w-[600px]`
+              : `lg:tw-w-fit`
+          )}
         >
           <ImageLayout {...props} mainAxis="width" />
         </div>
