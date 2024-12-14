@@ -5,6 +5,7 @@ import { ContactPopupProps } from "./ContactPopup.types";
 import {
   Form,
   InputType,
+  NotificationHandler,
   useClientInfoService,
 } from "@burneeble/ui-components";
 import { cn } from "@/lib/utils";
@@ -14,6 +15,24 @@ const ContactPopup = (props: ContactPopupProps) => {
 
   //Hooks
   const { width } = useClientInfoService();
+
+  //Methods
+  const onSubmit = async () => {
+    try {
+      const res = await fetch(
+        `https://burneeble.com/wp-json/contact-form-7/v1/contact-forms/{form_id}/feedback`
+      );
+
+      const tmp = await res.json();
+
+      console.log(tmp);
+    } catch (err) {
+      console.log(err);
+      NotificationHandler.instance.error(
+        "An error occurred while submitting the form. Please try again later."
+      );
+    }
+  };
 
   return (
     <>
@@ -162,7 +181,9 @@ const ContactPopup = (props: ContactPopupProps) => {
                     .min(10, "Bio must be at least 10 characters"),
                 },
               ]}
-              onSubmit={() => {}}
+              onSubmit={() => {
+                onSubmit();
+              }}
             />
           </div>
         </div>
