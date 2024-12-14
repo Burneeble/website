@@ -28,10 +28,11 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
     <div
       className={`
         skills-parallax tw-w-full tw-h-full tw-flex tw-gap-[10px] tw-flex-col
+        tw-relative
 
-        md:tw-gap-[30px]
+        md:tw-flex-row md:tw-gap-[70px] md:tw-h-[calc(100vh-60px)]
 
-        xl:tw-flex-row xl:tw-gap-[70px] xl:tw-h-[calc(100vh-60px)]
+        sm:tw-gap-[30px]
       `}
     >
       <div
@@ -39,7 +40,7 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
           skill-info tw-flex tw-items-start tw-justify-center tw-flex-col
           tw-gap-[10px] tw-w-full tw-relative tw-flex-1
 
-          md:tw-flex-[unset]
+          sm:tw-flex-[unset]
         `}
       >
         {props.skills.map((skill, i) => {
@@ -76,14 +77,16 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
         className={`
           skill-section tw-relative
 
-          xl:tw-min-h-full
+          md:tw-min-h-full md:tw-relative md:tw-bottom-[unset]
+
+          sm:tw-absolute sm:tw-bottom-0 sm:tw-w-full
         `}
       >
         <div
           className={`
             skills tw-overflow-hidden tw-max-w-full no-scrollbar
 
-            xl:tw-h-full xl:tw-relative xl:tw-overflow-visible
+            md:tw-h-full md:tw-relative md:tw-overflow-visible
           `}
           ref={skills}
         >
@@ -91,9 +94,9 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
             className={`
               wrapper tw-justify-between tw-relative tw-flex
 
-              sm:tw-pb-[30px]
+              md:!tw-w-[490px] md:tw-flex-col md:tw-pb-0 md:tw-h-full
 
-              xl:!tw-w-[490px] xl:tw-flex-col xl:tw-pb-0 xl:tw-h-full
+              sm:tw-pb-[30px]
             `}
             style={{ width: `${100 * props.skills.length}%` }}
           >
@@ -131,10 +134,10 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
             className={cn(
               `
                 bar tw-translate-x-[-50%] tw-bg-[var(--primary-lighest)]
-                tw-absolute tw-bottom-0 tw-left-1/2 tw-h-[8px] tw-w-screen
-                tw-block
+                tw-absolute tw-bottom-0 tw-left-1/2 tw-h-[8px] tw-block
               `
             )}
+            style={{ width: `calc(100vw * ${props.skills.length})` }}
           />
         )}
       </div>

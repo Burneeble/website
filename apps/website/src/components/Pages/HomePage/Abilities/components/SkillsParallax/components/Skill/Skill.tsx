@@ -67,11 +67,11 @@ const Skill = (props: SkillProps) => {
                 rod tw-absolute tw-bottom-[-25px] tw-left-1/2
                 -tw-translate-x-1/2 tw-h-[calc(100%-11px)] tw-w-[8px]
 
-                xl:tw-h-[calc(100%-20px)] xl:tw-transition-all
-                xl:tw-duration-500 xl:tw-ease-in-out xl:tw-bottom-[-15px]
+                md:tw-h-[calc(100%-20px)] md:tw-transition-all
+                md:tw-duration-500 md:tw-ease-in-out md:tw-bottom-[-15px]
               `,
               props.index == props.amount - 1 &&
-                "xl:tw-h-[calc(100%-40px)] xl:!tw-bottom-0",
+                "md:tw-h-[calc(100%-40px)] md:!tw-bottom-0",
               (!["sm", "md"].includes(screen)
                 ? props.currentIndex >= props.index
                 : true) && `active`
@@ -84,10 +84,10 @@ const Skill = (props: SkillProps) => {
           `
             info tw-flex tw-flex-col tw-gap-[10px]
 
-            md:tw-h-full
+            md:tw-pb-[30px] md:tw-transition-all md:tw-duration-200
+            md:tw-ease-in-out
 
-            xl:tw-pb-[30px] xl:tw-transition-all xl:tw-duration-200
-            xl:tw-ease-in-out
+            sm:tw-h-full
           `,
           !["sm", "md"].includes(screen) &&
             props.currentIndex < props.index &&
