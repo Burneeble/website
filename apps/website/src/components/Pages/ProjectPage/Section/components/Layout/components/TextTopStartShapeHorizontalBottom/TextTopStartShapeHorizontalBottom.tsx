@@ -44,6 +44,8 @@ const TextTopStartShapeHorizontalBottom = (
         className={`
           wrapper tw-relative tw-w-full tw-h-[calc(82px+(230/350*(100vw-40px)))]
 
+          lg:tw-h-[unset] lg:tw-flex-1
+
           md:tw-h-[600px]
         `}
       >
@@ -53,10 +55,10 @@ const TextTopStartShapeHorizontalBottom = (
             tw-absolute tw-left-1/2 -tw-translate-x-1/2 tw-top-0
             tw-w-[calc(100vw-40px)] tw-aspect-[350/230]
 
+            lg:tw-h-full lg:tw-aspect-[2/1]
+
             md:tw-bottom-[50px] md:tw-top-[unset] md:tw-w-[100%]
             md:tw-aspect-[680/485]
-
-            xl:tw-h-full xl:tw-w-fit
           `}
         >
           <ImageLayout {...props} />
@@ -66,9 +68,9 @@ const TextTopStartShapeHorizontalBottom = (
             layout-shape tw-rounded-t-lg tw-left-1/2 tw-bottom-0 tw-h-[164px]
             tw-w-screen -tw-translate-x-1/2
 
-            md:tw-h-[250px] md:tw-w-full
+            lg:tw-h-[411px]
 
-            xl:tw-h-[411px]
+            md:tw-h-[250px] md:tw-w-full
           `}
         ></div>
       </div>

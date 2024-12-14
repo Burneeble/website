@@ -16,8 +16,14 @@ const LayoutTestPage = () => {
               imageLayoutInfo={{
                 slug: "slug",
                 imagesLayoutSm: { image1: "https://picsum.photos/1300/480" },
-                imagesLayoutMd: { image1: "https://picsum.photos/682/480" },
-                imagesLayoutXl: { image1: "https://picsum.photos/1512/375" },
+                imagesLayoutMd: {
+                  image1: "https://picsum.photos/682/480",
+                  image2: "https://picsum.photos/1512/375",
+                },
+                imagesLayoutXl: {
+                  image1: "https://picsum.photos/1512/375",
+                  image2: "https://picsum.photos/1512/375",
+                },
               }}
               title={"Title goes here"}
               text={

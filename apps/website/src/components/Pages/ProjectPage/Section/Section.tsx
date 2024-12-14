@@ -32,6 +32,8 @@ const Section = (props: SectionProps) => {
           [
             LayoutType.TextTopStartFullImageBottomCenter,
             LayoutType.TextTopCenterFullImageBottomCenter,
+            LayoutType.TextTopCenterShapeHorizontalBottom,
+            LayoutType.TextTopStartShapeHorizontalBottom,
           ].includes(props.layoutType) && `!tw-pb-0`
         )}
       >

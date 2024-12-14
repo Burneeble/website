@@ -39,7 +39,7 @@ const LaptopSmarthphoneImagesLayout = (
           tw-aspect-[350/230] tw-flex tw-items-center tw-justify-center
           tw-w-full
 
-          md:tw-h-[66%] md:tw-aspect-[224/462] md:-tw-translate-x-1/2
+          md:tw-h-[66%] md:tw-aspect-[224/462] md:-tw-translate-x-[20%]
 
           sm:tw-h-full sm:tw-w-auto sm:tw-aspect-[380/535]
         `}

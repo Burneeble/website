@@ -3,16 +3,37 @@
 import { useClientInfoService } from "@burneeble/ui-components";
 import { SmarthphoneImageLayoutProps } from "./SmarthphoneImageLayout.types";
 import { cn } from "@/lib/utils";
+import { useEffect, useRef, useState } from "react";
 
 const SmarthphoneImageLayout = (props: SmarthphoneImageLayoutProps) => {
   //States
   const mainAxis = props.mainAxis || "height";
+  const [radius, setRadius] = useState<number>(0);
 
   //Hooks
-  const { screen } = useClientInfoService();
+  const { screen, width } = useClientInfoService();
+  const layout = useRef<HTMLDivElement>(null);
+
+  //Effects
+  useEffect(() => {
+    if (width && layout.current) {
+      switch (screen) {
+        case "sm":
+          setRadius(8);
+          break;
+        case "md":
+          setRadius(layout.current.clientHeight * 0.015);
+          break;
+        default:
+          setRadius(layout.current.clientHeight * 0.065);
+          break;
+      }
+    }
+  }, [width, layout.current]);
 
   return (
     <div
+      ref={layout}
       className={cn(
         `
           images-layout smarthphone-image-layout tw-relative tw-max-h-[80vh]
@@ -52,18 +73,17 @@ const SmarthphoneImageLayout = (props: SmarthphoneImageLayoutProps) => {
           -tw-translate-y-1/2 tw-w-full tw-aspect-[350/230] tw-top-1/2
           tw-rounded-lg
 
-          md:tw-rounded-[30px] md:tw-h-[calc(100%-24px)]
-          md:tw-w-[calc(48.5%-24px)]
+          md:tw-h-[94%] md:tw-w-[calc(43%)]
 
-          sm:tw-rounded-[8px] sm:tw-top-[50.3%] sm:tw-w-auto sm:tw-h-[93%]
-          sm:tw-aspect-[275/400]
+          sm:tw-top-[50.3%] sm:tw-w-auto sm:tw-h-[94%] sm:tw-aspect-[280/400]
         `)}
+        style={{ borderRadius: `${radius}px` }}
       />
       {!["sm", "md"].includes(screen) && (
         <img
           src="/img/project/sections/smartphone-dock-layout.svg"
           className={`
-            tw-absolute tw-top-[10px] tw-w-[23.7%] tw-left-1/2
+            tw-absolute tw-top-[2.8%] tw-w-[23.7%] tw-left-1/2
             -tw-translate-x-1/2
           `}
         />
