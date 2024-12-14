@@ -47,6 +47,7 @@ const Form = (props: FormProps) => {
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     console.log("data", data);
+    props.onSubmit(data);
   }
 
   return (
@@ -124,7 +125,12 @@ const Form = (props: FormProps) => {
             );
           })}
         </div>
-        <Button type="submit" fit="full" className="!tw-mt-8">
+        <Button
+          type="submit"
+          fit="full"
+          className="!tw-mt-8"
+          onClick={() => form.handleSubmit(onSubmit)}
+        >
           Submit
         </Button>
       </form>

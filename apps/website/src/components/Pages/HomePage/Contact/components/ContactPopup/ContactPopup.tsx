@@ -1,36 +1,52 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { ContactPopupProps } from "./ContactPopup.types";
 import {
   Form,
   InputType,
   NotificationHandler,
+  Spinner,
   useClientInfoService,
 } from "@burneeble/ui-components";
 import { cn } from "@/lib/utils";
 import z from "zod";
 const ContactPopup = (props: ContactPopupProps) => {
   //States
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   //Hooks
   const { width } = useClientInfoService();
 
   //Methods
-  const onSubmit = async () => {
+  const onSubmit = async (values: Record<string, string>) => {
+    setIsSubmitting(true);
     try {
-      const res = await fetch(
-        `https://burneeble.com/wp-json/contact-form-7/v1/contact-forms/{form_id}/feedback`
+      const formData = new FormData();
+      formData.append("your-name", `${values.firstName} ${values.lastName}`);
+      formData.append("your-email", values.email);
+      formData.append("your-subject", values.interest);
+      formData.append("budget", values.budget.replaceAll("-", " "));
+      formData.append("details", values.textarea.replaceAll("-", " "));
+      formData.append("_wpcf7_unit_tag", "wpcf7-f20-o1");
+
+      await fetch(
+        `https://burneeble.com/wp-json/contact-form-7/v1/contact-forms/592/feedback`,
+        {
+          method: "POST",
+          body: formData,
+        }
       );
 
-      const tmp = await res.json();
-
-      console.log(tmp);
+      NotificationHandler.instance.success("Form submitted successfully!");
+      props.setIsContactPopupOpen(false);
     } catch (err) {
       console.log(err);
       NotificationHandler.instance.error(
         "An error occurred while submitting the form. Please try again later."
       );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -44,6 +60,17 @@ const ContactPopup = (props: ContactPopupProps) => {
           tw-bg-[rgba(0,0,0,0.652)] tw-z-[55]
         `}
       >
+        {isSubmitting && (
+          <div
+            className={`
+              tw-absolute loading-screen tw-top-0 tw-left-0 tw-w-full tw-h-full
+              tw-flex tw-items-center tw-justify-center tw-bg-[rgba(0,0,0,.6)]
+              tw-z-[5]
+            `}
+          >
+            <Spinner size="default" />
+          </div>
+        )}
         <div
           onClick={(e) => e.stopPropagation()}
           className={`
@@ -181,8 +208,8 @@ const ContactPopup = (props: ContactPopupProps) => {
                     .min(10, "Bio must be at least 10 characters"),
                 },
               ]}
-              onSubmit={() => {
-                onSubmit();
+              onSubmit={(values: Record<string, string>) => {
+                onSubmit(values);
               }}
             />
           </div>
