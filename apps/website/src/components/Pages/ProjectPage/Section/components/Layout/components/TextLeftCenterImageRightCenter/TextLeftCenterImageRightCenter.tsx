@@ -21,6 +21,8 @@ const TextLeftCenterImageRightCenter = (
           cs-gap-between-text info tw-flex tw-flex-col tw-justify-center
           tw-items-center tw-flex-1
 
+          lg:tw-max-w-[630px]
+
           md:tw-w-[calc(50%-.75rem)] md:tw-flex-[unset]
         `}
       >

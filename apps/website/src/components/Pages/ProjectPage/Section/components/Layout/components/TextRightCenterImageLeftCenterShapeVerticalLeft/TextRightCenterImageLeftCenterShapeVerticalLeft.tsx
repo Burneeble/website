@@ -54,6 +54,8 @@ const TextRightCenterImageLeftCenterShapeVerticalLeft = (
         className={`
           info tw-flex-1 tw-flex tw-flex-col tw-justify-center tw-items-start
           cs-gap-between-text
+
+          lg:tw-max-w-[630px]
         `}
       >
         <h2

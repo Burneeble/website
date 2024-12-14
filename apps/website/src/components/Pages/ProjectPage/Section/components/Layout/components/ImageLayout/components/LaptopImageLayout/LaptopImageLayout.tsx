@@ -19,11 +19,9 @@ const LaptopImageLayout = (props: LaptopImageLayoutProps) => {
           tw-aspect-[952/639] tw-flex tw-items-center tw-justify-center
 
           md:tw-aspect-[952/639]
-
-          sm:tw-h-full sm:tw-w-auto
         `,
         mainAxis === "height"
-          ? "sm:tw-h-full sm:tw-w-auto"
+          ? "sm:tw-h-full sm:tw-max-h-[35rem] sm:tw-w-auto"
           : "sm:tw-w-full sm:tw-h-auto"
       )}
     >

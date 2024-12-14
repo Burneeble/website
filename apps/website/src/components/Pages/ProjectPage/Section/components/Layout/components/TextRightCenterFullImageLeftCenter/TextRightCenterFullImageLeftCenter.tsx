@@ -40,6 +40,8 @@ const TextRightCenterFullImageLeftCenter = (
       <div
         className={`
           info tw-flex-1 tw-flex tw-flex-col tw-justify-center tw-items-start
+
+          lg:tw-max-w-[630px]
         `}
       >
         <h2
