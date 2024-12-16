@@ -72,7 +72,7 @@ const ClientInfoServiceProvider = (props: ClientInfoServiceProviderProps) => {
     const sortedScreens = screenWidths.sort((a, b) => a.width - b.width);
 
     for (const screen of sortedScreens) {
-      if (width <= screen.width) {
+      if (width < screen.width) {
         return screen.key as Screen;
       }
     }
