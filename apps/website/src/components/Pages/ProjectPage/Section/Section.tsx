@@ -27,14 +27,18 @@ const Section = (props: SectionProps) => {
             section cs-section-structure tw-flex tw-items-center
             tw-justify-center tw-flex-col
 
-            lg:tw-max-h-screen lg:tw-w-screen
+            lg:tw-w-screen
           `,
           [
             LayoutType.TextTopStartFullImageBottomCenter,
             LayoutType.TextTopCenterFullImageBottomCenter,
             LayoutType.TextTopCenterShapeHorizontalBottom,
             LayoutType.TextTopStartShapeHorizontalBottom,
-          ].includes(props.layoutType) && `!tw-py-0`
+          ].includes(props.layoutType) && `!tw-py-0`,
+          ![
+            LayoutType.TextTopCenterFullImageBottomCenter,
+            LayoutType.TextTopStartFullImageBottomCenter,
+          ].includes(props.layoutType) && `lg:tw-max-h-screen`
         )}
       >
         <Layout buttonSize={getButtonSize()} {...props} />
