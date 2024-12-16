@@ -29,7 +29,7 @@ const SmarthphoneImageLayout = (props: SmarthphoneImageLayoutProps) => {
           break;
       }
     }
-  }, [width, layout.current]);
+  }, [width, layout.current, screen]);
 
   return (
     <div
