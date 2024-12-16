@@ -49,7 +49,7 @@ const TextLeftStartFullImageRightCenter = (
           wrapper tw-flex-1 tw-w-full tw-relative tw-aspect-square
           tw-max-w-[454px]
 
-          lg:tw-h-full lg:tw-w-auto lg:tw-max-w-[unset]
+          lg:tw-h-full lg:tw-max-w-[630px] lg:tw-flex-1
         `}
       >
         <div
@@ -58,7 +58,7 @@ const TextLeftStartFullImageRightCenter = (
             tw-absolute tw-top-1/2 -tw-translate-y-1/2 tw-left-0 tw-w-full
             tw-max-w-[454px]
 
-            lg:tw-w-[calc(100vw/2-10px)] lg:tw-max-w-[unset]
+            lg:tw-w-[calc(100vw/2-20px)] lg:tw-max-w-[unset]
           `}
         >
           <ImageLayout {...props} mainAxis="width" />
