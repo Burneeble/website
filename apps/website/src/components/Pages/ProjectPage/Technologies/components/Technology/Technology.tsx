@@ -105,7 +105,7 @@ const Technology = (props: TechnologyProps) => {
           tw-to-[var(--primary-lighter)] tw-rounded tw-flex-col
           tw-justify-center tw-items-center tw-inline-flex tw-text-[100px]
           tw-text-headings tw-transition-all tw-duration-200 tw-ease-in-out
-          tw-cursor-help tw-max-w-[90vw]
+          tw-max-w-[90vw]
 
           hover:tw-bg-gradient-to-r hover:tw-from-brown-500
           hover:tw-to-brown-200
