@@ -34,7 +34,7 @@ const Section = (props: SectionProps) => {
             LayoutType.TextTopCenterFullImageBottomCenter,
             LayoutType.TextTopCenterShapeHorizontalBottom,
             LayoutType.TextTopStartShapeHorizontalBottom,
-          ].includes(props.layoutType) && `!tw-py-0`
+          ].includes(props.layoutType) && `!tw-pb-0`
         )}
       >
         <Layout buttonSize={getButtonSize()} {...props} />
