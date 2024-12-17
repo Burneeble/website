@@ -21,22 +21,24 @@ const TextRightCenterShapeVerticalLeft = (
     >
       <div
         className={`
-          wrapper tw-relative tw-w-screen tw-aspect-[350/230]
+          wrapper tw-relative tw-w-screen tw-aspect-[400/300]
 
           lg:tw-flex-1 lg:tw-h-[90vh]
 
           md:tw-h-[535px] md:tw-aspect-auto
+
+          sm:tw-h-[450px]
         `}
       >
         <div
           className={`
             layout-shape tw-rounded-l-lg tw-right-0 tw-top-1/2
-            -tw-translate-y-1/2 tw-z-[-1] tw-h-[320px] tw-w-[200px]
+            -tw-translate-y-1/2 tw-z-[-1] tw-h-full tw-w-[50vw]
 
-            lg:tw-right-[calc((100vw/2)-10px-450px)] lg:tw-w-[450px]
-            lg:tw-h-full lg:tw-rounded-r-lg lg:tw-rounded-l-none
+            lg:tw-right-[calc((100vw/2)-10px-74%)] lg:tw-w-[74%] lg:tw-h-full
+            lg:tw-rounded-r-lg lg:tw-rounded-l-none
 
-            md:tw-h-[600px] md:tw-w-[375px]
+            md:tw-h-[600px] md:tw-w-[50vw]
           `}
         />
         <div
@@ -47,7 +49,7 @@ const TextRightCenterShapeVerticalLeft = (
               tw-left-1/2 -tw-translate-x-1/2 tw-w-[calc(100%-40px)]
               tw-max-w-[385px]
 
-              lg:tw-right-[calc((100vw/2)-10px-450px)] lg:tw-aspect-[328/675]
+              lg:tw-right-[calc((100vw/2)-10px-74%)] lg:tw-aspect-[328/675]
               lg:tw-min-w-[320px] lg:tw-left-[unset] lg:tw-translate-x-1/2
 
               md:tw-aspect-[385/535]
