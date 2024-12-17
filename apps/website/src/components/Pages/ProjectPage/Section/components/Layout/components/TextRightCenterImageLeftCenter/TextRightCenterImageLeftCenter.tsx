@@ -31,17 +31,15 @@ const TextRightCenterImageLeftCenter = (
         className={`
           info tw-flex-1 tw-flex tw-flex-col tw-justify-center tw-items-start
 
-          lg:tw-max-w-[630px] lg:tw-flex-1
-
-          md:tw-w-[calc(50%-.75rem)] md:tw-flex-[unset]
+          lg:tw-max-w-[630px] lg:tw-flex-1 lg:tw-w-[calc(50%-.75rem)]
         `}
       >
         <h2
-          className="title tw-w-full"
+          className="title tw-text-center tw-w-full"
           dangerouslySetInnerHTML={{ __html: props.title }}
         />
         <p
-          className="text p-default"
+          className="text p-default tw-text-center"
           dangerouslySetInnerHTML={{ __html: props.text }}
         />
         {props.buttonText && props.buttonUrl && (

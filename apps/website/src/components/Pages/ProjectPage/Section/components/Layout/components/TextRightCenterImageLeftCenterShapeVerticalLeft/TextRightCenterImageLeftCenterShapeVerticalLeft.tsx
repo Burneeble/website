@@ -59,11 +59,11 @@ const TextRightCenterImageLeftCenterShapeVerticalLeft = (
         `}
       >
         <h2
-          className="title tw-w-full"
+          className="title tw-text-center tw-w-full"
           dangerouslySetInnerHTML={{ __html: props.title }}
         />
         <p
-          className="text p-default"
+          className="text tw-text-center p-default"
           dangerouslySetInnerHTML={{ __html: props.text }}
         />
         {props.buttonText && props.buttonUrl && (
