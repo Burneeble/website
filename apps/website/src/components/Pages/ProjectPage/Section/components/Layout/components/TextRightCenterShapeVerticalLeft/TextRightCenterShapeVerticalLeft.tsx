@@ -50,15 +50,18 @@ const TextRightCenterShapeVerticalLeft = (
               tw-max-w-[385px]
 
               lg:tw-right-[calc((100vw/2)-10px-74%)] lg:tw-aspect-[328/675]
-              lg:tw-min-w-[320px] lg:tw-left-[unset] lg:tw-translate-x-1/2
+              lg:tw-w-[calc(100%-40px)] lg:tw-min-w-[320px] lg:tw-left-[unset]
+              lg:tw-translate-x-1/2 lg:tw-h-[unset]
 
-              md:tw-aspect-[385/535]
+              md:tw-aspect-square md:tw-h-[85%] md:tw-w-auto md:tw-max-w-[unset]
+
+              sm:tw-aspect-[385/535]
             `,
             [ImageLayoutType.SmarthphoneImageLayout].includes(
               props.imageLayoutType
             )
               ? `lg:tw-w-[600px] lg:tw-max-w-[600px]`
-              : `lg:tw-w-fit`
+              : `lg:tw-max-w-[385px]`
           )}
         >
           <ImageLayout {...props} mainAxis="width" />
