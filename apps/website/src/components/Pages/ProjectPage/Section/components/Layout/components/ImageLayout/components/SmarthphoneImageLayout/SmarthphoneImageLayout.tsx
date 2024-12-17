@@ -37,7 +37,7 @@ const SmarthphoneImageLayout = (props: SmarthphoneImageLayoutProps) => {
       className={cn(
         `
           images-layout smarthphone-image-layout tw-relative tw-max-h-[80vh]
-          tw-w-full tw-aspect-[350/230]
+          tw-w-full tw-aspect-[350/228]
 
           sm:tw-aspect-square
         `,
@@ -70,7 +70,7 @@ const SmarthphoneImageLayout = (props: SmarthphoneImageLayoutProps) => {
         src={props.image1}
         className={cn(`
           tw-object-cover tw-absolute tw-left-1/2 -tw-translate-x-1/2
-          -tw-translate-y-1/2 tw-w-full tw-aspect-[350/230] tw-top-1/2
+          -tw-translate-y-1/2 tw-w-full tw-aspect-[350/228] tw-top-1/2
           tw-rounded-lg
 
           md:tw-h-[94%] md:tw-w-[41%]

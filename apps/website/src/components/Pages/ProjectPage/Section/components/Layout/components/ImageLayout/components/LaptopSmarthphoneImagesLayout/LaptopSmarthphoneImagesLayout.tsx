@@ -20,7 +20,7 @@ const LaptopSmarthphoneImagesLayout = (
       className={cn(
         `
           images-layout laptop-smarthphone-images-layout tw-max-h-screen tw-flex
-          tw-items-center tw-justify-center tw-aspect-[350/230] tw-w-full
+          tw-items-center tw-justify-center tw-aspect-[350/228] tw-w-full
 
           md:tw-aspect-[2/1]
 

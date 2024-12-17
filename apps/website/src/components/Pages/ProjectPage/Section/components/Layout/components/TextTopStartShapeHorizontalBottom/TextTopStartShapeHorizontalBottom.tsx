@@ -25,7 +25,7 @@ const TextTopStartShapeHorizontalBottom = (
           dangerouslySetInnerHTML={{ __html: props.title }}
         />
         <p
-          className="p-default text tw-mb-[50px]"
+          className="p-default text"
           dangerouslySetInnerHTML={{ __html: props.text }}
         />
         {props.buttonText && props.buttonUrl && (
@@ -53,7 +53,7 @@ const TextTopStartShapeHorizontalBottom = (
           className={`
             images tw-flex tw-items-center tw-justify-center tw-z-[5]
             tw-absolute tw-left-1/2 -tw-translate-x-1/2 tw-top-0
-            tw-w-[calc(100vw-40px)] tw-aspect-[350/230]
+            tw-w-[calc(100vw-40px)] tw-aspect-[350/228]
 
             lg:tw-h-full lg:tw-aspect-[2/1]
 
@@ -69,9 +69,9 @@ const TextTopStartShapeHorizontalBottom = (
 
             lg:tw-h-[411px]
 
-            md:tw-h-[250px] md:tw-w-full
+            md:tw-h-[250px]
 
-            sm:tw-rounded-t-lg
+            sm:tw-w-full sm:tw-rounded-t-lg
           `}
         />
       </div>

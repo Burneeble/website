@@ -16,7 +16,7 @@ const LaptopImageLayout = (props: LaptopImageLayoutProps) => {
       className={cn(
         `
           images-layout laptop-image-layout tw-relative tw-w-screen
-          tw-aspect-[952/639] tw-flex tw-items-center tw-justify-center
+          tw-aspect-[350/228] tw-flex tw-items-center tw-justify-center
 
           md:tw-aspect-[952/639]
         `,
@@ -41,7 +41,7 @@ const LaptopImageLayout = (props: LaptopImageLayoutProps) => {
       <img
         src={props.image1}
         className={`
-          tw-object-cover tw-rounded-lg tw-w-full tw-aspect-[348/204]
+          tw-object-cover tw-rounded-lg tw-w-full tw-aspect-[350/228]
 
           sm:tw-rounded-none sm:tw-top-[10.5%] sm:tw-w-[75%]
           sm:tw-aspect-[645/405] sm:tw-left-1/2 sm:tw-absolute
