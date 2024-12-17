@@ -40,7 +40,7 @@ const LaptopSmarthphoneImagesLayout = (
       )}
       <div
         className={`
-          tw-aspect-[350/230] tw-flex tw-items-center tw-justify-center
+          tw-aspect-[350/228] tw-flex tw-items-center tw-justify-center
           tw-w-full
 
           md:tw-h-[66%] md:tw-aspect-[224/462] md:-tw-translate-x-[20%]

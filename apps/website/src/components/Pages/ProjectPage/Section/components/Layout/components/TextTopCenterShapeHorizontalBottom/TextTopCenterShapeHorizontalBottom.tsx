@@ -53,11 +53,11 @@ const TextTopCenterShapeHorizontalBottom = (
           className={`
             images tw-flex tw-items-center tw-justify-center tw-z-[5]
             tw-absolute tw-left-1/2 -tw-translate-x-1/2 tw-top-0
-            tw-w-[calc(100vw-40px)] tw-aspect-[350/227]
+            tw-w-[calc(100vw-40px)] tw-aspect-[350/228]
 
-            lg:tw-h-full lg:tw-aspect-[2/1]
+            lg:tw-h-full lg:tw-aspect-[2/1] lg:tw-w-[unset]
 
-            md:tw-bottom-0 md:tw-top-[unset] md:tw-w-full md:tw-aspect-[680/485]
+            md:tw-h-[500px] md:tw-bottom-0 md:tw-top-[unset] md:tw-w-full
           `}
         >
           <ImageLayout {...props} />
