@@ -44,7 +44,7 @@ const TextTopStartShapeHorizontalBottom = (
         className={`
           wrapper tw-relative tw-w-full tw-h-[calc(82px+(230/350*(100vw-40px)))]
 
-          lg:tw-h-[unset] lg:tw-flex-1
+          lg:tw-h-[35rem]
 
           md:tw-h-[475px]
         `}

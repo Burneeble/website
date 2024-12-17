@@ -27,7 +27,11 @@ const LaptopSmarthphoneImagesLayout = (
           sm:tw-aspect-square
         `,
         mainAxis == "height"
-          ? "sm:tw-h-full sm:tw-max-h-[30rem] sm:tw-w-auto"
+          ? `
+            lg:tw-max-h-[35rem]
+
+            sm:tw-h-full sm:tw-max-h-[30rem] sm:tw-w-auto
+          `
           : `sm:tw-w-full`
       )}
     >

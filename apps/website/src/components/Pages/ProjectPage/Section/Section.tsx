@@ -34,11 +34,7 @@ const Section = (props: SectionProps) => {
             LayoutType.TextTopCenterFullImageBottomCenter,
             LayoutType.TextTopCenterShapeHorizontalBottom,
             LayoutType.TextTopStartShapeHorizontalBottom,
-          ].includes(props.layoutType) && `!tw-py-0`,
-          ![
-            LayoutType.TextTopCenterFullImageBottomCenter,
-            LayoutType.TextTopStartFullImageBottomCenter,
-          ].includes(props.layoutType) && `lg:tw-max-h-screen`
+          ].includes(props.layoutType) && `!tw-py-0`
         )}
       >
         <Layout buttonSize={getButtonSize()} {...props} />
