@@ -19,7 +19,7 @@ const TextRightCenterShapeHorizontalLeft = (
     >
       <div
         className={`
-          wrapper tw-relative tw-w-screen tw-aspect-[390/241]
+          wrapper tw-relative tw-w-screen tw-aspect-[390/320]
 
           lg:tw-flex-1 lg:tw-aspect-auto lg:tw-h-screen
 
@@ -28,14 +28,13 @@ const TextRightCenterShapeHorizontalLeft = (
       >
         <div
           className={`
-            layout-shape tw-rounded-l-lg tw-right-0 tw-bottom-1/2 tw-h-[364px]
-            tw-aspect-[202/318] tw-translate-y-1/2 tw-z-[-1]
+            layout-shape tw-rounded-l-lg tw-top-0 tw-h-full tw-right-0 tw-z-[-1]
+            tw-w-1/2
 
             lg:tw-right-0 lg:tw-w-[50vw] lg:tw-h-[372px] lg:tw-top-0
             lg:tw-rounded-r-lg lg:tw-rounded-l-none
 
-            md:tw-h-[340px] md:tw-w-[545px] md:tw-translate-y-0
-            md:tw-bottom-[unset] md:tw-top-[-20px]
+            sm:tw-h-auto sm:tw-w-[75%] sm:tw-aspect-[544/338]
           `}
         />
         <div
