@@ -50,9 +50,9 @@ const TextLeftStartImageRightCenterShapeVerticalRight = (
           wrapper tw-w-screen tw-flex tw-items-center tw-justify-center
           tw-relative tw-h-[350px]
 
-          lg:tw-h-auto lg:tw-flex-1
+          lg:tw-h-[675px] lg:tw-flex-1
 
-          md:tw-h-[515px]
+          sm:tw-h-[515px]
         `}
       >
         <div
@@ -63,7 +63,8 @@ const TextLeftStartImageRightCenterShapeVerticalRight = (
             lg:tw-left-[calc((100vw/2)-10px-200px)] lg:tw-w-[200px]
             lg:tw-h-[675px] lg:tw-max-w-[unset]
 
-            md:tw-left-[calc(100vw-250px)] md:tw-w-[250px] md:tw-h-[515px]
+            sm:tw-left-[calc(100vw-250px)] sm:tw-w-[250px] sm:tw-h-[515px]
+            sm:tw-aspect-auto
           `}
         />
         <div
