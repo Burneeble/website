@@ -21,10 +21,10 @@ const TextRightStartShapeHorizontalRight = (
     >
       <div
         className={`
-          info tw-flex-1 tw-flex tw-flex-col tw-justify-center tw-items-start
+          info tw-flex tw-flex-col tw-justify-center tw-items-start
           cs-gap-between-text
 
-          lg:tw-max-w-[630px]
+          lg:tw-flex-1 lg:tw-max-w-[630px]
         `}
       >
         <h2
@@ -54,10 +54,10 @@ const TextRightStartShapeHorizontalRight = (
       </div>
       <div
         className={`
-          wrapper tw-relative tw-flex-1 tw-w-screen tw-aspect-[390/241] tw-flex
+          wrapper tw-relative tw-w-screen tw-aspect-[390/241] tw-flex
           tw-items-center tw-justify-center
 
-          lg:tw-aspect-auto lg:tw-h-screen
+          lg:tw-flex-1 lg:tw-aspect-auto lg:tw-h-screen
 
           md:tw-aspect-[744/530]
         `}

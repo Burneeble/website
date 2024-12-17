@@ -19,8 +19,7 @@ const TextRightCenterFullImageLeftCenter = (
     >
       <div
         className={`
-          wrapper tw-flex-1 tw-w-full tw-relative tw-aspect-square
-          tw-max-w-[454px] cs-gap-between-text
+          wrapper tw-w-full tw-relative tw-aspect-square tw-max-w-[454px]
 
           lg:tw-h-full lg:tw-w-auto lg:tw-max-w-[630px] lg:tw-flex-1
         `}
@@ -39,9 +38,10 @@ const TextRightCenterFullImageLeftCenter = (
       </div>
       <div
         className={`
-          info tw-flex-1 tw-flex tw-flex-col tw-justify-center tw-items-start
+          info tw-flex tw-flex-col tw-justify-center tw-items-start
+          cs-gap-between-text
 
-          lg:tw-max-w-[630px]
+          lg:tw-flex-1 lg:tw-max-w-[630px]
         `}
       >
         <h2

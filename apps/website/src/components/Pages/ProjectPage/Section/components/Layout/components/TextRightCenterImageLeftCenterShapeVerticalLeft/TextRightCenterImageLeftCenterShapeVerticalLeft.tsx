@@ -41,10 +41,10 @@ const TextRightCenterImageLeftCenterShapeVerticalLeft = (
         />
         <div
           className={`
-            images tw-flex-1 tw-flex tw-items-center tw-justify-center tw-w-full
+            images tw-flex tw-items-center tw-justify-center tw-w-full
             tw-aspect-[630/532] tw-relative tw-max-w-[450px] tw-mx-[20px]
 
-            lg:tw-mx-0
+            lg:tw-flex-1 lg:tw-mx-0
           `}
         >
           <ImageLayout {...props} mainAxis="width" />
@@ -52,10 +52,10 @@ const TextRightCenterImageLeftCenterShapeVerticalLeft = (
       </div>
       <div
         className={`
-          info tw-flex-1 tw-flex tw-flex-col tw-justify-center tw-items-start
+          info tw-flex tw-flex-col tw-justify-center tw-items-start
           cs-gap-between-text
 
-          lg:tw-max-w-[630px]
+          lg:tw-flex-1 lg:tw-max-w-[630px]
         `}
       >
         <h2

@@ -19,7 +19,7 @@ const TextLeftStartImageRightCenter = (
       <div
         className={`
           info tw-flex tw-flex-col tw-justify-center tw-items-start
-          cs-gap-between-text tw-flex-1
+          cs-gap-between-text
 
           lg:tw-max-w-[630px] lg:tw-flex-1 lg:tw-w-[calc(50%-.75rem)]
         `}

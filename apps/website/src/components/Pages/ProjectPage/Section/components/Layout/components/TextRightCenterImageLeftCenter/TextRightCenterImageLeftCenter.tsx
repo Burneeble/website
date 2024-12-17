@@ -20,7 +20,7 @@ const TextRightCenterImageLeftCenter = (
       <div
         className={`
           images tw-flex tw-items-center tw-justify-center tw-w-full
-          tw-aspect-square tw-max-w-[454px] cs-gap-between-text
+          tw-aspect-square tw-max-w-[454px]
 
           lg:tw-max-w-[630px] lg:tw-flex-1
         `}
@@ -29,7 +29,8 @@ const TextRightCenterImageLeftCenter = (
       </div>
       <div
         className={`
-          info tw-flex-1 tw-flex tw-flex-col tw-justify-center tw-items-start
+          info tw-flex tw-flex-col tw-justify-center tw-items-start
+          cs-gap-between-text
 
           lg:tw-max-w-[630px] lg:tw-flex-1 lg:tw-w-[calc(50%-.75rem)]
         `}

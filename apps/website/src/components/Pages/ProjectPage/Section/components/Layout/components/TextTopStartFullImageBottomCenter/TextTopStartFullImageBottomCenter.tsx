@@ -11,7 +11,7 @@ const TextTopStartFullImageBottomCenter = (
     <div
       className={`
         text-top-start-full-image-bottom-center section-layout tw-flex
-        tw-flex-col tw-items-center tw-justify-between cs-gap-between-content
+        tw-flex-col tw-items-center tw-justify-end cs-gap-between-content
       `}
     >
       <div

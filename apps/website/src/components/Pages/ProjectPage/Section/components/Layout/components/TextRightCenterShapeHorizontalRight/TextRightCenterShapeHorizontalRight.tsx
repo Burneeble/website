@@ -18,10 +18,10 @@ const TextRightCenterShapeHorizontalRight = (
     >
       <div
         className={`
-          info tw-flex-1 tw-flex tw-flex-col tw-justify-center tw-items-center
+          info tw-flex tw-flex-col tw-justify-center tw-items-center
           cs-gap-between-text
 
-          lg:tw-max-w-[630px]
+          lg:tw-flex-1 lg:tw-max-w-[630px]
         `}
       >
         <h2
@@ -50,9 +50,9 @@ const TextRightCenterShapeHorizontalRight = (
       </div>
       <div
         className={`
-          wrapper tw-relative tw-flex-1 tw-w-screen tw-aspect-[390/241]
+          wrapper tw-relative tw-w-screen tw-aspect-[390/241]
 
-          lg:tw-aspect-auto lg:tw-h-screen
+          lg:tw-flex-1 lg:tw-aspect-auto lg:tw-h-screen
 
           md:tw-aspect-[744/530]
         `}

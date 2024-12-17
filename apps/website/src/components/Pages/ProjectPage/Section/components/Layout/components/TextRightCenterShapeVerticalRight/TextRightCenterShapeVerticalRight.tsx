@@ -21,10 +21,10 @@ const TextRightCenterShapeVerticalRight = (
     >
       <div
         className={`
-          info tw-flex-1 tw-flex tw-flex-col tw-justify-center tw-items-center
+          info tw-flex tw-flex-col tw-justify-center tw-items-center
           cs-gap-between-text
 
-          lg:tw-max-w-[630px]
+          lg:tw-flex-1 lg:tw-max-w-[630px]
         `}
       >
         <h2
