@@ -20,9 +20,9 @@ const TextRightCenterImageLeftCenter = (
       <div
         className={`
           images tw-flex tw-items-center tw-justify-center tw-w-full
-          tw-aspect-square tw-max-w-[630px] cs-gap-between-text
+          tw-aspect-square tw-max-w-[454px] cs-gap-between-text
 
-          lg:tw-flex-1
+          lg:tw-max-w-[630px] lg:tw-flex-1
         `}
       >
         <ImageLayout {...props} mainAxis="width" />
