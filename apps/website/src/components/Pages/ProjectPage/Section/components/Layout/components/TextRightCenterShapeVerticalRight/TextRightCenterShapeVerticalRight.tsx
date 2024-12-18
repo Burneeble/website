@@ -88,7 +88,7 @@ const TextRightCenterShapeVerticalRight = (
               props.imageLayoutType
             )
               ? `lg:tw-w-[600px] lg:tw-max-w-[600px]`
-              : `lg:tw-max-w-[385px]`
+              : `lg:tw-max-w-[385px] lg:tw-max-h-[100vh]`
           )}
         >
           <ImageLayout {...props} mainAxis="width" />
