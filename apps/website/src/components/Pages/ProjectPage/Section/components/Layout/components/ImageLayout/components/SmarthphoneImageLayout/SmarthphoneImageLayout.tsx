@@ -39,7 +39,7 @@ const SmarthphoneImageLayout = (props: SmarthphoneImageLayoutProps) => {
           images-layout smarthphone-image-layout tw-relative tw-max-h-[80vh]
           tw-w-full tw-aspect-[350/228]
 
-          sm:tw-aspect-square
+          sm:tw-max-w-[80vh] sm:tw-aspect-square
         `,
         mainAxis == "height" ? "sm:tw-h-full sm:tw-w-auto" : "sm:tw-w-full"
       )}
@@ -73,7 +73,7 @@ const SmarthphoneImageLayout = (props: SmarthphoneImageLayoutProps) => {
           -tw-translate-y-1/2 tw-w-full tw-aspect-[350/228] tw-top-1/2
           tw-rounded-lg
 
-          md:tw-h-[94%] md:tw-w-[41%]
+          md:tw-h-[95%] md:tw-w-[44%] md:tw-top-1/2
 
           sm:tw-top-[50.3%] sm:tw-w-auto sm:tw-h-[94%] sm:tw-aspect-[280/400]
         `)}
@@ -83,7 +83,7 @@ const SmarthphoneImageLayout = (props: SmarthphoneImageLayoutProps) => {
         <img
           src="/img/project/sections/smartphone-dock-layout.svg"
           className={`
-            tw-absolute tw-top-[2.8%] tw-w-[23.7%] tw-left-1/2
+            tw-absolute tw-top-[2.3%] tw-w-[23.7%] tw-left-1/2
             -tw-translate-x-1/2
           `}
         />
