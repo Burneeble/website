@@ -47,6 +47,7 @@ export default async function Home() {
         <Customers />
         <Abilities />
         <Emoji />
+
         <Showcase projects={projects} />
         <Contact />
         <Congrats />

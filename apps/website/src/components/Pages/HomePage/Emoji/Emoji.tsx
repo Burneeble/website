@@ -1,40 +1,18 @@
+"use client";
+
 import { EmojiProps } from "./Emoji.types";
+import { Canvas } from "@react-three/fiber";
+import CanvaContent from "./components/CanvaContent";
+import * as THREE from "three";
 
 const Emoji = (props: EmojiProps) => {
   return (
-    <section
-      className={`
-        emoji-section cs-section-structure tw-flex tw-items-center
-        tw-justify-center tw-relative
-      `}
+    <Canvas
+      gl={{ antialias: true, outputColorSpace: THREE.SRGBColorSpace }}
+      style={{ height: "100vh", width: "100%" }}
     >
-      <div
-        className={`
-          emoji-shape tw-absolute tw-top-[50%] tw-left-[50%]
-          -tw-translate-x-[50%] -tw-translate-y-[50%] tw-w-[40rem] tw-h-[40rem]
-          tw-bg-[radial-gradient(circle,var(--primary-light)_0%,_rgba(0,0,0,0)_70%)]
-          tw-opacity-[.5] tw-blur-[100px]
-        `}
-      />
-      <div
-        className={`
-          text tw-text-center cs-s tw-font-bowlby-one tw-font-normal tw-text-3xl
-          tw-text-headings tw-z-[2]
-
-          md:tw-text-5xl
-
-          xl:tw-text-7xl
-        `}
-      >
-        Still{" "}
-        <span
-          className={`tw-text-primary-default cs-text-color-primary-gradient`}
-        >
-          not sure
-        </span>
-        ?
-      </div>
-    </section>
+      <CanvaContent />
+    </Canvas>
   );
 };
 
