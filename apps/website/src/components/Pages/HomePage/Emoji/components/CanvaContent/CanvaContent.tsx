@@ -2,6 +2,7 @@
 
 import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
+import { OrbitControls, Text, Float } from "@react-three/drei";
 import { useRef } from "react";
 
 const CanvaContent = () => {
@@ -16,7 +17,9 @@ const CanvaContent = () => {
 
   return (
     <>
-      <group ref={groupRef}>
+      <OrbitControls enableZoom={false} />
+
+      <group ref={groupRef} position-y={2}>
         <mesh ref={cubeRef}>
           <boxGeometry args={[1.5, 1.5, 1.5]} />
           <meshBasicMaterial color={"purple"} />
@@ -26,6 +29,17 @@ const CanvaContent = () => {
           <meshBasicMaterial color="orange" />
         </mesh>
       </group>
+
+      <Float floatIntensity={5}>
+        <Text
+          font={"/BowlbyOne-Regular.ttf"}
+          fontSize={0.5}
+          color={"white"}
+          textAlign="center"
+        >
+          Still not sure?
+        </Text>
+      </Float>
     </>
   );
 };
