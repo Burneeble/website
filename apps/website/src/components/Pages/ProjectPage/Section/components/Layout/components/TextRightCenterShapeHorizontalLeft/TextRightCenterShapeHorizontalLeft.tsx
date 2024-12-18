@@ -19,7 +19,7 @@ const TextRightCenterShapeHorizontalLeft = (
     >
       <div
         className={`
-          wrapper tw-relative tw-w-screen tw-aspect-[390/320]
+          wrapper tw-relative tw-w-screen tw-aspect-[390/318]
 
           lg:tw-flex-1 lg:tw-aspect-auto lg:tw-h-screen
 
