@@ -5,6 +5,7 @@ import LaptopImageLayout from "../LaptopImageLayout";
 import SmarthphoneImageLayout from "../SmarthphoneImageLayout";
 import { LaptopSmarthphoneImagesLayoutProps } from "./LaptopSmarthphoneImagesLayout.types";
 import { cn } from "@/lib/utils";
+import { LayoutType } from "@/components/Pages/ProjectPage/Section/Section.types";
 
 const LaptopSmarthphoneImagesLayout = (
   props: LaptopSmarthphoneImagesLayoutProps
@@ -28,9 +29,17 @@ const LaptopSmarthphoneImagesLayout = (
         `,
         mainAxis == "height"
           ? `
-            lg:tw-max-h-[35rem]
+            ${
+              props.layoutType !== LayoutType.TextCenterCenterImageBackground
+                ? `
+                  lg:tw-max-h-[35rem]
 
-            sm:tw-h-full sm:tw-max-h-[30rem] sm:tw-w-auto
+                  sm:tw-max-h-[30rem]
+                `
+                : "sm:tw-max-h-full"
+            }
+
+            sm:tw-h-full sm:tw-w-auto
           `
           : `sm:tw-w-full`
       )}

@@ -4,6 +4,7 @@ import { useClientInfoService } from "@burneeble/ui-components";
 import { SmarthphoneImageLayoutProps } from "./SmarthphoneImageLayout.types";
 import { cn } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
+import { LayoutType } from "@/components/Pages/ProjectPage/Section/Section.types";
 
 const SmarthphoneImageLayout = (props: SmarthphoneImageLayoutProps) => {
   //States
@@ -36,10 +37,23 @@ const SmarthphoneImageLayout = (props: SmarthphoneImageLayoutProps) => {
       ref={layout}
       className={cn(
         `
-          images-layout smarthphone-image-layout tw-relative tw-max-h-[80vh]
+          images-layout smarthphone-image-layout tw-relative
+
+          ${
+            props.layoutType !== LayoutType.TextCenterCenterImageBackground
+              ? `tw-max-h-[80vh]`
+              : `tw-max-h-full`
+          }
+
           tw-w-full tw-aspect-[350/228]
 
-          sm:tw-max-w-[80vh] sm:tw-aspect-square
+          ${
+            props.layoutType !== LayoutType.TextCenterCenterImageBackground
+              ? `sm:tw-max-w-[80vh]`
+              : `sm:tw-max-w-full`
+          }
+
+          sm:tw-aspect-square
         `,
         mainAxis == "height" ? "sm:tw-h-full sm:tw-w-auto" : "sm:tw-w-full"
       )}
@@ -83,7 +97,7 @@ const SmarthphoneImageLayout = (props: SmarthphoneImageLayoutProps) => {
         <img
           src="/img/project/sections/smartphone-dock-layout.svg"
           className={`
-            tw-absolute tw-top-[2.3%] tw-w-[23.7%] tw-left-1/2
+            tw-absolute tw-top-[2.2%] tw-w-[23.7%] tw-left-1/2
             -tw-translate-x-1/2
           `}
         />

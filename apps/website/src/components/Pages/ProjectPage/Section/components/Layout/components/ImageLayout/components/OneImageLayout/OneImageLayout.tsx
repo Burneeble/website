@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { OneImageLayoutProps } from "./OneImageLayout.types";
+import { LayoutType } from "@/components/Pages/ProjectPage/Section/Section.types";
 
 const OneImageLayout = (props: OneImageLayoutProps) => {
   //States
@@ -13,8 +14,24 @@ const OneImageLayout = (props: OneImageLayoutProps) => {
           tw-items-center tw-justify-center
         `,
         mainAxis === "height"
-          ? "tw-h-full tw-max-h-[35rem]"
-          : `tw-w-full tw-max-w-[41.5rem]`
+          ? `
+            tw-h-full
+
+            ${
+              props.layoutType !== LayoutType.TextCenterCenterImageBackground
+                ? `tw-max-h-[35rem]`
+                : `tw-max-h-full`
+            }
+          `
+          : `
+            tw-w-full
+
+            ${
+              props.layoutType !== LayoutType.TextCenterCenterImageBackground
+                ? `tw-max-w-[41.5rem]`
+                : `tw-max-w-full`
+            }
+          `
       )}
     >
       <img

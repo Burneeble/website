@@ -3,6 +3,7 @@
 import { useClientInfoService } from "@burneeble/ui-components";
 import { LaptopImageLayoutProps } from "./LaptopImageLayout.types";
 import { cn } from "@/lib/utils";
+import { LayoutType } from "@/components/Pages/ProjectPage/Section/Section.types";
 
 const LaptopImageLayout = (props: LaptopImageLayoutProps) => {
   //States
@@ -21,7 +22,17 @@ const LaptopImageLayout = (props: LaptopImageLayoutProps) => {
           sm:tw-aspect-[952/639]
         `,
         mainAxis === "height"
-          ? "sm:tw-h-full sm:tw-max-h-[35rem] sm:tw-w-auto"
+          ? `
+            sm:tw-h-full
+
+            ${
+              props.layoutType !== LayoutType.TextCenterCenterImageBackground
+                ? `sm:tw-max-h-[35rem]`
+                : `sm:tw-max-h-full`
+            }
+
+            sm:tw-w-auto
+          `
           : "sm:tw-w-full sm:tw-h-auto"
       )}
     >

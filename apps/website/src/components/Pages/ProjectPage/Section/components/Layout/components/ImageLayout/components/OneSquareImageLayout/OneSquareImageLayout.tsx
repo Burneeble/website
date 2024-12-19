@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { OneSquareImageLayoutProps } from "./OneSquareImageLayout.types";
+import { LayoutType } from "@/components/Pages/ProjectPage/Section/Section.types";
 
 const OneSquareImageLayout = (props: OneSquareImageLayoutProps) => {
   //States
@@ -13,8 +14,24 @@ const OneSquareImageLayout = (props: OneSquareImageLayoutProps) => {
           tw-flex tw-items-center tw-justify-center
         `,
         mainAxis === "height"
-          ? "tw-h-full tw-max-h-[35rem]"
-          : "tw-w-full tw-max-w-[35rem]"
+          ? `
+            tw-h-full
+
+            ${
+              props.layoutType !== LayoutType.TextCenterCenterImageBackground
+                ? `tw-max-h-[35rem]`
+                : `tw-max-h-full`
+            }
+          `
+          : `
+            tw-w-full
+
+            ${
+              props.layoutType !== LayoutType.TextCenterCenterImageBackground
+                ? `tw-max-w-[35rem]`
+                : `tw-max-w-full`
+            }
+          `
       )}
     >
       <img

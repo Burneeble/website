@@ -29,7 +29,7 @@ const LayoutTestPage = () => {
               text={
                 "We created custom designs from scratch to bring ZIP.Link digital vision to life. Using Figma we defined the optimal structure and flow of the application, ensuring an intuitive and engaging user experience"
               }
-              imageLayoutType={ImageLayoutType.OneImageLayout}
+              imageLayoutType={ImageLayoutType.ThreeImagesLayout}
             />
           </>
         );
