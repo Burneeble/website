@@ -1,8 +1,7 @@
 "use client";
 
-import ImageLayout from "../ImageLayout";
 import { TextTopCenterImageBottomCenterProps } from "./TextTopCenterImageBottomCenter.types";
-import { SectionInfo } from "../Common";
+import { BottomImagesWrapper, SectionInfo } from "../Common";
 
 const TextTopCenterImageBottomCenter = (
   props: TextTopCenterImageBottomCenterProps
@@ -15,16 +14,7 @@ const TextTopCenterImageBottomCenter = (
       `}
     >
       <SectionInfo {...props} textAlignment="center" />
-      <div
-        className={`
-          images tw-w-full tw-flex tw-items-center tw-justify-center
-          tw-h-[293px]
-
-          md:tw-h-[480px]
-        `}
-      >
-        <ImageLayout {...props} />
-      </div>
+      <BottomImagesWrapper {...props} />
     </div>
   );
 };

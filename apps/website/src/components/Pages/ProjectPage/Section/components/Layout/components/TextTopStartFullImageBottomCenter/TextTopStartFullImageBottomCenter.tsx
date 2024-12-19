@@ -1,7 +1,6 @@
 "use client";
 
-import { SectionInfo } from "../Common";
-import ImageLayout from "../ImageLayout";
+import { FullBottomImagesWrapper, SectionInfo } from "../Common";
 import { TextTopStartFullImageBottomCenterProps } from "./TextTopStartFullImageBottomCenter.types";
 
 const TextTopStartFullImageBottomCenter = (
@@ -15,16 +14,7 @@ const TextTopStartFullImageBottomCenter = (
       `}
     >
       <SectionInfo {...props} textAlignment="left" />
-      <div
-        className={`
-          images tw-w-full tw-flex tw-items-center tw-justify-center
-          tw-h-[410px]
-
-          md:tw-h-[600px]
-        `}
-      >
-        <ImageLayout {...props} />
-      </div>
+      <FullBottomImagesWrapper {...props} />
     </div>
   );
 };

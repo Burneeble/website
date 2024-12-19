@@ -1,8 +1,8 @@
 "use client";
 
-import ImageLayout from "../ImageLayout";
 import { TextRightCenterImageLeftCenterProps } from "./TextRightCenterImageLeftCenter.types";
 import { SectionInfo } from "../Common";
+import SideImagesWrapper from "../Common/ImagesWrappers/SideImagesWrapper";
 
 const TextRightCenterImageLeftCenter = (
   props: TextRightCenterImageLeftCenterProps
@@ -17,16 +17,7 @@ const TextRightCenterImageLeftCenter = (
         lg:tw-flex-row
       `}
     >
-      <div
-        className={`
-          images tw-flex tw-items-center tw-justify-center tw-w-full
-          tw-aspect-square tw-max-w-[454px]
-
-          lg:tw-max-w-[630px] lg:tw-flex-1
-        `}
-      >
-        <ImageLayout {...props} mainAxis="width" />
-      </div>
+      <SideImagesWrapper {...props} side="left" />
       <SectionInfo {...props} textAlignment="center" alignment="right" />
     </div>
   );
