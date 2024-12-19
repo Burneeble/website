@@ -1,8 +1,8 @@
 "use client";
 
-import { Button } from "@burneeble/ui-components";
 import ImageLayout from "../ImageLayout";
 import { FigmaLayoutProps } from "./FigmaLayout.types";
+import { SectionInfo } from "../Common";
 
 const FigmaLayout = (props: FigmaLayoutProps) => {
   return (
@@ -12,32 +12,7 @@ const FigmaLayout = (props: FigmaLayoutProps) => {
         tw-items-center cs-gap-between-content
       `}
     >
-      <div
-        className={`
-          info tw-flex tw-items-center tw-justify-center tw-flex-col
-          cs-gap-between-text
-        `}
-      >
-        <h2
-          className="title tw-text-center"
-          dangerouslySetInnerHTML={{ __html: props.title }}
-        />
-        <p
-          className="text p-default tw-text-center"
-          dangerouslySetInnerHTML={{ __html: props.text }}
-        />
-        {props.buttonText && props.buttonUrl && (
-          <Button
-            onClick={() => {
-              window.open(props.buttonUrl, "_blank");
-            }}
-            size={props.buttonSize}
-            className="tw-mt-[20px]"
-          >
-            {props.buttonText}
-          </Button>
-        )}
-      </div>
+      <SectionInfo {...props} />
       <div
         className={`
           tw-flex tw-items-center tw-justify-center images tw-w-screen

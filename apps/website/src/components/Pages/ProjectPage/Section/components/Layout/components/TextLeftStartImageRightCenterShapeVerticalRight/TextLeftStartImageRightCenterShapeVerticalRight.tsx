@@ -1,8 +1,8 @@
 "use client";
 
-import { Button } from "@burneeble/ui-components";
 import ImageLayout from "../ImageLayout";
 import { TextLeftStartImageRightCenterShapeVerticalRightProps } from "./TextLeftStartImageRightCenterShapeVerticalRight.types";
+import { SectionInfo } from "../Common";
 
 const TextLeftStartImageRightCenterShapeVerticalRight = (
   props: TextLeftStartImageRightCenterShapeVerticalRightProps
@@ -17,34 +17,7 @@ const TextLeftStartImageRightCenterShapeVerticalRight = (
         lg:tw-flex-row
       `}
     >
-      <div
-        className={`
-          info tw-flex tw-flex-col tw-justify-center tw-items-start
-          cs-gap-between-text
-
-          lg:tw-flex-1 lg:tw-max-w-[630px]
-        `}
-      >
-        <h2
-          className="title tw-w-full"
-          dangerouslySetInnerHTML={{ __html: props.title }}
-        />
-        <p
-          className="text p-default"
-          dangerouslySetInnerHTML={{ __html: props.text }}
-        />
-        {props.buttonText && props.buttonUrl && (
-          <Button
-            onClick={() => {
-              window.open(props.buttonUrl, "_blank");
-            }}
-            size={props.buttonSize}
-            className="tw-mt-[20px]"
-          >
-            {props.buttonText}
-          </Button>
-        )}
-      </div>
+      <SectionInfo {...props} alignment="left" textAlignment="left" />
       <div
         className={`
           wrapper tw-w-screen tw-flex tw-items-center tw-justify-center

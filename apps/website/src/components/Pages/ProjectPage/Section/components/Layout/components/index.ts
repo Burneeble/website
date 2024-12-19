@@ -22,3 +22,4 @@ export * from "./TextRightCenterShapeVerticalRight";
 export * from "./TextRightStartShapeVerticalRight";
 export * from "./TextRightCenterShapeVerticalLeft";
 export * from "./TextCenterCenterImageBackground";
+export * from "./Common";

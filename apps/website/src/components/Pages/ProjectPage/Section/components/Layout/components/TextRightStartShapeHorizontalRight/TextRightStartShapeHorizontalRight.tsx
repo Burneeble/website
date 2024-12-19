@@ -1,15 +1,12 @@
 "use client";
 
-import { Button, useClientInfoService } from "@burneeble/ui-components";
 import ImageLayout from "../ImageLayout";
 import { TextRightStartShapeHorizontalRightProps } from "./TextRightStartShapeHorizontalRight.types";
+import { SectionInfo } from "../Common";
 
 const TextRightStartShapeHorizontalRight = (
   props: TextRightStartShapeHorizontalRightProps
 ) => {
-  //Hooks
-  const { screen } = useClientInfoService();
-
   return (
     <div
       className={`
@@ -19,39 +16,7 @@ const TextRightStartShapeHorizontalRight = (
         lg:tw-flex-row
       `}
     >
-      <div
-        className={`
-          info tw-flex tw-flex-col tw-justify-center tw-items-start
-          cs-gap-between-text
-
-          lg:tw-flex-1 lg:tw-max-w-[630px]
-        `}
-      >
-        <h2
-          className="title tw-w-full"
-          dangerouslySetInnerHTML={{ __html: props.title }}
-        />
-        <p
-          className="text p-default"
-          dangerouslySetInnerHTML={{ __html: props.text }}
-        />
-        {props.buttonText && props.buttonUrl && (
-          <Button
-            onClick={() => {
-              window.open(props.buttonUrl, "_blank");
-            }}
-            size={props.buttonSize}
-            fit={screen == "sm" ? "full" : "inline"}
-            className={`
-              tw-mt-[10px]
-
-              md:tw-mt-[20px]
-            `}
-          >
-            {props.buttonText}
-          </Button>
-        )}
-      </div>
+      <SectionInfo {...props} alignment="left" textAlignment="left" />
       <div
         className={`
           wrapper tw-relative tw-w-screen tw-aspect-[390/318]

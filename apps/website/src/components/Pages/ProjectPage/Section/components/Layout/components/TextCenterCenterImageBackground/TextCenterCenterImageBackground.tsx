@@ -1,8 +1,8 @@
 "use client";
 
-import { Button } from "@burneeble/ui-components";
 import ImageLayout from "../ImageLayout";
 import { TextCenterCenterImageBackgroundProps } from "./TextCenterCenterImageBackground.types";
+import { SectionInfo } from "../Common";
 
 const TextCenterCenterImageBackground = (
   props: TextCenterCenterImageBackgroundProps
@@ -15,32 +15,7 @@ const TextCenterCenterImageBackground = (
         tw-h-screen cs-gap-between-content
       `}
     >
-      <div
-        className={`
-          info tw-flex tw-items-center tw-justify-center tw-flex-col
-          cs-gap-between-text
-        `}
-      >
-        <h2
-          className="title tw-w-full tw-text-center"
-          dangerouslySetInnerHTML={{ __html: props.title }}
-        />
-        <p
-          className="text p-default tw-text-center tw-mb-[50px]"
-          dangerouslySetInnerHTML={{ __html: props.text }}
-        />
-        {props.buttonText && props.buttonUrl && (
-          <Button
-            onClick={() => {
-              window.open(props.buttonUrl, "_blank");
-            }}
-            size={props.buttonSize}
-            className="tw-mt-[20px]"
-          >
-            {props.buttonText}
-          </Button>
-        )}
-      </div>
+      <SectionInfo {...props} />
       <div
         className={`
           images tw-w-screen tw-h-screen tw-flex tw-items-center
@@ -51,7 +26,7 @@ const TextCenterCenterImageBackground = (
         <div
           className={`
             overlay tw-absolute tw-top-0 tw-bottom-0 tw-bg-[rgba(0,0,0,0.6)]
-            tw-w-full tw-h-full tw-z-[2]
+            tw-w-full tw-h-full tw-z-[3]
           `}
         />
         <ImageLayout {...props} />

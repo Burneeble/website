@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@burneeble/ui-components";
+import { SectionInfo } from "../Common";
 import ImageLayout from "../ImageLayout";
 import { TextTopStartFullImageBottomCenterProps } from "./TextTopStartFullImageBottomCenter.types";
 
@@ -14,31 +14,7 @@ const TextTopStartFullImageBottomCenter = (
         tw-flex-col tw-items-center tw-justify-center cs-gap-between-content
       `}
     >
-      <div
-        className={`
-          info tw-flex tw-items-center tw-justify-center tw-flex-col
-          cs-gap-between-text
-        `}
-      >
-        <h2
-          className="title tw-w-full"
-          dangerouslySetInnerHTML={{ __html: props.title }}
-        />
-        <p
-          className="p-default text"
-          dangerouslySetInnerHTML={{ __html: props.text }}
-        />
-        {props.buttonText && props.buttonUrl && (
-          <Button
-            onClick={() => {
-              window.open(props.buttonUrl, "_blank");
-            }}
-            size={props.buttonSize}
-          >
-            {props.buttonText}
-          </Button>
-        )}
-      </div>
+      <SectionInfo {...props} textAlignment="left" />
       <div
         className={`
           images tw-w-full tw-flex tw-items-center tw-justify-center
