@@ -44,22 +44,22 @@ const CanvaContent = () => {
         textAlign="center" */}
 
       <Center>
-        <Float floatIntensity={5}>
-          <Text3D
-            font={"/Bowlby One_Regular.json"}
-            size={0.75}
-            height={0.2}
-            curveSegments={12}
-            bevelEnabled
-            bevelThickness={0.02}
-            bevelSize={0.02}
-            bevelOffset={0}
-            bevelSegments={5}
-          >
-            <meshMatcapMaterial matcap={matcapTexture} />
-            Still not sure?
-          </Text3D>
-        </Float>
+        {/* <Float floatIntensity={5}>         </Float>
+         */}
+        <Text3D
+          font={"/Bowlby One_Regular.json"}
+          size={0.5}
+          height={0.2}
+          curveSegments={12}
+          bevelEnabled
+          bevelThickness={0.02}
+          bevelSize={0.02}
+          bevelOffset={0}
+          bevelSegments={5}
+        >
+          <meshMatcapMaterial matcap={matcapTexture} />
+          Still not sure?
+        </Text3D>
       </Center>
     </>
   );
