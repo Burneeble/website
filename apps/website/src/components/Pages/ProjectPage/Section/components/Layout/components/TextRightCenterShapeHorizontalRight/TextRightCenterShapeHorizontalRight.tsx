@@ -2,7 +2,7 @@
 
 import ImageLayout from "../ImageLayout";
 import { TextRightCenterShapeHorizontalRightProps } from "./TextRightCenterShapeHorizontalRight.types";
-import { SectionInfo } from "../Common";
+import { HorizontalShape, SectionInfo } from "../Common";
 
 const TextRightCenterShapeHorizontalRight = (
   props: TextRightCenterShapeHorizontalRightProps
@@ -26,17 +26,7 @@ const TextRightCenterShapeHorizontalRight = (
           md:tw-aspect-[744/530]
         `}
       >
-        <div
-          className={`
-            layout-shape tw-rounded-l-lg tw-top-0 tw-h-full tw-right-0 tw-z-[-1]
-            tw-w-1/2
-
-            lg:tw-right-[unset] lg:tw-w-[50vw] lg:tw-h-[372px] lg:tw-left-0
-            lg:tw-top-0
-
-            sm:tw-h-auto sm:tw-w-[75%] sm:tw-aspect-[544/338]
-          `}
-        />
+        <HorizontalShape align={"right"} />
         <div
           className={`
             images tw-flex tw-items-center tw-justify-center tw-absolute

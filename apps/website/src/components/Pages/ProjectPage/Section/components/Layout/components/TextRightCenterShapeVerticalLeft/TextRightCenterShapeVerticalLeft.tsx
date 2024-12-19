@@ -4,7 +4,7 @@ import ImageLayout from "../ImageLayout";
 import { TextRightCenterShapeVerticalLeftProps } from "./TextRightCenterShapeVerticalLeft.types";
 import { cn } from "@/lib/utils";
 import { ImageLayoutType } from "../../../../Section.types";
-import { SectionInfo } from "../Common";
+import { SectionInfo, VerticalShape2 } from "../Common";
 
 const TextRightCenterShapeVerticalLeft = (
   props: TextRightCenterShapeVerticalLeftProps
@@ -30,17 +30,7 @@ const TextRightCenterShapeVerticalLeft = (
           sm:tw-h-[450px]
         `}
       >
-        <div
-          className={`
-            layout-shape tw-rounded-l-lg tw-right-0 tw-top-1/2
-            -tw-translate-y-1/2 tw-z-[-1] tw-h-full tw-w-[50vw]
-
-            lg:tw-right-[calc((100vw/2)-10px-74%)] lg:tw-w-[74%] lg:tw-h-full
-            lg:tw-rounded-r-lg lg:tw-rounded-l-none
-
-            md:tw-h-[600px] md:tw-w-[50vw]
-          `}
-        />
+        <VerticalShape2 align={"left"} />
         <div
           className={cn(
             `

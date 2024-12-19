@@ -2,7 +2,7 @@
 
 import ImageLayout from "../ImageLayout";
 import { TextRightCenterImageLeftCenterShapeVerticalLeftProps } from "./TextRightCenterImageLeftCenterShapeVerticalLeft.types";
-import { SectionInfo } from "../Common";
+import { SectionInfo, VerticalShape } from "../Common";
 
 const TextRightCenterImageLeftCenterShapeVerticalLeft = (
   props: TextRightCenterImageLeftCenterShapeVerticalLeftProps
@@ -27,19 +27,7 @@ const TextRightCenterImageLeftCenterShapeVerticalLeft = (
           sm:tw-h-[515px]
         `}
       >
-        <div
-          className={`
-            layout-shape tw-rounded-l-lg tw-left-[calc(100vw-110px)] tw-top-1/2
-            -tw-translate-y-1/2 tw-w-[110px] tw-h-[350px] tw-z-[-1]
-
-            lg:tw-right-[calc((100vw/2)-10px-200px)] lg:tw-w-[200px]
-            lg:tw-h-[675px] lg:tw-max-w-[unset] lg:tw-rounded-r-lg
-            lg:tw-rounded-l-none lg:tw-left-[unset]
-
-            sm:tw-left-[calc(100vw-250px)] sm:tw-w-[250px] sm:tw-h-[515px]
-            sm:tw-aspect-auto
-          `}
-        />
+        <VerticalShape align={"left"} />
         <div
           className={`
             images tw-flex tw-items-center tw-justify-center tw-w-full

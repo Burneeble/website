@@ -4,7 +4,7 @@ import { useClientInfoService } from "@burneeble/ui-components";
 import ImageLayout from "../ImageLayout";
 import { TextTopStartShapeHorizontalBottomProps } from "./TextTopStartShapeHorizontalBottom.types";
 import { ImageLayoutType } from "../../../../Section.types";
-import { SectionInfo } from "../Common";
+import { BottomShape, SectionInfo } from "../Common";
 
 const TextTopStartShapeHorizontalBottom = (
   props: TextTopStartShapeHorizontalBottomProps
@@ -56,18 +56,7 @@ const TextTopStartShapeHorizontalBottom = (
             }
           />
         </div>
-        <div
-          className={`
-            layout-shape tw-left-1/2 tw-bottom-0 tw-h-[164px] tw-w-screen
-            -tw-translate-x-1/2
-
-            lg:tw-h-[411px]
-
-            md:tw-h-[250px]
-
-            sm:tw-w-full sm:tw-rounded-t-lg
-          `}
-        />
+        <BottomShape />
       </div>
     </div>
   );
