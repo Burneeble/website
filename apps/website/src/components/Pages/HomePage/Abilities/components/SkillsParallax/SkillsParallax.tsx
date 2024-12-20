@@ -4,25 +4,66 @@ import { useClientInfoService } from "@burneeble/ui-components";
 import { Skill } from "./components";
 import { SkillsParallaxProps } from "./SkillsParallax.types";
 import { cn } from "@/lib/utils";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { ScreenSkill } from "@/services/SkillService/models";
 
 const SkillsParallax = (props: SkillsParallaxProps) => {
+  //States
+  const [currentSkills, setCurrentSkills] = useState<
+    Array<ScreenSkill & { title: string }>
+  >([]);
+
   //Hooks
   const { screen } = useClientInfoService();
   const skills = useRef<HTMLDivElement>(null);
 
   //Effects
   useEffect(() => {
+    switch (screen) {
+      case "sm":
+        setCurrentSkills(
+          props.skills.map((skill) => {
+            return {
+              title: skill.title,
+              ...skill.sm,
+            };
+          })
+        );
+        break;
+      case "md":
+        setCurrentSkills(
+          props.skills.map((skill) => {
+            return {
+              title: skill.title,
+              ...skill.md,
+            };
+          })
+        );
+        break;
+      default:
+        setCurrentSkills(
+          props.skills.map((skill) => {
+            return {
+              title: skill.title,
+              ...skill.xl,
+            };
+          })
+        );
+        break;
+    }
+  }, [props.skills, screen]);
+
+  useEffect(() => {
     if (skills.current) {
       skills.current.scrollTo({
         top: 0,
         left:
-          (skills.current.scrollWidth / props.skills.length) *
+          (skills.current.scrollWidth / currentSkills.length) *
           props.currentIndex,
         behavior: "smooth",
       });
     }
-  }, [props.currentIndex, props.skills, skills]);
+  }, [props.currentIndex, currentSkills, skills]);
 
   return (
     <div
@@ -45,7 +86,7 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
           `
         )}
       >
-        {props.skills.map((skill, i) => {
+        {currentSkills.map((skill, i) => {
           return (
             <div
               className={cn(
@@ -104,9 +145,9 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
 
               sm:tw-pb-[30px]
             `}
-            style={{ width: `${100 * props.skills.length}%` }}
+            style={{ width: `${100 * currentSkills.length}%` }}
           >
-            {props.skills.map((skill, i) => {
+            {currentSkills.map((skill, i) => {
               return (
                 <div
                   key={i}
@@ -121,7 +162,7 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
                     categories={skill.labels}
                     index={i}
                     currentIndex={props.currentIndex}
-                    amount={props.skills.length}
+                    amount={currentSkills.length}
                   />
                 </div>
               );
@@ -135,7 +176,7 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
                   tw-bottom-0 tw-bg-[var(--primary-lighest)] tw-transition-all
                   tw-duration-500 tw-ease-in-out
                 `,
-                props.currentIndex === props.skills.length - 1
+                props.currentIndex === currentSkills.length - 1
                   ? `tw-bg-[var(--primary-lighest)]`
                   : "tw-bg-[var(--secondary-darker)]"
               )}
@@ -150,7 +191,7 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
                 tw-absolute tw-bottom-0 tw-left-1/2 tw-h-[8px] tw-block
               `
             )}
-            style={{ width: `calc(100vw * ${props.skills.length})` }}
+            style={{ width: `calc(100vw * ${currentSkills.length})` }}
           />
         )}
       </div>

@@ -29,9 +29,21 @@ export class SkillService {
       ? data.skills?.nodes.map((review) => {
           return {
             title: review.title || "",
-            description: review.skillFields?.description || "",
-            extendedTitle: review.skillFields?.extendedTitle || "",
-            labels: review.skillFields?.labels?.split("_") || [],
+            sm: {
+              description: review.skillFields?.descriptionSm || "",
+              extendedTitle: review.skillFields?.extendedTitleSm || "",
+              labels: review.skillFields?.labelsSm?.split("_") || [],
+            },
+            md: {
+              description: review.skillFields?.descriptionMd || "",
+              extendedTitle: review.skillFields?.extendedTitleMd || "",
+              labels: review.skillFields?.labelsMd?.split("_") || [],
+            },
+            xl: {
+              description: review.skillFields?.descriptionXl || "",
+              extendedTitle: review.skillFields?.extendedTitleXl || "",
+              labels: review.skillFields?.labelsXl?.split("_") || [],
+            },
           };
         })
       : [];

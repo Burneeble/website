@@ -1,10 +1,15 @@
 import { JsonObject, JsonProperty } from "typescript-json-serializer";
 
-export interface ISkillModel {
-  title: string;
+export interface ScreenSkill {
   description: string;
   extendedTitle: string;
   labels: string[];
+}
+export interface ISkillModel {
+  title: string;
+  sm: ScreenSkill;
+  md: ScreenSkill;
+  xl: ScreenSkill;
 }
 
 @JsonObject()
@@ -13,18 +18,18 @@ export class SkillModel implements ISkillModel {
   title: string;
 
   @JsonProperty()
-  description: string;
+  sm: ScreenSkill;
 
   @JsonProperty()
-  extendedTitle: string;
+  md: ScreenSkill;
 
   @JsonProperty()
-  labels: string[];
+  xl: ScreenSkill;
 
   constructor(obj?: Partial<ISkillModel>) {
     this.title = obj?.title ?? "";
-    this.description = obj?.description ?? "";
-    this.extendedTitle = obj?.extendedTitle ?? "";
-    this.labels = obj?.labels ?? [];
+    this.sm = obj?.sm ?? { description: "", extendedTitle: "", labels: [] };
+    this.md = obj?.md ?? { description: "", extendedTitle: "", labels: [] };
+    this.xl = obj?.xl ?? { description: "", extendedTitle: "", labels: [] };
   }
 }

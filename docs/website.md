@@ -388,20 +388,50 @@ Inside the `Project Fields` group, create the following fields:
 
 Inside the `Project Fields` group, create the following fields:
 
-- Description
+- Description Sm
   - Field Type: `Text`
-  - Label: `Description`
-  - Name: `Description`
+  - Label: `Description Sm`
+  - Name: `description_sm`
   - Required: `True`
-- Extended Title
+- Description Md
   - Field Type: `Text`
-  - Label: `Extended Title`
-  - Name: `extended_title`
+  - Label: `Description Md`
+  - Name: `description_md`
   - Required: `True`
-- Labels
+- Description Xl
+  - Field Type: `Text`
+  - Label: `Description Xl`
+  - Name: `description_xl`
+  - Required: `True`
+- Extended Title Sm
+  - Field Type: `Text`
+  - Label: `Extended Title Sm`
+  - Name: `extended_title_sm`
+  - Required: `True`
+- Extended Title Md
+  - Field Type: `Text`
+  - Label: `Extended Title Md`
+  - Name: `extended_title_md`
+  - Required: `True`
+- Extended Title Xl
+  - Field Type: `Text`
+  - Label: `Extended Title Xl`
+  - Name: `extended_title_xl`
+  - Required: `True`
+- Labels Sm
   - Field Type: `Text Area`
-  - Label: `Labels`
-  - Name: `labels`
+  - Label: `Labels Sm`
+  - Name: `labels_sm`
+  - Required: `True`
+- Labels Md
+  - Field Type: `Text Area`
+  - Label: `Labels Md`
+  - Name: `labels_md`
+  - Required: `True`
+- Labels Xl
+  - Field Type: `Text Area`
+  - Label: `Labels Xl`
+  - Name: `labels_xl`
   - Required: `True`
 
 Additional settings/configuration:

@@ -7,9 +7,15 @@ export const GET_SKILLS_QUERY = gql(/* GraphQL */ `
       nodes {
         title
         skillFields {
-          description
-          extendedTitle
-          labels
+          descriptionMd
+          descriptionSm
+          descriptionXl
+          extendedTitleMd
+          extendedTitleSm
+          extendedTitleXl
+          labelsMd
+          labelsSm
+          labelsXl
         }
       }
     }

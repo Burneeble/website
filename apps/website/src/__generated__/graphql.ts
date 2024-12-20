@@ -124,10 +124,42 @@ export type CategoryToContentNodeConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<CategoryToContentNodeConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type CategoryToContentNodeConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<CategoryToContentNodeConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<CategoryToContentNodeConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type CategoryToContentNodeConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<CategoryToContentNodeConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum CategoryToContentNodeConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum CategoryToContentNodeConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** Arguments for filtering the CategoryToPostConnection connection */
 export type CategoryToPostConnectionWhereArgs = {
@@ -191,10 +223,42 @@ export type CategoryToPostConnectionWhereArgs = {
   tagSlugAnd?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Array of tag slugs, used to include objects in ANY specified tags */
   tagSlugIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<CategoryToPostConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type CategoryToPostConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<CategoryToPostConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<CategoryToPostConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type CategoryToPostConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<CategoryToPostConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum CategoryToPostConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum CategoryToPostConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** The Type of Identifier used to fetch a single comment node. Default is "ID". To be used along with the "id" field. */
 export enum CommentNodeIdTypeEnum {
@@ -212,7 +276,7 @@ export enum CommentStatusEnum {
   Hold = 'HOLD',
   /** Comments with the Spam status */
   Spam = 'SPAM',
-  /** Comments with the Trash status */
+  /** Comments with the Bin status */
   Trash = 'TRASH'
 }
 
@@ -452,10 +516,42 @@ export type ContentTypeToContentNodeConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<ContentTypeToContentNodeConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type ContentTypeToContentNodeConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<ContentTypeToContentNodeConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<ContentTypeToContentNodeConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type ContentTypeToContentNodeConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<ContentTypeToContentNodeConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum ContentTypeToContentNodeConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum ContentTypeToContentNodeConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** Allowed Content Types of the Category taxonomy. */
 export enum ContentTypesOfCategoryEnum {
@@ -1139,10 +1235,42 @@ export type HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** Arguments for filtering the HierarchicalContentNodeToContentNodeChildrenConnection connection */
 export type HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgs = {
@@ -1180,10 +1308,42 @@ export type HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** The Type of Identifier used to fetch a single resource. Default is ID. */
 export enum ImagesLayoutIdType {
@@ -1361,10 +1521,42 @@ export type ImagesLayoutValueToContentNodeConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<ImagesLayoutValueToContentNodeConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type ImagesLayoutValueToContentNodeConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<ImagesLayoutValueToContentNodeConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<ImagesLayoutValueToContentNodeConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type ImagesLayoutValueToContentNodeConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<ImagesLayoutValueToContentNodeConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum ImagesLayoutValueToContentNodeConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum ImagesLayoutValueToContentNodeConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** Arguments for filtering the ImagesLayoutValueToImagesLayoutConnection connection */
 export type ImagesLayoutValueToImagesLayoutConnectionWhereArgs = {
@@ -1400,10 +1592,42 @@ export type ImagesLayoutValueToImagesLayoutConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<ImagesLayoutValueToImagesLayoutConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type ImagesLayoutValueToImagesLayoutConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<ImagesLayoutValueToImagesLayoutConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<ImagesLayoutValueToImagesLayoutConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type ImagesLayoutValueToImagesLayoutConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<ImagesLayoutValueToImagesLayoutConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum ImagesLayoutValueToImagesLayoutConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum ImagesLayoutValueToImagesLayoutConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** The Type of Identifier used to fetch a single resource. Default is ID. */
 export enum MediaItemIdType {
@@ -1421,14 +1645,20 @@ export enum MediaItemIdType {
 
 /** The size of the media item object. */
 export enum MediaItemSizeEnum {
+  /** MediaItem with the hestia-blog size */
+  HestiaBlog = 'HESTIA_BLOG',
   /** MediaItem with the large size */
   Large = 'LARGE',
+  /** MediaItem with the mailpoet_newsletter_max size */
+  MailpoetNewsletterMax = 'MAILPOET_NEWSLETTER_MAX',
   /** MediaItem with the medium size */
   Medium = 'MEDIUM',
   /** MediaItem with the medium_large size */
   MediumLarge = 'MEDIUM_LARGE',
   /** MediaItem with the thumbnail size */
   Thumbnail = 'THUMBNAIL',
+  /** MediaItem with the yarpp-thumbnail size */
+  YarppThumbnail = 'YARPP_THUMBNAIL',
   /** MediaItem with the 1536x1536 size */
   '1536X1536' = '_1536X1536',
   /** MediaItem with the 2048x2048 size */
@@ -1531,8 +1761,12 @@ export type MenuItemToMenuItemConnectionWhereArgs = {
 
 /** Registered menu locations */
 export enum MenuLocationEnum {
-  /** Empty menu location */
-  Empty = 'EMPTY'
+  /** Put the menu in the footer location */
+  Footer = 'FOOTER',
+  /** Put the menu in the primary location */
+  Primary = 'PRIMARY',
+  /** Put the menu in the top-bar-menu location */
+  TopBarMenu = 'TOP_BAR_MENU'
 }
 
 /** The Type of Identifier used to fetch a single node. Default is "ID". To be used along with the "id" field. */
@@ -1873,10 +2107,42 @@ export type PageToRevisionConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<PageToRevisionConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type PageToRevisionConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<PageToRevisionConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<PageToRevisionConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type PageToRevisionConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<PageToRevisionConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum PageToRevisionConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum PageToRevisionConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** The status of the WordPress plugin. */
 export enum PluginStatusEnum {
@@ -1966,10 +2232,42 @@ export type PostFormatToContentNodeConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<PostFormatToContentNodeConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type PostFormatToContentNodeConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<PostFormatToContentNodeConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<PostFormatToContentNodeConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type PostFormatToContentNodeConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<PostFormatToContentNodeConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum PostFormatToContentNodeConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum PostFormatToContentNodeConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** Arguments for filtering the PostFormatToPostConnection connection */
 export type PostFormatToPostConnectionWhereArgs = {
@@ -2033,10 +2331,42 @@ export type PostFormatToPostConnectionWhereArgs = {
   tagSlugAnd?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Array of tag slugs, used to include objects in ANY specified tags */
   tagSlugIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<PostFormatToPostConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type PostFormatToPostConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<PostFormatToPostConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<PostFormatToPostConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type PostFormatToPostConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<PostFormatToPostConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum PostFormatToPostConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum PostFormatToPostConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** The Type of Identifier used to fetch a single resource. Default is ID. */
 export enum PostIdType {
@@ -2132,6 +2462,10 @@ export enum PostStatusEnum {
   Future = 'FUTURE',
   /** Objects with the inherit status */
   Inherit = 'INHERIT',
+  /** Objects with the mapped status */
+  Mapped = 'MAPPED',
+  /** Objects with the needs_update status */
+  NeedsUpdate = 'NEEDS_UPDATE',
   /** Objects with the pending status */
   Pending = 'PENDING',
   /** Objects with the private status */
@@ -2386,10 +2720,42 @@ export type PostToRevisionConnectionWhereArgs = {
   tagSlugAnd?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Array of tag slugs, used to include objects in ANY specified tags */
   tagSlugIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<PostToRevisionConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type PostToRevisionConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<PostToRevisionConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<PostToRevisionConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type PostToRevisionConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<PostToRevisionConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum PostToRevisionConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum PostToRevisionConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** Arguments for filtering the PostToTagConnection connection */
 export type PostToTagConnectionWhereArgs = {
@@ -2535,10 +2901,42 @@ export type ProjectCategoryToContentNodeConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<ProjectCategoryToContentNodeConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type ProjectCategoryToContentNodeConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<ProjectCategoryToContentNodeConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<ProjectCategoryToContentNodeConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type ProjectCategoryToContentNodeConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<ProjectCategoryToContentNodeConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum ProjectCategoryToContentNodeConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum ProjectCategoryToContentNodeConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** Arguments for filtering the ProjectCategoryToProjectCategoryConnection connection */
 export type ProjectCategoryToProjectCategoryConnectionWhereArgs = {
@@ -2620,10 +3018,42 @@ export type ProjectCategoryToProjectConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<ProjectCategoryToProjectConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type ProjectCategoryToProjectConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<ProjectCategoryToProjectConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<ProjectCategoryToProjectConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type ProjectCategoryToProjectConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<ProjectCategoryToProjectConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum ProjectCategoryToProjectConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum ProjectCategoryToProjectConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** The Type of Identifier used to fetch a single resource. Default is ID. */
 export enum ProjectIdType {
@@ -2727,10 +3157,42 @@ export type ProjectTechnologyToContentNodeConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<ProjectTechnologyToContentNodeConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type ProjectTechnologyToContentNodeConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<ProjectTechnologyToContentNodeConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<ProjectTechnologyToContentNodeConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type ProjectTechnologyToContentNodeConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<ProjectTechnologyToContentNodeConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum ProjectTechnologyToContentNodeConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum ProjectTechnologyToContentNodeConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** Arguments for filtering the ProjectTechnologyToProjectConnection connection */
 export type ProjectTechnologyToProjectConnectionWhereArgs = {
@@ -2766,10 +3228,42 @@ export type ProjectTechnologyToProjectConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<ProjectTechnologyToProjectConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type ProjectTechnologyToProjectConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<ProjectTechnologyToProjectConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<ProjectTechnologyToProjectConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type ProjectTechnologyToProjectConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<ProjectTechnologyToProjectConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum ProjectTechnologyToProjectConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum ProjectTechnologyToProjectConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** Arguments for filtering the ProjectToProjectCategoryConnection connection */
 export type ProjectToProjectCategoryConnectionWhereArgs = {
@@ -3133,10 +3627,42 @@ export type RootQueryToContentNodeConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<RootQueryToContentNodeConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type RootQueryToContentNodeConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<RootQueryToContentNodeConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<RootQueryToContentNodeConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type RootQueryToContentNodeConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<RootQueryToContentNodeConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum RootQueryToContentNodeConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum RootQueryToContentNodeConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** Arguments for filtering the RootQueryToImagesLayoutConnection connection */
 export type RootQueryToImagesLayoutConnectionWhereArgs = {
@@ -3172,10 +3698,42 @@ export type RootQueryToImagesLayoutConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<RootQueryToImagesLayoutConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type RootQueryToImagesLayoutConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<RootQueryToImagesLayoutConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<RootQueryToImagesLayoutConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type RootQueryToImagesLayoutConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<RootQueryToImagesLayoutConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum RootQueryToImagesLayoutConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum RootQueryToImagesLayoutConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** Arguments for filtering the RootQueryToImagesLayoutValueConnection connection */
 export type RootQueryToImagesLayoutValueConnectionWhereArgs = {
@@ -3265,10 +3823,42 @@ export type RootQueryToMediaItemConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<RootQueryToMediaItemConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type RootQueryToMediaItemConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<RootQueryToMediaItemConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<RootQueryToMediaItemConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type RootQueryToMediaItemConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<RootQueryToMediaItemConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum RootQueryToMediaItemConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum RootQueryToMediaItemConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** Arguments for filtering the RootQueryToMenuConnection connection */
 export type RootQueryToMenuConnectionWhereArgs = {
@@ -3334,10 +3924,42 @@ export type RootQueryToPageConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<RootQueryToPageConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type RootQueryToPageConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<RootQueryToPageConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<RootQueryToPageConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type RootQueryToPageConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<RootQueryToPageConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum RootQueryToPageConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum RootQueryToPageConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** Arguments for filtering the RootQueryToPluginConnection connection */
 export type RootQueryToPluginConnectionWhereArgs = {
@@ -3411,10 +4033,42 @@ export type RootQueryToPostConnectionWhereArgs = {
   tagSlugAnd?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Array of tag slugs, used to include objects in ANY specified tags */
   tagSlugIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<RootQueryToPostConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type RootQueryToPostConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<RootQueryToPostConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<RootQueryToPostConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type RootQueryToPostConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<RootQueryToPostConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum RootQueryToPostConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum RootQueryToPostConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** Arguments for filtering the RootQueryToPostFormatConnection connection */
 export type RootQueryToPostFormatConnectionWhereArgs = {
@@ -3542,10 +4196,42 @@ export type RootQueryToProjectConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<RootQueryToProjectConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type RootQueryToProjectConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<RootQueryToProjectConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<RootQueryToProjectConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type RootQueryToProjectConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<RootQueryToProjectConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum RootQueryToProjectConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum RootQueryToProjectConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** Arguments for filtering the RootQueryToProjectTechnologyConnection connection */
 export type RootQueryToProjectTechnologyConnectionWhereArgs = {
@@ -3627,10 +4313,42 @@ export type RootQueryToReviewConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<RootQueryToReviewConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type RootQueryToReviewConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<RootQueryToReviewConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<RootQueryToReviewConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type RootQueryToReviewConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<RootQueryToReviewConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum RootQueryToReviewConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum RootQueryToReviewConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** Arguments for filtering the RootQueryToRevisionsConnection connection */
 export type RootQueryToRevisionsConnectionWhereArgs = {
@@ -3668,10 +4386,42 @@ export type RootQueryToRevisionsConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<RootQueryToRevisionsConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type RootQueryToRevisionsConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<RootQueryToRevisionsConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<RootQueryToRevisionsConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type RootQueryToRevisionsConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<RootQueryToRevisionsConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum RootQueryToRevisionsConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum RootQueryToRevisionsConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** Arguments for filtering the RootQueryToScreenImagesLayoutConnection connection */
 export type RootQueryToScreenImagesLayoutConnectionWhereArgs = {
@@ -3707,10 +4457,42 @@ export type RootQueryToScreenImagesLayoutConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<RootQueryToScreenImagesLayoutConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type RootQueryToScreenImagesLayoutConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<RootQueryToScreenImagesLayoutConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<RootQueryToScreenImagesLayoutConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type RootQueryToScreenImagesLayoutConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<RootQueryToScreenImagesLayoutConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum RootQueryToScreenImagesLayoutConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum RootQueryToScreenImagesLayoutConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** Arguments for filtering the RootQueryToSectionConnection connection */
 export type RootQueryToSectionConnectionWhereArgs = {
@@ -3746,10 +4528,42 @@ export type RootQueryToSectionConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<RootQueryToSectionConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type RootQueryToSectionConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<RootQueryToSectionConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<RootQueryToSectionConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type RootQueryToSectionConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<RootQueryToSectionConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum RootQueryToSectionConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum RootQueryToSectionConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** Arguments for filtering the RootQueryToSectionLayoutConnection connection */
 export type RootQueryToSectionLayoutConnectionWhereArgs = {
@@ -3831,10 +4645,42 @@ export type RootQueryToSkillConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<RootQueryToSkillConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type RootQueryToSkillConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<RootQueryToSkillConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<RootQueryToSkillConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type RootQueryToSkillConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<RootQueryToSkillConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum RootQueryToSkillConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum RootQueryToSkillConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** Arguments for filtering the RootQueryToTagConnection connection */
 export type RootQueryToTagConnectionWhereArgs = {
@@ -4046,10 +4892,42 @@ export type SectionLayoutToContentNodeConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<SectionLayoutToContentNodeConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type SectionLayoutToContentNodeConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<SectionLayoutToContentNodeConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<SectionLayoutToContentNodeConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type SectionLayoutToContentNodeConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<SectionLayoutToContentNodeConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum SectionLayoutToContentNodeConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum SectionLayoutToContentNodeConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** Arguments for filtering the SectionLayoutToSectionConnection connection */
 export type SectionLayoutToSectionConnectionWhereArgs = {
@@ -4085,10 +4963,42 @@ export type SectionLayoutToSectionConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<SectionLayoutToSectionConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type SectionLayoutToSectionConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<SectionLayoutToSectionConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<SectionLayoutToSectionConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type SectionLayoutToSectionConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<SectionLayoutToSectionConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum SectionLayoutToSectionConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum SectionLayoutToSectionConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** Set relationships between the section to sectionLayouts */
 export type SectionSectionLayoutsInput = {
@@ -4274,10 +5184,42 @@ export type TagToContentNodeConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<TagToContentNodeConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type TagToContentNodeConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<TagToContentNodeConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<TagToContentNodeConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type TagToContentNodeConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<TagToContentNodeConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum TagToContentNodeConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum TagToContentNodeConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** Arguments for filtering the TagToPostConnection connection */
 export type TagToPostConnectionWhereArgs = {
@@ -4341,36 +5283,36 @@ export type TagToPostConnectionWhereArgs = {
   tagSlugAnd?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Array of tag slugs, used to include objects in ANY specified tags */
   tagSlugIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<TagToPostConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type TaxArray = {
-  field?: InputMaybe<TaxQueryField>;
+export type TagToPostConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<TagToPostConnectionWhereArgsTaxQueryField>;
   /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
   includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
-  operator?: InputMaybe<TaxQueryOperator>;
+  operator?: InputMaybe<TagToPostConnectionWhereArgsTaxQueryOperator>;
   taxonomy?: InputMaybe<TaxonomyEnum>;
   /** A list of term slugs */
   terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 /** Query objects based on taxonomy parameters */
-export type TaxQuery = {
+export type TagToPostConnectionWhereArgsTaxQuery = {
   relation?: InputMaybe<RelationEnum>;
-  taxArray?: InputMaybe<Array<InputMaybe<TaxArray>>>;
+  taxArray?: InputMaybe<Array<InputMaybe<TagToPostConnectionWhereArgsTaxArray>>>;
 };
 
 /** Which field to select taxonomy term by. Default value is "term_id" */
-export enum TaxQueryField {
+export enum TagToPostConnectionWhereArgsTaxQueryField {
   Id = 'ID',
   Name = 'NAME',
   Slug = 'SLUG',
   TaxonomyId = 'TAXONOMY_ID'
 }
 
-export enum TaxQueryOperator {
+export enum TagToPostConnectionWhereArgsTaxQueryOperator {
   And = 'AND',
   Exists = 'EXISTS',
   In = 'IN',
@@ -4824,6 +5766,11 @@ export type UpdateSettingsInput = {
   readingSettingsPostsPerPage?: InputMaybe<Scalars['Int']['input']>;
   /** What to show on the front page */
   readingSettingsShowOnFront?: InputMaybe<Scalars['String']['input']>;
+  themeisleSdkSettingsSettingsThemeisleSdkPromotions?: InputMaybe<Scalars['String']['input']>;
+  themeisleSdkSettingsSettingsThemeisleSdkPromotionsNeveFseInstalled?: InputMaybe<Scalars['Boolean']['input']>;
+  themeisleSdkSettingsSettingsThemeisleSdkPromotionsOptimoleInstalled?: InputMaybe<Scalars['Boolean']['input']>;
+  themeisleSdkSettingsSettingsThemeisleSdkPromotionsOtterInstalled?: InputMaybe<Scalars['Boolean']['input']>;
+  themeisleSdkSettingsSettingsThemeisleSdkPromotionsRopInstalled?: InputMaybe<Scalars['Boolean']['input']>;
   /** Default post category. */
   writingSettingsDefaultCategory?: InputMaybe<Scalars['Int']['input']>;
   /** Default post format. */
@@ -4937,6 +5884,10 @@ export enum UserRoleEnum {
   /** User role with specific capabilities */
   Editor = 'EDITOR',
   /** User role with specific capabilities */
+  SeoEditor = 'SEO_EDITOR',
+  /** User role with specific capabilities */
+  SeoManager = 'SEO_MANAGER',
+  /** User role with specific capabilities */
   Subscriber = 'SUBSCRIBER'
 }
 
@@ -5044,10 +5995,42 @@ export type UserToMediaItemConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<UserToMediaItemConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type UserToMediaItemConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<UserToMediaItemConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<UserToMediaItemConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type UserToMediaItemConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<UserToMediaItemConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum UserToMediaItemConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum UserToMediaItemConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** Arguments for filtering the UserToPageConnection connection */
 export type UserToPageConnectionWhereArgs = {
@@ -5091,10 +6074,42 @@ export type UserToPageConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<UserToPageConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type UserToPageConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<UserToPageConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<UserToPageConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type UserToPageConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<UserToPageConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum UserToPageConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum UserToPageConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** Arguments for filtering the UserToPostConnection connection */
 export type UserToPostConnectionWhereArgs = {
@@ -5158,10 +6173,42 @@ export type UserToPostConnectionWhereArgs = {
   tagSlugAnd?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Array of tag slugs, used to include objects in ANY specified tags */
   tagSlugIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<UserToPostConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type UserToPostConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<UserToPostConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<UserToPostConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type UserToPostConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<UserToPostConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum UserToPostConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum UserToPostConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** Arguments for filtering the UserToRevisionsConnection connection */
 export type UserToRevisionsConnectionWhereArgs = {
@@ -5199,10 +6246,42 @@ export type UserToRevisionsConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
-  taxQuery?: InputMaybe<TaxQuery>;
+  taxQuery?: InputMaybe<UserToRevisionsConnectionWhereArgsTaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type UserToRevisionsConnectionWhereArgsTaxArray = {
+  field?: InputMaybe<UserToRevisionsConnectionWhereArgsTaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars['Boolean']['input']>;
+  operator?: InputMaybe<UserToRevisionsConnectionWhereArgsTaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type UserToRevisionsConnectionWhereArgsTaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<UserToRevisionsConnectionWhereArgsTaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum UserToRevisionsConnectionWhereArgsTaxQueryField {
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  TaxonomyId = 'TAXONOMY_ID'
+}
+
+export enum UserToRevisionsConnectionWhereArgsTaxQueryOperator {
+  And = 'AND',
+  Exists = 'EXISTS',
+  In = 'IN',
+  NotExists = 'NOT_EXISTS',
+  NotIn = 'NOT_IN'
+}
 
 /** Field to order the connection by */
 export enum UsersConnectionOrderbyEnum {
@@ -5285,7 +6364,7 @@ export type GetReviewsQueryQuery = { __typename?: 'RootQuery', reviews?: { __typ
 export type GetSkillsQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetSkillsQueryQuery = { __typename?: 'RootQuery', skills?: { __typename?: 'RootQueryToSkillConnection', nodes: Array<{ __typename?: 'Skill', title?: string | null, skillFields?: { __typename?: 'SkillFields', description?: string | null, extendedTitle?: string | null, labels?: string | null } | null }> } | null };
+export type GetSkillsQueryQuery = { __typename?: 'RootQuery', skills?: { __typename?: 'RootQueryToSkillConnection', nodes: Array<{ __typename?: 'Skill', title?: string | null, skillFields?: { __typename?: 'SkillFields', descriptionMd?: string | null, descriptionSm?: string | null, descriptionXl?: string | null, extendedTitleMd?: string | null, extendedTitleSm?: string | null, extendedTitleXl?: string | null, labelsMd?: string | null, labelsSm?: string | null, labelsXl?: string | null } | null }> } | null };
 
 
 export const GetCategoriesQueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getCategoriesQuery"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"projectCategories"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetCategoriesQueryQuery, GetCategoriesQueryQueryVariables>;
@@ -5293,4 +6372,4 @@ export const GetProjectQueryDocument = {"kind":"Document","definitions":[{"kind"
 export const GetProjectsByCategoriesQueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetProjectsByCategoriesQuery"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"categories"}},"type":{"kind":"NonNullType","type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"offset"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"search"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"projects"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}},{"kind":"Argument","name":{"kind":"Name","value":"after"},"value":{"kind":"Variable","name":{"kind":"Name","value":"offset"}}},{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"taxQuery"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"taxArray"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"taxonomy"},"value":{"kind":"EnumValue","value":"PROJECTCATEGORY"}},{"kind":"ObjectField","name":{"kind":"Name","value":"terms"},"value":{"kind":"Variable","name":{"kind":"Name","value":"categories"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"field"},"value":{"kind":"EnumValue","value":"NAME"}}]}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"search"},"value":{"kind":"Variable","name":{"kind":"Name","value":"search"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"projectFields"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"category"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"projectUrl"}},{"kind":"Field","name":{"kind":"Name","value":"thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"guid"}}]}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"pageInfo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"endCursor"}},{"kind":"Field","name":{"kind":"Name","value":"hasNextPage"}}]}}]}}]}}]} as unknown as DocumentNode<GetProjectsByCategoriesQueryQuery, GetProjectsByCategoriesQueryQueryVariables>;
 export const GetProjectsQueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetProjectsQuery"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"offset"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"search"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"projects"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}},{"kind":"Argument","name":{"kind":"Name","value":"after"},"value":{"kind":"Variable","name":{"kind":"Name","value":"offset"}}},{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"search"},"value":{"kind":"Variable","name":{"kind":"Name","value":"search"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"projectFields"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"category"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"projectUrl"}},{"kind":"Field","name":{"kind":"Name","value":"thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"guid"}}]}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"pageInfo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"endCursor"}},{"kind":"Field","name":{"kind":"Name","value":"hasNextPage"}}]}}]}}]}}]} as unknown as DocumentNode<GetProjectsQueryQuery, GetProjectsQueryQueryVariables>;
 export const GetReviewsQueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getReviewsQuery"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"reviews"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"reviewFields"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"countryCode"}},{"kind":"Field","name":{"kind":"Name","value":"review"}},{"kind":"Field","name":{"kind":"Name","value":"userAvatar"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"guid"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"projectUrl"}},{"kind":"Field","name":{"kind":"Name","value":"username"}}]}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}}]}}]}}]} as unknown as DocumentNode<GetReviewsQueryQuery, GetReviewsQueryQueryVariables>;
-export const GetSkillsQueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getSkillsQuery"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"skills"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"skillFields"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"extendedTitle"}},{"kind":"Field","name":{"kind":"Name","value":"labels"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetSkillsQueryQuery, GetSkillsQueryQueryVariables>;
+export const GetSkillsQueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getSkillsQuery"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"skills"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"skillFields"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"descriptionMd"}},{"kind":"Field","name":{"kind":"Name","value":"descriptionSm"}},{"kind":"Field","name":{"kind":"Name","value":"descriptionXl"}},{"kind":"Field","name":{"kind":"Name","value":"extendedTitleMd"}},{"kind":"Field","name":{"kind":"Name","value":"extendedTitleSm"}},{"kind":"Field","name":{"kind":"Name","value":"extendedTitleXl"}},{"kind":"Field","name":{"kind":"Name","value":"labelsMd"}},{"kind":"Field","name":{"kind":"Name","value":"labelsSm"}},{"kind":"Field","name":{"kind":"Name","value":"labelsXl"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetSkillsQueryQuery, GetSkillsQueryQueryVariables>;
