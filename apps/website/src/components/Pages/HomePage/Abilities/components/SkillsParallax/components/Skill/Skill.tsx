@@ -111,15 +111,25 @@ const Skill = (props: SkillProps) => {
               `
                 rod tw-absolute tw-bottom-[-25px] tw-left-1/2
                 -tw-translate-x-1/2 tw-h-[calc(100%-16px)] tw-w-[8px]
+                tw-bg-[var(--secondary-darker)]
 
-                lg:tw-h-[calc(100%-20px)] lg:tw-transition-all
-                lg:tw-duration-500 lg:tw-ease-in-out lg:tw-bottom-[-15px]
+                after:tw-content-[''] after:tw-absolute after:tw-top-0
+                after:tw-left-0 after:tw-w-full after:tw-h-full after:tw-block
+                after:tw-bg-gradient-to-b after:tw-from-[var(--primary-default)]
+                after:tw-to-[var(--primary-lighest)] after:tw-duration-500
+                after:tw-transition-all
+
+                lg:tw-h-[calc(100%-20px)] lg:tw-bottom-[-15px]
               `,
+              (
+                !["sm", "md", "lg"].includes(screen)
+                  ? props.currentIndex >= props.index
+                  : true
+              )
+                ? "after:tw-opacity-100"
+                : "after:tw-opacity-0",
               props.index == props.amount - 1 &&
-                "lg:tw-h-[calc(100%-40px)] lg:!tw-bottom-0",
-              (!["sm", "md", "lg"].includes(screen)
-                ? props.currentIndex >= props.index
-                : true) && `active`
+                "lg:tw-h-[calc(100%-40px)] lg:!tw-bottom-0"
             )}
           />
         </div>
@@ -158,7 +168,6 @@ const Skill = (props: SkillProps) => {
             `
               categories tw-flex tw-flex-wrap tw-gap-[10px] tw-overflow-hidden
               tw-transition-all tw-duration-500
-              tw-animation-timing-[cubic-bezier(0.68,-0.55,0.27,1.55)]
             `,
             (
               !["sm", "md", "lg"].includes(screen)

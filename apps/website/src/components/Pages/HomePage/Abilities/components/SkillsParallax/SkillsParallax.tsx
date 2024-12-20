@@ -176,7 +176,7 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
                 `
                   end-bar tw-absolute tw-h-[8px] tw-w-[50vw] tw-left-[17px]
                   tw-bottom-0 tw-bg-[var(--primary-lighest)] tw-transition-all
-                  tw-duration-500 tw-ease-in-out
+                  tw-duration-500
                 `,
                 props.currentIndex === currentSkills.length - 1
                   ? `tw-bg-[var(--primary-lighest)]`

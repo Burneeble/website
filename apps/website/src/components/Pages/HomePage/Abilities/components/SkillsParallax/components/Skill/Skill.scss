@@ -1,17 +1,1 @@
 // Skill
-
-.skill {
-  .separator {
-    .rod {
-      background: var(--secondary-darker);
-
-      &.active {
-        background: linear-gradient(
-          to bottom,
-          var(--primary-default),
-          var(--primary-lighest)
-        );
-      }
-    }
-  }
-}
