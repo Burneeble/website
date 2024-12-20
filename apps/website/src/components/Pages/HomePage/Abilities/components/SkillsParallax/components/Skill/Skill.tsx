@@ -5,10 +5,13 @@ import { SkillProps } from "./Skill.types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFire } from "@fortawesome/free-solid-svg-icons";
 import { cn } from "@/lib/utils";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 
 const Skill = (props: SkillProps) => {
+  //States
+  const [showShadow, setShowShadow] = useState<boolean>(false);
+
   //Hooks
   const { screen } = useClientInfoService();
   const iconRef = useRef<SVGPathElement>(null);
@@ -46,6 +49,15 @@ const Skill = (props: SkillProps) => {
       });
     }
   }, [iconRef.current, props.currentIndex]);
+
+  useEffect(() => {
+    if (props.index >= props.currentIndex) {
+      setShowShadow(true);
+      setTimeout(() => {
+        setShowShadow(false);
+      }, 250);
+    }
+  }, [props.index, props.currentIndex]);
 
   return (
     <div
@@ -167,15 +179,23 @@ const Skill = (props: SkillProps) => {
           className={cn(
             `
               categories tw-flex tw-flex-wrap tw-gap-[10px] tw-overflow-hidden
-              tw-transition-all tw-duration-500
+              tw-transition-all tw-duration-500 tw-relative
+
+              after:tw-content-[''] after:tw-absolute after:tw-left-0
+              after:tw-w-full after:tw-bg-gradient-to-b
+              after:tw-from-[rgba(0,0,0,0)] after:tw-bottom-0 after:tw-block
+              after:tw-to-[black] after:tw-duration-250 after:tw-transition-all
             `,
             (
               !["sm", "md", "lg"].includes(screen)
                 ? props.currentIndex === props.index
                 : true
             )
-              ? "tw-max-h-[16rem]"
-              : "tw-max-h-0"
+              ? `tw-max-h-[16rem]`
+              : `tw-max-h-0`,
+            !["sm", "md", "lg"].includes(screen) && showShadow
+              ? `after:tw-h-[15rem]`
+              : `after:tw-h-[0]`
           )}
         >
           {props.categories.map((category, index) => {
