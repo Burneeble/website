@@ -35,26 +35,6 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
         sm:tw-gap-[30px]
       `}
     >
-      <svg>
-        <defs>
-          <linearGradient
-            id="triangle-gradient"
-            x1="0%"
-            y1="0%"
-            x2="100%"
-            y2="0%"
-          >
-            <stop
-              offset="0%"
-              style={{ stopColor: "#2B2B2B", stopOpacity: 1 }}
-            />
-            <stop
-              offset="100%"
-              style={{ stopColor: "#73503D", stopOpacity: 1 }}
-            />
-          </linearGradient>
-        </defs>
-      </svg>
       <div
         className={`
           skill-info tw-flex tw-items-start tw-justify-center tw-flex-col
