@@ -72,6 +72,7 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
         tw-relative
 
         lg:tw-flex-row lg:tw-gap-[70px] lg:tw-h-[calc(100vh-60px)]
+        lg:tw-max-h-[calc(100vh-60px)]
 
         sm:tw-gap-[30px]
       `}
@@ -142,6 +143,7 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
               wrapper tw-justify-between tw-relative tw-flex
 
               lg:!tw-w-[490px] lg:tw-flex-col lg:tw-pb-0 lg:tw-h-full
+              lg:tw-max-h-full
 
               sm:tw-pb-[30px]
             `}

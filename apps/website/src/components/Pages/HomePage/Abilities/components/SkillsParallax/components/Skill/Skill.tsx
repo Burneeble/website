@@ -165,7 +165,7 @@ const Skill = (props: SkillProps) => {
                 ? props.currentIndex === props.index
                 : true
             )
-              ? "tw-max-h-[20rem]"
+              ? "tw-max-h-[16rem]"
               : "tw-max-h-0"
           )}
         >
