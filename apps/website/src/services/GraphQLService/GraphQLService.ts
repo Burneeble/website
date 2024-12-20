@@ -39,7 +39,7 @@ export class GraphQLService {
       return forward(operation).map((response) => {
         console.log("Response:", {
           operationName,
-          data: response.data,
+          data: JSON.stringify(response.data, null, 2),
           errors: response.errors,
         });
 

@@ -44,9 +44,9 @@ export default async function Home() {
       skillsInfo.map((skill) => {
         return {
           title: skill.title,
-          description: skill.description,
-          extendedTitle: skill.extendedTitle,
-          labels: skill.labels,
+          sm: skill.sm,
+          md: skill.md,
+          xl: skill.xl,
         };
       })
     )
