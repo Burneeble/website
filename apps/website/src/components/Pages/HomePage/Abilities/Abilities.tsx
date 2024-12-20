@@ -5,6 +5,8 @@ import { AbilitiesProps } from "./Abilities.types";
 import { SkillsParallax } from "./components";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useClientInfoService } from "@burneeble/ui-components";
+import { cn } from "@/lib/utils";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,6 +16,7 @@ const Abilities = (props: AbilitiesProps) => {
 
   //Hooks
   const sectionRef = useRef<HTMLElement>(null);
+  const { screen } = useClientInfoService();
 
   //Effects
   useEffect(() => {
@@ -42,10 +45,13 @@ const Abilities = (props: AbilitiesProps) => {
   return (
     <section
       ref={sectionRef}
-      className={`
-        abilities-section cs-section-structure tw-relative tw-justify-center
-        tw-items-center tw-flex tw-flex-col !tw-max-h-screen !tw-w-screen
-      `}
+      className={cn(
+        `
+          abilities-section cs-section-structure tw-relative tw-justify-center
+          tw-items-center tw-flex tw-flex-col !tw-max-h-screen !tw-w-screen
+        `,
+        ["sm", "md", "lg"].includes(screen) && "tw-px-0"
+      )}
     >
       <div
         className={`

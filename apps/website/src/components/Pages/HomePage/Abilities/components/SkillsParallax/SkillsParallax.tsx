@@ -30,46 +30,52 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
         skills-parallax tw-w-full tw-h-full tw-flex tw-gap-[10px] tw-flex-col
         tw-relative
 
-        md:tw-flex-row md:tw-gap-[70px] md:tw-h-[calc(100vh-60px)]
+        lg:tw-flex-row lg:tw-gap-[70px] lg:tw-h-[calc(100vh-60px)]
 
         sm:tw-gap-[30px]
       `}
     >
       <div
-        className={`
-          skill-info tw-flex tw-items-start tw-justify-center tw-flex-col
-          tw-gap-[10px] tw-w-full tw-relative tw-flex-1
+        className={cn(
+          `
+            skill-info tw-flex tw-items-start tw-justify-center tw-flex-col
+            tw-gap-[10px] tw-w-full tw-relative tw-flex-1
 
-          sm:tw-flex-[unset]
-        `}
+            sm:tw-flex-[unset]
+          `
+        )}
       >
         {props.skills.map((skill, i) => {
           return (
-            <>
-              <div
-                className={cn(
-                  `
-                    wrapper tw-absolute tw-left-0 tw-top-0 tw-transition-all
-                    tw-duration-500 tw-ease-in-out tw-w-full tw-h-full
-                  `,
-                  props.currentIndex !== i ? `tw-opacity-0` : "tw-opacity-100"
-                )}
-                key={i}
-              >
-                <h2
-                  className={`title`}
-                  dangerouslySetInnerHTML={{
-                    __html: skill.extendedTitle,
-                  }}
-                />
-                <p
-                  className={`text`}
-                  dangerouslySetInnerHTML={{
-                    __html: skill.description,
-                  }}
-                />
-              </div>
-            </>
+            <div
+              className={cn(
+                `
+                  wrapper tw-absolute tw-left-0 tw-top-0 tw-transition-all
+                  tw-duration-500 tw-ease-in-out tw-w-full tw-h-full
+                `,
+                ["sm", "md", "lg"].includes(screen) &&
+                  `cs-website-horizontal-padding`,
+                props.currentIndex !== i ? `tw-opacity-0` : "tw-opacity-100"
+              )}
+              key={i}
+            >
+              <h2
+                className={`title`}
+                dangerouslySetInnerHTML={{
+                  __html: skill.extendedTitle,
+                }}
+              />
+              <p
+                className={`
+                  text
+
+                  lg:tw-text-2xl
+                `}
+                dangerouslySetInnerHTML={{
+                  __html: skill.description,
+                }}
+              />
+            </div>
           );
         })}
       </div>
@@ -77,7 +83,7 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
         className={`
           skill-section tw-relative
 
-          md:tw-min-h-full md:tw-relative md:tw-bottom-[unset]
+          lg:tw-min-h-full lg:tw-relative lg:tw-bottom-[unset]
 
           sm:tw-absolute sm:tw-bottom-0 sm:tw-w-full
         `}
@@ -86,7 +92,7 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
           className={`
             skills tw-overflow-hidden tw-max-w-full no-scrollbar
 
-            md:tw-h-full md:tw-relative md:tw-overflow-visible
+            lg:tw-h-full lg:tw-relative lg:tw-overflow-visible
           `}
           ref={skills}
         >
@@ -94,7 +100,7 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
             className={`
               wrapper tw-justify-between tw-relative tw-flex
 
-              md:!tw-w-[490px] md:tw-flex-col md:tw-pb-0 md:tw-h-full
+              lg:!tw-w-[490px] lg:tw-flex-col lg:tw-pb-0 lg:tw-h-full
 
               sm:tw-pb-[30px]
             `}
@@ -102,7 +108,14 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
           >
             {props.skills.map((skill, i) => {
               return (
-                <div key={i} className={`skill-wrapper tw-flex-1`}>
+                <div
+                  key={i}
+                  className={cn(
+                    `skill-wrapper tw-flex-1`,
+                    ["sm", "md", "lg"].includes(screen) &&
+                      `cs-website-horizontal-padding`
+                  )}
+                >
                   <Skill
                     title={skill.title}
                     categories={skill.labels}
@@ -114,7 +127,7 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
               );
             })}
           </div>
-          {!["sm", "md"].includes(screen) && (
+          {!["sm", "md", "lg"].includes(screen) && (
             <div
               className={cn(
                 `
@@ -129,7 +142,7 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
             />
           )}
         </div>
-        {screen === "md" && (
+        {["md", "lg"].includes(screen) && (
           <div
             className={cn(
               `

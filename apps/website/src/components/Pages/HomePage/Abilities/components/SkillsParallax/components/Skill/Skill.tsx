@@ -62,7 +62,7 @@ const Skill = (props: SkillProps) => {
             tw-relative
           `}
         >
-          {!["sm", "md"].includes(screen) ? (
+          {!["sm", "md", "lg"].includes(screen) ? (
             <>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -112,12 +112,12 @@ const Skill = (props: SkillProps) => {
                 rod tw-absolute tw-bottom-[-25px] tw-left-1/2
                 -tw-translate-x-1/2 tw-h-[calc(100%-16px)] tw-w-[8px]
 
-                md:tw-h-[calc(100%-20px)] md:tw-transition-all
-                md:tw-duration-500 md:tw-ease-in-out md:tw-bottom-[-15px]
+                lg:tw-h-[calc(100%-20px)] lg:tw-transition-all
+                lg:tw-duration-500 lg:tw-ease-in-out lg:tw-bottom-[-15px]
               `,
               props.index == props.amount - 1 &&
-                "md:tw-h-[calc(100%-40px)] md:!tw-bottom-0",
-              (!["sm", "md"].includes(screen)
+                "lg:tw-h-[calc(100%-40px)] lg:!tw-bottom-0",
+              (!["sm", "md", "lg"].includes(screen)
                 ? props.currentIndex >= props.index
                 : true) && `active`
             )}
@@ -129,12 +129,12 @@ const Skill = (props: SkillProps) => {
           `
             info tw-flex tw-flex-col tw-gap-[10px]
 
-            md:tw-pb-[30px] md:tw-transition-all md:tw-duration-200
-            md:tw-ease-in-out
+            lg:tw-pb-[30px] lg:tw-transition-all lg:tw-duration-200
+            lg:tw-ease-in-out
 
             sm:tw-h-full
           `,
-          !["sm", "md"].includes(screen) &&
+          !["sm", "md", "lg"].includes(screen) &&
             props.currentIndex < props.index &&
             "tw-blur-[5px]"
         )}
@@ -161,7 +161,7 @@ const Skill = (props: SkillProps) => {
               tw-animation-timing-[cubic-bezier(0.68,-0.55,0.27,1.55)]
             `,
             (
-              !["sm", "md"].includes(screen)
+              !["sm", "md", "lg"].includes(screen)
                 ? props.currentIndex === props.index
                 : true
             )
