@@ -1,14 +1,20 @@
+import { cn } from "@/lib/utils";
 import { LargeImageLayoutProps } from "./LargeImageLayout.types";
+import { LayoutType } from "@/components/Pages/ProjectPage/Section/Section.types";
 
 const LargeImageLayout = (props: LargeImageLayoutProps) => {
   return (
     <div
-      className={`
-        images-layout large-image-layout tw-relative tw-w-full tw-h-[293px]
-        tw-max-h-full
+      className={cn(
+        `images-layout large-image-layout tw-relative tw-w-full tw-max-h-full`,
+        props.layoutType === LayoutType.TextCenterCenterImageBackground
+          ? `tw-h-full`
+          : `
+            tw-h-[293px]
 
-        md:tw-h-[480px]
-      `}
+            md:tw-h-[480px]
+          `
+      )}
     >
       <img
         src={props.image1}
