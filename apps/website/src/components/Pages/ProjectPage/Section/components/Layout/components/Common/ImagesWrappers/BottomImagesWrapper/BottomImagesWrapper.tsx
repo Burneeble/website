@@ -22,7 +22,15 @@ const BottomImagesWrapper = (props: BottomImagesWrapperProps) => {
               props.imageLayoutType
             )
           ? `tw-aspect-square tw-max-w-[454px]`
-          : "tw-h-[293px]"
+          : `
+            tw-aspect-[350/293] tw-w-full
+
+            md:tw-aspect-[1300/480]
+
+            sm:tw-aspect-[682/480]
+
+            tw:tw-h-auto
+          `
       )}
     >
       <ImageLayout {...props} />

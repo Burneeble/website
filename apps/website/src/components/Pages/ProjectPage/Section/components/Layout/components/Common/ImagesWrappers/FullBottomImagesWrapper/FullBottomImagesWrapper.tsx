@@ -18,7 +18,15 @@ const FullBottomImagesWrapper = (props: FullBottomImagesWrapperProps) => {
 
             md:tw-w-auto
           `
-          : "tw-h-[410px]"
+          : `
+            tw-aspect-[350/410] tw-w-full
+
+            md:tw-aspect-[1300/600]
+
+            sm:tw-aspect-[682/625]
+
+            tw:tw-h-auto
+          `
       )}
     >
       <ImageLayout {...props} />

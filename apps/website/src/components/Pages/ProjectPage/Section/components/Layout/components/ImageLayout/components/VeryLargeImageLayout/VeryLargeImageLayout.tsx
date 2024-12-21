@@ -6,16 +6,17 @@ const VeryLargeImageLayout = (props: VeryLargeImageLayoutProps) => {
   return (
     <div
       className={cn(
-        `
-          images-layout very-large-image-layout tw-relative tw-w-full
-          tw-max-h-full
-        `,
+        `images-layout very-large-image-layout tw-relative tw-max-h-full`,
         props.layoutType === LayoutType.TextCenterCenterImageBackground
           ? `tw-h-full`
           : `
-            tw-h-[410px]
+            tw-aspect-[350/410] tw-w-full
 
-            md:tw-h-[600px]
+            md:tw-aspect-[1300/600]
+
+            sm:tw-aspect-[682/625]
+
+            tw:tw-h-auto
           `
       )}
     >
