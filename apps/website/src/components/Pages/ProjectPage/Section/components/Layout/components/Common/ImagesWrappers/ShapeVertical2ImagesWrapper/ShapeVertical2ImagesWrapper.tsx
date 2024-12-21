@@ -37,8 +37,8 @@ const ShapeVertical2ImagesWrapper = (
           [ImageLayoutType.SmarthphoneImageLayout].includes(
             props.imageLayoutType
           )
-            ? `lg:tw-w-[600px] lg:tw-max-w-[600px]`
-            : `lg:tw-max-w-[385px] lg:tw-max-h-[100vh]`,
+            ? `lg:tw-w-[675px] lg:tw-max-w-[675px]`
+            : `lg:tw-max-w-[330px] lg:tw-max-h-[100vh]`,
           props.side === "right"
             ? `lg:tw-left-[calc((100vw/2)-10px-74%)]`
             : `
