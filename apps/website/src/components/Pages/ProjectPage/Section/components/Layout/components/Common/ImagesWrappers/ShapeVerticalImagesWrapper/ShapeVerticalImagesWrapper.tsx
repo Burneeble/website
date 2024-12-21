@@ -7,9 +7,11 @@ const ShapeVerticalImagesWrapper = (props: ShapeVerticalImagesWrapperProps) => {
     <div
       className={`
         wrapper tw-w-screen tw-flex tw-items-center tw-justify-center
-        tw-relative tw-h-[350px]
+        tw-relative tw-aspect-[400/300]
 
         lg:tw-h-[675px] lg:tw-flex-1
+
+        md:tw-aspect-auto
 
         sm:tw-h-[515px]
       `}

@@ -9,7 +9,7 @@ const ShapeHorizontalImagesWrapper = (
   return (
     <div
       className={`
-        wrapper tw-relative tw-w-screen tw-aspect-[390/318]
+        wrapper tw-relative tw-w-screen tw-aspect-[400/300]
 
         lg:tw-flex-1 lg:tw-aspect-auto lg:tw-h-screen
 

@@ -7,7 +7,7 @@ const HorizontalShape = (props: HorizontalShapeProps) => {
       className={cn(
         `
           layout-shape tw-rounded-l-lg tw-top-0 tw-h-full tw-right-0 tw-z-[-1]
-          tw-w-1/2
+          tw-w-[50vw]
 
           lg:tw-w-[50vw] lg:tw-h-[372px] lg:tw-top-0
 

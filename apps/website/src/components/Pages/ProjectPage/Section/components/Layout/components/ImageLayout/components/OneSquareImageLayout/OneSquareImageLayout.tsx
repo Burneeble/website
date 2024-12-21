@@ -28,7 +28,7 @@ const OneSquareImageLayout = (props: OneSquareImageLayoutProps) => {
 
             ${
               props.layoutType !== LayoutType.TextCenterCenterImageBackground
-                ? `tw-max-w-[35rem]`
+                ? `tw-max-w-[44rem]`
                 : `tw-max-w-full`
             }
           `

@@ -3,6 +3,8 @@
 import ImageLayout from "../ImageLayout";
 import { FigmaLayoutProps } from "./FigmaLayout.types";
 import { SectionInfo } from "../Common";
+import { cn } from "@/lib/utils";
+import { ImageLayoutType } from "../../../../Section.types";
 
 const FigmaLayout = (props: FigmaLayoutProps) => {
   return (
@@ -14,14 +16,18 @@ const FigmaLayout = (props: FigmaLayoutProps) => {
     >
       <SectionInfo {...props} />
       <div
-        className={`
-          tw-flex tw-items-center tw-justify-center images tw-w-screen
-          tw-aspect-[390/345]
+        className={cn(
+          `
+            tw-flex tw-items-center tw-justify-center images tw-w-screen images
 
-          md:tw-aspect-[1512/375]
+            md:tw-aspect-[1512/375]
 
-          sm:tw-aspect-[744/485]
-        `}
+            sm:tw-aspect-[744/485]
+          `,
+          props.imageLayoutType === ImageLayoutType.LaptopImageLayout
+            ? `tw-h-[410px]`
+            : `tw-aspect-[390/345]`
+        )}
       >
         <ImageLayout {...props} />
       </div>

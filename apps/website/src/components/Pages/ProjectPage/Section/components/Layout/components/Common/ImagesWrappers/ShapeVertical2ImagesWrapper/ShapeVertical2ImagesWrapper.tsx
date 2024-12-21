@@ -28,7 +28,7 @@ const ShapeVertical2ImagesWrapper = (
             -tw-translate-x-1/2 tw-w-[calc(100%-40px)] tw-max-w-[385px]
 
             lg:tw-w-[calc(100%-40px)] lg:tw-aspect-[328/675] lg:tw-min-w-[320px]
-            lg:tw-h-[unset]
+            lg:tw-h-[unset] lg:tw-max-w-[330px]
 
             md:tw-aspect-square md:tw-h-[85%] md:tw-w-auto md:tw-max-w-[unset]
 
