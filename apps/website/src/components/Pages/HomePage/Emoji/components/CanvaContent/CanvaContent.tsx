@@ -28,14 +28,18 @@ const CanvaContent = () => {
 
   return (
     <>
-      <OrbitControls enableZoom={false} />
+      <OrbitControls
+        enableZoom={false}
+        maxPolarAngle={Math.PI / 2}
+        minPolarAngle={Math.PI / 2}
+      />
       <ambientLight intensity={1.5} />
       <directionalLight castShadow position={[1, 2, 3]} intensity={2.5} />
 
       <Center>
         <Text3D
           font={"/Bowlby One_Regular.json"}
-          size={0.5}
+          size={0.3}
           height={0.2}
           curveSegments={12}
           bevelEnabled
