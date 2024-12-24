@@ -1,5 +1,28 @@
 import { Landing, Projects } from "@/components/Pages";
 import { ProjectService } from "@/services/ProjectService";
+import { Metadata } from "next";
+
+const tags = {
+  title: "Burneeble website",
+  description: "Burneeble website gallery",
+  image: "https://picsum.photos/1200/630",
+};
+
+export const metadata: Metadata = {
+  title: tags.title,
+  description: tags.description,
+  openGraph: {
+    images: [tags.image],
+    title: tags.title,
+    description: tags.description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: tags.title,
+    description: tags.description,
+    images: [tags.image],
+  },
+};
 
 const GalleryPage = async () => {
   const res = await ProjectService.instance.getCategories();

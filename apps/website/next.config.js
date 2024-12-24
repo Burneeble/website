@@ -6,7 +6,18 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
-  webpack: (config) => {
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.externals = {
+        "@napi-rs/canvas": "commonjs @napi-rs/canvas",
+      };
+    }
+
+    config.module.rules.push({
+      test: /\.node$/,
+      use: "node-loader",
+    });
+
     config.resolve.fallback = { window: false };
 
     return config;
