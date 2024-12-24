@@ -21,7 +21,7 @@ export async function generateMetadata({
   const protocol = currentHost?.startsWith("localhost") ? "http" : "https";
 
   if (!currentHost) {
-    throw new Error("Host unavailabel");
+    throw new Error("Host unavailable");
   }
 
   const generatedImageUrl = `${protocol}://${currentHost}/api/generate-image?imageUrl=${encodeURIComponent(

@@ -12,7 +12,7 @@ const nextConfig = {
       use: "node-loader",
     });
 
-    config.resolve.fallback = { window: false };
+    config.resolve.fallback = { window: false, fs: false };
 
     return config;
   },
