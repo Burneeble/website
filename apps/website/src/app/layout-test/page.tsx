@@ -6,9 +6,9 @@ import Section, {
 const LayoutTestPage = () => {
   return (
     <>
-      {Object.keys(LayoutType).map((layoutType) => {
+      {Object.keys(LayoutType).map((layoutType, i) => {
         return (
-          <>
+          <div key={i}>
             <p className="tw-text-headings">{layoutType}</p>
             <Section
               // @ts-ignore
@@ -29,9 +29,9 @@ const LayoutTestPage = () => {
               text={
                 "We created custom designs from scratch to bring ZIP.Link digital vision to life. Using Figma we defined the optimal structure and flow of the application, ensuring an intuitive and engaging user experience"
               }
-              imageLayoutType={ImageLayoutType.VeryLargeImageLayout}
+              imageLayoutType={ImageLayoutType.LaptopSmarthphoneImagesLayout}
             />
-          </>
+          </div>
         );
       })}
     </>
