@@ -11,7 +11,7 @@ const VerticalShape = (props: VerticalShapeProps) => {
 
           lg:tw-w-[33%] lg:tw-h-[675px] lg:tw-max-w-[unset]
 
-          sm:tw-left-[calc(100vw-250px)] sm:tw-w-[250px] sm:tw-h-[515px]
+          sm:tw-left-[calc(100vw-250px)] sm:tw-w-[250px] sm:tw-h-[450px]
           sm:tw-aspect-auto
         `,
         props.align === "right"

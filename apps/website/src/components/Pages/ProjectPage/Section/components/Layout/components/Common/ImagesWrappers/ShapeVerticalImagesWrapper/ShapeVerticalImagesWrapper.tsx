@@ -15,7 +15,7 @@ const ShapeVerticalImagesWrapper = (props: ShapeVerticalImagesWrapperProps) => {
 
         md:tw-aspect-auto
 
-        sm:tw-h-[515px]
+        sm:tw-h-[450px]
       `}
     >
       <VerticalShape align={props.side} />
