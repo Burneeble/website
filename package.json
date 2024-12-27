@@ -7,8 +7,7 @@
   ],
   "scripts": {
     "build": "lerna run build",
-    "build-libs": "lerna run build --scope @burneeble/*",
-    "build-dashboard": "lerna run build --ignore exomoon-frontend",
+    "build-libs": "lerna run build --scope @burneeble/* --ignore @burneeble/website",
     "lint": "lerna run lint",
     "nx": "nx",
     "clean-modules": "rm -rf node_modules && lerna exec -- rm -rf ./node_modules",
