@@ -20,7 +20,7 @@ const TextCenterCenterImageBackground = (
         className={`
           images tw-w-screen tw-h-screen tw-flex tw-items-center
           tw-justify-center tw-z-[-1] tw-absolute tw-top-1/2 tw-left-1/2
-          -tw-translate-x-1/2 -tw-translate-y-1/2 tw relative
+          -tw-translate-x-1/2 -tw-translate-y-1/2 tw relative tw-overflow-hidden
         `}
       >
         <div
