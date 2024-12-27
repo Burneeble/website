@@ -14,12 +14,11 @@ const ShapeBottomImagesWrapper = (props: ShapeBottomImagesWrapperProps) => {
     <div
       className={`
         wrapper tw-relative tw-w-full tw-h-[calc(82px+(230/350*(100vw-40px)))]
+        tw-mt-[50px]
 
-        lg:tw-h-[35rem]
+        lg:tw-mt-0 lg:tw-h-[35rem]
 
         md:tw-h-[475px] md:tw-min-h-[unset]
-
-        sm:tw-min-h-[475px]
       `}
     >
       <div
@@ -32,8 +31,7 @@ const ShapeBottomImagesWrapper = (props: ShapeBottomImagesWrapperProps) => {
 
           md:tw-h-[500px] md:tw-bottom-0 md:tw-top-[unset] md:tw-translate-y-0
 
-          sm:tw-top-1/2 sm:tw-left-1/2 sm:-tw-translate-y-1/2 sm:tw-w-full
-          sm:tw-h-[80%]
+          sm:tw-left-1/2 sm:tw-w-full sm:tw-h-[80%]
         `}
       >
         <ImageLayout

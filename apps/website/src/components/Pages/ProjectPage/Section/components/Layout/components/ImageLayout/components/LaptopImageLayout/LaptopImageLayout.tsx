@@ -27,7 +27,16 @@ const LaptopImageLayout = (props: LaptopImageLayoutProps) => {
 
             ${
               props.layoutType !== LayoutType.TextCenterCenterImageBackground
-                ? `sm:tw-max-h-[35rem]`
+                ? [
+                    LayoutType.TextTopCenterShapeHorizontalBottom,
+                    LayoutType.TextTopStartShapeHorizontalBottom,
+                  ].includes(props.layoutType)
+                  ? `
+                    md:tw-max-h-[35rem]
+
+                    sm:tw-max-h-[calc(90vw*639/952)]
+                  `
+                  : `sm:tw-max-h-[35rem]`
                 : `sm:tw-max-h-full`
             }
 
