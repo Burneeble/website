@@ -3,7 +3,7 @@ import { headers } from "next/headers";
 
 export const runtime = "edge";
 
-async function fetchFont() {
+const getHost = () => {
   const currentHost = headers().get("host");
   const protocol = currentHost?.startsWith("localhost") ? "http" : "https";
 
@@ -11,16 +11,17 @@ async function fetchFont() {
     throw new Error("Host unavailable");
   }
 
-  const fontUrl = new URL(
-    "/fonts/BowlbyOne.ttf",
-    `${protocol}://${currentHost}`
-  );
+  return `${protocol}://${currentHost}`;
+};
+
+const fetchFont = async () => {
+  const fontUrl = new URL("/fonts/BowlbyOne.ttf", getHost());
   const res = await fetch(fontUrl.toString());
   if (!res.ok) {
     throw new Error(`Failed to fetch font: ${res.statusText}`);
   }
   return res.arrayBuffer();
-}
+};
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -47,55 +48,6 @@ export async function GET(request: Request) {
   }
 
   try {
-    // const canvas = createCanvas(1200, 630);
-    // const ctx = canvas.getContext("2d");
-
-    // if (!ctx) {
-    //   throw new Error("Failed to get 2D context");
-    // }
-
-    // ctx.fillStyle = "black";
-    // ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    // const gradient = ctx.createLinearGradient(0, canvas.height * 0.4, 0, 0);
-    // gradient.addColorStop(0, mainColor || "#000");
-    // gradient.addColorStop(1, "black");
-
-    // ctx.fillStyle = gradient;
-
-    // ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    // const image = await loadImage(imageUrl);
-
-    // const logoSize = 93;
-
-    // const gap = 10;
-
-    // ctx.drawImage(
-    //   image,
-    //   canvas.width / 2 - logoSize / 2,
-    //   canvas.height / 2 - logoSize - gap / 2,
-    //   logoSize,
-    //   logoSize
-    // );
-
-    // registerFont(
-    //   path.join(__dirname, "./../../../../../public/fonts/", "BowlbyOne.ttf"),
-    //   { family: "BowlbyOne" }
-    // );
-
-    // ctx.font = '3rem "BowlbyOne, sans-serif"';
-    // ctx.fillStyle = "white";
-
-    // ctx.textAlign = "center";
-    // ctx.fillText(
-    //   projectName || "Burneeble",
-    //   canvas.width / 2,
-    //   canvas.height / 2 + 60 + gap / 2
-    // );
-
-    // const buffer = canvas.toBuffer("image/png");
-
     const bowlbyOne = await fetchFont();
 
     return new ImageResponse(
@@ -107,28 +59,89 @@ export async function GET(request: Request) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            flexDirection: "column",
-            gap: "10px",
-            background: `linear-gradient(0deg, ${mainColor} 60%, rgba(0, 0, 0, 1) 100%)`,
+            background: `linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, ${mainColor} 65%)`,
+            position: "relative",
           }}
         >
           <img
-            src={imageUrl}
+            src={`${getHost()}/img/meta/logo.png`}
             style={{
-              width: "93px",
-              height: "93px",
+              position: "absolute",
+              width: "96px",
+              height: "96px",
+              right: "47px",
+              top: "47px",
             }}
           />
-          <h1
+          <div
+            className="wrapper"
             style={{
-              fontSize: "3.75rem",
-              lineHeight: "1.25rem",
-              color: "white",
-              fontFamily: "Bowlby One",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+              justifyContent: "flex-end",
+              width: "100%",
+              height: "100%",
+              gap: "10px",
             }}
           >
-            {projectName}
-          </h1>
+            <div
+              className="project-info"
+              style={{
+                display: "flex",
+                gap: "50px",
+                alignItems: "center",
+                justifyContent: "flex-start",
+                marginLeft: "50px",
+              }}
+            >
+              <img
+                src={imageUrl}
+                style={{
+                  width: "188px",
+                  height: "188px",
+                  margin: "11.5px 0",
+                }}
+              />
+              <div
+                className="texts"
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                  justifyContent: "space-between",
+                  height: "211px",
+                }}
+              >
+                <h1
+                  style={{
+                    fontSize: "70px",
+                    lineHeight: "42px",
+                    color: "white",
+                    fontFamily: "Bowlby One",
+                  }}
+                >
+                  Explore
+                </h1>
+                <h1
+                  style={{
+                    fontSize: "100px",
+                    lineHeight: "60px",
+                    color: mainColor,
+                    fontFamily: "Bowlby One",
+                  }}
+                >
+                  {projectName}
+                </h1>
+              </div>
+            </div>
+            <img
+              src={`${getHost()}/img/meta/footer.png`}
+              style={{
+                width: "100%",
+              }}
+            />
+          </div>
         </div>
       ),
       {

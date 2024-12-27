@@ -5,7 +5,7 @@ import { Metadata } from "next";
 const tags = {
   title: "Burneeble website",
   description: "Burneeble website gallery",
-  image: "https://picsum.photos/1200/630",
+  image: "./img/meta/gallery-page.png",
 };
 
 export const metadata: Metadata = {

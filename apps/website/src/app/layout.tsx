@@ -8,7 +8,7 @@ import { Inter, Bowlby_One } from "next/font/google";
 const tags = {
   title: "Burneeble website",
   description: "Burneeble website",
-  image: "https://picsum.photos/1200/630",
+  image: "./img/meta/home-page.png",
 };
 
 export const metadata: Metadata = {
