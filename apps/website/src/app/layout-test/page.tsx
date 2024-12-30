@@ -9,7 +9,14 @@ const LayoutTestPage = () => {
       {Object.keys(LayoutType).map((layoutType, i) => {
         return (
           <div key={i}>
-            <p className="tw-text-headings">{layoutType}</p>
+            <p
+              className={`
+                tw-text-headings tw-max-w-[100vw] tw-text-ellipsis
+                tw-text-nowrap tw-overflow-hidden
+              `}
+            >
+              {layoutType}
+            </p>
             <Section
               // @ts-ignore
               layoutType={LayoutType[layoutType]}
