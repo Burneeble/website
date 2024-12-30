@@ -13,15 +13,16 @@ const Skill = (props: SkillProps) => {
   const [showShadow, setShowShadow] = useState<boolean>(false);
 
   //Hooks
-  const { screen } = useClientInfoService();
+  const { screen, width } = useClientInfoService();
   const iconRef = useRef<SVGPathElement>(null);
 
   //Methods
   const getLabelSize = () => {
     switch (screen) {
       case "sm":
-        return "sm";
       case "md":
+        return "sm";
+      case "lg":
         return "default";
       default:
         return "lg";
@@ -67,7 +68,7 @@ const Skill = (props: SkillProps) => {
         sm:tw-h-full
       `}
     >
-      {screen !== "sm" && (
+      {width && width >= 550 && (
         <div
           className={`
             separator tw-flex tw-justify-center tw-min-h-full tw-min-w-[42px]
@@ -167,7 +168,7 @@ const Skill = (props: SkillProps) => {
             tw-justify-start tw-gap-[.5rem]
           `}
         >
-          {screen === "sm" && (
+          {width && width < 550 && (
             <FontAwesomeIcon
               icon={faFire}
               className={`fontawesome-gradient-icon tw-text-3xl`}

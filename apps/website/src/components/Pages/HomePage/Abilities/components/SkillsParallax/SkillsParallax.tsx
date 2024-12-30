@@ -14,7 +14,7 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
   >([]);
 
   //Hooks
-  const { screen } = useClientInfoService();
+  const { screen, width } = useClientInfoService();
   const skills = useRef<HTMLDivElement>(null);
 
   //Effects
@@ -31,6 +31,29 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
         );
         break;
       case "md":
+        if (width) {
+          if (width >= 550) {
+            setCurrentSkills(
+              props.skills.map((skill) => {
+                return {
+                  title: skill.title,
+                  ...skill.md,
+                };
+              })
+            );
+          } else {
+            setCurrentSkills(
+              props.skills.map((skill) => {
+                return {
+                  title: skill.title,
+                  ...skill.sm,
+                };
+              })
+            );
+          }
+        }
+        break;
+      case "lg":
         setCurrentSkills(
           props.skills.map((skill) => {
             return {
@@ -51,7 +74,7 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
         );
         break;
     }
-  }, [props.skills, screen]);
+  }, [props.skills, screen, width]);
 
   useEffect(() => {
     if (skills.current) {
@@ -102,14 +125,18 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
               key={i}
             >
               <h2
-                className={`title`}
+                className={`
+                  title tw-text-[1.875rem] tw-leading-[2.25rem]
+
+                  lg:tw-text-[2.25rem] lg:tw-leading-[1.25rem]
+                `}
                 dangerouslySetInnerHTML={{
                   __html: skill.extendedTitle,
                 }}
               />
               <p
                 className={`
-                  text
+                  text tw-text-[1.125rem] tw-leading-[1.75rem]
 
                   lg:tw-text-2xl
                 `}
@@ -185,7 +212,7 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
             />
           )}
         </div>
-        {["md", "lg"].includes(screen) && (
+        {width && width >= 550 && ["md", "lg"].includes(screen) && (
           <div
             className={cn(
               `
