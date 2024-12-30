@@ -4,7 +4,6 @@ import * as THREE from "three";
 import { Suspense, useEffect } from "react";
 import {
   OrbitControls,
-  Text3D,
   Center,
   useMatcapTexture,
   useGLTF,
@@ -36,7 +35,7 @@ const CanvaContent = () => {
         maxPolarAngle={Math.PI / 2}
         minPolarAngle={Math.PI / 2}
       />
-      <ambientLight intensity={1.3} />
+      <ambientLight intensity={2} />
       <directionalLight castShadow position={[1, 2, 3]} intensity={2.5} />
 
       <Center>
