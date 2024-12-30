@@ -11,16 +11,12 @@ export default function NotFound() {
   const { screen } = useClientInfoService();
 
   return (
-    <div
-      className={`
-        not-found-page tw-bg-gradient-to-b tw-from-[var(--secondary-base)_50%]
-        tw-to-[var(--secondary-darker)_100%]
-      `}
-    >
+    <div className={`not-found-page tw-relative tw-overflow-hidden`}>
       <section
         className={`
           main-section cs-section-structure tw-flex tw-items-center
           tw-justify-center tw-gap-[20px] tw-flex-col-reverse tw-py-[10rem]
+          tw-relative tw-z-10
 
           lg:tw-flex-row
         `}
@@ -97,6 +93,13 @@ export default function NotFound() {
           `}
         />
       </section>
+      <div
+        className={`
+          tw-bottom-shape tw-absolute tw-bottom-0 tw-left-1/2 tw-w-[120vw]
+          tw-translate-y-1/2 -tw-translate-x-1/2 tw-aspect-square
+          tw-bg-[radial-gradient(circle,var(--secondary-darker),rgba(0,0,0,0)_60%)]
+        `}
+      />
     </div>
   );
 }
