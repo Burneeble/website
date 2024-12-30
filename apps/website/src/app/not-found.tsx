@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@burneeble/ui-components";
+import { Button, useClientInfoService } from "@burneeble/ui-components";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -8,6 +8,7 @@ import React from "react";
 export default function NotFound() {
   //Hooks
   const router = useRouter();
+  const { screen } = useClientInfoService();
 
   return (
     <div
@@ -19,30 +20,53 @@ export default function NotFound() {
       <section
         className={`
           main-section cs-section-structure tw-flex tw-items-center
-          tw-justify-center tw-gap-[20px]
+          tw-justify-center tw-gap-[20px] tw-flex-col-reverse tw-py-[10rem]
+
+          lg:tw-flex-row
         `}
       >
         <div
           className={`
-            texts tw-w-[690px] tw-flex tw-items-start tw-flex-col
+            texts tw-max-w-[690px] tw-flex tw-items-start tw-flex-col
             tw-justify-center tw-gap-[20px]
           `}
         >
-          <h1 className="title !tw-leading-[6rem]">
+          <h1
+            className={`
+              title tw-text-center tw-text-3xl
+
+              lg:!tw-leading-[6rem] lg:tw-text-start lg:tw-text-6xl
+
+              sm:tw-text-5xl
+            `}
+          >
             <span className="cs-text-color-primary-gradient">Sorry!</span> This
-            page isn’t available
+            page isn’t available.
           </h1>
-          <p className="text tw-text-3xl tw-font-[500] tw-leading-[40px]">
+          <p
+            className={`
+              text tw-font-[500] tw-text-center tw-text-xl
+
+              lg:tw-leading-[40px] lg:tw-text-3xl lg:tw-text-start
+
+              sm:tw-text-2xl
+            `}
+          >
             The page you were looking for couldn’t be found. Go to other
             sections to discover more about <strong>BURNEEBLE</strong>
           </p>
           <div
             className={`
               ctas tw-mt-[20px] tw-flex tw-items-center tw-justify-start
-              tw-gap-[20px]
+              tw-gap-[20px] tw-flex-col tw-w-full
+
+              lg:tw-max-w-[unset]
+
+              sm:tw-flex-row sm:tw-max-w-[390px] sm:tw-mx-auto
             `}
           >
             <Button
+              fit={["sm", "md", "lg"].includes(screen) ? "full" : "inline"}
               size="lg"
               onClick={() => {
                 router.push("/");
@@ -51,6 +75,7 @@ export default function NotFound() {
               Homepage
             </Button>
             <Button
+              fit={["sm", "md", "lg"].includes(screen) ? "full" : "inline"}
               size="lg"
               onClick={() => {
                 router.push("/");
@@ -65,6 +90,11 @@ export default function NotFound() {
           alt={"404"}
           width={590}
           height={272}
+          className={`
+            tw-max-w-[430px] tw-w-full
+
+            lg:tw-max-w-[unset]
+          `}
         />
       </section>
     </div>
