@@ -14,7 +14,6 @@ const ShapeBottomImagesWrapper = (props: ShapeBottomImagesWrapperProps) => {
     <div
       className={`
         wrapper tw-relative tw-w-full tw-h-[calc(82px+(230/350*(100vw-40px)))]
-        tw-mt-[50px]
 
         lg:tw-mt-0 lg:tw-h-[35rem]
 

@@ -50,7 +50,7 @@ const LaptopSmarthphoneImagesLayout = (
       <div
         className={`
           tw-aspect-[350/228] tw-flex tw-items-center tw-justify-center
-          tw-w-full
+          tw-w-full tw-overflow-hidden
 
           md:tw-h-[66%] md:tw-aspect-[224/462] md:-tw-translate-x-[20%]
 

@@ -1,3 +1,4 @@
+import { LayoutType } from "@/components/Pages/ProjectPage/Section/Section.types";
 import { cva } from "class-variance-authority";
 
 export interface SectionInfoProps {
@@ -8,6 +9,7 @@ export interface SectionInfoProps {
   buttonSize?: string;
   alignment?: keyof typeof alignment;
   textAlignment?: "left" | "center" | "right";
+  layoutType: LayoutType;
 }
 
 const alignment = {

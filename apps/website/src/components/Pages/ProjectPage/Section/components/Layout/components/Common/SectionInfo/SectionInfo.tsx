@@ -3,13 +3,24 @@
 import { Button, useClientInfoService } from "@burneeble/ui-components";
 import { SectionInfoProps, SectionInfoVariants } from "./SectionInfo.types";
 import { cn } from "@/lib/utils";
+import { LayoutType } from "@/components/Pages/ProjectPage/Section/Section.types";
 
 const SectionInfo = (props: SectionInfoProps) => {
   //Hooks
   const { screen } = useClientInfoService();
 
   return (
-    <div className={cn(SectionInfoVariants({ alignment: props.alignment }))}>
+    <div
+      className={cn(
+        SectionInfoVariants({ alignment: props.alignment }),
+        [
+          LayoutType.TextTopCenterShapeHorizontalBottom,
+          LayoutType.TextTopStartShapeHorizontalBottom,
+          LayoutType.TextTopCenterFullImageBottomCenter,
+          LayoutType.TextTopStartFullImageBottomCenter,
+        ].includes(props.layoutType) && `tw-mb-[50px]`
+      )}
+    >
       <h2
         className={cn(
           "title tw-w-full",

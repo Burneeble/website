@@ -9,9 +9,7 @@ const BottomShape = (props: BottomShapeProps) => {
 
         lg:tw-h-[411px]
 
-        md:tw-h-[250px]
-
-        sm:tw-w-full sm:tw-rounded-t-lg
+        sm:tw-h-[250px] sm:tw-w-full sm:tw-rounded-t-lg
       `}
     />
   );
