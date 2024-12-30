@@ -1,22 +1,24 @@
 "use client";
 
 import * as THREE from "three";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import {
   OrbitControls,
   Text3D,
   Center,
   useMatcapTexture,
+  useGLTF,
+  Clone,
 } from "@react-three/drei";
-import RandomPositionModel from "../RandomPositionModel";
 
-const torusGeometry = new THREE.TorusGeometry(1, 0.4, 16, 100);
 const material = new THREE.MeshMatcapMaterial();
 
 const CanvaContent = () => {
   // E9CCA1_A63106_DF8C3B_621304
   // 422509_C89536_824512_0A0604
   const [matcapTexture] = useMatcapTexture("E9CCA1_A63106_DF8C3B_621304", 512);
+
+  const model = useGLTF("/models/thinking_emoji/scene.gltf");
 
   //update the material with the new texture
   useEffect(() => {
@@ -39,7 +41,7 @@ const CanvaContent = () => {
       <Center>
         <Text3D
           font={"/Bowlby One_Regular.json"}
-          size={0.3}
+          size={0.35}
           height={0.2}
           curveSegments={12}
           bevelEnabled
@@ -52,9 +54,73 @@ const CanvaContent = () => {
           Still not sure?
         </Text3D>
       </Center>
-      <RandomPositionModel geometry={torusGeometry} material={material} />
+
+      <Suspense>
+        <Clone
+          object={model.scene}
+          position={[4, 0.5, 1]}
+          scale={0.5}
+          rotation={[0, -0.3 * Math.PI, 0.2 * Math.PI]}
+        />
+        <Clone
+          object={model.scene}
+          position={[2, 2, -2]}
+          scale={0.3}
+          rotation={[0, 0.2 * Math.PI, 0]}
+        />
+        <Clone
+          object={model.scene}
+          position={[5, -1.5, 0.5]}
+          scale={0.8}
+          rotation={[0, -0.5 * Math.PI, 0]}
+        />
+        <Clone
+          object={model.scene}
+          position={[4, 2.5, 0]}
+          scale={1}
+          rotation={[0, -0.1 * Math.PI, -0.1 * Math.PI]}
+        />
+        <Clone
+          object={model.scene}
+          position={[-3, 1, 2]}
+          scale={0.3}
+          rotation={[0, 0.5 * Math.PI, 0.2 * Math.PI]}
+        />
+        <Clone
+          object={model.scene}
+          position={[1.5, -1, 1.5]}
+          scale={0.3}
+          rotation={[0, 0, 0]}
+        />
+        <Clone
+          object={model.scene}
+          position={[-6, -1, -1.5]}
+          scale={1.2}
+          rotation={[0, 0.2 * Math.PI, 0]}
+        />
+        <Clone
+          object={model.scene}
+          position={[-2, -2, 0]}
+          scale={0.6}
+          rotation={[0, 0.5 * Math.PI, -0.1 * Math.PI]}
+        />
+        <Clone
+          object={model.scene}
+          position={[-2, 1, -2]}
+          scale={0.7}
+          rotation={[0, 0, 0]}
+        />
+        <Clone
+          object={model.scene}
+          position={[-3, 3, -1.5]}
+          scale={0.3}
+          rotation={[0, 0, 0]}
+        />
+      </Suspense>
+      {/* <RandomPositionModel geometry={torusGeometry} material={material} /> */}
     </>
   );
 };
 
 export default CanvaContent;
+useGLTF.preload("/models/thinking_emoji/scene.gltf");
