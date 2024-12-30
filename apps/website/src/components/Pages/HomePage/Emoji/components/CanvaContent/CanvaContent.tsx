@@ -9,6 +9,7 @@ import {
   useMatcapTexture,
   useGLTF,
   Clone,
+  Html,
 } from "@react-three/drei";
 
 const material = new THREE.MeshMatcapMaterial();
@@ -35,11 +36,11 @@ const CanvaContent = () => {
         maxPolarAngle={Math.PI / 2}
         minPolarAngle={Math.PI / 2}
       />
-      <ambientLight intensity={1.5} />
+      <ambientLight intensity={1.3} />
       <directionalLight castShadow position={[1, 2, 3]} intensity={2.5} />
 
       <Center>
-        <Text3D
+        {/* <Text3D
           font={"/Bowlby One_Regular.json"}
           size={0.35}
           height={0.2}
@@ -52,7 +53,24 @@ const CanvaContent = () => {
           material={material}
         >
           Still not sure?
-        </Text3D>
+        </Text3D> */}
+        <Html>
+          <h2
+            className={`
+              title tw-text-center tw-w-[450px] tw-min-w-[100%] tw-absolute
+              -tw-translate-x-1/2 -tw-translate-y-1/2
+            `}
+          >
+            Still{" "}
+            <span
+              className={`
+                cs-text-color-primary-gradient tw-font-normal tw-font-bowlby-one
+              `}
+            >
+              not sure?
+            </span>{" "}
+          </h2>
+        </Html>
       </Center>
 
       <Suspense>
