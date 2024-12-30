@@ -36,7 +36,11 @@ const LaptopImageLayout = (props: LaptopImageLayoutProps) => {
 
                     sm:tw-max-h-[calc(90vw*639/952)]
                   `
-                  : `sm:tw-max-h-[35rem]`
+                  : `
+                    md:tw-max-h-[35rem]
+
+                    sm:tw-max-h-[410px]
+                  `
                 : `sm:tw-max-h-full`
             }
 

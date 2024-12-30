@@ -55,7 +55,13 @@ const SmarthphoneImageLayout = (props: SmarthphoneImageLayoutProps) => {
 
           sm:tw-aspect-square
         `,
-        mainAxis == "height" ? "sm:tw-h-full sm:tw-w-auto" : "sm:tw-w-full"
+        mainAxis == "height"
+          ? `
+            md:tw-max-h-[unset]
+
+            sm:tw-h-full sm:tw-w-auto sm:tw-max-h-[410px]
+          `
+          : "sm:tw-w-full"
       )}
     >
       {!["sm", "md"].includes(screen) && (
