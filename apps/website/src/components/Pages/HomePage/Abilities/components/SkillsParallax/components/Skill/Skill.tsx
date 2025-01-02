@@ -15,6 +15,7 @@ const Skill = (props: SkillProps) => {
   //Hooks
   const { screen, width } = useClientInfoService();
   const iconRef = useRef<SVGPathElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   //Methods
   const getLabelSize = () => {
@@ -59,6 +60,56 @@ const Skill = (props: SkillProps) => {
       }, 250);
     }
   }, [props.index, props.currentIndex]);
+
+  useEffect(() => {
+    const divs = containerRef.current?.children;
+
+    if (divs) {
+      if (["sm", "md", "lg"].includes(screen)) {
+        Array.from(divs).forEach((div, index) => {
+          gsap.to(div, {
+            scale: 1,
+            opacity: 1,
+            duration: 0.1,
+            delay: 0,
+          });
+        });
+        return;
+      }
+
+      if (props.index == props.currentIndex) {
+        Array.from(divs).forEach((div, index) => {
+          gsap.to(div, {
+            scale: 1,
+            opacity: 1,
+            duration: 0.1,
+            delay: index * 0.1 + 0.5,
+          });
+        });
+        gsap.to(containerRef.current, {
+          maxHeight: "16rem",
+          duration: 0.5,
+          delay: 0,
+        });
+      } else {
+        Array.from(divs)
+          .reverse()
+          .forEach((div, index) => {
+            gsap.to(div, {
+              scale: 0,
+              opacity: 0,
+              duration: 0.1,
+              delay: index * 0.1,
+            });
+          });
+        gsap.to(containerRef.current, {
+          maxHeight: "0",
+          duration: 0.25,
+          delay: 0.25,
+        });
+      }
+    }
+  }, [props.index, props.currentIndex, screen, containerRef.current]);
 
   return (
     <div
@@ -177,6 +228,7 @@ const Skill = (props: SkillProps) => {
           {props.title}
         </h3>
         <div
+          ref={containerRef}
           className={cn(
             `
               categories tw-flex tw-flex-wrap tw-gap-[10px] tw-overflow-hidden
@@ -185,15 +237,9 @@ const Skill = (props: SkillProps) => {
               after:tw-content-[''] after:tw-absolute after:tw-left-0
               after:tw-w-full after:tw-bg-gradient-to-b
               after:tw-from-[rgba(0,0,0,0)] after:tw-bottom-0 after:tw-block
-              after:tw-to-[black] after:tw-duration-250 after:tw-transition-all
+              after:tw-to-[black] after:tw-duration-250 after:tw-transition-all tw-max-h-[16rem] xl:tw-max-h-[0]
             `,
-            (
-              !["sm", "md", "lg"].includes(screen)
-                ? props.currentIndex === props.index
-                : true
-            )
-              ? `tw-max-h-[16rem]`
-              : `tw-max-h-0`,
+
             !["sm", "md", "lg"].includes(screen) && showShadow
               ? `after:tw-h-[15rem]`
               : `after:tw-h-[0]`
