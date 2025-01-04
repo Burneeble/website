@@ -8,8 +8,19 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
   const router = useRouter();
 
   //Methods
+  const convertHtmlToPlainText = (html: string): string => {
+    const tempElement = document.createElement("div");
+    tempElement.innerHTML = html;
+
+    tempElement.querySelectorAll("script, style").forEach((el) => el.remove());
+
+    const plainText = tempElement.textContent || "";
+
+    return plainText.replace(/\s+/g, " ").trim();
+  };
+
   const formatDescription = () => {
-    const sliced = props.description.slice(0, 191);
+    const sliced = convertHtmlToPlainText(props.description).slice(0, 191);
 
     const lastSpace = sliced.lastIndexOf(" ");
 
