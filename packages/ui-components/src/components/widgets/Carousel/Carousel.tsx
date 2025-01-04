@@ -68,7 +68,7 @@ const Carousel = (props: CarouselProps) => {
       style={{
         height: `calc((80vw * ${aspectRatio.height} / ${
           aspectRatio.width
-        }) + 105px ${props.labels ? "" : "-50px"})`,
+        }) + 105px ${props.labels ? "" : "- 50px"})`,
       }}
     >
       <Swiper
