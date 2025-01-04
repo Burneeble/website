@@ -82,7 +82,7 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
           }}
         />
         <p
-          className="description tw-font-inter tw-text-xl"
+          className="description tw-font-inter tw-text-xl tw-text-headings"
           dangerouslySetInnerHTML={{ __html: formatDescription() }}
         />
       </div>
