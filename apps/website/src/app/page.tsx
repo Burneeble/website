@@ -1,5 +1,6 @@
 import {
   Abilities,
+  Blog,
   Congrats,
   Contact,
   Customers,
@@ -67,6 +68,7 @@ export default async function Home() {
         <Emoji />
         <Showcase projects={projects} />
         <Contact />
+        <Blog />
         <Congrats />
       </div>
     </HomePageProviders>
