@@ -21,17 +21,21 @@ const Blog = (props: BlogProps) => {
       <div
         className={`
           articles tw-flex tw-flex-col tw-items-center tw-justify-center
-          tw-py-[30px] tw-relative
+          tw-py-[30px] tw-relative tw-aspect-[744/769]
+
+          lg:tw-aspect-auto
         `}
       >
         <div
           className={`
             bg tw-absolute tw-top-1/2 tw-left-1/2 tw-bg-gradient-to-r
-            tw-w-screen tw-h-full primary-gradient -tw-translate-x-1/2
-            -tw-translate-y-1/2
+            tw-w-screen primary-gradient -tw-translate-x-1/2 -tw-translate-y-1/2
+            tw-aspect-[744/679]
+
+            lg:tw-h-full lg:tw-aspect-auto
           `}
         />
-        <ArticleBatch limit={3} />
+        <ArticleBatch limit={3} enableSliderResponsiveMode />
       </div>
     </section>
   );

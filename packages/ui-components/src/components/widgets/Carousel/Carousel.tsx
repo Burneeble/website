@@ -6,37 +6,40 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper/modules";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faArrowUpRightFromSquare,
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import { useClientInfoService } from "@/services";
-import { CTA, Label } from "@/components/common";
+import { Label } from "@/components/common";
 
 const Carousel = (props: CarouselProps) => {
   //States
-  const [showHover, setShowHover] = useState<boolean>(false);
+  const [aspectRatio, setAspectRatio] = useState<{
+    width: number;
+    height: number;
+  }>({ width: 0, height: 0 });
 
   //Hooks
-  const { screen } = useClientInfoService();
-  const hoverLayer = useRef<HTMLDivElement>(null);
+  const { screen, width } = useClientInfoService();
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   //Effects
   useEffect(() => {
-    const handleClickOutside = (event: any) => {
-      if (hoverLayer.current && !hoverLayer.current.contains(event.target)) {
-        setShowHover(false);
+    if (wrapperRef.current) {
+      const heights = [];
+      for (let i = 0; i < wrapperRef.current.children[0].children.length; i++) {
+        heights.push(wrapperRef.current.children[0].children[i].clientHeight);
       }
-    };
 
-    if (screen === "sm" || screen === "md")
-      document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [hoverLayer, screen]);
+      setAspectRatio({
+        width:
+          wrapperRef.current.children[0].children[0].children[0].clientWidth,
+        height: Math.max(...heights),
+      });
+    }
+  }, [wrapperRef.current, width]);
 
   //Methods
   const getButtonSize = () => {
@@ -60,10 +63,13 @@ const Carousel = (props: CarouselProps) => {
 
   return (
     <div
-      className={`
-        carousel-wrapper tw-h-[calc((80vw*1080/1920)+160px)] tw-w-full
-        tw-max-w-[100vw]
-      `}
+      ref={wrapperRef}
+      className={`carousel-wrapper tw-w-full tw-max-w-[100vw]`}
+      style={{
+        height: `calc((80vw * ${aspectRatio.height} / ${
+          aspectRatio.width
+        }) + 105px ${props.labels ? "" : "-50px"})`,
+      }}
     >
       <Swiper
         slidesPerView={1}
@@ -83,7 +89,7 @@ const Carousel = (props: CarouselProps) => {
         loopAdditionalSlides={1}
         lazyPreloadPrevNext={2}
       >
-        {props.projects.map((proj, i) => {
+        {props.items.map((item, i) => {
           return (
             <SwiperSlide
               className={`
@@ -93,125 +99,19 @@ const Carousel = (props: CarouselProps) => {
               `}
               key={i}
             >
-              <div
-                className={`
-                  labels tw-inline-flex tw-items-center tw-justify-center
-                  tw-gap-3 tw-transition-all tw-duration-500 tw-ease-in-out
-                `}
-              >
-                {(proj.categories.length <= 3
-                  ? proj.categories
-                  : proj.categories.slice(0, 3)
-                ).map((category, i) => {
-                  return (
-                    <Label key={i} text={category} size={getLabelSize()} />
-                  );
-                })}
-              </div>
-              <div
-                className={`
-                  carousel-image-wrapper tw-relative tw-flex
-                  tw-aspect-[1920/1080] tw-w-full tw-items-center
-                  tw-justify-center tw-border-4 tw-border-solid
-                  tw-border-primary tw-bg-black
-                `}
-              >
+              {props.labels && (
                 <div
-                  className={cn(
-                    `
-                      hover-layer tw-absolute tw-left-0 tw-top-0 tw-h-full
-                      tw-w-full tw-bg-black/60 tw-opacity-0 tw-backdrop-blur-sm
-                      tw-transition-all tw-duration-500 tw-ease-in-out
-
-                      hover:tw-opacity-100
-                    `,
-                    (screen === "sm" || screen === "md") &&
-                      showHover &&
-                      "tw-opacity-100"
-                  )}
-                  onClick={() => {
-                    if (screen === "sm" || screen === "md") {
-                      setShowHover(true);
-                    }
-                  }}
-                  ref={hoverLayer}
+                  className={`
+                    labels tw-inline-flex tw-items-center tw-justify-center
+                    tw-gap-3 tw-transition-all tw-duration-500 tw-ease-in-out
+                  `}
                 >
-                  <div
-                    className={cn(
-                      `
-                        content tw-mx-auto tw-flex tw-h-full tw-w-full
-                        tw-flex-col tw-items-center tw-justify-center
-                        tw-gap-[10px]
-
-                        md:tw-gap-[20px]
-                      `,
-                      screen === "sm" || screen === "md"
-                        ? "tw-max-w-[95%]"
-                        : "tw-max-w-[80%]"
-                    )}
-                  >
-                    <h2
-                      className={`
-                        project-title tw-flex tw-items-center tw-gap-[10px]
-                        tw-text-center tw-font-bowlby-one tw-text-2xl
-                        tw-font-normal tw-text-headings
-
-                        lg:tw-text-5xl
-
-                        md:tw-text-4xl
-                      `}
-                    >
-                      {proj.title}
-                      <FontAwesomeIcon
-                        onClick={() => {
-                          window.open(proj.projectUrl, "_blank");
-                        }}
-                        icon={faArrowUpRightFromSquare}
-                        className={`
-                          tw-cursor-pointer tw-text-xl tw-text-primary
-                          tw-transition-all tw-duration-200 tw-ease-in-out
-
-                          hover:tw-brightness-125 hover:tw-filter
-
-                          lg:tw-text-4xl
-
-                          md:tw-text-3xl
-                        `}
-                      />
-                    </h2>
-                    <p
-                      className={`
-                        desc tw- tw-text-center tw-font-inter tw-text-md
-                        tw-font-normal tw-text-body
-
-                        lg:tw-text-2xl
-
-                        md:tw-text-lg md:tw-leading-[35px]
-                      `}
-                    >
-                      {proj.description}
-                    </p>
-                    <CTA
-                      projectUrl={`/project/${proj.title
-                        .toLowerCase()
-                        .replace(/[^a-zA-Z0-9\s]/g, "")
-                        .replaceAll(" ", "-")}`}
-                      text={"View Details"}
-                      size={
-                        screen === "sm" || screen === "md" ? "sm" : "default"
-                      }
-                    />
-                  </div>
+                  {props.labels[i].map((label, j) => {
+                    return <Label key={j} text={label} size={getLabelSize()} />;
+                  })}
                 </div>
-                <img
-                  src={proj.thumbnail}
-                  alt={""}
-                  width={1920}
-                  height={1080}
-                  className="carousel-image tw-h-full tw-w-auto"
-                  loading="lazy"
-                />
-              </div>
+              )}
+              {item}
             </SwiperSlide>
           );
         })}

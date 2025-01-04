@@ -6,9 +6,11 @@ import { ArticleModel, useArticleService } from "@/services";
 import {
   ArticlePreview,
   ArticlePreviewSkeleton,
+  Carousel,
   NotificationHandler,
   useClientInfoService,
 } from "@burneeble/ui-components";
+import { useRouter } from "next/navigation";
 
 const ArticleBatch = (props: ArticleBatchProps) => {
   //States
@@ -17,6 +19,7 @@ const ArticleBatch = (props: ArticleBatchProps) => {
   //Hooks
   const { getArticlesWithLimit } = useArticleService();
   const { screen } = useClientInfoService();
+  const router = useRouter();
 
   //Effects
   useEffect(() => {
@@ -37,8 +40,36 @@ const ArticleBatch = (props: ArticleBatchProps) => {
 
   return (
     <>
-      {props.enableSliderResponsiveMode && ["sm", "md"].includes(screen) ? (
-        <></>
+      {props.enableSliderResponsiveMode &&
+      ["sm", "md", "lg"].includes(screen) ? (
+        <>
+          <Carousel
+            cta={{
+              children: "Read Other Articles",
+              onClick: () => router.push("/blog"),
+              variant: "secondary",
+            }}
+            items={
+              articles
+                ? articles.map((article, i) => {
+                    return (
+                      <ArticlePreview
+                        key={i}
+                        thumbnail={article.thumbnail}
+                        title={article.title}
+                        category={article.categories[0].name}
+                        categorySlug={article.categories[0].slug}
+                        slug={article.slug}
+                        description={article.content}
+                      />
+                    );
+                  })
+                : new Array(props.limit).fill(0).map((_, index) => {
+                    return <ArticlePreviewSkeleton key={index} />;
+                  })
+            }
+          />
+        </>
       ) : (
         <div
           className={`
