@@ -7,6 +7,7 @@ import {
   ArticlePreview,
   ArticlePreviewSkeleton,
   NotificationHandler,
+  useClientInfoService,
 } from "@burneeble/ui-components";
 
 const ArticleBatch = (props: ArticleBatchProps) => {
@@ -15,6 +16,7 @@ const ArticleBatch = (props: ArticleBatchProps) => {
 
   //Hooks
   const { getArticlesWithLimit } = useArticleService();
+  const { screen } = useClientInfoService();
 
   //Effects
   useEffect(() => {
@@ -34,34 +36,40 @@ const ArticleBatch = (props: ArticleBatchProps) => {
   };
 
   return (
-    <div
-      className={`
-        article-batch tw-flex tw-flex-col tw-gap-[20px] tw-transition-all
-        tw-duration-200 tw-ease-in-out
+    <>
+      {props.enableSliderResponsiveMode && ["sm", "md"].includes(screen) ? (
+        <></>
+      ) : (
+        <div
+          className={`
+            article-batch tw-flex tw-flex-col tw-gap-[20px] tw-transition-all
+            tw-duration-200 tw-ease-in-out
 
-        lg:tw-grid lg:tw-grid-cols-3
+            lg:tw-grid lg:tw-grid-cols-3
 
-        md:tw-gap-[30px]
-      `}
-    >
-      {articles
-        ? articles.map((article, i) => {
-            return (
-              <ArticlePreview
-                key={i}
-                thumbnail={article.thumbnail}
-                title={article.title}
-                category={article.categories[0].name}
-                categorySlug={article.categories[0].slug}
-                slug={article.slug}
-                description={article.content}
-              />
-            );
-          })
-        : new Array(props.limit).fill(0).map((_, index) => {
-            return <ArticlePreviewSkeleton key={index} />;
-          })}
-    </div>
+            md:tw-gap-[30px]
+          `}
+        >
+          {articles
+            ? articles.map((article, i) => {
+                return (
+                  <ArticlePreview
+                    key={i}
+                    thumbnail={article.thumbnail}
+                    title={article.title}
+                    category={article.categories[0].name}
+                    categorySlug={article.categories[0].slug}
+                    slug={article.slug}
+                    description={article.content}
+                  />
+                );
+              })
+            : new Array(props.limit).fill(0).map((_, index) => {
+                return <ArticlePreviewSkeleton key={index} />;
+              })}
+        </div>
+      )}
+    </>
   );
 };
 
