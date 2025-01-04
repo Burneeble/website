@@ -58,7 +58,7 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
       </div>
       <div
         className={`
-          article-info tw-flex tw-h-[275px] tw-max-w-full tw-flex-col
+          article-info tw-flex tw-max-h-[275px] tw-max-w-full tw-flex-col
           tw-items-start tw-justify-start tw-gap-[5px]
         `}
       >
@@ -71,9 +71,9 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
         />
         <div
           className={`
-            title tw-max-w-full tw-cursor-pointer tw-truncate tw-font-inter
-            tw-text-xl tw-font-black tw-leading-loose tw-text-headings
-            tw-transition-all tw-duration-200 tw-ease-in-out
+            title tw-max-w-full tw-cursor-pointer tw-font-inter tw-text-xl
+            tw-font-black tw-leading-loose tw-text-headings tw-transition-all
+            tw-duration-200 tw-ease-in-out
 
             xl:tw-text-2xl
           `}

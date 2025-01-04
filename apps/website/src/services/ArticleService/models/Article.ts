@@ -7,7 +7,7 @@ export interface IArticle {
   categories: {
     name: string;
     slug: string;
-  };
+  }[];
   thumbnail: string;
 }
 
@@ -26,7 +26,7 @@ export class ArticleModel implements IArticle {
   categories: {
     name: string;
     slug: string;
-  };
+  }[];
 
   @JsonProperty()
   thumbnail: string;
@@ -35,7 +35,7 @@ export class ArticleModel implements IArticle {
     this.slug = obj?.slug || "";
     this.title = obj?.title || "";
     this.content = obj?.content || "";
-    this.categories = obj?.categories || { name: "", slug: "" };
+    this.categories = obj?.categories || [];
     this.thumbnail = obj?.thumbnail || "";
   }
 }
