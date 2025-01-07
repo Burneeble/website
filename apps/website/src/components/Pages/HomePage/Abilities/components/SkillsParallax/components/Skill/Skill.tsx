@@ -66,6 +66,11 @@ const Skill = (props: SkillProps) => {
             delay: 0,
           });
         });
+        gsap.to(containerRef.current, {
+          maxHeight: "16rem",
+          duration: 0.5,
+          delay: 0,
+        });
         return;
       }
 
