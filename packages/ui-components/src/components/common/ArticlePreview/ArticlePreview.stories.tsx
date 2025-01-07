@@ -25,3 +25,20 @@ export const simpleArticlePreview: Story = {
     return <ArticlePreview {...props} />;
   },
 };
+
+export const darkArticlePreview: Story = {
+  args: {
+    thumbnail: "https://picsum.photos/1920/1080",
+    title: "Fighter Punks",
+    category: "Blockchain",
+    categorySlug: "blockchain",
+    slug: "fighter-punks",
+    description:
+      "Do you want to install the new OpenDevin but are having trouble? Through this step-by-step guide and the related video, you will no longer have any doubts about how to do it. It’s easier tha",
+    variant: "dark",
+  },
+
+  render: (props) => {
+    return <ArticlePreview {...props} />;
+  },
+};
