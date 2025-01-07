@@ -1,31 +1,42 @@
-import type { Metadata } from "next";
 import "../styles/main.scss";
 import cn from "classnames";
 import dynamic from "next/dynamic";
 import { LayoutWrapper } from "@/components";
 import { Inter, Bowlby_One } from "next/font/google";
+import { headers } from "next/headers";
 
-const tags = {
-  title: "Burneeble website",
-  description: "Burneeble website",
-  image: "./img/meta/home-page.png",
-};
+export async function generateMetadata() {
+  const currentHost = headers().get("host");
+  const protocol = currentHost?.startsWith("localhost") ? "http" : "https";
 
-export const metadata: Metadata = {
-  title: tags.title,
-  description: tags.description,
-  openGraph: {
-    images: [tags.image],
+  if (!currentHost) {
+    throw new Error("Host unavailable");
+  }
+
+  const image = `${protocol}://${currentHost}/img/meta/home-page.png`;
+
+  const tags = {
+    title: "Burneeble website",
+    description: "Burneeble website",
+    image,
+  };
+
+  return {
     title: tags.title,
     description: tags.description,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: tags.title,
-    description: tags.description,
-    images: [tags.image],
-  },
-};
+    openGraph: {
+      title: tags.title,
+      description: tags.description,
+      images: [tags.image],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: tags.title,
+      description: tags.description,
+      images: [tags.image],
+    },
+  };
+}
 
 // eslint-disable-next-line @burneeble/burneeble/camel-case-vars
 const CommonProviders = dynamic(

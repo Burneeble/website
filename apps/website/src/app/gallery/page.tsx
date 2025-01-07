@@ -1,28 +1,39 @@
 import { Landing, Projects } from "@/components/Pages";
 import { ProjectService } from "@/services/ProjectService";
-import { Metadata } from "next";
+import { headers } from "next/headers";
 
-const tags = {
-  title: "Burneeble website",
-  description: "Burneeble website gallery",
-  image: "./img/meta/gallery-page.png",
-};
+export async function generateMetadata() {
+  const currentHost = headers().get("host");
+  const protocol = currentHost?.startsWith("localhost") ? "http" : "https";
 
-export const metadata: Metadata = {
-  title: tags.title,
-  description: tags.description,
-  openGraph: {
-    images: [tags.image],
+  if (!currentHost) {
+    throw new Error("Host unavailable");
+  }
+
+  const image = `${protocol}://${currentHost}/img/meta/gallery-page.png`;
+
+  const tags = {
+    title: "Burneeble website",
+    description: "Burneeble website gallery",
+    image,
+  };
+
+  return {
     title: tags.title,
     description: tags.description,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: tags.title,
-    description: tags.description,
-    images: [tags.image],
-  },
-};
+    openGraph: {
+      title: tags.title,
+      description: tags.description,
+      images: [tags.image],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: tags.title,
+      description: tags.description,
+      images: [tags.image],
+    },
+  };
+}
 
 const GalleryPage = async () => {
   const res = await ProjectService.instance.getCategories();
