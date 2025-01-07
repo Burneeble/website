@@ -9,8 +9,8 @@ const TextTopCenterFullImageBottomCenter = (
   return (
     <div
       className={`
-        text-top-center-full-image-bottom-center section-layout tw-flex
-        tw-flex-col tw-items-center tw-justify-center cs-gap-between-content
+        text-top-center-full-image-bottom-center section-layout layout-structure
+        tw-flex-col
       `}
     >
       <SectionInfo {...props} textAlignment="center" />

@@ -8,12 +8,7 @@ import { ImageLayoutType } from "../../../../Section.types";
 
 const FigmaLayout = (props: FigmaLayoutProps) => {
   return (
-    <div
-      className={`
-        figma-layout section-layout tw-flex tw-flex-col tw-justify-center
-        tw-items-center cs-gap-between-content
-      `}
-    >
+    <div className={`figma-layout section-layout layout-structure tw-flex-col`}>
       <SectionInfo {...props} />
       <div
         className={cn(

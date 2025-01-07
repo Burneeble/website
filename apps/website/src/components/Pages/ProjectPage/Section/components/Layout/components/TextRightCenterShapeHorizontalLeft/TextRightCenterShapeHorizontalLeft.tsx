@@ -9,8 +9,7 @@ const TextRightCenterShapeHorizontalLeft = (
   return (
     <div
       className={`
-        text-right-center-shape-horizontal-left section-layout tw-flex
-        tw-items-center tw-justify-center cs-gap-between-content
+        text-right-center-shape-horizontal-left section-layout layout-structure
         tw-flex-col-reverse
 
         lg:tw-flex-row

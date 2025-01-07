@@ -4,8 +4,10 @@
 @import "./components/components";
 
 .section-layout {
-  width: 100%;
   max-height: min(100%, 100vh);
-  max-width: 100vw;
-  flex: 1;
+  @apply tw-w-full tw-max-w-[100vw] tw-flex-1;
+}
+
+.layout-structure {
+  @apply cs-gap-between-content tw-flex tw-items-center tw-justify-center;
 }

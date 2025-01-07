@@ -9,8 +9,8 @@ const TextTopCenterShapeHorizontalBottom = (
   return (
     <div
       className={`
-        text-top-center-shape-horizontal-bottom section-layout tw-flex
-        tw-flex-col tw-items-center tw-justify-end cs-gap-between-content
+        text-top-center-shape-horizontal-bottom section-layout tw-flex-col
+        layout-structure
       `}
     >
       <SectionInfo {...props} textAlignment="center" />

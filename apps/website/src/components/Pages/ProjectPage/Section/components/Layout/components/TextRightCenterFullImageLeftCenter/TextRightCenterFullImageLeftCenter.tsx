@@ -10,9 +10,8 @@ const TextRightCenterFullImageLeftCenter = (
   return (
     <div
       className={`
-        text-right-center-full-image-left-center section-layout tw-flex
-        tw-items-center tw-justify-center tw-flex-col-reverse
-        cs-gap-between-content
+        text-right-center-full-image-left-center section-layout layout-structure
+        tw-flex-col-reverse
 
         lg:tw-flex-row
       `}

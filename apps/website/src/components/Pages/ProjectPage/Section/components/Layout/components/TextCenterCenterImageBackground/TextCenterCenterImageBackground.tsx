@@ -10,9 +10,8 @@ const TextCenterCenterImageBackground = (
   return (
     <div
       className={`
-        text-top-center-full-image-bottom-center section-layout tw-flex
-        tw-flex-col tw-items-center tw-justify-center tw-relative tw-w-screen
-        tw-h-screen cs-gap-between-content
+        text-top-center-full-image-bottom-center section-layout layout-structure
+        tw-flex-col tw-relative tw-w-screen tw-h-screen
       `}
     >
       <SectionInfo {...props} />
