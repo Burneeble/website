@@ -45,7 +45,9 @@ const ArticleBatch = (props: ArticleBatchProps) => {
         <>
           <Carousel
             cta={{
-              children: screen === "sm" ? "Read More" : "Read Other Articles",
+              children: ["sm", "md"].includes(screen)
+                ? "Read More"
+                : "Read Other Articles",
               onClick: () => router.push("/blog"),
               variant: "secondary",
             }}

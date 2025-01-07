@@ -32,16 +32,20 @@ const Blog = (props: BlogProps) => {
           tw-my-[30px] tw-relative tw-max-w-full
 
           lg:tw-my-0 lg:tw-py-[30px]
+
+          sm:tw-pt-[72px]
         `}
       >
         <div
           className={`
             bg tw-absolute tw-top-0 tw-left-1/2 tw-bg-gradient-to-r tw-w-screen
-            primary-gradient -tw-translate-x-1/2
+            primary-gradient -tw-translate-x-1/2 tw-h-[calc(100%-88px)]
 
-            lg:tw-h-full
+            lg:tw-h-full lg:tw-top-0
 
             md:tw-h-[81%]
+
+            sm:tw-top-[50px] sm:tw-h-[calc(100%-145px)]
           `}
         />
         <ArticleBatch limit={3} enableSliderResponsiveMode />

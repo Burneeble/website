@@ -37,9 +37,9 @@ const ArticlePreviewSkeleton = (props: ArticlePreviewSkeletonProps) => {
           `}
         />
         <div className="description tw-w-full">
-          <Skeleton className={`tw-h-[20px] tw-w-full`} />
-          <Skeleton className={`tw-h-[20px] tw-w-full`} />
-          <Skeleton className={`tw-h-[20px] tw-w-full`} />
+          <Skeleton className={`tw-mb-[10px] tw-h-[20px] tw-w-full`} />
+          <Skeleton className={`tw-mb-[10px] tw-h-[20px] tw-w-full`} />
+          <Skeleton className={`tw-mb-[10px] tw-h-[20px] tw-w-full`} />
           <Skeleton className={`tw-h-[20px] tw-w-3/5`} />
         </div>
       </div>

@@ -27,18 +27,45 @@ const Carousel = (props: CarouselProps) => {
 
   //Effects
   useEffect(() => {
-    if (wrapperRef.current) {
-      const heights = [];
-      for (let i = 0; i < wrapperRef.current.children[0].children.length; i++) {
-        heights.push(wrapperRef.current.children[0].children[i].clientHeight);
-      }
+    const observer = new ResizeObserver(() => {
+      if (wrapperRef.current) {
+        const heights = [];
+        for (
+          let i = 0;
+          i < wrapperRef.current.children[0].children[0].children.length;
+          i++
+        ) {
+          console.log(
+            wrapperRef.current.children[0].children[0].children[i].clientHeight,
+            wrapperRef.current.children[0].children[0].children[i].clientWidth,
+            wrapperRef.current.children[0].children[0].children[i]
+          );
+          heights.push(
+            wrapperRef.current.children[0].children[0].children[i].clientHeight
+          );
+        }
 
-      setAspectRatio({
-        width:
-          wrapperRef.current.children[0].children[0].children[0].clientWidth,
-        height: Math.max(...heights),
-      });
+        setAspectRatio({
+          width:
+            wrapperRef.current.children[0].children[0].children[0].clientWidth,
+          height: Math.max(...heights),
+        });
+      }
+    });
+
+    if (wrapperRef.current?.children[0].children[0].children) {
+      for (
+        let i = 0;
+        i < wrapperRef.current.children[0].children[0].children.length;
+        i++
+      ) {
+        observer.observe(
+          wrapperRef.current.children[0].children[0].children[i]
+        );
+      }
     }
+
+    return () => observer.disconnect();
   }, [wrapperRef.current, width, screen]);
 
   //Methods
@@ -66,9 +93,12 @@ const Carousel = (props: CarouselProps) => {
       ref={wrapperRef}
       className={`carousel-wrapper tw-w-full tw-max-w-[100vw]`}
       style={{
-        height: `calc((80vw * ${aspectRatio.height} / ${
-          aspectRatio.width
-        }) + 105px ${props.labels ? "" : "- 50px"})`,
+        height:
+          screen === "sm"
+            ? `calc(${aspectRatio.height}px + 48px + 40px)`
+            : `calc((80vw * ${aspectRatio.height} / ${
+                aspectRatio.width
+              }) + 105px ${props.labels ? "" : "- 50px"})`,
       }}
     >
       <Swiper
