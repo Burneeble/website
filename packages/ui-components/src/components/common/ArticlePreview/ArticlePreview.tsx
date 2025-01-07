@@ -58,8 +58,8 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
       </div>
       <div
         className={`
-          article-info tw-flex tw-max-h-[275px] tw-max-w-full tw-flex-col
-          tw-items-start tw-justify-start tw-gap-[5px]
+          article-info tw-flex tw-max-w-full tw-flex-col tw-items-start
+          tw-justify-start tw-gap-[5px]
         `}
       >
         <Label

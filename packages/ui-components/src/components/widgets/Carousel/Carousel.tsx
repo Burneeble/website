@@ -39,7 +39,7 @@ const Carousel = (props: CarouselProps) => {
         height: Math.max(...heights),
       });
     }
-  }, [wrapperRef.current, width]);
+  }, [wrapperRef.current, width, screen]);
 
   //Methods
   const getButtonSize = () => {

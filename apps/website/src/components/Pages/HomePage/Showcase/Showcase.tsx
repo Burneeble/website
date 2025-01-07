@@ -91,7 +91,13 @@ const Showcase = (props: ShowcaseProps) => {
           .
         </h2>{" "}
       </div>
-      <div className={`carousel-wrapper tw-w-full tw-max-w-[1200px]`}>
+      <div
+        className={`
+          carousel-wrapper tw-w-full tw-max-w-[1200px] tw-px-[1.25rem]
+
+          md:tw-px-0
+        `}
+      >
         <Carousel
           labels={props.projects.map((proj) => {
             return proj.categories.length <= 3
