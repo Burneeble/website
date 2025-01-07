@@ -6,26 +6,35 @@ const Blog = (props: BlogProps) => {
     <section
       className={`
         blog-section cs-section-structure tw-flex tw-flex-col tw-items-center
-        tw-justify-center tw-gap-[20px]
+        tw-justify-center cs-gap-between-content
       `}
     >
-      <h2 className="title tw-text-center">
-        Our{" "}
-        <span className={`cs-text-color-primary-gradient`}>Blog Articles</span>
-      </h2>
-      <p
+      <div
         className={`
-          description tw-text-center tw-text-xl tw-leading-7
-
-          lg:tw-text-3xl lg:tw-leading-10
-
-          md:tw-text-2xl md:tw-leading-9
+          texts tw-flex tw-flex-col tw-items-center tw-justify-center
+          cs-gap-between-text
         `}
       >
-        At Burneeble, we are passionate about sharing our knowledge and passion
-        with you, which is why we write{" "}
-        <strong>development-related articles</strong>. Check it out!
-      </p>
+        <h2 className="title tw-text-center">
+          Our{" "}
+          <span className={`cs-text-color-primary-gradient`}>
+            Blog Articles
+          </span>
+        </h2>
+        <p
+          className={`
+            description tw-text-center tw-text-xl tw-leading-7
+
+            lg:tw-text-3xl lg:tw-leading-10
+
+            md:tw-text-2xl md:tw-leading-9
+          `}
+        >
+          At Burneeble, we are passionate about sharing our knowledge and
+          passion with you, which is why we write{" "}
+          <strong>development-related articles</strong>. Check it out!
+        </p>
+      </div>
       <div
         className={`
           articles tw-flex tw-flex-col tw-items-center tw-justify-center
