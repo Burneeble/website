@@ -154,6 +154,8 @@ export async function GET(request: Request) {
           "Content-Type": "image/png",
           "Cache-Control": "public, max-age=604800, immutable",
         },
+        width: 600,
+        height: 315,
       }
     );
   } catch (error) {
