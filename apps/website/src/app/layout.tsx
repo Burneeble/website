@@ -12,6 +12,7 @@ export async function generateMetadata() {
   if (!currentHost) {
     throw new Error("Host unavailable");
   }
+  console.log("HOST", `${protocol}://${currentHost}`);
 
   const image = `${protocol}://${currentHost}/img/meta/home-page.png`;
 

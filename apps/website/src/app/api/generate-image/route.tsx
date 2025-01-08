@@ -3,6 +3,8 @@ import { headers } from "next/headers";
 
 export const runtime = "edge";
 
+let fontCache: ArrayBuffer | null = null;
+
 const getHost = () => {
   const currentHost = headers().get("host");
   const protocol = currentHost?.startsWith("localhost") ? "http" : "https";
@@ -14,41 +16,44 @@ const getHost = () => {
   return `${protocol}://${currentHost}`;
 };
 
-const fetchFont = async () => {
-  const fontUrl = new URL("/fonts/BowlbyOne.ttf", getHost());
-  const res = await fetch(fontUrl.toString());
+const fetchFont = async (host: string) => {
+  if (fontCache) return fontCache;
+
+  const fontUrl = `${host}/fonts/BowlbyOne.ttf`;
+  const res = await fetch(fontUrl);
   if (!res.ok) {
     throw new Error(`Failed to fetch font: ${res.statusText}`);
   }
-  return res.arrayBuffer();
+
+  fontCache = await res.arrayBuffer();
+  return fontCache;
+};
+const validateParams = (params: URLSearchParams) => {
+  const requiredParams = ["imageUrl", "mainColor", "projectName"];
+  const missing = requiredParams.filter((param) => !params.get(param));
+
+  if (missing.length) {
+    return new Response(
+      JSON.stringify({ error: `Missing parameters: ${missing.join(", ")}` }),
+      { status: 400 }
+    );
+  }
+
+  return null;
 };
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
+  const validationError = validateParams(searchParams);
+  if (validationError) return validationError;
+
   const imageUrl = searchParams.get("imageUrl");
   const mainColor = searchParams.get("mainColor");
   const projectName = searchParams.get("projectName");
 
-  if (!imageUrl) {
-    return new Response(JSON.stringify({ error: "Missing imageUrl" }), {
-      status: 400,
-    });
-  }
-
-  if (!mainColor) {
-    return new Response(JSON.stringify({ error: "Missing mainColor" }), {
-      status: 400,
-    });
-  }
-
-  if (!projectName) {
-    return new Response(JSON.stringify({ error: "Missing projectName" }), {
-      status: 400,
-    });
-  }
-
   try {
-    const bowlbyOne = await fetchFont();
+    const host = getHost();
+    const bowlbyOne = await fetchFont(host);
 
     return new ImageResponse(
       (
@@ -96,7 +101,7 @@ export async function GET(request: Request) {
               }}
             >
               <img
-                src={imageUrl}
+                src={imageUrl!}
                 style={{
                   width: "188px",
                   height: "188px",
@@ -127,7 +132,7 @@ export async function GET(request: Request) {
                   style={{
                     fontSize: "100px",
                     lineHeight: "60px",
-                    color: mainColor,
+                    color: mainColor!,
                     fontFamily: "Bowlby One",
                   }}
                 >
