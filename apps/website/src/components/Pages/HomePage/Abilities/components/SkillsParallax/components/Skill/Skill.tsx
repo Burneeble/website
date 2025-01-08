@@ -33,9 +33,11 @@ const Skill = (props: SkillProps) => {
   //Effects
   useEffect(() => {
     if (iconRef.current) {
+      // Animate the SVG fill property of the referenced icon element.
       gsap.to(iconRef.current, {
         duration: 0.5,
         fill:
+          // Determine the fill property based on the current and target index values.
           props.currentIndex >= props.index
             ? 'url("#gradient")'
             : 'url("#triangle-gradient")',
@@ -54,10 +56,13 @@ const Skill = (props: SkillProps) => {
   }, [props.index, props.currentIndex]);
 
   useEffect(() => {
+    // Access all child elements of the container referenced by `containerRef`.
     const divs = containerRef.current?.children;
 
     if (divs) {
+      // Reset all elements if the screen is not desktop
       if (["sm", "md", "lg"].includes(screen)) {
+        // Animate all child elements to scale to full size and become fully visible.
         Array.from(divs).forEach((div) => {
           gsap.to(div, {
             scale: 1,
@@ -66,6 +71,7 @@ const Skill = (props: SkillProps) => {
             delay: 0,
           });
         });
+        // Animate the container to set a maximum height.
         gsap.to(containerRef.current, {
           maxHeight: "16rem",
           duration: 0.5,
@@ -74,21 +80,25 @@ const Skill = (props: SkillProps) => {
         return;
       }
 
+      // Check if the current component index matches the provided index.
       if (props.index == props.currentIndex) {
+        // Animate each child element sequentially with a delay between each.
         Array.from(divs).forEach((div, index) => {
           gsap.to(div, {
             scale: 1,
             opacity: 1,
             duration: 0.1,
-            delay: index * 0.1 + 0.5,
+            delay: index * 0.1 + 0.5, // Cumulative delay based on element index.
           });
         });
+        // Animate the container to set a maximum height.
         gsap.to(containerRef.current, {
           maxHeight: "16rem",
           duration: 0.5,
           delay: 0,
         });
       } else {
+        // If the current index doesn't match, animate elements in reverse order.
         Array.from(divs)
           .reverse()
           .forEach((div, index) => {
@@ -96,9 +106,10 @@ const Skill = (props: SkillProps) => {
               scale: 0,
               opacity: 0,
               duration: 0.1,
-              delay: index * 0.1,
+              delay: index * 0.1, // Cumulative delay based on element index.
             });
           });
+        // Animate the container to collapse to zero height.
         gsap.to(containerRef.current, {
           maxHeight: "0",
           duration: 0.25,

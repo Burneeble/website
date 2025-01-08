@@ -22,23 +22,29 @@ const Abilities = (props: AbilitiesProps) => {
   useEffect(() => {
     const section = sectionRef.current;
 
+    // Create a ScrollTrigger instance to control the scroll behavior.
     ScrollTrigger.create({
-      trigger: section,
-      start: "top top",
+      trigger: section, // The element that triggers the scroll animation.
+      start: "top top", // Start the trigger when the top of the section meets the top of the viewport.
       end: () => `+=${(props.skills.length + 1) * window.innerHeight}`,
-      pin: true,
-      scrub: true,
+      // Dynamically calculate the end of the scroll animation based on the number of skills and viewport height.
+      pin: true, // Pin the section in place while the scroll animation occurs.
+      scrub: true, // Smoothly scrubs the animation in sync with the user's scroll.
       onUpdate: (self) => {
+        // Triggered on every scroll update, providing progress information.
         const newCounter = Math.min(
-          props.skills.length - 1,
+          props.skills.length - 1, // Ensure the counter doesn't exceed the skills array length.
           Math.floor(self.progress * props.skills.length)
+          // Calculate the new index based on scroll progress and the total number of skills.
         );
-        setCurrentIndex(newCounter);
+        setCurrentIndex(newCounter); // Update the current index state.
       },
     });
 
+    // Cleanup function to remove all ScrollTriggers when the component unmounts.
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      // Ensures no memory leaks or unnecessary listeners remain.
     };
   }, []);
 
