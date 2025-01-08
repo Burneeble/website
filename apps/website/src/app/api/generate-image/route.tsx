@@ -37,10 +37,6 @@ const validateParams = (params: URLSearchParams) => {
 };
 
 export async function GET(request: Request) {
-  if (headers().get("user-agent")?.includes("TelegramBot")) {
-    return Response.redirect(getHost() + "/img/meta/blog.png");
-  }
-
   const { searchParams } = new URL(request.url);
   const validationError = validateParams(searchParams);
   if (validationError) return validationError;
