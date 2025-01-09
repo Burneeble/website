@@ -56,7 +56,12 @@ const Form = (props: FormProps) => {
         onSubmit={form.handleSubmit(onSubmit)}
         className={"tw-w-full tw-space-y-3"}
       >
-        <div className={cn("fields tw-space-y-3", props.className)}>
+        <div
+          className={cn(
+            "fields tw-space-y-3 tw-overflow-y-auto",
+            props.className
+          )}
+        >
           {props.fields.map((fieldInfo, i) => {
             const disabled = fieldInfo.disabled || false;
             return (
@@ -125,14 +130,31 @@ const Form = (props: FormProps) => {
             );
           })}
         </div>
-        <Button
-          type="submit"
-          fit="full"
-          className="!tw-mt-8"
-          onClick={() => form.handleSubmit(onSubmit)}
+        <div
+          className={cn(
+            "button-wrapper",
+            props.stickySubmit &&
+              `
+                tw-sticky tw-bottom-0 tw-left-0 tw-z-[5]
+
+                after:tw-absolute after:tw-left-1/2 after:tw-top-1/2
+                after:tw-z-[-1] after:tw-block after:tw-h-[calc(100%+2.6rem)]
+                after:tw-w-[calc(100%+2.6rem)] after:-tw-translate-x-1/2
+                after:-tw-translate-y-1/2 after:tw-bg-gradient-to-t
+                after:tw-from-[#322923] after:tw-to-[rgba(0,0,0,0)]
+                after:tw-content-['']
+              `
+          )}
         >
-          Submit
-        </Button>
+          <Button
+            type="submit"
+            fit="full"
+            className={cn("!tw-mt-8")}
+            onClick={() => form.handleSubmit(onSubmit)}
+          >
+            Submit
+          </Button>
+        </div>
       </form>
     </FormComponent>
   );

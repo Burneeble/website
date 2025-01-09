@@ -170,6 +170,7 @@ const ContactPopup = (props: ContactPopupProps) => {
                   </a>
                 </p>
                 <Form
+                  stickySubmit
                   className={cn(
                     width &&
                       width > 600 &&

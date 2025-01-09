@@ -25,4 +25,5 @@ export interface FormProps {
   fields: Field[];
   onSubmit: (values: Record<string, string>) => Promise<void> | void;
   className?: string;
+  stickySubmit?: boolean;
 }
