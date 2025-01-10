@@ -4,4 +4,5 @@ export interface CarouselProps {
   labels?: string[][];
   cta?: ButtonProps;
   raiseInactiveSlides?: boolean;
+  infinite?: boolean;
 }

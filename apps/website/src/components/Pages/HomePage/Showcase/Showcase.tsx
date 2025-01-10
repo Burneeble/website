@@ -99,6 +99,7 @@ const Showcase = (props: ShowcaseProps) => {
         `}
       >
         <Carousel
+          infinite
           raiseInactiveSlides
           labels={props.projects.map((proj) => {
             return proj.categories.length <= 3

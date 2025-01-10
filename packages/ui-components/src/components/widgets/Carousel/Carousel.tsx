@@ -109,7 +109,7 @@ const Carousel = (props: CarouselProps) => {
           nextEl: ".custom-next",
           prevEl: ".custom-prev",
         }}
-        loop={true}
+        loop={props.infinite || false}
         modules={[Pagination, Navigation]}
         className={`
           carousel tw-h-auto tw-w-4/5 tw-overflow-visible
