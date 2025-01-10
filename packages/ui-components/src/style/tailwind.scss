@@ -20,6 +20,10 @@
     @apply tw-text-xl tw-text-headings tw-font-bowlby-one md:tw-text-2xl lg:tw-text-3xl !tw-leading-tight;
   }
 
+  h4 {
+    @apply tw-text-xl tw-text-headings tw-font-bowlby-one lg:tw-text-2xl !tw-leading-tight;
+  }
+
   p {
     @apply tw-text-body tw-text-lg tw-font-inter md:tw-text-2xl xl:tw-text-3xl;
   }

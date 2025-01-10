@@ -30,7 +30,6 @@ const ArticleBatch = (props: ArticleBatchProps) => {
   const fetchArticles = async () => {
     try {
       const data = await getArticlesWithLimit(props.limit);
-      console.log("Data", data);
       setArticles(data);
     } catch (err) {
       console.log(err);
@@ -44,6 +43,7 @@ const ArticleBatch = (props: ArticleBatchProps) => {
       ["sm", "md", "lg"].includes(screen) ? (
         <>
           <Carousel
+            arrowsBackground="var(--secondary-darker)"
             cta={{
               children: ["sm", "md"].includes(screen)
                 ? "Read More"

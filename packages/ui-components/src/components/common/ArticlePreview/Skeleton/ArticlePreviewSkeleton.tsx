@@ -26,13 +26,14 @@ const ArticlePreviewSkeleton = (props: ArticlePreviewSkeletonProps) => {
       >
         <Skeleton
           className={`
-            tw-h-[34.2px] tw-w-[130px] tw-rounded-[9px] tw-font-inter tw-text-xl
-            tw-font-black tw-leading-loose tw-text-headings
+            tw-flex tw-h-[34.2px] tw-w-[130px] tw-flex-col tw-gap-[5px]
+            tw-rounded-[9px] tw-font-inter tw-text-xl tw-font-black
+            tw-leading-loose tw-text-headings
           `}
         />
         <Skeleton
           className={`
-            tw-h-[40px] tw-w-[250px] tw-self-stretch tw-font-inter tw-text-lg
+            tw-h-[25px] tw-w-[250px] tw-self-stretch tw-font-inter tw-text-lg
             tw-font-normal tw-leading-7 tw-text-headings
           `}
         />

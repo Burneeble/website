@@ -6,13 +6,13 @@ const Blog = (props: BlogProps) => {
     <section
       className={`
         blog-section cs-website-horizontal-padding tw-flex tw-flex-col
-        tw-items-center tw-justify-center cs-gap-between-content
+        tw-items-center tw-justify-center cs-gap-between-content tw-min-h-screen
       `}
     >
       <div
         className={`
           texts tw-flex tw-flex-col tw-items-center tw-justify-center
-          cs-gap-between-text cs-website-horizontal-padding tw-max-w-[1300px]
+          cs-gap-between-text tw-max-w-[1300px]
         `}
       >
         <h2 className="title tw-text-center">
@@ -38,8 +38,8 @@ const Blog = (props: BlogProps) => {
       <div
         className={`
           articles tw-flex tw-flex-col tw-items-center tw-justify-center
-          tw-my-[30px] tw-relative cs-website-horizontal-padding
-          tw-bg-gradient-to-r tw-w-screen primary-gradient tw-py-[30px]
+          tw-relative cs-website-horizontal-padding tw-bg-gradient-to-r
+          tw-w-screen primary-gradient tw-py-[30px]
 
           lg:tw-my-0
         `}

@@ -150,8 +150,12 @@ const Carousel = (props: CarouselProps) => {
         })}
         <Button
           size={getButtonSize()}
-          className="custom-next carousel-button tw-right-0"
+          className={cn(
+            "custom-next carousel-button tw-right-0",
+            props.arrowsBackground && `tw-border-white`
+          )}
           rounded={"circle"}
+          style={{ background: props.arrowsBackground }}
         >
           <FontAwesomeIcon
             icon={faChevronRight}
@@ -177,7 +181,11 @@ const Carousel = (props: CarouselProps) => {
         <Button
           size={getButtonSize()}
           rounded={"circle"}
-          className="custom-prev carousel-button tw-left-0"
+          className={cn(
+            "custom-prev carousel-button tw-left-0",
+            props.arrowsBackground && `tw-border-white`
+          )}
+          style={{ background: props.arrowsBackground }}
         >
           <FontAwesomeIcon
             icon={faChevronLeft}

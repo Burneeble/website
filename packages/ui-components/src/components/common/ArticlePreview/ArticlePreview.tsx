@@ -105,7 +105,8 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
         <div
           className={cn(
             `
-              texts tw-relative tw-transition-all tw-duration-200 tw-ease-in-out
+              texts tw-relative tw-flex tw-flex-col tw-gap-[5px]
+              tw-transition-all tw-duration-200 tw-ease-in-out
 
               after:tw-absolute after:tw-bottom-0 after:tw-left-[-12px]
               after:tw-block after:tw-h-[0] after:tw-w-[3px]
@@ -118,7 +119,7 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
             variant === "dark" && "after:tw-bg-[var(--primary-default)]"
           )}
         >
-          <div
+          <h4
             className={cn(
               `
                 title tw-max-w-full tw-cursor-pointer tw-font-inter tw-text-xl

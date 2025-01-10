@@ -5,4 +5,5 @@ export interface CarouselProps {
   cta?: ButtonProps;
   raiseInactiveSlides?: boolean;
   infinite?: boolean;
+  arrowsBackground?: string;
 }
