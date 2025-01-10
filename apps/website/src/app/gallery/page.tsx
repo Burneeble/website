@@ -13,8 +13,9 @@ export async function generateMetadata() {
   const image = `${protocol}://${currentHost}/img/meta/gallery-page.png`;
 
   const tags = {
-    title: "Burneeble website",
-    description: "Burneeble website gallery",
+    title: "Discover our project gallery",
+    description:
+      "We develop projects in all categories: telegrams mini apps, websites, e-commerce solutions with Shopify, advanced integrations such as blockchain and Web3, and APIs such as Stripe. Each project is custom-developed to offer powerful and innovative features, without technological limitations.",
     image,
   };
 

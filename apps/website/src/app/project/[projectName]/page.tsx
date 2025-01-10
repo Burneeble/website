@@ -32,7 +32,7 @@ export async function generateMetadata({
 
   if (project) {
     const tags = {
-      title: `Burneeble - ${project.title}`,
+      title: `Burneeble - Check out ${project.title} Project`,
       description: `${project.title} - ${project.description}`,
       image: generatedImageUrl,
     };

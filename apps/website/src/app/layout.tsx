@@ -14,23 +14,30 @@ export async function generateMetadata() {
   }
   console.log("HOST", `${protocol}://${currentHost}`);
 
-  const image = `${protocol}://${currentHost}/img/meta/home-page.png`;
+  const host = `${protocol}://${currentHost}`;
+  const image = `${host}/img/meta/home-page.png`;
+  const icon = `${host}/img/meta/logo.png`;
 
   const tags = {
-    title: "Burneeble website",
-    description: "Burneeble website",
+    title: "Burneeble -  We develop digital solutions without limits",
+    description:
+      "We are a group of developers capable of developing any type of app or website. From integrations with blockchain, Web3, Stripe API and Shopify, to customized solutions. We bring your ideas to reality with designs and features designed to offer you a complete and innovative digital experience.",
+    icon,
     image,
   };
 
   return {
     title: tags.title,
     description: tags.description,
+    icons: [tags.icon],
     openGraph: {
+      icon: tags.icon,
       title: tags.title,
       description: tags.description,
       images: [tags.image],
     },
     twitter: {
+      icon: tags.icon,
       card: "summary_large_image",
       title: tags.title,
       description: tags.description,
