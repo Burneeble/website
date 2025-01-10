@@ -23,7 +23,7 @@
   // p {
   //   @apply tw-text-body tw-text-lg tw-font-inter md:tw-text-2xl xl:tw-text-3xl;
   // }
-
+  
   .p-default {
     @apply tw-text-xl tw-leading-[30px] tw-font-inter tw-text-body md:tw-text-2xl md:tw-leading-[35px] lg:tw-text-3xl lg:tw-leading-10;
   }
@@ -99,6 +99,11 @@
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+
+  .custom-placeholder-border {
+    border: 1px solid var(--neutral-default) !important;
+    // height: 58px;
   }
 
   // full orange gradient

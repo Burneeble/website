@@ -2,34 +2,42 @@
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
+import { useCustomPlaceholder } from "@/hooks/useCustomPlaceholderStyle";
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {}
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, ...props }, ref) => {
+  ({ className, type, ...props }) => {
+    const inputRef = useCustomPlaceholder<HTMLInputElement>();
+
     return (
       <input
         type={type}
         className={cn(
           `
-            tw-flex tw-h-9 tw-w-full tw-rounded-md tw-border tw-border-input
-            tw-bg-transparent tw-px-3 tw-py-1 tw-text-sm tw-shadow-sm
-            tw-transition-colors
+            p-small tw-flex tw-h-[50px] tw-w-full tw-rounded-lg tw-border
+            tw-bg-gradient-to-r tw-px-3 tw-text-body-active tw-shadow-sm
+            tw-outline-none tw-transition-colors secondary-gradient
 
             disabled:tw-cursor-not-allowed disabled:tw-opacity-50
 
-            file:tw-border-0 file:tw-text-sm file:tw-font-medium
-            file:tw-text-foreground file:tw-bg-transparent
+            file:tw-border-0 file:tw-bg-gradient-to-r file:tw-font-medium
+            file:tw-text-foreground file:p-small file:secondary-gradient
 
-            focus-visible:tw-outline-none focus-visible:tw-ring-1
-            focus-visible:tw-ring-ring
+            focus-visible:tw-border-active focus-visible:tw-ring-1
+            focus-visible:tw-outline-none focus-visible:tw-ring-ring
 
-            placeholder:tw-text-muted-foreground
+            placeholder:tw-italic placeholder:tw-text-muted-foreground
+
+            sm:tw-h-[58px]
           `,
-          className
+          className,
+          props["aria-invalid"] === true
+            ? "tw-border-error"
+            : `input-placeholder tw-border-tertiary`
         )}
-        ref={ref}
+        ref={inputRef}
         {...props}
       />
     );
