@@ -149,7 +149,7 @@ const Form = (props: FormProps) => {
           <Button
             type="submit"
             fit="full"
-            className={cn("!tw-mt-8")}
+            className={cn("!tw-mt-8 tw-h-[58px]")}
             onClick={() => form.handleSubmit(onSubmit)}
           >
             Submit

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ContactPopupProps } from "./ContactPopup.types";
 import {
   Button,
@@ -14,13 +14,17 @@ import { cn } from "@/lib/utils";
 import z from "zod";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import gsap from "gsap";
+
 const ContactPopup = (props: ContactPopupProps) => {
   //States
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const [isClosing, setIsClosing] = useState<boolean>(false);
 
   //Hooks
   const { width } = useClientInfoService();
+  const popupRef = useRef<HTMLDivElement>(null);
 
   //Methods
   const onSubmit = async (values: Record<string, string>) => {
@@ -60,10 +64,44 @@ const ContactPopup = (props: ContactPopupProps) => {
     }
   }, [props.isContactPopupOpen]);
 
+  useEffect(() => {
+    if (popupRef.current) {
+      if (props.isContactPopupOpen) {
+        gsap.fromTo(
+          popupRef.current,
+          {
+            scale: 0,
+          },
+          { scale: 1, duration: 0.5, ease: "back.out(1.2)" }
+        );
+      }
+    }
+  }, [popupRef.current, props.isContactPopupOpen, isSubmitted]);
+
+  useEffect(() => {
+    if (popupRef.current) {
+      if (isClosing) {
+        gsap.fromTo(
+          popupRef.current,
+          {
+            scale: 1,
+          },
+          { scale: 0, duration: 0.4, ease: "back.out()" }
+        );
+      }
+    }
+  }, [popupRef.current, isClosing]);
+
   return (
     <>
       <div
-        onClick={() => props.setIsContactPopupOpen(false)}
+        onClick={() => {
+          setIsClosing(true);
+          setTimeout(() => {
+            setIsClosing(false);
+            props.setIsContactPopupOpen(false);
+          }, 400);
+        }}
         className={`
           contact-popup-wrapper tw-fixed tw-left-0 tw-top-0 tw-flex tw-h-screen
           tw-w-screen tw-items-center tw-justify-center
@@ -72,6 +110,7 @@ const ContactPopup = (props: ContactPopupProps) => {
       >
         <div
           onClick={(e) => e.stopPropagation()}
+          ref={popupRef}
           className={`
             contact-popup no-scrollbar tw-h-fit tw-max-h-[80%] tw-p-5
             tw-w-[700px] tw-overflow-scroll tw-max-w-[90%] tw-bg-gradient-to-b
@@ -109,12 +148,21 @@ const ContactPopup = (props: ContactPopupProps) => {
                 >
                   We will reply to you as soon as possible. If you have any
                   other questions or additional information to share with us, do
-                  not hesitate to fill out another form or contact us via email:
-                  <strong>burneeble@example.com</strong>
+                  not hesitate to fill out another form or contact us via email:{" "}
+                  <a
+                    href="mailto:burneeble@example.com"
+                    className={`
+                      p-small tw-font-extrabold tw-transition-colors
+
+                      hover:tw-text-action hover:tw-underline
+                    `}
+                  >
+                    burneeble@example.com
+                  </a>
                 </p>
                 <Button
                   onClick={() => {
-                    props.setIsContactPopupOpen(false);
+                    setIsSubmitted(false);
                   }}
                   fit="full"
                 >
@@ -124,24 +172,26 @@ const ContactPopup = (props: ContactPopupProps) => {
             </>
           ) : (
             <>
-              {isSubmitting && (
-                <div
-                  className={`
-                    tw-absolute loading-screen tw-top-0 tw-left-0 tw-w-full
-                    tw-h-full tw-flex tw-items-center tw-justify-center
-                    tw-bg-[rgba(0,0,0,.6)] tw-z-[5]
-                  `}
-                >
-                  <Spinner size="default" />
-                </div>
-              )}
-
               <div
                 className={`
                   contact-text-content-wrapper tw-flex tw-flex-col
                   tw-items-center tw-justify-center tw-gap-2.5 tw-self-stretch
+                  tw-relative
                 `}
               >
+                {isSubmitting && (
+                  <div
+                    className={`
+                      tw-absolute loading-screen tw-top-1/2 tw-left-1/2
+                      -tw-translate-x-1/2 -tw-translate-y-1/2
+                      tw-w-[calc(100%+2.50rem)] tw-h-[calc(100%+2.50rem)]
+                      tw-flex tw-items-center tw-justify-center
+                      tw-bg-[rgba(0,0,0,.6)] tw-z-[25]
+                    `}
+                  >
+                    <Spinner size="default" />
+                  </div>
+                )}
                 <h2
                   className={`
                     contact-popup-title tw-text-center tw-inline-flex
