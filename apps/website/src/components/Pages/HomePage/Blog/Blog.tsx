@@ -5,14 +5,14 @@ const Blog = (props: BlogProps) => {
   return (
     <section
       className={`
-        blog-section cs-section-structure tw-flex tw-flex-col tw-items-center
-        tw-justify-center cs-gap-between-content
+        blog-section cs-website-horizontal-padding tw-flex tw-flex-col
+        tw-items-center tw-justify-center cs-gap-between-content
       `}
     >
       <div
         className={`
           texts tw-flex tw-flex-col tw-items-center tw-justify-center
-          cs-gap-between-text
+          cs-gap-between-text cs-website-horizontal-padding tw-max-w-[1300px]
         `}
       >
         <h2 className="title tw-text-center">
@@ -38,25 +38,12 @@ const Blog = (props: BlogProps) => {
       <div
         className={`
           articles tw-flex tw-flex-col tw-items-center tw-justify-center
-          tw-my-[30px] tw-relative tw-max-w-full
+          tw-my-[30px] tw-relative cs-website-horizontal-padding
+          tw-bg-gradient-to-r tw-w-screen primary-gradient tw-py-[30px]
 
-          lg:tw-my-0 lg:tw-py-[30px]
-
-          sm:tw-pt-[72px]
+          lg:tw-my-0
         `}
       >
-        <div
-          className={`
-            bg tw-absolute tw-top-0 tw-left-1/2 tw-bg-gradient-to-r tw-w-screen
-            primary-gradient -tw-translate-x-1/2 tw-h-[calc(100%-88px)]
-
-            lg:tw-h-full lg:tw-top-0
-
-            md:tw-h-[81%]
-
-            sm:tw-top-[50px] sm:tw-h-[calc(100%-145px)]
-          `}
-        />
         <ArticleBatch limit={3} enableSliderResponsiveMode />
       </div>
     </section>

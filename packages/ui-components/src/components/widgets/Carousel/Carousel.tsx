@@ -122,11 +122,14 @@ const Carousel = (props: CarouselProps) => {
         {props.items.map((item, i) => {
           return (
             <SwiperSlide
-              className={`
-                corousel-slide tw-duration-400 tw-relative tw-flex !tw-w-full
-                tw-flex-col tw-items-center tw-justify-center tw-gap-[20px]
-                tw-transition-transform tw-ease-in-out
-              `}
+              className={cn(
+                `
+                  corousel-slide tw-duration-400 tw-relative tw-flex !tw-w-full
+                  tw-flex-col tw-items-center tw-justify-center tw-gap-[20px]
+                  tw-transition-transform tw-ease-in-out
+                `,
+                props.raiseInactiveSlides && "raise-inactive-slides"
+              )}
               key={i}
             >
               {props.labels && (
