@@ -1,174 +1,19 @@
 "use client";
 
-import { Carousel, useClientInfoService } from "@burneeble/ui-components";
+import { Bars, Carousel, useClientInfoService } from "@burneeble/ui-components";
 import { ShowcaseProps } from "./Showcase.types";
-import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 
 const Showcase = (props: ShowcaseProps) => {
-  //States
-  const [topBarsElements] = useState<JSX.Element>(
-    <>
-      {Array.from({ length: 3 }).map((_, i) => {
-        const offset = Math.round(Math.random() * 100);
-
-        return (
-          <div
-            key={i}
-            className={cn(
-              `
-                top-bar tw-right-full tw-absolute
-
-                md:tw-h-[5px] md:tw-w-[467px]
-
-                xl:tw-h-[.5rem] xl:tw-w-[736px]
-              `,
-              offset > 40
-                ? "tw-bg-[var(--primary-lighter)] tw-opacity-[.27]"
-                : `tw-bg-[var(--primary-lighest)]`
-            )}
-            ref={(el) => {
-              if (el && !topBars.current.includes(el)) topBars.current.push(el);
-            }}
-          />
-        );
-      })}
-    </>
-  );
-  const [bottomBarsElements] = useState<JSX.Element>(
-    <>
-      {Array.from({ length: 3 }).map((_, i) => {
-        const offset = Math.round(Math.random() * 100);
-
-        return (
-          <div
-            key={i}
-            className={cn(
-              `
-                bottom-bar tw-right-full tw-absolute
-
-                md:tw-h-[5px] md:tw-w-[467px]
-
-                xl:tw-h-[.5rem] xl:tw-w-[736px]
-              `,
-              offset % 2 === 0
-                ? "tw-bg-[var(--primary-lighter)] tw-opacity-[.27]"
-                : `tw-bg-[var(--primary-lighest)]`
-            )}
-            ref={(el) => {
-              if (el && !bottomBars.current.includes(el))
-                bottomBars.current.push(el);
-            }}
-          />
-        );
-      })}
-    </>
-  );
-
   //Hooks
-  const { screen, width, isClient } = useClientInfoService();
-  const topBars = useRef<Array<HTMLDivElement>>([]);
-  const bottomBars = useRef<Array<HTMLDivElement>>([]);
+  const { screen } = useClientInfoService();
   const router = useRouter();
-
-  //Effetcs
-  useEffect(() => {
-    if (!width || !isClient || !topBars.current) return;
-
-    let offset: number;
-
-    switch (screen) {
-      case "sm":
-        offset = 335;
-        break;
-      case "md":
-      case "lg":
-        offset = 470;
-        break;
-      default:
-        offset = 740;
-        break;
-    }
-
-    const timeline = ["sm", "md", "lg"].includes(screen)
-      ? gsap.context(() => {
-          topBars.current.forEach((bar) => {
-            const randomY = Math.random() * 100;
-
-            gsap.set(bar, { y: randomY });
-
-            gsap.to(bar, {
-              x: `+=${width + offset}`,
-              duration: 3 + Math.random() * 3,
-              ease: "in",
-              repeat: -1,
-              delay: Math.random() * 4,
-              modifiers: {
-                x: (x) => `${parseFloat(x) % (width + offset)}px`,
-              },
-            });
-          });
-        })
-      : null;
-
-    return () => {
-      timeline?.revert();
-    };
-  }, [width, isClient, screen, topBars]);
-
-  useEffect(() => {
-    if (!width || !isClient) return;
-
-    let offset: number;
-
-    switch (screen) {
-      case "sm":
-        offset = 335;
-        break;
-      case "md":
-      case "lg":
-        offset = 470;
-        break;
-      default:
-        offset = 740;
-        break;
-    }
-
-    const timeline = gsap.context(() => {
-      bottomBars.current.forEach((bar) => {
-        const randomY = Math.random() * 100;
-
-        gsap.set(bar, { y: randomY });
-
-        gsap.to(bar, {
-          x: `+=${width + offset}`,
-          duration: 3 + Math.random() * 3,
-          ease: "in",
-          repeat: -1,
-          delay: Math.random() * 4,
-          modifiers: {
-            x: (x) => `${parseFloat(x) % (width + offset)}px`,
-          },
-        });
-      });
-    });
-
-    return () => {
-      timeline.revert();
-    };
-  }, [width, isClient, screen]);
-
-  useEffect(() => {
-    topBars.current = [];
-  });
 
   return (
     <section
       className={`
         showcase tw-flex tw-h-fit tw-flex-col tw-items-center tw-justify-center
-        tw-gap-2.5 tw-relative
+        cs-gap-between-text tw-relative
       `}
     >
       {screen == "sm" ? (
@@ -204,11 +49,7 @@ const Showcase = (props: ShowcaseProps) => {
         </>
       )}
 
-      {["sm", "md", "lg"].includes(screen) && (
-        <div className="top-bars tw-w-screen tw-h-[100px] tw-relative">
-          {topBarsElements}
-        </div>
-      )}
+      {["sm", "md", "lg"].includes(screen) && <Bars />}
       <div className={`title-wrapper tw-text-center`}>
         <h2 className={`title`}>
           Check out{" "}
@@ -222,7 +63,7 @@ const Showcase = (props: ShowcaseProps) => {
           .
         </h2>{" "}
       </div>
-      <div className={`carousel-wrapper tw-w-full tw-max-w-full`}>
+      <div className={`carousel-wrapper tw-w-full tw-max-w-[1200px]`}>
         <Carousel
           projects={props.projects}
           cta={{
@@ -235,15 +76,7 @@ const Showcase = (props: ShowcaseProps) => {
           }}
         />
       </div>
-      <div
-        className={`
-          bottom-bars tw-w-screen tw-h-[100px]
-
-          first-letter:tw-relative
-        `}
-      >
-        {bottomBarsElements}
-      </div>
+      <Bars />
     </section>
   );
 };

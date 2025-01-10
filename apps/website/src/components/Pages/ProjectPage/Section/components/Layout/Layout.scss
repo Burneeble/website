@@ -1,0 +1,7 @@
+// Layout
+
+@import "./components/components";
+
+.layout-shape {
+  @apply tw-absolute tw-bg-gradient-to-b primary-gradient tw-max-h-full;
+}

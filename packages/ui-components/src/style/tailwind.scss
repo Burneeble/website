@@ -20,7 +20,10 @@
     @apply tw-text-xl tw-text-headings tw-font-bowlby-one md:tw-text-2xl lg:tw-text-3xl !tw-leading-tight;
   }
 
-  //body website
+  // p {
+  //   @apply tw-text-body tw-text-lg tw-font-inter md:tw-text-2xl xl:tw-text-3xl;
+  // }
+  
   .p-default {
     @apply tw-text-xl tw-leading-[30px] tw-font-inter tw-text-body md:tw-text-2xl md:tw-leading-[35px] lg:tw-text-3xl lg:tw-leading-10;
   }
@@ -63,7 +66,7 @@
   }
 
   .cs-gap-between-content {
-    @apply tw-gap-5;
+    @apply tw-gap-7 lg:tw-gap-10;
   }
 
   .cs-page {

@@ -26,8 +26,8 @@ const Contact = (props: ContactProps) => {
   return (
     <section
       className={`
-        contact-section cs-section-structure tw-flex tw-items-center
-        tw-justify-center tw-gap-5 tw-flex-col tw-relative
+        contact-section cs-section-structure cs-gap-between-content tw-flex
+        tw-items-center tw-justify-center tw-flex-col tw-relative
       `}
     >
       {isContactPopupOpen && (
@@ -48,8 +48,8 @@ const Contact = (props: ContactProps) => {
 
       <div
         className={`
-          contact-text-content tw-w-full tw-flex-col tw-justify-center
-          tw-items-center tw-gap-2.5 tw-inline-flex tw-z-[2]
+          contact-text-content cs-gap-between-text tw-w-full tw-flex-col
+          tw-justify-center tw-items-center tw-inline-flex tw-z-[2]
         `}
       >
         <h2
@@ -66,27 +66,13 @@ const Contact = (props: ContactProps) => {
 
         <p
           className={`
-            contact-text-content-paragraph tw-self-stretch tw-text-center
-            tw-text-body tw-font-normal tw-font-inter tw-text-xl tw-leading-7
-
-            lg:tw-text-3xl lg:tw-leading-10
-
-            md:tw-text-2xl md:tw-leading-9
+            contact-text-content-paragraph p-default tw-self-stretch
+            tw-text-center tw-text-body tw-font-normal
           `}
         >
           Contact us to talk about your project, we are ready to show you that
           everything is possible with{" "}
-          <strong
-            className={`
-              tw-text-body tw-font-inter tw-text-xl tw-leading-7
-
-              lg:tw-text-3xl lg:tw-leading-10
-
-              md:tw-text-2xl md:tw-leading-9
-            `}
-          >
-            Burneeble
-          </strong>
+          <strong className={`p-default tw-text-body`}>Burneeble</strong>
         </p>
       </div>
       <div
