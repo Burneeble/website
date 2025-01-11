@@ -212,9 +212,7 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
                 transitionDelay: `${
                   props.currentIndex === currentSkills.length - 1 ? 250 : 0
                 }ms`,
-                transitionDuration: `${
-                  props.currentIndex === currentSkills.length - 1 ? 250 : 500
-                }ms`,
+                transitionDuration: `250ms`,
               }}
             />
           )}
