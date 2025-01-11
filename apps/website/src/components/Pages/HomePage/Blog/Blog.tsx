@@ -5,8 +5,9 @@ const Blog = (props: BlogProps) => {
   return (
     <section
       className={`
-        blog-section cs-website-horizontal-padding tw-flex tw-flex-col
-        tw-items-center tw-justify-center cs-gap-between-content tw-min-h-screen
+        blog-section cs-website-horizontal-padding cs-website-vertical-padding
+        tw-flex tw-flex-col tw-items-center tw-justify-center
+        cs-gap-between-content tw-min-h-screen
       `}
     >
       <div
