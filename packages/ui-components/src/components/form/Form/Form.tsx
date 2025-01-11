@@ -56,12 +56,7 @@ const Form = (props: FormProps) => {
         onSubmit={form.handleSubmit(onSubmit)}
         className={"tw-w-full tw-space-y-3"}
       >
-        <div
-          className={cn(
-            "fields tw-space-y-3 tw-overflow-y-auto",
-            props.className
-          )}
-        >
+        <div className={cn("fields tw-space-y-3", props.className)}>
           {props.fields.map((fieldInfo, i) => {
             const disabled = fieldInfo.disabled || false;
             return (
