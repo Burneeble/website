@@ -205,7 +205,7 @@ const Showcase = (props: ShowcaseProps) => {
                   </div>
                 </div>
                 <img
-                  src={proj.thumbnail}
+                  src={proj.thumbnailUrl}
                   alt={""}
                   width={1920}
                   height={1080}

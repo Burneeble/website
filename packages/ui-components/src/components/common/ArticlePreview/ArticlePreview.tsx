@@ -126,8 +126,9 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
                 tw-font-black tw-leading-[28px] tw-text-headings
                 tw-transition-all tw-duration-200 tw-ease-in-out
 
-                md:tw-text-2xl md:tw-leading-[35px] 
-                lg:tw-text-2xl lg:tw-leading-[35px] 
+                lg:tw-text-2xl lg:tw-leading-[35px]
+
+                md:tw-text-2xl md:tw-leading-[35px]
               `,
               variant === "dark" && "group-hover:tw-text-action",
               variant === "default" && `group-hover:tw-text-black`
@@ -138,11 +139,13 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
           />
           {/* TODO use the right p class */}
           <p
-            className="description tw-font-inter tw-text-lg tw-text-headings
-            
-                md:tw-text-xl md:tw-leading-[32px]
-                lg:tw-text-xl lg:tw-leading-[30px]"
+            className={`
+              description tw-font-inter tw-text-lg tw-text-headings
 
+              lg:tw-text-xl lg:tw-leading-[30px]
+
+              md:tw-text-xl md:tw-leading-[32px]
+            `}
             dangerouslySetInnerHTML={{ __html: formatDescription() }}
           />
         </div>
