@@ -15,16 +15,21 @@ import { useRouter } from "next/navigation";
 const ArticleBatch = (props: ArticleBatchProps) => {
   //States
   const [articles, setArticles] = useState<ArticleModel[] | null>(null);
+  const [initialWidth, setInitialWidth] = useState<number>(0);
 
   //Hooks
   const { getArticlesWithLimit } = useArticleService();
-  const { screen } = useClientInfoService();
+  const { screen, evaluateScreen, width } = useClientInfoService();
   const router = useRouter();
 
   //Effects
   useEffect(() => {
     fetchArticles();
   }, [props.limit]);
+
+  useEffect(() => {
+    setInitialWidth(window.innerWidth);
+  }, []);
 
   //Methods
   const fetchArticles = async () => {
@@ -40,12 +45,16 @@ const ArticleBatch = (props: ArticleBatchProps) => {
   return (
     <>
       {props.enableSliderResponsiveMode &&
-      ["sm", "md", "lg"].includes(screen) ? (
+      ["sm", "md", "lg"].includes(
+        width ? screen : evaluateScreen(initialWidth)
+      ) ? (
         <>
           <Carousel
             arrowsBackground="var(--secondary-darker)"
             cta={{
-              children: ["sm", "md"].includes(screen)
+              children: ["sm", "md"].includes(
+                width ? screen : evaluateScreen(initialWidth)
+              )
                 ? "Read More"
                 : "Read Other Articles",
               onClick: () => router.push("/blog"),
