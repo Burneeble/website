@@ -1,7 +1,7 @@
 "use client";
 
 import { CarouselProps } from "./Carousel.types";
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper/modules";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,58 +15,8 @@ import { useClientInfoService } from "@/services";
 import { Label } from "@/components/common";
 
 const Carousel = (props: CarouselProps) => {
-  //States
-  const [aspectRatio, setAspectRatio] = useState<{
-    width: number;
-    height: number;
-  }>({ width: 0, height: 0 });
-
   //Hooks
-  const { screen, width } = useClientInfoService();
-  const wrapperRef = useRef<HTMLDivElement>(null);
-
-  //Effects
-  useEffect(() => {
-    const observer = new ResizeObserver(() => {
-      if (wrapperRef.current) {
-        const heights = [];
-        for (
-          let i = 0;
-          i < wrapperRef.current.children[0].children[0].children.length;
-          i++
-        ) {
-          console.log(
-            wrapperRef.current.children[0].children[0].children[i].clientHeight,
-            wrapperRef.current.children[0].children[0].children[i].clientWidth,
-            wrapperRef.current.children[0].children[0].children[i]
-          );
-          heights.push(
-            wrapperRef.current.children[0].children[0].children[i].clientHeight
-          );
-        }
-
-        setAspectRatio({
-          width:
-            wrapperRef.current.children[0].children[0].children[0].clientWidth,
-          height: Math.max(...heights),
-        });
-      }
-    });
-
-    if (wrapperRef.current?.children[0].children[0].children) {
-      for (
-        let i = 0;
-        i < wrapperRef.current.children[0].children[0].children.length;
-        i++
-      ) {
-        observer.observe(
-          wrapperRef.current.children[0].children[0].children[i]
-        );
-      }
-    }
-
-    return () => observer.disconnect();
-  }, [wrapperRef.current, width, screen]);
+  const { screen } = useClientInfoService();
 
   //Methods
   const getButtonSize = () => {
@@ -90,16 +40,13 @@ const Carousel = (props: CarouselProps) => {
 
   return (
     <div
-      ref={wrapperRef}
-      className={`carousel-wrapper tw-w-full tw-max-w-[100vw]`}
-      style={{
-        height:
-          screen === "sm"
-            ? `calc(${aspectRatio.height}px + 48px + 40px)`
-            : `calc((80vw * ${aspectRatio.height} / ${
-                aspectRatio.width
-              }) + 105px ${props.labels ? "" : "- 50px"})`,
-      }}
+      className={`
+        carousel-wrapper tw-h-full tw-w-full tw-max-w-[100vw] tw-pb-[5.5rem]
+
+        lg:sm:tw-pb-[5.6rem]
+
+        sm:tw-pb-[6.5rem]
+      `}
     >
       <Swiper
         slidesPerView={1}
