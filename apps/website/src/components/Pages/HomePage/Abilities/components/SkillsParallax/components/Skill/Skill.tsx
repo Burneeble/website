@@ -35,7 +35,8 @@ const Skill = (props: SkillProps) => {
     if (iconRef.current) {
       // Animate the SVG fill property of the referenced icon element.
       gsap.to(iconRef.current, {
-        duration: 0.5,
+        duration: 0.25,
+        delay: props.currentIndex >= props.index ? 0 : 0.25,
         fill:
           // Determine the fill property based on the current and target index values.
           props.currentIndex >= props.index
