@@ -82,7 +82,7 @@ const ClientInfoServiceProvider = (props: ClientInfoServiceProviderProps) => {
 
   return (
     <clientInfoServiceContext.Provider
-      value={{ width, screen, isClient, scrollPos, evaluateScreen }}
+      value={{ width, screen, isClient, scrollPos }}
     >
       {props.children}
     </clientInfoServiceContext.Provider>
