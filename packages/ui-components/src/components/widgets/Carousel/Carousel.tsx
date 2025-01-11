@@ -71,9 +71,10 @@ const Carousel = (props: CarouselProps) => {
             <SwiperSlide
               className={cn(
                 `
-                  corousel-slide tw-duration-400 tw-relative tw-flex !tw-w-full
-                  tw-flex-col tw-items-center tw-justify-center tw-gap-[20px]
-                  tw-transition-transform tw-ease-in-out
+                  corousel-slide tw-duration-400 tw-relative tw-mr-[30px]
+                  tw-flex !tw-w-full tw-flex-col tw-items-center
+                  tw-justify-center tw-gap-[20px] tw-transition-transform
+                  tw-ease-in-out
                 `,
                 props.raiseInactiveSlides && "raise-inactive-slides"
               )}

@@ -20,8 +20,8 @@ const ArticlePreviewSkeleton = (props: ArticlePreviewSkeletonProps) => {
 
       <div
         className={`
-          tw-flex tw-h-[275px] tw-w-full tw-flex-col tw-items-start
-          tw-justify-start tw-gap-[5px]
+          tw-flex tw-w-full tw-flex-col tw-items-start tw-justify-start
+          tw-gap-[5px]
         `}
       >
         <Skeleton
