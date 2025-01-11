@@ -13,7 +13,7 @@ import {
 import { cn } from "@/lib/utils";
 import z from "zod";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import { faCheckCircle, faXmark } from "@fortawesome/free-solid-svg-icons";
 import gsap from "gsap";
 
 const ContactPopup = (props: ContactPopupProps) => {
@@ -86,7 +86,7 @@ const ContactPopup = (props: ContactPopupProps) => {
           {
             scale: 1,
           },
-          { scale: 0, duration: 0.4, ease: "back.out()" }
+          { scale: 0, duration: 0.25, ease: "back.out(1)" }
         );
       }
     }
@@ -96,6 +96,7 @@ const ContactPopup = (props: ContactPopupProps) => {
     <>
       <div
         onClick={() => {
+          if (!isSubmitted) return;
           setIsClosing(true);
           setTimeout(() => {
             setIsClosing(false);
@@ -119,6 +120,24 @@ const ContactPopup = (props: ContactPopupProps) => {
             tw-gap-5 tw-inline-flex
           `}
         >
+          <div
+            className={`
+              close tw-text-headings tw-absolute tw-top-[1rem] tw-right-[1.5rem]
+              tw-cursor-pointer tw-text-3xl tw-opacity-[.6] tw-transition-all
+              tw-duration-300 tw-ease-out tw-z-[5]
+
+              hover:tw-opacity-100
+            `}
+            onClick={() => {
+              setIsClosing(true);
+              setTimeout(() => {
+                setIsClosing(false);
+                props.setIsContactPopupOpen(false);
+              }, 400);
+            }}
+          >
+            <FontAwesomeIcon icon={faXmark} />
+          </div>
           {isSubmitted ? (
             <>
               <div
@@ -161,6 +180,7 @@ const ContactPopup = (props: ContactPopupProps) => {
                   </a>
                 </p>
                 <Button
+                  className="tw-h-[58px]"
                   onClick={() => {
                     setIsSubmitted(false);
                   }}
