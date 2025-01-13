@@ -1,14 +1,50 @@
-import type { Metadata } from "next";
 import "../styles/main.scss";
 import cn from "classnames";
 import dynamic from "next/dynamic";
 import { LayoutWrapper } from "@/components";
 import { Inter, Bowlby_One } from "next/font/google";
+import { headers } from "next/headers";
 
-export const metadata: Metadata = {
-  title: "Burneeble website",
-  description: "Burneeble website",
-};
+export async function generateMetadata() {
+  const currentHost = headers().get("host");
+  const protocol = currentHost?.startsWith("localhost") ? "http" : "https";
+
+  if (!currentHost) {
+    throw new Error("Host unavailable");
+  }
+  console.log("HOST", `${protocol}://${currentHost}`);
+
+  const host = `${protocol}://${currentHost}`;
+  const image = `${host}/img/meta/home-page.png`;
+  const icon = `${host}/img/meta/logo.png`;
+
+  const tags = {
+    title: "Burneeble -  We develop digital solutions without limits",
+    description:
+      "We are a group of developers capable of developing any type of app or website. From integrations with blockchain, Web3, Stripe API and Shopify, to customized solutions. We bring your ideas to reality with designs and features designed to offer you a complete and innovative digital experience.",
+    icon,
+    image,
+  };
+
+  return {
+    title: tags.title,
+    description: tags.description,
+    icons: [tags.icon],
+    openGraph: {
+      icon: tags.icon,
+      title: tags.title,
+      description: tags.description,
+      images: [tags.image],
+    },
+    twitter: {
+      icon: tags.icon,
+      card: "summary_large_image",
+      title: tags.title,
+      description: tags.description,
+      images: [tags.image],
+    },
+  };
+}
 
 // eslint-disable-next-line @burneeble/burneeble/camel-case-vars
 const CommonProviders = dynamic(

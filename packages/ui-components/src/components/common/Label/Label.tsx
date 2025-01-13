@@ -6,9 +6,9 @@ import { cn } from "@/lib/utils";
 const Label = (props: LabelProps) => {
   const labelVariants = cva(
     `
-      tw-m-[0.1rem] tw-m-[0.1rem] tw-inline-flex tw-items-center
-      tw-justify-center tw-whitespace-nowrap tw-rounded-[8px] tw-px-[10px]
-      tw-py-[2px] tw-font-bowlby-one
+      tw-m-[0.1rem] tw-inline-flex tw-items-center tw-justify-center
+      tw-whitespace-nowrap tw-rounded-[8px] tw-px-[10px] tw-py-[2px]
+      tw-font-bowlby-one
     `,
     {
       variants: {

@@ -4,6 +4,56 @@ import Section, {
   LayoutType,
 } from "@/components/Pages/ProjectPage/Section";
 import { IProjectModel, ProjectService } from "@/services/ProjectService";
+import { headers } from "next/headers";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { projectName: string };
+}) {
+  const { projectName } = params;
+
+  const res = await ProjectService.instance.getProject(projectName);
+
+  const project: IProjectModel = JSON.parse(JSON.stringify(res));
+
+  const currentHost = headers().get("host");
+  const protocol = currentHost?.startsWith("localhost") ? "http" : "https";
+
+  if (!currentHost) {
+    throw new Error("Host unavailable");
+  }
+
+  const generatedImageUrl = `${protocol}://${currentHost}/api/generate-image?imageUrl=${encodeURIComponent(
+    project.favicon || ""
+  )}&mainColor=${encodeURIComponent(
+    project.mainColor || "#000"
+  )}&projectName=${encodeURIComponent(project.title)}`;
+
+  if (project) {
+    const tags = {
+      title: `Burneeble - Check out ${project.title} Project`,
+      description: `${project.title} - ${project.description}`,
+      image: generatedImageUrl,
+    };
+
+    return {
+      title: tags.title,
+      description: tags.description,
+      openGraph: {
+        title: tags.title,
+        description: tags.description,
+        images: [tags.image],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: tags.title,
+        description: tags.description,
+        images: [tags.image],
+      },
+    };
+  }
+}
 
 const ProjectPage = async ({ params }: { params: { projectName: string } }) => {
   const { projectName } = params;

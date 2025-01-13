@@ -7,7 +7,12 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 const nextConfig = {
   reactStrictMode: false,
   webpack: (config) => {
-    config.resolve.fallback = { window: false };
+    config.module.rules.push({
+      test: /\.node$/,
+      use: "node-loader",
+    });
+
+    config.resolve.fallback = { window: false, fs: false };
 
     return config;
   },
