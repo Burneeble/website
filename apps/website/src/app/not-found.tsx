@@ -29,11 +29,9 @@ export default function NotFound() {
         >
           <h1
             className={`
-              title tw-text-center tw-text-3xl
+              title tw-text-center
 
-              lg:!tw-leading-[6rem] lg:tw-text-start lg:tw-text-6xl
-
-              sm:tw-text-5xl
+              lg:!tw-leading-[6rem] lg:tw-text-start
             `}
           >
             <span className="cs-text-color-primary-gradient">Sorry!</span> This
@@ -41,11 +39,9 @@ export default function NotFound() {
           </h1>
           <p
             className={`
-              text tw-font-[500] tw-text-center tw-text-xl
+              text tw-font-[500] tw-text-center p-default
 
-              lg:tw-leading-[40px] lg:tw-text-3xl lg:tw-text-start
-
-              sm:tw-text-2xl
+              lg:tw-leading-[40px] lg:tw-text-start
             `}
           >
             The page you were looking for couldn’t be found. Go to other
