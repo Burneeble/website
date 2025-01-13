@@ -124,7 +124,7 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
               )}
               key={i}
             >
-              <h3
+              <h2
                 className={`
                   title !tw-leading-[2.8rem]
 
