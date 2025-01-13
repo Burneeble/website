@@ -4,11 +4,11 @@ const ProjectLogo = (props: ProjectLogoProps) => {
   //Methods
 
   const adjustRGBColor = (inputColor: string): string => {
-    const rgbRegex = /^rgb\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})\)$/;
+    const rgbRegex =
+      /^rgba?\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})(?:,\s*(0|1|0?\.\d+))?\)$/;
     const match = inputColor.match(rgbRegex);
-
     if (!match) {
-      throw new Error("Invalid input.");
+      throw new Error("Invalid input." + props.mainColor);
     }
 
     const r = parseInt(match[1], 10);

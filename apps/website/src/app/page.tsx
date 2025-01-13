@@ -30,7 +30,7 @@ export default async function Home() {
     JSON.stringify(
       projectsInfo.map((project) => {
         return {
-          thumbnail: project.thumbnailUrl,
+          thumbnailUrl: project.thumbnailUrl,
           categories: project.categories,
           title: project.title,
           description: project.description,

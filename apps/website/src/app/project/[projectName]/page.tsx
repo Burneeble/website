@@ -27,7 +27,7 @@ export async function generateMetadata({
   const generatedImageUrl = `${protocol}://${currentHost}/api/generate-image?imageUrl=${encodeURIComponent(
     project.favicon || ""
   )}&mainColor=${encodeURIComponent(
-    project.mainColor || "#000"
+    project.mainColor || "rgb(0,0,0)"
   )}&projectName=${encodeURIComponent(project.title)}`;
 
   if (project) {
@@ -67,7 +67,7 @@ const ProjectPage = async ({ params }: { params: { projectName: string } }) => {
       <ProjectLogo
         favicon={project.favicon || ""}
         title={project.title}
-        mainColor={project.mainColor || "#000"}
+        mainColor={project.mainColor || "rgb(0,0,0)"}
       />
       {project.sections && project.sections[0] && (
         <>
