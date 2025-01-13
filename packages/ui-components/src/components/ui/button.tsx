@@ -8,8 +8,8 @@ import { cn } from "@/lib/utils";
 const buttonVariants = cva(
   `
     tw-relative tw-flex tw-cursor-pointer tw-items-center tw-justify-center
-    tw-gap-2 tw-overflow-hidden tw-whitespace-nowrap tw-font-bowlby-one
-    tw-text-lg tw-font-medium tw-transition-all tw-duration-200 tw-ease-in-out
+    tw-gap-2 tw-whitespace-nowrap tw-font-bowlby-one tw-text-lg tw-font-medium
+    tw-transition-all tw-duration-200 tw-ease-in-out
 
     [&_svg]:tw-pointer-events-none [&_svg]:tw-size-5 [&_svg]:tw-shrink-0
 
