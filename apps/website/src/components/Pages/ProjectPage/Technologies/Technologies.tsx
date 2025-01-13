@@ -1,12 +1,17 @@
+"use client";
+
+import { useRef } from "react";
 import { Technology } from "./components";
 import { TechnologiesProps } from "./Technologies.types";
 
 const Technologies = (props: TechnologiesProps) => {
+  //Hooks
+  const wrapper = useRef<HTMLDivElement>(null);
   return (
     <section
       className={`
         technologies-section cs-section-structure
-        tw-bg-[radial-gradient(circle,_#523424_4px,_transparent_4px)]
+        tw-bg-[radial-gradient(circle,_rgba(255,92,1,0.23)_4px,_transparent_4px)]
         tw-bg-center tw-flex tw-items-center tw-justify-center tw-min-h-0
         tw-max-w-full
 
@@ -19,6 +24,7 @@ const Technologies = (props: TechnologiesProps) => {
           tw-gap-[10px]
           tw-bg-[radial-gradient(rgba(255,92,1,0.5)_0%,transparent_80%)]
         `}
+        ref={wrapper}
       >
         <h2 className="tw-text-center">
           <span className={`cs-text-color-primary-gradient`}>Technologies</span>
@@ -31,7 +37,7 @@ const Technologies = (props: TechnologiesProps) => {
           `}
         >
           {props.technologies.map((technology, i) => {
-            return <Technology key={i} {...technology} />;
+            return <Technology wrapperRef={wrapper} key={i} {...technology} />;
           })}
         </div>
       </div>

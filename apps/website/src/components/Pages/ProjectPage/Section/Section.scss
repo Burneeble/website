@@ -1,7 +1,13 @@
+/* stylelint-disable media-feature-range-notation */
 // Section
 
 @import "./components/components";
 
 .section-layout {
-  @apply tw-w-full;
+  max-height: min(100%, 100vh);
+  @apply tw-w-full tw-max-w-[100vw] tw-flex-1;
+}
+
+.layout-structure {
+  @apply cs-gap-between-content tw-flex tw-items-center tw-justify-center;
 }

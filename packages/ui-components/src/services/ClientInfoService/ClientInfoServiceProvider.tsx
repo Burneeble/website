@@ -24,7 +24,7 @@ const ClientInfoServiceProvider = (props: ClientInfoServiceProviderProps) => {
 
   useEffect(() => {
     const handleResize = () => {
-      const currentWidth = window.innerWidth;
+      const currentWidth = document.documentElement.clientWidth;
       if (widthRef.current !== currentWidth) {
         widthRef.current = currentWidth;
         setWidth(currentWidth);
@@ -72,7 +72,7 @@ const ClientInfoServiceProvider = (props: ClientInfoServiceProviderProps) => {
     const sortedScreens = screenWidths.sort((a, b) => a.width - b.width);
 
     for (const screen of sortedScreens) {
-      if (width <= screen.width) {
+      if (width < screen.width) {
         return screen.key as Screen;
       }
     }

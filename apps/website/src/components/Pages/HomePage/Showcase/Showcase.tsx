@@ -41,7 +41,7 @@ const Showcase = (props: ShowcaseProps) => {
     <section
       className={`
         showcase tw-flex tw-h-fit tw-flex-col tw-items-center tw-justify-center
-        tw-gap-2.5 tw-relative
+        cs-gap-between-text tw-relative
       `}
     >
       {screen == "sm" ? (

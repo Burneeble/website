@@ -175,13 +175,10 @@ const Customers = (props: CustomersProps) => {
       </div>
       <p
         className={`
-          sentences tw-py-2 cs-website-horizontal-padding tw-text-end
-          tw-font-inter tw-text-body tw-block tw-w-full tw-text-xl tw-relative
-          tw-max-w-screen-xl
+          sentences p-default tw-py-2 cs-website-horizontal-padding tw-text-end
+          tw-text-body tw-block tw-w-full tw-relative tw-max-w-screen-xl
 
-          md:tw-text-2xl
-
-          xl:tw-text-3xl xl:tw-whitespace-nowrap
+          xl:tw-whitespace-nowrap
         `}
       >
         {sentences.map((phrase, i) => {

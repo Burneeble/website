@@ -1,3 +1,5 @@
 import { SubLayoutProps } from "../../Layout.types";
 
-export interface ImageLayoutProps extends SubLayoutProps {}
+export interface ImageLayoutProps extends SubLayoutProps {
+  mainAxis?: "height" | "width";
+}

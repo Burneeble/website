@@ -75,7 +75,7 @@ const config = {
         200: "rgba(229, 165, 155, 1)",
         300: "rgba(218, 119, 103, 1)",
         400: "rgba(209, 77, 57, 1)",
-        500: "rgba(170, 55, 38, 1)",
+        500: "rgba(205, 34, 8,1)",
         600: "rgba(136, 43, 30, 1)",
         700: "rgba(103, 32, 22, 1)",
         800: "rgba(70, 22, 15, 1)",
@@ -100,7 +100,7 @@ const config = {
       },
       colors: {
         border: "rgba(var(--border))",
-        input: "rgba(var(--input))",
+        input: "var(--primary-base)",
         ring: "rgba(var(--ring))",
         background: "var(--secondary-base)",
         foreground: "var(--primary-base)",
@@ -113,12 +113,12 @@ const config = {
           foreground: "var(--primary-base)",
         },
         destructive: {
-          DEFAULT: "rgba(var(--destructive))",
-          foreground: "rgba(var(--destructive-foreground))",
+          DEFAULT: "var(--error-default)",
+          foreground: "var(--error-dark)",
         },
         muted: {
           DEFAULT: "rgba(var(--muted))",
-          foreground: "rgba(var(--muted-foreground))",
+          foreground: "var(--neutral-default)",
         },
         accent: {
           DEFAULT: "rgba(var(--accent))",
@@ -146,6 +146,7 @@ const config = {
       textColor: {
         headings: "var(--primary-base)",
         body: "var(--neutral-light)",
+        "body-active": "var(--primary-base)",
         action: "var(--primary-default)",
         "action-hover": "var(--primary-lighter)",
         error: "var(--error-default)",
@@ -274,6 +275,17 @@ const config = {
             transform: "scale(1)",
           },
         },
+        float: {
+          "0%": {
+            transform: "translateY(0)",
+          },
+          "50%": {
+            transform: "translateY(-10px)",
+          },
+          "100%": {
+            transform: "translateY(0)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -283,6 +295,7 @@ const config = {
         "cs-pulse": "cs-pulse 0.5s ease-in-out",
         "cs-wrong": "cs-wrong 0.5s ease-in-out",
         "cs-zoom-in": "cs-zoom-in 0.15s ease-in-out forwards",
+        "cs-float": "float 2s ease-in-out infinite",
       },
     },
   },
