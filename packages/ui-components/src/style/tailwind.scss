@@ -26,20 +26,20 @@
 
   p {
     @apply tw-text-body tw-text-lg tw-font-inter md:tw-text-2xl xl:tw-text-3xl;
-  
+  }
+
   .p-default {
     @apply tw-text-xl tw-leading-[30px] tw-font-inter tw-text-body md:tw-text-2xl md:tw-leading-[35px] lg:tw-text-3xl lg:tw-leading-10;
   }
 
-  //text inside cards, or inputs
+  // text inside cards, or inputs
   .p-small {
     @apply tw-text-lg tw-leading-7 tw-font-inter tw-text-body md:tw-text-xl md:tw-leading-8 lg:tw-text-2xl lg:tw-leading-[35px];
   }
 
-  //smaller text for superficial information or small details
+  // smaller text for superficial information or small details
   .p-smaller {
     @apply tw-text-base tw-leading-[25px] tw-font-inter tw-text-body md:tw-text-lg md:tw-leading-7 lg:tw-text-xl lg:tw-leading-[30px];
-
   }
 }
 
@@ -107,7 +107,6 @@
 
   .custom-placeholder-border {
     border: 1px solid var(--neutral-default) !important;
-    // height: 58px;
   }
 
   // full orange gradient
