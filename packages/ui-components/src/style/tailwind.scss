@@ -1,0 +1,142 @@
+/* Tailwind */
+/* stylelint-disable scss/at-rule-no-unknown */
+@import "https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap";
+@tailwind base;
+@tailwind components;
+
+@layer base {
+  // base: set some defaults and base styles to specific HTML elements
+
+  h1 {
+    @apply tw-text-4xl tw-text-headings tw-font-bowlby-one md:tw-text-5xl lg:tw-text-6xl !tw-leading-tight;
+  }
+
+  h2 {
+    @apply tw-text-2xl tw-text-headings tw-font-bowlby-one md:tw-text-4xl lg:tw-text-5xl !tw-leading-tight;
+  }
+
+  h3 {
+    @apply tw-text-xl tw-text-headings tw-font-bowlby-one md:tw-text-3xl lg:tw-text-4xl !tw-leading-tight;
+  }
+
+  h4 {
+    @apply tw-text-xl tw-text-headings tw-font-bowlby-one lg:tw-text-2xl !tw-leading-tight;
+  }
+
+  p {
+    @apply tw-text-body tw-text-lg tw-font-inter md:tw-text-2xl xl:tw-text-3xl;
+  }
+
+  .p-default {
+    @apply tw-text-xl tw-leading-[30px] tw-font-inter tw-text-body md:tw-text-2xl md:tw-leading-[35px] lg:tw-text-3xl lg:tw-leading-10;
+  }
+
+  // text inside cards, or inputs
+  .p-small {
+    @apply tw-text-lg tw-leading-7 tw-font-inter tw-text-body md:tw-text-xl md:tw-leading-8 lg:tw-text-2xl lg:tw-leading-[35px];
+  }
+
+  // smaller text for superficial information or small details
+  .p-smaller {
+    @apply tw-text-base tw-leading-[25px] tw-font-inter tw-text-body md:tw-text-lg md:tw-leading-7 lg:tw-text-xl lg:tw-leading-[30px];
+  }
+}
+
+@layer components {
+  // components: set reutilizable base styles to small components; also good to put custom styles for any third-party components you’re using
+  .cs-card {
+    @apply secondary-gradient tw-bg-gradient-to-tr tw-p-5 tw-rounded-lg tw-gap-2;
+  }
+
+  .cs-section-structure {
+    @apply tw-min-h-screen cs-website-horizontal-padding cs-website-vertical-padding cs-website-max-width;
+  }
+
+  .cs-website-max-width {
+    @apply tw-mx-auto tw-w-screen tw-max-w-screen-xl;
+  }
+
+  .cs-website-horizontal-padding {
+    @apply tw-px-5 md:tw-px-[31px] xl:tw-px-5;
+  }
+
+  .cs-website-vertical-padding {
+    @apply tw-py-[50px];
+  }
+
+  .cs-gap-between-text {
+    @apply tw-gap-[10px];
+  }
+
+  .cs-gap-between-content {
+    @apply tw-gap-7 lg:tw-gap-10;
+  }
+
+  .cs-page {
+    @apply tw-h-full tw-max-w-[100vw] tw-overflow-x-hidden tw-pb-[45px];
+  }
+}
+
+@tailwind utilities;
+
+@layer utilities {
+  // utilities: when there’s a CSS feature you’d like to use in your project that Tailwind doesn’t include utilities for out of the box.
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .cs-text-color-primary-gradient {
+    background: linear-gradient(
+      90deg,
+      var(--primary-default) 0%,
+      var(--primary-lighest) 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .custom-placeholder-border {
+    border: 1px solid var(--neutral-default) !important;
+  }
+
+  // full orange gradient
+  .primary-gradient {
+    @apply tw-from-[var(--primary-default)] tw-to-[var(--primary-lighter)];
+  }
+
+  // orange to darker brown
+  .primary-gradient-to-secondary {
+    @apply tw-from-[var(--primary-default)] tw-to-[var(--secondary-darker)];
+  }
+
+  // light orange to darker brown
+  .primary-light-gradient-to-secondary {
+    @apply tw-from-[var(--primary-light)] tw-to-[var(--secondary-darker)];
+  }
+
+  // black to darker brown
+  .secondary-gradient {
+    @apply tw-from-[var(--secondary-base)] tw-to-[var(--secondary-darker)];
+  }
+
+  // black to custom brown
+  .secondary-gradient-to-custom {
+    @apply tw-from-[var(--secondary-base)] tw-to-[#322923];
+  }
+
+  // full brown gradient
+  .tertiary-gradient {
+    @apply tw-from-[var(--secondary-default)] tw-to-[var(--secondary-lightest)];
+  }
+}
+}

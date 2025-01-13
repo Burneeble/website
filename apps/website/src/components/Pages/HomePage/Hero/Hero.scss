@@ -1,0 +1,9 @@
+// Hero
+
+.hero {
+  h1 {
+    .gradient-text {
+      @apply cs-text-color-primary-gradient;
+    }
+  }
+}

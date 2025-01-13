@@ -1,0 +1,25 @@
+// Tailwind
+@import "./tailwind";
+
+// Shadcn
+@import "./shadcn";
+
+// Swiper
+@import "../../../../node_modules/swiper/swiper.css";
+@import "../../../../node_modules/swiper/modules/pagination.css";
+@import "../../../../node_modules/swiper/modules/navigation.css";
+
+// Importing fonts
+@import "./fonts";
+
+// Importing shared styles
+@import "./shared";
+
+// Importing theme
+@import "./theme";
+
+// Importing components
+@import "../components/components";
+
+// Importing style for storybook
+@import "./storybook";

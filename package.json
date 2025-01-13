@@ -2,15 +2,23 @@
   "name": "root",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "apps/*"
   ],
   "scripts": {
-    "dev-server": "lerna run dev-server",
-    "dev": "lerna run dev",
-    "watch": "lerna run watch",
-    "build": "lerna run build"
+    "build": "lerna run build",
+    "build-libs": "lerna run build --scope @burneeble/* --ignore @burneeble/website",
+    "lint": "lerna run lint",
+    "nx": "nx",
+    "clean-modules": "rm -rf node_modules && lerna exec -- rm -rf ./node_modules",
+    "lh": "lerna run lighthouse-headless",
+    "reports": "node scripts/genReports.js"
   },
   "devDependencies": {
-    "lerna": "^6.6.1"
+    "lerna": "^8.0.1",
+    "puppeteer-core": "^22.6.1"
+  },
+  "dependencies": {
+    "next": "14.2.13"
   }
 }

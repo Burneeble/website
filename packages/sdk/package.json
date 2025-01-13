@@ -1,0 +1,44 @@
+{
+  "name": "@burneeble/sdk",
+  "version": "1.0.0",
+  "description": "Burneeble Next.js SDK package.",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "types": "./lib/esm/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "set-dev": "./scripts/set-dev-env.sh",
+    "pub": "yarn build && lerna publish",
+    "lint": "eslint '**/*.{js,ts,tsx}'"
+  },
+  "dependencies": {
+    "axios": "^1.6.5",
+    "core-js": "^3.24.1",
+    "typescript-json-serializer": "^5.1.0",
+    "websocket": "^1.0.34"
+  },
+  "devDependencies": {
+    "@burneeble/eslint-plugin-burneeble": "^1.0.13",
+    "@burneeble/stylelint-plugin-burneeble": "^1.0.5",
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.11.1",
+    "@types/react": "18.3.8",
+    "@types/react-dom": "18.3.0",
+    "@types/websocket": "^1.0.5",
+    "@typescript-eslint/eslint-plugin": "8.7.0",
+    "@typescript-eslint/parser": "8.7.0",
+    "eslint": "9.11.1",
+    "eslint-plugin-react": "7.36.1",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "typescript": "5.5.4"
+  },
+  "peerDependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "files": [
+    "/lib"
+  ]
+}

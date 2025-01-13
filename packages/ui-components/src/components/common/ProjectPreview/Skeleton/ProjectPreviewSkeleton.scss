@@ -1,0 +1,13 @@
+// ProjectPreviewSkeleton
+
+.project-preview-skeleton {
+  span[aria-live="polite"][aria-busy="true"] {
+    height: auto;
+    width: auto;
+    display: flex;
+
+    br {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+// MobileSearchResult
+
+.mobile-search-result {
+  .name {
+    .highlight {
+      @apply tw-bg-gradient-to-r primary-gradient tw-rounded-sm;
+    }
+  }
+}

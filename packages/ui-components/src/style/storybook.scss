@@ -1,0 +1,9 @@
+// Custom style for storybook preview
+
+.storybook-body {
+  font-family: var(--text-font);
+
+  * {
+    font-family: var(--text-font);
+  }
+}

@@ -1,3 +1,8 @@
-node_modules
-public/build
-packages/boilerplate/node_modules
+.DS_Store
+node_modules/
+*.log
+extra-service-info.json
+coverage
+packages/sdk/lib
+*.pdf
+reports
