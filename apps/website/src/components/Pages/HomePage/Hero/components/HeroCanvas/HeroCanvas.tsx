@@ -34,7 +34,6 @@ const HeroCanvas = () => {
         />
  </Float>
       </Suspense> 
-      {/* <RandomPositionModel geometry={torusGeometry} material={material} /> */}
     </>
   );
 };
