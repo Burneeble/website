@@ -12,7 +12,7 @@ const BlogHero = () => {
     <section
       className={`
         blog-hero cs-section-structure tw-flex tw-flex-col tw-justify-center
-        tw-items-center cs-gap-between-content tw-relative
+        tw-items-center cs-gap-between-content tw-relative tw-z-[2]
       `}
     >
       <div

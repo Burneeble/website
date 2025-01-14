@@ -1,3 +1,4 @@
+import { RoundedWrapper } from "@/components";
 import { BlogHero } from "@/components/Pages";
 import { headers } from "next/headers";
 
@@ -35,10 +36,19 @@ export async function generateMetadata() {
   };
 }
 
-const BlogPage = () => {
+const BlogPage = async () => {
   return (
-    <div className="blog-page cs-page">
+    <div
+      className={`
+        blog-page cs-page tw-from-[var(--secondary-darker)]
+        tw-to-[var(--secondary-base)] tw-from-[50%] tw-to-[50%]
+        tw-bg-gradient-to-t
+      `}
+    >
       <BlogHero />
+      <RoundedWrapper>
+        <div>adasfad</div>
+      </RoundedWrapper>
     </div>
   );
 };

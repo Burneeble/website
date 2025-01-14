@@ -15,6 +15,7 @@ import {
   NotificationHandler,
   ProjectPreview,
   ProjectPreviewSkeleton,
+  RoundedWrapper,
   useClientInfoService,
   usePopup,
   useScrollLock,
@@ -171,31 +172,8 @@ const Projects = (props: ProjectsProps) => {
           popupLogic={searchPopupLogic}
         />
       )}
-      <section
-        className={`
-          projects-section tw-relative tw-top-[-35px] tw-rounded-t-[30px]
-          tw-bg-gradient-to-b tw-from-[var(--secondary-base)]
-          tw-to-[var(--secondary-darker)] tw-overflow-hidden tw-border-t-2
-          tw-border-[var(--primary-light)]
-        `}
-      >
-        <div
-          className={`
-            shape tw-absolute tw-top-0 tw-left-0 -tw-translate-x-[50%]
-            -tw-translate-y-[50%] tw-w-[200vw] tw-h-[200vw]
-            tw-bg-[radial-gradient(circle,var(--primary-light)_0%,_rgba(0,0,0,0)_70%)]
-            tw-opacity-[.7] tw-blur-[100px] tw-max-w-[min(170%,1000px)]
-            tw-max-h-[min(170%,1000px)]
-          `}
-        />
-        <div
-          className={`
-            content cs-section-structure tw-relative tw-z-[2] tw-flex
-            tw-flex-col tw-gap-[20px] tw-min-h-0
-
-            md:tw-gap-[30px]
-          `}
-        >
+      <section className={`projects-section`}>
+        <RoundedWrapper>
           <div
             className={`
               header tw-h-[58px] tw-justify-between tw-items-center
@@ -384,7 +362,7 @@ const Projects = (props: ProjectsProps) => {
               See More
             </Button>
           </div>
-        </div>
+        </RoundedWrapper>
       </section>
     </>
   );
