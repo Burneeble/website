@@ -24,13 +24,13 @@ const HeroCanvas = () => {
          <Clone
           object={model.scene}
           scale={1}
-          rotation={[0, -0.15* Math.PI, 0]}          position={width && width < 992 ? [0, -2, 0] : [0.5, 1, 0]}
+          rotation={[0, -0.15* Math.PI, 0]}          position={width && width < 992 ? [0, -1, 0] : [0.5, 1, 0]}
         />
         <Clone
           object={model.scene}
           scale={0.6}
           rotation={[0, 0.15* Math.PI, 0]} 
-          position={width && width < 992 ? [1.8, -0.5, 0] : [-0.25, -.8, 0]}
+          position={width && width < 992 ? [1.8, 0.5, 0] : [-0.25, -.8, 0]}
         />
  </Float>
       </Suspense> 
