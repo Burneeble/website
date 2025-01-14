@@ -26,7 +26,7 @@ const BlogHero = () => {
       />
       <FontAwesomeIcon
         icon={faFire}
-        className={`fontawesome-gradient-icon tw-text-[47px]`}
+        className={`fontawesome-gradient-icon tw-text-[47px] tw-max-w-[47px]`}
       />
       <div
         className={`
