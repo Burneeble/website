@@ -24,6 +24,7 @@ import { GetProjectsQueryQuery } from "@/__generated__/graphql";
 import { cn } from "@/lib/utils";
 import { FilterPopup, SearchPopup } from "./components";
 import RoundedWrapper from "@/components/RoundedWrapper";
+import Grid from "@/components/Grid";
 
 const Projects = (props: ProjectsProps) => {
   //States
@@ -295,16 +296,7 @@ const Projects = (props: ProjectsProps) => {
               })}
             </div>
           )}
-          <div
-            className={`
-              projects tw-flex tw-flex-col tw-gap-[20px] tw-transition-all
-              tw-duration-200 tw-ease-in-out
-
-              lg:tw-grid lg:tw-grid-cols-3
-
-              md:tw-gap-[30px]
-            `}
-          >
+          <Grid>
             {projects &&
               projects.map((project, i) => {
                 return (
@@ -323,7 +315,7 @@ const Projects = (props: ProjectsProps) => {
               Array.from({ length: batchSize }).map((_, i) => {
                 return <ProjectPreviewSkeleton key={i} />;
               })}
-          </div>
+          </Grid>
           {projects && projects.length <= 0 && !isLoading && (
             <NotFound
               title={"No Project Found"}
