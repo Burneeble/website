@@ -55,7 +55,7 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
         className={cn(
           `
             image-wrapper tw-relative tw-aspect-[1920/1080] tw-w-full
-            tw-cursor-pointer tw-overflow-hidden tw-rounded-lg tw-border-[1px]
+            tw-cursor-pointer tw-overflow-hidden tw-rounded-t-lg tw-border-[1px]
             tw-border-solid tw-transition-all tw-duration-200 tw-ease-in-out
           `,
           variant === "default" &&

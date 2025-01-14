@@ -1,3 +1,5 @@
 import { PropsWithChildren } from "react";
 
-export interface RoundedWrapperProps extends PropsWithChildren {}
+export interface RoundedWrapperProps extends PropsWithChildren {
+  className?: string;
+}

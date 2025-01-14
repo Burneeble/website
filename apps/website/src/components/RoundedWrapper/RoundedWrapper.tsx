@@ -2,6 +2,7 @@
 
 import React from "react";
 import { RoundedWrapperProps } from "./RoundedWrapper.types";
+import { cn } from "@/lib/utils";
 
 const RoundedWrapper = (props: RoundedWrapperProps) => {
   return (
@@ -23,12 +24,15 @@ const RoundedWrapper = (props: RoundedWrapperProps) => {
         `}
       />
       <div
-        className={`
-          content cs-section-structure tw-relative tw-z-[2] tw-flex tw-min-h-0
-          tw-flex-col tw-gap-[20px]
+        className={cn(
+          `
+            content cs-section-structure tw-relative tw-z-[2] tw-flex tw-min-h-0
+            tw-flex-col tw-gap-[20px] tw-py-0
 
-          md:tw-gap-[30px]
-        `}
+            md:tw-gap-[30px]
+          `,
+          props.className
+        )}
       >
         {props.children}
       </div>

@@ -56,6 +56,7 @@ const ArticleBatch = (props: ArticleBatchProps) => {
                 ? articles.map((article, i) => {
                     return (
                       <ArticlePreview
+                        variant={props.variant}
                         key={i}
                         thumbnail={article.thumbnail}
                         title={article.title}
@@ -88,6 +89,7 @@ const ArticleBatch = (props: ArticleBatchProps) => {
             ? articles.map((article, i) => {
                 return (
                   <ArticlePreview
+                    variant={props.variant}
                     key={i}
                     thumbnail={article.thumbnail}
                     title={article.title}

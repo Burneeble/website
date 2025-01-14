@@ -15,7 +15,6 @@ import {
   NotificationHandler,
   ProjectPreview,
   ProjectPreviewSkeleton,
-  RoundedWrapper,
   useClientInfoService,
   usePopup,
   useScrollLock,
@@ -24,6 +23,7 @@ import { useQuery } from "@apollo/client";
 import { GetProjectsQueryQuery } from "@/__generated__/graphql";
 import { cn } from "@/lib/utils";
 import { FilterPopup, SearchPopup } from "./components";
+import RoundedWrapper from "@/components/RoundedWrapper";
 
 const Projects = (props: ProjectsProps) => {
   //States
@@ -173,7 +173,7 @@ const Projects = (props: ProjectsProps) => {
         />
       )}
       <section className={`projects-section`}>
-        <RoundedWrapper>
+        <RoundedWrapper className="tw-py-[50px]">
           <div
             className={`
               header tw-h-[58px] tw-justify-between tw-items-center
