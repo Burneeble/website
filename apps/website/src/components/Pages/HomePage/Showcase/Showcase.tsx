@@ -1,174 +1,47 @@
 "use client";
 
-import { Carousel, useClientInfoService } from "@burneeble/ui-components";
+import {
+  Bars,
+  Carousel,
+  CTA,
+  useClientInfoService,
+} from "@burneeble/ui-components";
 import { ShowcaseProps } from "./Showcase.types";
-import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
+import { cn } from "@/lib/utils";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useRef, useState } from "react";
 
 const Showcase = (props: ShowcaseProps) => {
   //States
-  const [topBarsElements] = useState<JSX.Element>(
-    <>
-      {Array.from({ length: 3 }).map((_, i) => {
-        const offset = Math.round(Math.random() * 100);
-
-        return (
-          <div
-            key={i}
-            className={cn(
-              `
-                top-bar tw-right-full tw-absolute
-
-                md:tw-h-[5px] md:tw-w-[467px]
-
-                xl:tw-h-[.5rem] xl:tw-w-[736px]
-              `,
-              offset > 40
-                ? "tw-bg-[var(--primary-lighter)] tw-opacity-[.27]"
-                : `tw-bg-[var(--primary-lighest)]`
-            )}
-            ref={(el) => {
-              if (el && !topBars.current.includes(el)) topBars.current.push(el);
-            }}
-          />
-        );
-      })}
-    </>
-  );
-  const [bottomBarsElements] = useState<JSX.Element>(
-    <>
-      {Array.from({ length: 3 }).map((_, i) => {
-        const offset = Math.round(Math.random() * 100);
-
-        return (
-          <div
-            key={i}
-            className={cn(
-              `
-                bottom-bar tw-right-full tw-absolute
-
-                md:tw-h-[5px] md:tw-w-[467px]
-
-                xl:tw-h-[.5rem] xl:tw-w-[736px]
-              `,
-              offset % 2 === 0
-                ? "tw-bg-[var(--primary-lighter)] tw-opacity-[.27]"
-                : `tw-bg-[var(--primary-lighest)]`
-            )}
-            ref={(el) => {
-              if (el && !bottomBars.current.includes(el))
-                bottomBars.current.push(el);
-            }}
-          />
-        );
-      })}
-    </>
-  );
+  const [showHover, setShowHover] = useState<boolean>(false);
 
   //Hooks
-  const { screen, width, isClient } = useClientInfoService();
-  const topBars = useRef<Array<HTMLDivElement>>([]);
-  const bottomBars = useRef<Array<HTMLDivElement>>([]);
+  const { screen } = useClientInfoService();
   const router = useRouter();
+  const hoverLayer = useRef<HTMLDivElement>(null);
 
-  //Effetcs
+  //Effects
   useEffect(() => {
-    if (!width || !isClient || !topBars.current) return;
-
-    let offset: number;
-
-    switch (screen) {
-      case "sm":
-        offset = 335;
-        break;
-      case "md":
-      case "lg":
-        offset = 470;
-        break;
-      default:
-        offset = 740;
-        break;
-    }
-
-    const timeline = ["sm", "md", "lg"].includes(screen)
-      ? gsap.context(() => {
-          topBars.current.forEach((bar) => {
-            const randomY = Math.random() * 100;
-
-            gsap.set(bar, { y: randomY });
-
-            gsap.to(bar, {
-              x: `+=${width + offset}`,
-              duration: 3 + Math.random() * 3,
-              ease: "in",
-              repeat: -1,
-              delay: Math.random() * 4,
-              modifiers: {
-                x: (x) => `${parseFloat(x) % (width + offset)}px`,
-              },
-            });
-          });
-        })
-      : null;
-
-    return () => {
-      timeline?.revert();
+    const handleClickOutside = (event: any) => {
+      if (hoverLayer.current && !hoverLayer.current.contains(event.target)) {
+        setShowHover(false);
+      }
     };
-  }, [width, isClient, screen, topBars]);
 
-  useEffect(() => {
-    if (!width || !isClient) return;
-
-    let offset: number;
-
-    switch (screen) {
-      case "sm":
-        offset = 335;
-        break;
-      case "md":
-      case "lg":
-        offset = 470;
-        break;
-      default:
-        offset = 740;
-        break;
-    }
-
-    const timeline = gsap.context(() => {
-      bottomBars.current.forEach((bar) => {
-        const randomY = Math.random() * 100;
-
-        gsap.set(bar, { y: randomY });
-
-        gsap.to(bar, {
-          x: `+=${width + offset}`,
-          duration: 3 + Math.random() * 3,
-          ease: "in",
-          repeat: -1,
-          delay: Math.random() * 4,
-          modifiers: {
-            x: (x) => `${parseFloat(x) % (width + offset)}px`,
-          },
-        });
-      });
-    });
-
+    if (screen === "sm" || screen === "md")
+      document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      timeline.revert();
+      document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [width, isClient, screen]);
-
-  useEffect(() => {
-    topBars.current = [];
-  });
+  }, [hoverLayer, screen]);
 
   return (
     <section
       className={`
         showcase tw-flex tw-h-fit tw-flex-col tw-items-center tw-justify-center
-        tw-gap-2.5 tw-relative
+        cs-gap-between-text tw-relative
       `}
     >
       {screen == "sm" ? (
@@ -204,11 +77,7 @@ const Showcase = (props: ShowcaseProps) => {
         </>
       )}
 
-      {["sm", "md", "lg"].includes(screen) && (
-        <div className="top-bars tw-w-screen tw-h-[100px] tw-relative">
-          {topBarsElements}
-        </div>
-      )}
+      {["sm", "md", "lg"].includes(screen) && <Bars />}
       <div className={`title-wrapper tw-text-center`}>
         <h2 className={`title`}>
           Check out{" "}
@@ -222,9 +91,130 @@ const Showcase = (props: ShowcaseProps) => {
           .
         </h2>{" "}
       </div>
-      <div className={`carousel-wrapper tw-w-full tw-max-w-full`}>
+      <div
+        className={`
+          carousel-wrapper tw-w-full tw-max-w-[1200px] tw-px-[1.25rem]
+
+          md:tw-px-0
+        `}
+      >
         <Carousel
-          projects={props.projects}
+          infinite
+          raiseInactiveSlides
+          labels={props.projects.map((proj) => {
+            return proj.categories.length <= 3
+              ? proj.categories
+              : proj.categories.slice(0, 3);
+          })}
+          items={props.projects.map((proj, i) => {
+            return (
+              <div
+                key={i}
+                className={`
+                  carousel-image-wrapper tw-relative tw-flex
+                  tw-aspect-[1920/1080] tw-w-full tw-items-center
+                  tw-justify-center tw-border-4 tw-border-solid
+                  tw-border-primary tw-bg-black
+                `}
+              >
+                <div
+                  className={cn(
+                    `
+                      hover-layer tw-absolute tw-left-0 tw-top-0 tw-h-full
+                      tw-w-full tw-bg-black/60 tw-opacity-0 tw-backdrop-blur-sm
+                      tw-transition-all tw-duration-500 tw-ease-in-out
+
+                      hover:tw-opacity-100
+                    `,
+                    (screen === "sm" || screen === "md") &&
+                      showHover &&
+                      "tw-opacity-100"
+                  )}
+                  onClick={() => {
+                    if (screen === "sm" || screen === "md") {
+                      setShowHover(true);
+                    }
+                  }}
+                  ref={hoverLayer}
+                >
+                  <div
+                    className={cn(
+                      `
+                        content tw-mx-auto tw-flex tw-h-full tw-w-full
+                        tw-flex-col tw-items-center tw-justify-center
+                        tw-gap-[10px]
+
+                        md:tw-gap-[20px]
+                      `,
+                      screen === "sm" || screen === "md"
+                        ? "tw-max-w-[95%]"
+                        : "tw-max-w-[80%]"
+                    )}
+                  >
+                    <h2
+                      className={`
+                        project-title tw-flex tw-items-center tw-gap-[10px]
+                        tw-text-center tw-font-bowlby-one tw-text-2xl
+                        tw-font-normal tw-text-headings
+
+                        lg:tw-text-5xl
+
+                        md:tw-text-4xl
+                      `}
+                    >
+                      {proj.title}
+                      <FontAwesomeIcon
+                        onClick={() => {
+                          window.open(proj.projectUrl, "_blank");
+                        }}
+                        icon={faArrowUpRightFromSquare}
+                        className={`
+                          tw-cursor-pointer tw-text-xl tw-text-primary
+                          tw-transition-all tw-duration-200 tw-ease-in-out
+
+                          hover:tw-brightness-125 hover:tw-filter
+
+                          lg:tw-text-4xl
+
+                          md:tw-text-3xl
+                        `}
+                      />
+                    </h2>
+                    <p
+                      className={`
+                        desc tw- tw-text-center tw-font-inter tw-text-md
+                        tw-font-normal tw-text-body
+
+                        lg:tw-text-2xl
+
+                        md:tw-text-lg md:tw-leading-[35px]
+                      `}
+                    >
+                      {proj.description}
+                    </p>
+                    <CTA
+                      projectUrl={`/project/${proj.title
+                        .toLowerCase()
+                        .replace(/[^a-zA-Z0-9\s]/g, "")
+                        .replaceAll(" ", "-")}`}
+                      text={"View Details"}
+                      size={
+                        screen === "sm" || screen === "md" ? "sm" : "default"
+                      }
+                    />
+                  </div>
+                </div>
+                <img
+                  src={proj.thumbnailUrl}
+                  alt={""}
+                  width={1920}
+                  height={1080}
+                  className="carousel-image tw-h-full tw-w-auto"
+                  loading="lazy"
+                />
+              </div>
+            );
+          })}
           cta={{
             children: "See All Projects",
             variant: "secondary",
@@ -235,15 +225,7 @@ const Showcase = (props: ShowcaseProps) => {
           }}
         />
       </div>
-      <div
-        className={`
-          bottom-bars tw-w-screen tw-h-[100px]
-
-          first-letter:tw-relative
-        `}
-      >
-        {bottomBarsElements}
-      </div>
+      <Bars />
     </section>
   );
 };

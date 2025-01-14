@@ -9,6 +9,7 @@ const ReviewServiceProvider = (props: ReviewServiceProviderProps) => {
   const getReviews = async () => {
     return await ReviewService.instance.getReviews();
   };
+
   return (
     <reviewServiceContext.Provider value={{ getReviews }}>
       {props.children}

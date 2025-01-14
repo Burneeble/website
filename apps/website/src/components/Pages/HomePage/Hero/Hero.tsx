@@ -64,7 +64,7 @@ const Hero = (props: HeroProps) => {
             lg:tw-w-[910px]
           `}
         >
-          <h1 className={`title`}>
+          <h1 className={`title tw-z-[2]`}>
             Build and grow your project with{" "}
             <span className="gradient-text">BURNEEBLE</span>.<br />
             <span className="gradient-text">No limits</span>, in every platform
@@ -72,7 +72,7 @@ const Hero = (props: HeroProps) => {
           </h1>
           <div
             className={`
-              labels tw-relative tw-flex tw-flex-wrap tw-gap-[13px]
+              labels tw-relative tw-flex tw-flex-wrap tw-gap-[13px] tw-z-[2]
 
               md:tw-gap-5
             `}
@@ -128,7 +128,7 @@ const Hero = (props: HeroProps) => {
             <HeroCanvas />
           </Canvas>
         </Suspense>
-      )} 
+      )}
     </>
   );
 };

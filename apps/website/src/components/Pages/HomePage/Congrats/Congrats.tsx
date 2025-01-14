@@ -94,41 +94,50 @@ const Congrats = (props: CongratsProps) => {
     <section
       className={`
         congrats cs-section-structure tw-h-[314px] !tw-min-h-[unset] tw-flex-col
-        tw-justify-center tw-items-center tw-gap-[10px] tw-flex tw-relative
-        tw-z-10
+        tw-justify-center tw-items-center tw-flex tw-relative tw-z-10
+        cs-gap-between-content
 
-        lg:tw-h-[302px] lg:tw-gap-[10px]
+        lg:tw-h-[302px]
 
-        md:tw-h-[624px] md:tw-gap-5
+        md:tw-h-[624px]
       `}
       ref={congrats}
     >
       <div
         className={`
-          title tw-text-center tw-font-bowlby-one tw-text-2xl
-
-          lg:tw-text-5xl lg:tw-leading-[60px]
-
-          md:tw-flex md:tw-text-4xl md:tw-gap-[15px]
+          wrapper tw-flex tw-items-center tw-justify-center tw-flex-col
+          cs-gap-between-text
         `}
       >
-        <p className="cs-text-color-primary-gradient">Congrats,</p>
-        <p className="tw-text-headings">you reached the end.</p>
+        <h2
+          className={`
+            title tw-text-center tw-text-2xl
+
+            lg:tw-text-5xl lg:tw-leading-[60px]
+
+            md:tw-flex md:tw-text-4xl md:tw-gap-[15px]
+          `}
+        >
+          <span className="cs-text-color-primary-gradient tw-font-bowlby-one">
+            Congrats,
+          </span>
+          <span className="tw-text-headings tw-font-bowlby-one">
+            you reached the end.
+          </span>
+        </h2>
+        <p
+          className={`
+            text p-default tw-self-stretch tw-text-center tw-text-body
+            tw-font-normal
+
+            md:tw-mb-[10px]
+          `}
+        >
+          {["sm", "md"].includes(screen)
+            ? "So...What are you going to do? We are available to work with you ;)"
+            : "We want to gave you a gift, just for you who came this far."}
+        </p>
       </div>
-      <p
-        className={`
-          text tw-self-stretch tw-text-center tw-text-body tw-text-xl
-          tw-font-normal tw-font-inter tw-leading-[30px]
-
-          lg:tw-text-3xl
-
-          md:tw-text-2xl md:tw-mb-[10px]
-        `}
-      >
-        {["sm", "md"].includes(screen)
-          ? "So...What are you going to do? We are available to work with you ;)"
-          : "We want to gave you a gift, just for you who came this far."}
-      </p>
       {["sm", "md"].includes(screen) ? (
         <Button size="lg">Start Building</Button>
       ) : (

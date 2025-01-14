@@ -275,6 +275,17 @@ const config = {
             transform: "scale(1)",
           },
         },
+        float: {
+          "0%": {
+            transform: "translateY(0)",
+          },
+          "50%": {
+            transform: "translateY(-10px)",
+          },
+          "100%": {
+            transform: "translateY(0)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -284,6 +295,7 @@ const config = {
         "cs-pulse": "cs-pulse 0.5s ease-in-out",
         "cs-wrong": "cs-wrong 0.5s ease-in-out",
         "cs-zoom-in": "cs-zoom-in 0.15s ease-in-out forwards",
+        "cs-float": "float 2s ease-in-out infinite",
       },
     },
   },

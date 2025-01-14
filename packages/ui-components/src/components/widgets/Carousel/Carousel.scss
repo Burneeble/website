@@ -1,7 +1,9 @@
 .carousel-wrapper {
   .carousel {
     .corousel-slide {
-      @apply tw-transform tw-translate-y-[-66.4px];
+      &.raise-inactive-slides {
+        @apply tw-transform tw-translate-y-[-66.4px];
+      }
 
       .labels {
         @apply tw-opacity-0;
