@@ -1,5 +1,11 @@
 import { RoundedWrapper } from "@/components";
-import { BlogHero, Discover, Latest, StayTuned } from "@/components/Pages";
+import {
+  BlogHero,
+  Discover,
+  Latest,
+  StayTuned,
+  Youtube,
+} from "@/components/Pages";
 import { headers } from "next/headers";
 
 export async function generateMetadata() {
@@ -50,6 +56,7 @@ const BlogPage = async () => {
         <Latest />
         <StayTuned />
         <Discover />
+        <Youtube />
       </RoundedWrapper>
     </div>
   );
