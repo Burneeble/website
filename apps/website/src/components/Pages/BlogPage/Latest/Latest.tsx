@@ -6,7 +6,7 @@ const Latest = (props: LatestProps) => {
     <section
       className={`
         latest cs-website-vertical-padding tw-flex tw-flex-col
-        cs-gap-between-content tw-items-center tw-justify-center
+        cs-gap-between-content tw-items-center tw-justify-center tw-min-h-screen
       `}
     >
       <h2 className="title tw-text-center">
