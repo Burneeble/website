@@ -1,11 +1,11 @@
 "use client";
 
 import { Suspense, useEffect } from "react";
-import { OrbitControls, Center, useGLTF, Clone } from "@react-three/drei";
+import { OrbitControls, Center, useGLTF, Clone, Float } from "@react-three/drei";
 import { useClientInfoService } from "@burneeble/ui-components";
 
 const HeroCanvas = () => {
-  const model = useGLTF("/models/thinking_emoji/scene.gltf");
+  const model = useGLTF("/models/react-svg/react-icon.gltf");
   const { width } = useClientInfoService();
   useEffect(() => {
     console.log("model", model);
@@ -16,18 +16,24 @@ const HeroCanvas = () => {
       <ambientLight intensity={2} />
       <directionalLight castShadow position={[1, 2, 3]} intensity={2.5} />
 
-      <Suspense>
-        <Clone
+
+
+
+         <Suspense>
+ <Float>
+         <Clone
           object={model.scene}
           scale={1}
-          position={width && width < 992 ? [0, -2, 0] : [1, 1, 0]}
+          rotation={[0, -0.15* Math.PI, 0]}          position={width && width < 992 ? [0, -2, 0] : [0.5, 1, 0]}
         />
         <Clone
           object={model.scene}
-          scale={0.8}
-          position={width && width < 992 ? [1.8, -0.5, 0] : [-0.5, -1, 0]}
+          scale={0.6}
+          rotation={[0, 0.15* Math.PI, 0]} 
+          position={width && width < 992 ? [1.8, -0.5, 0] : [-0.25, -.8, 0]}
         />
-      </Suspense>
+ </Float>
+      </Suspense> 
       {/* <RandomPositionModel geometry={torusGeometry} material={material} /> */}
     </>
   );

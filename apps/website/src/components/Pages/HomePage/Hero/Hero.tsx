@@ -120,7 +120,7 @@ const Hero = (props: HeroProps) => {
               height: "100vh",
               width: "50%",
               position: "absolute",
-              zIndex: "-1",
+              zIndex: "1",
               right: "0",
               top: "0",
             }}
@@ -128,7 +128,7 @@ const Hero = (props: HeroProps) => {
             <HeroCanvas />
           </Canvas>
         </Suspense>
-      )}
+      )} 
     </>
   );
 };
