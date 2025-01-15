@@ -3,9 +3,36 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { YoutubeProps } from "./Youtube.types";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
-import { Button, YoutubePreview } from "@burneeble/ui-components";
+import {
+  Button,
+  useClientInfoService,
+  YoutubePreview,
+} from "@burneeble/ui-components";
+import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
 
 const Youtube = (props: YoutubeProps) => {
+  //States
+  const [videoIndex, setVideoIndex] = useState(0);
+
+  //Hooks
+  const { screen } = useClientInfoService();
+
+  //Effects
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (["sm", "md"].includes(screen)) {
+      let videoIndex = 0;
+      interval = setInterval(() => {
+        if (videoIndex == 2) videoIndex = 0;
+        else videoIndex++;
+        setVideoIndex(videoIndex);
+      }, 3000);
+    }
+
+    return () => clearInterval(interval);
+  }, [screen]);
+
   return (
     <section
       className={`
@@ -54,22 +81,49 @@ const Youtube = (props: YoutubeProps) => {
           🔥
         </p>
       </div>
-      <div className="videos tw-flex tw-gap-[21px]">
+      <div
+        className={`
+          videos tw-flex tw-gap-[21px] tw-relative tw-aspect-[335/270] tw-w-full
+
+          md:tw-aspect-auto
+
+          sm:tw-aspect-[560/400]
+        `}
+      >
         {[1, 2, 3].map((_, i) => {
           return (
-            <YoutubePreview
+            <div
               key={i}
-              thumbnail={"https://picsum.photos/1920/1080"}
-              title={"How to Install OpenDevin in 5 Steps: Updated May Version"}
-              url={"https://google.com"}
-            />
+              className={cn(
+                "video-wrapper",
+                ["sm", "md"].includes(screen) &&
+                  `
+                    tw-absolute tw-top-1/2 tw-left-1/2 -tw-translate-x-1/2
+                    -tw-translate-y-1/2 tw-transition-all tw-duration-500
+                    tw-ease-in-out tw-w-full
+
+                    ${
+                      i === videoIndex
+                        ? `tw-opacity-100 tw-pointer-events-auto`
+                        : `tw-opacity-0 tw-pointer-events-none`
+                    }
+                  `
+              )}
+            >
+              <YoutubePreview
+                thumbnail={`https://picsum.photos/192${i}/108${i}`}
+                title={`How to Install OpenDevin in ${i} Steps: Updated May Version`}
+                url={"https://google.com"}
+              />
+            </div>
           );
         })}
       </div>
       <Button
         variant="youtube"
-        size="lg"
+        size={["sm", "md"].includes(screen) ? "default" : "lg"}
         className="lg:tw-w-[380px]"
+        fit={screen === "sm" ? "full" : "inline"}
         onClick={() => {
           window.open("https://www.youtube.com/@Burneeble");
         }}
