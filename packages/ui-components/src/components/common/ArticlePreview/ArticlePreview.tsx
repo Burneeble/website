@@ -1,11 +1,13 @@
+"use client";
+
 import React from "react";
 import {
   ArticlePreviewProps,
   articlePreviewVariants,
 } from "./ArticlePreview.types";
-import { useRouter } from "next/navigation";
 import Label from "../Label";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 const ArticlePreview = (props: ArticlePreviewProps) => {
   //States
@@ -79,7 +81,7 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
 
             group-hover:tw-opacity-[10%]
           `}
-        ></div>
+        />
         <img
           className={`
             tw-aspect-[1920/1080] tw-w-full tw-self-stretch tw-transition-all
@@ -96,11 +98,11 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
       >
         <Label
           text={props.category}
+          size={"sm"}
+          variant={variant === "dark" ? "active" : undefined}
           onClick={() => {
             router.push(`/blog/category/${props.categorySlug}`);
           }}
-          size={"sm"}
-          variant={variant === "dark" ? "active" : undefined}
         />
         <div
           className={cn(

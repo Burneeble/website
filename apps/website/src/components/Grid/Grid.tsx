@@ -1,3 +1,5 @@
+"use client";
+
 import { GridProps } from "./Grid.types";
 
 const Grid = (props: GridProps) => {
