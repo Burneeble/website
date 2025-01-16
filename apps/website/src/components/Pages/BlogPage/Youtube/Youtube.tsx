@@ -1,12 +1,14 @@
 "use client";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { YoutubeProps } from "./Youtube.types";
+import { YoutubeProps, YoutubeVideo } from "./Youtube.types";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import {
   Button,
+  NotificationHandler,
   useClientInfoService,
   YoutubePreview,
+  YoutubePreviewSkeleton,
 } from "@burneeble/ui-components";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
@@ -14,6 +16,7 @@ import { cn } from "@/lib/utils";
 const Youtube = (props: YoutubeProps) => {
   //States
   const [videoIndex, setVideoIndex] = useState(0);
+  const [videos, setVideos] = useState<Array<YoutubeVideo> | null>(null);
 
   //Hooks
   const { screen } = useClientInfoService();
@@ -32,6 +35,68 @@ const Youtube = (props: YoutubeProps) => {
 
     return () => clearInterval(interval);
   }, [screen]);
+
+  useEffect(() => {
+    fetchVideos();
+  }, []);
+
+  //Methods
+  const isDurationGreaterThanOneMinute = (isoDuration: string) => {
+    const match = isoDuration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+
+    if (!match) {
+      throw new Error("Invalid ISO duration format");
+    }
+
+    const hours = parseInt(match[1] || "0", 10);
+    const minutes = parseInt(match[2] || "0", 10);
+    const seconds = parseInt(match[3] || "0", 10);
+
+    const totalSeconds = hours * 3600 + minutes * 60 + seconds;
+
+    return totalSeconds > 60;
+  };
+
+  const fetchVideos = async () => {
+    try {
+      const res = await fetch(
+        `https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyAI-1o41MeuYqGwf1_qzRqfVE83r443Ewo&channelId=UCJIrEhdSPKipBMvWWE9gCjA&maxResults=10&type=video&order=date`
+      );
+      const data = await res.json();
+      if (data.items) {
+        const durations = await fetch(
+          `https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=${data.items
+            .map((item: any) => item.id.videoId)
+            .join(",")}&key=AIzaSyAI-1o41MeuYqGwf1_qzRqfVE83r443Ewo
+`
+        );
+        const info = await durations.json();
+
+        console.log(info);
+
+        setVideos(
+          data.items
+            .filter((item: any) => {
+              const duration = info.items.find(
+                (inf: any) => inf.id === item.id.videoId
+              )?.contentDetails.duration;
+              return isDurationGreaterThanOneMinute(duration);
+            })
+            .slice(0, 3)
+            .map((item: any) => ({
+              title: item.snippet.title,
+              thumbnail: item.snippet.thumbnails.high.url,
+              url: `https://www.youtube.com/watch?v=${item.id.videoId}`,
+            }))
+        );
+      }
+    } catch (err) {
+      console.log(err);
+      NotificationHandler.instance.error(
+        "An error occurred while fetching the videos. Please try again later."
+      );
+    }
+  };
 
   return (
     <section
@@ -90,12 +155,16 @@ const Youtube = (props: YoutubeProps) => {
           sm:tw-aspect-[560/400]
         `}
       >
-        {[1, 2, 3].map((_, i) => {
+        {[0, 1, 2].map((index) => {
           return (
             <div
-              key={i}
+              key={index}
               className={cn(
-                "video-wrapper",
+                `
+                  video-wrapper
+
+                  md:tw-flex-1
+                `,
                 ["sm", "md"].includes(screen) &&
                   `
                     tw-absolute tw-top-1/2 tw-left-1/2 -tw-translate-x-1/2
@@ -103,18 +172,22 @@ const Youtube = (props: YoutubeProps) => {
                     tw-ease-in-out tw-w-full
 
                     ${
-                      i === videoIndex
+                      index === videoIndex
                         ? `tw-opacity-100 tw-pointer-events-auto`
                         : `tw-opacity-0 tw-pointer-events-none`
                     }
                   `
               )}
             >
-              <YoutubePreview
-                thumbnail={`https://picsum.photos/192${i}/108${i}`}
-                title={`How to Install OpenDevin in ${i} Steps: Updated May Version`}
-                url={"https://google.com"}
-              />
+              {videos && videos[index] ? (
+                <YoutubePreview
+                  thumbnail={videos[index].thumbnail}
+                  title={videos[index].title}
+                  url={videos[index].url}
+                />
+              ) : (
+                <YoutubePreviewSkeleton />
+              )}
             </div>
           );
         })}

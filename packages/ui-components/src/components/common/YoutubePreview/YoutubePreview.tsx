@@ -17,9 +17,9 @@ const YoutubePreview = (props: YoutubePreviewProps) => {
       <img
         src={props.thumbnail}
         className={`
-          thumbnail tw-aspect-[421/258] tw-w-full tw-rounded-t-md tw-border
-          tw-border-solid tw-border-[white] tw-transition-all tw-duration-200
-          tw-ease-in-out
+          tw-bg-[var(--secondary-darker)] thumbnail tw-aspect-[304/171]
+          tw-w-full tw-rounded-t-md tw-border tw-border-solid tw-border-[white]
+          tw-object-cover tw-transition-all tw-duration-200 tw-ease-in-out
 
           group-hover:tw-border-active
         `}

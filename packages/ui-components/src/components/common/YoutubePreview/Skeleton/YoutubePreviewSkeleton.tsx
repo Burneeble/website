@@ -11,7 +11,7 @@ const YoutubePreviewSkeleton = (props: YoutubePreviewSkeletonProps) => {
     >
       <Skeleton
         className={`
-          thumbnail-skeleton tw-aspect-[421/258] tw-w-full tw-rounded-t-md
+          thumbnail-skeleton tw-aspect-[304/171] tw-w-full tw-rounded-t-md
         `}
       />
       <div className="titles tw-flex tw-flex-col tw-gap-[5px]">
