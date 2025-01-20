@@ -24,7 +24,7 @@ const Discover = (props: DiscoverProps) => {
   const [hasNextPage, setHasNextPage] = useState<boolean>(true);
   const [endCursor, setEndCursor] = useState<string>("0");
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const batchSize = 1;
+  const batchSize = 6;
   const [isFirstRender, setIsFirstRender] = useState<number>(0);
 
   //Hooks
@@ -150,6 +150,7 @@ const Discover = (props: DiscoverProps) => {
                 slug={article.slug}
                 variant="dark"
                 description={article.content}
+                query={searchQuery || ""}
               />
             );
           })}

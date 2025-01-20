@@ -43,6 +43,21 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
     );
   };
 
+  const highlightText = (text: string, query: string) => {
+    console.log("highlightText", text, query);
+    const words = query.split(" ").filter((word) => word.trim() !== "");
+    let highlightedText = text;
+    words.forEach((word) => {
+      const regex = new RegExp(`(${word})`, "gi");
+      highlightedText = highlightedText.replace(
+        regex,
+        '<span class="highlight">$1</span>'
+      );
+    });
+    console.log("highlightedText", highlightedText);
+    return highlightedText;
+  };
+
   return (
     <div
       className={cn(
@@ -136,7 +151,7 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
               variant === "default" && `group-hover:tw-text-black`
             )}
             dangerouslySetInnerHTML={{
-              __html: props.title,
+              __html: highlightText(props.title, props.query || ""),
             }}
           />
           {/* TODO use the right p class */}

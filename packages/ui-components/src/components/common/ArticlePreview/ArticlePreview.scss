@@ -1,3 +1,15 @@
 // ArticlePreview
 
 @import "./Skeleton/ArticlePreviewSkeleton";
+
+.article-preview {
+  .article-info {
+    .texts {
+      .title {
+        .highlight {
+          @apply tw-bg-gradient-to-r primary-gradient tw-rounded-sm;
+        }
+      }
+    }
+  }
+}
