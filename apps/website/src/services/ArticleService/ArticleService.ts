@@ -1,6 +1,9 @@
+import { JsonSerializer } from "typescript-json-serializer";
 import { GraphQLService } from "../GraphQLService";
-import { ArticleModel } from "./models";
-import { GET_ARTICLES_QUERY_WITH_LIMIT } from "./queries";
+import { ArticleModel, IArticleModel } from "./models";
+import { GET_ARTICLES_QUERY, GET_ARTICLES_QUERY_WITH_LIMIT } from "./queries";
+
+const serializer = new JsonSerializer();
 
 export class ArticleService {
   private static _instance: ArticleService;
@@ -37,5 +40,46 @@ export class ArticleService {
 
       return article;
     });
+  }
+
+  public async getArticles(
+    categories?: string[]
+  ): Promise<Array<ArticleModel>> {
+    const { data } = await GraphQLService.instance.client.query(
+      categories
+        ? {
+            query: GET_ARTICLES_QUERY,
+            // variables: { categories },
+          }
+        : { query: GET_ARTICLES_QUERY }
+    );
+
+    if (!data) return [];
+
+    const articlesInfo: IArticleModel[] | null = data.posts
+      ? data.posts?.nodes.map((node) => {
+          return {
+            title: node.title || "",
+
+            content: node.content || "",
+            slug: node.slug || "",
+            categories:
+              node.categories?.nodes.map((category: any) => {
+                return { name: category.name || "", slug: category.slug || "" };
+              }) || [],
+
+            thumbnail: node.featuredImage?.node.guid || "",
+          };
+        })
+      : null;
+
+    if (!articlesInfo) return [];
+
+    const articles = (serializer.deserializeObjectArray<ArticleModel>(
+      articlesInfo,
+      ArticleModel
+    ) || []) as Array<ArticleModel>;
+
+    return articles;
   }
 }
