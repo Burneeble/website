@@ -7,7 +7,7 @@ const Grid = (props: GridProps) => {
     <div
       className={`
         grid tw-flex tw-flex-col tw-gap-[20px] tw-transition-all tw-duration-200
-        tw-ease-in-out
+        tw-ease-in-out tw-w-full
 
         lg:tw-grid lg:tw-grid-cols-3
 

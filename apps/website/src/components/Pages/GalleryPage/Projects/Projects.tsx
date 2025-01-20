@@ -347,7 +347,7 @@ const Projects = (props: ProjectsProps) => {
               )}
               onClick={async () => {
                 setIsLoading(true);
-                fetchProjects();
+                await fetchProjects();
                 setIsLoading(false);
               }}
             >

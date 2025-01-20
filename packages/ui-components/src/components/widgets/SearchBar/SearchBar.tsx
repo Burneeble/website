@@ -11,7 +11,7 @@ const SearchBar = (props: SearchBarProps) => {
   //Effects
   useEffect(() => {
     const handler = setTimeout(() => {
-      setDebouncedValue(props.value || null);
+      setDebouncedValue(props.value);
     }, 1000);
 
     return () => {
@@ -20,7 +20,7 @@ const SearchBar = (props: SearchBarProps) => {
   }, [props.value]);
 
   useEffect(() => {
-    if (debouncedValue) {
+    if (typeof debouncedValue === "string") {
       props.onChange(debouncedValue);
     }
   }, [debouncedValue]);
