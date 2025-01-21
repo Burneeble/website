@@ -25,7 +25,7 @@ const Discover = (props: DiscoverProps) => {
   const [endCursor, setEndCursor] = useState<string>("0");
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const batchSize = 6;
-  const [isFirstRender, setIsFirstRender] = useState<number>(0);
+  const [isFirstRender, setIsFirstRender] = useState<boolean>(true);
 
   //Hooks
   const { screen } = useClientInfoService();
@@ -43,7 +43,7 @@ const Discover = (props: DiscoverProps) => {
   //Effects
 
   useEffect(() => {
-    if (isFirstRender < 2) setIsFirstRender((prev) => prev + 1);
+    if (isFirstRender) setIsFirstRender(false);
     else {
       if (endCursor === "tmp") setEndCursor("0");
       if (endCursor === "0") fetchArticles();

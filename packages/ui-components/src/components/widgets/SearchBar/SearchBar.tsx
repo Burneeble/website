@@ -20,9 +20,7 @@ const SearchBar = (props: SearchBarProps) => {
   }, [props.value]);
 
   useEffect(() => {
-    if (typeof debouncedValue === "string") {
-      props.onChange(debouncedValue);
-    }
+    props.onChange(debouncedValue || "");
   }, [debouncedValue]);
 
   return (
