@@ -44,7 +44,6 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
   };
 
   const highlightText = (text: string, query: string) => {
-    console.log("highlightText", text, query);
     const words = query.split(" ").filter((word) => word.trim() !== "");
     let highlightedText = text;
     words.forEach((word) => {
@@ -115,7 +114,8 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
           text={props.category}
           size={"sm"}
           variant={variant === "dark" ? "active" : undefined}
-          onClick={() => {
+          onClick={(e) => {
+            e.stopPropagation();
             router.push(`/blog/category/${props.categorySlug}`);
           }}
         />

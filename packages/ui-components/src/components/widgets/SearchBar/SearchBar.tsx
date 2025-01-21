@@ -44,7 +44,7 @@ const SearchBar = (props: SearchBarProps) => {
         }}
         placeholder="Search..."
         className={`
-          tw-flex-1 tw-bg-[rgba(0,0,0,0)] tw-font-inter tw-text-2xl
+          tw-w-[calc(100%-30px)] tw-bg-[rgba(0,0,0,0)] tw-font-inter tw-text-2xl
           tw-text-headings tw-outline-none
         `}
       />

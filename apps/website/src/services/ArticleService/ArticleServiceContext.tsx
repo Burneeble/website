@@ -1,12 +1,16 @@
 "use client";
 
 import { createContext } from "react";
-import { ArticleModel } from "./models";
+import { ArticleModel, CategoryModel } from "./models";
 
 export interface ArticleServiceContent {
   getArticlesWithLimit(limit: number): Promise<ArticleModel[]>;
+  getArticles(categories?: string[]): Promise<ArticleModel[]>;
+  getCategory(slug: string): Promise<CategoryModel | null>;
 }
 
 export const articleServiceContext = createContext<ArticleServiceContent>({
   getArticlesWithLimit: async () => [],
+  getArticles: async () => [],
+  getCategory: async () => null,
 });

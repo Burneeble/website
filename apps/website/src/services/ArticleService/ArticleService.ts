@@ -1,7 +1,16 @@
 import { JsonSerializer } from "typescript-json-serializer";
 import { GraphQLService } from "../GraphQLService";
-import { ArticleModel, IArticleModel } from "./models";
-import { GET_ARTICLES_QUERY, GET_ARTICLES_QUERY_WITH_LIMIT } from "./queries";
+import {
+  ArticleModel,
+  CategoryModel,
+  IArticleModel,
+  ICategoryModel,
+} from "./models";
+import {
+  GET_ARTICLES_QUERY,
+  GET_ARTICLES_QUERY_WITH_LIMIT,
+  GET_CATEGORY_QUERY,
+} from "./queries";
 
 const serializer = new JsonSerializer();
 
@@ -81,5 +90,31 @@ export class ArticleService {
     ) || []) as Array<ArticleModel>;
 
     return articles;
+  }
+
+  public async getCategory(slug: string): Promise<CategoryModel | null> {
+    const { data } = await GraphQLService.instance.client.query({
+      query: GET_CATEGORY_QUERY,
+      variables: { slug },
+    });
+
+    if (!data) return null;
+
+    const categoryInfo: ICategoryModel | null = data.category
+      ? {
+          name: data.category.name || "",
+          slug: data.category.slug || "",
+          description: data.category.description || "",
+        }
+      : null;
+
+    if (!categoryInfo) return null;
+
+    const category = serializer.deserializeObject<CategoryModel>(
+      categoryInfo,
+      CategoryModel
+    ) as CategoryModel;
+
+    return category;
   }
 }
