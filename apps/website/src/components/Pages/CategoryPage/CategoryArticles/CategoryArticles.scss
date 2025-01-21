@@ -1,0 +1,8 @@
+// CategoryArticles
+
+.category-articles {
+  .shape {
+    @apply tw-w-[600px] tw-aspect-square tw-absolute -tw-translate-y-1/2  tw-bg-[radial-gradient(circle,var(--primary-light)_0%,_rgba(0,0,0,0)_70%)]
+       tw-opacity-[.5] tw-blur-[100px];
+  }
+}
