@@ -7,6 +7,7 @@ import {
   ICategoryModel,
 } from "./models";
 import {
+  GET_ARTICLE_QUERY,
   GET_ARTICLES_BY_CATEGORY_QUERY,
   GET_ARTICLES_QUERY,
   GET_ARTICLES_QUERY_WITH_LIMIT,
@@ -115,5 +116,37 @@ export class ArticleService {
     ) as CategoryModel;
 
     return category;
+  }
+
+  public async getArticle(slug: string): Promise<ArticleModel | null> {
+    const { data } = await GraphQLService.instance.client.query({
+      query: GET_ARTICLE_QUERY,
+      variables: { slug },
+    });
+
+    if (!data) return null;
+
+    const articleInfo: IArticleModel | null = data.post
+      ? {
+          title: data.post.title || "",
+          content: data.post.content || "",
+          slug: data.post.slug || "",
+          categories:
+            data.post.categories?.nodes.map((category: any) => {
+              return { name: category.name || "", slug: category.slug || "" };
+            }) || [],
+          thumbnail: data.post.featuredImage?.node.guid || "",
+          date: data.post.date || "",
+        }
+      : null;
+
+    if (!articleInfo) return null;
+
+    const article = serializer.deserializeObject<ArticleModel>(
+      articleInfo,
+      ArticleModel
+    ) as ArticleModel;
+
+    return article;
   }
 }

@@ -14,6 +14,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Learn more about it here: https://the-guild.dev/graphql/codegen/plugins/presets/preset-client#reducing-bundle-size
  */
 const documents = {
+    "\n  query GetArticleQuery($slug: ID!) {\n    post(id: $slug, idType: SLUG) {\n      slug\n      title\n      content\n      categories {\n        nodes {\n          slug\n          name\n        }\n      }\n      featuredImage {\n        node {\n          guid\n        }\n      }\n      date\n    }\n  }\n": types.GetArticleQueryDocument,
     "\n  query GetArticlesByCategoryQuery(\n    $category: String!\n    $limit: Int\n    $offset: String\n    $search: String\n  ) {\n    posts(\n      first: $limit\n      after: $offset\n      where: { search: $search, categoryName: $category }\n    ) {\n      nodes {\n        slug\n        title\n        content\n        categories {\n          nodes {\n            slug\n            name\n          }\n        }\n        featuredImage {\n          node {\n            guid\n          }\n        }\n      }\n      pageInfo {\n        endCursor\n        hasNextPage\n      }\n    }\n  }\n": types.GetArticlesByCategoryQueryDocument,
     "\n  query GetArticlesQuery($limit: Int, $offset: String, $search: String) {\n    posts(first: $limit, after: $offset, where: { search: $search }) {\n      nodes {\n        slug\n        title\n        content\n        categories {\n          nodes {\n            slug\n            name\n          }\n        }\n        featuredImage {\n          node {\n            guid\n          }\n        }\n      }\n      pageInfo {\n        endCursor\n        hasNextPage\n      }\n    }\n  }\n": types.GetArticlesQueryDocument,
     "\n  query GetArticlesQueryWithLimit($limit: Int!) {\n    posts(first: $limit) {\n      nodes {\n        slug\n        title\n        content\n        categories {\n          nodes {\n            slug\n            name\n          }\n        }\n        featuredImage {\n          node {\n            guid\n          }\n        }\n      }\n    }\n  }\n": types.GetArticlesQueryWithLimitDocument,
@@ -40,6 +41,10 @@ const documents = {
  */
 export function gql(source: string): unknown;
 
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  query GetArticleQuery($slug: ID!) {\n    post(id: $slug, idType: SLUG) {\n      slug\n      title\n      content\n      categories {\n        nodes {\n          slug\n          name\n        }\n      }\n      featuredImage {\n        node {\n          guid\n        }\n      }\n      date\n    }\n  }\n"): (typeof documents)["\n  query GetArticleQuery($slug: ID!) {\n    post(id: $slug, idType: SLUG) {\n      slug\n      title\n      content\n      categories {\n        nodes {\n          slug\n          name\n        }\n      }\n      featuredImage {\n        node {\n          guid\n        }\n      }\n      date\n    }\n  }\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

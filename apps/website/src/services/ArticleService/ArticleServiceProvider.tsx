@@ -13,19 +13,21 @@ const ArticleServiceProvider = (props: ArticleServiceProviderProps) => {
     return ArticleService.instance.getArticlesWithLimit(limit);
   };
 
-  const getArticles = async (
-    categories?: string[]
-  ): Promise<ArticleModel[]> => {
-    return ArticleService.instance.getArticles(categories);
+  const getArticles = async (category?: string): Promise<ArticleModel[]> => {
+    return ArticleService.instance.getArticles(category);
   };
 
   const getCategory = async (slug: string): Promise<CategoryModel | null> => {
-    return ArticleService.instance.getCategory(slug);
+    return await ArticleService.instance.getCategory(slug);
+  };
+
+  const getArticle = async (slug: string): Promise<ArticleModel | null> => {
+    return await ArticleService.instance.getArticle(slug);
   };
 
   return (
     <articleServiceContext.Provider
-      value={{ getArticlesWithLimit, getArticles, getCategory }}
+      value={{ getArticlesWithLimit, getArticles, getCategory, getArticle }}
     >
       {props.children}
     </articleServiceContext.Provider>

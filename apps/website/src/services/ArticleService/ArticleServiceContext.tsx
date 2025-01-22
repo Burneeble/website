@@ -5,12 +5,14 @@ import { ArticleModel, CategoryModel } from "./models";
 
 export interface ArticleServiceContent {
   getArticlesWithLimit(limit: number): Promise<ArticleModel[]>;
-  getArticles(categories?: string[]): Promise<ArticleModel[]>;
+  getArticles(category?: string): Promise<ArticleModel[]>;
   getCategory(slug: string): Promise<CategoryModel | null>;
+  getArticle(slug: string): Promise<ArticleModel | null>;
 }
 
 export const articleServiceContext = createContext<ArticleServiceContent>({
   getArticlesWithLimit: async () => [],
   getArticles: async () => [],
   getCategory: async () => null,
+  getArticle: async () => null,
 });
