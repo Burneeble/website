@@ -11,7 +11,7 @@ const RoundedWrapper = (props: RoundedWrapperProps) => {
         rounded-wrapper tw-relative tw-top-[-35px] tw-overflow-hidden
         tw-rounded-t-[30px] tw-border-t-2 tw-border-[var(--primary-light)]
         tw-bg-gradient-to-b tw-from-[var(--secondary-base)]
-        tw-to-[var(--secondary-darker)] tw-z-[3]
+        tw-to-[var(--secondary-darker)] tw-z-[3] tw-w-full
       `}
     >
       <div
