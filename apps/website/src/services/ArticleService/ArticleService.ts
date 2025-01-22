@@ -7,6 +7,7 @@ import {
   ICategoryModel,
 } from "./models";
 import {
+  GET_ARTICLES_BY_CATEGORY_QUERY,
   GET_ARTICLES_QUERY,
   GET_ARTICLES_QUERY_WITH_LIMIT,
   GET_CATEGORY_QUERY,
@@ -51,14 +52,12 @@ export class ArticleService {
     });
   }
 
-  public async getArticles(
-    categories?: string[]
-  ): Promise<Array<ArticleModel>> {
+  public async getArticles(category?: string): Promise<Array<ArticleModel>> {
     const { data } = await GraphQLService.instance.client.query(
-      categories
+      category
         ? {
-            query: GET_ARTICLES_QUERY,
-            // variables: { categories },
+            query: GET_ARTICLES_BY_CATEGORY_QUERY,
+            variables: { category },
           }
         : { query: GET_ARTICLES_QUERY }
     );

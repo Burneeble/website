@@ -2,8 +2,13 @@
 
 import { Label, SearchBar } from "@burneeble/ui-components";
 import { CategoryHeroProps } from "./CategoryHero.types";
+import { useCategoryPageService } from "../CategoryPageService";
 
 const CategoryHero = (props: CategoryHeroProps) => {
+  //Hooks
+  const { triggerRefresh, searchQuery, setSearchQuery } =
+    useCategoryPageService();
+
   return (
     <section
       className={`
@@ -26,9 +31,11 @@ const CategoryHero = (props: CategoryHeroProps) => {
         {props.category.description}
       </p>
       <SearchBar
-        value={""}
-        setValue={(_value: string) => {}}
-        onChange={(_value: string) => {}}
+        value={searchQuery}
+        setValue={setSearchQuery}
+        onChange={() => {
+          triggerRefresh();
+        }}
       />
     </section>
   );

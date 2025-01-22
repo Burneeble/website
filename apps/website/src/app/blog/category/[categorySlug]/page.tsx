@@ -1,4 +1,8 @@
-import { CategoryArticles, CategoryHero } from "@/components/Pages";
+import {
+  CategoryArticles,
+  CategoryHero,
+  CategoryPageServiceProvider,
+} from "@/components/Pages";
 import { ArticleService } from "@/services";
 import { redirect } from "next/navigation";
 
@@ -19,8 +23,10 @@ const CategoryPage = async ({
 
   return (
     <div className="cs-page category-page">
-      <CategoryHero category={category} />
-      <CategoryArticles />
+      <CategoryPageServiceProvider categoryName={category.name}>
+        <CategoryHero category={category} />
+        <CategoryArticles />
+      </CategoryPageServiceProvider>
     </div>
   );
 };

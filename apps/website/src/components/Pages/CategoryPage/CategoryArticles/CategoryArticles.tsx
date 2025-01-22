@@ -4,25 +4,33 @@ import Grid from "@/components/Grid";
 import { CategoryArticlesProps } from "./CategoryArticles.types";
 import {
   ArticlePreview,
+  ArticlePreviewSkeleton,
   Button,
+  NotFound,
   useClientInfoService,
 } from "@burneeble/ui-components";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useCategoryPageService } from "../CategoryPageService";
 
 const CategoryArticles = (props: CategoryArticlesProps) => {
-  //States
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
   //Hooks
   const { screen } = useClientInfoService();
+  const {
+    setIsLoading,
+    fetchArticles,
+    hasNextPage,
+    articles,
+    isLoading,
+    batchSize,
+    searchQuery,
+  } = useCategoryPageService();
 
   return (
     <section
       className={`
         cs-section-structure category-articles tw-relative tw-overflow
-        tw-max-w-[unset] tw-flex tw-items-center tw-justify-start tw-flex-col
-        cs-gap-between-content
+        tw-max-w-[unset] tw-flex tw-items-center tw-justify-center tw-flex-col
+        cs-gap-between-content tw-overflow-hidden
       `}
     >
       <div
@@ -36,30 +44,42 @@ const CategoryArticles = (props: CategoryArticlesProps) => {
         `}
       />
       <Grid className="tw-max-w-[1300px]">
-        {[1, 2, 3, 4, 5, 6].map((_, index) => {
-          return (
-            <ArticlePreview
-              key={index}
-              thumbnail={"https://picsum.photos/1920/1080"}
-              title={"How to Install OpenDevin in 5 Steps: Updated May Version"}
-              category={"MacOS Tutorial"}
-              categorySlug={"macos-tutorial"}
-              slug={""}
-              variant="dark"
-              description={
-                "Do you want to install the new OpenDevin but are having trouble? Through this step-by-step guide and the related video, you will no longer have any doubts about how to do it. It’s easier than"
-              }
-            />
-          );
-        })}
+        {articles &&
+          articles.map((article, i) => {
+            return (
+              <ArticlePreview
+                key={i}
+                thumbnail={article.thumbnail}
+                title={article.title}
+                category={article.categories[0].name}
+                categorySlug={article.categories[0].slug}
+                slug={article.slug}
+                variant="dark"
+                description={article.content}
+                query={searchQuery || ""}
+              />
+            );
+          })}
+        {isLoading &&
+          Array.from({ length: batchSize }).map((_, i) => {
+            return <ArticlePreviewSkeleton key={i} />;
+          })}
       </Grid>
+      {articles && articles.length <= 0 && !isLoading && (
+        <NotFound
+          title={"No Article Found"}
+          text={
+            "We couldn't find any article that matches your search. Please try again with a different keyword."
+          }
+        />
+      )}
       <div
         className={cn(
           `
             button-wrapper tw-w-full tw-flex tw-justify-end tw-items-center
             tw-transition-all tw-duration-500 tw-ease-in-out tw-overflow-hidden
-          `
-          //   hasNextPage ? "tw-h-[48px] tw-opacity-100" : "tw-h-0 tw-opacity-0"
+          `,
+          hasNextPage ? "tw-h-[48px] tw-opacity-100" : "tw-h-0 tw-opacity-0"
         )}
       >
         <Button
@@ -70,12 +90,12 @@ const CategoryArticles = (props: CategoryArticlesProps) => {
               !tw-bg-black tw-mx-auto tw-px-[75px] tw-mt-auto
 
               lg:tw-mr-0
-            `
-            // !hasNextPage && "tw-pointer-events-none"
+            `,
+            !hasNextPage && "tw-pointer-events-none"
           )}
           onClick={async () => {
             setIsLoading(true);
-            // await fetchArticles();
+            await fetchArticles();
             setIsLoading(false);
           }}
         >

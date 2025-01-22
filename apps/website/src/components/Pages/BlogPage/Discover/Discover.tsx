@@ -24,8 +24,8 @@ const Discover = (props: DiscoverProps) => {
   const [hasNextPage, setHasNextPage] = useState<boolean>(true);
   const [endCursor, setEndCursor] = useState<string>("0");
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const batchSize = 6;
   const [isFirstRender, setIsFirstRender] = useState<boolean>(true);
+  const batchSize = 6;
 
   //Hooks
   const { screen } = useClientInfoService();
