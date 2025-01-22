@@ -1,1 +1,171 @@
 // ArticleContent
+
+.article-content {
+  .article-body {
+    h2 {
+      line-height: 37.6px !important;
+
+      @media (width >= 425px) {
+        line-height: 56px !important;
+      }
+
+      @media (width >= 768px) {
+        line-height: 75.2px !important;
+      }
+    }
+
+    p {
+      @apply p-default tw-text-headings;
+    }
+
+    iframe,
+    img,
+    figure {
+      @apply tw-mx-auto !tw-w-full;
+    }
+
+    iframe {
+      @apply tw-h-[unset] tw-aspect-[741.5/417];
+    }
+
+    figure {
+      @apply tw-flex tw-flex-col tw-gap-[20px];
+
+      figcaption {
+        @apply tw-font-inter tw-italic;
+      }
+    }
+
+    a {
+      @apply tw-text-action hover:tw-text-action-hover tw-transition-all tw-duration-200 tw-ease-in-out tw-font-bold tw-underline;
+    }
+
+    table {
+      @apply tw-table-auto tw-border-separate tw-border-spacing-0 tw-border tw-border-white tw-rounded-[.5rem] tw-overflow-hidden;
+
+      th {
+        @apply tw-border tw-border-white tw-px-4 tw-py-[.5rem] tw-text-left tw-font-bold tw-font-bowlby-one p-small tw-text-headings;
+      }
+
+      td {
+        @apply tw-border tw-border-white tw-px-4 tw-py-[1rem] tw-font-inter p-small tw-text-headings first-of-type:tw-w-[17rem];
+      }
+    }
+
+    code {
+      @apply tw-bg-gradient-to-r primary-gradient tw-px-[.4rem] tw-rounded-md tw-shadow-inner tw-shadow-[rgba(0,0,0,.6)];
+
+      a {
+        @apply tw-text-headings hover:tw-text-headings;
+      }
+
+      * {
+        @apply tw-text-headings;
+      }
+    }
+
+    .dm-code-snippet {
+      padding: 0;
+      background: 0 0 !important;
+      margin-top: 30px;
+      margin-bottom: 30px;
+
+      .control-language {
+        border: none;
+        background: #272822;
+        padding: 1em;
+        margin: 0.5em 0 0;
+        border-radius: 0.3em;
+
+        .dm-buttons {
+          display: flex;
+          justify-content: space-between;
+          padding: 0;
+          margin-bottom: 10px;
+
+          .dm-buttons-left {
+            display: flex;
+            align-items: center;
+
+            .dm-button-snippet {
+              width: 12px;
+              height: 12px;
+              border-radius: 100%;
+              margin-right: 10px;
+
+              &.red-button {
+                background: #f92a2a;
+              }
+
+              &.green-button {
+                background: #1ec500;
+              }
+
+              &.orange-button {
+                background: #ffb100;
+              }
+            }
+          }
+
+          .dm-buttons-right {
+            display: flex;
+            align-items: center;
+
+            a {
+              text-decoration: none;
+              opacity: 0.5;
+              float: left;
+              color: #fff;
+              box-shadow: none;
+              background: #2682c3;
+              padding: 3px 10px 2px;
+              font-size: 12px;
+              text-transform: uppercase;
+              letter-spacing: 1px;
+              border-radius: 3px;
+              transition: all 0.2s ease-in-out;
+
+              &:hover {
+                opacity: 1;
+                cursor: pointer;
+              }
+
+              span {
+                color: #fff;
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    pre {
+      code {
+        background-image: unset;
+
+        @apply tw-shadow-[unset];
+
+        .token {
+          &.constant {
+            color: #f92672;
+          }
+
+          &.string {
+            color: #a6e22e;
+          }
+
+          &.keyword {
+            color: #66d9ef;
+          }
+
+          &.number {
+            color: #ae81ff;
+          }
+        }
+      }
+    }
+  }
+}
