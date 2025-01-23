@@ -8,10 +8,12 @@ import { useEffect } from "react";
 import Prism from "prismjs";
 import "./prism-import";
 import { ContentIndex } from "./components";
+import { useRouter } from "next/navigation";
 
 const ArticleContent = (props: ArticleContentProps) => {
   //Hooks
   const { isClient } = useClientInfoService();
+  const router = useRouter();
 
   //Effects
   useEffect(() => {
@@ -76,7 +78,13 @@ const ArticleContent = (props: ArticleContentProps) => {
           !tw-gap-[10px]
         `}
       >
-        <Label text={props.article.categories[0].name} variant={"active"} />
+        <Label
+          text={props.article.categories[0].name}
+          variant={"active"}
+          onClick={() => {
+            router.push(`/blog/category/${props.article.categories[0].slug}`);
+          }}
+        />
         <h1
           className={`
             title !tw-leading-[47px]

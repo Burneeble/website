@@ -9,11 +9,19 @@ import { cn } from "@/lib/utils";
 const ContentIndex = (props: ContentIndexProps) => {
   //States
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [paragraphs, setParagraphs] =
+    useState<Array<HTMLHeadingElement> | null>(null);
 
   //Effects
   useEffect(() => {
-    const paragraphs = document.querySelectorAll("h2");
-    console.log(paragraphs);
+    const ps = document.querySelectorAll("h2");
+
+    const tmp: HTMLHeadingElement[] = [];
+
+    ps.forEach((p) => {
+      if (p.innerText !== "© COPYRIGHT 2024 - BURNEEBLE SRL") tmp.push(p);
+    });
+    setParagraphs(tmp);
   }, []);
 
   return (
@@ -21,6 +29,7 @@ const ContentIndex = (props: ContentIndexProps) => {
       className={`
         content-index tw-mx-auto tw-text-headings tw-border-[2px]
         tw-border-white tw-rounded-[.5rem] p-default tw-w-full tw-p-[.6rem]
+        tw-my-[2rem]
       `}
     >
       <div className="header tw-flex tw-items-center tw-justify-between">
@@ -54,12 +63,17 @@ const ContentIndex = (props: ContentIndexProps) => {
           />
         </span>
       </div>
-      <div
+      <ul
         className={cn(
           "paragraphs",
           isOpen ? "tw-max-h-[100rem]" : `tw-max-h-0`
         )}
-      ></div>
+      >
+        {paragraphs &&
+          paragraphs.map((p, i) => {
+            return <li key={i}>{p.innerText}</li>;
+          })}
+      </ul>
     </div>
   );
 };
