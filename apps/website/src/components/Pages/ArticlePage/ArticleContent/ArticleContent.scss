@@ -1,5 +1,7 @@
 // ArticleContent
 
+@import "./components/components";
+
 .article-content {
   .article-body {
     h2 {
@@ -16,6 +18,10 @@
 
     p {
       @apply p-default tw-text-headings;
+    }
+
+    strong {
+      @apply tw-tracking-[1px];
     }
 
     iframe,
@@ -61,6 +67,27 @@
 
       mark {
         @apply tw-text-headings;
+      }
+    }
+
+    .yarpp-related {
+      ol {
+        @apply tw-flex tw-flex-col tw-items-start tw-justify-center tw-gap-[.5rem] p-default tw-mt-[.5rem];
+
+        li {
+          @apply tw-no-underline tw-pl-[2rem] tw-relative after:tw-block after:tw-absolute after:tw-top-1/2 after:-tw-translate-y-1/2 after:tw-left-0 after:tw-w-[1rem] after:tw-h-[1.5rem] after:tw-bg-gradient-to-r;
+
+          a {
+            @apply tw-no-underline;
+          }
+
+          &::after {
+            clip-path: polygon(0 0, 0% 100%, 100% 50%);
+
+            /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
+            @extend .primary-gradient !optional;
+          }
+        }
       }
     }
 
@@ -117,10 +144,6 @@
 
         @apply tw-shadow-[unset];
       }
-    }
-
-    .yarpp-related {
-      display: none;
     }
   }
 }

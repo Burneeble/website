@@ -2,13 +2,17 @@
 
 import RoundedWrapper from "@/components/RoundedWrapper";
 import { ArticleContentProps } from "./ArticleContent.types";
-import { Label } from "@burneeble/ui-components";
+import { Label, useClientInfoService } from "@burneeble/ui-components";
 import Link from "next/link";
 import { useEffect } from "react";
 import Prism from "prismjs";
 import "./prism-import";
+import { ContentIndex } from "./components";
 
 const ArticleContent = (props: ArticleContentProps) => {
+  //Hooks
+  const { isClient } = useClientInfoService();
+
   //Effects
   useEffect(() => {
     Prism.highlightAll();
@@ -37,6 +41,32 @@ const ArticleContent = (props: ArticleContentProps) => {
       }
     }
   }, []);
+
+  //Methods
+  const formatDate = (isoDateString: string): string => {
+    const date = new Date(isoDateString);
+
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    const day = date.getDate();
+    const month = months[date.getMonth()];
+    const year = date.getFullYear();
+
+    return `${day} ${month} ${year}`;
+  };
 
   return (
     <section className={`cs-structure-page article-content`}>
@@ -70,13 +100,19 @@ const ArticleContent = (props: ArticleContentProps) => {
           >
             burneeble team
           </Link>{" "}
-          on 22 April 2024
+          on {formatDate(props.article.date || "")}
         </p>
+        <ContentIndex article={props.article} />
         <div
           className={`
             article-body tw-flex tw-flex-col tw-gap-[30px] tw-text-headings
           `}
-          dangerouslySetInnerHTML={{ __html: props.article.content }}
+          dangerouslySetInnerHTML={{
+            __html: props.article.content.replaceAll(
+              "https://burneeble.com",
+              `${isClient && window ? window.location.origin : ""}/blog/article`
+            ),
+          }}
         />
       </RoundedWrapper>
     </section>
