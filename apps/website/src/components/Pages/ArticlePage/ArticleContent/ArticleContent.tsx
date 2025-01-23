@@ -4,8 +4,40 @@ import RoundedWrapper from "@/components/RoundedWrapper";
 import { ArticleContentProps } from "./ArticleContent.types";
 import { Label } from "@burneeble/ui-components";
 import Link from "next/link";
+import { useEffect } from "react";
+import Prism from "prismjs";
+import "./prism-import";
 
 const ArticleContent = (props: ArticleContentProps) => {
+  //Effects
+  useEffect(() => {
+    Prism.highlightAll();
+  }, [props.article.content]);
+
+  useEffect(() => {
+    const codes = document.querySelectorAll(".dm-code-snippet");
+
+    if (codes) {
+      for (let i = 0; i < codes.length; i++) {
+        // @ts-ignore
+        const code = codes[i].children[0].children[1].children[0].innerText;
+
+        const button =
+          codes[i].children[0].children[0].children[1].children[0].children[0];
+
+        button.addEventListener("click", () => {
+          window.navigator.clipboard.writeText(code);
+          // @ts-ignore
+          button.innerText = "Copied!";
+          setTimeout(() => {
+            // @ts-ignore
+            button.innerText = "Copy Code";
+          }, 2000);
+        });
+      }
+    }
+  }, []);
+
   return (
     <section className={`cs-structure-page article-content`}>
       <RoundedWrapper

@@ -59,82 +59,51 @@
         @apply tw-text-headings hover:tw-text-headings;
       }
 
-      * {
+      mark {
         @apply tw-text-headings;
       }
     }
 
     .dm-code-snippet {
-      padding: 0;
-      background: 0 0 !important;
-      margin-top: 30px;
-      margin-bottom: 30px;
+      @apply tw-p-0 !tw-bg-[unset] tw-my-[30px];
 
       .control-language {
-        border: none;
-        background: #272822;
-        padding: 1em;
-        margin: 0.5em 0 0;
-        border-radius: 0.3em;
+        @apply tw-border-none tw-bg-[#272822] tw-p-[1em] tw-m-[0.5em_0_0] tw-rounded-[0.3em];
 
         .dm-buttons {
-          display: flex;
-          justify-content: space-between;
-          padding: 0;
-          margin-bottom: 10px;
+          @apply tw-flex tw-justify-between tw-p-0 tw-mb-[10px];
 
           .dm-buttons-left {
-            display: flex;
-            align-items: center;
+            @apply tw-flex tw-items-center;
 
             .dm-button-snippet {
-              width: 12px;
-              height: 12px;
-              border-radius: 100%;
-              margin-right: 10px;
+              @apply tw-w-[12px] tw-h-[12px] tw-rounded-full tw-mr-[10px];
 
               &.red-button {
-                background: #f92a2a;
+                @apply tw-bg-[#f92a2a];
               }
 
               &.green-button {
-                background: #1ec500;
+                @apply tw-bg-[#1ec500];
               }
 
               &.orange-button {
-                background: #ffb100;
+                @apply tw-bg-[#ffb100];
               }
             }
           }
 
           .dm-buttons-right {
-            display: flex;
-            align-items: center;
+            @apply tw-flex tw-items-center;
 
             a {
-              text-decoration: none;
-              opacity: 0.5;
-              float: left;
-              color: #fff;
-              box-shadow: none;
-              background: #2682c3;
-              padding: 3px 10px 2px;
-              font-size: 12px;
-              text-transform: uppercase;
-              letter-spacing: 1px;
-              border-radius: 3px;
-              transition: all 0.2s ease-in-out;
-
-              &:hover {
-                opacity: 1;
-                cursor: pointer;
-              }
+              @apply tw-opacity-50 tw-float-left tw-text-white tw-shadow-none tw-bg-gradient-to-r primary-gradient
+                 tw-px-[10px] tw-pt-[3px] tw-pb-[2px] tw-text-xs tw-uppercase tw-min-w-[94px] tw-text-center
+                  tw-tracking-[1px] tw-rounded-[3px] tw-transition-all tw-duration-200 
+                  tw-ease-in-out hover:tw-opacity-100 hover:tw-cursor-pointer tw-no-underline;
 
               span {
-                color: #fff;
-                font-size: 12px;
-                text-transform: uppercase;
-                letter-spacing: 1px;
+                @apply tw-text-white tw-text-xs tw-uppercase tw-tracking-[1px];
               }
             }
           }
@@ -147,25 +116,11 @@
         background-image: unset;
 
         @apply tw-shadow-[unset];
-
-        .token {
-          &.constant {
-            color: #f92672;
-          }
-
-          &.string {
-            color: #a6e22e;
-          }
-
-          &.keyword {
-            color: #66d9ef;
-          }
-
-          &.number {
-            color: #ae81ff;
-          }
-        }
       }
+    }
+
+    .yarpp-related {
+      display: none;
     }
   }
 }
