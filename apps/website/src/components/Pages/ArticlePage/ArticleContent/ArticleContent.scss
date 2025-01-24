@@ -20,6 +20,14 @@
       @apply p-default tw-text-headings;
     }
 
+    em {
+      @apply p-small tw-text-headings;
+    }
+
+    mark {
+      @apply cs-text-color-primary-gradient;
+    }
+
     strong {
       @apply tw-tracking-[1px];
     }
@@ -66,6 +74,12 @@
       }
 
       mark {
+        background: unset;
+        background-clip: unset;
+        /* stylelint-disable-next-line property-no-vendor-prefix */
+        -webkit-background-clip: unset;
+        -webkit-text-fill-color: unset;
+
         @apply tw-text-headings;
       }
     }

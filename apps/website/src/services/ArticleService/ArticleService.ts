@@ -21,6 +21,26 @@ export class ArticleService {
 
   private constructor() {}
 
+  private htmlToPlainText(html: string): string {
+    const withoutTags = html.replace(/<\/?[^>]+(>|$)/g, "");
+
+    const decodedText = withoutTags
+      .replace(/&amp;/g, "&")
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">")
+      .replace(/&quot;/g, '"')
+      .replace(/&hellip;/g, '"')
+      .replace(/&#39;/g, "'")
+      .replace(/&#(\d+);/g, (_, code) =>
+        String.fromCharCode(parseInt(code, 10))
+      )
+      .replace(/&#x([a-fA-F0-9]+);/g, (_, code) =>
+        String.fromCharCode(parseInt(code, 16))
+      );
+
+    return decodedText;
+  }
+
   public static get instance(): ArticleService {
     if (!this._instance) {
       this._instance = new ArticleService();
@@ -137,6 +157,7 @@ export class ArticleService {
             }) || [],
           thumbnail: data.post.featuredImage?.node.guid || "",
           date: data.post.date || "",
+          description: this.htmlToPlainText(data.post.excerpt || ""),
         }
       : null;
 

@@ -2,7 +2,7 @@
 
 import RoundedWrapper from "@/components/RoundedWrapper";
 import { ArticleContentProps } from "./ArticleContent.types";
-import { Label, useClientInfoService } from "@burneeble/ui-components";
+import { Label } from "@burneeble/ui-components";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Prism from "prismjs";
@@ -15,13 +15,12 @@ const ArticleContent = (props: ArticleContentProps) => {
   const [content, setContent] = useState<string>(props.article.content);
 
   //Hooks
-  const { isClient } = useClientInfoService();
   const router = useRouter();
 
   //Effects
   useEffect(() => {
     Prism.highlightAll();
-  }, [props.article.content]);
+  }, [content]);
 
   useEffect(() => {
     const codes = document.querySelectorAll(".dm-code-snippet");
@@ -45,7 +44,7 @@ const ArticleContent = (props: ArticleContentProps) => {
         });
       }
     }
-  }, []);
+  }, [content]);
 
   useEffect(() => {
     formatContent();
@@ -104,20 +103,18 @@ const ArticleContent = (props: ArticleContentProps) => {
         if (href && href.includes("https://burneeble.com")) {
           const updatedHref = href.replace(
             "https://burneeble.com",
-            `${isClient && window ? window.location.origin : ""}/blog/article`
+            `${window ? window.location.origin : ""}/blog/article`
           );
           a.setAttribute("href", updatedHref);
         }
       });
 
-      setContent(doc.body.innerHTML);
-    } catch {
-      setContent(
-        props.article.content.replaceAll(
-          "https://burneeble.com",
-          `${isClient && window ? window.location.origin : ""}/blog/article`
-        )
-      );
+      const newContent = doc.body.innerHTML;
+      if (content !== newContent) {
+        setContent(newContent);
+      }
+    } catch (e) {
+      console.log(e);
     }
   };
 

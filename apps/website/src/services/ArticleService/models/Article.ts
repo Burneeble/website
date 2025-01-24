@@ -10,6 +10,7 @@ export interface IArticleModel {
   }[];
   thumbnail: string;
   date?: string;
+  description?: string;
 }
 
 @JsonObject()
@@ -35,6 +36,9 @@ export class ArticleModel implements IArticleModel {
   @JsonProperty()
   date?: string;
 
+  @JsonProperty()
+  description?: string;
+
   constructor(obj?: Partial<IArticleModel>) {
     this.slug = obj?.slug || "";
     this.title = obj?.title || "";
@@ -42,5 +46,6 @@ export class ArticleModel implements IArticleModel {
     this.categories = obj?.categories || [];
     this.thumbnail = obj?.thumbnail || "";
     this.date = obj?.date || "";
+    this.description = obj?.description || "";
   }
 }

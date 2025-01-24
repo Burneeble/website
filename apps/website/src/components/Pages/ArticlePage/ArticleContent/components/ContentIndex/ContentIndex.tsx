@@ -85,7 +85,7 @@ const ContentIndex = (props: ContentIndexProps) => {
                 key={i}
                 className={`
                   paragraph tw-transition-all tw-duration-200 tw-ease-in-out
-                  tw-cursor-pointer
+                  tw-cursor-pointer tw-w-fit
 
                   hover:tw-ml-[1rem] hover:tw-text-action-hover
                 `}
