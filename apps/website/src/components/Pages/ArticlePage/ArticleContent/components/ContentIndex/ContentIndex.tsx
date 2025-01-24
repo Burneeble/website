@@ -19,6 +19,11 @@ const ContentIndex = (props: ContentIndexProps) => {
     const tmp: HTMLHeadingElement[] = [];
 
     ps.forEach((p) => {
+      p.id = p.innerText
+        .replace(/ /g, "-")
+        .replaceAll("#", "")
+        .replaceAll(".", "")
+        .toLowerCase();
       if (p.innerText !== "© COPYRIGHT 2024 - BURNEEBLE SRL") tmp.push(p);
     });
     setParagraphs(tmp);
@@ -65,13 +70,34 @@ const ContentIndex = (props: ContentIndexProps) => {
       </div>
       <ul
         className={cn(
-          "paragraphs",
-          isOpen ? "tw-max-h-[100rem]" : `tw-max-h-0`
+          `paragraphs tw-overflow-hidden tw-flex tw-flex-col tw-gap-[.5rem]`,
+          isOpen ? "tw-max-h-[100rem] tw-pt-[1rem]" : `tw-max-h-0`
         )}
+        style={{
+          transition:
+            "max-height 0.4s ease-in-out, padding-top 0.2s ease-in-out 0.1s",
+        }}
       >
         {paragraphs &&
           paragraphs.map((p, i) => {
-            return <li key={i}>{p.innerText}</li>;
+            return (
+              <li
+                key={i}
+                className={`
+                  paragraph tw-transition-all tw-duration-200 tw-ease-in-out
+                  tw-cursor-pointer
+
+                  hover:tw-ml-[1rem] hover:tw-text-action-hover
+                `}
+                onClick={() => {
+                  console.log(p);
+                  console.log(p.getBoundingClientRect());
+                  p.scrollIntoView({ behavior: "smooth", block: "center" });
+                }}
+              >
+                <a href={`#${p.id}`}>{p.innerText}</a>
+              </li>
+            );
           })}
       </ul>
     </div>

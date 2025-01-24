@@ -4,13 +4,16 @@ import RoundedWrapper from "@/components/RoundedWrapper";
 import { ArticleContentProps } from "./ArticleContent.types";
 import { Label, useClientInfoService } from "@burneeble/ui-components";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Prism from "prismjs";
 import "./prism-import";
 import { ContentIndex } from "./components";
 import { useRouter } from "next/navigation";
 
 const ArticleContent = (props: ArticleContentProps) => {
+  //States
+  const [content, setContent] = useState<string>(props.article.content);
+
   //Hooks
   const { isClient } = useClientInfoService();
   const router = useRouter();
@@ -44,6 +47,10 @@ const ArticleContent = (props: ArticleContentProps) => {
     }
   }, []);
 
+  useEffect(() => {
+    formatContent();
+  }, []);
+
   //Methods
   const formatDate = (isoDateString: string): string => {
     const date = new Date(isoDateString);
@@ -68,6 +75,50 @@ const ArticleContent = (props: ArticleContentProps) => {
     const year = date.getFullYear();
 
     return `${day} ${month} ${year}`;
+  };
+
+  const formatContent = () => {
+    console.log("formatContent");
+    try {
+      const content = props.article.content;
+
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(content, "text/html");
+
+      const h2Elements = doc.querySelectorAll("h2");
+
+      h2Elements.forEach((h2) => {
+        if (h2.textContent) {
+          const id = h2.textContent
+            .replace(/ /g, "-")
+            .replaceAll("#", "")
+            .replaceAll(".", "")
+            .toLowerCase();
+          h2.setAttribute("id", id);
+        }
+      });
+
+      const anchorElements = doc.querySelectorAll("a");
+      anchorElements.forEach((a) => {
+        const href = a.getAttribute("href");
+        if (href && href.includes("https://burneeble.com")) {
+          const updatedHref = href.replace(
+            "https://burneeble.com",
+            `${isClient && window ? window.location.origin : ""}/blog/article`
+          );
+          a.setAttribute("href", updatedHref);
+        }
+      });
+
+      setContent(doc.body.innerHTML);
+    } catch {
+      setContent(
+        props.article.content.replaceAll(
+          "https://burneeble.com",
+          `${isClient && window ? window.location.origin : ""}/blog/article`
+        )
+      );
+    }
   };
 
   return (
@@ -116,10 +167,7 @@ const ArticleContent = (props: ArticleContentProps) => {
             article-body tw-flex tw-flex-col tw-gap-[30px] tw-text-headings
           `}
           dangerouslySetInnerHTML={{
-            __html: props.article.content.replaceAll(
-              "https://burneeble.com",
-              `${isClient && window ? window.location.origin : ""}/blog/article`
-            ),
+            __html: content,
           }}
         />
       </RoundedWrapper>

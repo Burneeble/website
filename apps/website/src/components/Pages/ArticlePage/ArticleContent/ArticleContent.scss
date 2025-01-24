@@ -31,7 +31,7 @@
     }
 
     iframe {
-      @apply tw-h-[unset] tw-aspect-[741.5/417];
+      @apply tw-h-[unset] tw-aspect-[741.5/417] tw-outline-none;
     }
 
     figure {
@@ -67,6 +67,19 @@
 
       mark {
         @apply tw-text-headings;
+      }
+    }
+
+    ul,
+    ol {
+      @apply tw-flex tw-flex-col tw-gap-[15px];
+
+      li {
+        @apply p-small tw-pl-[2rem] tw-relative tw-text-headings after:tw-block after:tw-absolute after:tw-top-0 after:tw-left-0 after:tw-w-[1rem] after:tw-h-[29.5px] after:tw-bg-white;
+
+        &::after {
+          clip-path: polygon(0 0, 0% 100%, 100% 50%);
+        }
       }
     }
 
@@ -145,5 +158,9 @@
         @apply tw-shadow-[unset];
       }
     }
+  }
+
+  #ez-toc-container {
+    display: none;
   }
 }
