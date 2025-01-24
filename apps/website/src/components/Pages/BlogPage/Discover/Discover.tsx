@@ -91,9 +91,11 @@ const Discover = (props: DiscoverProps) => {
   }, [batchSize, endCursor, fetchMoreArticles, searchQuery]);
 
   const triggerRefresh = () => {
-    setIsLoading(true);
-    setEndCursor("tmp");
-    setArticles([]);
+    if (!isLoading) {
+      setIsLoading(true);
+      setEndCursor("tmp");
+      setArticles([]);
+    }
   };
 
   const articleFormatter = (

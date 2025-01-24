@@ -29,12 +29,14 @@ export async function generateMetadata({
     throw new Error("Host unavailable");
   }
 
-  const image = `${protocol}://${currentHost}/img/meta/blog-page.png`;
+  const generatedImageUrl = `${protocol}://${currentHost}/api/generate-blog-category-image?categoryName=${encodeURIComponent(
+    category.name
+  )}`;
 
   const tags = {
     title: category.name,
     description: category.description,
-    image,
+    image: generatedImageUrl,
   };
 
   return {
