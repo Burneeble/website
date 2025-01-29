@@ -2,12 +2,12 @@
 
 import RoundedWrapper from "@/components/RoundedWrapper";
 import { ArticleContentProps } from "./ArticleContent.types";
-import { Label } from "@burneeble/ui-components";
+import { Label, useClientInfoService } from "@burneeble/ui-components";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Prism from "prismjs";
 import "./prism-import";
-import { ContentIndex, ProgressBar } from "./components";
+import { ContentIndex, ProgressBar, SocialShare } from "./components";
 import { useRouter } from "next/navigation";
 
 const ArticleContent = (props: ArticleContentProps) => {
@@ -17,6 +17,7 @@ const ArticleContent = (props: ArticleContentProps) => {
   //Hooks
   const router = useRouter();
   const contentRef = useRef<HTMLDivElement>(null);
+  const { isClient } = useClientInfoService();
 
   //Effects
   useEffect(() => {
@@ -128,13 +129,23 @@ const ArticleContent = (props: ArticleContentProps) => {
           !tw-gap-[10px]
         `}
       >
-        <Label
-          text={props.article.categories[0].name}
-          variant={"active"}
-          onClick={() => {
-            router.push(`/blog/category/${props.article.categories[0].slug}`);
-          }}
-        />
+        <div
+          className={`
+            article-header tw-flex tw-items-center tw-justify-between tw-w-full
+          `}
+        >
+          <Label
+            text={props.article.categories[0].name}
+            variant={"active"}
+            onClick={() => {
+              router.push(`/blog/category/${props.article.categories[0].slug}`);
+            }}
+          />
+          <SocialShare
+            url={isClient ? window.location.href : ""}
+            title={`\nCheck out this article by burneeble!\n${props.article.title}\n\n`}
+          />
+        </div>
         <h1
           className={`
             title !tw-leading-[47px]
@@ -160,6 +171,44 @@ const ArticleContent = (props: ArticleContentProps) => {
           </Link>{" "}
           on {formatDate(props.article.date || "")}
         </p>
+        <div
+          className={`
+            breadcumbs p-smaller tw-flex tw-items-center tw-gap-[.5rem]
+          `}
+        >
+          <Link
+            className={`
+              tw-transition-all tw-duration-200 tw-ease-in-out
+
+              hover:tw-text-action-hover
+            `}
+            href={"/blog"}
+          >
+            Blog
+          </Link>
+          <span className="separator tw-text-[.8rem]">{">>"}</span>
+          <Link
+            className={`
+              tw-transition-all tw-duration-200 tw-ease-in-out
+
+              hover:tw-text-action-hover
+            `}
+            href={`/blog/category/${props.article.categories[0].slug}`}
+          >
+            {props.article.categories[0].name}
+          </Link>
+          <span className="separator tw-text-[.8rem]">{">>"}</span>
+          <Link
+            className={`
+              tw-transition-all tw-duration-200 tw-ease-in-out
+
+              hover:tw-text-action-hover
+            `}
+            href={`/blog/article/${props.article.slug}`}
+          >
+            {props.article.title}
+          </Link>
+        </div>
         <ContentIndex article={props.article} />
         <div
           className={`
