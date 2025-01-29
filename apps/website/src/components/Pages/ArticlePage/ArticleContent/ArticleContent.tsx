@@ -4,10 +4,10 @@ import RoundedWrapper from "@/components/RoundedWrapper";
 import { ArticleContentProps } from "./ArticleContent.types";
 import { Label } from "@burneeble/ui-components";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Prism from "prismjs";
 import "./prism-import";
-import { ContentIndex } from "./components";
+import { ContentIndex, ProgressBar } from "./components";
 import { useRouter } from "next/navigation";
 
 const ArticleContent = (props: ArticleContentProps) => {
@@ -16,6 +16,7 @@ const ArticleContent = (props: ArticleContentProps) => {
 
   //Hooks
   const router = useRouter();
+  const contentRef = useRef<HTMLDivElement>(null);
 
   //Effects
   useEffect(() => {
@@ -119,7 +120,8 @@ const ArticleContent = (props: ArticleContentProps) => {
   };
 
   return (
-    <section className={`cs-structure-page article-content`}>
+    <section className={`cs-structure-page article-content`} ref={contentRef}>
+      <ProgressBar content={contentRef} />
       <RoundedWrapper
         className={`
           tw-py-[50px] tw-flex tw-flex-col tw-items-start tw-justify-start
