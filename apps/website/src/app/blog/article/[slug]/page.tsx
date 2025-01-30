@@ -1,4 +1,8 @@
-import { ArticleContent, ArticleHero } from "@/components/Pages";
+import {
+  ArticleContent,
+  ArticleHero,
+  RelatedArticles,
+} from "@/components/Pages";
 import { ArticleService } from "@/services";
 import { redirect } from "next/navigation";
 
@@ -57,6 +61,7 @@ const ArticlePage = async ({ params }: { params: { slug: string } }) => {
     <div className="cs-page article-page">
       <ArticleHero article={article} />
       <ArticleContent article={article} />
+      <RelatedArticles />
     </div>
   );
 };

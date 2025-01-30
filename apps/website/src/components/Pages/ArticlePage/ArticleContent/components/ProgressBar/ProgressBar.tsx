@@ -27,8 +27,6 @@ const ProgressBar = (props: ProgressBarProps) => {
             props.content.current.scrollHeight) *
           100;
 
-        console.log(scrollPercentage);
-
         gsap.to(bar.current, {
           width: `${scrollPercentage}%`,
           duration: 0.3,

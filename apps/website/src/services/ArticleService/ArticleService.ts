@@ -12,6 +12,7 @@ import {
   GET_ARTICLES_QUERY,
   GET_ARTICLES_QUERY_WITH_LIMIT,
   GET_CATEGORY_QUERY,
+  GET_RELATED_ARTICLES_QUERY,
 } from "./queries";
 
 const serializer = new JsonSerializer();
@@ -170,4 +171,33 @@ export class ArticleService {
 
     return article;
   }
+
+  getRelatedArticles = async (
+    postSlug: string,
+    categorySlug: string,
+    limit: number
+  ): Promise<Array<ArticleModel> | null> => {
+    const { data } = await GraphQLService.instance.client.query({
+      query: GET_RELATED_ARTICLES_QUERY,
+      variables: { category: categorySlug, slug: [postSlug], limit },
+    });
+
+    if (!data) return [];
+
+    return (data.posts?.nodes || []).map((node: any) => {
+      const article = new ArticleModel();
+      article.title = node.title || "";
+      article.content = node.content || "";
+      article.slug = node.slug || "";
+      article.categories = node.categories.nodes.map((category: any) => {
+        return {
+          name: category.name || "",
+          slug: category.slug || "",
+        };
+      });
+      article.thumbnail = node.featuredImage?.node.guid || "";
+
+      return article;
+    });
+  };
 }
