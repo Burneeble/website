@@ -2,8 +2,11 @@
 import { gql } from "@/__generated__";
 
 export const GET_RELATED_ARTICLES_QUERY = gql(/* GraphQL */ `
-  query getRelatedArticles($category: String!, $slug: [ID], $limit: Int!) {
-    posts(where: { categoryName: $category, notIn: $slug }, first: $limit) {
+  query getRelatedArticles($category: String!, $articleId: [ID], $limit: Int!) {
+    posts(
+      where: { categoryName: $category, notIn: $articleId }
+      first: $limit
+    ) {
       nodes {
         featuredImage {
           node {
@@ -12,6 +15,7 @@ export const GET_RELATED_ARTICLES_QUERY = gql(/* GraphQL */ `
         }
         content
         title
+        id
         categories {
           nodes {
             name

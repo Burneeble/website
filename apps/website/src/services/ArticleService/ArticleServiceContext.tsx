@@ -9,7 +9,7 @@ export interface ArticleServiceContent {
   getCategory(slug: string): Promise<CategoryModel | null>;
   getArticle(slug: string): Promise<ArticleModel | null>;
   getRelatedArticles(
-    postSlug: string,
+    articleId: string,
     categorySlug: string,
     limit: number
   ): Promise<Array<ArticleModel> | null>;

@@ -53,7 +53,7 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
         '<span class="highlight">$1</span>'
       );
     });
-    console.log("highlightedText", highlightedText);
+
     return highlightedText;
   };
 

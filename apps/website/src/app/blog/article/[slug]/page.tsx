@@ -61,7 +61,10 @@ const ArticlePage = async ({ params }: { params: { slug: string } }) => {
     <div className="cs-page article-page">
       <ArticleHero article={article} />
       <ArticleContent article={article} />
-      <RelatedArticles />
+      <RelatedArticles
+        categorySlug={article.categories[0].slug}
+        articleSlug={article.id}
+      />
     </div>
   );
 };

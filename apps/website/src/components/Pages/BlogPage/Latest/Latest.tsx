@@ -1,4 +1,4 @@
-import ArticleBatch from "@/components/ArticleBatch";
+import ArticleBatch, { ArticleBatchVariant } from "@/components/ArticleBatch";
 import { LatestProps } from "./Latest.types";
 
 const Latest = (props: LatestProps) => {
@@ -12,7 +12,12 @@ const Latest = (props: LatestProps) => {
       <h2 className="title tw-text-center">
         <span className="cs-text-color-primary-gradient">Latest</span> Articles
       </h2>
-      <ArticleBatch limit={3} enableSliderResponsiveMode variant={"dark"} />
+      <ArticleBatch
+        type={ArticleBatchVariant.LATEST}
+        limit={3}
+        enableSliderResponsiveMode
+        variant={"dark"}
+      />
     </section>
   );
 };

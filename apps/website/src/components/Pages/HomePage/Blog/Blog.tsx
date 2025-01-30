@@ -1,4 +1,4 @@
-import ArticleBatch from "@/components/ArticleBatch";
+import ArticleBatch, { ArticleBatchVariant } from "@/components/ArticleBatch";
 import { BlogProps } from "./Blog.types";
 
 const Blog = (props: BlogProps) => {
@@ -40,12 +40,16 @@ const Blog = (props: BlogProps) => {
         className={`
           articles tw-flex tw-flex-col tw-items-center tw-justify-center
           tw-relative cs-website-horizontal-padding tw-bg-gradient-to-r
-          tw-w-screen primary-gradient tw-py-[30px]
+          tw-w-screen primary-gradient cs-website-horizontal-padding
 
           lg:tw-my-0
         `}
       >
-        <ArticleBatch limit={3} enableSliderResponsiveMode />
+        <ArticleBatch
+          type={ArticleBatchVariant.LATEST}
+          limit={3}
+          enableSliderResponsiveMode
+        />
       </div>
     </section>
   );

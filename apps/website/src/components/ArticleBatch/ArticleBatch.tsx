@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArticleBatchProps } from "./ArticleBatch.types";
+import { ArticleBatchProps, ArticleBatchVariant } from "./ArticleBatch.types";
 import { ArticleModel, useArticleService } from "@/services";
 import {
   ArticlePreview,
@@ -17,7 +17,7 @@ const ArticleBatch = (props: ArticleBatchProps) => {
   const [articles, setArticles] = useState<ArticleModel[] | null>(null);
 
   //Hooks
-  const { getArticlesWithLimit } = useArticleService();
+  const { getArticlesWithLimit, getRelatedArticles } = useArticleService();
   const { screen, width } = useClientInfoService();
   const router = useRouter();
 
@@ -29,8 +29,23 @@ const ArticleBatch = (props: ArticleBatchProps) => {
   //Methods
   const fetchArticles = async () => {
     try {
-      const data = await getArticlesWithLimit(props.limit);
-      setArticles(data);
+      let data: ArticleModel[] | null = null;
+
+      switch (props.type) {
+        case ArticleBatchVariant.RELATED:
+          data = await getRelatedArticles(
+            props.articleSlug,
+            props.categorySlug,
+            props.limit
+          );
+          break;
+        case ArticleBatchVariant.LATEST:
+        default:
+          data = await getArticlesWithLimit(props.limit);
+          break;
+      }
+
+      setArticles(data || []);
     } catch (err) {
       console.log(err);
       NotificationHandler.instance.error("Failed to fetch articles");

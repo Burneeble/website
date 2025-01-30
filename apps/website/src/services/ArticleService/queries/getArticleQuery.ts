@@ -6,6 +6,7 @@ export const GET_ARTICLE_QUERY = gql(/* GraphQL */ `
     post(id: $slug, idType: SLUG) {
       slug
       title
+      id
       content
       categories {
         nodes {

@@ -1,4 +1,6 @@
-import ArticleBatch from "@/components/ArticleBatch";
+"use client";
+
+import ArticleBatch, { ArticleBatchVariant } from "@/components/ArticleBatch";
 import { RelatedArticlesProps } from "./RelatedArticles.types";
 
 const RelatedArticles = (props: RelatedArticlesProps) => {
@@ -17,7 +19,15 @@ const RelatedArticles = (props: RelatedArticlesProps) => {
       `}
     >
       <h2 className="title tw-text-center">Related Articles</h2>
-      <ArticleBatch limit={3} />
+      <div className="articles-wrapper tw-px-[30px] tw-w-full tw-max-w-[1300px]">
+        <ArticleBatch
+          type={ArticleBatchVariant.RELATED}
+          limit={3}
+          categorySlug={props.categorySlug}
+          articleSlug={props.articleSlug}
+          enableSliderResponsiveMode
+        />
+      </div>
     </section>
   );
 };

@@ -1,1 +1,4 @@
-export interface RelatedArticlesProps {}
+export interface RelatedArticlesProps {
+  categorySlug: string;
+  articleSlug: string;
+}

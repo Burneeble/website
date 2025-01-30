@@ -26,12 +26,12 @@ const ArticleServiceProvider = (props: ArticleServiceProviderProps) => {
   };
 
   const getRelatedArticles = async (
-    postSlug: string,
+    articleId: string,
     categorySlug: string,
     limit: number
   ): Promise<Array<ArticleModel> | null> => {
     return await ArticleService.instance.getRelatedArticles(
-      postSlug,
+      articleId,
       categorySlug,
       limit
     );

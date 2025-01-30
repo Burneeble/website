@@ -90,7 +90,7 @@ export class ArticleService {
       ? data.posts?.nodes.map((node) => {
           return {
             title: node.title || "",
-
+            id: node.id || "",
             content: node.content || "",
             slug: node.slug || "",
             categories:
@@ -150,6 +150,7 @@ export class ArticleService {
     const articleInfo: IArticleModel | null = data.post
       ? {
           title: data.post.title || "",
+          id: data.post.id || "",
           content: data.post.content || "",
           slug: data.post.slug || "",
           categories:
@@ -173,31 +174,41 @@ export class ArticleService {
   }
 
   getRelatedArticles = async (
-    postSlug: string,
+    articleId: string,
     categorySlug: string,
     limit: number
   ): Promise<Array<ArticleModel> | null> => {
     const { data } = await GraphQLService.instance.client.query({
       query: GET_RELATED_ARTICLES_QUERY,
-      variables: { category: categorySlug, slug: [postSlug], limit },
+      variables: { category: categorySlug, articleId: [articleId], limit },
     });
 
     if (!data) return [];
 
-    return (data.posts?.nodes || []).map((node: any) => {
-      const article = new ArticleModel();
-      article.title = node.title || "";
-      article.content = node.content || "";
-      article.slug = node.slug || "";
-      article.categories = node.categories.nodes.map((category: any) => {
-        return {
-          name: category.name || "",
-          slug: category.slug || "",
-        };
-      });
-      article.thumbnail = node.featuredImage?.node.guid || "";
+    const articlesInfo = data.posts
+      ? data.posts?.nodes.map((node: any) => {
+          return {
+            title: node.title || "",
+            id: node.id || "",
+            content: node.content || "",
+            slug: node.slug || "",
+            categories:
+              node.categories?.nodes.map((category: any) => {
+                return { name: category.name || "", slug: category.slug || "" };
+              }) || [],
 
-      return article;
-    });
+            thumbnail: node.featuredImage?.node.guid || "",
+          };
+        })
+      : null;
+
+    if (!articlesInfo) return [];
+
+    const articles = (serializer.deserializeObjectArray<ArticleModel>(
+      articlesInfo,
+      ArticleModel
+    ) || []) as Array<ArticleModel>;
+
+    return articles;
   };
 }

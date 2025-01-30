@@ -1,6 +1,7 @@
 import { JsonObject, JsonProperty } from "typescript-json-serializer";
 
 export interface IArticleModel {
+  id: string;
   title: string;
   content: string;
   slug: string;
@@ -15,6 +16,9 @@ export interface IArticleModel {
 
 @JsonObject()
 export class ArticleModel implements IArticleModel {
+  @JsonProperty()
+  id: string;
+
   @JsonProperty()
   title: string;
 
@@ -40,6 +44,7 @@ export class ArticleModel implements IArticleModel {
   description?: string;
 
   constructor(obj?: Partial<IArticleModel>) {
+    this.id = obj?.id || "";
     this.slug = obj?.slug || "";
     this.title = obj?.title || "";
     this.content = obj?.content || "";
