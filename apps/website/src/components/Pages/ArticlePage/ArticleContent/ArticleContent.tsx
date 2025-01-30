@@ -2,7 +2,7 @@
 
 import RoundedWrapper from "@/components/RoundedWrapper";
 import { ArticleContentProps } from "./ArticleContent.types";
-import { Label, useClientInfoService } from "@burneeble/ui-components";
+import { Label } from "@burneeble/ui-components";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Prism from "prismjs";
@@ -13,11 +13,11 @@ import { useRouter } from "next/navigation";
 const ArticleContent = (props: ArticleContentProps) => {
   //States
   const [content, setContent] = useState<string>(props.article.content);
+  const [url, setUrl] = useState<string>("");
 
   //Hooks
   const router = useRouter();
   const contentRef = useRef<HTMLDivElement>(null);
-  const { isClient } = useClientInfoService();
 
   //Effects
   useEffect(() => {
@@ -50,6 +50,10 @@ const ArticleContent = (props: ArticleContentProps) => {
 
   useEffect(() => {
     formatContent();
+  }, []);
+
+  useEffect(() => {
+    if (window) setUrl(window.location.href);
   }, []);
 
   //Methods
@@ -142,7 +146,7 @@ const ArticleContent = (props: ArticleContentProps) => {
             }}
           />
           <SocialShare
-            url={isClient ? window.location.href : ""}
+            url={url}
             title={`\nCheck out this article by burneeble!\n${props.article.title}\n\n`}
           />
         </div>

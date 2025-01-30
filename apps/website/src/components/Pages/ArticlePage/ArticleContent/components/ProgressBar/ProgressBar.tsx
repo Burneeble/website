@@ -14,14 +14,33 @@ const ProgressBar = (props: ProgressBarProps) => {
       if (!props.content.current || !bar.current) return;
 
       const { scrollTop } = document.documentElement;
-      const scrollPercentage =
-        (scrollTop / props.content.current.scrollHeight) * 100;
+      if (
+        scrollTop > 0 &&
+        scrollTop + window.innerHeight >=
+          props.content.current.getBoundingClientRect().top + window.scrollY
+      ) {
+        const scrollPercentage =
+          ((scrollTop +
+            window.innerHeight -
+            (props.content.current.getBoundingClientRect().top +
+              window.scrollY)) /
+            props.content.current.scrollHeight) *
+          100;
 
-      gsap.to(bar.current, {
-        width: `${scrollPercentage}%`,
-        duration: 0.3,
-        ease: "power2.out",
-      });
+        console.log(scrollPercentage);
+
+        gsap.to(bar.current, {
+          width: `${scrollPercentage}%`,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      } else {
+        gsap.to(bar.current, {
+          width: `0%`,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      }
     };
 
     window.addEventListener("scroll", updateProgress);
