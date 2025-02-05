@@ -40,9 +40,9 @@ const Blog = (props: BlogProps) => {
         className={`
           articles tw-flex tw-flex-col tw-items-center tw-justify-center
           tw-relative cs-website-horizontal-padding tw-bg-gradient-to-r
-          tw-w-screen primary-gradient cs-website-horizontal-padding
+          tw-w-screen primary-gradient cs-website-horizontal-padding tw-py-[15px]
 
-          lg:tw-my-0
+          lg:tw-my-0 md:tw-py-[30px]
         `}
       >
         <ArticleBatch

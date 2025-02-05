@@ -54,6 +54,10 @@
       @apply tw-text-action hover:tw-text-action-hover tw-transition-all tw-duration-200 tw-ease-in-out tw-font-bold tw-underline;
     }
 
+    .wp-block-table {
+      @apply tw-overflow-x-auto;
+    }
+
     table {
       @apply tw-table-auto tw-border-separate tw-border-spacing-0 tw-border tw-border-white tw-rounded-[.5rem] tw-overflow-hidden;
 

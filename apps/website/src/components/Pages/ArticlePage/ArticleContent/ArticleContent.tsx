@@ -135,7 +135,7 @@ const ArticleContent = (props: ArticleContentProps) => {
       >
         <div
           className={`
-            article-header tw-flex tw-items-center tw-justify-between tw-w-full
+            article-header tw-flex tw-flex-col md:tw-flex-row md:tw-items-center md:tw-justify-between tw-w-full tw-gap-[15px]
           `}
         >
           <Label
@@ -177,12 +177,12 @@ const ArticleContent = (props: ArticleContentProps) => {
         </p>
         <div
           className={`
-            breadcumbs p-smaller tw-flex tw-items-center tw-gap-[.5rem]
+            breadcumbs p-smaller tw-flex tw-items-center tw-gap-[.5rem] tw-flex-wrap
           `}
         >
           <Link
             className={`
-              tw-transition-all tw-duration-200 tw-ease-in-out
+              tw-transition-all tw-duration-200 tw-ease-in-out tw-whitespace-nowrap
 
               hover:tw-text-action-hover
             `}
@@ -193,7 +193,7 @@ const ArticleContent = (props: ArticleContentProps) => {
           <span className="separator tw-text-[.8rem]">{">>"}</span>
           <Link
             className={`
-              tw-transition-all tw-duration-200 tw-ease-in-out
+              tw-transition-all tw-duration-200 tw-ease-in-out tw-whitespace-nowrap
 
               hover:tw-text-action-hover
             `}
@@ -216,7 +216,7 @@ const ArticleContent = (props: ArticleContentProps) => {
         <ContentIndex article={props.article} />
         <div
           className={`
-            article-body tw-flex tw-flex-col tw-gap-[30px] tw-text-headings
+            article-body tw-flex tw-flex-col tw-gap-[30px] tw-text-headings tw-max-w-full
           `}
           dangerouslySetInnerHTML={{
             __html: content,

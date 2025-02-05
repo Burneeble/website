@@ -15,6 +15,7 @@ export const GET_RELATED_ARTICLES_QUERY = gql(/* GraphQL */ `
         }
         content
         title
+        slug
         id
         categories {
           nodes {
