@@ -13,7 +13,7 @@ const Blog = (props: BlogProps) => {
       <div
         className={`
           texts tw-flex tw-flex-col tw-items-center tw-justify-center
-          cs-gap-between-text tw-max-w-[1300px]
+          cs-gap-between-text tw-max-w-screen-xl
         `}
       >
         <h2 className="title tw-text-center">
@@ -38,11 +38,13 @@ const Blog = (props: BlogProps) => {
       </div>
       <div
         className={`
-          articles tw-flex tw-flex-col tw-items-center tw-justify-center
-          tw-relative cs-website-horizontal-padding tw-bg-gradient-to-r
-          tw-w-screen primary-gradient cs-website-horizontal-padding tw-py-[15px]
+          articles tw-relative tw-flex tw-w-screen tw-flex-col tw-items-center
+          tw-justify-center cs-website-horizontal-padding tw-bg-gradient-to-r
+          primary-gradient cs-website-horizontal-padding tw-py-[15px]
 
-          lg:tw-my-0 md:tw-py-[30px]
+          lg:tw-my-0
+
+          md:tw-py-[30px]
         `}
       >
         <ArticleBatch

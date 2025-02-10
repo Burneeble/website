@@ -12,3 +12,15 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+.home-page {
+  @apply tw-to-[8%]  tw-from-0%;
+}
+
+.gallery-page {
+  @apply tw-from-50% tw-to-50%;
+}
+
+.blog-page {
+  @apply tw-to-50% tw-from-50%;
+}

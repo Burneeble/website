@@ -48,8 +48,8 @@ const ProgressBar = (props: ProgressBarProps) => {
   return (
     <div
       className={`
-        progress-bar tw-fixed tw-top-0 tw-left-0 tw-w-0 tw-h-[.5rem]
-        tw-bg-gradient-to-l primary-gradient tw-z-20
+        progress-bar tw-fixed tw-left-0 tw-top-0 tw-z-20 tw-h-[.5rem] tw-w-0
+        tw-bg-gradient-to-l primary-gradient
       `}
       ref={bar}
     />

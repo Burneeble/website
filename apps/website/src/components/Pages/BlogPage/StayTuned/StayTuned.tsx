@@ -53,35 +53,35 @@ const StayTuned = (props: StayTunedProps) => {
   return (
     <section
       className={`
-        stay-tuned cs-website-vertical-padding tw-flex tw-flex-col
-        cs-gap-between-content tw-items-center tw-justify-center tw-min-h-screen
-        tw-relative
+        stay-tuned cs-website-vertical-padding tw-relative tw-flex
+        tw-min-h-screen tw-flex-col cs-gap-between-content tw-items-center
+        tw-justify-center
       `}
     >
       <div
         className={`
-          shape tw-absolute tw-left-1/2 tw-top-1/2 -tw-translate-y-1/2
-          -tw-translate-x-1/2 tw-w-screen tw-h-[180px] tw-bg-gradient-to-b
+          shape tw-absolute tw-left-1/2 tw-top-1/2 tw-h-[180px] tw-w-screen
+          -tw-translate-x-1/2 -tw-translate-y-1/2 tw-bg-gradient-to-b
           primary-gradient
         `}
       />
       <div
         className={`
-          content no-scrollbar tw-h-fit tw-max-h-[80%] tw-p-5 tw-w-[790px]
-          tw-overflow-scroll tw-max-w-[100%] tw-bg-gradient-to-b
-          secondary-gradient-to-custom tw-rounded-lg tw-border
-          tw-border-[#483a32] tw-flex-col tw-justify-start tw-items-center
-          tw-gap-5 tw-inline-flex tw-z-[2]
-          tw-shadow-[0_0_100px_0px_rgba(242,163,7,.3)] tw-relative
+          content no-scrollbar tw-relative tw-z-[2] tw-inline-flex tw-h-fit
+          tw-max-h-[80%] tw-w-[790px] tw-max-w-full tw-flex-col tw-items-center
+          tw-justify-start tw-gap-5 tw-overflow-scroll tw-rounded-lg tw-border
+          tw-border-[#483a32] tw-bg-gradient-to-b tw-p-5
+          secondary-gradient-to-custom
+          tw-shadow-[0_0_100px_0px_rgba(242,163,7,.3)]
         `}
       >
         {isSubmitting && (
           <div
             className={`
-              tw-absolute loading-screen tw-top-1/2 tw-left-1/2
-              -tw-translate-x-1/2 -tw-translate-y-1/2 tw-w-[calc(100%+2.50rem)]
-              tw-h-[calc(100%+2.50rem)] tw-flex tw-items-center
-              tw-justify-center tw-bg-[rgba(0,0,0,.6)] tw-z-[25]
+              tw-absolute loading-screen tw-left-1/2 tw-top-1/2 tw-z-[25]
+              tw-flex tw-h-[calc(100%+2.50rem)] tw-w-[calc(100%+2.50rem)]
+              -tw-translate-x-1/2 -tw-translate-y-1/2 tw-items-center
+              tw-justify-center tw-bg-[rgba(0,0,0,.6)]
             `}
           >
             <Spinner size="default" />

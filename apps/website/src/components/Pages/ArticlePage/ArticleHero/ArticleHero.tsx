@@ -4,7 +4,7 @@ const ArticleHero = (props: ArticleHeroProps) => {
   return (
     <section
       className={`
-        cs-section-structure article-hero tw-relative tw-min-h-0 tw-h-[355px]
+        cs-section-structure article-hero tw-relative tw-h-[355px] tw-min-h-0
 
         md:tw-h-[560px]
 
@@ -13,9 +13,8 @@ const ArticleHero = (props: ArticleHeroProps) => {
     >
       <div
         className={`
-          bg tw-absolute tw-top-0 tw-left-1/2 tw-w-screen tw-z-[-1]
-          -tw-translate-x-1/2 !tw-bg-cover !tw-bg-no-repeat !tw-bg-center
-          tw-h-[457px]
+          bg tw-absolute tw-left-1/2 tw-top-0 tw-z-[-1] tw-h-[457px] tw-w-screen
+          -tw-translate-x-1/2 !tw-bg-cover !tw-bg-center !tw-bg-no-repeat
 
           md:tw-h-[653px]
 

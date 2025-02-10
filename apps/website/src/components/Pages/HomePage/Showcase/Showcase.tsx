@@ -47,30 +47,30 @@ const Showcase = (props: ShowcaseProps) => {
       {screen == "sm" ? (
         <div
           className={`
-            bg-shadow tw-w-[400.78px] tw-h-[90%] tw-origin-top-left
-            tw-rotate-[-30.59deg]
+            bg-shadow tw-absolute -tw-left-[10rem] tw-top-60 tw-z-[-1]
+            tw-h-[90%] tw-w-[400.78px] tw-origin-top-left tw-rotate-[-30.59deg]
+            tw-rounded-full
             tw-bg-[radial-gradient(_var(--secondary-lighter)_10%,_rgba(1,1,1,0)_80%)]
-            tw-rounded-full tw-absolute tw-blur-[100px] -tw-left-[10rem]
-            tw-top-[15rem] tw-z-[-1] tw-opacity-[.6]
+            tw-opacity-[.6] tw-blur-[100px]
           `}
         />
       ) : (
         <>
           <div
             className={`
-              showcase-shape tw-w-[306px] tw-h-[307px] tw-left-0
-              -tw-translate-x-[40%] tw-top-[10rem] tw-opacity-[.4]
+              showcase-shape tw-left-0 tw-top-40 tw-h-[307px] tw-w-[306px]
+              -tw-translate-x-[40%] tw-opacity-[.4]
 
-              xl:tw-w-[897px] xl:tw-h-[897px] xl:tw-top-0 xl:-tw-left-[150px]
+              xl:-tw-left-[150px] xl:tw-top-0 xl:tw-h-[897px] xl:tw-w-[897px]
               xl:-tw-translate-y-[40%]
             `}
           />
           <div
             className={`
-              showcase-shape tw-w-[257px] tw-h-[256px] tw-right-0
-              tw-translate-x-[40%] tw-top-[10rem] tw-opacity-[.6]
+              showcase-shape tw-right-0 tw-top-40 tw-h-[256px] tw-w-[257px]
+              tw-translate-x-[40%] tw-opacity-[.6]
 
-              xl:tw-w-[647px] xl:tw-h-[647px] xl:tw-top-0 xl:-tw-right-[150px]
+              xl:-tw-right-[150px] xl:tw-top-0 xl:tw-h-[647px] xl:tw-w-[647px]
               xl:-tw-translate-y-1/2
             `}
           />
@@ -83,7 +83,7 @@ const Showcase = (props: ShowcaseProps) => {
           Check out{" "}
           <span
             className={`
-              cs-text-color-primary-gradient tw-font-normal tw-font-bowlby-one
+              cs-text-color-primary-gradient tw-font-bowlby-one tw-font-normal
             `}
           >
             our work
@@ -93,7 +93,7 @@ const Showcase = (props: ShowcaseProps) => {
       </div>
       <div
         className={`
-          carousel-wrapper tw-w-full tw-max-w-[1200px] tw-px-[1.25rem]
+          carousel-wrapper tw-w-full tw-max-w-[1200px] tw-px-5
 
           md:tw-px-0
         `}

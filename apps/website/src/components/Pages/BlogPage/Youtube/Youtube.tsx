@@ -101,18 +101,18 @@ const Youtube = (props: YoutubeProps) => {
   return (
     <section
       className={`
-        youtube cs-website-vertical-padding tw-flex tw-flex-col
-        cs-gap-between-content tw-items-center tw-justify-center tw-min-h-screen
-        tw-relative tw-bottom-[-25px]
+        youtube cs-website-vertical-padding tw-relative tw-bottom-[-25px]
+        tw-flex tw-min-h-screen tw-flex-col cs-gap-between-content
+        tw-items-center tw-justify-center
       `}
     >
       <div
         className={`
-          bg
-          tw-bg-[radial-gradient(rgba(0,0,0,0),rgba(0,0,0,1)_80%),url("/img/blog-page/youtube-bg.png")]
-          tw-bg-center tw-bg-cover tw-absolute tw-top-1/2 tw-left-1/2
-          tw-w-screen tw-h-full -tw-translate-x-1/2 -tw-translate-y-1/2
-          tw-z-[-1] tw-border-t-[1px] tw-border-solid tw-border-white
+          bg tw-absolute tw-left-1/2 tw-top-1/2 tw-z-[-1] tw-h-full tw-w-screen
+          -tw-translate-x-1/2 -tw-translate-y-1/2 tw-border-t tw-border-solid
+          tw-border-white
+          tw-bg-[radial-gradient(rgba(0,0,0,0),rgba(0,0,0,1)_80%),url("/img/blog-page/youtube-bg.png")_center]
+          tw-bg-cover
         `}
       />
       <div
@@ -125,10 +125,10 @@ const Youtube = (props: YoutubeProps) => {
           className={`
             icon-wrapper tw-relative
 
-            after:tw-block after:tw-absolute after:tw-top-1/2 after:tw-left-1/2
+            after:tw-absolute after:tw-left-1/2 after:tw-top-1/2 after:tw-z-[-1]
+            after:tw-block after:tw-h-[20px] after:tw-w-[20px]
             after:-tw-translate-x-1/2 after:-tw-translate-y-1/2
-            after:tw-bg-white after:tw-w-[20px] after:tw-h-[20px]
-            after:tw-rounded-full after:tw-z-[-1]
+            after:tw-rounded-full after:tw-bg-white
           `}
         >
           <FontAwesomeIcon
@@ -148,7 +148,7 @@ const Youtube = (props: YoutubeProps) => {
       </div>
       <div
         className={`
-          videos tw-flex tw-gap-[21px] tw-relative tw-aspect-[335/270] tw-w-full
+          videos tw-relative tw-flex tw-aspect-[335/270] tw-w-full tw-gap-[21px]
 
           md:tw-aspect-auto
 
@@ -167,14 +167,14 @@ const Youtube = (props: YoutubeProps) => {
                 `,
                 ["sm", "md"].includes(screen) &&
                   `
-                    tw-absolute tw-top-1/2 tw-left-1/2 -tw-translate-x-1/2
-                    -tw-translate-y-1/2 tw-transition-all tw-duration-500
-                    tw-ease-in-out tw-w-full
+                    tw-absolute tw-left-1/2 tw-top-1/2 tw-w-full
+                    -tw-translate-x-1/2 -tw-translate-y-1/2 tw-transition-all
+                    tw-duration-500 tw-ease-in-out
 
                     ${
                       index === videoIndex
-                        ? `tw-opacity-100 tw-pointer-events-auto`
-                        : `tw-opacity-0 tw-pointer-events-none`
+                        ? `tw-pointer-events-auto tw-opacity-100`
+                        : `tw-pointer-events-none tw-opacity-0`
                     }
                   `
               )}

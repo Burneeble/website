@@ -91,11 +91,11 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
   return (
     <div
       className={`
-        skills-parallax tw-w-full tw-h-full tw-flex tw-gap-[10px] tw-flex-col
-        tw-relative
+        skills-parallax tw-relative tw-flex tw-h-full tw-w-full tw-flex-col
+        tw-gap-[10px]
 
-        lg:tw-flex-row lg:tw-gap-[70px] lg:tw-h-[calc(100vh-60px)]
-        lg:tw-max-h-[calc(100vh-60px)]
+        lg:tw-h-[calc(100vh-60px)] lg:tw-max-h-[calc(100vh-60px)] lg:tw-flex-row
+        lg:tw-gap-[70px]
 
         sm:tw-gap-[30px]
       `}
@@ -103,8 +103,8 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
       <div
         className={cn(
           `
-            skill-info tw-flex tw-items-start tw-justify-center tw-flex-col
-            tw-gap-[10px] tw-w-full tw-relative tw-flex-1
+            skill-info tw-relative tw-flex tw-w-full tw-flex-1 tw-flex-col
+            tw-items-start tw-justify-center tw-gap-[10px]
 
             sm:tw-flex-[unset]
           `
@@ -115,8 +115,8 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
             <div
               className={cn(
                 `
-                  wrapper tw-absolute tw-left-0 tw-top-0 tw-transition-all
-                  tw-duration-500 tw-ease-in-out tw-w-full tw-h-full
+                  wrapper tw-absolute tw-left-0 tw-top-0 tw-h-full tw-w-full
+                  tw-transition-all tw-duration-500 tw-ease-in-out
                 `,
                 ["sm", "md", "lg"].includes(screen) &&
                   `cs-website-horizontal-padding`,
@@ -148,25 +148,25 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
         className={`
           skill-section tw-relative
 
-          lg:tw-min-h-full lg:tw-relative lg:tw-bottom-[unset]
+          lg:tw-relative lg:tw-bottom-[unset] lg:tw-min-h-full
 
           sm:tw-absolute sm:tw-bottom-0 sm:tw-w-full
         `}
       >
         <div
           className={`
-            skills tw-overflow-hidden tw-max-w-full no-scrollbar
+            skills tw-max-w-full tw-overflow-hidden no-scrollbar
 
-            lg:tw-h-full lg:tw-relative lg:tw-overflow-visible
+            lg:tw-relative lg:tw-h-full lg:tw-overflow-visible
           `}
           ref={skills}
         >
           <div
             className={`
-              wrapper tw-justify-between tw-relative tw-flex
+              wrapper tw-relative tw-flex tw-justify-between
 
-              lg:!tw-w-[490px] lg:tw-flex-col lg:tw-pb-0 lg:tw-h-full
-              lg:tw-max-h-full
+              lg:tw-h-full lg:tw-max-h-full lg:!tw-w-[490px] lg:tw-flex-col
+              lg:tw-pb-0
 
               sm:tw-pb-[30px]
             `}
@@ -197,8 +197,8 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
             <div
               className={cn(
                 `
-                  end-bar tw-absolute tw-h-[8px] tw-w-[50vw] tw-left-[17px]
-                  tw-bottom-0 tw-bg-[var(--primary-lighest)] tw-transition-all
+                  end-bar tw-absolute tw-bottom-0 tw-left-[17px] tw-h-[8px]
+                  tw-w-[50vw] tw-bg-[var(--primary-lighest)] tw-transition-all
                 `,
                 props.currentIndex === currentSkills.length - 1
                   ? `tw-bg-[var(--primary-lighest)]`
@@ -217,8 +217,8 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
           <div
             className={cn(
               `
-                bar tw-translate-x-[-50%] tw-bg-[var(--primary-lighest)]
-                tw-absolute tw-bottom-0 tw-left-1/2 tw-h-[8px] tw-block
+                bar tw-absolute tw-bottom-0 tw-left-1/2 tw-block tw-h-[8px]
+                tw-translate-x-[-50%] tw-bg-[var(--primary-lighest)]
               `
             )}
             style={{ width: `calc(100vw * ${currentSkills.length})` }}

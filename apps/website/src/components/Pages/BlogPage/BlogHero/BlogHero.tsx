@@ -11,30 +11,29 @@ const BlogHero = () => {
   return (
     <section
       className={`
-        blog-hero cs-section-structure tw-flex tw-flex-col tw-justify-center
-        tw-items-center cs-gap-between-content tw-relative tw-z-[2]
+        blog-hero cs-section-structure tw-relative tw-z-[2] tw-flex tw-flex-col
+        tw-items-center tw-justify-center cs-gap-between-content
       `}
     >
       <div
         className={`
-          bg
-          tw-bg-[linear-gradient(180deg,black_1%,rgba(0,0,0,0)_80%),url("/img/blog-page/hero-bg.png")]
-          tw-bg-center tw-bg-cover tw-absolute tw-top-1/2 tw-left-1/2
-          tw-w-screen tw-h-full -tw-translate-x-1/2 -tw-translate-y-1/2
-          tw-z-[-1]
+          bg tw-absolute tw-left-1/2 tw-top-1/2 tw-z-[-1] tw-h-full tw-w-screen
+          -tw-translate-x-1/2 -tw-translate-y-1/2
+          tw-bg-[linear-gradient(180deg,black_1%,rgba(0,0,0,0)_80%),url("/img/blog-page/hero-bg.png")_center]
+          tw-bg-cover
         `}
       />
       <FontAwesomeIcon
         icon={faFire}
-        className={`fontawesome-gradient-icon tw-text-[47px] tw-max-w-[47px]`}
+        className={`fontawesome-gradient-icon tw-max-w-[47px] tw-text-[47px]`}
       />
       <div
         className={`
-          text-wrapper tw-flex tw-flex-col tw-justify-center tw-items-center
+          text-wrapper tw-flex tw-flex-col tw-items-center tw-justify-center
           cs-gap-between-text
         `}
       >
-        <h1 className="title tw-text-3xl tw-text-center">Burneeble News</h1>
+        <h1 className="title tw-text-center tw-text-3xl">Burneeble News</h1>
         <p className="text p-default tw-text-center tw-text-headings">
           Welcome to Burneeble News. Take a look at our articles and videos
           content to learn more about integrated AI in development!{" "}
@@ -43,7 +42,7 @@ const BlogHero = () => {
       </div>
       <div
         className={`
-          buttons-wrapper tw-w-full tw-flex tw-flex-col tw-items-center
+          buttons-wrapper tw-flex tw-w-full tw-flex-col tw-items-center
           tw-justify-center
 
           sm:tw-flex-row sm:tw-gap-[20px]

@@ -15,7 +15,7 @@ const LayoutWrapper = (props: LayoutWrapperProps) => {
       <header
         className={`
           cs-website-max-width cs-website-horizontal-padding tw-absolute
-          tw-top-0 tw-left-2/4 tw-z-50 -tw-translate-x-2/4
+          tw-left-2/4 tw-top-0 tw-z-50 -tw-translate-x-2/4
         `}
       >
         <Navbar
@@ -89,7 +89,7 @@ const LayoutWrapper = (props: LayoutWrapperProps) => {
       </main>
       <div
         className={`
-          footer-wrapper tw-absolute tw-top-[calc(100%-45px)] tw-left-0
+          footer-wrapper tw-absolute tw-left-0 tw-top-[calc(100%-45px)]
           tw-w-full
         `}
       >

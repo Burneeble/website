@@ -28,22 +28,22 @@ const CategoryArticles = (props: CategoryArticlesProps) => {
   return (
     <section
       className={`
-        cs-section-structure category-articles tw-relative tw-overflow
-        tw-max-w-[unset] tw-flex tw-items-center tw-justify-center tw-flex-col
+        cs-section-structure category-articles tw-relative tw-overflow tw-flex
+        tw-max-w-[unset] tw-flex-col tw-items-center tw-justify-center
         cs-gap-between-content tw-overflow-hidden
       `}
     >
       <div
         className={`
-          shape-one shape tw-top-[300px] tw-left-0 -tw-translate-x-1/2
+          shape-one shape tw-left-0 tw-top-[300px] -tw-translate-x-1/2
         `}
       />
       <div
         className={`
-          shape-two shape tw-top-[900px] tw-right-0 tw-translate-x-1/2
+          shape-two shape tw-right-0 tw-top-[900px] tw-translate-x-1/2
         `}
       />
-      <Grid className="tw-max-w-[1300px]">
+      <Grid className="tw-max-w-screen-xl">
         {articles &&
           articles.map((article, i) => {
             return (
@@ -76,8 +76,8 @@ const CategoryArticles = (props: CategoryArticlesProps) => {
       <div
         className={cn(
           `
-            button-wrapper tw-w-full tw-flex tw-justify-end tw-items-center
-            tw-transition-all tw-duration-500 tw-ease-in-out tw-overflow-hidden
+            button-wrapper tw-flex tw-w-full tw-items-center tw-justify-end
+            tw-overflow-hidden tw-transition-all tw-duration-500 tw-ease-in-out
           `,
           hasNextPage ? "tw-h-[48px] tw-opacity-100" : "tw-h-0 tw-opacity-0"
         )}
@@ -87,7 +87,7 @@ const CategoryArticles = (props: CategoryArticlesProps) => {
           fit={screen === "sm" ? "full" : "inline"}
           className={cn(
             `
-              !tw-bg-black tw-mx-auto tw-px-[75px] tw-mt-auto
+              tw-mx-auto tw-mt-auto !tw-bg-black tw-px-[75px]
 
               lg:tw-mr-0
             `,

@@ -43,9 +43,8 @@ const GalleryPage = async () => {
   return (
     <div
       className={`
-        gallery-page cs-page tw-from-[var(--secondary-darker)]
-        tw-to-[var(--secondary-base)] tw-from-[50%] tw-to-[50%]
-        tw-bg-gradient-to-t
+        gallery-page cs-page tw-bg-gradient-to-t
+        tw-from-[var(--secondary-darker)] tw-to-[var(--secondary-base)]
       `}
     >
       <Landing />

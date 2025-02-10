@@ -91,9 +91,9 @@ const ArticleBatch = (props: ArticleBatchProps) => {
       ) : (
         <div
           className={`
-            article-batch tw-flex tw-flex-col tw-gap-[20px] tw-transition-all
-            tw-duration-200 tw-ease-in-out tw-relative tw-z-[5]
-            tw-max-w-[1300px] tw-w-full
+            article-batch tw-relative tw-z-[5] tw-flex tw-w-full
+            tw-max-w-screen-xl tw-flex-col tw-gap-[20px] tw-transition-all
+            tw-duration-200 tw-ease-in-out
 
             lg:tw-grid lg:tw-grid-cols-3
 

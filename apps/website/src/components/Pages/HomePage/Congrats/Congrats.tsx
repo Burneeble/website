@@ -93,8 +93,8 @@ const Congrats = (props: CongratsProps) => {
   return (
     <section
       className={`
-        congrats cs-section-structure tw-h-[314px] !tw-min-h-[unset] tw-flex-col
-        tw-justify-center tw-items-center tw-flex tw-relative tw-z-10
+        congrats cs-section-structure tw-relative tw-z-10 tw-flex tw-h-[314px]
+        !tw-min-h-[unset] tw-flex-col tw-items-center tw-justify-center
         cs-gap-between-content
 
         lg:tw-h-[302px]
@@ -105,7 +105,7 @@ const Congrats = (props: CongratsProps) => {
     >
       <div
         className={`
-          wrapper tw-flex tw-items-center tw-justify-center tw-flex-col
+          wrapper tw-flex tw-flex-col tw-items-center tw-justify-center
           cs-gap-between-text
         `}
       >
@@ -115,20 +115,20 @@ const Congrats = (props: CongratsProps) => {
 
             lg:tw-text-5xl lg:tw-leading-[60px]
 
-            md:tw-flex md:tw-text-4xl md:tw-gap-[15px]
+            md:tw-flex md:tw-gap-[15px] md:tw-text-4xl
           `}
         >
           <span className="cs-text-color-primary-gradient tw-font-bowlby-one">
             Congrats,
           </span>
-          <span className="tw-text-headings tw-font-bowlby-one">
+          <span className="tw-font-bowlby-one tw-text-headings">
             you reached the end.
           </span>
         </h2>
         <p
           className={`
-            text p-default tw-self-stretch tw-text-center tw-text-body
-            tw-font-normal
+            text p-default tw-self-stretch tw-text-center tw-font-normal
+            tw-text-body
 
             md:tw-mb-[10px]
           `}
@@ -144,8 +144,8 @@ const Congrats = (props: CongratsProps) => {
         <div
           className={cn(
             `
-              code tw-text-center tw-text-[#acacac] tw-text-6xl tw-font-inter
-              tw-flex tw-gap-[10px] tw-transition-all tw-duration-500
+              code tw-flex tw-gap-[10px] tw-text-center tw-font-inter
+              tw-text-6xl tw-text-[#acacac] tw-transition-all tw-duration-500
               tw-ease-in-out
             `,
             wrongCode && "tw-animate-cs-wrong tw-text-error"
@@ -156,8 +156,8 @@ const Congrats = (props: CongratsProps) => {
               return (
                 <FlameIcon
                   className={`
-                    tw-w-[60px] tw-aspect-square tw-animate-cs-zoom-in
-                    tw-animate tw-scale-0
+                    tw-aspect-square tw-w-[60px] tw-scale-0
+                    tw-animate-cs-zoom-in tw-animate
                   `}
                   style={{ animationDelay: `${0.075 * i}s` }}
                   key={i}
@@ -172,7 +172,7 @@ const Congrats = (props: CongratsProps) => {
                   return (
                     <FontAwesomeIcon
                       className={cn(
-                        "tw-w-[60px] tw-aspect-square",
+                        "tw-aspect-square tw-w-[60px]",
                         currentIndex > i &&
                           `digit fontawesome-gradient-icon tw-animate-cs-pulse`
                       )}
@@ -184,7 +184,7 @@ const Congrats = (props: CongratsProps) => {
                   return (
                     <span
                       className={cn(
-                        "tw-w-[60px] tw-aspect-square",
+                        "tw-aspect-square tw-w-[60px]",
                         currentIndex > i &&
                           `
                             digit cs-text-color-primary-gradient

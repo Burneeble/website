@@ -115,20 +115,20 @@ const SearchPopup = (props: SearchPopupProps) => {
     <Popup logic={props.popupLogic} variant="secondary" className="!tw-min-h-0">
       <div
         className={`
-          search-popup tw-font-inter tw-text-lg tw-w-full tw-flex tw-flex-col
+          search-popup tw-flex tw-w-full tw-flex-col tw-font-inter tw-text-lg
         `}
       >
         <div
           className={`
-            search tw-flex tw-gap-[10px] tw-items-center tw-text-border-neutral
-            tw-w-full
+            search tw-flex tw-w-full tw-items-center tw-gap-[10px]
+            tw-text-border-neutral
           `}
         >
           <FontAwesomeIcon icon={faMagnifyingGlass} />
           <input
             className={`
-              search-input tw-flex-1 tw-bg-[rgba(0,0,0,0)] tw-outline-none
-              tw-text-headings
+              search-input tw-flex-1 tw-bg-[rgba(0,0,0,0)] tw-text-headings
+              tw-outline-none
             `}
             value={searchQuery || ""}
             onChange={(e) => {
@@ -141,15 +141,15 @@ const SearchPopup = (props: SearchPopupProps) => {
           className={cn(
             `results tw-transition-[height] tw-duration-1000 tw-ease-in-out`,
             !searchQuery && !isLoading
-              ? `tw-h-0 tw-overflow-hidden tw-mt-0`
-              : `tw-h-[270px] tw-overflow-y-scroll tw-mt-[15px]`,
+              ? `tw-mt-0 tw-h-0 tw-overflow-hidden`
+              : `tw-mt-[15px] tw-h-[270px] tw-overflow-y-scroll`,
             searchQuery && `tw-border-t-[1px] tw-border-solid tw-border-neutral`
           )}
         >
           {isLoading || searchQuery !== debouncedSearchQuery ? (
             <div
               className={`
-                spinner-wrapper tw-w-full tw-h-full tw-flex tw-items-center
+                spinner-wrapper tw-flex tw-h-full tw-w-full tw-items-center
                 tw-justify-center
               `}
             >

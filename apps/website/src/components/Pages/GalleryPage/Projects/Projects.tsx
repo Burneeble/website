@@ -177,18 +177,18 @@ const Projects = (props: ProjectsProps) => {
         <RoundedWrapper className="tw-py-[50px]">
           <div
             className={`
-              header tw-h-[58px] tw-justify-between tw-items-center
-              tw-inline-flex tw-w-full tw-gap-[20px]
+              header tw-inline-flex tw-h-[58px] tw-w-full tw-items-center
+              tw-justify-between tw-gap-[20px]
 
-              md:tw-flex-col md:tw-gap-[10px] md:tw-h-[123px] md:tw-items-start
+              md:tw-h-[123px] md:tw-flex-col md:tw-items-start md:tw-gap-[10px]
 
-              xl:tw-flex-row xl:tw-h-[70px] xl:tw-items-center
+              xl:tw-h-[70px] xl:tw-flex-row xl:tw-items-center
             `}
           >
             <h2
               className={`
-                title tw-text-white tw-font-normal tw-font-bowlby-one
-                tw-whitespace-nowrap
+                title tw-whitespace-nowrap tw-font-bowlby-one tw-font-normal
+                tw-text-white
               `}
             >
               {screen === "sm" ? (
@@ -204,7 +204,7 @@ const Projects = (props: ProjectsProps) => {
             </h2>
             <div
               className={`
-                icons tw-justify-end tw-items-center tw-gap-[5px] tw-flex
+                icons tw-flex tw-items-center tw-justify-end tw-gap-[5px]
 
                 md:tw-w-full
               `}
@@ -234,8 +234,8 @@ const Projects = (props: ProjectsProps) => {
                     }}
                     placeholder="Search Project Name..."
                     className={`
-                      tw-flex-1 tw-bg-[rgba(0,0,0,0)] tw-text-2xl tw-font-inter
-                      tw-outline-none tw-text-headings
+                      tw-flex-1 tw-bg-[rgba(0,0,0,0)] tw-font-inter tw-text-2xl
+                      tw-text-headings tw-outline-none
                     `}
                   />
                 )}
@@ -327,9 +327,9 @@ const Projects = (props: ProjectsProps) => {
           <div
             className={cn(
               `
-                button-wrapper tw-w-full tw-flex tw-justify-end tw-items-center
-                tw-transition-all tw-duration-500 tw-ease-in-out
-                tw-overflow-hidden
+                button-wrapper tw-flex tw-w-full tw-items-center tw-justify-end
+                tw-overflow-hidden tw-transition-all tw-duration-500
+                tw-ease-in-out
               `,
               hasNextPage ? "tw-h-[48px] tw-opacity-100" : "tw-h-0 tw-opacity-0"
             )}
@@ -339,7 +339,7 @@ const Projects = (props: ProjectsProps) => {
               fit={screen === "sm" ? "full" : "inline"}
               className={cn(
                 `
-                  !tw-bg-black tw-mx-auto tw-px-[75px] tw-mt-auto
+                  tw-mx-auto tw-mt-auto !tw-bg-black tw-px-[75px]
 
                   lg:tw-mr-0
                 `,

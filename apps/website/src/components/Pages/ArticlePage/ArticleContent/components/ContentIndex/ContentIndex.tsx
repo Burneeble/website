@@ -32,21 +32,20 @@ const ContentIndex = (props: ContentIndexProps) => {
   return (
     <div
       className={`
-        content-index tw-mx-auto tw-text-headings tw-border-[2px]
-        tw-border-white tw-rounded-[.5rem] p-default tw-w-full tw-p-[.6rem]
-        tw-my-[2rem]
+        content-index tw-mx-auto tw-my-8 tw-w-full tw-rounded-[.5rem]
+        tw-border-2 tw-border-white tw-p-[.6rem] tw-text-headings p-default
       `}
     >
       <div className="header tw-flex tw-items-center tw-justify-between">
-        <span className="text tw-text-action tw-font-bold tw-tracking-[1px]">
+        <span className="text tw-font-bold tw-tracking-[1px] tw-text-action">
           Contents Index
         </span>
         <span
           className={`
-            icon tw-flex tw-items-center tw-justify-center tw-gap-[5px]
-            tw-border-[2px] tw-border-white tw-p-[.2rem] tw-rounded-[.4rem]
-            tw-transition-all tw-duration-500 tw-ease-in-out tw-group
-            tw-cursor-pointer
+            icon tw-group tw-flex tw-cursor-pointer tw-items-center
+            tw-justify-center tw-gap-[5px] tw-rounded-[.4rem] tw-border-2
+            tw-border-white tw-p-[.2rem] tw-transition-all tw-duration-500
+            tw-ease-in-out
 
             hover:tw-border-active
           `}
@@ -70,7 +69,7 @@ const ContentIndex = (props: ContentIndexProps) => {
       </div>
       <ul
         className={cn(
-          `paragraphs tw-overflow-hidden tw-flex tw-flex-col tw-gap-[.5rem]`,
+          `paragraphs tw-flex tw-flex-col tw-gap-[.5rem] tw-overflow-hidden`,
           isOpen ? "tw-max-h-[100rem] tw-pt-[1rem]" : `tw-max-h-0`
         )}
         style={{
@@ -84,10 +83,10 @@ const ContentIndex = (props: ContentIndexProps) => {
               <li
                 key={i}
                 className={`
-                  paragraph tw-transition-all tw-duration-200 tw-ease-in-out
-                  tw-cursor-pointer tw-w-fit
+                  paragraph tw-w-fit tw-cursor-pointer tw-transition-all
+                  tw-duration-200 tw-ease-in-out
 
-                  hover:tw-ml-[1rem] hover:tw-text-action-hover
+                  hover:tw-ml-4 hover:tw-text-action-hover
                 `}
                 onClick={() => {
                   console.log(p);

@@ -129,13 +129,15 @@ const ArticleContent = (props: ArticleContentProps) => {
       <ProgressBar content={contentRef} />
       <RoundedWrapper
         className={`
-          tw-py-[50px] tw-flex tw-flex-col tw-items-start tw-justify-start
-          !tw-gap-[10px]
+          tw-flex tw-flex-col tw-items-start tw-justify-start !tw-gap-[10px]
+          tw-py-[50px]
         `}
       >
         <div
           className={`
-            article-header tw-flex tw-flex-col md:tw-flex-row md:tw-items-center md:tw-justify-between tw-w-full tw-gap-[15px]
+            article-header tw-flex tw-w-full tw-flex-col tw-gap-[15px]
+
+            md:tw-flex-row md:tw-items-center md:tw-justify-between
           `}
         >
           <Label
@@ -177,12 +179,14 @@ const ArticleContent = (props: ArticleContentProps) => {
         </p>
         <div
           className={`
-            breadcumbs p-smaller tw-flex tw-items-center tw-gap-[.5rem] tw-flex-wrap
+            breadcumbs p-smaller tw-flex tw-flex-wrap tw-items-center
+            tw-gap-[.5rem]
           `}
         >
           <Link
             className={`
-              tw-transition-all tw-duration-200 tw-ease-in-out tw-whitespace-nowrap
+              tw-whitespace-nowrap tw-transition-all tw-duration-200
+              tw-ease-in-out
 
               hover:tw-text-action-hover
             `}
@@ -193,7 +197,8 @@ const ArticleContent = (props: ArticleContentProps) => {
           <span className="separator tw-text-[.8rem]">{">>"}</span>
           <Link
             className={`
-              tw-transition-all tw-duration-200 tw-ease-in-out tw-whitespace-nowrap
+              tw-whitespace-nowrap tw-transition-all tw-duration-200
+              tw-ease-in-out
 
               hover:tw-text-action-hover
             `}
@@ -216,7 +221,8 @@ const ArticleContent = (props: ArticleContentProps) => {
         <ContentIndex article={props.article} />
         <div
           className={`
-            article-body tw-flex tw-flex-col tw-gap-[30px] tw-text-headings tw-max-w-full
+            article-body tw-flex tw-max-w-full tw-flex-col tw-gap-[30px]
+            tw-text-headings
           `}
           dangerouslySetInnerHTML={{
             __html: content,

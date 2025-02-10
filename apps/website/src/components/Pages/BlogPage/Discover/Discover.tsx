@@ -124,8 +124,8 @@ const Discover = (props: DiscoverProps) => {
   return (
     <section
       className={`
-        discover cs-website-vertical-padding tw-flex tw-flex-col
-        cs-gap-between-content tw-items-center tw-justify-center tw-min-h-screen
+        discover cs-website-vertical-padding tw-flex tw-min-h-screen tw-flex-col
+        cs-gap-between-content tw-items-center tw-justify-center
       `}
     >
       <h2 className="title tw-text-center">
@@ -172,8 +172,8 @@ const Discover = (props: DiscoverProps) => {
       <div
         className={cn(
           `
-            button-wrapper tw-w-full tw-flex tw-justify-end tw-items-center
-            tw-transition-all tw-duration-500 tw-ease-in-out tw-overflow-hidden
+            button-wrapper tw-flex tw-w-full tw-items-center tw-justify-end
+            tw-overflow-hidden tw-transition-all tw-duration-500 tw-ease-in-out
           `,
           hasNextPage ? "tw-h-[48px] tw-opacity-100" : "tw-h-0 tw-opacity-0"
         )}
@@ -183,7 +183,7 @@ const Discover = (props: DiscoverProps) => {
           fit={screen === "sm" ? "full" : "inline"}
           className={cn(
             `
-              !tw-bg-black tw-mx-auto tw-px-[75px] tw-mt-auto
+              tw-mx-auto tw-mt-auto !tw-bg-black tw-px-[75px]
 
               lg:tw-mr-0
             `,

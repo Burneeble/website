@@ -4,8 +4,9 @@ const FigmaImagesLayout = (props: FigmaImagesLayoutProps) => {
   return (
     <div
       className={`
-        figma-images-layout images-layout tw-w-screen tw-relative tw-my-[3rem]
-        tw-shadow-[0px_0px_100px_rgba(242,_163,_7,_.6)] tw-aspect-[390/345]
+        figma-images-layout images-layout tw-relative tw-my-12
+        tw-aspect-[390/345] tw-w-screen
+        tw-shadow-[0px_0px_100px_rgba(242,_163,_7,_.6)]
 
         md:tw-my-[2.3rem] md:tw-aspect-[1512/375]
 
@@ -16,7 +17,7 @@ const FigmaImagesLayout = (props: FigmaImagesLayoutProps) => {
         src="/img/project/sections/figma-icon.png"
         style={{ rotate: "12deg" }}
         className={`
-          figma-icon tw-top-[-15%] tw-right-[7%] tw-w-[90px] !tw-delay-800
+          figma-icon tw-right-[7%] tw-top-[-15%] tw-w-[90px] !tw-delay-800
 
           md:tw-w-[120px]
 
@@ -34,7 +35,7 @@ const FigmaImagesLayout = (props: FigmaImagesLayoutProps) => {
           xl:tw-w-[130px]
         `}
       />
-      <img src={props.image1} className="tw-w-full tw-max-h-full" />
+      <img src={props.image1} className="tw-max-h-full tw-w-full" />
     </div>
   );
 };

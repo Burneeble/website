@@ -29,15 +29,15 @@ const FilterPopup = (props: FilterPopupProps) => {
     <Popup
       logic={props.popupLogic}
       type={PopupType.Absolute}
-      className={`tw-top-[calc(100%+.5rem)] tw-right-0`}
+      className={`tw-right-0 tw-top-[calc(100%+.5rem)]`}
     >
       <div
-        className={`filter-popup tw-w-full tw-flex tw-flex-col tw-gap-[20px]`}
+        className={`filter-popup tw-flex tw-w-full tw-flex-col tw-gap-[20px]`}
       >
         <div
           className={`
-            header tw-flex tw-items-center tw-justify-between tw-pb-[15px]
-            tw-border-b-[1px] tw-border-solid tw-border-neutral
+            header tw-flex tw-items-center tw-justify-between tw-border-b
+            tw-border-solid tw-border-neutral tw-pb-[15px]
           `}
         >
           <Button
@@ -56,12 +56,12 @@ const FilterPopup = (props: FilterPopupProps) => {
             }}
             variant="secondary-outline"
             size={getButtonSize()}
-            className="!tw-rounded-full tw-aspect-square"
+            className="tw-aspect-square !tw-rounded-full"
           >
             <FontAwesomeIcon icon={faXmark} />
           </Button>
         </div>
-        <div className={`categories tw-flex tw-gap-[10px] tw-flex-wrap`}>
+        <div className={`categories tw-flex tw-flex-wrap tw-gap-[10px]`}>
           {props.categories.map((category, i) => {
             return (
               <Label

@@ -10,7 +10,7 @@ const TextRightCenterShapeVerticalLeft = (
     <div
       className={`
         text-right-center-shape-vertical-left section-layout layout-structure
-        tw-flex-col-reverse tw-relative
+        tw-relative tw-flex-col-reverse
 
         lg:tw-flex-row
       `}

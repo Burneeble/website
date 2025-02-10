@@ -11,20 +11,20 @@ const Landing = (props: LandingProps) => {
   return (
     <section
       className={`
-        tw-h-[622px] tw-flex tw-justify-center tw-items-center
-        tw-bg-[linear-gradient(180deg,_black_0%,_rgba(102,102,102,0)_100%),url('/img/gallery-page/landing/bg-sm.png')]
-        tw-bg-no-repeat tw-bg-cover tw-bg-center
+        tw-flex tw-h-[622px] tw-items-center tw-justify-center
+        tw-bg-[linear-gradient(180deg,_black_0%,_rgba(102,102,102,0)_100%),url('/img/gallery-page/landing/bg-sm.png')_center]
+        tw-bg-cover tw-bg-no-repeat
 
-        md:tw-bg-[linear-gradient(180deg,_black_0%,_rgba(102,102,102,0)_100%),url('/img/gallery-page/landing/bg-md.png')]
+        md:tw-bg-[linear-gradient(180deg,_black_0%,_rgba(102,102,102,0)_100%),url('/img/gallery-page/landing/bg-md.png')_center]
 
-        xl:tw-bg-[linear-gradient(180deg,_black_0%,_rgba(102,102,102,0)_100%),url('/img/gallery-page/landing/bg-xl.png')]
         xl:tw-h-[764px]
+        xl:tw-bg-[linear-gradient(180deg,_black_0%,_rgba(102,102,102,0)_100%),url('/img/gallery-page/landing/bg-xl.png')_center]
       `}
     >
       <div
         className={`
-          tw-h-[151px] tw-flex-col tw-justify-center tw-items-center tw-gap-2.5
-          tw-flex tw-font-bowlby-one
+          tw-flex tw-h-[151px] tw-flex-col tw-items-center tw-justify-center
+          tw-gap-2.5 tw-font-bowlby-one
         `}
       >
         <div className="tw-font-[60px]">
@@ -32,8 +32,8 @@ const Landing = (props: LandingProps) => {
         </div>
         <span
           className={`
-            tw-text-[var(--primary-lighter)] tw-font-normal tw-opacity-70
-            tw-text-center tw-text-5xl tw-whitespace-nowrap
+            tw-whitespace-nowrap tw-text-center tw-text-5xl tw-font-normal
+            tw-text-[var(--primary-lighter)] tw-opacity-70
 
             lg:tw-text-7xl
 
@@ -48,8 +48,8 @@ const Landing = (props: LandingProps) => {
         </span>
         <h1
           className={`
-            tw-text-center tw-text-headings tw-font-normal tw-relative
-            -tw-top-1/4
+            tw-relative -tw-top-1/4 tw-text-center tw-font-normal
+            tw-text-headings
 
             lg:-tw-top-[40%]
 
