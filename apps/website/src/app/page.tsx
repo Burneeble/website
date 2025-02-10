@@ -66,6 +66,7 @@ export default async function Home() {
         <Customers />
         <Abilities skills={skills} />
         <Emoji />
+
         <Showcase projects={projects} />
         <Contact />
         <Blog />
