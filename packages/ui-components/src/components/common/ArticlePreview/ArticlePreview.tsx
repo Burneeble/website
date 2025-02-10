@@ -1,11 +1,13 @@
+"use client";
+
 import React from "react";
 import {
   ArticlePreviewProps,
   articlePreviewVariants,
 } from "./ArticlePreview.types";
-import { useRouter } from "next/navigation";
 import Label from "../Label";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 const ArticlePreview = (props: ArticlePreviewProps) => {
   //States
@@ -41,6 +43,20 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
     );
   };
 
+  const highlightText = (text: string, query: string) => {
+    const words = query.split(" ").filter((word) => word.trim() !== "");
+    let highlightedText = text;
+    words.forEach((word) => {
+      const regex = new RegExp(`(${word})`, "gi");
+      highlightedText = highlightedText.replace(
+        regex,
+        '<span class="highlight">$1</span>'
+      );
+    });
+
+    return highlightedText;
+  };
+
   return (
     <div
       className={cn(
@@ -55,7 +71,7 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
         className={cn(
           `
             image-wrapper tw-relative tw-aspect-[1920/1080] tw-w-full
-            tw-cursor-pointer tw-overflow-hidden tw-rounded-lg tw-border-[1px]
+            tw-cursor-pointer tw-overflow-hidden tw-rounded-t-lg tw-border-[1px]
             tw-border-solid tw-transition-all tw-duration-200 tw-ease-in-out
           `,
           variant === "default" &&
@@ -79,7 +95,7 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
 
             group-hover:tw-opacity-[10%]
           `}
-        ></div>
+        />
         <img
           className={`
             tw-aspect-[1920/1080] tw-w-full tw-self-stretch tw-transition-all
@@ -96,11 +112,12 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
       >
         <Label
           text={props.category}
-          onClick={() => {
-            router.push(`/blog/category/${props.categorySlug}`);
-          }}
           size={"sm"}
           variant={variant === "dark" ? "active" : undefined}
+          onClick={(e) => {
+            e.stopPropagation();
+            router.push(`/blog/category/${props.categorySlug}`);
+          }}
         />
         <div
           className={cn(
@@ -134,7 +151,7 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
               variant === "default" && `group-hover:tw-text-black`
             )}
             dangerouslySetInnerHTML={{
-              __html: props.title,
+              __html: highlightText(props.title, props.query || ""),
             }}
           />
           {/* TODO use the right p class */}

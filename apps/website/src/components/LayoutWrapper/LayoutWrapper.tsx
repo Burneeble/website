@@ -71,7 +71,7 @@ const LayoutWrapper = (props: LayoutWrapperProps) => {
           links={[
             {
               title: "Blog",
-              href: "/",
+              href: "/blog",
               icon: faReact,
             },
             {

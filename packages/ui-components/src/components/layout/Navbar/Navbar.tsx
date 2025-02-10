@@ -144,7 +144,7 @@ const Navbar = (props: NavbarProps) => {
                 {props.links.map((link, i) => {
                   return (
                     <NavigationMenuItem key={i}>
-                      <Link href={link.href} legacyBehavior passHref>
+                      <Link href={link.href} legacyBehavior>
                         <NavigationMenuLink
                           className={navigationMenuTriggerStyle()}
                         >

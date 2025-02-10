@@ -48,8 +48,8 @@ const Label = (props: LabelProps) => {
     <div
       className={cn(
         `
-          label-wrapper tw-inline-flex tw-items-center tw-justify-center
-          tw-rounded-[9px]
+          label-wrapper tw-inline-flex tw-w-fit tw-items-center
+          tw-justify-center tw-rounded-[9px]
         `,
         (props.variant === "default" || !props.variant) &&
           "tw-bg-gradient-to-r tw-to-90% primary-light-gradient-to-secondary",

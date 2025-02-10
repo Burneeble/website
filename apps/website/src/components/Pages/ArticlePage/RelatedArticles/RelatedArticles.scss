@@ -1,0 +1,7 @@
+// RelatedArticles
+
+.related-articles {
+  &::after {
+    @apply primary-gradient;
+  }
+}

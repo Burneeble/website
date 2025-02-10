@@ -39,6 +39,9 @@ const buttonVariants = cva(
           tw-border tw-border-input tw-bg-button-primary tw-text-button
           tw-shadow-sm
         `,
+        youtube: `
+          tw-border tw-border-input tw-bg-[#ff0033] tw-text-button tw-shadow-sm
+        `,
         secondary: `
           tw-border tw-border-tertiary tw-bg-button-secondary tw-text-button
           tw-shadow-sm

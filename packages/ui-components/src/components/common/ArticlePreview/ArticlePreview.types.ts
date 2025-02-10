@@ -10,6 +10,7 @@ export interface ArticlePreviewProps {
   categorySlug: string;
   slug: string;
   description: string;
+  query?: string;
   variant?: "default" | "dark";
 }
 

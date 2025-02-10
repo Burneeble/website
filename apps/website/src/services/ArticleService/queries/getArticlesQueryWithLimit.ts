@@ -7,6 +7,7 @@ export const GET_ARTICLES_QUERY_WITH_LIMIT = gql(/* GraphQL */ `
       nodes {
         slug
         title
+        id
         content
         categories {
           nodes {
