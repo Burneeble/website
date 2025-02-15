@@ -4,9 +4,11 @@ import { TextCanvasProps } from "./TextCanvas.types";
 import { Canvas } from "@react-three/fiber";
 import { TextCanvasContent } from "./components/TextCanvasContent";
 import * as THREE from "three";
+import { useClientInfoService } from "@burneeble/ui-components";
 
 const TextCanvas = (props: TextCanvasProps) => {
   const cameraRef = useRef<THREE.Camera | null>(null);
+  const { width } = useClientInfoService();
 
   return (
     <Suspense
@@ -30,7 +32,7 @@ const TextCanvas = (props: TextCanvasProps) => {
     >
       <Canvas
         camera={{
-          fov: 85,
+          fov: width && width < 992 ? 80 : 90,
           near: 0.1,
           far: 100,
         }}
@@ -45,7 +47,6 @@ const TextCanvas = (props: TextCanvasProps) => {
           cameraRef.current = state.camera;
         }}
       >
-        <axesHelper args={[5]} />
         <TextCanvasContent />
       </Canvas>
     </Suspense>

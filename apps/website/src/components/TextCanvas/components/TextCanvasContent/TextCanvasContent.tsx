@@ -2,7 +2,12 @@
 
 import * as THREE from "three";
 import { useEffect, useRef, useState } from "react";
-import { OrbitControls, Text3D, useMatcapTexture } from "@react-three/drei";
+import {
+  Float,
+  OrbitControls,
+  Text3D,
+  useMatcapTexture,
+} from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import { useClientInfoService } from "@burneeble/ui-components";
 
@@ -54,27 +59,34 @@ const TextCanvasContent = () => {
     <>
       <OrbitControls
         enableZoom={false}
-        // TODO horizontal and vertical limit
+        minAzimuthAngle={-Math.PI / 15}
+        maxAzimuthAngle={Math.PI / 15}
+        minPolarAngle={Math.PI / 3}
+        maxPolarAngle={(2 * Math.PI) / 3}
+        enableDamping
+        dampingFactor={0.1}
+        rotateSpeed={0.5}
       />
       <ambientLight intensity={2} />
       <directionalLight castShadow position={[1, 2, 3]} intensity={2.5} />
-      <Text3D
-        ref={textRef}
-        font={"/fonts/Bowlby_One_SC_Regular.json"}
-        // todo responsive
-        size={textSize}
-        height={1.25}
-        curveSegments={12}
-        bevelEnabled
-        bevelThickness={0.02}
-        bevelSize={0.01}
-        bevelOffset={0}
-        bevelSegments={5}
-        material={material}
-        // rotation={[0, -0.1 * Math.PI, 0]}
-      >
-        404
-      </Text3D>
+      <Float floatIntensity={1} floatingRange={[0, 0.5]}>
+        <Text3D
+          ref={textRef}
+          font={"/fonts/Bowlby_One_SC_Regular.json"}
+          // todo responsive
+          size={textSize}
+          height={1.25}
+          curveSegments={12}
+          bevelEnabled
+          bevelThickness={0.02}
+          bevelSize={0.01}
+          bevelOffset={0}
+          bevelSegments={5}
+          material={material}
+        >
+          404
+        </Text3D>
+      </Float>
     </>
   );
 };

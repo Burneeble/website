@@ -14,18 +14,21 @@ export default function NotFound() {
     <div className={`not-found-page tw-relative tw-overflow-hidden`}>
       <section
         className={`
-          main-section cs-section-structure tw-flex tw-items-center
-          tw-justify-center tw-flex-col-reverse tw-py-24 tw-relative tw-z-10
+          main-section cs-website-vertical-padding tw-min-h-screen
+          cs-website-max-width tw-flex tw-items-center tw-justify-center
+          tw-flex-col-reverse tw-py-24 tw-relative tw-z-10
 
-          lg:tw-flex-row lg:tw-justify-between
+          lg:tw-flex-row lg:tw-justify-between lg:cs-website-horizontal-padding
         `}
       >
         <div
           className={`
             texts tw-w-full tw-flex tw-items-start tw-flex-col tw-justify-center
-            tw-gap-[20px] -tw-mt-8
+            tw-gap-[20px]
 
             lg:tw-w-[48%] lg:tw-mt-[unset]
+
+            max-lg:cs-website-horizontal-padding
           `}
         >
           <h1
