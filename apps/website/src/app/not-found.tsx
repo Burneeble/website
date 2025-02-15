@@ -1,7 +1,7 @@
 "use client";
 
+import TextCanvas from "@/components/TextCanvas";
 import { Button, useClientInfoService } from "@burneeble/ui-components";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
 
@@ -15,21 +15,22 @@ export default function NotFound() {
       <section
         className={`
           main-section cs-section-structure tw-flex tw-items-center
-          tw-justify-center tw-gap-[20px] tw-flex-col-reverse tw-py-[10rem]
-          tw-relative tw-z-10
+          tw-justify-center tw-flex-col-reverse tw-py-24 tw-relative tw-z-10
 
-          lg:tw-flex-row
+          lg:tw-flex-row lg:tw-justify-between
         `}
       >
         <div
           className={`
-            texts tw-max-w-[690px] tw-flex tw-items-start tw-flex-col
-            tw-justify-center tw-gap-[20px]
+            texts tw-w-full tw-flex tw-items-start tw-flex-col tw-justify-center
+            tw-gap-[20px] -tw-mt-8
+
+            lg:tw-w-[48%] lg:tw-mt-[unset]
           `}
         >
           <h1
             className={`
-              title tw-text-center
+              title tw-text-center tw-w-full
 
               lg:!tw-leading-[6rem] lg:tw-text-start
             `}
@@ -49,12 +50,12 @@ export default function NotFound() {
           </p>
           <div
             className={`
-              ctas tw-mt-[20px] tw-flex tw-items-center tw-justify-start
-              tw-gap-[20px] tw-flex-col tw-w-full
+              ctas tw-flex tw-items-center tw-justify-start tw-gap-[20px]
+              tw-flex-col tw-w-full
 
               lg:tw-max-w-[unset]
 
-              sm:tw-flex-row sm:tw-max-w-[390px] sm:tw-mx-auto
+              sm:tw-flex-row sm:tw-max-w-[90%] sm:tw-mx-auto
             `}
           >
             <Button
@@ -77,7 +78,17 @@ export default function NotFound() {
             </Button>
           </div>
         </div>
-        <Image
+        <div
+          className={`
+            not-found-text tw-w-full tw-relative tw-flex tw-items-center
+            tw-justify-center tw-h-fit
+
+            lg:tw-w-[48%] lg:tw-h-[500px]
+          `}
+        >
+          <TextCanvas />
+        </div>
+        {/* <Image
           src={"/img/not-found/404.png"}
           alt={"404"}
           width={590}
@@ -87,7 +98,7 @@ export default function NotFound() {
 
             lg:tw-max-w-[unset]
           `}
-        />
+        /> */}
       </section>
       <div
         className={`

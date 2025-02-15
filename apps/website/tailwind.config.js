@@ -13,6 +13,7 @@ module.exports = {
     extend: {
       fontFamily: {
         "bowlby-one": ["var(--font-title)"],
+        "bowlby-one-sc": ["var(--secondary-font-title)"],
         inter: ["var(--font-default)"],
       },
     },

@@ -2,7 +2,7 @@ import "../styles/main.scss";
 import cn from "classnames";
 import dynamic from "next/dynamic";
 import { LayoutWrapper } from "@/components";
-import { Inter, Bowlby_One } from "next/font/google";
+import { Inter, Bowlby_One, Bowlby_One_SC } from "next/font/google";
 import { headers } from "next/headers";
 
 export async function generateMetadata() {
@@ -63,6 +63,12 @@ const bowlyOne = Bowlby_One({
   display: "swap",
   variable: "--font-title",
 });
+const bowlbyOneSc = Bowlby_One_SC({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--secondary-font-title",
+});
 
 export default async function RootLayout({
   children,
@@ -77,6 +83,7 @@ export default async function RootLayout({
             "burneeble-default-theme",
             inter.variable,
             bowlyOne.variable,
+            bowlbyOneSc.variable,
             `tw-max-w-[100vw] tw-overflow-x-hidden tw-relative`
           )}
         >

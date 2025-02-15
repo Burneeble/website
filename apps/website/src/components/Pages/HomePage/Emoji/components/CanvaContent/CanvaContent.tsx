@@ -72,6 +72,7 @@ const CanvaContent = () => {
         </Html>
       </Center>
 
+      {/* TODO add fallback */}
       <Suspense>
         <Clone
           object={model.scene}
