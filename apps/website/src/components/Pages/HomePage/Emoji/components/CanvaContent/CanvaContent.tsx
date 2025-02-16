@@ -1,36 +1,40 @@
 "use client";
 
 import { Suspense } from "react";
-import { OrbitControls, Center, useGLTF, Clone, Html } from "@react-three/drei";
+import { Center, useGLTF, Clone, Html } from "@react-three/drei";
+import { Euler, useThree, Vector3 } from "@react-three/fiber";
 
 const CanvaContent = () => {
   const model = useGLTF("/models/thinking_emoji/scene.gltf");
+  const { size } = useThree();
+
+  // Function to calculate responsive positions
+  const calculatePositionAndScale = (
+    x: number,
+    y: number,
+    z: number,
+    scale: number
+  ) => {
+    const positionFactor = size.width / 2000;
+    const scaleFactor = size.width < 750 ? size.width / 700 : 1;
+
+    return {
+      position: [x * positionFactor, y, z] as Vector3,
+      scale: scale * scaleFactor,
+    };
+  };
 
   return (
     <>
-      <OrbitControls
+      {/* <OrbitControls
         enableZoom={false}
         maxPolarAngle={Math.PI / 2}
         minPolarAngle={Math.PI / 2}
-      />
+      /> */}
       <ambientLight intensity={2} />
       <directionalLight castShadow position={[1, 2, 3]} intensity={2.5} />
 
       <Center>
-        {/* <Text3D
-          font={"/Bowlby One_Regular.json"}
-          size={0.35}
-          height={0.2}
-          curveSegments={12}
-          bevelEnabled
-          bevelThickness={0.02}
-          bevelSize={0.01}
-          bevelOffset={0}
-          bevelSegments={5}
-          material={material}
-        >
-          Still not sure?
-        </Text3D> */}
         <Html>
           <h2
             className={`
@@ -52,68 +56,74 @@ const CanvaContent = () => {
 
       {/* TODO add fallback */}
       <Suspense>
-        <Clone
-          object={model.scene}
-          position={[4, 0.5, 1]}
-          scale={0.5}
-          rotation={[0, -0.3 * Math.PI, 0.2 * Math.PI]}
-        />
-        <Clone
-          object={model.scene}
-          position={[2, 2, -2]}
-          scale={0.3}
-          rotation={[0, 0.2 * Math.PI, 0]}
-        />
-        <Clone
-          object={model.scene}
-          position={[5, -1.5, 0.5]}
-          scale={0.8}
-          rotation={[0, -0.5 * Math.PI, 0]}
-        />
-        <Clone
-          object={model.scene}
-          position={[4, 2.5, 0]}
-          scale={1}
-          rotation={[0, -0.1 * Math.PI, -0.1 * Math.PI]}
-        />
-        <Clone
-          object={model.scene}
-          position={[-3, 1, 2]}
-          scale={0.3}
-          rotation={[0, 0.5 * Math.PI, 0.2 * Math.PI]}
-        />
-        <Clone
-          object={model.scene}
-          position={[1.5, -1, 1.5]}
-          scale={0.3}
-          rotation={[0, 0, 0]}
-        />
-        <Clone
-          object={model.scene}
-          position={[-6, -1, -1.5]}
-          scale={1.2}
-          rotation={[0, 0.2 * Math.PI, 0]}
-        />
-        <Clone
-          object={model.scene}
-          position={[-2, -2, 0]}
-          scale={0.6}
-          rotation={[0, 0.5 * Math.PI, -0.1 * Math.PI]}
-        />
-        <Clone
-          object={model.scene}
-          position={[-2, 1, -2]}
-          scale={0.7}
-          rotation={[0, 0, 0]}
-        />
-        <Clone
-          object={model.scene}
-          position={[-3, 3, -1.5]}
-          scale={0.3}
-          rotation={[0, 0, 0]}
-        />
+        {/*These objects represent the positions, scales, and rotations of the 3D models in the scene. */}
+        {[
+          {
+            x: 4,
+            y: 0.5,
+            z: 1,
+            scale: 0.5,
+            rotation: [0, -0.3 * Math.PI, 0.2 * Math.PI],
+          },
+          { x: 2, y: 2, z: -2, scale: 0.3, rotation: [0, 0.2 * Math.PI, 0] },
+          {
+            x: 5,
+            y: -1.5,
+            z: 0.5,
+            scale: 0.8,
+            rotation: [0, -0.5 * Math.PI, 0],
+          },
+          {
+            x: 4,
+            y: 2.5,
+            z: 0,
+            scale: 1,
+            rotation: [0, -0.1 * Math.PI, -0.1 * Math.PI],
+          },
+          {
+            x: -3,
+            y: 1,
+            z: 2,
+            scale: 0.3,
+            rotation: [0, 0.5 * Math.PI, 0.2 * Math.PI],
+          },
+          { x: 1.5, y: -1, z: 1.5, scale: 0.3, rotation: [0, 0, 0] },
+          {
+            x: -6,
+            y: -1,
+            z: -1.5,
+            scale: 1.2,
+            rotation: [0, 0.2 * Math.PI, 0],
+          },
+          {
+            x: -2,
+            y: -2,
+            z: 0,
+            scale: 0.6,
+            rotation: [0, 0.5 * Math.PI, -0.1 * Math.PI],
+          },
+          { x: -2.5, y: 2, z: -2, scale: 0.7, rotation: [0, 0, 0] },
+          {
+            x: -3,
+            y: 4,
+            z: -1.5,
+            scale: 0.3,
+            rotation: [0, -1.7 * Math.PI, 0],
+          },
+        ].map(({ x, y, z, scale, rotation }, index) => {
+          const { position, scale: calculatedScale } =
+            calculatePositionAndScale(x, y, z, scale);
+          return (
+            <Clone
+              key={index}
+              object={model.scene}
+              position={position}
+              scale={calculatedScale}
+              rotation={rotation as Euler}
+            />
+          );
+        })}
       </Suspense>
-      {/* <RandomPositionModel geometry={torusGeometry} material={material} /> */}
     </>
   );
 };
