@@ -1,42 +1,45 @@
 "use client";
 
-import { Suspense, useEffect } from "react";
-import { OrbitControls, Center, useGLTF, Clone, Float } from "@react-three/drei";
+import { Suspense, useRef } from "react";
+import { useGLTF, Float } from "@react-three/drei";
 import { useClientInfoService } from "@burneeble/ui-components";
+import * as THREE from "three";
 
 const HeroCanvas = () => {
-  const model = useGLTF("/models/react-svg/react-icon.gltf");
-  const { width } = useClientInfoService();
-  useEffect(() => {
-    console.log("model", model);
-  }, []);
+  const reactModel = useGLTF("/models/react-svg/react-3d-icon.gltf");
+  const flameModel = useGLTF("/models/flame/flame-3d-icon.gltf");
 
+  const { width } = useClientInfoService();
+  const heroGroup = useRef<THREE.Group>(null);
   return (
     <>
-      <ambientLight intensity={2} />
-      <directionalLight castShadow position={[1, 2, 3]} intensity={2.5} />
-
-
-
-
-         <Suspense>
- <Float>
-         <Clone
-          object={model.scene}
-          scale={1}
-          rotation={[0, -0.15* Math.PI, 0]}          position={width && width < 992 ? [0, -1, 0] : [0.5, 1, 0]}
-        />
-        <Clone
-          object={model.scene}
-          scale={0.6}
-          rotation={[0, 0.15* Math.PI, 0]} 
-          position={width && width < 992 ? [1.8, 0.5, 0] : [-0.25, -.8, 0]}
-        />
- </Float>
-      </Suspense> 
+      <ambientLight intensity={1.5} />
+      <directionalLight
+        castShadow
+        color={"#ffffff"}
+        intensity={1}
+        position={[-1, 1, 1]}
+      />
+      <Suspense>
+        <Float>
+          <group ref={heroGroup} position={[0, -0.5, 0]}>
+            <primitive
+              object={reactModel.scene}
+              scale={1}
+              rotation={[0, -0.15 * Math.PI, 0]}
+              position={width && width < 992 ? [0, -1, 0] : [0.5, 1, 0]}
+            />
+            <primitive
+              object={flameModel.scene}
+              scale={0.5}
+              rotation={[-0.35, 0.15 * Math.PI, 0.35]}
+              position={width && width < 992 ? [1.8, 0.5, 1] : [-0.25, -0.5, 1]}
+            />
+          </group>
+        </Float>
+      </Suspense>
     </>
   );
 };
 
 export default HeroCanvas;
-useGLTF.preload("/models/thinking_emoji/scene.gltf");

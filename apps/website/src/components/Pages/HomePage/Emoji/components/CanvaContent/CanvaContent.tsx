@@ -1,32 +1,10 @@
 "use client";
 
-import * as THREE from "three";
-import { Suspense, useEffect } from "react";
-import {
-  OrbitControls,
-  Center,
-  useMatcapTexture,
-  useGLTF,
-  Clone,
-  Html,
-} from "@react-three/drei";
-
-const material = new THREE.MeshMatcapMaterial();
+import { Suspense } from "react";
+import { OrbitControls, Center, useGLTF, Clone, Html } from "@react-three/drei";
 
 const CanvaContent = () => {
-  // E9CCA1_A63106_DF8C3B_621304
-  // 422509_C89536_824512_0A0604
-  const [matcapTexture] = useMatcapTexture("E9CCA1_A63106_DF8C3B_621304", 512);
-
   const model = useGLTF("/models/thinking_emoji/scene.gltf");
-
-  //update the material with the new texture
-  useEffect(() => {
-    matcapTexture.colorSpace = THREE.SRGBColorSpace;
-    matcapTexture.needsUpdate = true;
-    material.matcap = matcapTexture;
-    material.needsUpdate = true;
-  }, []);
 
   return (
     <>

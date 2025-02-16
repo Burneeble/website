@@ -10,8 +10,24 @@ import {
   useClientInfoService,
 } from "@burneeble/ui-components";
 import { CustomersProps } from "./Customers.types";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useReviewService } from "@/services/ReviewService";
+import { Canvas } from "@react-three/fiber";
+import * as THREE from "three";
+import CustomersCanvasContent from "./components/CustomersCanvasContent";
+
+const CustomersCanvas = () => {
+  return (
+    <Suspense fallback={<>loading</>}>
+      <Canvas
+        gl={{ antialias: true, outputColorSpace: THREE.SRGBColorSpace }}
+        className={`customers-3d-canvas tw-h-full`}
+      >
+        <CustomersCanvasContent />
+      </Canvas>
+    </Suspense>
+  );
+};
 
 const Customers = (props: CustomersProps) => {
   //States
@@ -141,7 +157,19 @@ const Customers = (props: CustomersProps) => {
             {reviews ? (
               screen == "sm" || screen == "md" ? (
                 <>
-                  <div className="review-row tw-pl-[177px]">
+                  <div className="review-row">
+                    <div
+                      key={"canvas-1"}
+                      className={`
+                        tw-h-[177.40px] tw-w-[177px]
+
+                        lg:tw-h-[259px]
+
+                        md:tw-h-[200px]
+                      `}
+                    >
+                      <CustomersCanvas />
+                    </div>
                     {reviews.slice(0, reviews.length / 2).map((review, i) => {
                       return <ReviewCard key={i} {...review} />;
                     })}
@@ -150,6 +178,18 @@ const Customers = (props: CustomersProps) => {
                     {reviews.slice(reviews.length / 2).map((review, i) => {
                       return <ReviewCard key={i} {...review} />;
                     })}
+                    <div
+                      key={"canvas-2"}
+                      className={`
+                        tw-h-[177.40px] tw-w-[177px]
+
+                        lg:tw-h-[259px]
+
+                        md:tw-h-[200px]
+                      `}
+                    >
+                      <CustomersCanvas />
+                    </div>
                   </div>
                 </>
               ) : (

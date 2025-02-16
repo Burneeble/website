@@ -1,13 +1,11 @@
 {
 	"asset":{
-		"copyright":"Burneeble SRL",
 		"generator":"Khronos glTF Blender I/O v4.3.47",
 		"version":"2.0"
 	},
 	"extensionsUsed":[
 		"KHR_draco_mesh_compression",
-		"KHR_materials_clearcoat",
-		"KHR_materials_sheen"
+		"EXT_texture_webp"
 	],
 	"extensionsRequired":[
 		"KHR_draco_mesh_compression"
@@ -24,52 +22,43 @@
 	"nodes":[
 		{
 			"mesh":0,
-			"name":"REACT",
+			"name":"Cylinder",
+			"rotation":[
+				0.7071068286895752,
+				0,
+				0,
+				0.7071068286895752
+			],
 			"scale":[
-				10,
-				1,
-				10
+				3.0631816387176514,
+				3.0631816387176514,
+				3.0631816387176514
 			]
 		}
 	],
 	"materials":[
 		{
 			"doubleSided":true,
-			"extensions":{
-				"KHR_materials_clearcoat":{
-					"clearcoatRoughnessFactor":0.10000000149011612
-				},
-				"KHR_materials_sheen":{
-					"sheenColorFactor":[
-						0.0,
-						0.0008734800503589213,
-						1.0
-					],
-					"sheenRoughnessFactor":0.663636326789856
-				}
-			},
-			"name":"Logo",
-			"normalTexture":{
-				"index":0
-			},
+			"name":"Material.003",
 			"pbrMetallicRoughness":{
 				"baseColorTexture":{
-					"index":1
+					"index":0
 				},
-				"metallicFactor":0.3954545557498932,
-				"roughnessFactor":0.7227272987365723
+				"metallicFactor":0.1324380338191986,
+				"roughnessFactor":0.3613639175891876
 			}
 		}
 	],
 	"meshes":[
 		{
-			"name":"Plane.002",
+			"name":"Cylinder.001",
 			"primitives":[
 				{
 					"attributes":{
 						"POSITION":0,
 						"NORMAL":1,
-						"TEXCOORD_0":2
+						"TEXCOORD_0":2,
+						"TANGENT":3
 					},
 					"extensions":{
 						"KHR_draco_mesh_compression":{
@@ -77,11 +66,12 @@
 							"attributes":{
 								"POSITION":0,
 								"NORMAL":1,
-								"TEXCOORD_0":2
+								"TEXCOORD_0":2,
+								"TANGENT":3
 							}
 						}
 					},
-					"indices":3,
+					"indices":4,
 					"material":0,
 					"mode":4
 				}
@@ -90,57 +80,68 @@
 	],
 	"textures":[
 		{
+			"extensions":{
+				"EXT_texture_webp":{
+					"source":0
+				}
+			},
 			"sampler":0,
-			"source":0
-		},
-		{
-			"sampler":0,
-			"source":0
+			"source":1
 		}
 	],
 	"images":[
 		{
+			"mimeType":"image/webp",
+			"name":"starDiffuseTest.001",
+			"uri":"textures/starDiffuseTest_001.webp"
+		},
+		{
 			"mimeType":"image/png",
-			"name":"react-1-logo-svg-vector",
-			"uri":"react-1-logo-svg-vector.png"
+			"name":"starDiffuseTest.001",
+			"uri":"textures/starDiffuseTest_001.png"
 		}
 	],
 	"accessors":[
 		{
 			"componentType":5126,
-			"count":11440,
+			"count":57600,
 			"max":[
-				0.16062627732753754,
-				1.4065184593200684,
-				0.008353191427886486
+				0.6376667022705078,
+				0.2926190197467804,
+				0.5444079637527466
 			],
 			"min":[
-				-0.16040408611297607,
-				-1.4056991338729858,
-				-0.00829272996634245
+				-0.6376667022705078,
+				-0.29448798298835754,
+				-0.6697989106178284
 			],
 			"type":"VEC3"
 		},
 		{
 			"componentType":5126,
-			"count":11440,
+			"count":57600,
 			"type":"VEC3"
 		},
 		{
 			"componentType":5126,
-			"count":11440,
+			"count":57600,
 			"type":"VEC2"
 		},
 		{
+			"componentType":5126,
+			"count":57600,
+			"type":"VEC4"
+		},
+		{
 			"componentType":5123,
-			"count":33024,
+			"count":86400,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":46577,
+			"byteLength":478968,
 			"byteOffset":0
 		}
 	],
@@ -152,8 +153,8 @@
 	],
 	"buffers":[
 		{
-			"byteLength":46580,
-			"uri":"react-icon.bin"
+			"byteLength":478968,
+			"uri":"star-3d-icon.bin"
 		}
 	]
 }
