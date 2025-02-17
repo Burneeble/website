@@ -3,6 +3,7 @@ import { Screen } from "./ClientInfoService.types";
 
 export interface ClientInfoServiceContent {
   width: number | null;
+  height: number | null;
   screen: Screen;
   isClient: boolean;
   scrollPos: number;
@@ -11,6 +12,7 @@ export interface ClientInfoServiceContent {
 export const clientInfoServiceContext = createContext<ClientInfoServiceContent>(
   {
     width: null,
+    height: null,
     screen: "2xl",
     isClient: false,
     scrollPos: 0,

@@ -20,7 +20,8 @@ const Hero = (props: HeroProps) => {
   ];
 
   //Hooks
-  const { screen, width } = useClientInfoService();
+  const { screen, width, height } = useClientInfoService();
+
   //Methods
   const getLabelSize = () => {
     switch (screen) {
@@ -92,7 +93,7 @@ const Hero = (props: HeroProps) => {
           >
             Start Building
           </Button>
-          {width && width < 992 && (
+          {height && height >= 800 && width && width < 992 && width > 375 && (
             <Suspense>
               <Canvas
                 gl={{ antialias: true, outputColorSpace: THREE.SRGBColorSpace }}

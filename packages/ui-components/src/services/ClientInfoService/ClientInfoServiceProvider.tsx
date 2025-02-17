@@ -9,12 +9,15 @@ import tailwindConfig from "../../../tailwind.config";
 const ClientInfoServiceProvider = (props: ClientInfoServiceProviderProps) => {
   //States
   const [width, setWidth] = useState<number | null>(null);
+  const [height, setHeight] = useState<number | null>(null);
+
   const [screen, setScreen] = useState<Screen>("2xl");
   const [isClient, setIsClient] = useState<boolean>(false);
   const [scrollPos, setScrollPos] = useState<number>(0);
 
   //Hooks
   const widthRef = useRef<number | null>(null);
+  const heightRef = useRef<number | null>(null);
   const scrollPosRef = useRef<number>(0);
 
   //Effects
@@ -25,9 +28,16 @@ const ClientInfoServiceProvider = (props: ClientInfoServiceProviderProps) => {
   useEffect(() => {
     const handleResize = () => {
       const currentWidth = document.documentElement.clientWidth;
+      const currentHeight = document.documentElement.clientHeight;
+
       if (widthRef.current !== currentWidth) {
         widthRef.current = currentWidth;
         setWidth(currentWidth);
+      }
+
+      if (heightRef.current !== currentHeight) {
+        heightRef.current = currentHeight;
+        setHeight(currentHeight);
       }
     };
 
@@ -82,7 +92,7 @@ const ClientInfoServiceProvider = (props: ClientInfoServiceProviderProps) => {
 
   return (
     <clientInfoServiceContext.Provider
-      value={{ width, screen, isClient, scrollPos }}
+      value={{ width, height, screen, isClient, scrollPos }}
     >
       {props.children}
     </clientInfoServiceContext.Provider>
