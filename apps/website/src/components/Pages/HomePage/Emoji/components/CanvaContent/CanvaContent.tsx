@@ -1,11 +1,12 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { Center, useGLTF, Clone, Html } from "@react-three/drei";
 import { Euler, useThree, Vector3 } from "@react-three/fiber";
 
 const CanvaContent = () => {
   const model = useGLTF("/models/thinking_emoji/scene.gltf");
+
   const { size } = useThree();
 
   // Function to calculate responsive positions
@@ -23,6 +24,10 @@ const CanvaContent = () => {
       scale: scale * scaleFactor,
     };
   };
+
+  useEffect(() => {
+    console.log("Thinking Emoji Model by Ricardo Sanchez, Sketchfab");
+  }, []);
 
   return (
     <>
