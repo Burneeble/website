@@ -120,24 +120,27 @@ const ContactPopup = (props: ContactPopupProps) => {
             tw-gap-5 tw-inline-flex
           `}
         >
-          <div
-            className={`
-              close tw-text-headings tw-absolute tw-top-[1rem] tw-right-[1.5rem]
-              tw-cursor-pointer tw-text-3xl tw-opacity-[.6] tw-transition-all
-              tw-duration-300 tw-ease-out tw-z-[5]
+          {!isSubmitted && (
+            <div
+              className={`
+                close tw-text-headings tw-absolute tw-top-[1rem]
+                tw-right-[1.5rem] tw-cursor-pointer tw-text-3xl tw-opacity-[.6]
+                tw-transition-all tw-duration-300 tw-ease-out tw-z-[5]
 
-              hover:tw-opacity-100
-            `}
-            onClick={() => {
-              setIsClosing(true);
-              setTimeout(() => {
-                setIsClosing(false);
-                props.setIsContactPopupOpen(false);
-              }, 400);
-            }}
-          >
-            <FontAwesomeIcon icon={faXmark} />
-          </div>
+                hover:tw-opacity-100
+              `}
+              onClick={() => {
+                setIsClosing(true);
+                setTimeout(() => {
+                  setIsClosing(false);
+                  props.setIsContactPopupOpen(false);
+                }, 400);
+              }}
+            >
+              <FontAwesomeIcon icon={faXmark} />
+            </div>
+          )}
+
           {isSubmitted ? (
             <>
               <div
