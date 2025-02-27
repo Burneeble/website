@@ -102,17 +102,15 @@ const Youtube = (props: YoutubeProps) => {
     <section
       className={`
         youtube cs-website-vertical-padding tw-relative tw-bottom-[-25px]
-        tw-flex tw-min-h-screen tw-flex-col cs-gap-between-content
-        tw-items-center tw-justify-center
+        tw-flex tw-flex-col cs-gap-between-content tw-items-center
+        tw-justify-center
       `}
     >
       <div
         className={`
           bg tw-absolute tw-left-1/2 tw-top-1/2 tw-z-[-1] tw-h-full tw-w-screen
           -tw-translate-x-1/2 -tw-translate-y-1/2 tw-border-t tw-border-solid
-          tw-border-white
-          tw-bg-[radial-gradient(rgba(0,0,0,0),rgba(0,0,0,1)_80%),url("/img/blog-page/youtube-bg.png")_center]
-          tw-bg-cover
+          tw-border-white tw-bg-cover
         `}
       />
       <div

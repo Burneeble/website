@@ -53,9 +53,8 @@ const StayTuned = (props: StayTunedProps) => {
   return (
     <section
       className={`
-        stay-tuned cs-website-vertical-padding tw-relative tw-flex
-        tw-min-h-screen tw-flex-col cs-gap-between-content tw-items-center
-        tw-justify-center
+        stay-tuned cs-website-vertical-padding tw-relative tw-flex tw-flex-col
+        cs-gap-between-content tw-items-center tw-justify-center
       `}
     >
       <div

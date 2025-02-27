@@ -17,10 +17,8 @@ const BlogHero = () => {
     >
       <div
         className={`
-          bg tw-absolute tw-left-1/2 tw-top-1/2 tw-z-[-1] tw-h-full tw-w-screen
-          -tw-translate-x-1/2 -tw-translate-y-1/2
-          tw-bg-[linear-gradient(180deg,black_1%,rgba(0,0,0,0)_80%),url("/img/blog-page/hero-bg.png")_center]
-          tw-bg-cover
+          blog-hero-bg tw-absolute tw-left-1/2 tw-top-1/2 tw-z-[-1] tw-h-full
+          tw-w-screen -tw-translate-x-1/2 -tw-translate-y-1/2 tw-bg-cover
         `}
       />
       <FontAwesomeIcon

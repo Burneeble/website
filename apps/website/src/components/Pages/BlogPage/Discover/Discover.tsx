@@ -124,7 +124,7 @@ const Discover = (props: DiscoverProps) => {
   return (
     <section
       className={`
-        discover cs-website-vertical-padding tw-flex tw-min-h-screen tw-flex-col
+        discover cs-website-vertical-padding tw-flex tw-flex-col
         cs-gap-between-content tw-items-center tw-justify-center
       `}
     >
