@@ -11,8 +11,8 @@ const BlogHero = () => {
   return (
     <section
       className={`
-        blog-hero cs-section-structure tw-relative tw-z-[2] tw-flex tw-flex-col
-        tw-items-center tw-justify-center cs-gap-between-content
+        blog-hero cs-section-structure tw-relative tw-z-[2] tw-top-8 tw-flex
+        tw-flex-col tw-items-center tw-justify-center cs-gap-between-content
         tw-min-h-[calc(100vh-100px)]
       `}
     >

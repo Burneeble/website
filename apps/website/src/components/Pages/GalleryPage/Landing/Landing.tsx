@@ -12,7 +12,7 @@ const Landing = (props: LandingProps) => {
     <section
       className={`
         gallery-landing-section tw-flex tw-h-[622px] tw-items-center
-        tw-justify-center
+        tw-justify-center tw-relative tw-top-8
 
         xl:tw-h-[764px]
       `}
