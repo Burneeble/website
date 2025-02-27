@@ -13,12 +13,13 @@ const BlogHero = () => {
       className={`
         blog-hero cs-section-structure tw-relative tw-z-[2] tw-flex tw-flex-col
         tw-items-center tw-justify-center cs-gap-between-content
+        tw-min-h-[calc(100vh-100px)]
       `}
     >
       <div
         className={`
           blog-hero-bg tw-absolute tw-left-1/2 tw-top-1/2 tw-z-[-1] tw-h-full
-          tw-w-screen -tw-translate-x-1/2 -tw-translate-y-1/2 tw-bg-cover
+          tw-w-screen -tw-translate-x-1/2 -tw-translate-y-1/2
         `}
       />
       <FontAwesomeIcon
@@ -31,7 +32,7 @@ const BlogHero = () => {
           cs-gap-between-text
         `}
       >
-        <h1 className="title tw-text-center tw-text-3xl">Burneeble News</h1>
+        <h1 className="title tw-text-center">Burneeble News</h1>
         <p className="text p-default tw-text-center tw-text-headings">
           Welcome to Burneeble News. Take a look at our articles and videos
           content to learn more about integrated AI in development!{" "}
@@ -48,17 +49,12 @@ const BlogHero = () => {
       >
         <Button
           size="lg"
-          className="tw-mt-[20px]"
           variant={"secondary"}
           fit={screen === "sm" ? "full" : "inline"}
         >
           Discover Articles
         </Button>
-        <Button
-          size="lg"
-          className="tw-mt-[20px]"
-          fit={screen === "sm" ? "full" : "inline"}
-        >
+        <Button size="lg" fit={screen === "sm" ? "full" : "inline"}>
           About Burneeble
         </Button>
       </div>

@@ -1,7 +1,8 @@
 // BlogHero
 .blog-hero {
   .blog-hero-bg {
-    background-image: linear-gradient(180deg, black, 1%, rgba(0 0 0 / 0%) 80%),
+    background: linear-gradient(180deg, black, 40%, rgba(0 0 0 / 0%) 80%),
       url("/img/blog-page/hero-bg.png") center;
+    background-size: cover;
   }
 }

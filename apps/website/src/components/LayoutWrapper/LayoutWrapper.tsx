@@ -89,7 +89,7 @@ const LayoutWrapper = (props: LayoutWrapperProps) => {
       </main>
       <div
         className={`
-          footer-wrapper tw-absolute tw-left-0 tw-top-[calc(100%-45px)]
+          footer-wrapper tw-relative tw-left-0 tw-top-[calc(100%-45px)]
           tw-w-full
         `}
       >

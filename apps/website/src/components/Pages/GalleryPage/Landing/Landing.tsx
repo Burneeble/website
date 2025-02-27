@@ -11,14 +11,10 @@ const Landing = (props: LandingProps) => {
   return (
     <section
       className={`
-        tw-flex tw-h-[622px] tw-items-center tw-justify-center
-        tw-bg-[linear-gradient(180deg,_black_0%,_rgba(102,102,102,0)_100%),url('/img/gallery-page/landing/bg-sm.png')_center]
-        tw-bg-cover tw-bg-no-repeat
-
-        md:tw-bg-[linear-gradient(180deg,_black_0%,_rgba(102,102,102,0)_100%),url('/img/gallery-page/landing/bg-md.png')_center]
+        gallery-landing-section tw-flex tw-h-[622px] tw-items-center
+        tw-justify-center
 
         xl:tw-h-[764px]
-        xl:tw-bg-[linear-gradient(180deg,_black_0%,_rgba(102,102,102,0)_100%),url('/img/gallery-page/landing/bg-xl.png')_center]
       `}
     >
       <div

@@ -101,8 +101,8 @@ const Youtube = (props: YoutubeProps) => {
   return (
     <section
       className={`
-        youtube cs-website-vertical-padding tw-relative tw-bottom-[-25px]
-        tw-flex tw-flex-col cs-gap-between-content tw-items-center
+        youtube cs-website-vertical-padding cs-bottom-padding-for-footer
+        tw-relative tw-flex tw-flex-col cs-gap-between-content tw-items-center
         tw-justify-center
       `}
     >
@@ -110,7 +110,7 @@ const Youtube = (props: YoutubeProps) => {
         className={`
           bg tw-absolute tw-left-1/2 tw-top-1/2 tw-z-[-1] tw-h-full tw-w-screen
           -tw-translate-x-1/2 -tw-translate-y-1/2 tw-border-t tw-border-solid
-          tw-border-white tw-bg-cover
+          tw-border-white
         `}
       />
       <div
@@ -131,7 +131,7 @@ const Youtube = (props: YoutubeProps) => {
         >
           <FontAwesomeIcon
             icon={faYoutube}
-            className={`tw-max-w-[52.15px] tw-text-[52.15px] tw-text-[#ff0033]`}
+            className={`tw-max-w-[52.15px] tw-text-[52.15px] tw-text-[#ff0000]`}
           />
         </div>
         <h2 className="title tw-text-center">

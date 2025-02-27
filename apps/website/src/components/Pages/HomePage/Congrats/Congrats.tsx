@@ -93,11 +93,11 @@ const Congrats = (props: CongratsProps) => {
   return (
     <section
       className={`
-        congrats cs-section-structure tw-relative tw-z-10 tw-flex tw-h-[314px]
-        !tw-min-h-[unset] tw-flex-col tw-items-center tw-justify-center
-        cs-gap-between-content
+        congrats cs-section-structure cs-bottom-padding-for-footer tw-relative
+        tw-z-10 tw-flex !tw-min-h-[unset] tw-flex-col tw-items-center
+        tw-justify-center cs-gap-between-content
 
-        lg:tw-h-[302px]
+        lg:tw-h-[402px]
 
         md:tw-h-[624px]
       `}

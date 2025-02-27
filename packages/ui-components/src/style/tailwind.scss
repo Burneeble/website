@@ -73,8 +73,12 @@
     @apply tw-gap-7 lg:tw-gap-10;
   }
 
+  .cs-bottom-padding-for-footer {
+    @apply tw-pb-[90px];
+  }
+
   .cs-page {
-    @apply tw-h-full tw-max-w-[100vw] tw-overflow-x-hidden tw-pb-[90px];
+    @apply tw-h-full tw-max-w-[100vw] tw-overflow-x-hidden;
   }
 }
 

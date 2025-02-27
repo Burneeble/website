@@ -98,7 +98,7 @@ const Footer = (props: FooterProps) => {
 
   return (
     <>
-      <div className="footer tw-relative tw-h-[80px]">
+      <div className="footer tw-relative tw-z-[15] tw-h-[80px]">
         <div
           className={`
             gradient gradient-one tw-h-[80px] tw-bg-[var(--primary-lighest)]

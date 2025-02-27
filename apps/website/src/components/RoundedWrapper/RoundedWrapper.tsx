@@ -8,10 +8,10 @@ const RoundedWrapper = (props: RoundedWrapperProps) => {
   return (
     <div
       className={`
-        rounded-wrapper tw-relative tw-top-[-35px] tw-z-[3] tw-w-full
-        tw-overflow-hidden tw-rounded-t-[30px] tw-border-t-2
-        tw-border-[var(--primary-light)] tw-bg-gradient-to-b
-        tw-from-[var(--secondary-base)] tw-to-[var(--secondary-darker)]
+        rounded-wrapper tw-relative tw-z-[3] tw-w-full tw-overflow-hidden
+        tw-rounded-t-[30px] tw-border-t-2 tw-border-[var(--primary-light)]
+        tw-bg-gradient-to-b tw-from-[var(--secondary-base)]
+        tw-to-[var(--secondary-darker)]
       `}
     >
       <div

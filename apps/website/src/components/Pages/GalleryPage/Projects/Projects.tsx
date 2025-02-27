@@ -174,7 +174,7 @@ const Projects = (props: ProjectsProps) => {
         />
       )}
       <section className={`projects-section`}>
-        <RoundedWrapper className="tw-py-[50px]">
+        <RoundedWrapper className="tw-pt-[50px] tw-pb-[90px]">
           <div
             className={`
               header tw-inline-flex tw-h-[58px] tw-w-full tw-items-center
