@@ -1,5 +1,5 @@
 import { Project } from "../core/Project";
-import { CryptoProjectMetadata, ProjectType } from "../core/ProjectTypes";
+import { CryptoEVMProjectMetadata, ProjectType } from "../core/ProjectTypes";
 import {
   BaseEnrichmentStrategy,
   EnrichmentResult,
@@ -59,23 +59,23 @@ export class CoinGeckoEnrichmentStrategy extends BaseEnrichmentStrategy<
   /**
    * Overrides the canEnrich method to check if the project has a symbol
    */
-  canEnrich<M extends CryptoProjectMetadata>(project: Project<M>): boolean {
+  canEnrich<M extends CryptoEVMProjectMetadata>(project: Project<M>): boolean {
     if (!super.canEnrich(project)) {
       return false;
     }
 
-    const metadata = project.getMetadata() as CryptoProjectMetadata;
+    const metadata = project.getMetadata() as CryptoEVMProjectMetadata;
     return Boolean(metadata.symbol);
   }
 
   /**
    * Implements the enrichment logic for fetching cryptocurrency market data
    */
-  protected async executeEnrichment<M extends CryptoProjectMetadata>(
+  protected async executeEnrichment<M extends CryptoEVMProjectMetadata>(
     project: Project<M>,
     options: CoinGeckoEnrichmentOptions
   ): Promise<EnrichmentResult<CryptoMarketData>> {
-    const metadata = project.getMetadata() as CryptoProjectMetadata;
+    const metadata = project.getMetadata() as CryptoEVMProjectMetadata;
 
     if (!metadata.symbol) {
       return {

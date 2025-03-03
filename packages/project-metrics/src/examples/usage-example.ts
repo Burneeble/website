@@ -3,7 +3,7 @@ import {
   EnrichmentManager,
   ProjectType,
   SoftwareProjectMetadata,
-  CryptoProjectMetadata,
+  CryptoEVMProjectMetadata,
   NFTProjectMetadata,
 } from "../index";
 import {
@@ -34,7 +34,7 @@ async function runExample() {
     name: "Example Token",
     description: "An example cryptocurrency token",
     symbol: "EXT",
-    blockchain: "Ethereum",
+    chainName: "Ethereum",
     contractAddress: "0x1234567890abcdef1234567890abcdef12345678",
   });
 
@@ -43,7 +43,7 @@ async function runExample() {
     name: "Collectible NFTs",
     description: "A collection of unique digital items",
     symbol: "CNFT",
-    blockchain: "Polygon",
+    chainName: "Polygon",
     contractAddress: "0xabcdef1234567890abcdef1234567890abcdef12",
     collectionSize: 10000,
     standard: "ERC-721",

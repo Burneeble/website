@@ -1,7 +1,7 @@
 import { Project } from "../core/Project";
 import {
   BaseProjectMetadata,
-  CryptoProjectMetadata,
+  CryptoEVMProjectMetadata,
   NFTProjectMetadata,
   ProjectMetadata,
   ProjectType,
@@ -40,9 +40,9 @@ export class ProjectFactory {
    * @returns A new crypto project
    */
   static createCryptoProject(
-    metadata: CryptoProjectMetadata
-  ): Project<CryptoProjectMetadata> {
-    return new Project<CryptoProjectMetadata>(metadata, ProjectType.CRYPTO);
+    metadata: CryptoEVMProjectMetadata
+  ): Project<CryptoEVMProjectMetadata> {
+    return new Project<CryptoEVMProjectMetadata>(metadata, ProjectType.CRYPTO);
   }
 
   /**

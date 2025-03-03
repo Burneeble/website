@@ -33,11 +33,11 @@ export enum ProjectType {
 /**
  * Crypto-specific metadata fields
  */
-export interface CryptoProjectMetadata extends BaseProjectMetadata {
+export interface CryptoEVMProjectMetadata extends BaseProjectMetadata {
   /** Cryptocurrency ticker symbol */
   symbol?: string;
   /** Blockchain the project is based on */
-  blockchain?: string;
+  chainName?: string;
   /** Contract address if applicable */
   contractAddress?: string;
 }
@@ -45,7 +45,7 @@ export interface CryptoProjectMetadata extends BaseProjectMetadata {
 /**
  * NFT-specific metadata fields
  */
-export interface NFTProjectMetadata extends CryptoProjectMetadata {
+export interface NFTProjectMetadata extends CryptoEVMProjectMetadata {
   /** Total collection size */
   collectionSize?: number;
   /** NFT standard (e.g., ERC-721, ERC-1155) */
@@ -69,6 +69,6 @@ export interface SoftwareProjectMetadata extends BaseProjectMetadata {
  */
 export type ProjectMetadata =
   | BaseProjectMetadata
-  | CryptoProjectMetadata
+  | CryptoEVMProjectMetadata
   | NFTProjectMetadata
   | SoftwareProjectMetadata;
