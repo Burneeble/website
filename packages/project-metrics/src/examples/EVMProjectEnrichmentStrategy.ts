@@ -6,11 +6,12 @@ import {
   EnrichmentStrategyOptions,
 } from "../enrichment/EnrichmentStrategy";
 import { EVMUtils } from "../utils/evmUtils";
-import { http } from "viem";
 
 export interface EVMProjectData {
   transactions: number;
   events: number;
+  ethInflow: bigint; // ETH value flowing into contract (in ETH, not wei)
+  ethOutflow: bigint; // ETH value flowing out of contract (in ETH, not wei)
 }
 
 export interface EVMProjectEnrichmentStrategyOptions
@@ -156,11 +157,111 @@ export class EVMProjectEnrichmentStrategy extends BaseEnrichmentStrategy<
       const uniqueTransactionCount = uniqueTransactionHashes.size;
       console.log(`Found ${uniqueTransactionCount} unique transactions`);
 
+      // Track ETH flows
+      let totalEthInflow = BigInt(0);
+      let totalEthOutflow = BigInt(0);
+
+      console.log(
+        `Analyzing ETH flows for ${uniqueTransactionHashes.size} transactions...`
+      );
+
+      // Process transactions in batches to avoid rate limiting
+      const txHashes = Array.from(uniqueTransactionHashes);
+      const hashesBatchSize = 10;
+
+      console.log("Total transactions:", txHashes.length);
+      console.log(`Processing transactions in batches of ${hashesBatchSize}`);
+
+      for (let i = 0; i < txHashes.length; i += hashesBatchSize) {
+        const batch = txHashes.slice(i, i + hashesBatchSize);
+
+        // Show progress
+        if (i % 200 === 0 || i + batch.length >= txHashes.length) {
+          console.log(
+            `Processing transactions ${i} to ${i + batch.length} of ${
+              txHashes.length
+            }...`
+          );
+        }
+
+        // Process transactions concurrently within the batch
+        const results = await Promise.all(
+          batch.map(async (txHash) => {
+            try {
+              const tx = await client.getTransaction({
+                hash: txHash as `0x${string}`,
+              });
+              const receipt = await client.getTransactionReceipt({
+                hash: txHash as `0x${string}`,
+              });
+
+              const normalizedContractAddress = contractAddress.toLowerCase();
+              const txValue = tx.value || BigInt(0);
+
+              // Check if transaction is to our contract (inflow)
+              const isToContract =
+                tx.to?.toLowerCase() === normalizedContractAddress;
+
+              // Check if transaction is from our contract (outflow)
+              const isFromContract =
+                tx.from.toLowerCase() === normalizedContractAddress;
+
+              // ETH inflow: direct transactions to the contract
+              if (isToContract && txValue > 0) {
+                return { inflow: txValue, outflow: BigInt(0) };
+              }
+
+              // ETH outflow: transactions from the contract
+              if (isFromContract && txValue > 0) {
+                return { inflow: BigInt(0), outflow: txValue };
+              }
+
+              // Internal transactions (from receipt)
+              const internalTransfers = receipt.logs.filter(
+                (log: any) =>
+                  log.address.toLowerCase() === normalizedContractAddress &&
+                  log.topics[0] === "0xddf252ad" // Transfer event signature
+              );
+
+              let inflow = BigInt(0);
+              let outflow = BigInt(0);
+
+              for (const transfer of internalTransfers) {
+                const from = transfer.topics[1].slice(26).toLowerCase();
+                const to = transfer.topics[2].slice(26).toLowerCase();
+                const value = BigInt(transfer.data);
+
+                if (to === normalizedContractAddress) {
+                  inflow += value;
+                } else if (from === normalizedContractAddress) {
+                  outflow += value;
+                }
+              }
+
+              return { inflow, outflow };
+            } catch (error) {
+              console.error(`Error processing transaction ${txHash}:`, error);
+              return { inflow: BigInt(0), outflow: BigInt(0) };
+            }
+          })
+        );
+
+        for (const result of results) {
+          totalEthInflow += result.inflow;
+          totalEthOutflow += result.outflow;
+        }
+      }
+
+      console.log(`Total ETH inflow: ${totalEthInflow}`);
+      console.log(`Total ETH outflow: ${totalEthOutflow}`);
+
       return {
         success: true,
         data: {
           transactions: uniqueTransactionCount, // Now counting unique transactions
           events: logs.length, // Keep track of total events too if helpful
+          ethInflow: totalEthInflow,
+          ethOutflow: totalEthOutflow,
         },
       };
     } catch (error) {
