@@ -20,7 +20,9 @@ export const definitions: Array<ProjectDefinition> = [
     strategies: [new EVMProjectEnrichmentStrategy()],
     options: [
       {
-        startBlock: 17146749,
+        startBlock: 17146749n,
+        batchSize: 10000,
+        endBlock: 17156749n,
       },
     ],
   },

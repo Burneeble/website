@@ -10,11 +10,19 @@ import { http } from "viem";
 
 export interface EVMProjectData {
   transactions: number;
+  events: number;
 }
 
 export interface EVMProjectEnrichmentStrategyOptions
   extends EnrichmentStrategyOptions {
-  startBlock?: number | bigint; // Optional starting block
+  // Optional start block for log retrieval (default: 0)
+  startBlock?: bigint;
+
+  // Optional end block for log retrieval (default: latest block)
+  endBlock?: bigint;
+
+  // Optional batch size for log retrieval (default: 10000)
+  batchSize?: number;
 }
 
 export class EVMProjectEnrichmentStrategy extends BaseEnrichmentStrategy<
@@ -78,11 +86,12 @@ export class EVMProjectEnrichmentStrategy extends BaseEnrichmentStrategy<
       console.log(`Starting log retrieval for ${contractAddress}...`);
 
       // Get current block number to show progress
-      const latestBlock = await client.getBlockNumber();
-      console.log(`Latest block is ${latestBlock}`);
+      const endBlock = options.endBlock ?? (await client.getBlockNumber());
+      console.log(`End block is ${endBlock}`);
 
       // Use batch processing for large contracts
-      const batchSize = 10000; // Adjust based on network and contract activity
+      const batchSize = options.batchSize ?? 10000; // Adjust based on network and contract activity
+      console.log(`Using batch size of ${batchSize}`);
 
       // Use provided startBlock or default to 0
       let fromBlock =
@@ -93,19 +102,27 @@ export class EVMProjectEnrichmentStrategy extends BaseEnrichmentStrategy<
       console.log(`Starting from block ${fromBlock}`);
 
       let allLogs: any[] = [];
+      let iterationCount = 0;
 
-      while (fromBlock <= latestBlock) {
+      while (fromBlock <= endBlock) {
+        iterationCount++;
         const toBlock =
-          fromBlock + BigInt(batchSize) > latestBlock
-            ? latestBlock
+          fromBlock + BigInt(batchSize) > endBlock
+            ? endBlock
             : fromBlock + BigInt(batchSize);
 
-        const percentComplete = Number((toBlock * BigInt(100)) / latestBlock);
-        console.log(
-          `Fetching logs from block ${fromBlock} to ${toBlock} (${percentComplete.toFixed(
-            2
-          )}% complete)`
-        );
+        const isLastIteration = toBlock === endBlock;
+        const shouldLog =
+          iterationCount === 1 || iterationCount % 10 === 0 || isLastIteration;
+
+        if (shouldLog) {
+          const percentComplete = Number((toBlock * BigInt(100)) / endBlock);
+          console.log(
+            `Fetching logs from block ${fromBlock} to ${toBlock} (${percentComplete.toFixed(
+              2
+            )}% complete)`
+          );
+        }
 
         const batchLogs = await client.getLogs({
           address: contractAddress as `0x${string}`,
@@ -113,21 +130,37 @@ export class EVMProjectEnrichmentStrategy extends BaseEnrichmentStrategy<
           toBlock: toBlock,
         });
 
-        console.log(`Retrieved ${batchLogs.length} logs for this block range`);
+        if (shouldLog)
+          console.log(
+            `Retrieved ${batchLogs.length} logs for this block range`
+          );
+
         allLogs = [...allLogs, ...batchLogs];
         fromBlock = toBlock + BigInt(1);
       }
 
+      // After collecting all logs
       const logs = allLogs;
-
       console.log(
         `Retrieved ${logs.length} logs for contract ${contractAddress}`
       );
 
+      // Count unique transactions
+      const uniqueTransactionHashes = new Set<string>();
+      for (const log of logs) {
+        if (log.transactionHash) {
+          uniqueTransactionHashes.add(log.transactionHash);
+        }
+      }
+
+      const uniqueTransactionCount = uniqueTransactionHashes.size;
+      console.log(`Found ${uniqueTransactionCount} unique transactions`);
+
       return {
         success: true,
         data: {
-          transactions: logs.length, // This is an approximation based on logs
+          transactions: uniqueTransactionCount, // Now counting unique transactions
+          events: logs.length, // Keep track of total events too if helpful
         },
       };
     } catch (error) {
