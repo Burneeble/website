@@ -23,7 +23,16 @@ export interface EVMProjectEnrichmentStrategyOptions
   endBlock?: bigint;
 
   // Optional batch size for log retrieval (default: 10000)
-  batchSize?: number;
+  logsBatchSize?: number;
+
+  // Optional number of concurrent batches for log retrieval (default: 5)
+  concurrentBatchesLogs?: number;
+
+  // Optional batch size for transaction processing (default: 10)
+  hashesBatchSize?: number;
+
+  // Optional wait time in milliseconds between cycles (default: 0)
+  hashesCycleWait?: number;
 }
 
 export class EVMProjectEnrichmentStrategy extends BaseEnrichmentStrategy<
@@ -91,7 +100,7 @@ export class EVMProjectEnrichmentStrategy extends BaseEnrichmentStrategy<
       console.log(`End block is ${endBlock}`);
 
       // Use batch processing for large contracts
-      const batchSize = options.batchSize ?? 10000; // Adjust based on network and contract activity
+      const batchSize = options.logsBatchSize ?? 10000; // Adjust based on network and contract activity
       console.log(`Using batch size of ${batchSize}`);
 
       // Use provided startBlock or default to 0
@@ -104,8 +113,10 @@ export class EVMProjectEnrichmentStrategy extends BaseEnrichmentStrategy<
       let allLogs: any[] = [];
 
       // Number of concurrent block range fetches to execute in parallel
-      const concurrentBatches = 5;
-      console.log(`Using ${concurrentBatches} concurrent block range fetches`);
+      const concurrentBatches = options.concurrentBatchesLogs ?? 5;
+      console.log(
+        `Using ${concurrentBatches} concurrent block range fetches for getting logs`
+      );
 
       // Calculate total block range and number of batches
       const totalBlockRange = endBlock - startBlock + BigInt(1);
@@ -217,22 +228,23 @@ export class EVMProjectEnrichmentStrategy extends BaseEnrichmentStrategy<
 
       // Process transactions in batches to avoid rate limiting
       const txHashes = Array.from(uniqueTransactionHashes);
-      const hashesBatchSize = 10;
+      const hashesBatchSize = options.hashesBatchSize ?? 10; // Adjust based on network and contract activity
 
       console.log("Total transactions:", txHashes.length);
       console.log(`Processing transactions in batches of ${hashesBatchSize}`);
 
       for (let i = 0; i < txHashes.length; i += hashesBatchSize) {
+        const cycleStartTime = Date.now();
         const batch = txHashes.slice(i, i + hashesBatchSize);
 
         // Show progress
-        if (i % 200 === 0 || i + batch.length >= txHashes.length) {
-          console.log(
-            `Processing transactions ${i} to ${i + batch.length} of ${
-              txHashes.length
-            }...`
-          );
-        }
+        // if (i % 200 === 0 || i + batch.length >= txHashes.length) {
+        console.log(
+          `Processing transactions ${i} to ${i + batch.length} of ${
+            txHashes.length
+          }...`
+        );
+        // }
 
         // Process transactions concurrently within the batch
         const results = await Promise.all(
@@ -301,6 +313,31 @@ export class EVMProjectEnrichmentStrategy extends BaseEnrichmentStrategy<
         for (const result of results) {
           totalEthInflow += result.inflow;
           totalEthOutflow += result.outflow;
+        }
+
+        // Calculate elapsed time for this cycle
+        const cycleEndTime = Date.now();
+        const cycleElapsedTime = cycleEndTime - cycleStartTime;
+
+        // Check if we need to wait between cycles
+        const waitTimeMs = options.hashesCycleWait ?? 0;
+        if (
+          waitTimeMs > 0 &&
+          cycleElapsedTime < waitTimeMs &&
+          i + hashesBatchSize < txHashes.length
+        ) {
+          const waitNeeded = waitTimeMs - cycleElapsedTime;
+          console.log(
+            `Cycle completed in ${cycleElapsedTime}ms, waiting ${waitNeeded}ms before next cycle...`
+          );
+
+          // Wait for the remaining time
+          await new Promise((resolve) => setTimeout(resolve, waitNeeded));
+          console.log(`Wait complete, continuing to next cycle`);
+        } else {
+          console.log(
+            `Cycle completed in ${cycleElapsedTime}ms, continuing immediately`
+          );
         }
       }
 
