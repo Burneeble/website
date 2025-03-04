@@ -1,5 +1,5 @@
 import { createPublicClient, http, defineChain } from "viem";
-import { mainnet, polygon, optimism, arbitrum, base } from "viem/chains";
+import { mainnet, polygon, optimism, arbitrum, base, theta } from "viem/chains";
 import dotenv from "dotenv";
 
 // Load environment variables
@@ -25,6 +25,7 @@ export class EVMUtils {
       optimism: optimism,
       arbitrum: arbitrum,
       base: base,
+      theta: theta,
       // Add other chains as needed
     };
 

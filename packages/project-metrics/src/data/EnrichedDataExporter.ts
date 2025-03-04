@@ -57,11 +57,27 @@ export type EnrichedData = Record<string, EnrichedProjectData>;
  */
 export class EnrichedDataExporter {
   private dataDir: string;
-  private latestDataPath: string;
 
   constructor() {
     this.dataDir = path.join(__dirname, "../../data");
-    this.latestDataPath = path.join(this.dataDir, "latest-enriched-data.json");
+  }
+
+  /**
+   * Get the path to a specific project's data file
+   * @param projectId The project ID
+   * @returns The path to the project's data file
+   */
+  getProjectFilePath(projectId: string): string {
+    return path.join(this.dataDir, `${projectId}.json`);
+  }
+
+  /**
+   * Check if a specific project file exists
+   * @param projectId The project ID
+   * @returns True if the project file exists
+   */
+  projectFileExists(projectId: string): boolean {
+    return fs.existsSync(this.getProjectFilePath(projectId));
   }
 
   /**
@@ -70,16 +86,36 @@ export class EnrichedDataExporter {
    */
   getLatestData<T extends EnrichedData = EnrichedData>(): T {
     try {
-      if (fs.existsSync(this.latestDataPath)) {
-        const data = fs.readFileSync(this.latestDataPath, "utf-8");
-        // Use the custom reviver function to handle BigInt values
-        return JSON.parse(data, jsonReviver) as T;
+      const result = {} as T;
+      const projectIds = this.listAllProjectFiles();
+
+      for (const projectId of projectIds) {
+        const projectData = this.getProjectData(projectId);
+        if (projectData) {
+          (result as any)[projectId] = projectData as any;
+        }
       }
-      return {} as T;
+
+      return result;
     } catch (error) {
-      console.error("Error reading latest enriched data:", error);
+      console.error("Error reading enriched data:", error);
       return {} as T;
     }
+  }
+
+  /**
+   * List all project files in the data directory
+   * @returns Array of project IDs
+   */
+  private listAllProjectFiles(): string[] {
+    if (!fs.existsSync(this.dataDir)) {
+      return [];
+    }
+
+    return fs
+      .readdirSync(this.dataDir)
+      .filter((file) => file.endsWith(".json"))
+      .map((file) => file.replace(".json", ""));
   }
 
   /**
@@ -90,8 +126,18 @@ export class EnrichedDataExporter {
   getProjectData<T extends ProjectMetadata = ProjectMetadata>(
     projectId: string
   ): EnrichedProjectData<T> | null {
-    const allData = this.getLatestData();
-    return (allData[projectId] as EnrichedProjectData<T>) || null;
+    try {
+      const projectFilePath = this.getProjectFilePath(projectId);
+      if (!fs.existsSync(projectFilePath)) {
+        return null;
+      }
+
+      const data = fs.readFileSync(projectFilePath, "utf-8");
+      return JSON.parse(data, jsonReviver) as EnrichedProjectData<T>;
+    } catch (error) {
+      console.error(`Error reading data for project ${projectId}:`, error);
+      return null;
+    }
   }
 
   /**
@@ -127,8 +173,7 @@ export class EnrichedDataExporter {
    * @returns Array of project IDs
    */
   getProjectIds(): string[] {
-    const data = this.getLatestData();
-    return Object.keys(data);
+    return this.listAllProjectFiles();
   }
 
   /**
@@ -137,23 +182,22 @@ export class EnrichedDataExporter {
    * @returns True if data exists for the project
    */
   hasData(projectId: string): boolean {
-    const data = this.getLatestData();
-    return Boolean(data[projectId]);
+    return this.projectFileExists(projectId);
   }
 
   /**
-   * Check if the enriched data file exists
-   * @returns True if the data file exists
+   * Check if any enriched data files exist
+   * @returns True if any data files exist
    */
   dataFileExists(): boolean {
-    return fs.existsSync(this.latestDataPath);
+    return this.getProjectIds().length > 0;
   }
 
   /**
-   * Get the path to the data file
-   * @returns The path to the data file
+   * Get the path to the data directory
+   * @returns The path to the data directory
    */
-  getDataFilePath(): string {
-    return this.latestDataPath;
+  getDataDirPath(): string {
+    return this.dataDir;
   }
 }

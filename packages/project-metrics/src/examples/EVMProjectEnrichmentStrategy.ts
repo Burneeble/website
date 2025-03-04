@@ -11,7 +11,6 @@ export interface EVMProjectData {
   transactions: number;
   events: number;
   ethInflow: bigint; // ETH value flowing into contract (in ETH, not wei)
-  ethOutflow: bigint; // ETH value flowing out of contract (in ETH, not wei)
 }
 
 export interface EVMProjectEnrichmentStrategyOptions
@@ -220,7 +219,6 @@ export class EVMProjectEnrichmentStrategy extends BaseEnrichmentStrategy<
 
       // Track ETH flows
       let totalEthInflow = BigInt(0);
-      let totalEthOutflow = BigInt(0);
 
       console.log(
         `Analyzing ETH flows for ${uniqueTransactionHashes.size} transactions...`
@@ -264,20 +262,10 @@ export class EVMProjectEnrichmentStrategy extends BaseEnrichmentStrategy<
               const isToContract =
                 tx.to?.toLowerCase() === normalizedContractAddress;
 
-              // Check if transaction is from our contract (outflow)
-              const isFromContract =
-                tx.from.toLowerCase() === normalizedContractAddress;
-
               // ETH inflow: direct transactions to the contract
               if (isToContract && txValue > 0) {
-                console.log(`Inflow: ${txValue}. Tx: ${txHash}`);
-                return { inflow: txValue, outflow: BigInt(0) };
-              }
-
-              // ETH outflow: transactions from the contract
-              if (isFromContract && txValue > 0) {
-                console.log(`Outflow: ${txValue}. Tx: ${txHash}`);
-                return { inflow: BigInt(0), outflow: txValue };
+                // console.log(`Inflow: ${txValue}. Tx: ${txHash}`);
+                return { inflow: txValue };
               }
 
               // Internal transactions (from receipt)
@@ -288,7 +276,6 @@ export class EVMProjectEnrichmentStrategy extends BaseEnrichmentStrategy<
               );
 
               let inflow = BigInt(0);
-              let outflow = BigInt(0);
 
               for (const transfer of internalTransfers) {
                 const from = transfer.topics[1].slice(26).toLowerCase();
@@ -297,22 +284,19 @@ export class EVMProjectEnrichmentStrategy extends BaseEnrichmentStrategy<
 
                 if (to === normalizedContractAddress) {
                   inflow += value;
-                } else if (from === normalizedContractAddress) {
-                  outflow += value;
                 }
               }
 
-              return { inflow, outflow };
+              return { inflow };
             } catch (error) {
               console.error(`Error processing transaction ${txHash}:`, error);
-              return { inflow: BigInt(0), outflow: BigInt(0) };
+              return { inflow: BigInt(0) };
             }
           })
         );
 
         for (const result of results) {
           totalEthInflow += result.inflow;
-          totalEthOutflow += result.outflow;
         }
 
         // Calculate elapsed time for this cycle
@@ -342,7 +326,6 @@ export class EVMProjectEnrichmentStrategy extends BaseEnrichmentStrategy<
       }
 
       console.log(`Total ETH inflow: ${totalEthInflow}`);
-      console.log(`Total ETH outflow: ${totalEthOutflow}`);
 
       return {
         success: true,
@@ -350,7 +333,6 @@ export class EVMProjectEnrichmentStrategy extends BaseEnrichmentStrategy<
           transactions: uniqueTransactionCount, // Now counting unique transactions
           events: logs.length, // Keep track of total events too if helpful
           ethInflow: totalEthInflow,
-          ethOutflow: totalEthOutflow,
         },
       };
     } catch (error) {

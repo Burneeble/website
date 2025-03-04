@@ -6,28 +6,31 @@ import { EVMProjectData } from "./EVMProjectEnrichmentStrategy";
  * Example demonstrating how to use the EnrichedDataExporter with typed data
  *
  * This example shows how to:
- * - Get the latest enriched data with proper typing
+ * - Get all available project data with proper typing
  * - Access specific strategy data with type safety
  * - Work with specific project types and their metadata
  */
 async function dataExporterExample() {
   // Create a new exporter instance
   const exporter = new EnrichedDataExporter();
-
   console.log("--- EnrichedDataExporter Example with Type Safety ---");
 
-  // Check if data file exists
+  // Check if any data files exist
   if (!exporter.dataFileExists()) {
-    console.log('No data file found. Run "yarn enrich" to generate data.');
+    console.log(
+      'No project data files found. Run "yarn enrich" to generate data.'
+    );
+    console.log(
+      'You can enrich specific projects using "yarn enrich --project=projectId"'
+    );
     return;
   }
 
   // Get all available project IDs
   console.log("\n1. Available projects:");
   const projectIds = exporter.getProjectIds();
-
   if (projectIds.length === 0) {
-    console.log("No projects found in latest data.");
+    console.log("No projects found in data directory.");
     return;
   }
 
@@ -39,7 +42,6 @@ async function dataExporterExample() {
   // Example: Get data for a specific project with proper typing
   if (projectIds.length > 0) {
     const projectId = projectIds[0];
-
     // Get project data with proper typing for EVM projects
     const projectData =
       exporter.getProjectData<CryptoEVMProjectMetadata>(projectId);
@@ -56,25 +58,20 @@ async function dataExporterExample() {
 
       // Get EVM-specific data directly with proper typing
       const evmData = exporter.getEVMData(projectId);
-
       if (evmData) {
         console.log("\n3. EVM-specific metrics:");
         console.log(`Transactions: ${evmData.transactions}`);
         console.log(`Events: ${evmData.events}`);
-
         // BigInt needs special formatting for display
         console.log(`ETH inflow: ${evmData.ethInflow.toString()} wei`);
-        console.log(`ETH outflow: ${evmData.ethOutflow.toString()} wei`);
 
         // Calculate ETH balance (inflow - outflow)
-        const ethBalance = evmData.ethInflow - evmData.ethOutflow;
+        const ethBalance = evmData.ethInflow;
         console.log(`ETH balance: ${ethBalance.toString()} wei`);
 
         // Demonstrate converting from wei to ETH for display
         const ethInflow = Number(evmData.ethInflow) / 10 ** 18;
-        const ethOutflow = Number(evmData.ethOutflow) / 10 ** 18;
         console.log(`ETH inflow: ${ethInflow.toFixed(8)} ETH`);
-        console.log(`ETH outflow: ${ethOutflow.toFixed(8)} ETH`);
       } else {
         console.log("No EVM data found for this project.");
       }
@@ -85,7 +82,6 @@ async function dataExporterExample() {
         projectId,
         "evm-project-data"
       );
-
       if (evmDataGeneric) {
         console.log(
           `Transactions (generic access): ${evmDataGeneric.transactions}`
@@ -115,6 +111,12 @@ async function dataExporterExample() {
     } else {
       console.log(`- ${id}: No EVM data available`);
     }
+  }
+
+  // Demonstrate how to access project-specific files directly
+  console.log("\n6. Accessing project file paths:");
+  for (const projectId of projectIds) {
+    console.log(`- ${projectId}: ${exporter.getProjectFilePath(projectId)}`);
   }
 }
 
