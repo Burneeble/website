@@ -1,0 +1,46 @@
+name: Project Enrichment
+
+on:
+  # Trigger on push events
+  push:
+    paths-ignore:
+      - "**.md"
+
+  # Allow manual triggering
+  workflow_dispatch:
+
+jobs:
+  enrich:
+    name: Enrich ${{ matrix.project }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        project: ["skullnbananas-v1", "custompunks-v1", "custompunks-v2"]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "yarn"
+          cache-dependency-path: "./packages/project-metrics/yarn.lock"
+
+      - name: Install dependencies
+        working-directory: ./packages/project-metrics
+        run: yarn install --frozen-lockfile
+
+      - name: Build project
+        working-directory: ./packages/project-metrics
+        run: yarn build
+
+      - name: Run enrichment for ${{ matrix.project }}
+        working-directory: ./packages/project-metrics
+        run: yarn enrich -p ${{ matrix.project }}
+        env:
+          # Add any required environment variables here
+          BASE_RPC_URL: ${{ secrets.BASE_RPC_URL }}
