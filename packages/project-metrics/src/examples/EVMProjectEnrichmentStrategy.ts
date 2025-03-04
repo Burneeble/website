@@ -95,49 +95,99 @@ export class EVMProjectEnrichmentStrategy extends BaseEnrichmentStrategy<
       console.log(`Using batch size of ${batchSize}`);
 
       // Use provided startBlock or default to 0
-      let fromBlock =
+      const startBlock =
         options.startBlock !== undefined
           ? BigInt(options.startBlock)
           : BigInt(0);
-
-      console.log(`Starting from block ${fromBlock}`);
+      console.log(`Starting from block ${startBlock}`);
 
       let allLogs: any[] = [];
-      let iterationCount = 0;
 
-      while (fromBlock <= endBlock) {
-        iterationCount++;
-        const toBlock =
-          fromBlock + BigInt(batchSize) > endBlock
-            ? endBlock
-            : fromBlock + BigInt(batchSize);
+      // Number of concurrent block range fetches to execute in parallel
+      const concurrentBatches = 5;
+      console.log(`Using ${concurrentBatches} concurrent block range fetches`);
 
-        const isLastIteration = toBlock === endBlock;
-        const shouldLog =
-          iterationCount === 1 || iterationCount % 10 === 0 || isLastIteration;
+      // Calculate total block range and number of batches
+      const totalBlockRange = endBlock - startBlock + BigInt(1);
+      const totalBatches = Number(
+        (totalBlockRange + BigInt(batchSize) - BigInt(1)) / BigInt(batchSize)
+      );
+      console.log(
+        `Total block range: ${totalBlockRange}, requiring ${totalBatches} batches`
+      );
 
-        if (shouldLog) {
-          const percentComplete = Number((toBlock * BigInt(100)) / endBlock);
-          console.log(
-            `Fetching logs from block ${fromBlock} to ${toBlock} (${percentComplete.toFixed(
-              2
-            )}% complete)`
+      // Process blocks in parallel batches
+      for (
+        let batchOffset = 0;
+        batchOffset < totalBatches;
+        batchOffset += concurrentBatches
+      ) {
+        const batchPromises = [];
+
+        // Create concurrent batch fetching promises
+        for (let i = 0; i < concurrentBatches; i++) {
+          const currentBatchIndex = batchOffset + i;
+          if (currentBatchIndex >= totalBatches) break;
+
+          const fromBlock =
+            startBlock + BigInt(currentBatchIndex) * BigInt(batchSize);
+          const toBlock =
+            fromBlock + BigInt(batchSize) > endBlock
+              ? endBlock
+              : fromBlock + BigInt(batchSize) - BigInt(1);
+
+          const percentComplete = Number(
+            ((currentBatchIndex + 1) * 100) / totalBatches
           );
+          console.log(
+            `Starting fetch for blocks ${fromBlock} to ${toBlock} (batch ${
+              currentBatchIndex + 1
+            }/${totalBatches}, ${percentComplete.toFixed(2)}% overall)`
+          );
+
+          // Create a promise for this block range
+          const batchPromise = async () => {
+            try {
+              const batchLogs = await client.getLogs({
+                address: contractAddress as `0x${string}`,
+                fromBlock: fromBlock,
+                toBlock: toBlock,
+              });
+
+              console.log(
+                `Retrieved ${batchLogs.length} logs for blocks ${fromBlock} to ${toBlock}`
+              );
+
+              return batchLogs;
+            } catch (error) {
+              console.error(
+                `Error fetching logs for blocks ${fromBlock} to ${toBlock}:`,
+                error
+              );
+              return [];
+            }
+          };
+
+          batchPromises.push(batchPromise());
         }
 
-        const batchLogs = await client.getLogs({
-          address: contractAddress as `0x${string}`,
-          fromBlock: fromBlock,
-          toBlock: toBlock,
-        });
+        // Wait for all concurrent batch promises to resolve
+        const batchResults = await Promise.all(batchPromises);
 
-        if (shouldLog)
-          console.log(
-            `Retrieved ${batchLogs.length} logs for this block range`
-          );
+        // Accumulate logs from all batches
+        for (const logs of batchResults) {
+          allLogs = [...allLogs, ...logs];
+        }
 
-        allLogs = [...allLogs, ...batchLogs];
-        fromBlock = toBlock + BigInt(1);
+        // Show progress after each set of concurrent batches
+        const processedBatches = Math.min(
+          batchOffset + concurrentBatches,
+          totalBatches
+        );
+        console.log(
+          `Processed ${processedBatches} of ${totalBatches} batch ranges`
+        );
+        console.log(`Current log count: ${allLogs.length}`);
       }
 
       // After collecting all logs
@@ -208,11 +258,13 @@ export class EVMProjectEnrichmentStrategy extends BaseEnrichmentStrategy<
 
               // ETH inflow: direct transactions to the contract
               if (isToContract && txValue > 0) {
+                console.log(`Inflow: ${txValue}. Tx: ${txHash}`);
                 return { inflow: txValue, outflow: BigInt(0) };
               }
 
               // ETH outflow: transactions from the contract
               if (isFromContract && txValue > 0) {
+                console.log(`Outflow: ${txValue}. Tx: ${txHash}`);
                 return { inflow: BigInt(0), outflow: txValue };
               }
 

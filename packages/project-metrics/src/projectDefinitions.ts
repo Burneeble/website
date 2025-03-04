@@ -22,7 +22,7 @@ export const definitions: Array<ProjectDefinition> = [
       {
         startBlock: 17146749n,
         batchSize: 10000,
-        // endBlock: 17546749n,
+        endBlock: 17246749n,
       },
     ],
   },
