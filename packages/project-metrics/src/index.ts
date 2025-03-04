@@ -12,3 +12,6 @@ export * from "./enrichment/EnrichmentManager";
 
 // Factory methods
 export * from "./factory/ProjectFactory";
+
+// Data export utilities
+export * from "./data/EnrichedDataExporter";

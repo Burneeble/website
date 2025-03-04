@@ -8,7 +8,8 @@
     "build": "tsc",
     "dev": "tsc --watch",
     "start": "node dist/index.js",
-    "enrich": "node dist/runEnrichmentProcess.js"
+    "enrich": "node dist/runEnrichmentProcess.js",
+    "data-example": "node dist/examples/data-exporter-example.js"
   },
   "devDependencies": {
     "@types/node": "^22.13.8",
