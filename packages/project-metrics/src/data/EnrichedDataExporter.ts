@@ -9,13 +9,13 @@ import { EnrichmentStrategy } from "../enrichment/EnrichmentStrategy";
 import { ProjectDefinition, definitions } from "../projectDefinitions";
 import { EVMProjectData } from "../strategies/EVMProjectEnrichmentStrategy";
 import { ERC721TokenData } from "../strategies/ERC721EnrichmentStrategy";
-import { 
-  bundledData, 
-  getAllProjectIds, 
-  projectExists, 
+import { AWSAmplifyStatsData } from "../strategies/AWSAmplifyStatsEnrichmentStrategy";
+import {
+  bundledData,
+  getAllProjectIds,
+  projectExists,
   getProjectsByPrefix,
   getProjectIdsByPrefix,
-  EnrichedProjectData 
 } from "./projectData";
 
 /**
@@ -34,6 +34,7 @@ export interface EnrichedProjectData<
 export interface EnrichmentDataTypeMap {
   "evm-project-data": EVMProjectData;
   "erc721-token-data": ERC721TokenData;
+  "aws-amplify-stats": AWSAmplifyStatsData;
   // Add more strategies and their data types here as needed
   [key: string]: any;
 }
@@ -106,7 +107,10 @@ export class EnrichedDataExporter {
     prefix: string
   ): Record<string, EnrichedProjectData<T>> {
     try {
-      return getProjectsByPrefix(prefix) as Record<string, EnrichedProjectData<T>>;
+      return getProjectsByPrefix(prefix) as Record<
+        string,
+        EnrichedProjectData<T>
+      >;
     } catch (error) {
       console.error(`Error finding projects with prefix ${prefix}:`, error);
       return {} as Record<string, EnrichedProjectData<T>>;
@@ -157,6 +161,15 @@ export class EnrichedDataExporter {
    */
   getERC721Data(projectId: string): ERC721TokenData | null {
     return this.getStrategyData(projectId, "erc721-token-data");
+  }
+
+  /**
+   * Get AWS Amplify statistics data for a project
+   * @param projectId The ID of the project to retrieve
+   * @returns The AWS Amplify stats data or null if not found
+   */
+  getAmplifyStatsData(projectId: string): AWSAmplifyStatsData | null {
+    return this.getStrategyData(projectId, "aws-amplify-stats");
   }
 
   /**

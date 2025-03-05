@@ -1,6 +1,7 @@
 import { definitions } from "./projectDefinitions";
 import * as fs from "fs";
 import * as path from "path";
+import { exit } from "process";
 
 /**
  * Custom replacer function for JSON.stringify to handle BigInt values
@@ -137,6 +138,7 @@ async function runEnrichmentProcess() {
   }
 
   console.log("All enrichment processes completed.");
+  exit(0);
 }
 
 runEnrichmentProcess().catch((error) => {

@@ -2,9 +2,9 @@ name: Project Enrichment
 
 on:
   # Trigger on push events
-  # push:
-  #   paths-ignore:
-  #     - "**.md"
+  push:
+    paths-ignore:
+      - "**.md"
 
   # Allow manual triggering
   workflow_dispatch:
@@ -47,6 +47,10 @@ jobs:
         env:
           # Add any required environment variables here
           BASE_RPC_URL: ${{ secrets.BASE_RPC_URL }}
+          CUSTOMPUNKS_REGION: ${{ secrets.CUSTOMPUNKS_REGION }}
+          CUSTOMPUNKS_ACCESS_KEY_ID: ${{ secrets.CUSTOMPUNKS_ACCESS_KEY_ID }}
+          CUSTOMPUNKS_SECRET_ACCESS: ${{ secrets.CUSTOMPUNKS_SECRET_ACCESS }}
+          CUSTOMPUNKS_APP_ID: ${{ secrets.CUSTOMPUNKS_APP_ID }}
 
       - name: Configure Git
         run: |

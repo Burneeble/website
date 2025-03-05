@@ -12,7 +12,7 @@ import {
 } from "../core/ProjectTypes";
 import { EVMProjectData } from "../strategies/EVMProjectEnrichmentStrategy";
 import { ERC721TokenData } from "../strategies/ERC721EnrichmentStrategy";
-import { ERC20FlowsData } from "../strategies/ERC20FlowsEnrichmentStrategy";
+import { ERC20TokenFlowData } from "../strategies/ERC20FlowsEnrichmentStrategy";
 
 // Import JSON data files directly
 import customPunksV1Data from "../../data/custompunks-v1.json";
@@ -30,7 +30,7 @@ export interface EnrichedProjectData<
   enrichedData: {
     "evm-project-data"?: EVMProjectData;
     "erc721-token-data"?: ERC721TokenData;
-    "erc20-flows-data"?: ERC20FlowsData;
+    "erc20-flows-data"?: ERC20TokenFlowData;
     [key: string]: any;
   };
 }

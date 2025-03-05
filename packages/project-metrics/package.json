@@ -8,10 +8,11 @@
     "build": "tsc",
     "dev": "tsc --watch",
     "start": "node dist/index.js",
-    "enrich": "node dist/runEnrichmentProcess.js",
-    "data-example": "node dist/examples/data-exporter-example.js"
+    "enrich": "node dist/runEnrichmentProcess.js"
   },
   "devDependencies": {
+    "@aws-sdk/client-amplify": "^3.758.0",
+    "@aws-sdk/client-cloudwatch": "^3.758.0",
     "@types/node": "^22.13.8",
     "typescript": "^5.8.2",
     "viem": "^2.23.5"
