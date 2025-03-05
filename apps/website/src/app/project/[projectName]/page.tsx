@@ -60,6 +60,10 @@ const ProjectPage = async ({ params }: { params: { projectName: string } }) => {
 
   const res = await ProjectService.instance.getProject(projectName);
 
+  const enrichedData =
+    ProjectService.instance.getProjectEnrichedData("custompunks-v1");
+  console.log("enrichedData", enrichedData);
+
   const project: IProjectModel = JSON.parse(JSON.stringify(res));
   console.log(JSON.stringify(project.sections, null, 2));
   return (
@@ -69,6 +73,7 @@ const ProjectPage = async ({ params }: { params: { projectName: string } }) => {
         title={project.title}
         mainColor={project.mainColor || "rgb(0,0,0)"}
       />
+      AAAAAA
       {project.sections && project.sections[0] && (
         <>
           <Section

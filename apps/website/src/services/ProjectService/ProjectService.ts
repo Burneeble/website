@@ -16,6 +16,10 @@ import {
   SectionModel,
 } from "./models";
 import { JsonSerializer } from "typescript-json-serializer";
+import {
+  CryptoEVMProjectMetadata,
+  EnrichedDataExporter,
+} from "project-metrics";
 
 const serializer = new JsonSerializer();
 export class ProjectService {
@@ -203,5 +207,11 @@ export class ProjectService {
       : [];
 
     return categories;
+  }
+
+  public getProjectEnrichedData(projectId: string) {
+    const exporter = new EnrichedDataExporter();
+
+    return exporter.getProjectData<CryptoEVMProjectMetadata>(projectId);
   }
 }

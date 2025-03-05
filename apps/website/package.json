@@ -23,6 +23,7 @@
     "@burneeble/icons": "^1.0.0",
     "@burneeble/sdk": "^1.0.0",
     "@burneeble/ui-components": "^1.0.0",
+    "project-metrics": "^1.0.0",
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-brands-svg-icons": "^6.5.1",
     "@fortawesome/free-regular-svg-icons": "^6.5.1",

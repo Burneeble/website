@@ -1,4 +1,3 @@
-import * as fs from "fs";
 import * as path from "path";
 import { Project } from "../core/Project";
 import {
@@ -10,6 +9,14 @@ import { EnrichmentStrategy } from "../enrichment/EnrichmentStrategy";
 import { ProjectDefinition, definitions } from "../projectDefinitions";
 import { EVMProjectData } from "../strategies/EVMProjectEnrichmentStrategy";
 import { ERC721TokenData } from "../strategies/ERC721EnrichmentStrategy";
+import { 
+  bundledData, 
+  getAllProjectIds, 
+  projectExists, 
+  getProjectsByPrefix,
+  getProjectIdsByPrefix,
+  EnrichedProjectData 
+} from "./projectData";
 
 /**
  * Interface for typed enriched project data
@@ -32,24 +39,6 @@ export interface EnrichmentDataTypeMap {
 }
 
 /**
- * Custom JSON reviver function to handle BigInt values during parsing
- * Converts string representation back to BigInt
- */
-function jsonReviver(key: string, value: any): any {
-  // Check if the value is a string that ends with 'n' (BigInt marker)
-  if (typeof value === "string" && value.endsWith("n")) {
-    // Try to convert back to BigInt
-    try {
-      return BigInt(value.slice(0, -1));
-    } catch (e) {
-      // If it fails, return the original string
-      return value;
-    }
-  }
-  return value;
-}
-
-/**
  * Type for the complete enriched data structure
  */
 export type EnrichedData = Record<string, EnrichedProjectData>;
@@ -58,28 +47,13 @@ export type EnrichedData = Record<string, EnrichedProjectData>;
  * Class for accessing and exporting enriched project data with strong typing
  */
 export class EnrichedDataExporter {
-  private dataDir: string;
-
-  constructor() {
-    this.dataDir = path.join(__dirname, "../../data");
-  }
-
   /**
-   * Get the path to a specific project's data file
+   * Check if a specific project exists in bundled data
    * @param projectId The project ID
-   * @returns The path to the project's data file
-   */
-  getProjectFilePath(projectId: string): string {
-    return path.join(this.dataDir, `${projectId}.json`);
-  }
-
-  /**
-   * Check if a specific project file exists
-   * @param projectId The project ID
-   * @returns True if the project file exists
+   * @returns True if the project data exists
    */
   projectFileExists(projectId: string): boolean {
-    return fs.existsSync(this.getProjectFilePath(projectId));
+    return projectExists(projectId);
   }
 
   /**
@@ -88,17 +62,7 @@ export class EnrichedDataExporter {
    */
   getLatestData<T extends EnrichedData = EnrichedData>(): T {
     try {
-      const result = {} as T;
-      const projectIds = this.listAllProjectFiles();
-
-      for (const projectId of projectIds) {
-        const projectData = this.getProjectData(projectId);
-        if (projectData) {
-          (result as any)[projectId] = projectData as any;
-        }
-      }
-
-      return result;
+      return bundledData as T;
     } catch (error) {
       console.error("Error reading enriched data:", error);
       return {} as T;
@@ -106,18 +70,11 @@ export class EnrichedDataExporter {
   }
 
   /**
-   * List all project files in the data directory
+   * List all available project IDs
    * @returns Array of project IDs
    */
   private listAllProjectFiles(): string[] {
-    if (!fs.existsSync(this.dataDir)) {
-      return [];
-    }
-
-    return fs
-      .readdirSync(this.dataDir)
-      .filter((file) => file.endsWith(".json"))
-      .map((file) => file.replace(".json", ""));
+    return getAllProjectIds();
   }
 
   /**
@@ -129,17 +86,40 @@ export class EnrichedDataExporter {
     projectId: string
   ): EnrichedProjectData<T> | null {
     try {
-      const projectFilePath = this.getProjectFilePath(projectId);
-      if (!fs.existsSync(projectFilePath)) {
+      if (!this.projectFileExists(projectId)) {
         return null;
       }
 
-      const data = fs.readFileSync(projectFilePath, "utf-8");
-      return JSON.parse(data, jsonReviver) as EnrichedProjectData<T>;
+      return bundledData[projectId] as EnrichedProjectData<T>;
     } catch (error) {
-      console.error(`Error reading data for project ${projectId}:`, error);
+      console.error(`Error retrieving data for project ${projectId}:`, error);
       return null;
     }
+  }
+
+  /**
+   * Find projects that start with a specific prefix
+   * @param prefix The prefix to search for (e.g., "custompunks" will match "custompunks-v1", "custompunks-v2", etc.)
+   * @returns Object containing all matching projects, keyed by project ID
+   */
+  getProjectsByPrefix<T extends ProjectMetadata = ProjectMetadata>(
+    prefix: string
+  ): Record<string, EnrichedProjectData<T>> {
+    try {
+      return getProjectsByPrefix(prefix) as Record<string, EnrichedProjectData<T>>;
+    } catch (error) {
+      console.error(`Error finding projects with prefix ${prefix}:`, error);
+      return {} as Record<string, EnrichedProjectData<T>>;
+    }
+  }
+
+  /**
+   * Get all project IDs that start with a specific prefix
+   * @param prefix The prefix to search for
+   * @returns Array of matching project IDs
+   */
+  getProjectIdsByPrefix(prefix: string): string[] {
+    return getProjectIdsByPrefix(prefix);
   }
 
   /**
@@ -197,18 +177,18 @@ export class EnrichedDataExporter {
   }
 
   /**
-   * Check if any enriched data files exist
-   * @returns True if any data files exist
+   * Check if any enriched data is available
+   * @returns True if any data is available
    */
   dataFileExists(): boolean {
     return this.getProjectIds().length > 0;
   }
 
   /**
-   * Get the path to the data directory
-   * @returns The path to the data directory
+   * For compatibility with existing code - returns null as data is now bundled
+   * @returns null as data is now bundled
    */
-  getDataDirPath(): string {
-    return this.dataDir;
+  getDataDirPath(): string | null {
+    return null;
   }
 }
