@@ -15,23 +15,34 @@ function jsonReplacer(key: string, value: any): any {
 }
 
 /**
- * Parse command-line arguments to get the project ID if specified
- * @returns The project ID from command line arguments, or undefined if not specified
+ * Parse command-line arguments to get the project ID(s) if specified
+ * @returns Array of project IDs from command line arguments, or undefined if not specified
  */
-function parseArgs(): string | undefined {
-  // Look for --project=projectId or -p projectId format
+function parseArgs(): string[] | undefined {
   const args = process.argv.slice(2);
 
   // Check for --project=projectId format
   const projectArg = args.find((arg) => arg.startsWith("--project="));
   if (projectArg) {
-    return projectArg.split("=")[1];
+    const projectValue = projectArg.split("=")[1];
+    if (projectValue) {
+      return projectValue
+        .split(",")
+        .map((id) => id.trim())
+        .filter((id) => id.length > 0);
+    }
   }
 
   // Check for -p projectId format
   const pIndex = args.indexOf("-p");
   if (pIndex !== -1 && pIndex + 1 < args.length) {
-    return args[pIndex + 1];
+    const projectValue = args[pIndex + 1];
+    if (projectValue) {
+      return projectValue
+        .split(",")
+        .map((id) => id.trim())
+        .filter((id) => id.length > 0);
+    }
   }
 
   return undefined;
@@ -59,17 +70,29 @@ function saveProjectData(
 }
 
 async function runEnrichmentProcess() {
-  // Get project ID from command line arguments
-  const projectId = parseArgs();
+  // Get project IDs from command line arguments
+  const projectIds = parseArgs();
 
-  // Filter definitions if a project ID is specified
-  const projectsToProcess = projectId
-    ? definitions.filter((def) => def.project.getMetadata().id === projectId)
+  // Filter definitions if project IDs are specified
+  const projectsToProcess = projectIds
+    ? definitions.filter((def) =>
+        projectIds.includes(def.project.getMetadata().id)
+      )
     : definitions;
 
-  if (projectId && projectsToProcess.length === 0) {
-    console.error(`Project with ID "${projectId}" not found in definitions`);
+  if (projectIds && projectsToProcess.length === 0) {
+    console.error(`No projects found matching IDs: "${projectIds.join(", ")}"`);
     return;
+  }
+
+  if (projectIds && projectsToProcess.length < projectIds.length) {
+    const foundIds = projectsToProcess.map(
+      (def) => def.project.getMetadata().id
+    );
+    const missingIds = projectIds.filter((id) => !foundIds.includes(id));
+    console.warn(
+      `Some requested projects were not found: ${missingIds.join(", ")}`
+    );
   }
 
   // Ensure the data directory exists
