@@ -4,14 +4,14 @@
     "name": "Skullnbananas V1",
     "chainName": "ethereum",
     "contractAddress": "0x9a9813752Cf595e5013CA39c1aaa3f5458a30dC5",
-    "createdAt": "2025-03-05T00:11:07.624Z",
-    "updatedAt": "2025-03-05T00:11:07.624Z"
+    "createdAt": "2025-03-05T00:28:47.675Z",
+    "updatedAt": "2025-03-05T00:28:47.675Z"
   },
   "enrichedData": {
     "evm-project-data": {
-      "transactions": 122,
-      "events": 318,
-      "ethInflow": "4611000000000000000n"
+      "transactions": 1412,
+      "events": 4106,
+      "ethInflow": "64147000000000000000n"
     }
   }
 }
