@@ -65,6 +65,7 @@ jobs:
       - name: Commit and push changes
         if: steps.check_changes.outputs.changes == 'true'
         run: |
+          git pull
           git add ./packages/project-metrics/data
           git commit -m "[ci skip] Update project data for ${{ matrix.project }}"
           git push
