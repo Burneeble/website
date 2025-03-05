@@ -10,18 +10,21 @@ on:
   workflow_dispatch:
 
 jobs:
-  enrich:
+  enrich-initial:
     name: Enrich ${{ matrix.project }}
     runs-on: ubuntu-latest
 
     strategy:
       fail-fast: false
       matrix:
-        project: ["skullnbananas-v1", "custompunks-v1", "custompunks-v2"]
+        project: ["skullnbananas-v1", "custompunks-v1"]
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          # Set fetch-depth to 0 to get all history for proper commits
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -44,3 +47,83 @@ jobs:
         env:
           # Add any required environment variables here
           BASE_RPC_URL: ${{ secrets.BASE_RPC_URL }}
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+
+      - name: Check for changes in data directory
+        id: check_changes
+        run: |
+          if [[ -n "$(git status --porcelain ./packages/project-metrics/data)" ]]; then
+            echo "changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push changes
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          git add ./packages/project-metrics/data
+          git commit -m "[ci skip] Update project data for ${{ matrix.project }}"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  enrich-dependent:
+    name: Enrich custompunks-v2
+    runs-on: ubuntu-latest
+    needs: enrich-initial
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          # Set fetch-depth to 0 to get all history for proper commits
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "yarn"
+          cache-dependency-path: "./yarn.lock"
+
+      - name: Install dependencies
+        working-directory: ./packages/project-metrics
+        run: yarn install --frozen-lockfile
+
+      - name: Build project
+        working-directory: ./packages/project-metrics
+        run: yarn build
+
+      - name: Run enrichment for custompunks-v2
+        working-directory: ./packages/project-metrics
+        run: yarn enrich -p custompunks-v2
+        env:
+          # Add any required environment variables here
+          BASE_RPC_URL: ${{ secrets.BASE_RPC_URL }}
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+
+      - name: Check for changes in data directory
+        id: check_changes
+        run: |
+          if [[ -n "$(git status --porcelain ./packages/project-metrics/data)" ]]; then
+            echo "changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push changes
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          git add ./packages/project-metrics/data
+          git commit -m "[ci skip] Update project data for custompunks-v2"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
