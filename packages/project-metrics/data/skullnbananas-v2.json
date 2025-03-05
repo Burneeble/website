@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "id": "skullnbananas-v2",
+    "name": "Skullnbananas V2",
+    "chainName": "theta",
+    "contractAddress": "0xb28e9baa99f4e3e764ff047036e9c511e211146b",
+    "createdAt": "2025-03-05T11:02:11.726Z",
+    "updatedAt": "2025-03-05T11:02:11.726Z"
+  },
+  "enrichedData": {
+    "erc20-token-flow": {
+      "tokenName": "GROVE Token",
+      "tokenSymbol": "GROVE",
+      "tokenDecimals": 18,
+      "totalInflow": "0n",
+      "totalOutflow": "0n",
+      "currentBalance": "0n",
+      "transferCount": 0
+    }
+  }
+}

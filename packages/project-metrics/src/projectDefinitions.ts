@@ -1,7 +1,17 @@
 import { Project } from "./core/Project";
 import { EnrichmentStrategy } from "./enrichment/EnrichmentStrategy";
-import { EVMProjectEnrichmentStrategy } from "./examples/EVMProjectEnrichmentStrategy";
+import {
+  EVMProjectData,
+  EVMProjectEnrichmentStrategy,
+  EVMProjectEnrichmentStrategyOptions,
+} from "./strategies/EVMProjectEnrichmentStrategy";
 import { ProjectFactory } from "./factory/ProjectFactory";
+import {
+  ERC20FlowsEnrichmentStrategy,
+  ERC20FlowsEnrichmentStrategyOptions,
+  ERC721EnrichmentStrategy,
+  ERC721EnrichmentStrategyOptions,
+} from "./strategies";
 
 export interface ProjectDefinition {
   project: Project;
@@ -17,7 +27,10 @@ export const definitions: Array<ProjectDefinition> = [
       chainName: "ethereum",
       contractAddress: "0x9a9813752Cf595e5013CA39c1aaa3f5458a30dC5",
     }),
-    strategies: [new EVMProjectEnrichmentStrategy()],
+    strategies: [
+      new EVMProjectEnrichmentStrategy(),
+      new ERC721EnrichmentStrategy(),
+    ],
     options: [
       {
         startBlock: 17373581n,
@@ -27,28 +40,10 @@ export const definitions: Array<ProjectDefinition> = [
         concurrentBatchesLogs: 10,
         hashesBatchSize: 10,
         hashesCycleWait: 1600,
-      },
+      } satisfies EVMProjectEnrichmentStrategyOptions,
+      {} satisfies ERC721EnrichmentStrategyOptions,
     ],
   },
-  // {
-  //   project: ProjectFactory.createNFTProject({
-  //     id: "skullnbananas-v2",
-  //     name: "Skullnbananas V2",
-  //     chainName: "theta",
-  //     contractAddress: "0xb28e9baa99f4e3e764ff047036e9c511e211146b",
-  //   }),
-  //   strategies: [new EVMProjectEnrichmentStrategy()],
-  //   options: [
-  //     {
-  //       startBlock: 26052330n,
-  //       // endBlock: 26082330n,
-  //       logsBatchSize: 5000,
-  //       concurrentBatchesLogs: 10,
-  //       hashesBatchSize: 10,
-  //       hashesCycleWait: 1000,
-  //     },
-  //   ],
-  // },
   {
     project: ProjectFactory.createNFTProject({
       id: "custompunks-v1",
@@ -56,7 +51,10 @@ export const definitions: Array<ProjectDefinition> = [
       chainName: "base",
       contractAddress: "0x78bcbe6B5df0B1775576b3a7bDab622E18F177A5",
     }),
-    strategies: [new EVMProjectEnrichmentStrategy()],
+    strategies: [
+      new EVMProjectEnrichmentStrategy(),
+      new ERC721EnrichmentStrategy(),
+    ],
     options: [
       {
         startBlock: 4579920n,
@@ -65,7 +63,8 @@ export const definitions: Array<ProjectDefinition> = [
         concurrentBatchesLogs: 15,
         hashesBatchSize: 10,
         hashesCycleWait: 1500,
-      },
+      } satisfies EVMProjectEnrichmentStrategyOptions,
+      {} satisfies ERC721EnrichmentStrategyOptions,
     ],
   },
   {
@@ -75,16 +74,50 @@ export const definitions: Array<ProjectDefinition> = [
       chainName: "base",
       contractAddress: "0xedee75777e6b6c6a2e9dd68c7c1b8576c716d7c6",
     }),
-    strategies: [new EVMProjectEnrichmentStrategy()],
+    strategies: [
+      new EVMProjectEnrichmentStrategy(),
+      new ERC721EnrichmentStrategy(),
+    ],
     options: [
       {
         startBlock: 17146749n,
         batchSize: 10000,
-        // endBlock: 17246749n,
         concurrentBatchesLogs: 15,
         hashesBatchSize: 10,
         hashesCycleWait: 1500,
-      },
+      } satisfies EVMProjectEnrichmentStrategyOptions,
+      {} satisfies ERC721EnrichmentStrategyOptions,
+    ],
+  },
+  {
+    project: ProjectFactory.createNFTProject({
+      id: "skullnbananas-v2",
+      name: "Skullnbananas V2",
+      chainName: "theta",
+      contractAddress: "0xb28e9baa99f4e3e764ff047036e9c511e211146b",
+    }),
+    strategies: [
+      // new EVMProjectEnrichmentStrategy(),
+      // new ERC721EnrichmentStrategy(),
+      new ERC20FlowsEnrichmentStrategy(),
+    ],
+    options: [
+      // {
+      //   startBlock: 26052330n,
+      //   endBlock: 26082330n,
+      //   logsBatchSize: 5000,
+      //   concurrentBatchesLogs: 10,
+      //   hashesBatchSize: 10,
+      //   hashesCycleWait: 1000,
+      // } satisfies EVMProjectEnrichmentStrategyOptions,
+      // {} satisfies ERC721EnrichmentStrategyOptions,
+      {
+        erc20ContractAddress: "0xc1cff4648d490480f3b7e1449aae5f7a34a75dfa",
+        startBlock: 26052330n,
+        // endBlock: 26082330n,
+        logsBatchSize: 5000,
+        concurrentBatchesLogs: 10,
+      } satisfies ERC20FlowsEnrichmentStrategyOptions,
     ],
   },
 ];

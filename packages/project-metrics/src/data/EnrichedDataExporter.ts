@@ -8,7 +8,8 @@ import {
 } from "../core/ProjectTypes";
 import { EnrichmentStrategy } from "../enrichment/EnrichmentStrategy";
 import { ProjectDefinition, definitions } from "../projectDefinitions";
-import { EVMProjectData } from "../examples/EVMProjectEnrichmentStrategy";
+import { EVMProjectData } from "../strategies/EVMProjectEnrichmentStrategy";
+import { ERC721TokenData } from "../strategies/ERC721EnrichmentStrategy";
 
 /**
  * Interface for typed enriched project data
@@ -25,6 +26,7 @@ export interface EnrichedProjectData<
  */
 export interface EnrichmentDataTypeMap {
   "evm-project-data": EVMProjectData;
+  "erc721-token-data": ERC721TokenData;
   // Add more strategies and their data types here as needed
   [key: string]: any;
 }
@@ -166,6 +168,15 @@ export class EnrichedDataExporter {
    */
   getEVMData(projectId: string): EVMProjectData | null {
     return this.getStrategyData(projectId, "evm-project-data");
+  }
+
+  /**
+   * Get ERC721 token data for a project
+   * @param projectId The ID of the project to retrieve
+   * @returns The ERC721 token data or null if not found
+   */
+  getERC721Data(projectId: string): ERC721TokenData | null {
+    return this.getStrategyData(projectId, "erc721-token-data");
   }
 
   /**
