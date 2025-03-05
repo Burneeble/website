@@ -1,0 +1,17 @@
+{
+  "metadata": {
+    "id": "custompunks-v2",
+    "name": "Custompunks V2",
+    "chainName": "base",
+    "contractAddress": "0xedee75777e6b6c6a2e9dd68c7c1b8576c716d7c6",
+    "createdAt": "2025-03-05T01:19:24.734Z",
+    "updatedAt": "2025-03-05T01:19:24.734Z"
+  },
+  "enrichedData": {
+    "evm-project-data": {
+      "transactions": 5899,
+      "events": 15883,
+      "ethInflow": "6194820000000000000n"
+    }
+  }
+}
