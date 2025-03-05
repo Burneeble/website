@@ -4,14 +4,14 @@
     "name": "Custompunks V1",
     "chainName": "base",
     "contractAddress": "0x78bcbe6B5df0B1775576b3a7bDab622E18F177A5",
-    "createdAt": "2025-03-05T01:19:24.734Z",
-    "updatedAt": "2025-03-05T01:19:24.734Z"
+    "createdAt": "2025-03-05T11:06:43.480Z",
+    "updatedAt": "2025-03-05T11:06:43.480Z"
   },
   "enrichedData": {
     "evm-project-data": {
-      "transactions": 10622,
-      "events": 10630,
-      "ethInflow": "21073050900000000000n"
+      "transactions": 10406,
+      "events": 10414,
+      "ethInflow": "19701557400000000000n"
     }
   }
 }
