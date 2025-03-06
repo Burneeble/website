@@ -68,13 +68,11 @@ const ProjectPreview = (props: ProjectPreviewProps) => {
       >
         <div
           className={`
-            title tw-max-w-full tw-cursor-pointer tw-truncate tw-font-inter
-            tw-text-xl tw-font-black tw-leading-loose tw-text-headings
-            tw-transition-all tw-duration-200 tw-ease-in-out
+            title p-small tw-max-w-full tw-cursor-pointer tw-truncate
+            tw-font-black tw-text-headings tw-transition-all tw-duration-200
+            tw-ease-in-out
 
             hover:tw-text-primary
-
-            xl:tw-text-2xl
           `}
           dangerouslySetInnerHTML={{
             __html: highlightText(props.title, props.query || ""),
@@ -85,10 +83,8 @@ const ProjectPreview = (props: ProjectPreviewProps) => {
         />
         <div
           className={`
-            categories tw-flex tw-max-w-full tw-flex-wrap tw-gap-[5px]
-            tw-font-inter tw-text-lg tw-font-normal tw-leading-7 tw-text-body
-
-            xl:tw-text-xl
+            categories p-small tw-flex tw-max-w-full tw-flex-wrap tw-gap-[5px]
+            tw-font-normal
           `}
         >
           {(props.categories.length > 5
@@ -100,14 +96,11 @@ const ProjectPreview = (props: ProjectPreviewProps) => {
                 key={i}
                 className={cn(
                   `
-                    tw-h-fit tw-cursor-pointer tw-rounded-lg tw-border
-                    tw-border-neutral category tw-px-[5px] tw-font-inter
-                    tw-text-lg tw-font-normal tw-leading-[30px] tw-text-body
+                    p-smaller tw-h-fit tw-cursor-pointer tw-rounded-lg tw-border
+                    tw-border-neutral category tw-px-[5px] tw-font-normal
                     tw-transition-all tw-duration-200 tw-ease-in-out
 
                     hover:tw-border-white hover:tw-text-headings
-
-                    xl:tw-text-xl
                   `,
                   props.activeCategories.includes(category) &&
                     `tw-border-primary tw-text-primary`

@@ -23,15 +23,7 @@ const Blog = (props: BlogProps) => {
             Blog Articles
           </span>
         </h2>
-        <p
-          className={`
-            description tw-text-center tw-text-xl tw-leading-7
-
-            lg:tw-text-3xl lg:tw-leading-10
-
-            md:tw-text-2xl md:tw-leading-9
-          `}
-        >
+        <p className={`description tw-text-center p-default`}>
           At Burneeble, we are passionate about sharing our knowledge and
           passion with you, which is why we write{" "}
           <strong>development-related articles</strong>. Check it out!

@@ -103,7 +103,7 @@ const ContactCard = (props: ContactCardProps) => {
                     contact-card-title p-small tw-self-stretch tw-text-start
                     tw-font-black
 
-                    2lg:tw-text-center 2lg:tw-text-3xl 2lg:tw-leading-10
+                    2lg:tw-text-center
                   `}
                 >
                   {props.title}

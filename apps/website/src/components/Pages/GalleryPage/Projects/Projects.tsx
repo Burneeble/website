@@ -273,7 +273,11 @@ const Projects = (props: ProjectsProps) => {
             </div>
           </div>
           {!["sm", "md", "lg"].includes(screen) && (
-            <div className="categories tw-flex tw-flex-wrap tw-gap-[17px]">
+            <div
+              className={`
+                categories tw-flex tw-flex-wrap tw-gap-x-[17px] tw-gap-y-[10px]
+              `}
+            >
               {props.categories.map((category, i) => {
                 return (
                   <Label

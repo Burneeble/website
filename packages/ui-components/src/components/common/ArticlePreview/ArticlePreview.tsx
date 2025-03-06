@@ -136,6 +136,8 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
             variant === "dark" && "after:tw-bg-[var(--primary-default)]"
           )}
         >
+          {/* TODO use the right p class */}
+
           <p
             className={cn(
               `
