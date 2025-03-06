@@ -4,20 +4,20 @@
 
 .article-content {
   .article-body {
-    h2 {
-      line-height: 37.6px !important;
+    // h2 {
+    //   line-height: 37.6px !important;
 
-      @media (width >= 425px) {
-        line-height: 56px !important;
-      }
+    //   @media (width >= 425px) {
+    //     line-height: 56px !important;
+    //   }
 
-      @media (width >= 768px) {
-        line-height: 75.2px !important;
-      }
-    }
+    //   @media (width >= 768px) {
+    //     line-height: 75.2px !important;
+    //   }
+    // }
 
     p {
-      @apply p-default tw-text-headings;
+      @apply p-small tw-text-headings;
     }
 
     em {
@@ -33,8 +33,15 @@
     }
 
     iframe,
-    img,
     figure {
+      @apply tw-mx-auto !tw-w-[90%];
+
+      img {
+        @apply tw-mx-auto !tw-w-full;
+      }
+    }
+
+    .wp-block-table {
       @apply tw-mx-auto !tw-w-full;
     }
 
@@ -51,7 +58,7 @@
     }
 
     a {
-      @apply tw-text-action hover:tw-text-action-hover tw-transition-all tw-duration-200 tw-ease-in-out tw-font-bold tw-underline;
+      @apply tw-text-action hover:tw-text-action-hover tw-transition-all tw-duration-200 tw-ease-in-out tw-underline;
     }
 
     .wp-block-table {

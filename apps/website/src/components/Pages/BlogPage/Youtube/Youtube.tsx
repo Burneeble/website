@@ -138,7 +138,7 @@ const Youtube = (props: YoutubeProps) => {
           <span className="cs-text-color-primary-gradient">Watch our</span>{" "}
           Videos!
         </h2>
-        <p className="description tw-text-center tw-text-headings">
+        <p className="description p-default tw-text-center tw-text-headings">
           Videos focused on developing with AI, from online and local tools,
           creating new ones and much more. Have fun and learn at the same time.
           🔥
