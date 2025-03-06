@@ -34,6 +34,7 @@ const Hero = (props: HeroProps) => {
 
   return (
     <section
+      id={"hero"}
       className={`
         hero cs-section-structure cs-gap-between-content tw-relative tw-flex
         tw-flex-col tw-justify-center tw-pt-[86px]

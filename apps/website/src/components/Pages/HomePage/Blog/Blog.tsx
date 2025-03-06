@@ -4,6 +4,7 @@ import { BlogProps } from "./Blog.types";
 const Blog = (props: BlogProps) => {
   return (
     <section
+      id={"blog"}
       className={`
         blog-section cs-website-horizontal-padding cs-website-vertical-padding
         tw-flex tw-flex-col tw-items-center tw-justify-center

@@ -3,6 +3,7 @@ import { EmojiProps } from "./Emoji.types";
 const Emoji = (props: EmojiProps) => {
   return (
     <section
+      id={"notSure"}
       className={`
         emoji-section cs-section-structure tw-relative tw-flex tw-items-center
         tw-justify-center

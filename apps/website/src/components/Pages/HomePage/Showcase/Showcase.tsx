@@ -39,6 +39,7 @@ const Showcase = (props: ShowcaseProps) => {
 
   return (
     <section
+      id={"showcase"}
       className={`
         showcase tw-flex tw-h-fit tw-flex-col tw-items-center tw-justify-center
         cs-gap-between-text tw-relative

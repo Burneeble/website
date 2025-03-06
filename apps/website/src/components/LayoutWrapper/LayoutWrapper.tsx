@@ -4,9 +4,10 @@ import { Footer, Navbar } from "@burneeble/ui-components";
 import { LayoutWrapperProps } from "./LayoutWrapper.types";
 import { ToastContainer } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faReact } from "@fortawesome/free-brands-svg-icons";
+import { faReact, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { SkeletonTheme } from "react-loading-skeleton";
 import Image from "next/image";
+import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 const LayoutWrapper = (props: LayoutWrapperProps) => {
   return (
     <>
@@ -36,10 +37,10 @@ const LayoutWrapper = (props: LayoutWrapperProps) => {
               title: "Showcase",
               icon: faReact,
               primaryItem: {
-                title: "shadcn/ui",
-                href: "/",
+                title: "Gallery",
+                href: "/gallery",
                 description:
-                  "Beautifully designed components that you can copy and paste into your apps. Accessible. Customizable. Open Source.",
+                  "Find out what we have developed over time. Each project is custom-developed to offer powerful and innovative features, without technological limitations.",
                 svg: (
                   <FontAwesomeIcon
                     icon={faReact}
@@ -49,21 +50,19 @@ const LayoutWrapper = (props: LayoutWrapperProps) => {
               },
               items: [
                 {
-                  title: "Introduction",
-                  href: "/",
-                  description:
-                    "Re-usable components built using Radix UI and Tailwind CSS.",
+                  title: "Reviews",
+                  href: "/homepage#reviews",
+                  description: "We have a high satisfaction rate",
                 },
                 {
-                  title: "Installation",
-                  href: "/",
-                  description:
-                    "How to install dependencies and structure your app.",
+                  title: "Abilities",
+                  href: "/homepage#abilities",
+                  description: "We develop projects in all categories",
                 },
                 {
-                  title: "Typography",
-                  href: "/",
-                  description: "Styles for headings, paragraphs, lists...etc",
+                  title: "Some Examples",
+                  href: "/homepage#showcase",
+                  description: "Check out some of our projects",
                 },
               ],
             },
@@ -72,12 +71,12 @@ const LayoutWrapper = (props: LayoutWrapperProps) => {
             {
               title: "Blog",
               href: "/blog",
-              icon: faReact,
+              icon: faGlobe,
             },
             {
-              title: "About",
-              href: "/",
-              icon: faReact,
+              title: "Youtube",
+              href: "https://youtube.com/@burneeble?feature=shared",
+              icon: faYoutube,
             },
           ]}
         />

@@ -25,6 +25,7 @@ const Contact = (props: ContactProps) => {
 
   return (
     <section
+      id={"contact"}
       className={`
         contact-section cs-section-structure cs-gap-between-content tw-relative
         tw-flex tw-flex-col tw-items-center tw-justify-center

@@ -92,6 +92,7 @@ const Congrats = (props: CongratsProps) => {
 
   return (
     <section
+      id={"finalSection"}
       className={`
         congrats cs-section-structure cs-bottom-padding-for-footer tw-relative
         tw-z-10 tw-flex !tw-min-h-[unset] tw-flex-col tw-items-center

@@ -86,6 +86,7 @@ const Customers = (props: CustomersProps) => {
 
   return (
     <section
+      id={"reviews"}
       className={`
         customers cs-website-horizontal-padding cs-website-vertical-padding
         cs-gap-between-content tw-relative tw-z-[2] tw-flex tw-flex-col
