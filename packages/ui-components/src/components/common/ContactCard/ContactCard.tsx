@@ -100,9 +100,8 @@ const ContactCard = (props: ContactCardProps) => {
               >
                 <p
                   className={`
-                    contact-card-title tw-self-stretch tw-text-start
-                    tw-font-inter tw-text-2xl tw-font-black tw-leading-[35px]
-                    tw-text-headings
+                    contact-card-title p-small tw-self-stretch tw-text-start
+                    tw-font-black
 
                     2lg:tw-text-center 2lg:tw-text-3xl 2lg:tw-leading-10
                   `}
@@ -111,9 +110,8 @@ const ContactCard = (props: ContactCardProps) => {
                 </p>
                 <p
                   className={`
-                    contact-card-description tw-self-stretch tw-text-start
-                    tw-font-inter tw-text-xl tw-font-normal tw-leading-[30px]
-                    tw-text-body
+                    contact-card-description p-smaller tw-self-stretch
+                    tw-text-start
 
                     2lg:tw-text-center
                   `}

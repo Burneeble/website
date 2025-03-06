@@ -17,6 +17,8 @@ import { ArticleModel, GET_ARTICLES_QUERY } from "@/services";
 import { useQuery } from "@apollo/client";
 import { GetArticlesQueryQuery } from "@/__generated__/graphql";
 
+//TODO create a pagination logic for the articles
+
 const Discover = (props: DiscoverProps) => {
   //States
   const [searchQuery, setSearchQuery] = useState<string>("");

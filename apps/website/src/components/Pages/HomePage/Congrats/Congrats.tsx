@@ -112,11 +112,9 @@ const Congrats = (props: CongratsProps) => {
       >
         <h2
           className={`
-            title tw-text-center tw-text-2xl
+            title tw-text-center
 
-            lg:tw-text-5xl lg:tw-leading-[60px]
-
-            md:tw-flex md:tw-gap-[15px] md:tw-text-4xl
+            md:tw-flex md:tw-gap-[15px]
           `}
         >
           <span className="cs-text-color-primary-gradient tw-font-bowlby-one">

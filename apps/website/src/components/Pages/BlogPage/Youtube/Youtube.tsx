@@ -37,13 +37,6 @@ const Youtube = (props: YoutubeProps) => {
   }, [screen]);
 
   useEffect(() => {
-    console.log(
-      "Youtube component mounted",
-      ["sm", "md", "lg"].includes(screen)
-    );
-  }, [screen]);
-
-  useEffect(() => {
     fetchVideos();
   }, []);
 

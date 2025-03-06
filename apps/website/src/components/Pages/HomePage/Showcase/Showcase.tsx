@@ -122,7 +122,7 @@ const Showcase = (props: ShowcaseProps) => {
                   className={cn(
                     `
                       hover-layer tw-absolute tw-left-0 tw-top-0 tw-h-full
-                      tw-w-full tw-bg-black/60 tw-opacity-0 tw-backdrop-blur-sm
+                      tw-w-full tw-bg-black/70 tw-opacity-0 tw-backdrop-blur-sm
                       tw-transition-all tw-duration-500 tw-ease-in-out
 
                       hover:tw-opacity-100
@@ -155,12 +155,7 @@ const Showcase = (props: ShowcaseProps) => {
                     <h2
                       className={`
                         project-title tw-flex tw-items-center tw-gap-[10px]
-                        tw-text-center tw-font-bowlby-one tw-text-2xl
-                        tw-font-normal tw-text-headings
-
-                        lg:tw-text-5xl
-
-                        md:tw-text-4xl
+                        tw-text-center
                       `}
                     >
                       {proj.title}
@@ -181,16 +176,7 @@ const Showcase = (props: ShowcaseProps) => {
                         `}
                       />
                     </h2>
-                    <p
-                      className={`
-                        desc tw- tw-text-center tw-font-inter tw-text-md
-                        tw-font-normal tw-text-body
-
-                        lg:tw-text-2xl
-
-                        md:tw-text-lg md:tw-leading-[35px]
-                      `}
-                    >
+                    <p className={`desc p-small tw-text-center`}>
                       {proj.description}
                     </p>
                     <CTA

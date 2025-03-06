@@ -24,9 +24,9 @@
     @apply tw-text-xl tw-text-headings tw-font-bowlby-one lg:tw-text-2xl !tw-leading-tight;
   }
 
-  p {
-    @apply tw-text-body tw-text-lg tw-font-inter md:tw-text-2xl xl:tw-text-3xl;
-  }
+  // p {
+  //   @apply tw-text-body tw-text-lg tw-font-inter md:tw-text-2xl xl:tw-text-3xl;
+  // }
 
   .p-default {
     @apply tw-text-xl tw-leading-[30px] tw-font-inter tw-text-body md:tw-text-2xl md:tw-leading-[35px] lg:tw-text-3xl lg:tw-leading-10;

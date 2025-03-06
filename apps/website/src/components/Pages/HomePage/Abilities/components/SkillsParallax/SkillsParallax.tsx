@@ -125,11 +125,7 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
               key={i}
             >
               <h2
-                className={`
-                  title !tw-leading-[2.8rem]
-
-                  lg:!tw-leading-[3.5rem]
-                `}
+                className={`title`}
                 dangerouslySetInnerHTML={{
                   __html: skill.extendedTitle,
                 }}

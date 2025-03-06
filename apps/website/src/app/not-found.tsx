@@ -31,7 +31,7 @@ export default function NotFound() {
             className={`
               title tw-text-center
 
-              lg:tw-text-start lg:!tw-leading-[6rem]
+              lg:tw-text-start
             `}
           >
             <span className="cs-text-color-primary-gradient">Sorry!</span> This
@@ -41,7 +41,7 @@ export default function NotFound() {
             className={`
               text tw-text-center tw-font-[500] p-default
 
-              lg:tw-text-start lg:tw-leading-[40px]
+              lg:tw-text-start
             `}
           >
             The page you were looking for couldn’t be found. Go to other

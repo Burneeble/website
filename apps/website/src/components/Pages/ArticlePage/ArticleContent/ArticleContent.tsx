@@ -152,17 +152,7 @@ const ArticleContent = (props: ArticleContentProps) => {
             title={`\nCheck out this article by burneeble!\n${props.article.title}\n\n`}
           />
         </div>
-        <h1
-          className={`
-            title !tw-leading-[47px]
-
-            md:!tw-leading-[94px]
-
-            sm:!tw-leading-[70px]
-          `}
-        >
-          {props.article.title}
-        </h1>
+        <h1 className={`title`}>{props.article.title}</h1>
         <p className="author tw-pb-[10px] p-small tw-text-headings">
           Published by{" "}
           <Link
