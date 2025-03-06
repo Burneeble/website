@@ -61,6 +61,7 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
     <div
       className={cn(
         `article-preview`,
+        props.className && props.className,
         articlePreviewVariants({ variant: props.variant })
       )}
       onClick={() => {
@@ -137,15 +138,12 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
           )}
         >
           {/* TODO use the right p class */}
-
           <p
             className={cn(
               `
-                title tw-max-w-full tw-cursor-pointer tw-font-inter tw-text-xl
-                tw-font-black tw-leading-[28px] tw-text-headings
-                tw-transition-all tw-duration-200 tw-ease-in-out
-
-                lg:tw-text-2xl lg:tw-leading-[35px]
+                title p-small tw-max-w-full tw-cursor-pointer tw-font-black
+                tw-text-headings tw-transition-all tw-duration-200
+                tw-ease-in-out
 
                 md:tw-text-2xl md:tw-leading-[35px]
               `,
@@ -159,9 +157,7 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
           {/* TODO use the right p class */}
           <p
             className={`
-              description tw-font-inter tw-text-lg tw-text-headings
-
-              lg:tw-text-xl lg:tw-leading-[30px]
+              description p-smaller tw-text-headings
 
               md:tw-text-xl md:tw-leading-[32px]
             `}

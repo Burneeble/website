@@ -73,6 +73,7 @@
     @apply tw-gap-7 lg:tw-gap-10;
   }
 
+  // use this custom class for every final section in order to create space for the footer animation
   .cs-bottom-padding-for-footer {
     @apply tw-pb-[90px];
   }

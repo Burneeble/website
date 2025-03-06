@@ -12,6 +12,7 @@ export interface ArticlePreviewProps {
   description: string;
   query?: string;
   variant?: "default" | "dark";
+  className?: string;
 }
 
 //Variants

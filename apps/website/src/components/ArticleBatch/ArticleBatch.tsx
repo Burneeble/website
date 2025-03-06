@@ -11,6 +11,7 @@ import {
   useClientInfoService,
 } from "@burneeble/ui-components";
 import { useRouter } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 const ArticleBatch = (props: ArticleBatchProps) => {
   //States
@@ -55,6 +56,8 @@ const ArticleBatch = (props: ArticleBatchProps) => {
   return (
     <>
       {props.enableSliderResponsiveMode &&
+      articles &&
+      articles.length > 1 &&
       ["sm", "md", "lg"].includes(width ? screen : "sm") ? (
         <>
           <Carousel
@@ -90,15 +93,19 @@ const ArticleBatch = (props: ArticleBatchProps) => {
         </>
       ) : (
         <div
-          className={`
+          className={cn(`
             article-batch tw-relative tw-z-[5] tw-flex tw-w-full
             tw-max-w-screen-xl tw-flex-col tw-gap-[20px] tw-transition-all
             tw-duration-200 tw-ease-in-out
 
-            lg:tw-grid lg:tw-grid-cols-3
+            ${
+              articles && articles.length <= 2
+                ? `lg:tw-flex lg:tw-justify-center lg:tw-items-center`
+                : `lg:tw-grid lg:tw-grid-cols-3`
+            }
 
             md:tw-gap-[30px]
-          `}
+          `)}
         >
           {articles
             ? articles.map((article, i) => {
@@ -112,6 +119,9 @@ const ArticleBatch = (props: ArticleBatchProps) => {
                     categorySlug={article.categories[0].slug}
                     slug={article.slug}
                     description={article.content}
+                    className={
+                      articles && articles.length <= 2 ? "lg:tw-w-[400px]" : ""
+                    }
                   />
                 );
               })
