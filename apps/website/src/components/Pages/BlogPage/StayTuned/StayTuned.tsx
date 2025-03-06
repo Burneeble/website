@@ -9,12 +9,13 @@ import {
 } from "@burneeble/ui-components";
 import { StayTunedProps } from "./StayTuned.types";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { z } from "zod";
 
 const StayTuned = (props: StayTunedProps) => {
   //States
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   //Hooks
   const { screen } = useClientInfoService();
@@ -23,8 +24,6 @@ const StayTuned = (props: StayTunedProps) => {
   const onSubmit = async (values: Record<string, string>) => {
     setIsSubmitting(true);
     try {
-      console.log("VALUES", values);
-
       const formData = new FormData();
       formData.append("your-name", `${values.firstName} ${values.lastName}`);
       formData.append("your-subject", "Newsletter Subscription");
@@ -39,7 +38,8 @@ const StayTuned = (props: StayTunedProps) => {
         }
       );
 
-      NotificationHandler.instance.success("Form submitted successfully!");
+      setIsSubmitted(true);
+      // NotificationHandler.instance.success("Form submitted successfully!");
     } catch (err) {
       console.log(err);
       NotificationHandler.instance.error(
@@ -49,6 +49,14 @@ const StayTuned = (props: StayTunedProps) => {
       setIsSubmitting(false);
     }
   };
+
+  useEffect(() => {
+    if (isSubmitted) {
+      setTimeout(() => {
+        setIsSubmitted(false);
+      }, 5000);
+    }
+  }, [isSubmitted]);
 
   return (
     <section
@@ -94,7 +102,7 @@ const StayTuned = (props: StayTunedProps) => {
         </p>
         <Form
           className={cn(
-            !["sm", "md"].includes(screen) &&
+            !["sm", "md", "lg"].includes(screen) &&
               `
                 tw-grid tw-grid-cols-2 tw-grid-rows-auto tw-gap-x-5 tw-gap-y-2
                 tw-space-y-0
@@ -133,6 +141,7 @@ const StayTuned = (props: StayTunedProps) => {
             },
           ]}
           onSubmit={onSubmit}
+          showSuccessButton={isSubmitted}
         />
       </div>
     </section>

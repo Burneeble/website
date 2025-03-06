@@ -24,6 +24,8 @@ export interface Field {
 export interface FormProps {
   fields: Field[];
   onSubmit: (values: Record<string, string>) => Promise<void> | void;
+  // onSuccess?: (success: boolean) => void;
+  showSuccessButton?: boolean;
   className?: string;
   stickySubmit?: boolean;
 }

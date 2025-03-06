@@ -60,7 +60,7 @@ const ArticleBatch = (props: ArticleBatchProps) => {
           <Carousel
             arrowsBackground="var(--secondary-darker)"
             cta={{
-              children: ["sm", "md"].includes(width ? screen : "sm")
+              children: ["sm", "md", "lg"].includes(width ? screen : "sm")
                 ? "Read More"
                 : "Read Other Articles",
               onClick: () => router.push("/blog"),

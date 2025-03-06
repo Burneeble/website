@@ -24,7 +24,7 @@ const Youtube = (props: YoutubeProps) => {
   //Effects
   useEffect(() => {
     let interval: NodeJS.Timeout;
-    if (["sm", "md"].includes(screen)) {
+    if (["sm", "md", "lg"].includes(screen)) {
       let videoIndex = 0;
       interval = setInterval(() => {
         if (videoIndex == 2) videoIndex = 0;
@@ -34,6 +34,13 @@ const Youtube = (props: YoutubeProps) => {
     }
 
     return () => clearInterval(interval);
+  }, [screen]);
+
+  useEffect(() => {
+    console.log(
+      "Youtube component mounted",
+      ["sm", "md", "lg"].includes(screen)
+    );
   }, [screen]);
 
   useEffect(() => {
@@ -146,11 +153,9 @@ const Youtube = (props: YoutubeProps) => {
       </div>
       <div
         className={`
-          videos tw-relative tw-flex tw-aspect-[335/270] tw-w-full tw-gap-[21px]
+          videos tw-relative tw-flex tw-aspect-[560/400] tw-w-full tw-gap-[21px]
 
-          md:tw-aspect-auto
-
-          sm:tw-aspect-[560/400]
+          lg:tw-aspect-auto
         `}
       >
         {[0, 1, 2].map((index) => {
@@ -161,9 +166,9 @@ const Youtube = (props: YoutubeProps) => {
                 `
                   video-wrapper
 
-                  md:tw-flex-1
+                  lg:tw-flex-1
                 `,
-                ["sm", "md"].includes(screen) &&
+                ["sm", "md", "lg"].includes(screen) &&
                   `
                     tw-absolute tw-left-1/2 tw-top-1/2 tw-w-full
                     -tw-translate-x-1/2 -tw-translate-y-1/2 tw-transition-all
