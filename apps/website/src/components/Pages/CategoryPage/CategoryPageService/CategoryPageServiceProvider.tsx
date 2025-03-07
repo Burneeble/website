@@ -50,6 +50,7 @@ const CategoryPageServiceProvider = (
       const articlesInfo = articleFormatter(articlesData!);
 
       setArticles(articlesInfo);
+      console.log("loading 1 false");
       setIsLoading(false);
     }
   }, [articlesData]);
@@ -57,6 +58,8 @@ const CategoryPageServiceProvider = (
   //Methods
 
   const fetchArticles = useCallback(async () => {
+    console.log("loading 2 true");
+
     setIsLoading(true);
     try {
       if (!fetchMoreArticles) return;
@@ -81,6 +84,7 @@ const CategoryPageServiceProvider = (
       console.log(e);
       NotificationHandler.instance.error("Error fetching articles");
     }
+    console.log("loading 3 false");
     setIsLoading(false);
   }, [batchSize, endCursor, fetchMoreArticles, searchQuery]);
 
@@ -88,6 +92,7 @@ const CategoryPageServiceProvider = (
 
   const triggerRefresh = () => {
     if (!isLoading) {
+      console.log("loading 4 true");
       setIsLoading(true);
       setEndCursor("tmp");
       setArticles([]);

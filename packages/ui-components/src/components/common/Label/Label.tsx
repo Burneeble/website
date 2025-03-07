@@ -49,7 +49,7 @@ const Label = (props: LabelProps) => {
     <div
       className={cn(
         `
-          label-wrapper tw-inline-flex tw-w-fit tw-items-center
+          label-wrapper tw-group tw-inline-flex tw-w-fit tw-items-center
           tw-justify-center tw-rounded-[9px]
         `,
         (props.variant === "default" || !props.variant) &&
@@ -61,14 +61,19 @@ const Label = (props: LabelProps) => {
     >
       <label
         className={cn(
-          "label",
+          `label`,
           labelVariants({
             variant: props.variant,
             size: props.size,
             className: props.className,
           }),
           "tw-relative",
-          props.onClick && "tw-cursor-pointer"
+          props.onClick &&
+            `
+              tw-cursor-pointer
+
+              group-hover:tw-brightness-125
+            `
         )}
         onClick={(e) => {
           if (props.onClick) {

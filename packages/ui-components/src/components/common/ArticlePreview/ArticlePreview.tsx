@@ -64,14 +64,14 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
         props.className && props.className,
         articlePreviewVariants({ variant: props.variant })
       )}
-      onClick={() => {
-        router.push(`/blog/article/${props.slug}`);
-      }}
     >
       <div
+        onClick={() => {
+          router.push(`/blog/article/${props.slug}`);
+        }}
         className={cn(
           `
-            image-wrapper tw-relative tw-aspect-[1920/1080] tw-w-full
+            tw-group image-wrapper tw-relative tw-aspect-[1920/1080] tw-w-full
             tw-cursor-pointer tw-overflow-hidden tw-rounded-t-lg tw-border-[1px]
             tw-border-solid tw-transition-all tw-duration-200 tw-ease-in-out
           `,
@@ -83,16 +83,16 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
             `,
           variant === "dark" &&
             `
-              tw-border-[var(--neutral-default)]
+              tw-border-neutral
 
-              group-hover:tw-border-[var(--primary-default)]
+              group-hover:tw-border-active
             `
         )}
       >
         <div
           className={`
-            layer tw-absolute tw-inset-0 tw-bg-[var(--primary-default)]
-            tw-opacity-0 tw-transition-all tw-duration-200 tw-ease-in-out
+            layer tw-absolute tw-inset-0 tw-bg-action tw-opacity-0
+            tw-transition-all tw-duration-200 tw-ease-in-out
 
             group-hover:tw-opacity-[10%]
           `}
@@ -115,54 +115,63 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
           text={props.category}
           size={"sm"}
           variant={variant === "dark" ? "active" : undefined}
-          onClick={(e) => {
-            e.stopPropagation();
+          onClick={() => {
             router.push(`/blog/category/${props.categorySlug}`);
           }}
+          className={"tw-group/label"}
         />
+        {/* this div is just for the hover effect, only the text content and not the label */}
         <div
-          className={cn(
-            `
-              texts tw-relative tw-flex tw-flex-col tw-gap-[5px]
-              tw-transition-all tw-duration-200 tw-ease-in-out
-
-              after:tw-absolute after:tw-bottom-0 after:tw-left-[-12px]
-              after:tw-block after:tw-h-[0] after:tw-w-[3px]
-              after:tw-transition-all after:tw-duration-200 after:tw-ease-in-out
-              after:tw-content-[''] after:group-hover:tw-h-[calc(100%-5px)]
-
-              group-hover:tw-translate-x-[12px]
-            `,
-            variant === "default" && "after:tw-bg-black",
-            variant === "dark" && "after:tw-bg-[var(--primary-default)]"
-          )}
+          className="tw-group"
+          onClick={() => {
+            router.push(`/blog/article/${props.slug}`);
+          }}
         >
-          {/* TODO use the right p class */}
-          <p
+          <div
             className={cn(
               `
-                title p-small tw-max-w-full tw-cursor-pointer tw-font-black
-                tw-text-headings tw-transition-all tw-duration-200
-                tw-ease-in-out
+                texts tw-relative tw-flex tw-flex-col tw-gap-[5px]
+                tw-transition-all tw-duration-200 tw-ease-in-out
 
-                md:tw-text-2xl md:tw-leading-[35px]
+                after:tw-absolute after:tw-bottom-0 after:tw-left-[-12px]
+                after:tw-block after:tw-h-[0] after:tw-w-[3px]
+                after:tw-transition-all after:tw-duration-200
+                after:tw-ease-in-out after:tw-content-['']
+                after:group-hover:tw-h-[calc(100%-5px)]
+
+                group-hover:tw-translate-x-[12px]
               `,
-              variant === "dark" && "group-hover:tw-text-action",
-              variant === "default" && `group-hover:tw-text-black`
+              variant === "default" && "after:tw-bg-black",
+              variant === "dark" && "after:tw-bg-action"
             )}
-            dangerouslySetInnerHTML={{
-              __html: highlightText(props.title, props.query || ""),
-            }}
-          />
-          {/* TODO use the right p class */}
-          <p
-            className={`
-              description p-smaller tw-text-headings
+          >
+            {/* TODO use the right p class */}
+            <p
+              className={cn(
+                `
+                  title p-small tw-max-w-full tw-cursor-pointer tw-font-black
+                  tw-text-headings tw-transition-all tw-duration-200
+                  tw-ease-in-out
 
-              md:tw-text-xl md:tw-leading-[32px]
-            `}
-            dangerouslySetInnerHTML={{ __html: formatDescription() }}
-          />
+                  md:tw-text-2xl md:tw-leading-[35px]
+                `,
+                variant === "dark" && "group-hover:tw-text-action",
+                variant === "default" && `group-hover:tw-text-black`
+              )}
+              dangerouslySetInnerHTML={{
+                __html: highlightText(props.title, props.query || ""),
+              }}
+            />
+            {/* TODO use the right p class */}
+            <p
+              className={`
+                description p-smaller tw-cursor-pointer tw-text-headings
+
+                md:tw-text-xl md:tw-leading-[32px]
+              `}
+              dangerouslySetInnerHTML={{ __html: formatDescription() }}
+            />
+          </div>
         </div>
       </div>
     </div>

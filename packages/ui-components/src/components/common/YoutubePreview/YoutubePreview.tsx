@@ -14,26 +14,36 @@ const YoutubePreview = (props: YoutubePreviewProps) => {
         window.open(props.url);
       }}
     >
-      <img
-        src={props.thumbnail}
-        className={`
-          tw-bg-[var(--secondary-darker)] thumbnail tw-aspect-[304/171]
-          tw-w-full tw-rounded-t-md tw-border tw-border-solid tw-border-[white]
-          tw-object-cover tw-transition-all tw-duration-200 tw-ease-in-out
+      <div className="tw-relative">
+        <div
+          className={`
+            layer tw-absolute tw-inset-0 tw-bg-primary tw-opacity-0
+            tw-transition-all tw-duration-200 tw-ease-in-out
 
-          group-hover:tw-border-active
-        `}
-      />
-      <h4
-        className={`
-          title tw-font-inter tw-font-bold tw-transition-all tw-duration-200
-          tw-ease-in-out
+            group-hover:tw-opacity-[10%]
+          `}
+        />
+        <img
+          src={props.thumbnail}
+          className={`
+            tw-bg-tertiary thumbnail tw-aspect-[304/171] tw-w-full
+            tw-rounded-t-md tw-border tw-border-solid tw-border-neutral
+            tw-object-cover tw-transition-all tw-duration-200 tw-ease-in-out
 
-          group-hover:tw-text-action
+            group-hover:tw-border-tertiary
+          `}
+        />
+      </div>
+      <p
+        className={`
+          title p-smaller tw-font-inter tw-font-bold tw-transition-all
+          tw-duration-200 tw-ease-in-out
+
+          group-hover:tw-text-headings
         `}
       >
         {props.title}
-      </h4>
+      </p>
     </div>
   );
 };

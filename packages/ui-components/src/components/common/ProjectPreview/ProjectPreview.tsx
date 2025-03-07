@@ -39,17 +39,24 @@ const ProjectPreview = (props: ProjectPreviewProps) => {
     >
       <div
         className={`
-          image-wrapper tw-group tw-aspect-[1920/1080] tw-w-full
+          image-wrapper tw-group tw-relative tw-aspect-[1920/1080] tw-w-full
           tw-cursor-pointer tw-overflow-hidden tw-rounded-lg tw-border
-          tw-border-[var(--neutral-default)] tw-transition-all tw-duration-200
-          tw-ease-in-out
+          tw-border-neutral tw-transition-all tw-duration-200 tw-ease-in-out
 
-          hover:tw-border-tertiary
+          hover:tw-border-active
         `}
         onClick={() => {
           openProject();
         }}
       >
+        <div
+          className={`
+            layer tw-absolute tw-inset-0 tw-bg-action tw-opacity-0
+            tw-transition-all tw-duration-200 tw-ease-in-out
+
+            group-hover:tw-opacity-[10%]
+          `}
+        />
         <img
           className={`
             tw-aspect-[1920/1080] tw-w-full tw-self-stretch tw-transition-all

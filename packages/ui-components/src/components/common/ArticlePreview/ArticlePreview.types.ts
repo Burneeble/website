@@ -25,8 +25,8 @@ const variants = {
 
 export const articlePreviewVariants = cva(
   `
-    tw-group tw-inline-flex tw-w-full tw-flex-col tw-items-start
-    tw-justify-start tw-gap-[20px] tw-rounded-lg
+    tw-inline-flex tw-w-full tw-flex-col tw-items-start tw-justify-start
+    tw-gap-[20px] tw-rounded-lg
   `,
   {
     variants,

@@ -11,6 +11,7 @@ import {
 } from "@burneeble/ui-components";
 import { cn } from "@/lib/utils";
 import { useCategoryPageService } from "../CategoryPageService";
+import { useEffect } from "react";
 
 const CategoryArticles = (props: CategoryArticlesProps) => {
   //Hooks
@@ -24,6 +25,10 @@ const CategoryArticles = (props: CategoryArticlesProps) => {
     batchSize,
     searchQuery,
   } = useCategoryPageService();
+
+  useEffect(() => {
+    console.log("loading,", isLoading);
+  }, [isLoading]);
 
   return (
     <section
