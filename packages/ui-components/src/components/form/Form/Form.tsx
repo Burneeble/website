@@ -52,19 +52,6 @@ const Form = (props: FormProps) => {
     props.onSubmit(data);
   }
 
-  // async function onSubmit(data: z.infer<typeof formSchema>) {
-  //   try {
-  //     await props.onSubmit(data);
-  //     if (props.onSuccess) {
-  //       props.onSuccess(true);
-  //     }
-  //   } catch {
-  //     if (props.onSuccess) {
-  //       props.onSuccess(false);
-  //     }
-  //   }
-  // }
-
   const successButton = props.showSuccessButton || false;
 
   return (
@@ -163,7 +150,7 @@ const Form = (props: FormProps) => {
               type="submit"
               fit="full"
               className={cn(`
-                !tw-mt-8 tw-h-[58px] tw-bg-orange-500 tw-animate-fill-gradient
+                !tw-mt-8 tw-h-[58px] tw-animate-fill-gradient tw-bg-orange-500
 
                 tw-bg-[length:200%_200%]
               `)}
