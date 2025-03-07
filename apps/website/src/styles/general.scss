@@ -10,9 +10,11 @@ body {
 }
 
 // This behavior creates a scrolling bug
-// html {
-//   scroll-behavior: smooth;
-// }
+html {
+  --scroll-behavior: smooth !important;
+
+  scroll-behavior: smooth;
+}
 
 .home-page {
   @apply tw-to-[8%]  tw-from-0%;
