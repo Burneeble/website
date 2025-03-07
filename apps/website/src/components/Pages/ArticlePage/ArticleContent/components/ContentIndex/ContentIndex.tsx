@@ -33,34 +33,43 @@ const ContentIndex = (props: ContentIndexProps) => {
     <div
       className={`
         content-index tw-mx-auto tw-my-8 tw-w-full tw-rounded-[.5rem]
-        tw-border-2 tw-border-white tw-p-[.6rem] tw-text-headings p-default
+        tw-bg-[#ffa50021] tw-border-2 tw-border-active tw-p-[.6rem]
+        tw-text-headings p-default
       `}
     >
       <div className="header tw-flex tw-items-center tw-justify-between">
-        <span className="text tw-font-bold tw-tracking-[1px] tw-text-action">
+        <span className="text p-small tw-tracking-[1px] tw-text-action">
           Contents Index
         </span>
         <span
           className={`
-            icon tw-group tw-flex tw-cursor-pointer tw-items-center
+            icon tw-group tw-group tw-flex tw-cursor-pointer tw-items-center
             tw-justify-center tw-gap-[5px] tw-rounded-[.4rem] tw-border-2
-            tw-border-white tw-p-[.2rem] tw-transition-all tw-duration-500
+            tw-border-active tw-p-[.2rem] tw-transition-all tw-duration-500
             tw-ease-in-out
 
-            hover:tw-border-active
+            hover:tw-border-primary
           `}
           onClick={() => {
             setIsOpen(!isOpen);
           }}
         >
-          <FontAwesomeIcon icon={faList} />
+          <FontAwesomeIcon
+            icon={faList}
+            className={`
+              tw-text-action tw-text-2xl tw-duration-500
+
+              group-hover:tw-text-highlight
+            `}
+          />
           <FontAwesomeIcon
             icon={faCaretDown}
             className={cn(
               `
                 tw-transition-all tw-duration-500 tw-ease-in-out group
+                tw-text-action tw-text-2xl
 
-                group-hover:tw-rotate-[-22.5deg]
+                group-hover:tw-text-highlight group-hover:tw-rotate-[-22.5deg]
               `,
               isOpen && "!tw-rotate-[-180deg]"
             )}
@@ -70,7 +79,7 @@ const ContentIndex = (props: ContentIndexProps) => {
       <ul
         className={cn(
           `paragraphs tw-flex tw-flex-col tw-gap-[.5rem] tw-overflow-hidden`,
-          isOpen ? "tw-max-h-[100rem] tw-pt-[1rem]" : `tw-max-h-0`
+          isOpen ? "tw-max-h-[100rem]" : `tw-max-h-0`
         )}
         style={{
           transition:
@@ -83,8 +92,8 @@ const ContentIndex = (props: ContentIndexProps) => {
               <li
                 key={i}
                 className={`
-                  paragraph tw-w-fit tw-cursor-pointer tw-transition-all
-                  tw-duration-200 tw-ease-in-out
+                  paragraph p-smaller tw-w-fit tw-cursor-pointer
+                  tw-transition-all tw-duration-200 tw-ease-in-out
 
                   hover:tw-ml-4 hover:tw-text-action-hover
                 `}

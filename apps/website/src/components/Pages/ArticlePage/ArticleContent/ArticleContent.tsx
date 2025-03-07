@@ -2,7 +2,7 @@
 
 import RoundedWrapper from "@/components/RoundedWrapper";
 import { ArticleContentProps } from "./ArticleContent.types";
-import { Label } from "@burneeble/ui-components";
+import { Label, useClientInfoService } from "@burneeble/ui-components";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Prism from "prismjs";
@@ -14,15 +14,35 @@ const ArticleContent = (props: ArticleContentProps) => {
   //States
   const [content, setContent] = useState<string>(props.article.content);
   const [url, setUrl] = useState<string>("");
+  const [render, setRender] = useState(false);
 
   //Hooks
   const router = useRouter();
   const contentRef = useRef<HTMLDivElement>(null);
+  const { screen } = useClientInfoService();
+
+  //Methods
+  const getLabelSize = () => {
+    switch (screen) {
+      case "sm":
+        return "md";
+      case "md":
+      case "lg":
+        return "default";
+      case "xl":
+      case "2xl":
+        return "lg";
+    }
+  };
 
   //Effects
   useEffect(() => {
     Prism.highlightAll();
   }, [content]);
+
+  useEffect(() => {
+    setRender(true);
+  }, []);
 
   useEffect(() => {
     const codes = document.querySelectorAll(".dm-code-snippet");
@@ -141,6 +161,7 @@ const ArticleContent = (props: ArticleContentProps) => {
           `}
         >
           <Label
+            size={getLabelSize()}
             text={props.article.categories[0].name}
             variant={"active"}
             onClick={() => {
@@ -211,13 +232,48 @@ const ArticleContent = (props: ArticleContentProps) => {
         <ContentIndex article={props.article} />
         <div
           className={`
-            article-body tw-flex tw-max-w-full tw-flex-col tw-gap-[30px]
+            article-body tw-flex tw-max-w-full tw-flex-col tw-gap-[20px]
             tw-text-headings
           `}
           dangerouslySetInnerHTML={{
-            __html: content,
+            __html: render && content,
           }}
         />
+        <div
+          className={`
+            article-footer tw-flex tw-w-full tw-flex-col tw-gap-[15px] tw-mt-8
+
+            md:tw-flex-row md:tw-items-center md:tw-justify-between
+          `}
+        >
+          <p className="p-smaller tw-flex tw-flex-row tw-gap-2">
+            Categories:
+            <span className="tw-flex tw-flex-row tw-gap-2 tw-flex-wrap">
+              {props.article.categories.map((category, i) => {
+                return (
+                  <>
+                    <span
+                      className={`
+                        tw-bg-button-primary tw-text-center tw-min-h-8
+                        tw-rounded-3xl tw-px-2 tw-font-bowlby-one
+                        tw-text-headings tw-text-base tw-leading-[100%]
+                        tw-cursor-default tw-content-center
+                      `}
+                      key={i}
+                    >
+                      {category.name}
+                    </span>
+                  </>
+                );
+              })}
+            </span>
+          </p>
+
+          <SocialShare
+            url={url}
+            title={`\nCheck out this article by burneeble!\n${props.article.title}\n\n`}
+          />
+        </div>
       </RoundedWrapper>
     </section>
   );
