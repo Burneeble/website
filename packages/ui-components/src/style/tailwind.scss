@@ -143,4 +143,9 @@
   .tertiary-gradient {
     @apply tw-from-[var(--secondary-default)] tw-to-[var(--secondary-lightest)];
   }
+
+  // success gradient
+  .success-gradient {
+    @apply tw-from-[var(--success-default)] tw-to-[var(--success-dark)];
+  }
 }

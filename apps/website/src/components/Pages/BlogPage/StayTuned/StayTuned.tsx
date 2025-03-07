@@ -15,7 +15,7 @@ import { z } from "zod";
 const StayTuned = (props: StayTunedProps) => {
   //States
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(true);
 
   //Hooks
   const { screen } = useClientInfoService();
@@ -59,6 +59,7 @@ const StayTuned = (props: StayTunedProps) => {
   }, [isSubmitted]);
 
   return (
+    // todo create a smooth effect between isSubmitted and !isSubmitted phases
     <section
       className={`
         stay-tuned cs-website-vertical-padding tw-relative tw-flex tw-flex-col
@@ -66,21 +67,27 @@ const StayTuned = (props: StayTunedProps) => {
       `}
     >
       <div
-        className={`
-          shape tw-absolute tw-left-1/2 tw-top-1/2 tw-h-[180px] tw-w-screen
-          -tw-translate-x-1/2 -tw-translate-y-1/2 tw-bg-gradient-to-b
-          primary-gradient
-        `}
+        className={cn(
+          `
+            shape tw-absolute tw-left-1/2 tw-top-1/2 tw-h-[180px] tw-w-screen
+            -tw-translate-x-1/2 -tw-translate-y-1/2 tw-bg-gradient-to-b
+          `,
+          isSubmitted ? "success-gradient" : "primary-gradient"
+        )}
       />
       <div
-        className={`
-          content no-scrollbar tw-relative tw-z-[2] tw-inline-flex tw-h-fit
-          tw-max-h-[80%] tw-w-[790px] tw-max-w-full tw-flex-col tw-items-center
-          tw-justify-start tw-gap-5 tw-overflow-scroll tw-rounded-lg tw-border
-          tw-border-[#483a32] tw-bg-gradient-to-b tw-p-5
-          secondary-gradient-to-custom
-          tw-shadow-[0_0_100px_0px_rgba(242,163,7,.3)]
-        `}
+        className={cn(
+          `
+            content no-scrollbar tw-relative tw-z-[2] tw-inline-flex tw-h-fit
+            tw-max-h-[80%] tw-w-[790px] tw-max-w-full tw-flex-col
+            tw-items-center tw-justify-start tw-gap-5 tw-overflow-scroll
+            tw-rounded-lg tw-border tw-border-[#483a32] tw-bg-gradient-to-b
+            tw-p-5 secondary-gradient-to-custom
+          `,
+          isSubmitted
+            ? "tw-shadow-[0_0_100px_0px_rgba(116,168,89,.3)]"
+            : `tw-shadow-[0_0_100px_0px_rgba(242,163,7,.3)]`
+        )}
       >
         {isSubmitting && (
           <div
@@ -96,9 +103,18 @@ const StayTuned = (props: StayTunedProps) => {
         )}
         <h2 className="title tw-text-center">Stay Tuned!</h2>
         <p className="text p-small tw-text-center">
-          Stay up to date with new articles and videos to learn more about
-          Development with AI, and get{" "}
-          <strong>first access to special courses and content</strong>.
+          {isSubmitted ? (
+            <>
+              Thank you for subscribing to our newsletter! You&apos;ll be the
+              first to be updated immediately on new content and courses.
+            </>
+          ) : (
+            <>
+              Stay up to date with new articles and videos to learn more about
+              Development with AI, and get{" "}
+              <strong>first access to special courses and content</strong>.
+            </>
+          )}
         </p>
         <Form
           className={cn(
@@ -106,40 +122,45 @@ const StayTuned = (props: StayTunedProps) => {
               `
                 tw-grid tw-grid-cols-2 tw-grid-rows-auto tw-gap-x-5 tw-gap-y-2
                 tw-space-y-0
-              `
+              `,
+            isSubmitted && "-tw-mt-8"
           )}
-          fields={[
-            {
-              key: "firstName",
-              label: "",
-              placeholder: "First Name",
-              inputType: InputType.text,
-              className: "tw-content-end tw-col-[1] tw-row-[1]",
-              validation: z
-                .string()
-                .min(2, "Must be at least 2 characters")
-                .regex(/^[a-zA-Z]+$/, "Can only contain letters"),
-            },
-            {
-              key: "lastName",
-              label: "",
-              placeholder: "Last Name",
-              inputType: InputType.text,
-              className: "tw-content-end tw-col-[2] tw-row-[1]",
-              validation: z
-                .string()
-                .min(2, "Must be at least 2 characters")
-                .regex(/^[a-zA-Z]+$/, "Can only contain letters"),
-            },
-            {
-              key: "yourEmail",
-              label: "",
-              placeholder: "Your Email",
-              inputType: InputType.text,
-              className: "tw-content-end tw-col-[1/span_2] tw-row-[2]",
-              validation: z.string().email("Invalid email"),
-            },
-          ]}
+          fields={
+            isSubmitted
+              ? []
+              : [
+                  {
+                    key: "firstName",
+                    label: "",
+                    placeholder: "First Name",
+                    inputType: InputType.text,
+                    className: "tw-content-end tw-col-[1] tw-row-[1]",
+                    validation: z
+                      .string()
+                      .min(2, "Must be at least 2 characters")
+                      .regex(/^[a-zA-Z]+$/, "Can only contain letters"),
+                  },
+                  {
+                    key: "lastName",
+                    label: "",
+                    placeholder: "Last Name",
+                    inputType: InputType.text,
+                    className: "tw-content-end tw-col-[2] tw-row-[1]",
+                    validation: z
+                      .string()
+                      .min(2, "Must be at least 2 characters")
+                      .regex(/^[a-zA-Z]+$/, "Can only contain letters"),
+                  },
+                  {
+                    key: "yourEmail",
+                    label: "",
+                    placeholder: "Your Email",
+                    inputType: InputType.text,
+                    className: "tw-content-end tw-col-[1/span_2] tw-row-[2]",
+                    validation: z.string().email("Invalid email"),
+                  },
+                ]
+          }
           onSubmit={onSubmit}
           showSuccessButton={isSubmitted}
         />

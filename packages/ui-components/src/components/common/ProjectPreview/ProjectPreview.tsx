@@ -9,18 +9,19 @@ const ProjectPreview = (props: ProjectPreviewProps) => {
 
   //Methods
   const highlightText = (text: string, query: string) => {
-    const words = query.split(" ").filter((word) => word.trim() !== "");
-    let highlightedText = text;
-    words.forEach((word) => {
-      const regex = new RegExp(`(${word})`, "gi");
-      highlightedText = highlightedText.replace(
-        regex,
-        '<span class="highlight">$1</span>'
-      );
-    });
-    return highlightedText;
-  };
+    if (!query.trim()) return text; // Avoid unnecessary changes
 
+    const safeQuery = query.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&");
+
+    // Removes any previous highlights
+    text = text.replace(/<span class="highlight">(.*?)<\/span>/gi, "$1");
+
+    // Replaces text by highlighting it, avoiding breaking HTML tags
+    return text.replace(
+      new RegExp(`(${safeQuery})`, "gi"),
+      '<span class="highlight">$1</span>'
+    );
+  };
   const openProject = () => {
     router.push(
       `/project/${props.title
