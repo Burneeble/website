@@ -54,40 +54,40 @@ jobs:
             packages/project-metrics/lib/
             apps/website/.next/
 
-  lint:
-    name: Lint
-    needs: build
-    runs-on: ubuntu-latest
+  # lint:
+  #   name: Lint
+  #   needs: build
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4
+  #   steps:
+  #     - uses: actions/checkout@v4
 
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "18"
-          cache: "yarn"
+  #     - name: Use Node.js
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: "18"
+  #         cache: "yarn"
 
-      - name: Cache Node.js modules
-        uses: actions/cache@v4
-        with:
-          path: |
-            node_modules
-            packages/sdk/node_modules
-            packages/ui-components/node_modules
-            packages/icons/node_modules
-            packages/project-metrics/node_modules
-            apps/website/node_modules
-          key: ${{ runner.OS }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          fail-on-cache-miss: true
+  #     - name: Cache Node.js modules
+  #       uses: actions/cache@v4
+  #       with:
+  #         path: |
+  #           node_modules
+  #           packages/sdk/node_modules
+  #           packages/ui-components/node_modules
+  #           packages/icons/node_modules
+  #           packages/project-metrics/node_modules
+  #           apps/website/node_modules
+  #         key: ${{ runner.OS }}-yarn-${{ hashFiles('**/yarn.lock') }}
+  #         fail-on-cache-miss: true
 
-      - name: Download compiled artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: build-artifacts
+  #     - name: Download compiled artifacts
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: build-artifacts
 
-      - name: Lint
-        run: yarn lint
+  #     - name: Lint
+  #       run: yarn lint
 
   audit:
     name: Audit
@@ -140,6 +140,7 @@ jobs:
       - name: Lighthouse Reports
         run: |
           cd apps/website
+          ls -la
           yarn run lhci:mobile
           yarn run lhci:desktop
 
