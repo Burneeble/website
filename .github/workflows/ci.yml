@@ -1,4 +1,4 @@
-name: CI
+name: CI Pipeline
 
 on:
   push:
@@ -6,18 +6,33 @@ on:
 
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
 
-      - name: Setup Node.js
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: "18"
           cache: "yarn"
 
-      - name: Install dependencies
+      - name: Cache Node.js modules
+        id: cache-step
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            packages/sdk/node_modules
+            packages/ui-components/node_modules
+            packages/icons/node_modules
+            packages/project-metrics/node_modules
+            apps/website/node_modules
+          key: ${{ runner.OS }}-yarn-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install Dependencies
+        if: ${{ steps.cache-step.outputs.cache-hit != 'true' }}
         run: yarn install --frozen-lockfile
 
       - name: Build packages
@@ -27,37 +42,87 @@ jobs:
         run: yarn build
         working-directory: apps/website
 
-      - name: check pwd
-        run: pwd
-
-      - name: Upload build artifact
+      - name: Archive production artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: build-output
-          path: apps/website/.next
-          retention-days: 1
+          name: build-artifacts
+          if-no-files-found: error
+          path: |
+            packages/sdk/lib/
+            packages/ui-components/dist/
+            packages/icons/dist/
+            packages/project-metrics/lib/
+            apps/website/.next/
 
-  lighthouse:
+  lint:
+    name: Lint
     needs: build
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
 
-      - name: Setup Node.js
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: "18"
           cache: "yarn"
 
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
+      - name: Cache Node.js modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            packages/sdk/node_modules
+            packages/ui-components/node_modules
+            packages/icons/node_modules
+            packages/project-metrics/node_modules
+            apps/website/node_modules
+          key: ${{ runner.OS }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          fail-on-cache-miss: true
 
-      - name: Download build artifact
+      - name: Download compiled artifacts
         uses: actions/download-artifact@v4
         with:
-          name: build-output
-          path: apps/website/.next
+          name: build-artifacts
+
+      - name: Lint
+        run: yarn lint
+
+  audit:
+    name: Audit
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: browser-actions/setup-chrome@v1
+        id: setup-chrome
+
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "yarn"
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            packages/sdk/node_modules
+            packages/ui-components/node_modules
+            packages/icons/node_modules
+            packages/project-metrics/node_modules
+            apps/website/node_modules
+          key: ${{ runner.OS }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          fail-on-cache-miss: true
+
+      - name: Download compiled artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifacts
 
       - name: Install Chrome
         run: |
@@ -72,10 +137,21 @@ jobs:
           sleep 5
         working-directory: apps/website
 
-      - name: Run Lighthouse
-        run: yarn lhci:mobile
-        working-directory: apps/website
+      - name: Lighthouse Reports
+        run: |
+          cd apps/website
+          yarn run lhci:mobile
+          yarn run lhci:desktop
 
-      - name: Run Lighthouse (Desktop)
-        run: yarn lhci:desktop
-        working-directory: apps/website
+      - name: Generate PDF Reports
+        run: yarn reports
+        env:
+          CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+
+      - name: Archive reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: reports
+          if-no-files-found: warn
+          path: |
+            reports/
