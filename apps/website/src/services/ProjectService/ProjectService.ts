@@ -20,7 +20,7 @@ import {
   CryptoEVMProjectMetadata,
   EnrichedDataExporter,
   EnrichedProjectData,
-} from "project-metrics";
+} from "@burneeble/project-metrics";
 
 const serializer = new JsonSerializer();
 export class ProjectService {
