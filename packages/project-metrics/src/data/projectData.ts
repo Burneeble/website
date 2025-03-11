@@ -19,6 +19,8 @@ import customPunksV1Data from "../../data/custompunks-v1.json";
 import customPunksV2Data from "../../data/custompunks-v2.json";
 import skullnBananasV1Data from "../../data/skullnbananas-v1.json";
 import skullnBananasV2Data from "../../data/skullnbananas-v2.json";
+import zbdcData from "../../data/zbdc.json";
+import buckbuckV1Data from "../../data/buckbuck-v1.json";
 
 /**
  * Define strongly typed interfaces based on project definitions
@@ -75,6 +77,8 @@ const rawBundledData = {
   "custompunks-v2": customPunksV2Data,
   "skullnbananas-v1": skullnBananasV1Data,
   "skullnbananas-v2": skullnBananasV2Data,
+  zbdc: zbdcData,
+  "buckbuck-v1": buckbuckV1Data,
 };
 
 // Process BigInt strings in all data and apply proper typing

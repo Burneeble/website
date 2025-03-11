@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "id": "buckbuck-v1",
+    "name": "buckbuck V1",
+    "chainName": "ethereum",
+    "contractAddress": "0xdd3dba0cc95eccb91d08cc83a0ec910d3e43441a",
+    "createdAt": "2025-03-11T11:01:13.294Z",
+    "updatedAt": "2025-03-11T11:01:13.294Z"
+  },
+  "enrichedData": {
+    "evm-project-data": {
+      "transactions": 1571,
+      "events": 3379,
+      "ethInflow": "72650000000000000000n"
+    },
+    "erc721-token-data": {
+      "name": "BuckBuck",
+      "symbol": "BB",
+      "totalSupply": "1500n"
+    }
+  }
+}

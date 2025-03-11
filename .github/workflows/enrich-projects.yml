@@ -17,7 +17,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        project: ["skullnbananas-v1", "custompunks-v1,custompunks-v2"]
+        project:
+          [
+            "skullnbananas-v1",
+            "custompunks-v1,custompunks-v2",
+            "zbdc",
+            "buckbuck-v1",
+          ]
 
     steps:
       - name: Checkout code
@@ -49,8 +55,12 @@ jobs:
           BASE_RPC_URL: ${{ secrets.BASE_RPC_URL }}
           CUSTOMPUNKS_REGION: ${{ secrets.CUSTOMPUNKS_REGION }}
           CUSTOMPUNKS_ACCESS_KEY_ID: ${{ secrets.CUSTOMPUNKS_ACCESS_KEY_ID }}
-          CUSTOMPUNKS_SECRET_ACCESS: ${{ secrets.CUSTOMPUNKS_SECRET_ACCESS }}
+          CUSTOMPUNKS_SECRET_ACCESS_KEY: ${{ secrets.CUSTOMPUNKS_SECRET_ACCESS_KEY }}
           CUSTOMPUNKS_APP_ID: ${{ secrets.CUSTOMPUNKS_APP_ID }}
+          SNB_REGION: ${{ secrets.SNB_REGION }}
+          SNB_ACCESS_KEY_ID: ${{ secrets.SNB_ACCESS_KEY_ID }}
+          SNB_SECRET_ACCESS_KEY: ${{ secrets.SNB_SECRET_ACCESS_KEY }}
+          SNB_APP_ID: ${{ secrets.SNB_APP_ID }}
 
       - name: Configure Git
         run: |

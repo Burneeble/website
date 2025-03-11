@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "id": "zbdc",
+    "name": "ZBDC",
+    "chainName": "ethereum",
+    "contractAddress": "0xdbff88f7d635bfcd98b9260bd0846c2497cbf18c",
+    "createdAt": "2025-03-11T11:16:18.545Z",
+    "updatedAt": "2025-03-11T11:16:18.545Z"
+  },
+  "enrichedData": {
+    "evm-project-data": {
+      "transactions": 600,
+      "events": 1281,
+      "ethInflow": "170200000000000000000n"
+    },
+    "erc721-token-data": {
+      "name": "Monsters ZBDC",
+      "symbol": "ZBM",
+      "totalSupply": "1029n"
+    }
+  }
+}

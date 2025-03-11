@@ -25,16 +25,76 @@ export interface ProjectDefinition {
 export const definitions: Array<ProjectDefinition> = [
   {
     project: ProjectFactory.createNFTProject({
-      id: "skullnbananas-v1",
-      name: "Skullnbananas V1",
+      id: "buckbuck-v1",
+      name: "buckbuck V1",
       chainName: "ethereum",
-      contractAddress: "0x9a9813752Cf595e5013CA39c1aaa3f5458a30dC5",
+      contractAddress: "0xdd3dba0cc95eccb91d08cc83a0ec910d3e43441a",
     }),
     strategies: [
       new EVMProjectEnrichmentStrategy(),
       new ERC721EnrichmentStrategy(),
     ],
     options: [
+      {
+        startBlock: 14661076n,
+        endBlock: 20177048n,
+        logsBatchSize: 10000,
+        concurrentBatchesLogs: 10,
+        hashesBatchSize: 10,
+        hashesCycleWait: 1600,
+      } satisfies EVMProjectEnrichmentStrategyOptions,
+      {} satisfies ERC721EnrichmentStrategyOptions,
+    ],
+  },
+  {
+    project: ProjectFactory.createNFTProject({
+      id: "zbdc",
+      name: "ZBDC",
+      chainName: "ethereum",
+      contractAddress: "0xdbff88f7d635bfcd98b9260bd0846c2497cbf18c",
+    }),
+    strategies: [
+      new EVMProjectEnrichmentStrategy(),
+      new ERC721EnrichmentStrategy(),
+    ],
+    options: [
+      {
+        startBlock: 14906011n,
+        endBlock: 18197513n,
+        // endBlock: 17383581n,
+        logsBatchSize: 10000,
+        concurrentBatchesLogs: 10,
+        hashesBatchSize: 10,
+        hashesCycleWait: 1600,
+      } satisfies EVMProjectEnrichmentStrategyOptions,
+      {} satisfies ERC721EnrichmentStrategyOptions,
+    ],
+  },
+  {
+    project: ProjectFactory.createNFTProject({
+      id: "skullnbananas-v1",
+      name: "Skullnbananas V1",
+      chainName: "ethereum",
+      contractAddress: "0x9a9813752Cf595e5013CA39c1aaa3f5458a30dC5",
+    }),
+    strategies: [
+      new AWSAmplifyStatsEnrichmentStrategy(),
+      new EVMProjectEnrichmentStrategy(),
+      new ERC721EnrichmentStrategy(),
+    ],
+    options: [
+      {
+        region: process.env.SNB_REGION,
+        credentials: {
+          accessKeyId: process.env.SNB_ACCESS_KEY_ID || "",
+          secretAccessKey: process.env.SNB_SECRET_ACCESS_KEY || "",
+        },
+        branchName: "main",
+        appId: process.env.SNB_APP_ID,
+        metricsTimeRangeHours: 24 * 30 * 12,
+        includeRecentJobs: false,
+        includeCloudWatchMetrics: true,
+      } satisfies AWSAmplifyStatsEnrichmentStrategyOptions,
       {
         startBlock: 17373581n,
         endBlock: 20407774n,
