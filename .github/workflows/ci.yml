@@ -47,6 +47,7 @@ jobs:
         with:
           name: build-artifacts
           if-no-files-found: error
+          nclude-hidden-files: true
           path: |
             packages/sdk/lib/
             packages/ui-components/dist/
