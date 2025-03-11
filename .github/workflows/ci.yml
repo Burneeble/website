@@ -27,6 +27,9 @@ jobs:
         run: yarn build
         working-directory: apps/website
 
+      - name: check pwd
+        run: pwd
+
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
