@@ -4,14 +4,19 @@
     "name": "Custompunks V1",
     "chainName": "base",
     "contractAddress": "0x78bcbe6B5df0B1775576b3a7bDab622E18F177A5",
-    "createdAt": "2025-03-05T22:25:15.676Z",
-    "updatedAt": "2025-03-05T22:25:15.676Z"
+    "createdAt": "2025-03-11T12:22:55.884Z",
+    "updatedAt": "2025-03-11T12:22:55.884Z"
   },
   "enrichedData": {
     "evm-project-data": {
       "transactions": 10707,
       "events": 10715,
-      "ethInflow": "10027815300000000000n"
+      "ethInflow": "21520644900000000000n"
+    },
+    "erc721-token-data": {
+      "name": "CustomPunks",
+      "symbol": "CP",
+      "totalSupply": "10000n"
     }
   }
 }
