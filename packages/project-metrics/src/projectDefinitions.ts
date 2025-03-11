@@ -25,6 +25,29 @@ export interface ProjectDefinition {
 export const definitions: Array<ProjectDefinition> = [
   {
     project: ProjectFactory.createNFTProject({
+      id: "businessmenx",
+      name: "BusinessMenX",
+      chainName: "ethereum",
+      contractAddress: "0x4fd13b3F0644895355674E353e060A573B19f63a",
+    }),
+    strategies: [
+      new EVMProjectEnrichmentStrategy(),
+      new ERC721EnrichmentStrategy(),
+    ],
+    options: [
+      {
+        startBlock: 14835269n,
+        endBlock: 20377135n,
+        logsBatchSize: 10000,
+        concurrentBatchesLogs: 10,
+        hashesBatchSize: 10,
+        hashesCycleWait: 1600,
+      } satisfies EVMProjectEnrichmentStrategyOptions,
+      {} satisfies ERC721EnrichmentStrategyOptions,
+    ],
+  },
+  {
+    project: ProjectFactory.createNFTProject({
       id: "buckbuck-v1",
       name: "buckbuck V1",
       chainName: "ethereum",

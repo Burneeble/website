@@ -21,6 +21,7 @@ import skullnBananasV1Data from "../../data/skullnbananas-v1.json";
 import skullnBananasV2Data from "../../data/skullnbananas-v2.json";
 import zbdcData from "../../data/zbdc.json";
 import buckbuckV1Data from "../../data/buckbuck-v1.json";
+import businessMenXData from "../../data/businessmenx.json";
 
 /**
  * Define strongly typed interfaces based on project definitions
@@ -79,6 +80,7 @@ const rawBundledData = {
   "skullnbananas-v2": skullnBananasV2Data,
   zbdc: zbdcData,
   "buckbuck-v1": buckbuckV1Data,
+  businessmenx: businessMenXData,
 };
 
 // Process BigInt strings in all data and apply proper typing

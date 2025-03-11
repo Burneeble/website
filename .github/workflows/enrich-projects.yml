@@ -2,9 +2,9 @@ name: Project Enrichment
 
 on:
   # Trigger on push events
-  push:
-    paths-ignore:
-      - "**.md"
+  # push:
+  #   paths-ignore:
+  #     - "**.md"
 
   # Allow manual triggering
   workflow_dispatch:
@@ -23,6 +23,7 @@ jobs:
             "custompunks-v1,custompunks-v2",
             "zbdc",
             "buckbuck-v1",
+            "businessmenx",
           ]
 
     steps:
