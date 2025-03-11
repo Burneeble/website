@@ -47,7 +47,7 @@ jobs:
         with:
           name: build-artifacts
           if-no-files-found: error
-          nclude-hidden-files: true
+          include-hidden-files: true
           path: |
             packages/sdk/lib/
             packages/ui-components/dist/
@@ -119,6 +119,7 @@ jobs:
             apps/website/node_modules
           key: ${{ runner.OS }}-yarn-${{ hashFiles('**/yarn.lock') }}
           fail-on-cache-miss: true
+          include-hidden-files: true
 
       - name: Download compiled artifacts
         uses: actions/download-artifact@v4
