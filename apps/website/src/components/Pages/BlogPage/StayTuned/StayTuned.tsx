@@ -15,7 +15,7 @@ import { z } from "zod";
 const StayTuned = (props: StayTunedProps) => {
   //States
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(true);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   //Hooks
   const { screen } = useClientInfoService();
