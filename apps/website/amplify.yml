@@ -14,7 +14,8 @@ applications:
             - cd apps/website
             - yarn run build
         postBuild:
-          commands: echo "Build completed"
+          commands:
+            - echo "Build completed"
       artifacts:
         baseDirectory: .next
         files:

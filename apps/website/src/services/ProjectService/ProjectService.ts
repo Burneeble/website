@@ -16,6 +16,11 @@ import {
   SectionModel,
 } from "./models";
 import { JsonSerializer } from "typescript-json-serializer";
+import {
+  CryptoEVMProjectMetadata,
+  EnrichedDataExporter,
+  EnrichedProjectData,
+} from "@burneeble/project-metrics";
 
 const serializer = new JsonSerializer();
 export class ProjectService {
@@ -203,5 +208,26 @@ export class ProjectService {
       : [];
 
     return categories;
+  }
+
+  public getProjectEnrichedData(projectId: string) {
+    const exporter = new EnrichedDataExporter();
+
+    return exporter.getProjectData<CryptoEVMProjectMetadata>(projectId);
+  }
+
+  public getProjectsEnrichedDataByPrefix(
+    prefix: string
+  ): EnrichedProjectData<CryptoEVMProjectMetadata>[] {
+    const exporter = new EnrichedDataExporter();
+
+    const projectsObj =
+      exporter.getProjectsByPrefix<CryptoEVMProjectMetadata>(prefix);
+
+    const projects = Object.keys(projectsObj).map((key) => {
+      return projectsObj[key];
+    });
+
+    return projects as EnrichedProjectData<CryptoEVMProjectMetadata>[];
   }
 }

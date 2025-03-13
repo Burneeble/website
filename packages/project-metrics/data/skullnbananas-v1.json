@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "id": "skullnbananas-v1",
+    "name": "Skullnbananas V1",
+    "chainName": "ethereum",
+    "contractAddress": "0x9a9813752Cf595e5013CA39c1aaa3f5458a30dC5",
+    "createdAt": "2025-03-11T12:22:52.420Z",
+    "updatedAt": "2025-03-11T12:22:52.420Z"
+  },
+  "enrichedData": {
+    "aws-amplify-stats": {
+      "appName": "",
+      "appId": "",
+      "defaultDomain": "",
+      "createTime": "2023-04-21T19:07:50.730Z",
+      "updateTime": "2025-01-07T00:10:25.446Z",
+      "platform": "WEB",
+      "productionBranch": {
+        "branchName": "main",
+        "displayName": "main",
+        "ttl": "5"
+      },
+      "metrics": {
+        "requestCount": 374808,
+        "errorRate": 0,
+        "averageResponseTime": 0,
+        "metricsStartTime": "2024-03-16T12:22:53.148Z",
+        "metricsEndTime": "2025-03-11T12:22:53.148Z"
+      }
+    },
+    "evm-project-data": {
+      "transactions": 1412,
+      "events": 4106,
+      "ethInflow": "64094000000000000000n"
+    },
+    "erc721-token-data": {
+      "name": "Skull N Bananas",
+      "symbol": "SNB",
+      "totalSupply": "2441n"
+    }
+  }
+}
