@@ -84,6 +84,36 @@ const ClientInfoServiceProvider = (props: ClientInfoServiceProviderProps) => {
     <clientInfoServiceContext.Provider
       value={{ width, screen, isClient, scrollPos }}
     >
+      <svg className="svg-gradient">
+        <defs>
+          <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop
+              offset="0%"
+              style={{ stopColor: "rgba(255, 92, 1, 1)", stopOpacity: 1 }}
+            />
+            <stop
+              offset="100%"
+              style={{ stopColor: "rgba(242, 163, 7, 1)", stopOpacity: 1 }}
+            />
+          </linearGradient>
+          <linearGradient
+            id="triangle-gradient"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="0%"
+          >
+            <stop
+              offset="0%"
+              style={{ stopColor: "#2B2B2B", stopOpacity: 1 }}
+            />
+            <stop
+              offset="100%"
+              style={{ stopColor: "#73503D", stopOpacity: 1 }}
+            />
+          </linearGradient>
+        </defs>
+      </svg>
       {props.children}
     </clientInfoServiceContext.Provider>
   );

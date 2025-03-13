@@ -10,7 +10,7 @@ const TextRightStartShapeVerticalRight = (
     <div
       className={`
         text-right-start-shape-vertical-right section-layout layout-structure
-        tw-flex-col tw-relative
+        tw-relative tw-flex-col
 
         lg:tw-flex-row
       `}

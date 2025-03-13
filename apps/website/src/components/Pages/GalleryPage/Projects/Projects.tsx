@@ -23,6 +23,8 @@ import { useQuery } from "@apollo/client";
 import { GetProjectsQueryQuery } from "@/__generated__/graphql";
 import { cn } from "@/lib/utils";
 import { FilterPopup, SearchPopup } from "./components";
+import RoundedWrapper from "@/components/RoundedWrapper";
+import Grid from "@/components/Grid";
 
 const Projects = (props: ProjectsProps) => {
   //States
@@ -171,45 +173,22 @@ const Projects = (props: ProjectsProps) => {
           popupLogic={searchPopupLogic}
         />
       )}
-      <section
-        className={`
-          projects-section tw-relative tw-top-[-35px] tw-rounded-t-[30px]
-          tw-bg-gradient-to-b tw-from-[var(--secondary-base)]
-          tw-to-[var(--secondary-darker)] tw-overflow-hidden tw-border-t-2
-          tw-border-[var(--primary-light)]
-        `}
-      >
-        <div
-          className={`
-            shape tw-absolute tw-top-0 tw-left-0 -tw-translate-x-[50%]
-            -tw-translate-y-[50%] tw-w-[200vw] tw-h-[200vw]
-            tw-bg-[radial-gradient(circle,var(--primary-light)_0%,_rgba(0,0,0,0)_70%)]
-            tw-opacity-[.7] tw-blur-[100px] tw-max-w-[min(170%,1000px)]
-            tw-max-h-[min(170%,1000px)]
-          `}
-        />
-        <div
-          className={`
-            content cs-section-structure tw-relative tw-z-[2] tw-flex
-            tw-flex-col tw-gap-[20px] tw-min-h-0
-
-            md:tw-gap-[30px]
-          `}
-        >
+      <section className={`projects-section`}>
+        <RoundedWrapper className="tw-pt-[50px] tw-pb-[90px]">
           <div
             className={`
-              header tw-h-[58px] tw-justify-between tw-items-center
-              tw-inline-flex tw-w-full tw-gap-[20px]
+              header tw-inline-flex tw-h-[58px] tw-w-full tw-items-center
+              tw-justify-between tw-gap-[20px]
 
-              md:tw-flex-col md:tw-gap-[10px] md:tw-h-[123px] md:tw-items-start
+              md:tw-h-[123px] md:tw-flex-col md:tw-items-start md:tw-gap-[10px]
 
-              xl:tw-flex-row xl:tw-h-[70px] xl:tw-items-center
+              xl:tw-h-[70px] xl:tw-flex-row xl:tw-items-center
             `}
           >
             <h2
               className={`
-                title tw-text-white tw-font-normal tw-font-bowlby-one
-                tw-whitespace-nowrap
+                title tw-whitespace-nowrap tw-font-bowlby-one tw-font-normal
+                tw-text-white
               `}
             >
               {screen === "sm" ? (
@@ -225,7 +204,7 @@ const Projects = (props: ProjectsProps) => {
             </h2>
             <div
               className={`
-                icons tw-justify-end tw-items-center tw-gap-[5px] tw-flex
+                icons tw-flex tw-items-center tw-justify-end tw-gap-[5px]
 
                 md:tw-w-full
               `}
@@ -255,8 +234,8 @@ const Projects = (props: ProjectsProps) => {
                     }}
                     placeholder="Search Project Name..."
                     className={`
-                      tw-flex-1 tw-bg-[rgba(0,0,0,0)] tw-text-2xl tw-font-inter
-                      tw-outline-none tw-text-headings
+                      tw-flex-1 tw-bg-[rgba(0,0,0,0)] tw-font-inter tw-text-2xl
+                      tw-text-headings tw-outline-none
                     `}
                   />
                 )}
@@ -294,7 +273,11 @@ const Projects = (props: ProjectsProps) => {
             </div>
           </div>
           {!["sm", "md", "lg"].includes(screen) && (
-            <div className="categories tw-flex tw-flex-wrap tw-gap-[17px]">
+            <div
+              className={`
+                categories tw-flex tw-flex-wrap tw-gap-x-[17px] tw-gap-y-[10px]
+              `}
+            >
               {props.categories.map((category, i) => {
                 return (
                   <Label
@@ -317,16 +300,7 @@ const Projects = (props: ProjectsProps) => {
               })}
             </div>
           )}
-          <div
-            className={`
-              projects tw-flex tw-flex-col tw-gap-[20px] tw-transition-all
-              tw-duration-200 tw-ease-in-out
-
-              lg:tw-grid lg:tw-grid-cols-3
-
-              md:tw-gap-[30px]
-            `}
-          >
+          <Grid>
             {projects &&
               projects.map((project, i) => {
                 return (
@@ -345,7 +319,7 @@ const Projects = (props: ProjectsProps) => {
               Array.from({ length: batchSize }).map((_, i) => {
                 return <ProjectPreviewSkeleton key={i} />;
               })}
-          </div>
+          </Grid>
           {projects && projects.length <= 0 && !isLoading && (
             <NotFound
               title={"No Project Found"}
@@ -357,9 +331,9 @@ const Projects = (props: ProjectsProps) => {
           <div
             className={cn(
               `
-                button-wrapper tw-w-full tw-flex tw-justify-end tw-items-center
-                tw-transition-all tw-duration-500 tw-ease-in-out
-                tw-overflow-hidden
+                button-wrapper tw-flex tw-w-full tw-items-center tw-justify-end
+                tw-overflow-hidden tw-transition-all tw-duration-500
+                tw-ease-in-out
               `,
               hasNextPage ? "tw-h-[48px] tw-opacity-100" : "tw-h-0 tw-opacity-0"
             )}
@@ -369,7 +343,7 @@ const Projects = (props: ProjectsProps) => {
               fit={screen === "sm" ? "full" : "inline"}
               className={cn(
                 `
-                  !tw-bg-black tw-mx-auto tw-px-[75px] tw-mt-auto
+                  tw-mx-auto tw-mt-auto !tw-bg-black tw-px-[75px]
 
                   lg:tw-mr-0
                 `,
@@ -377,14 +351,14 @@ const Projects = (props: ProjectsProps) => {
               )}
               onClick={async () => {
                 setIsLoading(true);
-                fetchProjects();
+                await fetchProjects();
                 setIsLoading(false);
               }}
             >
               See More
             </Button>
           </div>
-        </div>
+        </RoundedWrapper>
       </section>
     </>
   );

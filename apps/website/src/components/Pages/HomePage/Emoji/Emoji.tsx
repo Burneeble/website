@@ -3,23 +3,24 @@ import { EmojiProps } from "./Emoji.types";
 const Emoji = (props: EmojiProps) => {
   return (
     <section
+      id={"notSure"}
       className={`
-        emoji-section cs-section-structure tw-flex tw-items-center
-        tw-justify-center tw-relative
+        emoji-section cs-section-structure tw-relative tw-flex tw-items-center
+        tw-justify-center
       `}
     >
       <div
         className={`
-          emoji-shape tw-absolute tw-top-[50%] tw-left-[50%]
-          -tw-translate-x-[50%] -tw-translate-y-[50%] tw-w-[40rem] tw-h-[40rem]
+          emoji-shape tw-absolute tw-left-1/2 tw-top-1/2 tw-h-[40rem]
+          tw-w-[40rem] -tw-translate-x-1/2 -tw-translate-y-1/2
           tw-bg-[radial-gradient(circle,var(--primary-light)_0%,_rgba(0,0,0,0)_70%)]
           tw-opacity-[.5] tw-blur-[100px]
         `}
       />
       <div
         className={`
-          text tw-text-center cs-s tw-font-bowlby-one tw-font-normal tw-text-3xl
-          tw-text-headings tw-z-[2]
+          text tw-z-[2] tw-text-center cs-s tw-font-bowlby-one tw-text-3xl
+          tw-font-normal tw-text-headings
 
           md:tw-text-5xl
 

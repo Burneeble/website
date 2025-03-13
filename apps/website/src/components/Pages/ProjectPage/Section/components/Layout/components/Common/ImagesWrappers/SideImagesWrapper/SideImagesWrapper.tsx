@@ -14,7 +14,7 @@ const SideImagesWrapper = (props: SideImagesWrapperProps) => {
     <div
       className={cn(
         `
-          images tw-flex tw-items-center tw-justify-center tw-w-full
+          images tw-flex tw-w-full tw-items-center tw-justify-center
 
           lg:tw-max-w-[630px] lg:tw-flex-1
         `,

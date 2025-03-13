@@ -1,1 +1,23 @@
 // Landing
+.gallery-page {
+  .gallery-landing-section {
+    background: linear-gradient(180deg, black 0%, rgba(102 102 102 / 0%) 100%),
+      url("/img/gallery-page/landing/bg-sm.png") center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    @media (width >= 768px) {
+      background: linear-gradient(180deg, black 0%, rgba(102 102 102 / 0%) 100%),
+        url("/img/gallery-page/landing/bg-md.png") center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    @media (width >= 1300px) {
+      background: linear-gradient(180deg, black 0%, rgba(102 102 102 / 0%) 100%),
+        url("/img/gallery-page/landing/bg-xl.png") center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  }
+}

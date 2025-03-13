@@ -104,20 +104,20 @@ const ContactPopup = (props: ContactPopupProps) => {
           }, 400);
         }}
         className={`
-          contact-popup-wrapper tw-fixed tw-left-0 tw-top-0 tw-flex tw-h-screen
-          tw-w-screen tw-items-center tw-justify-center
-          tw-bg-[rgba(0,0,0,0.652)] tw-z-[55]
+          contact-popup-wrapper tw-fixed tw-left-0 tw-top-0 tw-z-[55] tw-flex
+          tw-h-screen tw-w-screen tw-items-center tw-justify-center
+          tw-bg-[rgba(0,0,0,0.652)]
         `}
       >
         <div
           onClick={(e) => e.stopPropagation()}
           ref={popupRef}
           className={`
-            contact-popup no-scrollbar tw-h-fit tw-max-h-[80%] tw-p-5
-            tw-w-[700px] tw-overflow-scroll tw-max-w-[90%] tw-bg-gradient-to-b
-            secondary-gradient-to-custom tw-rounded-lg tw-border
-            tw-border-[#483a32] tw-flex-col tw-justify-start tw-items-center
-            tw-gap-5 tw-inline-flex
+            contact-popup no-scrollbar tw-inline-flex tw-h-fit tw-max-h-[80%]
+            tw-w-[700px] tw-max-w-[90%] tw-flex-col tw-items-center
+            tw-justify-start tw-gap-5 tw-overflow-scroll tw-rounded-lg tw-border
+            tw-border-[#483a32] tw-bg-gradient-to-b tw-p-5
+            secondary-gradient-to-custom
           `}
         >
           {!isSubmitted && (
@@ -151,9 +151,9 @@ const ContactPopup = (props: ContactPopupProps) => {
               >
                 <p
                   className={`
-                    confirm tw-text-success tw-text-center tw-font-inter
-                    tw-font-[900] tw-flex tw-items-center tw-justify-center
-                    tw-gap-[.5rem] p-small
+                    confirm tw-flex tw-items-center tw-justify-center
+                    tw-gap-[.5rem] tw-text-center tw-font-inter tw-font-black
+                    tw-text-success p-small
                   `}
                 >
                   <FontAwesomeIcon
@@ -166,7 +166,7 @@ const ContactPopup = (props: ContactPopupProps) => {
                   {"We'll connect soon 🔥"}
                 </h2>
                 <p
-                  className={`tw-text-center tw-text-body tw-font-inter p-small`}
+                  className={`tw-text-center tw-font-inter tw-text-body p-small`}
                 >
                   We will reply to you as soon as possible. If you have any
                   other questions or additional information to share with us, do
@@ -197,19 +197,18 @@ const ContactPopup = (props: ContactPopupProps) => {
             <>
               <div
                 className={`
-                  contact-text-content-wrapper tw-flex tw-flex-col
+                  contact-text-content-wrapper tw-relative tw-flex tw-flex-col
                   tw-items-center tw-justify-center tw-gap-2.5 tw-self-stretch
-                  tw-relative
                 `}
               >
                 {isSubmitting && (
                   <div
                     className={`
-                      tw-absolute loading-screen tw-top-1/2 tw-left-1/2
-                      -tw-translate-x-1/2 -tw-translate-y-1/2
-                      tw-w-[calc(100%+2.50rem)] tw-h-[calc(100%+2.50rem)]
-                      tw-flex tw-items-center tw-justify-center
-                      tw-bg-[rgba(0,0,0,.6)] tw-z-[25]
+                      tw-absolute loading-screen tw-left-1/2 tw-top-1/2
+                      tw-z-[25] tw-flex tw-h-[calc(100%+2.50rem)]
+                      tw-w-[calc(100%+2.50rem)] -tw-translate-x-1/2
+                      -tw-translate-y-1/2 tw-items-center tw-justify-center
+                      tw-bg-[rgba(0,0,0,.6)]
                     `}
                   >
                     <Spinner size="default" />
@@ -217,8 +216,8 @@ const ContactPopup = (props: ContactPopupProps) => {
                 )}
                 <h2
                   className={`
-                    contact-popup-title tw-text-center tw-inline-flex
-                    tw-items-center tw-justify-center tw-gap-2.5 tw-self-stretch
+                    contact-popup-title tw-inline-flex tw-items-center
+                    tw-justify-center tw-gap-2.5 tw-self-stretch tw-text-center
                   `}
                 >
                   Get in Touch 🔥

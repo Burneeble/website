@@ -100,19 +100,18 @@ const Technology = (props: TechnologyProps) => {
     <div
       className={cn(
         `
-          technology tw-w-[157px] tw-h-[58px] tw-py-[15.27px]
+          technology tw-inline-flex tw-h-[58px] tw-w-[157px] tw-max-w-[90vw]
+          tw-flex-col tw-items-center tw-justify-center tw-rounded
           tw-bg-gradient-to-r tw-from-[var(--primary-default)]
-          tw-to-[var(--primary-lighter)] tw-rounded tw-flex-col
-          tw-justify-center tw-items-center tw-inline-flex tw-text-[100px]
+          tw-to-[var(--primary-lighter)] tw-py-[15.27px] tw-text-[100px]
           tw-text-headings tw-transition-all tw-duration-200 tw-ease-in-out
-          tw-max-w-[90vw]
 
           hover:tw-bg-gradient-to-r hover:tw-from-brown-500
           hover:tw-to-brown-200
 
-          md:tw-w-[188.35px] md:tw-h-[62px] md:tw-text-[106px]
+          md:tw-h-[62px] md:tw-w-[188.35px] md:tw-text-[106px]
 
-          xl:tw-w-[324px] xl:tw-h-[106.06px] xl:tw-text-[152px]
+          xl:tw-h-[106.06px] xl:tw-w-[324px] xl:tw-text-[152px]
         `,
         !["sm", "md"].includes(screen) && "tw-relative"
       )}
@@ -137,26 +136,25 @@ const Technology = (props: TechnologyProps) => {
         ref={tooltip}
         className={cn(
           `
-            tw-absolute tw-justify-start tw-items-center tw-flex-col tw-top-full
-            tw-transition-opacity tw-duration-200 tw-ease-in-out tw-opacity-0
-            tw-flex tw-w-[30rem] tw-max-w-[90vw] tw-rounded-lg tw-border-[1px]
-            tw-border-solid tw-text-headings
-            tw-shadow-[0_5px_5px_rgba(0,0,0,0.26)] tw-bg-gradient-to-b
-            secondary-gradient-to-custom tw-border-[var(--secondary-default)]
-            tw-z-[2] tw-h-0 tw-max-h-0 tw-overflow-hidden tw-pointer-events-none
+            tw-pointer-events-none tw-absolute tw-top-full tw-z-[2] tw-flex
+            tw-h-0 tw-max-h-0 tw-w-[30rem] tw-max-w-[90vw] tw-flex-col
+            tw-items-center tw-justify-start tw-overflow-hidden tw-rounded-lg
+            tw-border-[1px] tw-border-solid tw-border-[var(--secondary-default)]
+            tw-bg-gradient-to-b tw-text-headings tw-opacity-0
+            tw-shadow-[0_5px_5px_rgba(0,0,0,0.26)] tw-transition-opacity
+            tw-duration-200 tw-ease-in-out secondary-gradient-to-custom
 
-            hover:tw-opacity-100 hover:tw-h-auto hover:tw-p-[20px]
-            hover:tw-max-h-[unset] hover:tw-overflow-visible
-            hover:tw-pointer-events-auto
+            hover:tw-pointer-events-auto hover:tw-h-auto hover:tw-max-h-[unset]
+            hover:tw-overflow-visible hover:tw-p-[20px] hover:tw-opacity-100
           `,
           isHovered &&
             `
-              tw-opacity-100 tw-h-auto tw-p-[20px] tw-overflow-visible
-              tw-max-h-[unset] tw-pointer-events-auto
+              tw-pointer-events-auto tw-h-auto tw-max-h-[unset]
+              tw-overflow-visible tw-p-[20px] tw-opacity-100
             `
         )}
       >
-        <p className="p-small tw-text-center tw-text-headings tw-font-bold">
+        <p className="p-small tw-text-center tw-font-bold tw-text-headings">
           {props.name}
         </p>
         <p className="p-smaller tw-text-center tw-font-light">

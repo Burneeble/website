@@ -13,19 +13,16 @@ const NotFound = (props: NotFoundProps) => {
       <NotFoundIcon className="tw-text-[100px] tw-text-body" />
       <div
         className={`
-          tw-self-stretch tw-text-center tw-font-inter tw-text-3xl tw-font-black
-          tw-leading-10 tw-text-body
+          not-found-text-content tw-inline-flex tw-w-[700px] tw-max-w-[90%]
+          tw-flex-col tw-items-center tw-justify-center
         `}
       >
-        {props.title}
-      </div>
-      <div
-        className={`
-          tw-text-center tw-font-inter tw-text-2xl tw-font-normal
-          tw-leading-[35px] tw-text-body
-        `}
-      >
-        {props.text}
+        <div
+          className={`p-default tw-self-stretch tw-text-center tw-font-black`}
+        >
+          {props.title}
+        </div>
+        <div className={`p-small tw-text-center`}>{props.text}</div>
       </div>
     </div>
   );

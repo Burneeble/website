@@ -88,6 +88,7 @@ const ReviewCard = (props: ReviewCardProps) => {
                 md:tw-h-[58px] md:tw-w-[58px]
               `
           )}
+          // TODO create a platform props to show different placeholder
           src={
             props.user.avatar ||
             "https://fiverr-res.cloudinary.com/npm-assets/layout-service/favicon.52df53a.ico"
@@ -113,8 +114,8 @@ const ReviewCard = (props: ReviewCardProps) => {
             <p
               className={cn(
                 `
-                  review-card-user-name tw-self-stretch tw-font-inter
-                  tw-text-2xl tw-font-black tw-leading-[35px] tw-text-headings
+                  review-card-user-name p-small tw-self-stretch tw-font-black
+                  tw-text-headings
                 `,
                 props.variant === "popup" && "tw-text-center"
               )}
@@ -148,14 +149,13 @@ const ReviewCard = (props: ReviewCardProps) => {
                   : `tw-justify-start`
               )}
             >
-              <div
+              <p
                 className={`
-                  review-card-country-name tw-font-inter tw-text-xl
-                  tw-font-light tw-leading-[30px] tw-text-body
+                  review-card-country-name p-smaller tw-font-light tw-text-body
                 `}
               >
                 {countryNames[props.user.countryCode]}
-              </div>
+              </p>
               {/* TODO create a flag component */}
 
               <img
@@ -173,26 +173,21 @@ const ReviewCard = (props: ReviewCardProps) => {
         <Rating ratingValue={props.rating} />
       )}
 
-      <div
+      <p
         className={cn(
-          "review",
-          "tw-font-inter tw-font-normal tw-text-body",
+          "review p-small",
+          "tw-font-normal",
           props.variant === "popup"
             ? `
               tw-overflow-y-scroll no-scrollbar tw-max-h-[150px] tw-text-center
-              tw-text-xl tw-leading-[30px]
+              tw-text-xl
             `
-            : `
-              review-card-review tw-line-clamp-3 tw-self-stretch tw-text-base
-              tw-leading-[25px]
-
-              md:tw-text-lg md:tw-leading-7
-            `,
+            : `review-card-review tw-line-clamp-3 tw-self-stretch`,
           props.variant === "popup" && props.projectUrl && "tw-mb-[16px]"
         )}
       >
         {props.review}
-      </div>
+      </p>
       {props.variant === "popup" && props.projectUrl && (
         <CTA projectUrl={props.projectUrl} text={"View Project"} />
       )}

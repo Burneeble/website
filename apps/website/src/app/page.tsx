@@ -59,7 +59,6 @@ export default async function Home() {
         className={`
           home-page cs-page tw-bg-gradient-to-t
           tw-from-[var(--secondary-darker)] tw-to-[var(--secondary-base)]
-          tw-from-0% tw-to-[8%]
         `}
       >
         <Hero />

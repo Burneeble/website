@@ -10,7 +10,7 @@ const OneImageLayout = (props: OneImageLayoutProps) => {
     <div
       className={cn(
         `
-          images-layout one-image-layout tw-relative tw-aspect-[630/532] tw-flex
+          images-layout one-image-layout tw-relative tw-flex tw-aspect-[630/532]
           tw-items-center tw-justify-center
         `,
         mainAxis === "height"
@@ -36,7 +36,7 @@ const OneImageLayout = (props: OneImageLayoutProps) => {
     >
       <img
         src={props.image1}
-        className={`tw-object-cover tw-aspect-[630/532] tw-h-full`}
+        className={`tw-aspect-[630/532] tw-h-full tw-object-cover`}
       />
     </div>
   );

@@ -7,3 +7,4 @@ export * from "./Spinner";
 export * from "./NotFound";
 export * from "./Bars";
 export * from "./ArticlePreview";
+export * from "./YoutubePreview";

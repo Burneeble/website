@@ -13,7 +13,7 @@ const ShapeBottomImagesWrapper = (props: ShapeBottomImagesWrapperProps) => {
   return (
     <div
       className={`
-        wrapper tw-relative tw-w-full tw-h-[calc(82px+(230/350*(100vw-40px)))]
+        wrapper tw-relative tw-h-[calc(82px+(230/350*(100vw-40px)))] tw-w-full
 
         lg:tw-mt-0 lg:tw-h-[35rem]
 
@@ -22,15 +22,15 @@ const ShapeBottomImagesWrapper = (props: ShapeBottomImagesWrapperProps) => {
     >
       <div
         className={`
-          images tw-flex tw-items-center tw-justify-center tw-z-[5] tw-absolute
-          tw-left-1/2 -tw-translate-x-1/2 tw-top-0 tw-w-[calc(100vw-40px)]
-          tw-aspect-[350/228]
+          images tw-absolute tw-left-1/2 tw-top-0 tw-z-[5] tw-flex
+          tw-aspect-[350/228] tw-w-[calc(100vw-40px)] -tw-translate-x-1/2
+          tw-items-center tw-justify-center
 
-          lg:tw-h-full lg:tw-aspect-[2/1] lg:tw-w-[unset]
+          lg:tw-aspect-[2/1] lg:tw-h-full lg:tw-w-[unset]
 
-          md:tw-h-[500px] md:tw-bottom-0 md:tw-top-[unset] md:tw-translate-y-0
+          md:tw-bottom-0 md:tw-top-[unset] md:tw-h-[500px] md:tw-translate-y-0
 
-          sm:tw-left-1/2 sm:tw-w-full sm:tw-h-[80%]
+          sm:tw-left-1/2 sm:tw-h-4/5 sm:tw-w-full
         `}
       >
         <ImageLayout

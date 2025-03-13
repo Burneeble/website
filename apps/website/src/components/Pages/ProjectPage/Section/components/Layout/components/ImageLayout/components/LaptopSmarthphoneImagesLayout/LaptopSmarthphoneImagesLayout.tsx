@@ -20,8 +20,9 @@ const LaptopSmarthphoneImagesLayout = (
     <div
       className={cn(
         `
-          images-layout laptop-smarthphone-images-layout tw-max-h-screen tw-flex
-          tw-items-center tw-justify-center tw-aspect-[350/228] tw-w-full
+          images-layout laptop-smarthphone-images-layout tw-flex
+          tw-aspect-[350/228] tw-max-h-screen tw-w-full tw-items-center
+          tw-justify-center
 
           md:tw-aspect-[2/1]
 
@@ -49,12 +50,12 @@ const LaptopSmarthphoneImagesLayout = (
       )}
       <div
         className={`
-          tw-aspect-[350/228] tw-flex tw-items-center tw-justify-center
-          tw-w-full tw-overflow-hidden
+          tw-flex tw-aspect-[350/228] tw-w-full tw-items-center
+          tw-justify-center tw-overflow-hidden
 
-          md:tw-h-[66%] md:tw-aspect-[224/462] md:-tw-translate-x-[20%]
+          md:tw-aspect-[224/462] md:tw-h-[66%] md:-tw-translate-x-[20%]
 
-          sm:tw-h-full sm:tw-w-auto sm:tw-aspect-[380/535]
+          sm:tw-aspect-[380/535] sm:tw-h-full sm:tw-w-auto
         `}
       >
         <SmarthphoneImageLayout
