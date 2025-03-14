@@ -39,7 +39,7 @@ const ContactPopup = (props: ContactPopupProps) => {
       formData.append("_wpcf7_unit_tag", "wpcf7-f20-o1");
 
       await fetch(
-        `https://burneeble.com/wp-json/contact-form-7/v1/contact-forms/592/feedback`,
+        `https://peachpuff-horse-188285.hostingersite.com/wp-json/contact-form-7/v1/contact-forms/592/feedback`,
         {
           method: "POST",
           body: formData,
