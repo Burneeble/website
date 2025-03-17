@@ -8,7 +8,14 @@ import { faReact, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { SkeletonTheme } from "react-loading-skeleton";
 import Image from "next/image";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
+import { usePathname } from "next/navigation";
 const LayoutWrapper = (props: LayoutWrapperProps) => {
+  const useCustomUrl = (id: string) => {
+    const pathname = usePathname();
+    const isHome = pathname === "/";
+
+    return isHome ? `#${id}` : `/homepage#${id}`;
+  };
   return (
     <>
       {/* TODO add a Suspense component */}
@@ -50,17 +57,17 @@ const LayoutWrapper = (props: LayoutWrapperProps) => {
               items: [
                 {
                   title: "Reviews",
-                  href: "/homepage#reviews",
+                  href: useCustomUrl("reviews"),
                   description: "We have a high satisfaction rate",
                 },
                 {
                   title: "Abilities",
-                  href: "/homepage#abilities",
+                  href: useCustomUrl("abilities"),
                   description: "We develop projects in all categories",
                 },
                 {
                   title: "Some Examples",
-                  href: "/homepage#showcase",
+                  href: useCustomUrl("showcase"),
                   description: "Check out some of our projects",
                 },
               ],
