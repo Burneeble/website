@@ -126,9 +126,12 @@ const ArticleContent = (props: ArticleContentProps) => {
       const anchorElements = doc.querySelectorAll("a");
       anchorElements.forEach((a) => {
         const href = a.getAttribute("href");
-        if (href && href.includes("https://burneeble.com")) {
+        if (
+          href &&
+          href.includes("https://peachpuff-horse-188285.hostingersite.com")
+        ) {
           const updatedHref = href.replace(
-            "https://burneeble.com",
+            "https://peachpuff-horse-188285.hostingersite.com",
             `${window ? window.location.origin : ""}/blog/article`
           );
           a.setAttribute("href", updatedHref);
