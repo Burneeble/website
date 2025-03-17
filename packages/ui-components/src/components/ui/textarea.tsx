@@ -6,8 +6,8 @@ import { useCustomPlaceholder } from "@/hooks/useCustomPlaceholderStyle";
 const textarea = React.forwardRef<
   HTMLTextAreaElement,
   React.ComponentProps<"textarea">
->(({ className, ...props }) => {
-  const inputRef = useCustomPlaceholder<HTMLTextAreaElement>();
+>(({ className, ...props }, ref) => {
+  ref = useCustomPlaceholder<HTMLTextAreaElement>();
 
   return (
     <textarea
@@ -32,7 +32,7 @@ const textarea = React.forwardRef<
           ? "tw-border-error"
           : `input-placeholder tw-border-tertiary`
       )}
-      ref={inputRef}
+      ref={ref}
       {...props}
     />
   );

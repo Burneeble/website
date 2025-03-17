@@ -20,38 +20,44 @@ const HomePageProviders = dynamic(
 
 export default async function Home() {
   //SSR data fetching
+  let projects = null;
+  let skills = null;
 
-  const [projectsInfo, skillsInfo] = await Promise.all([
-    ProjectService.instance.getProjects(),
-    SkillService.instance.getSkills(),
-  ]);
+  try {
+    const [projectsInfo, skillsInfo] = await Promise.all([
+      ProjectService.instance.getProjects(),
+      SkillService.instance.getSkills(),
+    ]);
 
-  const projects = JSON.parse(
-    JSON.stringify(
-      projectsInfo.map((project) => {
-        return {
-          thumbnailUrl: project.thumbnailUrl,
-          categories: project.categories,
-          title: project.title,
-          description: project.description,
-          projectUrl: project.projectUrl,
-        };
-      })
-    )
-  );
+    projects = JSON.parse(
+      JSON.stringify(
+        projectsInfo.map((project) => {
+          return {
+            thumbnailUrl: project.thumbnailUrl,
+            categories: project.categories,
+            title: project.title,
+            description: project.description,
+            projectUrl: project.projectUrl,
+          };
+        })
+      )
+    );
 
-  const skills = JSON.parse(
-    JSON.stringify(
-      skillsInfo.map((skill) => {
-        return {
-          title: skill.title,
-          sm: skill.sm,
-          md: skill.md,
-          xl: skill.xl,
-        };
-      })
-    )
-  );
+    skills = JSON.parse(
+      JSON.stringify(
+        skillsInfo.map((skill) => {
+          return {
+            title: skill.title,
+            sm: skill.sm,
+            md: skill.md,
+            xl: skill.xl,
+          };
+        })
+      )
+    );
+  } catch (err) {
+    console.log("error getting projects and skills", err);
+  }
 
   return (
     <HomePageProviders>
@@ -63,9 +69,10 @@ export default async function Home() {
       >
         <Hero />
         <Customers />
-        <Abilities skills={skills} />
+        {skills && <Abilities skills={skills} />}
         <Emoji />
-        <Showcase projects={projects} />
+        {projects && <Showcase projects={projects} />}
+
         <Contact />
         <Blog />
         <Congrats />

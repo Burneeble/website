@@ -11,8 +11,7 @@ import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 const LayoutWrapper = (props: LayoutWrapperProps) => {
   return (
     <>
-      {/* tw-pb-2.5
-    tw-pt-5 tw-px-5 */}
+      {/* TODO add a Suspense component */}
       <header
         className={`
           cs-website-max-width cs-website-horizontal-padding tw-absolute
@@ -81,7 +80,7 @@ const LayoutWrapper = (props: LayoutWrapperProps) => {
           ]}
         />
       </header>
-      <main>
+      <main className="tw-min-h-screen tw-relative">
         <SkeletonTheme baseColor="rgba(43,43,43,1)" highlightColor="#322923">
           {props.children}
         </SkeletonTheme>

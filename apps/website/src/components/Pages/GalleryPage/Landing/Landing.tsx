@@ -9,6 +9,7 @@ const Landing = (props: LandingProps) => {
   const { screen } = useClientInfoService();
 
   return (
+    // TODO remove vertical scrolling
     <section
       className={`
         gallery-landing-section tw-flex tw-h-[622px] tw-items-center

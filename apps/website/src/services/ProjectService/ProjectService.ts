@@ -192,6 +192,7 @@ export class ProjectService {
       query: GET_CATEGORIES_QUERY,
     });
 
+    console.log("DATA", data);
     if (!data) return [];
 
     const categories: string[] = data.projectCategories
