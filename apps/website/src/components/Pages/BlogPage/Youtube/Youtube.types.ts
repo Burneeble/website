@@ -1,4 +1,6 @@
-export interface YoutubeProps {}
+export interface YoutubeProps {
+  className?: string;
+}
 
 export interface YoutubeVideo {
   thumbnail: string;

@@ -50,7 +50,6 @@ const ArticlePage = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
 
   const res = await ArticleService.instance.getArticle(slug);
-
   if (!res) {
     redirect("/not-found");
   }

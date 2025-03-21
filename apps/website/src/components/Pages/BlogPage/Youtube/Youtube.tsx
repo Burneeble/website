@@ -12,6 +12,7 @@ import {
 } from "@burneeble/ui-components";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import he from "he";
 
 const Youtube = (props: YoutubeProps) => {
   //States
@@ -84,7 +85,7 @@ const Youtube = (props: YoutubeProps) => {
             })
             .slice(0, 3)
             .map((item: any) => ({
-              title: item.snippet.title,
+              title: he.decode(item.snippet.title),
               thumbnail: item.snippet.thumbnails.high.url,
               url: `https://www.youtube.com/watch?v=${item.id.videoId}`,
             }))
@@ -100,11 +101,13 @@ const Youtube = (props: YoutubeProps) => {
 
   return (
     <section
-      className={`
-        youtube cs-website-vertical-padding cs-bottom-padding-for-footer
-        tw-relative tw-flex tw-flex-col cs-gap-between-content tw-items-center
-        tw-justify-center
-      `}
+      className={cn(
+        `
+          youtube cs-website-vertical-padding tw-relative tw-flex tw-flex-col
+          cs-gap-between-content tw-items-center tw-justify-center
+        `,
+        props.className && props.className
+      )}
     >
       <div
         className={`

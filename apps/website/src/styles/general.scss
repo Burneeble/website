@@ -27,3 +27,9 @@ html {
 .blog-page {
   @apply tw-to-50% tw-from-50%;
 }
+
+.youtube-section-home-page {
+  .bg {
+    @apply tw-border-y;
+  }
+}

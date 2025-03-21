@@ -27,7 +27,7 @@ const YoutubePreview = (props: YoutubePreviewProps) => {
           src={props.thumbnail}
           className={`
             tw-bg-tertiary thumbnail tw-aspect-[304/171] tw-w-full
-            tw-rounded-t-md tw-border tw-border-solid tw-border-neutral
+            tw-rounded-2xl tw-border tw-border-solid tw-border-neutral
             tw-object-cover tw-transition-all tw-duration-200 tw-ease-in-out
 
             group-hover:tw-border-tertiary
@@ -36,10 +36,10 @@ const YoutubePreview = (props: YoutubePreviewProps) => {
       </div>
       <p
         className={`
-          title p-smaller tw-font-inter tw-font-bold tw-transition-all
-          tw-duration-200 tw-ease-in-out
+          title p-smaller tw-font-inter tw-font-bold tw-text-headings
+          tw-transition-all tw-duration-200 tw-ease-in-out
 
-          group-hover:tw-text-headings
+          group-hover:tw-underline
         `}
       >
         {props.title}

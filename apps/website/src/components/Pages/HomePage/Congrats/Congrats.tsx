@@ -27,8 +27,6 @@ const Congrats = (props: CongratsProps) => {
     "R",
     "ArrowDown",
     "N",
-    "-",
-    "1",
   ];
   const arrowsIcons = {
     ArrowUp: faArrowUp,
@@ -132,9 +130,11 @@ const Congrats = (props: CongratsProps) => {
             md:tw-mb-[10px]
           `}
         >
-          {["sm", "md"].includes(screen)
+          {/* TODO add a coupon gift */}
+          {/* {["sm", "md"].includes(screen)
             ? "So...What are you going to do? We are available to work with you ;)"
-            : "We want to gave you a gift, just for you who came this far."}
+            : "We want to gave you a gift, just for you who came this far."} */}
+          So...What are you going to do? We are available to work with you!
         </p>
       </div>
       {["sm", "md"].includes(screen) ? (

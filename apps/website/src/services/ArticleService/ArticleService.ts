@@ -50,6 +50,8 @@ export class ArticleService {
   }
 
   public async getArticlesWithLimit(limit: number): Promise<ArticleModel[]> {
+    console.log("test3");
+
     const { data } = await GraphQLService.instance.client.query({
       query: GET_ARTICLES_QUERY_WITH_LIMIT,
       variables: { limit },
@@ -75,6 +77,7 @@ export class ArticleService {
   }
 
   public async getArticles(category?: string): Promise<Array<ArticleModel>> {
+    console.log("test1");
     const { data } = await GraphQLService.instance.client.query(
       category
         ? {
@@ -140,6 +143,7 @@ export class ArticleService {
   }
 
   public async getArticle(slug: string): Promise<ArticleModel | null> {
+    console.log("test2");
     const { data } = await GraphQLService.instance.client.query({
       query: GET_ARTICLE_QUERY,
       variables: { slug },

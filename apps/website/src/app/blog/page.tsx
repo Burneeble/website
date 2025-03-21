@@ -20,7 +20,7 @@ const BlogPage = async () => {
         <Latest />
         <StayTuned />
         <Discover />
-        <Youtube />
+        <Youtube className="cs-bottom-padding-for-footer" />
       </RoundedWrapper>
     </div>
   );

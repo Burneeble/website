@@ -8,14 +8,13 @@ import { faReact, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { SkeletonTheme } from "react-loading-skeleton";
 import Image from "next/image";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
-import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 const LayoutWrapper = (props: LayoutWrapperProps) => {
-  const useCustomUrl = (id: string) => {
-    const pathname = usePathname();
-    const isHome = pathname === "/";
+  useEffect(() => {
+    console.log("useScrollLock mounted");
+    window.scrollTo(0, 0);
+  }, []);
 
-    return isHome ? `#${id}` : `/homepage#${id}`;
-  };
   return (
     <>
       {/* TODO add a Suspense component */}
@@ -57,17 +56,17 @@ const LayoutWrapper = (props: LayoutWrapperProps) => {
               items: [
                 {
                   title: "Reviews",
-                  href: useCustomUrl("reviews"),
+                  href: "/homepage#reviews",
                   description: "We have a high satisfaction rate",
                 },
                 {
                   title: "Abilities",
-                  href: useCustomUrl("abilities"),
+                  href: "/homepage#abilities",
                   description: "We develop projects in all categories",
                 },
                 {
                   title: "Some Examples",
-                  href: useCustomUrl("showcase"),
+                  href: "/homepage#showcase",
                   description: "Check out some of our projects",
                 },
               ],

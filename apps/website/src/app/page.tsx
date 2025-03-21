@@ -7,6 +7,7 @@ import {
   Emoji,
   Hero,
   Showcase,
+  Youtube,
 } from "@/components/Pages";
 import { SkillService } from "@/services";
 import { ProjectService } from "@/services/ProjectService";
@@ -68,6 +69,13 @@ export default async function Home() {
         `}
       >
         <Hero />
+        <Youtube
+          className={`
+            youtube-section-home-page cs-section-structure tw-z-[1]
+            min-h-[unset] tw-mb-12
+          `}
+        />
+
         <Customers />
         {skills && <Abilities skills={skills} />}
         <Emoji />
