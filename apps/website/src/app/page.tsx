@@ -9,6 +9,7 @@ import {
   Showcase,
   Youtube,
 } from "@/components/Pages";
+import { fetchYoutubeVideos } from "@/lib/recentYoutubeVideos";
 import { SkillService } from "@/services";
 import { ProjectService } from "@/services/ProjectService";
 import dynamic from "next/dynamic";
@@ -23,6 +24,7 @@ export default async function Home() {
   //SSR data fetching
   let projects = null;
   let skills = null;
+  let videos = [] as Array<YoutubeVideo> | null;
 
   try {
     const [projectsInfo, skillsInfo] = await Promise.all([
@@ -56,6 +58,8 @@ export default async function Home() {
         })
       )
     );
+
+    videos = await fetchYoutubeVideos();
   } catch (err) {
     console.log("error getting projects and skills", err);
   }
@@ -70,6 +74,7 @@ export default async function Home() {
       >
         <Hero />
         <Youtube
+          video={videos}
           className={`
             youtube-section-home-page cs-section-structure tw-z-[1]
             min-h-[unset] tw-mb-12

@@ -1,6 +1,10 @@
 "use client";
 
-import { Button, useClientInfoService } from "@burneeble/ui-components";
+import {
+  Button,
+  useClientInfoService,
+  useScrollPos,
+} from "@burneeble/ui-components";
 import { CongratsProps } from "./Congrats.types";
 import {
   faArrowDown,
@@ -37,7 +41,9 @@ const Congrats = (props: CongratsProps) => {
   let listenerFlag: boolean = false;
 
   //Hooks
-  const { screen, scrollPos } = useClientInfoService();
+  const { screen } = useClientInfoService();
+  const { scrollPos } = useScrollPos();
+
   const congrats = useRef<HTMLDivElement>(null);
 
   //useEffect

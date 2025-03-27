@@ -64,9 +64,7 @@ const ClientInfoServiceProvider = (props: ClientInfoServiceProviderProps) => {
   };
 
   return (
-    <clientInfoServiceContext.Provider
-      value={{ width, screen, isClient, scrollPos: 0 }}
-    >
+    <clientInfoServiceContext.Provider value={{ width, screen, isClient }}>
       <svg className="svg-gradient">
         <defs>
           <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">

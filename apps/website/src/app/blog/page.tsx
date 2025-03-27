@@ -5,9 +5,20 @@ import {
   Latest,
   StayTuned,
   Youtube,
+  YoutubeVideo,
 } from "@/components/Pages";
+import { fetchYoutubeVideos } from "@/lib/recentYoutubeVideos";
 
 const BlogPage = async () => {
+  let videos = [] as Array<YoutubeVideo> | null;
+
+  try {
+    videos = await fetchYoutubeVideos();
+  } catch (err) {
+    console.error(err);
+    videos = null;
+  }
+
   return (
     <div
       className={`
@@ -20,7 +31,7 @@ const BlogPage = async () => {
         <Latest />
         <StayTuned />
         <Discover />
-        <Youtube className="cs-bottom-padding-for-footer" />
+        <Youtube video={videos} className={`cs-bottom-padding-for-footer`} />
       </RoundedWrapper>
     </div>
   );

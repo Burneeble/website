@@ -66,7 +66,7 @@ const ContactPopup = (props: ContactPopupProps) => {
 
   useEffect(() => {
     if (popupRef.current) {
-      if (props.isContactPopupOpen) {
+      if (props.isContactPopupOpen && !isClosing) {
         gsap.fromTo(
           popupRef.current,
           {
@@ -132,7 +132,6 @@ const ContactPopup = (props: ContactPopupProps) => {
               onClick={() => {
                 setIsClosing(true);
                 setTimeout(() => {
-                  setIsClosing(false);
                   props.setIsContactPopupOpen(false);
                 }, 400);
               }}

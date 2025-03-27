@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import { FooterProps } from "./Footer.types";
 import { useClientInfoService } from "@/services";
 import gsap from "gsap";
+import { useScrollPos } from "@/hooks";
 
 const Footer = (props: FooterProps) => {
   //States
   const [isBottom, setIsBottom] = useState<boolean>(false);
 
   //Hooks
-  const { scrollPos, isClient } = useClientInfoService();
+  const { isClient } = useClientInfoService();
+  const { scrollPos } = useScrollPos();
 
   //Effects
   useEffect(() => {

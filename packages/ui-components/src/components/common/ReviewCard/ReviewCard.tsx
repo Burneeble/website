@@ -89,10 +89,7 @@ const ReviewCard = (props: ReviewCardProps) => {
               `
           )}
           // TODO create a platform props to show different placeholder
-          src={
-            props.user.avatar ||
-            "https://fiverr-res.cloudinary.com/npm-assets/layout-service/favicon.52df53a.ico"
-          }
+          src={props.user.avatar || "/img/logos/FiverrLogo.webp"}
         />
         <div
           className={cn(
@@ -175,7 +172,7 @@ const ReviewCard = (props: ReviewCardProps) => {
 
       <p
         className={cn(
-          "review p-small",
+          "review p-smaller",
           "tw-font-normal",
           props.variant === "popup"
             ? `
