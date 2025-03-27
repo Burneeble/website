@@ -38,7 +38,6 @@ const ArticleContent = (props: ArticleContentProps) => {
   //Effects
   useEffect(() => {
     Prism.highlightAll();
-    console.log("highlighted");
   }, [content]);
 
   useEffect(() => {

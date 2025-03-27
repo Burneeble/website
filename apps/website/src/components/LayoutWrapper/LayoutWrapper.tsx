@@ -10,8 +10,8 @@ import Image from "next/image";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
 const LayoutWrapper = (props: LayoutWrapperProps) => {
+  //Every time the page is loaded, the scroll is set to the top to avoid scrolling bug
   useEffect(() => {
-    console.log("useScrollLock mounted");
     window.scrollTo(0, 0);
   }, []);
 

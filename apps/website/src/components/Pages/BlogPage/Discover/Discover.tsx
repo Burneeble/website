@@ -123,10 +123,6 @@ const Discover = (props: DiscoverProps) => {
     return articlesInfo;
   };
 
-  useEffect(() => {
-    console.log("sra", searchQuery);
-  }, [searchQuery]);
-
   return (
     <section
       className={`

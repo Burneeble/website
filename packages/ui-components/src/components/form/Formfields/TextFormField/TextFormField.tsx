@@ -12,7 +12,7 @@ import { TextFormFieldProps } from "./TextFormField.types";
 const TextFormField = (props: TextFormFieldProps) => {
   return (
     <>
-      <FormItem key={props.key}>
+      <FormItem>
         <FormLabel>{props.label}</FormLabel>
         <FormControl>
           <Input {...props} />
