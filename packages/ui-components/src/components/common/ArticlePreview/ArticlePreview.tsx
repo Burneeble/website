@@ -17,31 +17,31 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
   const router = useRouter();
 
   //Methods
-  const convertHtmlToPlainText = (html: string): string => {
-    const tempElement = document.createElement("div");
-    tempElement.innerHTML = html;
+  // const convertHtmlToPlainText = (html: string): string => {
+  //   const tempElement = document.createElement("div");
+  //   tempElement.innerHTML = html;
 
-    tempElement.querySelectorAll("script, style").forEach((el) => el.remove());
+  //   tempElement.querySelectorAll("script, style").forEach((el) => el.remove());
 
-    const plainText = tempElement.textContent || "";
+  //   const plainText = tempElement.textContent || "";
 
-    return plainText.replace(/\s+/g, " ").trim();
-  };
+  //   return plainText.replace(/\s+/g, " ").trim();
+  // };
 
-  const formatDescription = () => {
-    const sliced = convertHtmlToPlainText(props.description).slice(0, 191);
+  // const formatDescription = () => {
+  //   const sliced = convertHtmlToPlainText(props.description).slice(0, 191);
 
-    const lastSpace = sliced.lastIndexOf(" ");
+  //   const lastSpace = sliced.lastIndexOf(" ");
 
-    const final = sliced.slice(0, lastSpace);
+  //   const final = sliced.slice(0, lastSpace);
 
-    return (
-      final +
-      ` <strong class="tw-cursor-pointer ${
-        variant === "dark" ? "tw-text-action" : ""
-      }">Read more...</strong>`
-    );
-  };
+  //   return (
+  //     final +
+  //     ` <strong class="tw-cursor-pointer ${
+  //       variant === "dark" ? "tw-text-action" : ""
+  //     }">Read more...</strong>`
+  //   );
+  // };
 
   const highlightText = (text: string, query: string) => {
     if (!query.trim()) return text; // Avoid unnecessary changes
@@ -169,7 +169,7 @@ const ArticlePreview = (props: ArticlePreviewProps) => {
 
                 md:tw-text-xl md:tw-leading-[32px]
               `}
-              dangerouslySetInnerHTML={{ __html: formatDescription() }}
+              dangerouslySetInnerHTML={{ __html: props.description }}
             />
           </div>
         </div>

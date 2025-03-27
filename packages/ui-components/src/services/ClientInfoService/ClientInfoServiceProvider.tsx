@@ -11,11 +11,9 @@ const ClientInfoServiceProvider = (props: ClientInfoServiceProviderProps) => {
   const [width, setWidth] = useState<number | null>(null);
   const [screen, setScreen] = useState<Screen>("2xl");
   const [isClient, setIsClient] = useState<boolean>(false);
-  const [scrollPos, setScrollPos] = useState<number>(0);
 
   //Hooks
   const widthRef = useRef<number | null>(null);
-  const scrollPosRef = useRef<number>(0);
 
   //Effects
   useEffect(() => {
@@ -35,21 +33,6 @@ const ClientInfoServiceProvider = (props: ClientInfoServiceProviderProps) => {
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollPos = window.scrollY;
-      if (scrollPosRef.current !== currentScrollPos) {
-        scrollPosRef.current = currentScrollPos;
-        setScrollPos(currentScrollPos);
-      }
-    };
-
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
@@ -82,7 +65,7 @@ const ClientInfoServiceProvider = (props: ClientInfoServiceProviderProps) => {
 
   return (
     <clientInfoServiceContext.Provider
-      value={{ width, screen, isClient, scrollPos }}
+      value={{ width, screen, isClient, scrollPos: 0 }}
     >
       <svg className="svg-gradient">
         <defs>
