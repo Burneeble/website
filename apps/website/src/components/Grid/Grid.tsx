@@ -14,6 +14,9 @@ const Grid = (props: GridProps) => {
           lg:tw-grid lg:tw-grid-cols-3
 
           md:tw-gap-[30px] md:tw-grid md:tw-grid-cols-2
+
+          min-[600px]::tw-gap-[30px] min-[600px]:tw-grid
+          min-[600px]:tw-grid-cols-2
         `,
         props.className
       )}

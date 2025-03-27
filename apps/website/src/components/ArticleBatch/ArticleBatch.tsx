@@ -29,7 +29,6 @@ const ArticleBatch = (props: ArticleBatchProps) => {
 
   //Methods
   const fetchArticles = async () => {
-    console.log("test fetching articles");
     try {
       let data: ArticleModel[] | null = null;
 

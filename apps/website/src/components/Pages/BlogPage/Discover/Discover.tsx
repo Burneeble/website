@@ -144,6 +144,10 @@ const Discover = (props: DiscoverProps) => {
       <Grid>
         {articles &&
           articles.map((article, i) => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(article.content, "text/html");
+            const textContent = doc.body.textContent || "";
+
             return (
               <ArticlePreview
                 key={i}
@@ -153,7 +157,7 @@ const Discover = (props: DiscoverProps) => {
                 categorySlug={article.categories[0].slug}
                 slug={article.slug}
                 variant="dark"
-                description={article.content}
+                description={textContent.slice(0, 200)}
                 query={searchQuery || ""}
               />
             );
