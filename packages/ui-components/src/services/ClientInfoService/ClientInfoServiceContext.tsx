@@ -6,7 +6,6 @@ export interface ClientInfoServiceContent {
   height: number | null;
   screen: Screen;
   isClient: boolean;
-  scrollPos: number;
 }
 
 export const clientInfoServiceContext = createContext<ClientInfoServiceContent>(
@@ -15,6 +14,5 @@ export const clientInfoServiceContext = createContext<ClientInfoServiceContent>(
     height: null,
     screen: "2xl",
     isClient: false,
-    scrollPos: 0,
   }
 );

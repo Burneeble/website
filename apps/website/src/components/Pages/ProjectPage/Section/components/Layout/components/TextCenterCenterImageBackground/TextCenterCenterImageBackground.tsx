@@ -11,21 +11,21 @@ const TextCenterCenterImageBackground = (
     <div
       className={`
         text-top-center-full-image-bottom-center section-layout layout-structure
-        tw-flex-col tw-relative tw-w-screen tw-h-screen
+        tw-relative tw-h-screen tw-w-screen tw-flex-col
       `}
     >
       <SectionInfo {...props} />
       <div
         className={`
-          images tw-w-screen tw-h-screen tw-flex tw-items-center
-          tw-justify-center tw-z-[-1] tw-absolute tw-top-1/2 tw-left-1/2
-          -tw-translate-x-1/2 -tw-translate-y-1/2 tw relative tw-overflow-hidden
+          images tw-absolute tw-left-1/2 tw-top-1/2 tw-z-[-1] tw-flex
+          tw-h-screen tw-w-screen -tw-translate-x-1/2 -tw-translate-y-1/2
+          tw-items-center tw-justify-center tw-overflow-hidden
         `}
       >
         <div
           className={`
-            overlay tw-absolute tw-top-0 tw-bottom-0 tw-bg-[rgba(0,0,0,0.6)]
-            tw-w-full tw-h-full tw-z-[3]
+            overlay tw-absolute tw-inset-y-0 tw-z-[3] tw-h-full tw-w-full
+            tw-bg-[rgba(0,0,0,0.6)]
           `}
         />
         <ImageLayout {...props} />

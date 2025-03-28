@@ -8,7 +8,7 @@ const FullBottomImagesWrapper = (props: FullBottomImagesWrapperProps) => {
     <div
       className={cn(
         `
-          images tw-w-full tw-flex tw-items-center tw-justify-center
+          images tw-flex tw-w-full tw-items-center tw-justify-center
 
           md:tw-h-[600px]
         `,

@@ -8,13 +8,13 @@ const MobileSearchResult = (props: MobileSearchResultProps) => {
     <div
       className={cn(
         `
-          mobile-search-result tw-h-12 tw-p-2.5 tw-rounded-lg tw-justify-start
-          tw-items-center tw-gap-2.5 tw-inline-flex tw-border-solid
-          tw-border-[1px] tw-border-[rgba(0,0,0,0)] tw-cursor-pointer
+          mobile-search-result tw-inline-flex tw-h-12 tw-cursor-pointer
+          tw-items-center tw-justify-start tw-gap-2.5 tw-rounded-lg
+          tw-border-[1px] tw-border-solid tw-border-[rgba(0,0,0,0)] tw-p-2.5
           tw-transition-all tw-duration-200 tw-ease-in-out
         `,
         props.isActive
-          ? "tw-bg-secondary !tw-border-[var(--primary-light)]"
+          ? "!tw-border-[var(--primary-light)] tw-bg-secondary"
           : `
             tw-bg-neutral
 
@@ -27,8 +27,8 @@ const MobileSearchResult = (props: MobileSearchResultProps) => {
     >
       <div
         className={`
-          name tw-grow tw-shrink tw-basis-0 tw-text-text-body-active tw-text-lg
-          tw-font-normal tw-font-inter tw-leading-7
+          name p-small tw-shrink tw-grow tw-basis-0 tw-text-text-body-active
+          tw-font-normal
         `}
         dangerouslySetInnerHTML={{ __html: props.text }}
       />

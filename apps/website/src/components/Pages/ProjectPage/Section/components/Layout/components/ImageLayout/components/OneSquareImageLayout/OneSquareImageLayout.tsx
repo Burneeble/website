@@ -11,7 +11,7 @@ const OneSquareImageLayout = (props: OneSquareImageLayoutProps) => {
       className={cn(
         `
           images-layout one-square-image-layout tw-relative tw-aspect-squar
-          tw-flex tw-items-center tw-justify-center tw-aspect-square
+          tw-flex tw-aspect-square tw-items-center tw-justify-center
         `,
         mainAxis === "height"
           ? `
@@ -36,7 +36,7 @@ const OneSquareImageLayout = (props: OneSquareImageLayoutProps) => {
     >
       <img
         src={props.image1}
-        className={`tw-object-cover tw-aspect-square tw-h-full`}
+        className={`tw-aspect-square tw-h-full tw-object-cover`}
       />
     </div>
   );

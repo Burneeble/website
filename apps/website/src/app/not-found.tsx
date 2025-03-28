@@ -35,7 +35,7 @@ export default function NotFound() {
             className={`
               title tw-text-center tw-w-full
 
-              lg:!tw-leading-[6rem] lg:tw-text-start
+              lg:tw-text-start
             `}
           >
             <span className="cs-text-color-primary-gradient">Sorry!</span> This
@@ -43,9 +43,9 @@ export default function NotFound() {
           </h1>
           <p
             className={`
-              text tw-font-[500] tw-text-center p-default
+              text tw-text-center tw-font-[500] p-default
 
-              lg:tw-leading-[40px] lg:tw-text-start
+              lg:tw-text-start
             `}
           >
             The page you were looking for couldn’t be found. Go to other
@@ -97,7 +97,7 @@ export default function NotFound() {
           width={590}
           height={272}
           className={`
-            tw-max-w-[430px] tw-w-full
+            tw-w-full tw-max-w-[430px]
 
             lg:tw-max-w-[unset]
           `}
@@ -105,8 +105,8 @@ export default function NotFound() {
       </section>
       <div
         className={`
-          tw-bottom-shape tw-absolute tw-bottom-0 tw-left-1/2 tw-w-[120vw]
-          tw-translate-y-1/2 -tw-translate-x-1/2 tw-aspect-square
+          tw-bottom-shape tw-absolute tw-bottom-0 tw-left-1/2 tw-aspect-square
+          tw-w-[120vw] -tw-translate-x-1/2 tw-translate-y-1/2
           tw-bg-[radial-gradient(circle,var(--secondary-darker),rgba(0,0,0,0)_60%)]
         `}
       />

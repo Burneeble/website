@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import { FooterProps } from "./Footer.types";
 import { useClientInfoService } from "@/services";
 import gsap from "gsap";
+import { useScrollPos } from "@/hooks";
 
 const Footer = (props: FooterProps) => {
   //States
   const [isBottom, setIsBottom] = useState<boolean>(false);
 
   //Hooks
-  const { scrollPos, isClient } = useClientInfoService();
+  const { isClient } = useClientInfoService();
+  const { scrollPos } = useScrollPos();
 
   //Effects
   useEffect(() => {
@@ -98,7 +100,7 @@ const Footer = (props: FooterProps) => {
 
   return (
     <>
-      <div className="footer tw-relative tw-h-[125px]">
+      <div className="footer tw-relative tw-z-[15] tw-h-[80px]">
         <div
           className={`
             gradient gradient-one tw-h-[80px] tw-bg-[var(--primary-lighest)]

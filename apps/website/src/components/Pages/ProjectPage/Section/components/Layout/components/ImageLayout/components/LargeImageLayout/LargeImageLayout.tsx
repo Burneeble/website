@@ -22,7 +22,7 @@ const LargeImageLayout = (props: LargeImageLayoutProps) => {
     >
       <img
         src={props.image1}
-        className={`tw-object-cover tw-w-full tw-h-full`}
+        className={`tw-h-full tw-w-full tw-object-cover`}
       />
     </div>
   );

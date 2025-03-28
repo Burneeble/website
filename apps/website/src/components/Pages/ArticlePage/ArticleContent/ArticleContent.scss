@@ -1,0 +1,201 @@
+// ArticleContent
+
+@import "./components/components";
+
+.article-content {
+  .article-body {
+    .control-language {
+      background: #ffa50021;
+      border: 1px solid #ff5c02;
+    }
+
+    h2 {
+      @apply tw-mt-8;
+
+      // line-height: 37.6px !important;
+
+      // @media (width >= 425px) {
+      //   line-height: 56px !important;
+      // }
+
+      // @media (width >= 768px) {
+      //   line-height: 75.2px !important;
+      // };
+    }
+
+    p {
+      @apply p-small tw-text-body;
+    }
+
+    em {
+      @apply p-small tw-text-body;
+    }
+
+    mark {
+      @apply cs-text-color-primary-gradient;
+    }
+
+    strong {
+      @apply tw-tracking-[1px]  p-small tw-text-headings;
+    }
+
+    iframe,
+    figure {
+      @apply tw-mx-auto !tw-w-[90%];
+
+      img {
+        /* stylelint-disable-next-line property-no-vendor-prefix */
+        -o-object-fit: contain;
+        object-fit: contain;
+
+        @apply tw-mx-auto !tw-w-full tw-max-h-[600px];
+      }
+    }
+
+    .wp-block-table {
+      @apply tw-mx-auto !tw-w-full tw-overflow-x-auto;
+    }
+
+    iframe {
+      @apply tw-h-[unset] tw-aspect-[741.5/417] tw-outline-none;
+    }
+
+    figure {
+      @apply tw-flex tw-flex-col tw-gap-[10px];
+
+      figcaption {
+        @apply tw-font-inter tw-italic tw-text-action tw-text-center;
+      }
+    }
+
+    a {
+      @apply tw-text-action hover:tw-text-action-hover tw-transition-all tw-duration-200 tw-ease-in-out tw-underline;
+    }
+
+    table {
+      @apply tw-bg-[#ffa50021] tw-table-auto tw-border-separate tw-border-spacing-0 tw-border tw-border-active tw-rounded-[.5rem] tw-overflow-hidden;
+
+      th {
+        @apply p-small tw-border tw-border-active tw-px-4 tw-py-[.5rem] tw-text-left tw-font-bold tw-font-bowlby-one tw-text-headings;
+      }
+
+      td {
+        @apply p-small tw-border tw-border-active tw-px-4 tw-py-[1rem] tw-font-inter tw-text-headings first-of-type:tw-w-[17rem];
+      }
+    }
+
+    code {
+      @apply p-small tw-text-headings tw-bg-gradient-to-r primary-gradient tw-px-[.4rem] tw-shadow-inner tw-shadow-[rgba(0,0,0,.6)];
+
+      a {
+        @apply tw-text-headings hover:tw-text-headings;
+      }
+
+      mark {
+        background: unset;
+        background-clip: unset;
+        /* stylelint-disable-next-line property-no-vendor-prefix */
+        -webkit-background-clip: unset;
+        -webkit-text-fill-color: unset;
+
+        @apply tw-text-headings;
+      }
+    }
+
+    ul,
+    ol {
+      @apply tw-flex tw-flex-col tw-gap-[15px];
+
+      li {
+        @apply p-small tw-pl-[2rem] tw-relative tw-text-body after:tw-block after:tw-absolute after:tw-top-0 after:tw-left-0 after:tw-w-[1rem] after:tw-h-[29.5px] after:tw-bg-gradient-to-r;
+
+        &::after {
+          clip-path: polygon(0 0, 0% 100%, 100% 50%);
+          /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
+          @extend .primary-gradient !optional;
+        }
+      }
+    }
+
+    .yarpp-related {
+      ol {
+        @apply tw-flex tw-flex-col tw-items-start tw-justify-center tw-gap-[.5rem] p-default tw-mt-[.5rem];
+
+        li {
+          @apply tw-no-underline tw-pl-[2rem] tw-relative after:tw-block after:tw-absolute after:tw-top-1/2 after:-tw-translate-y-1/2 after:tw-left-0 after:tw-w-[1rem] after:tw-h-[1.5rem] after:tw-bg-gradient-to-r;
+
+          &::after {
+            clip-path: polygon(0 0, 0% 100%, 100% 50%);
+
+            /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
+            @extend .primary-gradient !optional;
+          }
+        }
+      }
+    }
+
+    .dm-code-snippet {
+      @apply tw-p-0 !tw-bg-[unset] tw-my-[15px];
+
+      .control-language {
+        @apply tw-border tw-bg-[#ffa50021] tw-border-active tw-p-[1em] tw-rounded-[.5rem];
+
+        :not(pre) > code[class*="language-"],
+        pre[class*="language-"] {
+          background: transparent;
+        }
+
+        .dm-buttons {
+          @apply tw-flex tw-justify-between tw-p-0 tw-mb-[10px];
+
+          .dm-buttons-left {
+            @apply tw-flex tw-items-center;
+
+            .dm-button-snippet {
+              @apply tw-w-[12px] tw-h-[12px] tw-rounded-full tw-mr-[10px];
+
+              &.red-button {
+                @apply tw-bg-[#f92a2a];
+              }
+
+              &.green-button {
+                @apply tw-bg-[#1ec500];
+              }
+
+              &.orange-button {
+                @apply tw-bg-[#ffb100];
+              }
+            }
+          }
+
+          .dm-buttons-right {
+            @apply tw-flex tw-items-center;
+
+            a {
+              @apply tw-opacity-50 tw-float-left tw-text-white tw-shadow-none tw-bg-gradient-to-r primary-gradient
+                 tw-px-[10px] tw-pt-[3px] tw-pb-[2px] tw-text-xs tw-uppercase tw-min-w-[94px] tw-text-center
+                  tw-tracking-[1px] tw-rounded-[3px] tw-transition-all tw-duration-200 
+                  tw-ease-in-out hover:tw-opacity-100 hover:tw-cursor-pointer tw-no-underline;
+
+              span {
+                @apply tw-font-inter tw-font-bold tw-text-white tw-text-xs tw-uppercase tw-tracking-[1px];
+              }
+            }
+          }
+        }
+      }
+    }
+
+    pre {
+      code {
+        background-image: unset;
+
+        @apply tw-shadow-[unset];
+      }
+    }
+  }
+
+  #ez-toc-container {
+    display: none;
+  }
+}

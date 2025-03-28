@@ -113,6 +113,7 @@ const Hero = (props: HeroProps) => {
           )}
         </div>
       </section>
+
       {width && width >= 992 && (
         <Suspense>
           <Canvas

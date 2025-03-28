@@ -20,7 +20,7 @@ const alignment = {
 
 // eslint-disable-next-line @burneeble/burneeble/camel-case-vars
 export const SectionInfoVariants = cva(
-  `info tw-flex tw-justify-center tw-flex-col cs-gap-between-text`,
+  `info tw-flex tw-flex-col tw-justify-center cs-gap-between-text`,
   {
     variants: {
       alignment,

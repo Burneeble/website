@@ -102,10 +102,11 @@ const Customers = (props: CustomersProps) => {
 
   return (
     <section
+      id={"reviews"}
       className={`
         customers cs-website-horizontal-padding cs-website-vertical-padding
-        cs-gap-between-content tw-flex tw-items-center tw-justify-center
-        tw-flex-col tw-relative tw-z-[2]
+        cs-gap-between-content tw-relative tw-z-[2] tw-flex tw-flex-col
+        tw-items-center tw-justify-center
       `}
     >
       <h2
@@ -215,8 +216,8 @@ const Customers = (props: CustomersProps) => {
       </div>
       <p
         className={`
-          sentences p-default tw-py-2 cs-website-horizontal-padding tw-text-end
-          tw-text-body tw-block tw-w-full tw-relative tw-max-w-screen-xl
+          sentences p-default tw-relative tw-py-2 cs-website-horizontal-padding
+          tw-block tw-w-full tw-max-w-screen-xl tw-text-end tw-text-body
 
           xl:tw-whitespace-nowrap
         `}
@@ -226,8 +227,8 @@ const Customers = (props: CustomersProps) => {
             <span
               key={i}
               className={`
-                sentence tw-transition-all tw-duration-200 tw-ease-in-out
-                tw-absolute tw-top-[.5rem] tw-right-0 tw-text-end
+                sentence tw-absolute tw-right-0 tw-top-[.5rem] tw-text-end
+                tw-transition-all tw-duration-200 tw-ease-in-out
 
                 ${phraseIndex === i ? "tw-opacity-1" : "tw-opacity-0"}
               `}

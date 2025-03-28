@@ -45,7 +45,7 @@ const SmarthphoneImageLayout = (props: SmarthphoneImageLayoutProps) => {
               : `tw-max-h-full`
           }
 
-          tw-w-full tw-aspect-[350/228]
+          tw-aspect-[350/228] tw-w-full
 
           ${
             props.layoutType !== LayoutType.TextCenterCenterImageBackground
@@ -63,8 +63,8 @@ const SmarthphoneImageLayout = (props: SmarthphoneImageLayoutProps) => {
           src="/img/project/sections/smartphone-base-layout.svg"
           className={cn(
             `
-              tw-absolute tw-top-1/2 tw-left-1/2 -tw-translate-x-1/2
-              -tw-translate-y-1/2 tw-aspect-[224/462] tw-h-full
+              tw-absolute tw-left-1/2 tw-top-1/2 tw-aspect-[224/462] tw-h-full
+              -tw-translate-x-1/2 -tw-translate-y-1/2
             `
           )}
         />
@@ -74,8 +74,8 @@ const SmarthphoneImageLayout = (props: SmarthphoneImageLayoutProps) => {
           src="/img/project/sections/tablet-layout.png"
           className={cn(
             `
-              tw-absolute tw-top-1/2 tw-left-1/2 -tw-translate-x-1/2
-              -tw-translate-y-1/2 tw-aspect-[380/535] tw-h-full
+              tw-absolute tw-left-1/2 tw-top-1/2 tw-aspect-[380/535] tw-h-full
+              -tw-translate-x-1/2 -tw-translate-y-1/2
             `
           )}
         />
@@ -83,13 +83,12 @@ const SmarthphoneImageLayout = (props: SmarthphoneImageLayoutProps) => {
       <img
         src={props.image1}
         className={cn(`
-          tw-object-cover tw-absolute tw-left-1/2 -tw-translate-x-1/2
-          -tw-translate-y-1/2 tw-w-full tw-aspect-[350/228] tw-top-1/2
-          tw-rounded-lg
+          tw-absolute tw-left-1/2 tw-top-1/2 tw-aspect-[350/228] tw-w-full
+          -tw-translate-x-1/2 -tw-translate-y-1/2 tw-rounded-lg tw-object-cover
 
-          md:tw-h-[95%] md:tw-w-[44%] md:tw-top-1/2
+          md:tw-top-1/2 md:tw-h-[95%] md:tw-w-[44%]
 
-          sm:tw-top-[50.3%] sm:tw-w-auto sm:tw-h-[94%] sm:tw-aspect-[280/400]
+          sm:tw-top-[50.3%] sm:tw-aspect-[280/400] sm:tw-h-[94%] sm:tw-w-auto
         `)}
         style={{ borderRadius: `${radius}px` }}
       />
@@ -97,7 +96,7 @@ const SmarthphoneImageLayout = (props: SmarthphoneImageLayoutProps) => {
         <img
           src="/img/project/sections/smartphone-dock-layout.svg"
           className={`
-            tw-absolute tw-top-[2.2%] tw-w-[23.7%] tw-left-1/2
+            tw-absolute tw-left-1/2 tw-top-[2.2%] tw-w-[23.7%]
             -tw-translate-x-1/2
           `}
         />

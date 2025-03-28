@@ -77,7 +77,7 @@ export default async function RootLayout({
 }) {
   return (
     <>
-      <html lang="en" className="tw-bg-black tw-max-w-[100vw]">
+      <html lang="en" className="tw-max-w-[100vw] tw-bg-black">
         <body
           className={cn(
             "burneeble-default-theme",
