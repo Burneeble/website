@@ -1,4 +1,9 @@
+"use client";
+import { Suspense } from "react";
 import { EmojiProps } from "./Emoji.types";
+import { Canvas } from "@react-three/fiber";
+import CanvaContent from "./components/CanvaContent";
+import * as THREE from "three";
 
 const Emoji = (props: EmojiProps) => {
   return (
@@ -17,24 +22,23 @@ const Emoji = (props: EmojiProps) => {
           tw-opacity-[.5] tw-blur-[100px]
         `}
       />
-      <div
-        className={`
-          text tw-z-[2] tw-text-center cs-s tw-font-bowlby-one tw-text-3xl
-          tw-font-normal tw-text-headings
+    
 
-          md:tw-text-5xl
-
-          xl:tw-text-7xl
-        `}
+    <Suspense
+      fallback={
+        <>
+          {/* TODO create 2d Placeholder Section */}
+          <p className="tw-text-headings">Loading</p>
+        </>
+      }
+    >
+      <Canvas
+        gl={{ antialias: true, outputColorSpace: THREE.SRGBColorSpace }}
+        style={{ height: "100vh", width: "100%" }}
       >
-        Still{" "}
-        <span
-          className={`tw-text-primary-default cs-text-color-primary-gradient`}
-        >
-          not sure
-        </span>
-        ?
-      </div>
+        <CanvaContent />
+      </Canvas>
+    </Suspense>
     </section>
   );
 };
