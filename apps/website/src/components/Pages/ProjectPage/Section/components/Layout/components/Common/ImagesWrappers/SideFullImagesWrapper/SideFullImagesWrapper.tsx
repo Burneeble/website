@@ -12,9 +12,9 @@ const SideFullImagesWrapper = (props: SideFullImagesWrapperProps) => {
     <div
       className={cn(
         `
-          wrapper tw-w-full tw-relative
+          wrapper tw-relative tw-w-full
 
-          lg:tw-flex-1 lg:tw-h-full lg:tw-max-w-[630px] lg:tw-w-auto
+          lg:tw-h-full lg:tw-w-auto lg:tw-max-w-[630px] lg:tw-flex-1
         `,
         props.imageLayoutType === ImageLayoutType.LaptopImageLayout
           ? `tw-h-[410px]`
@@ -24,15 +24,15 @@ const SideFullImagesWrapper = (props: SideFullImagesWrapperProps) => {
       <div
         className={cn(
           `
-            images tw-flex tw-items-center tw-justify-center tw-absolute
-            tw-top-1/2 -tw-translate-y-1/2 tw-w-full
+            images tw-absolute tw-top-1/2 tw-flex tw-w-full -tw-translate-y-1/2
+            tw-items-center tw-justify-center
 
             lg:tw-w-[calc(100vw/2-20px)] lg:tw-max-w-[unset]
           `,
           props.side === `right` ? `tw-left-0` : `tw-right-0`,
           props.imageLayoutType === ImageLayoutType.LaptopImageLayout
             ? `tw-h-full`
-            : `tw-max-w-[454px] tw-aspect-square`
+            : `tw-aspect-square tw-max-w-[454px]`
         )}
       >
         <ImageLayout

@@ -8,8 +8,8 @@ const ShapeVerticalImagesWrapper = (props: ShapeVerticalImagesWrapperProps) => {
   return (
     <div
       className={`
-        wrapper tw-w-screen tw-flex tw-items-center tw-justify-center
-        tw-relative tw-aspect-[400/300]
+        wrapper tw-relative tw-flex tw-aspect-[400/300] tw-w-screen
+        tw-items-center tw-justify-center
 
         lg:tw-h-[675px] lg:tw-flex-1
 
@@ -22,10 +22,10 @@ const ShapeVerticalImagesWrapper = (props: ShapeVerticalImagesWrapperProps) => {
       <div
         className={cn(
           `
-            images tw-flex tw-items-center tw-justify-center tw-w-full
-            tw-relative tw-max-w-[454px] tw-mx-[20px]
+            images tw-relative tw-mx-[20px] tw-flex tw-w-full tw-max-w-[454px]
+            tw-items-center tw-justify-center
 
-            lg:tw-max-w-[630px] lg:tw-mx-0 lg:tw-flex-1
+            lg:tw-mx-0 lg:tw-max-w-[630px] lg:tw-flex-1
 
             sm:tw-aspect-[630/532]
           `,

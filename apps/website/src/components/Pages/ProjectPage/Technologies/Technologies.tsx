@@ -10,12 +10,11 @@ const Technologies = (props: TechnologiesProps) => {
   return (
     <section
       className={`
-        technologies-section cs-section-structure
-        tw-bg-[radial-gradient(circle,_rgba(255,92,1,0.23)_4px,_transparent_4px)]
-        tw-bg-center tw-flex tw-items-center tw-justify-center tw-min-h-0
-        tw-max-w-full
+        technologies-section cs-section-structure tw-flex tw-min-h-0
+        tw-max-w-full tw-items-center tw-justify-center
+        tw-bg-[radial-gradient(circle,_rgba(255,92,1,0.23)_4px,_transparent_4px)_center]
 
-        xl:tw-py-[100px] xl:tw-px-[103px]
+        xl:tw-px-[103px] xl:tw-py-[100px]
       `}
     >
       <div
@@ -32,8 +31,8 @@ const Technologies = (props: TechnologiesProps) => {
         </h2>
         <div
           className={`
-            technologies tw-flex tw-flex-wrap tw-items-center tw-justify-center
-            tw-gap-[20px] tw-relative
+            technologies tw-relative tw-flex tw-flex-wrap tw-items-center
+            tw-justify-center tw-gap-[20px]
           `}
         >
           {props.technologies.map((technology, i) => {

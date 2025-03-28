@@ -36,8 +36,8 @@ const Hero = (props: HeroProps) => {
   };
 
   return (
-    <>
       <section
+        id={"hero"}
         className={`
           hero cs-section-structure cs-gap-between-content tw-flex tw-flex-col
           tw-pt-[134px] tw-relative tw-justify-start
@@ -47,6 +47,7 @@ const Hero = (props: HeroProps) => {
           xl:tw-justify-center xl:tw-pt-[86px]
         `}
       >
+
         <div
           className={`
             hero-shape tw-absolute tw-top-[50%] tw-left-[50%]
@@ -56,6 +57,7 @@ const Hero = (props: HeroProps) => {
             tw-opacity-[.5] tw-blur-[100px] tw-rotate-[30deg]
           `}
         ></div>
+
 
         <div
           className={`

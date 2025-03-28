@@ -24,8 +24,8 @@ const Section = (props: SectionProps) => {
       <section
         className={cn(
           `
-            section cs-section-structure tw-flex tw-items-center
-            tw-justify-center tw-flex-col
+            section cs-section-structure tw-flex tw-flex-col tw-items-center
+            tw-justify-center
 
             lg:tw-w-screen
           `,

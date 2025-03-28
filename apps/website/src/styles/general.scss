@@ -8,3 +8,28 @@
 body {
   min-height: 100vh;
 }
+
+// This behavior creates a scrolling bug
+html {
+  --scroll-behavior: smooth !important;
+
+  scroll-behavior: smooth;
+}
+
+.home-page {
+  @apply tw-to-[8%]  tw-from-0%;
+}
+
+.gallery-page {
+  @apply tw-from-50% tw-to-50%;
+}
+
+.blog-page {
+  @apply tw-to-50% tw-from-50%;
+}
+
+.youtube-section-home-page {
+  .bg {
+    @apply tw-border-y;
+  }
+}

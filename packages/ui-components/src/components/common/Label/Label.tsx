@@ -27,9 +27,10 @@ const Label = (props: LabelProps) => {
           `,
         },
         size: {
-          default: "tw-h-[40px] tw-text-xl", //small
-          sm: "tw-h-[31px] tw-px-3 tw-text-sm", //smaller
-          lg: "tw-h-[40px] tw-px-8 tw-text-2xl", //default
+          default: "tw-h-[40px] tw-text-xl", //small 20px
+          sm: "tw-h-[31px] tw-px-3 tw-text-sm", //smaller 14px
+          md: "tw-h-[31px] tw-px-3 tw-text-lg", // 18px
+          lg: "tw-h-[40px] tw-px-8 tw-text-2xl", //default 24px
         },
         clickable: {
           true: "tw-cursor-pointer",
@@ -48,8 +49,8 @@ const Label = (props: LabelProps) => {
     <div
       className={cn(
         `
-          label-wrapper tw-inline-flex tw-items-center tw-justify-center
-          tw-rounded-[9px]
+          label-wrapper tw-group tw-inline-flex tw-w-fit tw-items-center
+          tw-justify-center tw-rounded-[9px]
         `,
         (props.variant === "default" || !props.variant) &&
           "tw-bg-gradient-to-r tw-to-90% primary-light-gradient-to-secondary",
@@ -60,14 +61,19 @@ const Label = (props: LabelProps) => {
     >
       <label
         className={cn(
-          "label",
+          `label`,
           labelVariants({
             variant: props.variant,
             size: props.size,
             className: props.className,
           }),
           "tw-relative",
-          props.onClick && "tw-cursor-pointer"
+          props.onClick &&
+            `
+              tw-cursor-pointer
+
+              group-hover:tw-brightness-125
+            `
         )}
         onClick={(e) => {
           if (props.onClick) {

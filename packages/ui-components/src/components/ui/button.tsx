@@ -9,7 +9,7 @@ const buttonVariants = cva(
   `
     tw-relative tw-flex tw-cursor-pointer tw-items-center tw-justify-center
     tw-gap-2 tw-whitespace-nowrap tw-font-bowlby-one tw-text-lg tw-font-medium
-    tw-transition-all tw-duration-200 tw-ease-in-out
+    tw-transition-all tw-duration-300 tw-ease-in-out
 
     [&_svg]:tw-pointer-events-none [&_svg]:tw-size-5 [&_svg]:tw-shrink-0
 
@@ -38,6 +38,9 @@ const buttonVariants = cva(
         outline: `
           tw-border tw-border-input tw-bg-button-primary tw-text-button
           tw-shadow-sm
+        `,
+        youtube: `
+          tw-border tw-border-input tw-bg-[#ff0000] tw-text-button tw-shadow-sm
         `,
         secondary: `
           tw-border tw-border-tertiary tw-bg-button-secondary tw-text-button

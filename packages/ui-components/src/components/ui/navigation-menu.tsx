@@ -36,8 +36,8 @@ const NavigationMenuList = React.forwardRef<
     ref={ref}
     className={cn(
       `
-        tw-group tw-flex tw-flex-1 tw-list-none tw-items-center
-        tw-justify-center tw-space-x-1
+        tw-group tw-flex tw-flex-1 tw-cursor-pointer tw-list-none
+        tw-items-center tw-justify-center tw-space-x-1
       `,
       className
     )}

@@ -25,9 +25,10 @@ const Contact = (props: ContactProps) => {
 
   return (
     <section
+      id={"contact"}
       className={`
-        contact-section cs-section-structure cs-gap-between-content tw-flex
-        tw-items-center tw-justify-center tw-flex-col tw-relative
+        contact-section cs-section-structure cs-gap-between-content tw-relative
+        tw-flex tw-flex-col tw-items-center tw-justify-center
       `}
     >
       {isContactPopupOpen && (
@@ -39,8 +40,8 @@ const Contact = (props: ContactProps) => {
 
       <div
         className={`
-          contact-shape tw-absolute tw-top-[50%] tw-left-[50%]
-          -tw-translate-x-[50%] -tw-translate-y-[50%] tw-w-[80rem] tw-h-[40rem]
+          contact-shape tw-absolute tw-left-1/2 tw-top-1/2 tw-h-[40rem]
+          tw-w-[80rem] -tw-translate-x-1/2 -tw-translate-y-1/2
           tw-bg-[radial-gradient(_rgba(115,80,61,1)_10%,_#000_80%)]
           tw-opacity-[.5] tw-blur-[100px]
         `}
@@ -48,13 +49,13 @@ const Contact = (props: ContactProps) => {
 
       <div
         className={`
-          contact-text-content cs-gap-between-text tw-w-full tw-flex-col
-          tw-justify-center tw-items-center tw-inline-flex tw-z-[2]
+          contact-text-content cs-gap-between-text tw-z-[2] tw-inline-flex
+          tw-w-full tw-flex-col tw-items-center tw-justify-center
         `}
       >
         <h2
           className={`
-            tw-w-fit tw-mx-auto contact-text-content-title tw-self-stretch
+            tw-mx-auto tw-w-fit contact-text-content-title tw-self-stretch
             tw-text-center
           `}
         >
@@ -67,7 +68,7 @@ const Contact = (props: ContactProps) => {
         <p
           className={`
             contact-text-content-paragraph p-default tw-self-stretch
-            tw-text-center tw-text-body tw-font-normal
+            tw-text-center tw-font-normal tw-text-body
           `}
         >
           Contact us to talk about your project, we are ready to show you that
@@ -77,8 +78,8 @@ const Contact = (props: ContactProps) => {
       </div>
       <div
         className={`
-          contact-cards tw-justify-center tw-items-center tw-gap-4
-          tw-inline-flex tw-flex-col tw-w-full tw-z-[2]
+          contact-cards tw-z-[2] tw-inline-flex tw-w-full tw-flex-col
+          tw-items-center tw-justify-center tw-gap-4
 
           2lg:tw-h-[441px] 2lg:tw-flex-row
         `}

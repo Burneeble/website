@@ -33,7 +33,7 @@ const ArticlePreviewSkeleton = (props: ArticlePreviewSkeletonProps) => {
         />
         <Skeleton
           className={`
-            tw-h-[25px] tw-w-[250px] tw-self-stretch tw-font-inter tw-text-lg
+            tw-h-[25px] tw-w-[200px] tw-self-stretch tw-font-inter tw-text-lg
             tw-font-normal tw-leading-7 tw-text-headings
           `}
         />

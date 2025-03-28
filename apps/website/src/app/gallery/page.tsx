@@ -37,15 +37,20 @@ export async function generateMetadata() {
 }
 
 const GalleryPage = async () => {
-  const res = await ProjectService.instance.getCategories();
-  const categories = JSON.parse(JSON.stringify(res));
+  let categories = null;
+
+  try {
+    const res = await ProjectService.instance.getCategories();
+    categories = JSON.parse(JSON.stringify(res));
+  } catch (error) {
+    console.error("Failed to fetch categories:", error);
+  }
 
   return (
     <div
       className={`
-        gallery-page cs-page tw-from-[var(--secondary-darker)]
-        tw-to-[var(--secondary-base)] tw-from-[50%] tw-to-[50%]
-        tw-bg-gradient-to-t
+        gallery-page cs-page tw-bg-gradient-to-t
+        tw-from-[var(--secondary-darker)] tw-to-[var(--secondary-base)]
       `}
     >
       <Landing />

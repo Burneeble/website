@@ -12,7 +12,14 @@ type Story = StoryObj<CarouselProps>;
 
 export const simpleCarousel: Story = {
   args: {
-    projects: [
+    cta: {
+      children: "See All Projects",
+      variant: "secondary",
+      size: "default",
+    },
+  },
+  render: (props) => {
+    const projects = [
       {
         thumbnail: "https://picsum.photos/500",
         categories: ["Mint Dapp", "Crossmint Integration", "Ethereum"],
@@ -37,41 +44,24 @@ export const simpleCarousel: Story = {
           "The Greens NFT Club is lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         projectUrl: "https://www.google.com",
       },
-      {
-        thumbnail: "https://picsum.photos/800/900",
-        categories: ["Mint Dapp", "Crossmint Integration", "Ethereum"],
-        title: "Project",
-        description:
-          "The Greens NFT Club is lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        projectUrl: "https://www.google.com",
-      },
-      {
-        thumbnail: "https://picsum.photos/100",
-        categories: ["Mint Dapp", "Crossmint Integration", "Ethereum"],
-        title: "Project",
-        description:
-          "The Greens NFT Club is lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        projectUrl: "https://www.google.com",
-      },
-      {
-        thumbnail: "https://picsum.photos/500/325",
-        categories: ["Mint Dapp", "Crossmint Integration", "Ethereum"],
-        title: "Project",
-        description:
-          "The Greens NFT Club is lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        projectUrl: "https://www.google.com",
-      },
-    ],
-    cta: {
-      children: "See All Projects",
-      variant: "secondary",
-      size: "default",
-    },
-  },
-  render: (props) => {
+    ];
+
     return (
       <div className="tw-mx-auto tw-flex tw-h-[50rem] tw-w-[60rem] tw-justify-center">
-        <Carousel {...props} />
+        <Carousel
+          labels={projects.map((proj) => {
+            return proj.categories.length <= 3
+              ? proj.categories
+              : proj.categories.slice(0, 3);
+          })}
+          items={projects.map((proj, i) => {
+            return (
+              <>
+                <p key={i}>{proj.title}</p>
+              </>
+            );
+          })}
+        ></Carousel>
       </div>
     );
   },

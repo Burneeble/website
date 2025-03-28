@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArticleBatchProps } from "./ArticleBatch.types";
+import { ArticleBatchProps, ArticleBatchVariant } from "./ArticleBatch.types";
 import { ArticleModel, useArticleService } from "@/services";
 import {
   ArticlePreview,
@@ -11,13 +11,14 @@ import {
   useClientInfoService,
 } from "@burneeble/ui-components";
 import { useRouter } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 const ArticleBatch = (props: ArticleBatchProps) => {
   //States
   const [articles, setArticles] = useState<ArticleModel[] | null>(null);
 
   //Hooks
-  const { getArticlesWithLimit } = useArticleService();
+  const { getArticlesWithLimit, getRelatedArticles } = useArticleService();
   const { screen, width } = useClientInfoService();
   const router = useRouter();
 
@@ -29,8 +30,23 @@ const ArticleBatch = (props: ArticleBatchProps) => {
   //Methods
   const fetchArticles = async () => {
     try {
-      const data = await getArticlesWithLimit(props.limit);
-      setArticles(data);
+      let data: ArticleModel[] | null = null;
+
+      switch (props.type) {
+        case ArticleBatchVariant.RELATED:
+          data = await getRelatedArticles(
+            props.articleSlug,
+            props.categorySlug,
+            props.limit
+          );
+          break;
+        case ArticleBatchVariant.LATEST:
+        default:
+          data = await getArticlesWithLimit(props.limit);
+          break;
+      }
+
+      setArticles(data || []);
     } catch (err) {
       console.log(err);
       NotificationHandler.instance.error("Failed to fetch articles");
@@ -40,12 +56,14 @@ const ArticleBatch = (props: ArticleBatchProps) => {
   return (
     <>
       {props.enableSliderResponsiveMode &&
+      articles &&
+      articles.length > 1 &&
       ["sm", "md", "lg"].includes(width ? screen : "sm") ? (
         <>
           <Carousel
             arrowsBackground="var(--secondary-darker)"
             cta={{
-              children: ["sm", "md"].includes(width ? screen : "sm")
+              children: ["sm", "md", "lg"].includes(width ? screen : "sm")
                 ? "Read More"
                 : "Read Other Articles",
               onClick: () => router.push("/blog"),
@@ -56,6 +74,7 @@ const ArticleBatch = (props: ArticleBatchProps) => {
                 ? articles.map((article, i) => {
                     return (
                       <ArticlePreview
+                        variant={props.variant}
                         key={i}
                         thumbnail={article.thumbnail}
                         title={article.title}
@@ -74,20 +93,28 @@ const ArticleBatch = (props: ArticleBatchProps) => {
         </>
       ) : (
         <div
-          className={`
-            article-batch tw-flex tw-flex-col tw-gap-[20px] tw-transition-all
-            tw-duration-200 tw-ease-in-out tw-relative tw-z-[5]
-            tw-max-w-[1300px] tw-w-full
+          className={cn(`
+            article-batch tw-relative tw-z-[5] tw-flex tw-w-full
+            tw-max-w-screen-xl tw-flex-col tw-gap-[20px] tw-transition-all
+            tw-duration-200 tw-ease-in-out
 
-            lg:tw-grid lg:tw-grid-cols-3
+            ${
+              articles && articles.length <= 2
+                ? `
+                  lg:tw-flex lg:tw-flex-row lg:tw-justify-center
+                  lg:tw-items-center
+                `
+                : `lg:tw-grid lg:tw-grid-cols-3`
+            }
 
             md:tw-gap-[30px]
-          `}
+          `)}
         >
           {articles
             ? articles.map((article, i) => {
                 return (
                   <ArticlePreview
+                    variant={props.variant}
                     key={i}
                     thumbnail={article.thumbnail}
                     title={article.title}
@@ -95,6 +122,9 @@ const ArticleBatch = (props: ArticleBatchProps) => {
                     categorySlug={article.categories[0].slug}
                     slug={article.slug}
                     description={article.content}
+                    className={
+                      articles && articles.length <= 2 ? "lg:tw-w-[400px]" : ""
+                    }
                   />
                 );
               })

@@ -3,7 +3,7 @@
 import { ArticleService } from "./ArticleService";
 import { ArticleServiceProviderProps } from "./ArticleService.types";
 import { articleServiceContext } from "./ArticleServiceContext";
-import { ArticleModel } from "./models";
+import { ArticleModel, CategoryModel } from "./models";
 
 const ArticleServiceProvider = (props: ArticleServiceProviderProps) => {
   //Methods
@@ -13,8 +13,40 @@ const ArticleServiceProvider = (props: ArticleServiceProviderProps) => {
     return ArticleService.instance.getArticlesWithLimit(limit);
   };
 
+  const getArticles = async (category?: string): Promise<ArticleModel[]> => {
+    return ArticleService.instance.getArticles(category);
+  };
+
+  const getCategory = async (slug: string): Promise<CategoryModel | null> => {
+    return await ArticleService.instance.getCategory(slug);
+  };
+
+  const getArticle = async (slug: string): Promise<ArticleModel | null> => {
+    return await ArticleService.instance.getArticle(slug);
+  };
+
+  const getRelatedArticles = async (
+    articleId: string,
+    categorySlug: string,
+    limit: number
+  ): Promise<Array<ArticleModel> | null> => {
+    return await ArticleService.instance.getRelatedArticles(
+      articleId,
+      categorySlug,
+      limit
+    );
+  };
+
   return (
-    <articleServiceContext.Provider value={{ getArticlesWithLimit }}>
+    <articleServiceContext.Provider
+      value={{
+        getArticlesWithLimit,
+        getArticles,
+        getCategory,
+        getArticle,
+        getRelatedArticles,
+      }}
+    >
       {props.children}
     </articleServiceContext.Provider>
   );

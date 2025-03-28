@@ -39,6 +39,7 @@ const Showcase = (props: ShowcaseProps) => {
 
   return (
     <section
+      id={"showcase"}
       className={`
         showcase tw-flex tw-h-fit tw-flex-col tw-items-center tw-justify-center
         cs-gap-between-text tw-relative
@@ -47,30 +48,30 @@ const Showcase = (props: ShowcaseProps) => {
       {screen == "sm" ? (
         <div
           className={`
-            bg-shadow tw-w-[400.78px] tw-h-[90%] tw-origin-top-left
-            tw-rotate-[-30.59deg]
+            bg-shadow tw-absolute -tw-left-[10rem] tw-top-60 tw-z-[-1]
+            tw-h-[90%] tw-w-[400.78px] tw-origin-top-left tw-rotate-[-30.59deg]
+            tw-rounded-full
             tw-bg-[radial-gradient(_var(--secondary-lighter)_10%,_rgba(1,1,1,0)_80%)]
-            tw-rounded-full tw-absolute tw-blur-[100px] -tw-left-[10rem]
-            tw-top-[15rem] tw-z-[-1] tw-opacity-[.6]
+            tw-opacity-[.6] tw-blur-[100px]
           `}
         />
       ) : (
         <>
           <div
             className={`
-              showcase-shape tw-w-[306px] tw-h-[307px] tw-left-0
-              -tw-translate-x-[40%] tw-top-[10rem] tw-opacity-[.4]
+              showcase-shape tw-left-0 tw-top-40 tw-h-[307px] tw-w-[306px]
+              -tw-translate-x-[40%] tw-opacity-[.4]
 
-              xl:tw-w-[897px] xl:tw-h-[897px] xl:tw-top-0 xl:-tw-left-[150px]
+              xl:-tw-left-[150px] xl:tw-top-0 xl:tw-h-[897px] xl:tw-w-[897px]
               xl:-tw-translate-y-[40%]
             `}
           />
           <div
             className={`
-              showcase-shape tw-w-[257px] tw-h-[256px] tw-right-0
-              tw-translate-x-[40%] tw-top-[10rem] tw-opacity-[.6]
+              showcase-shape tw-right-0 tw-top-40 tw-h-[256px] tw-w-[257px]
+              tw-translate-x-[40%] tw-opacity-[.6]
 
-              xl:tw-w-[647px] xl:tw-h-[647px] xl:tw-top-0 xl:-tw-right-[150px]
+              xl:-tw-right-[150px] xl:tw-top-0 xl:tw-h-[647px] xl:tw-w-[647px]
               xl:-tw-translate-y-1/2
             `}
           />
@@ -83,7 +84,7 @@ const Showcase = (props: ShowcaseProps) => {
           Check out{" "}
           <span
             className={`
-              cs-text-color-primary-gradient tw-font-normal tw-font-bowlby-one
+              cs-text-color-primary-gradient tw-font-bowlby-one tw-font-normal
             `}
           >
             our work
@@ -93,7 +94,7 @@ const Showcase = (props: ShowcaseProps) => {
       </div>
       <div
         className={`
-          carousel-wrapper tw-w-full tw-max-w-[1200px] tw-px-[1.25rem]
+          carousel-wrapper tw-w-full tw-max-w-[1200px] tw-px-5
 
           md:tw-px-0
         `}
@@ -121,7 +122,7 @@ const Showcase = (props: ShowcaseProps) => {
                   className={cn(
                     `
                       hover-layer tw-absolute tw-left-0 tw-top-0 tw-h-full
-                      tw-w-full tw-bg-black/60 tw-opacity-0 tw-backdrop-blur-sm
+                      tw-w-full tw-bg-black/70 tw-opacity-0 tw-backdrop-blur-sm
                       tw-transition-all tw-duration-500 tw-ease-in-out
 
                       hover:tw-opacity-100
@@ -154,12 +155,7 @@ const Showcase = (props: ShowcaseProps) => {
                     <h2
                       className={`
                         project-title tw-flex tw-items-center tw-gap-[10px]
-                        tw-text-center tw-font-bowlby-one tw-text-2xl
-                        tw-font-normal tw-text-headings
-
-                        lg:tw-text-5xl
-
-                        md:tw-text-4xl
+                        tw-text-center
                       `}
                     >
                       {proj.title}
@@ -180,16 +176,7 @@ const Showcase = (props: ShowcaseProps) => {
                         `}
                       />
                     </h2>
-                    <p
-                      className={`
-                        desc tw- tw-text-center tw-font-inter tw-text-md
-                        tw-font-normal tw-text-body
-
-                        lg:tw-text-2xl
-
-                        md:tw-text-lg md:tw-leading-[35px]
-                      `}
-                    >
+                    <p className={`desc p-small tw-text-center`}>
                       {proj.description}
                     </p>
                     <CTA

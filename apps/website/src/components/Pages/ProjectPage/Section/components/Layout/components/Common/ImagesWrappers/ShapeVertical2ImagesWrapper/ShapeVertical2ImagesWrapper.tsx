@@ -10,9 +10,9 @@ const ShapeVertical2ImagesWrapper = (
   return (
     <div
       className={`
-        wrapper tw-relative tw-w-screen tw-aspect-[400/300]
+        wrapper tw-relative tw-aspect-[400/300] tw-w-screen
 
-        lg:tw-flex-1 lg:tw-h-[90vh]
+        lg:tw-h-[90vh] lg:tw-flex-1
 
         md:tw-aspect-auto md:tw-h-[535px]
 
@@ -23,12 +23,13 @@ const ShapeVertical2ImagesWrapper = (
       <div
         className={cn(
           `
-            images tw-flex tw-items-center tw-justify-center tw-aspect-[350/230]
-            tw-absolute tw-top-1/2 -tw-translate-y-1/2 tw-left-1/2
-            -tw-translate-x-1/2 tw-w-[calc(100%-40px)] tw-max-w-[385px]
+            images tw-absolute tw-left-1/2 tw-top-1/2 tw-flex
+            tw-aspect-[350/230] tw-w-[calc(100%-40px)] tw-max-w-[385px]
+            -tw-translate-x-1/2 -tw-translate-y-1/2 tw-items-center
+            tw-justify-center
 
-            lg:tw-w-[calc(100%-40px)] lg:tw-aspect-[328/675] lg:tw-min-w-[320px]
-            lg:tw-h-[unset] lg:tw-max-w-[330px]
+            lg:tw-aspect-[328/675] lg:tw-h-[unset] lg:tw-w-[calc(100%-40px)]
+            lg:tw-min-w-[320px] lg:tw-max-w-[330px]
 
             md:tw-aspect-square md:tw-h-[85%] md:tw-w-auto md:tw-max-w-[unset]
 
@@ -38,11 +39,11 @@ const ShapeVertical2ImagesWrapper = (
             props.imageLayoutType
           )
             ? `lg:tw-w-[675px] lg:tw-max-w-[675px]`
-            : `lg:tw-max-w-[330px] lg:tw-max-h-[100vh]`,
+            : `lg:tw-max-h-[100vh] lg:tw-max-w-[330px]`,
           props.side === "right"
             ? `lg:tw-left-[calc((100vw/2)-10px-74%)]`
             : `
-              lg:tw-right-[calc((100vw/2)-10px-74%)] lg:tw-left-[unset]
+              lg:tw-left-[unset] lg:tw-right-[calc((100vw/2)-10px-74%)]
               lg:tw-translate-x-1/2
             `
         )}

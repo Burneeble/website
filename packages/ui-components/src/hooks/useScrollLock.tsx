@@ -13,11 +13,16 @@ export const useScrollLock = () => {
   };
 
   const unlockScroll = () => {
+    document.documentElement.style.scrollBehavior = "auto"; // Disabilita smooth scroll
     document.body.style.overflow = "";
     document.body.style.position = "";
     document.body.style.top = "";
     document.body.style.width = "";
     window.scrollTo(0, scrollPosition.current);
+
+    setTimeout(() => {
+      document.documentElement.style.scrollBehavior = "smooth"; // Riattiva smooth scroll
+    }, 100); // Dopo un breve delay
   };
 
   return { lockScroll, unlockScroll };
