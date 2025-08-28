@@ -56,14 +56,14 @@ const CanvaContent = () => {
         <Html>
           <h2
             className={`
-              title tw-text-center tw-w-[450px] tw-min-w-[100%] tw-absolute
-              -tw-translate-x-1/2 -tw-translate-y-1/2
+              title tw-absolute tw-w-[450px] tw-min-w-full -tw-translate-x-1/2
+              -tw-translate-y-1/2 tw-text-center
             `}
           >
             Still{" "}
             <span
               className={`
-                cs-text-color-primary-gradient tw-font-normal tw-font-bowlby-one
+                cs-text-color-primary-gradient tw-font-bowlby-one tw-font-normal
               `}
             >
               not sure?

@@ -27,9 +27,9 @@ const Contact = (props: ContactProps) => {
 		<section
 			id={"contact"}
 			className={`
-        contact-section cs-section-structure cs-gap-between-content tw-relative
-        tw-flex tw-flex-col tw-items-center tw-justify-center
-      `}
+     contact-section cs-section-structure cs-gap-between-content tw-relative
+     tw-flex tw-flex-col tw-items-center tw-justify-center
+   `}
 		>
 			{isContactPopupOpen && (
 				<ContactPopup
@@ -40,24 +40,24 @@ const Contact = (props: ContactProps) => {
 
 			<div
 				className={`
-          contact-shape tw-absolute tw-left-1/2 tw-top-1/2 tw-h-[40rem]
-          tw-w-[80rem] -tw-translate-x-1/2 -tw-translate-y-1/2
-          tw-bg-[radial-gradient(_rgba(115,80,61,1)_10%,_#000_80%)]
-          tw-opacity-[.5] tw-blur-[100px]
-        `}
+      contact-shape tw-absolute tw-left-1/2 tw-top-1/2 tw-h-[40rem] tw-w-[80rem]
+      -tw-translate-x-1/2 -tw-translate-y-1/2
+      tw-bg-[radial-gradient(_rgba(115,80,61,1)_10%,_#000_80%)] tw-opacity-[.5]
+      tw-blur-[100px]
+    `}
 			></div>
 
 			<div
 				className={`
-          contact-text-content cs-gap-between-text tw-z-[2] tw-inline-flex
-          tw-w-full tw-flex-col tw-items-center tw-justify-center
-        `}
+      contact-text-content cs-gap-between-text tw-z-[2] tw-inline-flex tw-w-full
+      tw-flex-col tw-items-center tw-justify-center
+    `}
 			>
 				<h2
 					className={`
-            tw-mx-auto tw-w-fit contact-text-content-title tw-self-stretch
-            tw-text-center
-          `}
+       tw-mx-auto tw-w-fit contact-text-content-title tw-self-stretch
+       tw-text-center
+     `}
 				>
 					Your Project {""}
 					<span className="cs-text-color-primary-gradient">
@@ -67,9 +67,9 @@ const Contact = (props: ContactProps) => {
 
 				<p
 					className={`
-            cs-max-width-paragraph-content contact-text-content-paragraph p-default tw-self-stretch
-            tw-text-center tw-font-normal tw-text-body
-          `}
+       cs-max-width-paragraph-content contact-text-content-paragraph p-default
+       tw-self-stretch tw-text-center tw-font-normal tw-text-body
+     `}
 				>
 					Contact us to talk about your project, we are ready to show you that
 					everything is possible with{" "}
@@ -78,11 +78,11 @@ const Contact = (props: ContactProps) => {
 			</div>
 			<div
 				className={`
-          contact-cards tw-z-[2] tw-inline-flex tw-w-full tw-flex-col
-          tw-items-center tw-justify-center tw-gap-4
+      contact-cards tw-z-[2] tw-inline-flex tw-w-full tw-flex-col
+      tw-items-center tw-justify-center tw-gap-4
 
-          2lg:tw-h-[441px] 2lg:tw-flex-row
-        `}
+      2lg:tw-h-[441px] 2lg:tw-flex-row
+    `}
 			>
 				<ContactCard
 					icon={"/img/logos/fiverr-logo.webp"}

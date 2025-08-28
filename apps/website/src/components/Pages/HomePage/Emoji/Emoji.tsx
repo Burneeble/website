@@ -10,17 +10,17 @@ const Emoji = (props: EmojiProps) => {
 		<section
 			id={"notSure"}
 			className={`
-        emoji-sectio tw-relative tw-flex tw-items-center  tw-min-h-screen cs-website-vertical-padding 
-        tw-justify-center
-      `}
+     emoji-sectio tw-relative tw-flex tw-min-h-screen tw-items-center
+     cs-website-vertical-padding tw-justify-center
+   `}
 		>
 			<div
 				className={`
-          emoji-shape tw-absolute tw-left-1/2 tw-top-1/2 tw-h-[40rem]
-          tw-w-[40rem] -tw-translate-x-1/2 -tw-translate-y-1/2
-          tw-bg-[radial-gradient(circle,var(--primary-light)_0%,_rgba(0,0,0,0)_70%)]
-          tw-opacity-[.5] tw-blur-[100px]
-        `}
+      emoji-shape tw-absolute tw-left-1/2 tw-top-1/2 tw-h-[40rem] tw-w-[40rem]
+      -tw-translate-x-1/2 -tw-translate-y-1/2
+      tw-bg-[radial-gradient(circle,var(--primary-light)_0%,_rgba(0,0,0,0)_70%)]
+      tw-opacity-[.5] tw-blur-[100px]
+    `}
 			/>
 
 			<Suspense

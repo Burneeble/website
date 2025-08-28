@@ -243,23 +243,23 @@ const ArticleContent = (props: ArticleContentProps) => {
         />
         <div
           className={`
-            article-footer tw-flex tw-w-full tw-flex-col tw-gap-[15px] tw-mt-8
+            article-footer tw-mt-8 tw-flex tw-w-full tw-flex-col tw-gap-[15px]
 
             md:tw-flex-row md:tw-items-center md:tw-justify-between
           `}
         >
           <p className="p-smaller tw-flex tw-flex-row tw-gap-2">
             Categories:
-            <span className="tw-flex tw-flex-row tw-gap-2 tw-flex-wrap">
+            <span className="tw-flex tw-flex-row tw-flex-wrap tw-gap-2">
               {props.article.categories.map((category, i) => {
                 return (
                   <>
                     <span
                       className={`
-                        tw-bg-button-primary tw-text-center tw-min-h-8
-                        tw-rounded-3xl tw-px-2 tw-font-bowlby-one
-                        tw-text-headings tw-text-base tw-leading-[100%]
-                        tw-cursor-default tw-content-center
+                        tw-min-h-8 tw-cursor-default tw-content-center
+                        tw-rounded-3xl tw-bg-button-primary tw-px-2
+                        tw-text-center tw-font-bowlby-one tw-text-base
+                        tw-leading-[100%] tw-text-headings
                       `}
                       key={i}
                     >

@@ -26,12 +26,12 @@ const Customers = (props: CustomersProps) => {
 			Worked hard, without stopping <br className="md:tw-hidden" /> and without
 			<br
 				className={`
-          tw-hidden
+      tw-hidden
 
-          md:tw-block
+      md:tw-block
 
-          xl:tw-hidden
-        `}
+      xl:tw-hidden
+    `}
 			/>{" "}
 			EVER saying no to
 			<br className="md:tw-hidden" /> you.
@@ -88,20 +88,19 @@ const Customers = (props: CustomersProps) => {
 		<section
 			id={"reviews"}
 			className={`
-        customers cs-website-horizontal-padding cs-website-vertical-padding
-        cs-gap-between-content tw-relative tw-z-[2] tw-flex tw-flex-col
-        tw-items-center tw-justify-center
-      `}
+     customers cs-website-horizontal-padding cs-website-vertical-padding
+     cs-gap-between-content tw-relative tw-z-[2] tw-flex tw-flex-col
+     tw-items-center tw-justify-center
+   `}
 		>
 			<h2
 				className={`
-          cs-website-horizontal-padding cs-website-max-width title
-          tw-text-center
+      cs-website-horizontal-padding cs-website-max-width title tw-text-center
 
-          md:tw-px-[31px]
+      md:tw-px-[31px]
 
-          xl:tw-px-[20px]
-        `}
+      xl:tw-px-[20px]
+    `}
 			>
 				{screen !== "sm" && "What "}
 				<span className="cs-text-color-primary-gradient">
@@ -114,17 +113,17 @@ const Customers = (props: CustomersProps) => {
 					<>
 						<div
 							className={`
-                shadow tw-left-0
+         shadow tw-left-0
 
-                ${scrollProgress === 0 ? "tw-opacity-0" : "tw-opacity-1"}
-              `}
+         ${scrollProgress === 0 ? "tw-opacity-0" : "tw-opacity-1"}
+       `}
 						/>
 						<div
 							className={`
-                shadow tw-right-0 tw-rotate-180
+         shadow tw-right-0 tw-rotate-180
 
-                ${scrollProgress === 100 ? "tw-opacity-0" : "tw-opacity-1"}
-              `}
+         ${scrollProgress === 100 ? "tw-opacity-0" : "tw-opacity-1"}
+       `}
 						/>
 					</>
 				)}
@@ -176,22 +175,22 @@ const Customers = (props: CustomersProps) => {
 			</div>
 			<p
 				className={`
-          sentences p-default tw-relative tw-py-2 cs-website-horizontal-padding
-          tw-block tw-w-full tw-max-w-screen-xl tw-text-end 
+      sentences p-default tw-relative tw-py-2 cs-website-horizontal-padding
+      tw-block tw-w-full tw-max-w-screen-xl tw-text-end
 
-          xl:tw-whitespace-nowrap
-        `}
+      xl:tw-whitespace-nowrap
+    `}
 			>
 				{sentences.map((phrase, i) => {
 					return (
 						<span
 							key={i}
 							className={`
-                sentence tw-absolute tw-right-0 tw-top-[.5rem] tw-text-end
-                tw-transition-all tw-duration-200 tw-ease-in-out
+         sentence tw-absolute tw-right-0 tw-top-[.5rem] tw-text-end
+         tw-transition-all tw-duration-200 tw-ease-in-out
 
-                ${phraseIndex === i ? "tw-opacity-1" : "tw-opacity-0"}
-              `}
+         ${phraseIndex === i ? "tw-opacity-1" : "tw-opacity-0"}
+       `}
 						>
 							{phrase}
 						</span>

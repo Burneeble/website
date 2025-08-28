@@ -45,34 +45,34 @@ const Youtube = (props: YoutubeProps) => {
 		<section
 			className={cn(
 				`
-          youtube cs-website-vertical-padding tw-relative tw-flex tw-flex-col
-          cs-gap-between-content tw-items-center tw-justify-center
-        `,
+      youtube cs-website-vertical-padding tw-relative tw-flex tw-flex-col
+      cs-gap-between-content tw-items-center tw-justify-center
+    `,
 				props.className && props.className
 			)}
 		>
 			<div
 				className={`
-          bg tw-absolute tw-left-1/2 tw-top-1/2 tw-z-[-1] tw-h-full tw-w-screen
-          -tw-translate-x-1/2 -tw-translate-y-1/2 tw-border-t tw-border-solid
-          tw-border-white
-        `}
+      bg tw-absolute tw-left-1/2 tw-top-1/2 tw-z-[-1] tw-h-full tw-w-screen
+      -tw-translate-x-1/2 -tw-translate-y-1/2 tw-border-t tw-border-solid
+      tw-border-white
+    `}
 			/>
 			<div
 				className={`
-           texts tw-flex tw-flex-col cs-gap-between-text tw-items-center
-          tw-justify-center
-        `}
+      texts tw-flex tw-flex-col cs-gap-between-text tw-items-center
+      tw-justify-center
+    `}
 			>
 				<div
 					className={`
-            icon-wrapper tw-relative
+       icon-wrapper tw-relative
 
-            after:tw-absolute after:tw-left-1/2 after:tw-top-1/2 after:tw-z-[-1]
-            after:tw-block after:tw-h-[20px] after:tw-w-[20px]
-            after:-tw-translate-x-1/2 after:-tw-translate-y-1/2
-            after:tw-rounded-full after:tw-bg-white
-          `}
+       after:tw-absolute after:tw-left-1/2 after:tw-top-1/2 after:tw-z-[-1]
+       after:tw-block after:tw-h-[20px] after:tw-w-[20px]
+       after:-tw-translate-x-1/2 after:-tw-translate-y-1/2 after:tw-rounded-full
+       after:tw-bg-white
+     `}
 				>
 					<FontAwesomeIcon
 						icon={faYoutube}
@@ -83,7 +83,10 @@ const Youtube = (props: YoutubeProps) => {
 					<span className="cs-text-color-primary-gradient">Watch our</span>{" "}
 					Videos!
 				</h2>
-				<p className="description cs-max-width-text-content  p-default tw-text-center tw-text-headings">
+				<p className={`
+      description cs-max-width-text-content p-default tw-text-center
+      tw-text-headings
+    `}>
 					Videos focused on developing with AI, from online and local tools,
 					creating new ones and much more. Have fun and learn at the same time.
 					🔥
@@ -91,10 +94,10 @@ const Youtube = (props: YoutubeProps) => {
 			</div>
 			<div
 				className={`
-          videos tw-relative tw-flex tw-aspect-[560/400] tw-w-full tw-gap-[21px]
+      videos tw-relative tw-flex tw-aspect-[560/400] tw-w-full tw-gap-[21px]
 
-          lg:tw-aspect-auto
-        `}
+      lg:tw-aspect-auto
+    `}
 			>
 				{[0, 1, 2].map((index) => {
 					return (
@@ -102,22 +105,21 @@ const Youtube = (props: YoutubeProps) => {
 							key={index}
 							className={cn(
 								`
-                  video-wrapper
+          video-wrapper
 
-                  lg:tw-flex-1
-                `,
+          lg:tw-flex-1
+        `,
 								["sm", "md", "lg"].includes(screen) &&
 									`
-                    tw-absolute tw-left-1/2 tw-top-1/2 tw-w-full
-                    -tw-translate-x-1/2 -tw-translate-y-1/2 tw-transition-all
-                    tw-duration-500 tw-ease-in-out
+           tw-absolute tw-left-1/2 tw-top-1/2 tw-w-full -tw-translate-x-1/2
+           -tw-translate-y-1/2 tw-transition-all tw-duration-500 tw-ease-in-out
 
-                    ${
+           ${
 											index === videoIndex
 												? `tw-pointer-events-auto tw-opacity-100`
 												: `tw-pointer-events-none tw-opacity-0`
 										}
-                  `
+         `
 							)}
 						>
 							{props.video && props.video[index] ? (

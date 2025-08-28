@@ -91,23 +91,23 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
 	return (
 		<div
 			className={`
-        skills-parallax tw-relative tw-flex tw-h-full tw-w-full tw-flex-col
-        tw-gap-[10px]
+     skills-parallax tw-relative tw-flex tw-h-full tw-w-full tw-flex-col
+     tw-gap-[10px]
 
-        lg:tw-h-[calc(100vh-60px)] lg:tw-max-h-[calc(100vh-60px)] lg:tw-flex-row
-        lg:tw-gap-[70px]
+     lg:tw-h-[calc(100vh-60px)] lg:tw-max-h-[calc(100vh-60px)] lg:tw-flex-row
+     lg:tw-gap-[70px]
 
-        sm:tw-gap-[30px]
-      `}
+     sm:tw-gap-[30px]
+   `}
 		>
 			<div
 				className={cn(
 					`
-            skill-info tw-relative tw-flex tw-w-full tw-flex-1 tw-flex-col
-            tw-items-start tw-justify-center tw-gap-[10px]
+       skill-info tw-relative tw-flex tw-w-full tw-flex-1 tw-flex-col
+       tw-items-start tw-justify-center tw-gap-[10px]
 
-            sm:tw-flex-[unset]
-          `
+       sm:tw-flex-[unset]
+     `
 				)}
 			>
 				{currentSkills.map((skill, i) => {
@@ -115,9 +115,9 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
 						<div
 							className={cn(
 								`
-                  wrapper tw-absolute tw-left-0 tw-top-0 tw-h-full tw-w-full
-                  tw-transition-all tw-duration-500 tw-ease-in-out
-                `,
+          wrapper tw-absolute tw-left-0 tw-top-0 tw-h-full tw-w-full
+          tw-transition-all tw-duration-500 tw-ease-in-out
+        `,
 								["sm", "md", "lg"].includes(screen) &&
 									`cs-website-horizontal-padding`,
 								props.currentIndex !== i ? `tw-opacity-0` : "tw-opacity-100"
@@ -142,30 +142,29 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
 			</div>
 			<div
 				className={`
-          skill-section tw-relative
+      skill-section tw-relative
 
-          lg:tw-relative lg:tw-bottom-[unset] lg:tw-min-h-full
+      lg:tw-relative lg:tw-bottom-[unset] lg:tw-min-h-full
 
-          sm:tw-absolute sm:tw-bottom-0 sm:tw-w-full
-        `}
+      sm:tw-absolute sm:tw-bottom-0 sm:tw-w-full
+    `}
 			>
 				<div
 					className={`
-            skills tw-max-w-full tw-overflow-hidden no-scrollbar
+       skills tw-max-w-full tw-overflow-hidden no-scrollbar
 
-            lg:tw-relative lg:tw-h-full lg:tw-overflow-visible
-          `}
+       lg:tw-relative lg:tw-h-full lg:tw-overflow-visible
+     `}
 					ref={skills}
 				>
 					<div
 						className={`
-              wrapper tw-relative tw-flex tw-justify-between
+        wrapper tw-relative tw-flex tw-justify-between
 
-              lg:tw-h-full lg:tw-max-h-full lg:!tw-w-[490px] lg:tw-flex-col
-              lg:tw-pb-0
+        lg:tw-h-full lg:tw-max-h-full lg:!tw-w-[490px] lg:tw-flex-col lg:tw-pb-0
 
-              sm:tw-pb-[30px]
-            `}
+        sm:tw-pb-[30px]
+      `}
 						style={{ width: `${100 * currentSkills.length}%` }}
 					>
 						{currentSkills.map((skill, i) => {
@@ -193,9 +192,9 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
 						<div
 							className={cn(
 								`
-                  end-bar tw-absolute tw-bottom-0 tw-left-[17px] tw-h-[8px]
-                  tw-w-[50vw] tw-bg-[var(--primary-lighest)] tw-transition-all
-                `,
+          end-bar tw-absolute tw-bottom-0 tw-left-[17px] tw-h-[8px] tw-w-[50vw]
+          tw-bg-[var(--primary-lighest)] tw-transition-all
+        `,
 								props.currentIndex === currentSkills.length - 1
 									? `tw-bg-[var(--primary-lighest)]`
 									: "tw-bg-[var(--secondary-darker)]"
@@ -213,9 +212,9 @@ const SkillsParallax = (props: SkillsParallaxProps) => {
 					<div
 						className={cn(
 							`
-                bar tw-absolute tw-bottom-0 tw-left-1/2 tw-block tw-h-[8px]
-                tw-translate-x-[-50%] tw-bg-[var(--primary-lighest)]
-              `
+         bar tw-absolute tw-bottom-0 tw-left-1/2 tw-block tw-h-[8px]
+         tw-translate-x-[-50%] tw-bg-[var(--primary-lighest)]
+       `
 						)}
 						style={{ width: `calc(100vw * ${currentSkills.length})` }}
 					/>

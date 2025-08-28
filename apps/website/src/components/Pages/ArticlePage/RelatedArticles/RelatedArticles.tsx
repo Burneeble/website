@@ -8,9 +8,9 @@ const RelatedArticles = (props: RelatedArticlesProps) => {
     <section
       className={`
         cs-section-structure cs-gap-between-content cs-bottom-padding-for-footer
-        related-articles tw-relative tw-flex tw-w-screen tw-max-w-[unset]
-        tw-flex-col tw-items-center tw-justify-center tw-border-t-2
-        tw-border-solid tw-border-white tw-bg-gradient-to-r tw-min-h-fit
+        related-articles tw-relative tw-flex tw-min-h-fit tw-w-screen
+        tw-max-w-[unset] tw-flex-col tw-items-center tw-justify-center
+        tw-border-t-2 tw-border-solid tw-border-white tw-bg-gradient-to-r
       `}
     >
       <h2 className="title tw-text-center">Related Articles</h2>

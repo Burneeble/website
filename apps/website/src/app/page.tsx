@@ -69,17 +69,17 @@ export default async function Home() {
 		<HomePageProviders>
 			<div
 				className={`
-          home-page cs-page tw-bg-gradient-to-t
-          tw-from-[var(--secondary-darker)] tw-to-[var(--secondary-base)]
-        `}
+      home-page cs-page tw-bg-gradient-to-t tw-from-[var(--secondary-darker)]
+      tw-to-[var(--secondary-base)]
+    `}
 			>
 				<Hero />
 				<Youtube
 					video={videos}
 					className={`
-            youtube-section-home-page cs-section-structure tw-z-[1]
-            min-h-[unset] tw-mb-12
-          `}
+       youtube-section-home-page cs-section-structure tw-z-[1] min-h-[unset]
+       tw-mb-12
+     `}
 				/>
 
 				<Customers />

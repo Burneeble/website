@@ -123,26 +123,26 @@ const Skill = (props: SkillProps) => {
 	return (
 		<div
 			className={`
-        skill tw-flex tw-gap-[26px]
+     skill tw-flex tw-gap-[26px]
 
-        sm:tw-h-full
-      `}
+     sm:tw-h-full
+   `}
 		>
 			{width && width >= 550 && (
 				<div
 					className={`
-            separator tw-relative tw-flex tw-min-h-full tw-min-w-[42px]
-            tw-justify-center
-          `}
+       separator tw-relative tw-flex tw-min-h-full tw-min-w-[42px]
+       tw-justify-center
+     `}
 				>
 					{!["sm", "md", "lg"].includes(screen) ? (
 						<>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								className={`
-                  tw-relative tw-z-[2] tw-h-[42px] tw-w-[42px]
-                  tw-drop-shadow-[0px_0px_1.5px_rgba(0,0,0,0.5)] tw-filter
-                `}
+          tw-relative tw-z-[2] tw-h-[42px] tw-w-[42px]
+          tw-drop-shadow-[0px_0px_1.5px_rgba(0,0,0,0.5)] tw-filter
+        `}
 								viewBox="0 0 448 512"
 							>
 								<path
@@ -155,27 +155,26 @@ const Skill = (props: SkillProps) => {
 					) : (
 						<FontAwesomeIcon
 							className={`
-                triangle fontawesome-gradient-icon tw-relative tw-z-[2]
-                tw-h-[50px] tw-w-[42px]
-              `}
+         triangle fontawesome-gradient-icon tw-relative tw-z-[2] tw-h-[50px]
+         tw-w-[42px]
+       `}
 							icon={faFire}
 						/>
 					)}
 					<div
 						className={cn(
 							`
-                rod tw-absolute tw-bottom-[-25px] tw-left-1/2
-                tw-h-[calc(100%-16px)] tw-w-[8px] -tw-translate-x-1/2
-                tw-bg-[var(--secondary-darker)]
+         rod tw-absolute tw-bottom-[-25px] tw-left-1/2 tw-h-[calc(100%-16px)]
+         tw-w-[8px] -tw-translate-x-1/2 tw-bg-[var(--secondary-darker)]
 
-                after:tw-absolute after:tw-left-0 after:tw-top-0 after:tw-block
-                after:tw-h-full after:tw-w-full after:tw-bg-gradient-to-b
-                after:tw-from-[var(--primary-default)]
-                after:tw-to-[var(--primary-lighest)] after:tw-transition-all
-                after:tw-duration-500 after:tw-content-['']
+         after:tw-absolute after:tw-left-0 after:tw-top-0 after:tw-block
+         after:tw-h-full after:tw-w-full after:tw-bg-gradient-to-b
+         after:tw-from-[var(--primary-default)]
+         after:tw-to-[var(--primary-lighest)] after:tw-transition-all
+         after:tw-duration-500 after:tw-content-['']
 
-                lg:tw-bottom-[-15px] lg:tw-h-[calc(100%-20px)]
-              `,
+         lg:tw-bottom-[-15px] lg:tw-h-[calc(100%-20px)]
+       `,
 							(
 								!["sm", "md", "lg"].includes(screen)
 									? props.currentIndex >= props.index
@@ -192,13 +191,12 @@ const Skill = (props: SkillProps) => {
 			<div
 				className={cn(
 					`
-            info tw-flex tw-flex-col tw-gap-[10px]
+       info tw-flex tw-flex-col tw-gap-[10px]
 
-            lg:tw-pb-[30px] lg:tw-transition-all lg:tw-duration-200
-            lg:tw-ease-in-out
+       lg:tw-pb-[30px] lg:tw-transition-all lg:tw-duration-200 lg:tw-ease-in-out
 
-            sm:tw-h-full
-          `,
+       sm:tw-h-full
+     `,
 					!["sm", "md", "lg"].includes(screen) &&
 						props.currentIndex < props.index &&
 						"tw-blur-[5px]"
@@ -206,9 +204,9 @@ const Skill = (props: SkillProps) => {
 			>
 				<h3
 					className={`
-            title tw-flex tw-items-center tw-justify-start tw-gap-[.5rem]
-            tw-font-bowlby-one tw-text-headings
-          `}
+       title tw-flex tw-items-center tw-justify-start tw-gap-[.5rem]
+       tw-font-bowlby-one tw-text-headings
+     `}
 				>
 					{width && width < 550 && (
 						<FontAwesomeIcon
@@ -222,17 +220,16 @@ const Skill = (props: SkillProps) => {
 					ref={containerRef}
 					className={cn(
 						`
-              categories tw-relative tw-flex tw-max-h-[16rem] tw-flex-wrap
-              tw-gap-[10px] tw-overflow-hidden tw-transition-all tw-duration-500
+        categories tw-relative tw-flex tw-max-h-[16rem] tw-flex-wrap
+        tw-gap-[10px] tw-overflow-hidden tw-transition-all tw-duration-500
 
-              after:tw-absolute after:tw-bottom-0 after:tw-left-0 after:tw-block
-              after:tw-w-full after:tw-bg-gradient-to-b
-              after:tw-from-[rgba(0,0,0,0)] after:tw-to-[black]
-              after:tw-transition-all after:tw-content-['']
-              after:tw-duration-250
+        after:tw-absolute after:tw-bottom-0 after:tw-left-0 after:tw-block
+        after:tw-w-full after:tw-bg-gradient-to-b after:tw-from-[rgba(0,0,0,0)]
+        after:tw-to-[black] after:tw-transition-all after:tw-content-['']
+        after:tw-duration-250
 
-              xl:tw-max-h-[0]
-            `,
+        xl:tw-max-h-[0]
+      `,
 
 						!["sm", "md", "lg"].includes(screen) && showShadow
 							? `after:tw-h-[15rem]`

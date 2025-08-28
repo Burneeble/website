@@ -47,7 +47,7 @@ const CategoryArticles = (props: CategoryArticlesProps) => {
       <div
         className={`
           grid-container cs-gap-between-content cs-section-structure
-          cs-bottom-padding-for-footer tw-min-h-[unset] tw-w-full tw-flex
+          cs-bottom-padding-for-footer tw-flex tw-min-h-[unset] tw-w-full
           tw-flex-col tw-items-center
         `}
       >

@@ -101,8 +101,8 @@ const ArticleBatch = (props: ArticleBatchProps) => {
             ${
               articles && articles.length <= 2
                 ? `
-                  lg:tw-flex lg:tw-flex-row lg:tw-justify-center
-                  lg:tw-items-center
+                  lg:tw-flex lg:tw-flex-row lg:tw-items-center
+                  lg:tw-justify-center
                 `
                 : `lg:tw-grid lg:tw-grid-cols-3`
             }

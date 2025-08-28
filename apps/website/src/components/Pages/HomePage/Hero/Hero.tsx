@@ -40,30 +40,30 @@ const Hero = (props: HeroProps) => {
 			<section
 				id={"hero"}
 				className={`
-          hero cs-section-structure cs-gap-between-content tw-flex tw-flex-col
-          tw-pt-[134px] tw-relative tw-justify-start
+      hero cs-section-structure cs-gap-between-content tw-relative tw-flex
+      tw-flex-col tw-justify-start tw-pt-[134px]
 
-          lg:tw-pt-[221px]
+      lg:tw-pt-[221px]
 
-          xl:tw-justify-center xl:tw-pt-[86px]
-        `}
+      xl:tw-justify-center xl:tw-pt-[86px]
+    `}
 			>
 				<div
 					className={`
-            hero-shape tw-absolute tw-top-[50%] tw-left-[50%]
-            -tw-translate-x-[50%] -tw-translate-y-[50%] tw-w-[80rem]
-            tw-h-[40rem]
-            tw-bg-[radial-gradient(_rgba(80,80,80,1)_10%,_#000_80%)]
-            tw-opacity-[.5] tw-blur-[100px] tw-rotate-[30deg]
-          `}
+       hero-shape tw-absolute tw-left-[50%] tw-top-[50%] tw-h-[40rem]
+       tw-w-[80rem] -tw-translate-x-[50%] -tw-translate-y-[50%]
+       tw-rotate-[30deg]
+       tw-bg-[radial-gradient(_rgba(80,80,80,1)_10%,_#000_80%)] tw-opacity-[.5]
+       tw-blur-[100px]
+     `}
 				></div>
 
 				<div
 					className={`
-            cs-gap-between-content tw-flex tw-flex-col tw-z-[2]
+       cs-gap-between-content tw-z-[2] tw-flex tw-flex-col
 
-            lg:tw-w-[700px]
-          `}
+       lg:tw-w-[700px]
+     `}
 				>
 					<h1 className={`title tw-z-[2]`}>
 						Build and grow your project with{" "}
@@ -73,10 +73,10 @@ const Hero = (props: HeroProps) => {
 					</h1>
 					<div
 						className={`
-              labels tw-relative tw-flex tw-flex-wrap tw-gap-[13px] tw-z-[2]
+        labels tw-relative tw-z-[2] tw-flex tw-flex-wrap tw-gap-[13px]
 
-              md:tw-gap-5
-            `}
+        md:tw-gap-5
+      `}
 					>
 						{labels.map((label, i) => (
 							<Label

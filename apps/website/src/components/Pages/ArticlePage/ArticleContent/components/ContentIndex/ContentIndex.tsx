@@ -33,7 +33,7 @@ const ContentIndex = (props: ContentIndexProps) => {
     <div
       className={`
         content-index tw-mx-auto tw-my-8 tw-w-full tw-rounded-[.5rem]
-        tw-bg-[#ffa50021] tw-border-2 tw-border-active tw-p-[.6rem]
+        tw-border-2 tw-border-active tw-bg-[#ffa50021] tw-p-[.6rem]
         tw-text-headings p-default
       `}
     >
@@ -57,7 +57,7 @@ const ContentIndex = (props: ContentIndexProps) => {
           <FontAwesomeIcon
             icon={faList}
             className={`
-              tw-text-action tw-text-2xl tw-duration-500
+              tw-text-2xl tw-text-action tw-duration-500
 
               group-hover:tw-text-highlight
             `}
@@ -66,10 +66,10 @@ const ContentIndex = (props: ContentIndexProps) => {
             icon={faCaretDown}
             className={cn(
               `
-                tw-transition-all tw-duration-500 tw-ease-in-out group
-                tw-text-action tw-text-2xl
+                tw-text-2xl tw-transition-all tw-duration-500 tw-ease-in-out
+                group tw-text-action
 
-                group-hover:tw-text-highlight group-hover:tw-rotate-[-22.5deg]
+                group-hover:tw-rotate-[-22.5deg] group-hover:tw-text-highlight
               `,
               isOpen && "!tw-rotate-[-180deg]"
             )}

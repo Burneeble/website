@@ -6,16 +6,16 @@ const Blog = (props: BlogProps) => {
 		<section
 			id={"blog"}
 			className={`
-        blog-section cs-website-horizontal-padding cs-website-vertical-padding
-        tw-flex tw-flex-col tw-items-center tw-justify-center
-        cs-gap-between-content tw-min-h-screen
-      `}
+     blog-section cs-website-horizontal-padding cs-website-vertical-padding
+     tw-flex tw-flex-col tw-items-center tw-justify-center
+     cs-gap-between-content tw-min-h-screen
+   `}
 		>
 			<div
 				className={`
-         texts tw-flex tw-flex-col tw-items-center tw-justify-center
-          cs-gap-between-text tw-max-w-screen-xl
-        `}
+      texts tw-flex tw-flex-col tw-items-center tw-justify-center
+      cs-gap-between-text tw-max-w-screen-xl
+    `}
 			>
 				<h2 className="title tw-text-center">
 					Our{" "}
@@ -24,7 +24,9 @@ const Blog = (props: BlogProps) => {
 					</span>
 				</h2>
 				<p
-					className={`cs-max-width-paragraph-content description tw-text-center p-default`}
+					className={`
+       cs-max-width-paragraph-content description tw-text-center p-default
+     `}
 				>
 					At Burneeble, we are passionate about sharing our knowledge and
 					passion with you, which is why we write{" "}
@@ -33,14 +35,14 @@ const Blog = (props: BlogProps) => {
 			</div>
 			<div
 				className={`
-          articles tw-relative tw-flex tw-w-screen tw-flex-col tw-items-center
-          tw-justify-center cs-website-horizontal-padding tw-bg-gradient-to-r
-          primary-gradient cs-website-horizontal-padding tw-py-[15px]
+      articles tw-relative tw-flex tw-w-screen tw-flex-col tw-items-center
+      tw-justify-center cs-website-horizontal-padding tw-bg-gradient-to-r
+      primary-gradient cs-website-horizontal-padding tw-py-[15px]
 
-          lg:tw-my-0
+      lg:tw-my-0
 
-          md:tw-py-[30px]
-        `}
+      md:tw-py-[30px]
+    `}
 			>
 				<ArticleBatch
 					type={ArticleBatchVariant.LATEST}

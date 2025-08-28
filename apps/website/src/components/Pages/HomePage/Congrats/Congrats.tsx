@@ -98,28 +98,28 @@ const Congrats = (props: CongratsProps) => {
 		<section
 			id={"finalSection"}
 			className={`
-        congrats cs-section-structure cs-bottom-padding-for-footer tw-relative
-        tw-z-10 tw-flex !tw-min-h-[unset] tw-flex-col tw-items-center
-        tw-justify-center cs-gap-between-content
+     congrats cs-section-structure cs-bottom-padding-for-footer tw-relative
+     tw-z-10 tw-flex !tw-min-h-[unset] tw-flex-col tw-items-center
+     tw-justify-center cs-gap-between-content
 
-        lg:tw-h-[402px]
+     lg:tw-h-[402px]
 
-        md:tw-h-[624px]
-      `}
+     md:tw-h-[624px]
+   `}
 			ref={congrats}
 		>
 			<div
 				className={`
-          wrapper  tw-flex tw-flex-col tw-items-center tw-justify-center
-          cs-gap-between-text
-        `}
+      wrapper tw-flex tw-flex-col tw-items-center tw-justify-center
+      cs-gap-between-text
+    `}
 			>
 				<h2
 					className={`
-            title tw-text-center
+       title tw-text-center
 
-            md:tw-flex md:tw-gap-[15px]
-          `}
+       md:tw-flex md:tw-gap-[15px]
+     `}
 				>
 					<span className="cs-text-color-primary-gradient tw-font-bowlby-one">
 						Congrats,
@@ -130,11 +130,11 @@ const Congrats = (props: CongratsProps) => {
 				</h2>
 				<p
 					className={`
-            cs-max-width-paragraph-content text p-default tw-self-stretch tw-text-center tw-font-normal
-            tw-text-body
+       cs-max-width-paragraph-content text p-default tw-self-stretch
+       tw-text-center tw-font-normal tw-text-body
 
-            md:tw-mb-[10px]
-          `}
+       md:tw-mb-[10px]
+     `}
 				>
 					{/* TODO add a coupon gift */}
 					{/* {["sm", "md"].includes(screen)
@@ -156,10 +156,9 @@ const Congrats = (props: CongratsProps) => {
 				<div
 					className={cn(
 						`
-              code tw-flex tw-gap-[10px] tw-text-center tw-font-inter
-              tw-text-6xl tw-text-[#acacac] tw-transition-all tw-duration-500
-              tw-ease-in-out
-            `,
+        code tw-flex tw-gap-[10px] tw-text-center tw-font-inter tw-text-6xl
+        tw-text-[#acacac] tw-transition-all tw-duration-500 tw-ease-in-out
+      `,
 						wrongCode && "tw-animate-cs-wrong tw-text-error"
 					)}
 				>
@@ -168,9 +167,9 @@ const Congrats = (props: CongratsProps) => {
 							return (
 								<FlameIcon
 									className={`
-                    tw-aspect-square tw-w-[60px] tw-scale-0
-                    tw-animate-cs-zoom-in tw-animate
-                  `}
+           tw-aspect-square tw-w-[60px] tw-scale-0 tw-animate-cs-zoom-in
+           tw-animate
+         `}
 									style={{ animationDelay: `${0.075 * i}s` }}
 									key={i}
 								/>
@@ -198,10 +197,7 @@ const Congrats = (props: CongratsProps) => {
 											className={cn(
 												"tw-aspect-square tw-w-[60px]",
 												currentIndex > i &&
-													`
-                            digit cs-text-color-primary-gradient
-                            tw-animate-cs-pulse
-                          `
+													`digit cs-text-color-primary-gradient tw-animate-cs-pulse`
 											)}
 											key={i}
 										>

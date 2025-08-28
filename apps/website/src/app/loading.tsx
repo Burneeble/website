@@ -8,8 +8,8 @@ export default function Loading() {
     <>
       <section
         className={`
-          loading-section cs-section-structure tw-flex tw-justify-center
-          tw-items-center
+          loading-section cs-section-structure tw-flex tw-items-center
+          tw-justify-center
         `}
       >
         <Spinner></Spinner>

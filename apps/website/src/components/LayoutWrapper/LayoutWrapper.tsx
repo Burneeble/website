@@ -86,7 +86,7 @@ const LayoutWrapper = (props: LayoutWrapperProps) => {
           ]}
         />
       </header>
-      <main className="tw-min-h-screen tw-relative">
+      <main className="tw-relative tw-min-h-screen">
         <SkeletonTheme baseColor="rgba(43,43,43,1)" highlightColor="#322923">
           {props.children}
         </SkeletonTheme>

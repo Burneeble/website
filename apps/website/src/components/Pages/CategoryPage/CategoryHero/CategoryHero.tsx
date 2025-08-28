@@ -13,7 +13,7 @@ const CategoryHero = (props: CategoryHeroProps) => {
     <section
       className={`
         article-category-hero-section cs-section-structure tw-relative tw-flex
-        tw-min-h-[600px] tw-h-fit tw-flex-col tw-items-start tw-justify-center
+        tw-h-fit tw-min-h-[600px] tw-flex-col tw-items-start tw-justify-center
         tw-gap-[10px] tw-pt-[150px]
       `}
     >

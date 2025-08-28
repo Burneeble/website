@@ -178,7 +178,7 @@ const Projects = (props: ProjectsProps) => {
         />
       )}
       <section className={`projects-section`}>
-        <RoundedWrapper className="tw-pt-[50px] tw-pb-[90px]">
+        <RoundedWrapper className="tw-pb-[90px] tw-pt-[50px]">
           {!props.categories ? (
             <NotFound
               title="Something went wrong"
