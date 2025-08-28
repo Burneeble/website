@@ -5,139 +5,136 @@ import gsap from "gsap";
 import { useScrollPos } from "@/hooks";
 
 const Footer = (props: FooterProps) => {
-  //States
-  const [isBottom, setIsBottom] = useState<boolean>(false);
+	//States
+	const [isBottom, setIsBottom] = useState<boolean>(false);
 
-  //Hooks
-  const { isClient } = useClientInfoService();
-  const { scrollPos } = useScrollPos();
+	//Hooks
+	const { isClient } = useClientInfoService();
+	const { scrollPos } = useScrollPos();
 
-  //Effects
-  useEffect(() => {
-    if (
-      Math.ceil(scrollPos + window.innerHeight + 1) >=
-      document.documentElement.scrollHeight
-    ) {
-      if (!isBottom) {
-        setIsBottom(true);
-      }
-    } else {
-      if (isBottom) {
-        setIsBottom(false);
-      }
-    }
-  }, [scrollPos]);
+	//Effects
+	useEffect(() => {
+		if (
+			Math.ceil(scrollPos + window.innerHeight + 1) >=
+			document.documentElement.scrollHeight
+		) {
+			if (!isBottom) {
+				setIsBottom(true);
+			}
+		} else {
+			if (isBottom) {
+				setIsBottom(false);
+			}
+		}
+	}, [scrollPos]);
 
-  useEffect(() => {
-    let tl = gsap.timeline();
+	useEffect(() => {
+		let tl = gsap.timeline();
 
-    tl.kill();
+		tl.kill();
 
-    if (isBottom && isClient) {
-      tl = gsap.timeline();
+		if (isBottom && isClient) {
+			tl = gsap.timeline();
 
-      tl.to(
-        ".gradient-three",
-        {
-          duration: 0.2,
-          height: "95px",
-          ease: "power2.out",
-        },
-        "-=0.1"
-      )
-        .to(
-          ".gradient-two",
-          {
-            duration: 0.2,
-            height: "110px",
-            ease: "power2.out",
-          },
-          "-=0.1"
-        )
-        .to(
-          ".gradient-one",
-          {
-            duration: 0.2,
-            height: "125px",
-            ease: "power2.out",
-          },
-          "-=0.1"
-        );
-    } else {
-      tl = gsap.timeline();
+			tl.to(
+				".gradient-three",
+				{
+					duration: 0.2,
+					height: "95px",
+					ease: "power2.out",
+				},
+				"-=0.1"
+			)
+				.to(
+					".gradient-two",
+					{
+						duration: 0.2,
+						height: "110px",
+						ease: "power2.out",
+					},
+					"-=0.1"
+				)
+				.to(
+					".gradient-one",
+					{
+						duration: 0.2,
+						height: "125px",
+						ease: "power2.out",
+					},
+					"-=0.1"
+				);
+		} else {
+			tl = gsap.timeline();
 
-      tl.to(".gradient-one", {
-        duration: 0.2,
-        height: "80px",
-        ease: "power2.in",
-      })
-        .to(
-          ".gradient-two",
-          {
-            duration: 0.2,
-            height: "80px",
-            ease: "power2.in",
-          },
-          "-=0.1"
-        )
-        .to(
-          ".gradient-three",
-          {
-            duration: 0.2,
-            height: "80px",
-            ease: "power2.in",
-          },
-          "-=0.1"
-        );
-    }
+			tl.to(".gradient-one", {
+				duration: 0.2,
+				height: "80px",
+				ease: "power2.in",
+			})
+				.to(
+					".gradient-two",
+					{
+						duration: 0.2,
+						height: "80px",
+						ease: "power2.in",
+					},
+					"-=0.1"
+				)
+				.to(
+					".gradient-three",
+					{
+						duration: 0.2,
+						height: "80px",
+						ease: "power2.in",
+					},
+					"-=0.1"
+				);
+		}
 
-    return () => {
-      if (tl) {
-        tl.kill();
-      }
-    };
-  }, [isBottom, isClient]);
+		return () => {
+			if (tl) {
+				tl.kill();
+			}
+		};
+	}, [isBottom, isClient]);
 
-  return (
-    <>
-      <div className="footer tw-relative tw-z-[15] tw-h-[80px]">
-        <div
-          className={`
+	return (
+		<>
+			<div className="footer tw-relative tw-z-[15] tw-h-[80px]">
+				<div
+					className={`
             gradient gradient-one tw-h-[80px] tw-bg-[var(--primary-lighest)]
           `}
-        />
-        <div
-          className={`
+				/>
+				<div
+					className={`
             gradient gradient-two tw-h-[80px] tw-bg-[var(--primary-lighter)]
           `}
-        />
-        <div
-          className={`
+				/>
+				<div
+					className={`
             gradient gradient-three tw-h-[80px] tw-bg-[var(--primary-light)]
           `}
-        />
-        <div
-          className={`
+				/>
+				<div
+					className={`
             footer-content gradient tw-z-10 tw-flex tw-h-[80px] tw-items-center
             tw-justify-center tw-bg-[var(--primary-default)] tw-transition-all
           `}
-        >
-          <h2
-            className={`
-              tw-relative tw-text-center tw-font-bowlby-one tw-text-xs
-              tw-font-normal tw-text-headings
+				>
+					<h4
+						className={`
+              tw-relative tw-text-center tw-font-bowlby-one 
+              tw-font-normal tw-text-headings p-small
 
-              md:tw-text-lg
-
-              xl:tw-text-xl
             `}
-          >
-            © COPYRIGHT 2024 - BURNEEBLE SRL
-          </h2>
-        </div>
-      </div>
-    </>
-  );
+					>
+						© COPYRIGHT 2024 - BURNEEBLE SRL
+					</h4>
+				</div>
+			</div>
+		</>
+	);
 };
 
 export default Footer;

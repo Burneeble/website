@@ -4,3 +4,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.cs-max-width-text-content {
+	@apply tw-max-w-[650px];
+}
+
+.cs-max-width-paragraph-content {
+	@apply tw-max-w-[650px] tw-mx-auto;
+}
