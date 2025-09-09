@@ -9,18 +9,19 @@ const ProjectPreview = (props: ProjectPreviewProps) => {
 
   //Methods
   const highlightText = (text: string, query: string) => {
-    const words = query.split(" ").filter((word) => word.trim() !== "");
-    let highlightedText = text;
-    words.forEach((word) => {
-      const regex = new RegExp(`(${word})`, "gi");
-      highlightedText = highlightedText.replace(
-        regex,
-        '<span class="highlight">$1</span>'
-      );
-    });
-    return highlightedText;
-  };
+    if (!query.trim()) return text; // Avoid unnecessary changes
 
+    const safeQuery = query.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&");
+
+    // Removes any previous highlights
+    text = text.replace(/<span class="highlight">(.*?)<\/span>/gi, "$1");
+
+    // Replaces text by highlighting it, avoiding breaking HTML tags
+    return text.replace(
+      new RegExp(`(${safeQuery})`, "gi"),
+      '<span class="highlight">$1</span>'
+    );
+  };
   const openProject = () => {
     router.push(
       `/project/${props.title
@@ -39,17 +40,24 @@ const ProjectPreview = (props: ProjectPreviewProps) => {
     >
       <div
         className={`
-          image-wrapper tw-group tw-aspect-[1920/1080] tw-w-full
+          image-wrapper tw-group tw-relative tw-aspect-[1920/1080] tw-w-full
           tw-cursor-pointer tw-overflow-hidden tw-rounded-lg tw-border
-          tw-border-[var(--neutral-default)] tw-transition-all tw-duration-200
-          tw-ease-in-out
+          tw-border-neutral tw-transition-all tw-duration-200 tw-ease-in-out
 
-          hover:tw-border-tertiary
+          hover:tw-border-active
         `}
         onClick={() => {
           openProject();
         }}
       >
+        <div
+          className={`
+            layer tw-absolute tw-inset-0 tw-bg-action tw-opacity-0
+            tw-transition-all tw-duration-200 tw-ease-in-out
+
+            group-hover:tw-opacity-[10%]
+          `}
+        />
         <img
           className={`
             tw-aspect-[1920/1080] tw-w-full tw-self-stretch tw-transition-all
@@ -68,13 +76,11 @@ const ProjectPreview = (props: ProjectPreviewProps) => {
       >
         <div
           className={`
-            title tw-max-w-full tw-cursor-pointer tw-truncate tw-font-inter
-            tw-text-xl tw-font-black tw-leading-loose tw-text-headings
-            tw-transition-all tw-duration-200 tw-ease-in-out
+            title p-small tw-max-w-full tw-cursor-pointer tw-truncate
+            tw-font-black tw-text-headings tw-transition-all tw-duration-200
+            tw-ease-in-out
 
             hover:tw-text-primary
-
-            xl:tw-text-2xl
           `}
           dangerouslySetInnerHTML={{
             __html: highlightText(props.title, props.query || ""),
@@ -85,10 +91,8 @@ const ProjectPreview = (props: ProjectPreviewProps) => {
         />
         <div
           className={`
-            categories tw-flex tw-max-w-full tw-flex-wrap tw-gap-[5px]
-            tw-font-inter tw-text-lg tw-font-normal tw-leading-7 tw-text-body
-
-            xl:tw-text-xl
+            categories p-small tw-flex tw-max-w-full tw-flex-wrap tw-gap-[5px]
+            tw-font-normal
           `}
         >
           {(props.categories.length > 5
@@ -100,14 +104,11 @@ const ProjectPreview = (props: ProjectPreviewProps) => {
                 key={i}
                 className={cn(
                   `
-                    tw-h-fit tw-cursor-pointer tw-rounded-lg tw-border
-                    tw-border-neutral category tw-px-[5px] tw-font-inter
-                    tw-text-lg tw-font-normal tw-leading-[30px] tw-text-body
+                    p-smaller tw-h-fit tw-cursor-pointer tw-rounded-lg tw-border
+                    tw-border-neutral category tw-px-[5px] tw-font-normal
                     tw-transition-all tw-duration-200 tw-ease-in-out
 
                     hover:tw-border-white hover:tw-text-headings
-
-                    xl:tw-text-xl
                   `,
                   props.activeCategories.includes(category) &&
                     `tw-border-primary tw-text-primary`

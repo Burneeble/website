@@ -98,19 +98,20 @@ const SearchPopup = (props: SearchPopupProps) => {
     }
   };
 
-  const highlightText = (text: string, query: string) => {
-    const words = query.split(" ").filter((word) => word.trim() !== "");
-    let highlightedText = text;
-    words.forEach((word) => {
-      const regex = new RegExp(`(${word})`, "gi");
-      highlightedText = highlightedText.replace(
-        regex,
-        '<span class="highlight">$1</span>'
-      );
-    });
-    return highlightedText;
-  };
+  // const highlightText = (text: string, query: string) => {
+  //   if (!query.trim()) return text; // Avoid unnecessary changes
 
+  //   const safeQuery = query.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&");
+
+  //   // Removes any previous highlights
+  //   text = text.replace(/<span class="highlight">(.*?)<\/span>/gi, "$1");
+
+  //   // Replaces text by highlighting it, avoiding breaking HTML tags
+  //   return text.replace(
+  //     new RegExp(`(${safeQuery})`, "gi"),
+  //     '<span class="highlight">$1</span>'
+  //   );
+  // };
   return (
     <Popup logic={props.popupLogic} variant="secondary" className="!tw-min-h-0">
       <div
@@ -169,10 +170,7 @@ const SearchPopup = (props: SearchPopupProps) => {
                         return (
                           <MobileSearchResult
                             key={i}
-                            text={highlightText(
-                              category,
-                              debouncedSearchQuery || ""
-                            )}
+                            text={category}
                             isActive={props.activeCategories.includes(category)}
                             onClick={() => {
                               props.popupLogic.closePopup();
@@ -194,10 +192,7 @@ const SearchPopup = (props: SearchPopupProps) => {
                         return (
                           <MobileSearchResult
                             key={i}
-                            text={highlightText(
-                              proj,
-                              debouncedSearchQuery || ""
-                            )}
+                            text={proj}
                             isActive={false}
                             onClick={() => {}}
                           />

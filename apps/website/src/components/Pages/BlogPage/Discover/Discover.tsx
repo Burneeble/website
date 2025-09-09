@@ -17,6 +17,8 @@ import { ArticleModel, GET_ARTICLES_QUERY } from "@/services";
 import { useQuery } from "@apollo/client";
 import { GetArticlesQueryQuery } from "@/__generated__/graphql";
 
+//TODO create a pagination logic for the articles
+
 const Discover = (props: DiscoverProps) => {
   //States
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -142,6 +144,10 @@ const Discover = (props: DiscoverProps) => {
       <Grid>
         {articles &&
           articles.map((article, i) => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(article.content, "text/html");
+            const textContent = doc.body.textContent || "";
+
             return (
               <ArticlePreview
                 key={i}
@@ -151,7 +157,7 @@ const Discover = (props: DiscoverProps) => {
                 categorySlug={article.categories[0].slug}
                 slug={article.slug}
                 variant="dark"
-                description={article.content}
+                description={textContent.slice(0, 200)}
                 query={searchQuery || ""}
               />
             );

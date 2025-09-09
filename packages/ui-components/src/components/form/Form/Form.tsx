@@ -15,6 +15,8 @@ import { cn } from "@/lib/utils";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
 const Form = (props: FormProps) => {
   //Hooks
@@ -49,6 +51,8 @@ const Form = (props: FormProps) => {
     console.log("data", data);
     props.onSubmit(data);
   }
+
+  const successButton = props.showSuccessButton || false;
 
   return (
     <FormComponent {...form}>
@@ -141,14 +145,32 @@ const Form = (props: FormProps) => {
               `
           )}
         >
-          <Button
-            type="submit"
-            fit="full"
-            className={cn("!tw-mt-8 tw-h-[58px]")}
-            onClick={() => form.handleSubmit(onSubmit)}
-          >
-            Submit
-          </Button>
+          {successButton ? (
+            <Button
+              type="submit"
+              fit="full"
+              className={cn(`
+                !tw-mt-8 tw-h-[58px] tw-animate-fill-gradient tw-bg-orange-500
+
+                tw-bg-[length:200%_200%]
+              `)}
+            >
+              <FontAwesomeIcon
+                style={{ color: "var(--priary-base)", marginRight: "0.5rem" }}
+                icon={faCircleCheck}
+              />
+              Successfully Submitted!
+            </Button>
+          ) : (
+            <Button
+              type="submit"
+              fit="full"
+              className={cn("!tw-mt-8 tw-h-[58px]")}
+              onClick={() => form.handleSubmit(onSubmit)}
+            >
+              Submit
+            </Button>
+          )}
         </div>
       </form>
     </FormComponent>

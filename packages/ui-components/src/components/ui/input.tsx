@@ -8,8 +8,8 @@ export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {}
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, ...props }) => {
-    const inputRef = useCustomPlaceholder<HTMLInputElement>();
+  ({ className, type, ...props }, ref) => {
+    ref = useCustomPlaceholder<HTMLInputElement>();
 
     return (
       <input
@@ -37,7 +37,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             ? "tw-border-error"
             : `input-placeholder tw-border-tertiary`
         )}
-        ref={inputRef}
+        ref={ref}
         {...props}
       />
     );

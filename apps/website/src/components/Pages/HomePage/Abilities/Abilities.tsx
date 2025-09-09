@@ -50,6 +50,7 @@ const Abilities = (props: AbilitiesProps) => {
 
   return (
     <section
+      id={"abilities"}
       ref={sectionRef}
       className={cn(
         `

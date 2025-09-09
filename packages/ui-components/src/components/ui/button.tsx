@@ -8,8 +8,8 @@ import { cn } from "@/lib/utils";
 const buttonVariants = cva(
   `
     tw-relative tw-flex tw-cursor-pointer tw-items-center tw-justify-center
-    tw-gap-2 tw-whitespace-nowrap tw-font-bowlby-one tw-text-lg tw-font-medium
-    tw-transition-all tw-duration-200 tw-ease-in-out
+    tw-gap-2 tw-whitespace-nowrap tw-font-bowlby-one p-default tw-font-medium
+    tw-transition-all tw-duration-300 tw-ease-in-out
 
     [&_svg]:tw-pointer-events-none [&_svg]:tw-size-5 [&_svg]:tw-shrink-0
 
@@ -19,10 +19,6 @@ const buttonVariants = cva(
     focus-visible:tw-ring-ring
 
     hover:tw-brightness-110
-
-    lg:tw-text-2xl
-
-    md:tw-text-xl
   `,
   {
     variants: {
@@ -68,11 +64,11 @@ const buttonVariants = cva(
         circle: "tw-rounded-[50%]",
       },
       size: {
-        default: "tw-h-12 tw-px-4 tw-py-2",
+        default: "tw-h-12 tw-px-5 tw-py-2",
         sm: "tw-h-8 tw-px-3 tw-text-xs",
-        lg: "tw-h-16 tw-px-8",
+        lg: "tw-h-14 tw-px-6",
         icon: "tw-aspect-square tw-h-12 tw-w-12",
-        "icon-lg": "tw-aspect-square tw-h-16 tw-w-16",
+        "icon-lg": "tw-aspect-square tw-h-14 tw-w-14",
         "icon-sm": "tw-aspect-square tw-h-8 tw-w-8",
       },
       fit: {

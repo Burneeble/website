@@ -81,8 +81,7 @@ const MobileMenu = (props: MobileMenuProps) => {
             >
               <div
                 className={`
-                  title tw-self-stretch tw-font-inter tw-text-xl tw-font-light
-                  tw-leading-7 tw-text-body
+                  title p-default tw-self-stretch tw-font-light tw-text-body
                 `}
               >
                 Explore

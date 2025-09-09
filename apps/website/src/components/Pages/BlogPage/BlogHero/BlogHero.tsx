@@ -11,9 +11,8 @@ const BlogHero = () => {
   return (
     <section
       className={`
-        blog-hero cs-section-structure tw-relative tw-z-[2] tw-top-8 tw-flex
-        tw-flex-col tw-items-center tw-justify-center cs-gap-between-content
-        tw-min-h-[calc(100vh-100px)]
+        blog-hero cs-section-structure tw-relative tw-top-8 tw-z-[2] tw-flex
+        tw-flex-col tw-items-center tw-justify-center tw-gap-[10px]
       `}
     >
       <div
@@ -41,10 +40,10 @@ const BlogHero = () => {
       </div>
       <div
         className={`
-          buttons-wrapper tw-flex tw-w-full tw-flex-col tw-items-center
-          tw-justify-center
+          buttons-wrapper tw-mt-5 tw-flex tw-w-full tw-flex-wrap tw-items-center
+          tw-justify-center tw-gap-[20px]
 
-          sm:tw-flex-row sm:tw-gap-[20px]
+          sm:tw-flex-row
         `}
       >
         <Button

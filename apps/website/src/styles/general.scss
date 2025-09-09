@@ -9,7 +9,10 @@ body {
   min-height: 100vh;
 }
 
+// This behavior creates a scrolling bug
 html {
+  --scroll-behavior: smooth !important;
+
   scroll-behavior: smooth;
 }
 
@@ -23,4 +26,10 @@ html {
 
 .blog-page {
   @apply tw-to-50% tw-from-50%;
+}
+
+.youtube-section-home-page {
+  .bg {
+    @apply tw-border-y;
+  }
 }

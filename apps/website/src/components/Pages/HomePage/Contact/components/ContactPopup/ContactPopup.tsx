@@ -39,7 +39,7 @@ const ContactPopup = (props: ContactPopupProps) => {
       formData.append("_wpcf7_unit_tag", "wpcf7-f20-o1");
 
       await fetch(
-        `https://burneeble.com/wp-json/contact-form-7/v1/contact-forms/592/feedback`,
+        `https://peachpuff-horse-188285.hostingersite.com/wp-json/contact-form-7/v1/contact-forms/592/feedback`,
         {
           method: "POST",
           body: formData,
@@ -66,7 +66,7 @@ const ContactPopup = (props: ContactPopupProps) => {
 
   useEffect(() => {
     if (popupRef.current) {
-      if (props.isContactPopupOpen) {
+      if (props.isContactPopupOpen && !isClosing) {
         gsap.fromTo(
           popupRef.current,
           {
@@ -104,35 +104,33 @@ const ContactPopup = (props: ContactPopupProps) => {
           }, 400);
         }}
         className={`
-          contact-popup-wrapper tw-fixed tw-left-0 tw-top-0 tw-z-[55] tw-flex
-          tw-h-screen tw-w-screen tw-items-center tw-justify-center
-          tw-bg-[rgba(0,0,0,0.652)]
-        `}
+      contact-popup-wrapper tw-fixed tw-left-0 tw-top-0 tw-z-[55] tw-flex
+      tw-h-screen tw-w-screen tw-items-center tw-justify-center
+      tw-bg-[rgba(0,0,0,0.652)]
+    `}
       >
         <div
           onClick={(e) => e.stopPropagation()}
           ref={popupRef}
           className={`
-            contact-popup no-scrollbar tw-inline-flex tw-h-fit tw-max-h-[80%]
-            tw-w-[700px] tw-max-w-[90%] tw-flex-col tw-items-center
-            tw-justify-start tw-gap-5 tw-overflow-scroll tw-rounded-lg tw-border
-            tw-border-[#483a32] tw-bg-gradient-to-b tw-p-5
-            secondary-gradient-to-custom
-          `}
+       contact-popup no-scrollbar tw-inline-flex tw-h-fit tw-max-h-[80%]
+       tw-w-[700px] tw-max-w-[90%] tw-flex-col tw-items-center tw-justify-start
+       tw-gap-5 tw-overflow-scroll tw-rounded-lg tw-border tw-border-[#483a32]
+       tw-bg-gradient-to-b tw-p-5 secondary-gradient-to-custom
+     `}
         >
           {!isSubmitted && (
             <div
               className={`
-                close tw-text-headings tw-absolute tw-top-[1rem]
-                tw-right-[1.5rem] tw-cursor-pointer tw-text-3xl tw-opacity-[.6]
-                tw-transition-all tw-duration-300 tw-ease-out tw-z-[5]
+         close tw-absolute tw-right-6 tw-top-4 tw-z-[5] tw-cursor-pointer
+         tw-text-3xl tw-text-headings tw-opacity-[.6] tw-transition-all
+         tw-duration-300 tw-ease-out
 
-                hover:tw-opacity-100
-              `}
+         hover:tw-opacity-100
+       `}
               onClick={() => {
                 setIsClosing(true);
                 setTimeout(() => {
-                  setIsClosing(false);
                   props.setIsContactPopupOpen(false);
                 }, 400);
               }}
@@ -145,16 +143,15 @@ const ContactPopup = (props: ContactPopupProps) => {
             <>
               <div
                 className={`
-                  success tw-flex tw-flex-col tw-items-center tw-justify-center
-                  tw-gap-[10px]
-                `}
+          success tw-flex tw-flex-col tw-items-center tw-justify-center
+          tw-gap-[10px]
+        `}
               >
                 <p
                   className={`
-                    confirm tw-flex tw-items-center tw-justify-center
-                    tw-gap-[.5rem] tw-text-center tw-font-inter tw-font-black
-                    tw-text-success p-small
-                  `}
+           confirm tw-flex tw-items-center tw-justify-center tw-gap-[.5rem]
+           tw-text-center tw-font-inter tw-font-black tw-text-success p-small
+         `}
                 >
                   <FontAwesomeIcon
                     icon={faCheckCircle}
@@ -172,14 +169,14 @@ const ContactPopup = (props: ContactPopupProps) => {
                   other questions or additional information to share with us, do
                   not hesitate to fill out another form or contact us via email:{" "}
                   <a
-                    href="mailto:burneeble@example.com"
+                    href="mailto:contact@burneeble.com"
                     className={`
-                      p-small tw-font-extrabold tw-transition-colors
+            p-small tw-font-extrabold tw-transition-colors
 
-                      hover:tw-text-action hover:tw-underline
-                    `}
+            hover:tw-text-action hover:tw-underline
+          `}
                   >
-                    burneeble@example.com
+                    contact@burneeble.com
                   </a>
                 </p>
                 <Button
@@ -197,48 +194,46 @@ const ContactPopup = (props: ContactPopupProps) => {
             <>
               <div
                 className={`
-                  contact-text-content-wrapper tw-relative tw-flex tw-flex-col
-                  tw-items-center tw-justify-center tw-gap-2.5 tw-self-stretch
-                `}
+          contact-text-content-wrapper tw-relative tw-flex tw-flex-col
+          tw-items-center tw-justify-center tw-gap-2.5 tw-self-stretch
+        `}
               >
                 {isSubmitting && (
                   <div
                     className={`
-                      tw-absolute loading-screen tw-left-1/2 tw-top-1/2
-                      tw-z-[25] tw-flex tw-h-[calc(100%+2.50rem)]
-                      tw-w-[calc(100%+2.50rem)] -tw-translate-x-1/2
-                      -tw-translate-y-1/2 tw-items-center tw-justify-center
-                      tw-bg-[rgba(0,0,0,.6)]
-                    `}
+            tw-absolute loading-screen tw-left-1/2 tw-top-1/2 tw-z-[25] tw-flex
+            tw-h-[calc(100%+2.50rem)] tw-w-[calc(100%+2.50rem)]
+            -tw-translate-x-1/2 -tw-translate-y-1/2 tw-items-center
+            tw-justify-center tw-bg-[rgba(0,0,0,.6)]
+          `}
                   >
                     <Spinner size="default" />
                   </div>
                 )}
                 <h2
                   className={`
-                    contact-popup-title tw-inline-flex tw-items-center
-                    tw-justify-center tw-gap-2.5 tw-self-stretch tw-text-center
-                  `}
+           contact-popup-title tw-inline-flex tw-items-center tw-justify-center
+           tw-gap-2.5 tw-self-stretch tw-text-center
+         `}
                 >
                   Get in Touch 🔥
                 </h2>
                 <p
                   className={`
-                    p-small contact-paragraph-content tw-self-stretch
-                    tw-text-center
-                  `}
+           p-small contact-paragraph-content tw-self-stretch tw-text-center
+         `}
                 >
                   You can reach us by filling out this form or contacting us via
                   our email:{" "}
                   <a
-                    href="mailto:burneeble@example.com"
+                    href="mailto:contact@burneeble.com"
                     className={`
-                      p-small tw-font-extrabold tw-transition-colors
+            p-small tw-font-extrabold tw-transition-colors
 
-                      hover:tw-text-action hover:tw-underline
-                    `}
+            hover:tw-text-action hover:tw-underline
+          `}
                   >
-                    burneeble@example.com
+                    contact@burneeble.com
                   </a>
                 </p>
                 <Form
@@ -247,9 +242,9 @@ const ContactPopup = (props: ContactPopupProps) => {
                     width &&
                       width > 600 &&
                       `
-                        tw-grid tw-grid-cols-2 tw-grid-rows-auto tw-gap-x-5
-                        tw-gap-y-2 tw-space-y-0
-                      `,
+             tw-grid tw-grid-cols-2 tw-grid-rows-auto tw-gap-x-5 tw-gap-y-2
+             tw-space-y-0
+           `,
                     `tw-w-full`
                   )}
                   fields={[

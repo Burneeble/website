@@ -22,6 +22,8 @@ export class ArticleService {
 
   private constructor() {}
 
+  contentCharactersLimit = 200;
+
   private htmlToPlainText(html: string): string {
     const withoutTags = html.replace(/<\/?[^>]+(>|$)/g, "");
 
@@ -50,6 +52,8 @@ export class ArticleService {
   }
 
   public async getArticlesWithLimit(limit: number): Promise<ArticleModel[]> {
+    console.log("test3");
+
     const { data } = await GraphQLService.instance.client.query({
       query: GET_ARTICLES_QUERY_WITH_LIMIT,
       variables: { limit },
@@ -59,8 +63,15 @@ export class ArticleService {
 
     return (data.posts?.nodes || []).map((node: any) => {
       const article = new ArticleModel();
+
       article.title = node.title || "";
-      article.content = node.content || "";
+
+      const plainTextContent = this.htmlToPlainText(node.content || "");
+      article.content =
+        plainTextContent !== ""
+          ? plainTextContent.slice(0, this.contentCharactersLimit)
+          : "";
+
       article.slug = node.slug || "";
       article.categories = node.categories.nodes.map((category: any) => {
         return {
@@ -75,6 +86,7 @@ export class ArticleService {
   }
 
   public async getArticles(category?: string): Promise<Array<ArticleModel>> {
+    console.log("test1");
     const { data } = await GraphQLService.instance.client.query(
       category
         ? {
@@ -88,10 +100,16 @@ export class ArticleService {
 
     const articlesInfo: IArticleModel[] | null = data.posts
       ? data.posts?.nodes.map((node) => {
+          const plainTextContent = this.htmlToPlainText(node.content || "");
+          const truncatedContent =
+            plainTextContent !== ""
+              ? plainTextContent.slice(0, this.contentCharactersLimit)
+              : "";
+
           return {
             title: node.title || "",
             id: node.id || "",
-            content: node.content || "",
+            content: truncatedContent,
             slug: node.slug || "",
             categories:
               node.categories?.nodes.map((category: any) => {
@@ -140,6 +158,7 @@ export class ArticleService {
   }
 
   public async getArticle(slug: string): Promise<ArticleModel | null> {
+    console.log("test2");
     const { data } = await GraphQLService.instance.client.query({
       query: GET_ARTICLE_QUERY,
       variables: { slug },
@@ -187,10 +206,16 @@ export class ArticleService {
 
     const articlesInfo = data.posts
       ? data.posts?.nodes.map((node: any) => {
+          const plainTextContent = this.htmlToPlainText(node.content || "");
+          const truncatedContent =
+            plainTextContent !== ""
+              ? plainTextContent.slice(0, this.contentCharactersLimit)
+              : "";
+
           return {
             title: node.title || "",
             id: node.id || "",
-            content: node.content || "",
+            content: truncatedContent,
             slug: node.slug || "",
             categories:
               node.categories?.nodes.map((category: any) => {

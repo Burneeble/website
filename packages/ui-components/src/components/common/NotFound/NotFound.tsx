@@ -1,8 +1,16 @@
 import React from "react";
 import { NotFoundProps } from "./NotFound.types";
 import { NotFoundIcon } from "@burneeble/icons";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const NotFound = (props: NotFoundProps) => {
+  const notFoundIcon = props.icon ? (
+    props.icon
+  ) : (
+    <NotFoundIcon className={`tw-text-[100px] tw-text-body`} />
+  );
+
   return (
     <div
       className={`
@@ -10,22 +18,30 @@ const NotFound = (props: NotFoundProps) => {
         tw-items-center tw-justify-center tw-gap-[5px]
       `}
     >
-      <NotFoundIcon className="tw-text-[100px] tw-text-body" />
+      {typeof notFoundIcon === "string" ? (
+        <img className="tw-h-20" src={notFoundIcon} />
+      ) : typeof notFoundIcon === "object" && "iconName" in notFoundIcon ? (
+        <FontAwesomeIcon
+          className="tw-h-20 tw-text-body"
+          icon={notFoundIcon as IconDefinition}
+        />
+      ) : (
+        notFoundIcon
+      )}
+
+      {/* <NotFoundIcon className={`tw-text-[100px] tw-text-body`} /> */}
       <div
         className={`
-          tw-self-stretch tw-text-center tw-font-inter tw-text-3xl tw-font-black
-          tw-leading-10 tw-text-body
+          not-found-text-content tw-inline-flex tw-w-[700px] tw-max-w-[90%]
+          tw-flex-col tw-items-center tw-justify-center
         `}
       >
-        {props.title}
-      </div>
-      <div
-        className={`
-          tw-text-center tw-font-inter tw-text-2xl tw-font-normal
-          tw-leading-[35px] tw-text-body
-        `}
-      >
-        {props.text}
+        <div
+          className={`p-default tw-self-stretch tw-text-center tw-font-black`}
+        >
+          {props.title}
+        </div>
+        <div className={`p-small tw-text-center`}>{props.text}</div>
       </div>
     </div>
   );

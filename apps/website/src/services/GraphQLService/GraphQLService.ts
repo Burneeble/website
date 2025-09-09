@@ -23,7 +23,7 @@ export class GraphQLService {
 
   private constructor() {
     const httpLink = new HttpLink({
-      uri: "https://burneeble.com/graphql",
+      uri: "https://peachpuff-horse-188285.hostingersite.com/graphql",
       fetch,
     });
 

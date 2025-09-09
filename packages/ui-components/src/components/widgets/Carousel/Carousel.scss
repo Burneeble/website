@@ -24,8 +24,8 @@
       }
     }
 
-    .carousel-button {
-      top: calc(100% + 40px);
+    .carousel-buttons-wrapper {
+      top: calc(100% + 30px);
 
       @apply tw-absolute;
     }

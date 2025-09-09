@@ -19,12 +19,21 @@ const Carousel = (props: CarouselProps) => {
   const { screen } = useClientInfoService();
 
   //Methods
-  const getButtonSize = () => {
-    switch (screen) {
-      case "md":
-        return "icon-lg";
-      default:
-        return "icon";
+  const getButtonSize = (isIcon: boolean) => {
+    if (isIcon) {
+      switch (screen) {
+        case "md":
+          return "icon-lg";
+        default:
+          return "icon";
+      }
+    } else {
+      switch (screen) {
+        case "md":
+          return "lg";
+        default:
+          return "default";
+      }
     }
   };
 
@@ -96,50 +105,55 @@ const Carousel = (props: CarouselProps) => {
             </SwiperSlide>
           );
         })}
-        <Button
-          size={getButtonSize()}
-          className={cn(
-            "custom-next carousel-button tw-right-0",
-            props.arrowsBackground && `tw-border-white`
-          )}
-          rounded={"circle"}
-          style={{ background: props.arrowsBackground }}
+        <div
+          className={`
+            carousel-buttons-wrapper tw-flex tw-w-full tw-items-center
+            tw-justify-between
+          `}
         >
-          <FontAwesomeIcon
-            icon={faChevronRight}
-            className={`next-icon !tw-h-3/5 !tw-w-3/5`}
-          />
-        </Button>
-        {props.cta && (
           <Button
-            {...{
-              ...props.cta,
-              ...{
-                className: cn(
-                  props.cta.className,
-                  `
-                    carousel-button custom-button tw-left-1/2
-                    -tw-translate-x-1/2
-                  `
-                ),
-              },
-            }}
-          />
-        )}
-        <Button
-          size={getButtonSize()}
-          rounded={"circle"}
-          className={cn(
-            "custom-prev carousel-button tw-left-0",
-            props.arrowsBackground && `tw-border-white`
+            size={getButtonSize(true)}
+            rounded={"circle"}
+            className={cn(
+              "custom-prev carousel-button",
+              props.arrowsBackground && `tw-border-white`
+            )}
+            style={{ background: props.arrowsBackground }}
+          >
+            <FontAwesomeIcon
+              icon={faChevronLeft}
+              className="prev-icon !tw-h-3/5 !tw-w-3/5"
+            />
+          </Button>
+          {props.cta && (
+            <Button
+              size={getButtonSize(false)}
+              {...{
+                ...props.cta,
+                ...{
+                  className: cn(
+                    props.cta.className,
+                    `carousel-button custom-button`
+                  ),
+                },
+              }}
+            />
           )}
-          style={{ background: props.arrowsBackground }}
-        >
-          <FontAwesomeIcon
-            icon={faChevronLeft}
-            className="prev-icon !tw-h-3/5 !tw-w-3/5"
-          />
-        </Button>
+          <Button
+            size={getButtonSize(true)}
+            className={cn(
+              "custom-next carousel-button",
+              props.arrowsBackground && `tw-border-white`
+            )}
+            rounded={"circle"}
+            style={{ background: props.arrowsBackground }}
+          >
+            <FontAwesomeIcon
+              icon={faChevronRight}
+              className={`next-icon !tw-h-3/5 !tw-w-3/5`}
+            />
+          </Button>
+        </div>
       </Swiper>
     </div>
   );

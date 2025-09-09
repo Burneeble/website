@@ -175,7 +175,7 @@ const config = {
         action: "var(--primary-default)",
         "action-hover": "var(--primary-light)",
         error: "var(--error-dark)",
-        success: "var(--success-dark)",
+        success: "var(--success-default)",
         information: "var(--info-dark)",
         warning: "var(--warning-dark)",
         neutral: "var(--neutral-dark)",
@@ -286,6 +286,19 @@ const config = {
             transform: "translateY(0)",
           },
         },
+        "fill-gradient": {
+          "0%": {
+            backgroundPosition: "0% 50%",
+            backgroundColor: "var(--primary-default)",
+            borderColor: "var(--primary-default)",
+          },
+
+          "100%": {
+            backgroundPosition: "100% 50%",
+            backgroundColor: "var(--success-default)",
+            borderColor: "var(--success-default)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -296,6 +309,7 @@ const config = {
         "cs-wrong": "cs-wrong 0.5s ease-in-out",
         "cs-zoom-in": "cs-zoom-in 0.15s ease-in-out forwards",
         "cs-float": "float 2s ease-in-out infinite",
+        "fill-gradient": "fill-gradient 2s linear forwards",
       },
     },
   },

@@ -90,6 +90,7 @@ export const baseForm: Story = {
         onSubmit={(values) => {
           console.log(values);
         }}
+        showSuccessButton={true}
       />
     );
   },

@@ -27,8 +27,8 @@ const MobileSearchResult = (props: MobileSearchResultProps) => {
     >
       <div
         className={`
-          name tw-shrink tw-grow tw-basis-0 tw-text-text-body-active
-          tw-font-inter tw-text-lg tw-font-normal tw-leading-7
+          name p-small tw-shrink tw-grow tw-basis-0 tw-text-text-body-active
+          tw-font-normal
         `}
         dangerouslySetInnerHTML={{ __html: props.text }}
       />
