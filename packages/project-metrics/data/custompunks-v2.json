@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "id": "custompunks-v2",
+    "name": "Custompunks V2",
+    "chainName": "base",
+    "contractAddress": "0xedee75777e6b6c6a2e9dd68c7c1b8576c716d7c6",
+    "createdAt": "2025-03-11T12:22:55.884Z",
+    "updatedAt": "2025-03-11T12:22:55.884Z"
+  },
+  "enrichedData": {
+    "aws-amplify-stats": {
+      "appName": "",
+      "appId": "",
+      "defaultDomain": "",
+      "createTime": "2023-09-26T12:40:32.420Z",
+      "updateTime": "2025-03-10T22:00:04.793Z",
+      "platform": "WEB",
+      "productionBranch": {
+        "branchName": "main",
+        "displayName": "main",
+        "ttl": "5"
+      },
+      "metrics": {
+        "requestCount": 35256000,
+        "errorRate": 0,
+        "averageResponseTime": 0,
+        "metricsStartTime": "2024-03-16T12:51:27.983Z",
+        "metricsEndTime": "2025-03-11T12:51:27.983Z"
+      }
+    },
+    "evm-project-data": {
+      "transactions": 5913,
+      "events": 15897,
+      "ethInflow": "6200970000000000000n"
+    },
+    "erc721-token-data": {
+      "name": "CustomPunks",
+      "symbol": "CP",
+      "totalSupply": "15292n"
+    }
+  }
+}

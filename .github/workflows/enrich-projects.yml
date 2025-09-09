@@ -1,0 +1,88 @@
+name: Project Enrichment
+
+on:
+  # Trigger on push events
+  # push:
+  #   paths-ignore:
+  #     - "**.md"
+
+  # Allow manual triggering
+  workflow_dispatch:
+
+jobs:
+  enrich-initial:
+    name: Enrich ${{ matrix.project }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        project:
+          [
+            "skullnbananas-v1",
+            "custompunks-v1,custompunks-v2",
+            "zbdc",
+            "buckbuck-v1",
+            "businessmenx",
+          ]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          # Set fetch-depth to 0 to get all history for proper commits
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "yarn"
+          cache-dependency-path: "./yarn.lock"
+
+      - name: Install dependencies
+        working-directory: ./packages/project-metrics
+        run: yarn install --frozen-lockfile
+
+      - name: Build project
+        working-directory: ./packages/project-metrics
+        run: yarn build
+
+      - name: Run enrichment for ${{ matrix.project }}
+        working-directory: ./packages/project-metrics
+        run: yarn enrich -p ${{ matrix.project }}
+        env:
+          # Add any required environment variables here
+          BASE_RPC_URL: ${{ secrets.BASE_RPC_URL }}
+          CUSTOMPUNKS_REGION: ${{ secrets.CUSTOMPUNKS_REGION }}
+          CUSTOMPUNKS_ACCESS_KEY_ID: ${{ secrets.CUSTOMPUNKS_ACCESS_KEY_ID }}
+          CUSTOMPUNKS_SECRET_ACCESS_KEY: ${{ secrets.CUSTOMPUNKS_SECRET_ACCESS_KEY }}
+          CUSTOMPUNKS_APP_ID: ${{ secrets.CUSTOMPUNKS_APP_ID }}
+          SNB_REGION: ${{ secrets.SNB_REGION }}
+          SNB_ACCESS_KEY_ID: ${{ secrets.SNB_ACCESS_KEY_ID }}
+          SNB_SECRET_ACCESS_KEY: ${{ secrets.SNB_SECRET_ACCESS_KEY }}
+          SNB_APP_ID: ${{ secrets.SNB_APP_ID }}
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+
+      - name: Check for changes in data directory
+        id: check_changes
+        run: |
+          if [[ -n "$(git status --porcelain ./packages/project-metrics/data)" ]]; then
+            echo "changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push changes
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          git pull
+          git add ./packages/project-metrics/data
+          git commit -m "[ci skip] Update project data for ${{ matrix.project }}"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

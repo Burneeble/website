@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "id": "businessmenx",
+    "name": "BusinessMenX",
+    "chainName": "ethereum",
+    "contractAddress": "0x4fd13b3F0644895355674E353e060A573B19f63a",
+    "createdAt": "2025-03-11T13:24:46.942Z",
+    "updatedAt": "2025-03-11T13:24:46.942Z"
+  },
+  "enrichedData": {
+    "evm-project-data": {
+      "transactions": 352,
+      "events": 679,
+      "ethInflow": "9704000000000000000n"
+    },
+    "erc721-token-data": {
+      "name": "Business Men X",
+      "symbol": "CBMX",
+      "totalSupply": "372n"
+    }
+  }
+}

@@ -25,9 +25,6 @@ function deduceFiles() {
   // Default files
   files.push({ path: './apps/website/.next/analyze/client.html', name: 'website-client-bundle' });
   files.push({ path: './apps/website/.next/analyze/nodejs.html', name: 'website-nodejs-bundle' });
-  files.push({ path: './apps/pfp/.next/analyze/client.html', name: 'pfp-client-bundle' });
-  files.push({ path: './apps/pfp/.next/analyze/nodejs.html', name: 'pfp-nodejs-bundle' });
-  files.push({ path: deduceHtmlFile("./apps/pfp/.lighthouseci"), name: 'pfp-lighthouse-report' });
   files.push({ path: deduceHtmlFile("./apps/website/.lighthouseci"), name: 'website-lighthouse-report' });
 
   return files;
