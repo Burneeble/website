@@ -50,9 +50,8 @@ const Hero = (props: HeroProps) => {
 			>
 				<div
 					className={`
-       hero-shape tw-absolute tw-left-[50%] tw-top-[50%] tw-h-[40rem]
-       tw-w-[80rem] -tw-translate-x-[50%] -tw-translate-y-[50%]
-       tw-rotate-[30deg]
+       hero-shape tw-absolute tw-left-1/2 tw-top-1/2 tw-h-[40rem] tw-w-[80rem]
+       -tw-translate-x-[50%] -tw-translate-y-[50%] tw-rotate-[30deg]
        tw-bg-[radial-gradient(_rgba(80,80,80,1)_10%,_#000_80%)] tw-opacity-[.5]
        tw-blur-[100px]
      `}

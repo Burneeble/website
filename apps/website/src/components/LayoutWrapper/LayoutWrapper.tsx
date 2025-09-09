@@ -8,11 +8,27 @@ import { faReact, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { SkeletonTheme } from "react-loading-skeleton";
 import Image from "next/image";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
-import { useEffect } from "react";
-const LayoutWrapper = (props: LayoutWrapperProps) => {
+import { useEffect, useState } from "react";
+import { NavbarProvider, useNavbar } from "@/contexts/NavbarContext";
+
+const LayoutWrapperContent = (props: LayoutWrapperProps) => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const { isNavbarVisible } = useNavbar();
+
   //Every time the page is loaded, the scroll is set to the top to avoid scrolling bug
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+
+  // Scroll listener for dynamic navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 50); // Trigger after 50px scroll
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -20,11 +36,22 @@ const LayoutWrapper = (props: LayoutWrapperProps) => {
       {/* TODO add a Suspense component */}
       <header
         className={`
-          cs-website-max-width cs-website-horizontal-padding tw-absolute
-          tw-left-2/4 tw-top-0 tw-z-50 -tw-translate-x-2/4
+          tw-fixed tw-top-0 tw-z-50 tw-w-full tw-transition-all tw-duration-300
+
+          ${isScrolled ? 'tw-py-1 tw-backdrop-blur-md' : 'tw-py-2'}
+          ${!isNavbarVisible ? 'tw-opacity-0 -tw-translate-y-full' : `
+            tw-opacity-100
+          `}
         `}
+        style={{
+          backgroundColor: isScrolled ? 'rgba(0, 0, 0, 0.8)' : 'transparent',
+          pointerEvents: !isNavbarVisible ? 'none' : 'auto'
+        }}
       >
-        <Navbar
+        <div className={`
+          cs-website-max-width cs-website-horizontal-padding tw-mx-auto
+        `}>
+          <Navbar
           logo={{
             svg: (
               <Image
@@ -91,8 +118,13 @@ const LayoutWrapper = (props: LayoutWrapperProps) => {
             },
           ]}
         />
+        </div>
       </header>
-      <main className="tw-relative tw-min-h-screen">
+      <main 
+        className={`
+          tw-relative tw-min-h-screen tw-transition-all tw-duration-300
+        `}
+      >
         <SkeletonTheme baseColor="rgba(43,43,43,1)" highlightColor="#322923">
           {props.children}
         </SkeletonTheme>
@@ -107,6 +139,14 @@ const LayoutWrapper = (props: LayoutWrapperProps) => {
       </div>
       <ToastContainer />
     </>
+  );
+};
+
+const LayoutWrapper = (props: LayoutWrapperProps) => {
+  return (
+    <NavbarProvider>
+      <LayoutWrapperContent {...props} />
+    </NavbarProvider>
   );
 };
 

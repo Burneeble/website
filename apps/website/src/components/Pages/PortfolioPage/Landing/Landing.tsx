@@ -33,11 +33,11 @@ const PortfolioLanding = () => {
         <h1 className={`
           tw-relative -tw-top-1/4 tw-text-center tw-font-normal tw-text-headings
 
-          sm:tw-text-4xl
+          lg:tw-text-6xl
 
           md:tw-text-5xl
 
-          lg:tw-text-6xl
+          sm:tw-text-4xl
 
           xl:tw-text-7xl
         `}>

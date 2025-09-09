@@ -53,6 +53,7 @@ const ProjectPageWrapper = ({ project, projectName }: ProjectPageWrapperProps) =
         favicon={project.favicon || ""}
         title={project.title}
         mainColor={project.mainColor || "rgb(0,0,0)"}
+        backgroundVideo={project.backgroundVideo}
       />
       {project.sections && project.sections[0] && (
         <Section

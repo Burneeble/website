@@ -145,6 +145,7 @@ export const GET_PROJECT_QUERY = gql(/* GraphQL */ `
           }
         }
         mainColor
+        backgroundVideo
         technologies {
           nodes {
             name

@@ -53,7 +53,7 @@ const CanvaContent = () => {
         >
           Still not sure?
         </Text3D> */}
-        <Html>
+        <Html style={{ zIndex: 40 }}>
           <h2
             className={`
               title tw-absolute tw-w-[450px] tw-min-w-full -tw-translate-x-1/2
