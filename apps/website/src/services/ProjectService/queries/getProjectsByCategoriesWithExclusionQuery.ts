@@ -1,0 +1,64 @@
+/* eslint-disable @burneeble/burneeble/camel-case-vars */
+import { gql } from "@/__generated__";
+
+// Query for when user selects specific categories AND we want to exclude some
+export const GET_PROJECTS_BY_CATEGORIES_WITH_EXCLUSION_QUERY = gql(/* GraphQL */ `
+  query GetProjectsByCategoriesWithExclusionQuery(
+    $includeCategories: [String]!
+    $excludeCategories: [String]
+    $limit: Int
+    $offset: String
+    $search: String
+  ) {
+    projects(
+      first: $limit
+      after: $offset
+      where: {
+        taxQuery: {
+          relation: AND
+          taxArray: [
+            {
+              taxonomy: PROJECTCATEGORY
+              terms: $includeCategories
+              field: NAME
+              operator: IN
+            }
+            {
+              taxonomy: PROJECTCATEGORY
+              terms: $excludeCategories
+              field: NAME
+              operator: NOT_IN
+            }
+          ]
+        }
+        search: $search
+      }
+    ) {
+      edges {
+        node {
+          title
+          projectFields {
+            description
+            category {
+              edges {
+                node {
+                  name
+                }
+              }
+            }
+            projectUrl
+            thumbnail {
+              node {
+                guid
+              }
+            }
+          }
+        }
+      }
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
+    }
+  }
+`);

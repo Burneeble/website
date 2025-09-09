@@ -91,7 +91,7 @@ const Navbar = (props: NavbarProps) => {
                           `}
 												>
 													{component.primaryItem && (
-														<li className="tw-row-span-3">
+														<li className="tw-row-span-4">
 															<NavigationMenuLink asChild>
 																<a
 																	className={`

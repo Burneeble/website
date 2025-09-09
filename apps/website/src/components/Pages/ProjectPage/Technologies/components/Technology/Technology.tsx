@@ -7,6 +7,7 @@ import {
   FigmaIcon,
   NextJsIcon,
   StripeIcon,
+  SupabaseIcon,
   TailwindIcon,
   WordpressIcon,
 } from "@burneeble/icons";
@@ -43,6 +44,8 @@ const Technology = (props: TechnologyProps) => {
         return <WordpressIcon />;
       case "ethereum":
         return <EthereumIcon />;
+      case "supabase":
+        return <SupabaseIcon />;
       default:
         return <>not found</>;
     }

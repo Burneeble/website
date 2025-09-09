@@ -54,7 +54,11 @@ const GalleryPage = async () => {
       `}
     >
       <Landing />
-      <Projects categories={categories} />
+      <Projects
+        categories={categories}
+        excludeCategories={["Portfolio Only"]}
+        batchSize={9} // Configure batch size here
+      />
     </div>
   );
 };

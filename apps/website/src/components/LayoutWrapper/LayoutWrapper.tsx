@@ -69,6 +69,12 @@ const LayoutWrapper = (props: LayoutWrapperProps) => {
                   href: "/homepage#showcase",
                   description: "Check out some of our projects",
                 },
+                {
+                  title: "Portfolio",
+                  href: "/portfolio",
+                  description:
+                    "Discover our exclusive portfolio of custom projects",
+                },
               ],
             },
           ]}
