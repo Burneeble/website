@@ -1,4 +1,4 @@
-import { ProjectLogo, Technologies } from "@/components/Pages";
+import { FigmaEmbed, ProjectLogo, Technologies } from "@/components/Pages";
 import Section, {
   ImageLayoutType,
   LayoutType,
@@ -121,6 +121,17 @@ const ProjectPage = async ({ params }: { params: { projectName: string } }) => {
                   </>
                 );
               })}
+
+          {(project.figmaDesktopEmbedUrl || project.figmaMobileEmbedUrl) && (
+            <FigmaEmbed
+              desktopEmbedUrl={project.figmaDesktopEmbedUrl || ""}
+              mobileEmbedUrl={
+                project.figmaMobileEmbedUrl ||
+                project.figmaDesktopEmbedUrl ||
+                ""
+              }
+            />
+          )}
         </div>
       )}
     </>

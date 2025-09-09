@@ -9,6 +9,8 @@ export interface IProjectModel {
   categories: string[];
   favicon?: string;
   mainColor?: string;
+  figmaDesktopEmbedUrl?: string;
+  figmaMobileEmbedUrl?: string;
   technologies?: {
     slug: string;
     name: string;
@@ -41,6 +43,12 @@ export class ProjectModel implements IProjectModel {
   mainColor?: string;
 
   @JsonProperty()
+  figmaDesktopEmbedUrl?: string;
+
+  @JsonProperty()
+  figmaMobileEmbedUrl?: string;
+
+  @JsonProperty()
   technologies?: {
     slug: string;
     name: string;
@@ -58,6 +66,8 @@ export class ProjectModel implements IProjectModel {
     this.categories = obj?.categories ?? [];
     this.favicon = obj?.favicon;
     this.mainColor = obj?.mainColor;
+    this.figmaDesktopEmbedUrl = obj?.figmaDesktopEmbedUrl;
+    this.figmaMobileEmbedUrl = obj?.figmaMobileEmbedUrl;
     this.technologies = obj?.technologies;
     this.sections = obj?.sections;
   }
