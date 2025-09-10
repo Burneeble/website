@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { IProjectModel } from "@/services/ProjectService";
-import { ProjectLogo, Technologies } from "@/components/Pages";
+import { FigmaEmbed, ProjectLogo, Technologies } from "@/components/Pages";
 import Section, {
   ImageLayoutType,
   LayoutType,
@@ -14,7 +14,10 @@ interface ProjectPageWrapperProps {
   projectName: string;
 }
 
-const ProjectPageWrapper = ({ project, projectName }: ProjectPageWrapperProps) => {
+const ProjectPageWrapper = ({
+  project,
+  projectName,
+}: ProjectPageWrapperProps) => {
   const router = useRouter();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -22,7 +25,7 @@ const ProjectPageWrapper = ({ project, projectName }: ProjectPageWrapperProps) =
   useEffect(() => {
     // Check if project has "Portfolio Only" category
     const isPortfolioOnly = project.categories.includes("Portfolio Only");
-    
+
     if (isPortfolioOnly) {
       // Check authentication
       const authStatus = sessionStorage.getItem("portfolio_auth");
@@ -33,7 +36,7 @@ const ProjectPageWrapper = ({ project, projectName }: ProjectPageWrapperProps) =
         return;
       }
     }
-    
+
     // Either not portfolio-only or authenticated
     setIsAuthenticated(true);
     setIsLoading(false);
@@ -71,23 +74,28 @@ const ProjectPageWrapper = ({ project, projectName }: ProjectPageWrapperProps) =
       )}
       <Technologies technologies={project.technologies || []} />
       {project.sections &&
-        project.sections
-          .slice(1, project.sections.length)
-          .map((section, i) => {
-            return (
-              <Section
-                key={i}
-                layoutType={section.layout as LayoutType}
-                title={section.title}
-                text={section.text}
-                imageLayoutType={
-                  section.imageLayout.slug as ImageLayoutType
-                }
-                imageLayoutInfo={section.imageLayout}
-                enableBars={i < project.sections!.length - 2}
-              />
-            );
-          })}
+        project.sections.slice(1, project.sections.length).map((section, i) => {
+          return (
+            <Section
+              key={i}
+              layoutType={section.layout as LayoutType}
+              title={section.title}
+              text={section.text}
+              imageLayoutType={section.imageLayout.slug as ImageLayoutType}
+              imageLayoutInfo={section.imageLayout}
+              enableBars={i < project.sections!.length - 2}
+            />
+          );
+        })}
+
+      {(project.figmaDesktopEmbedUrl || project.figmaMobileEmbedUrl) && (
+        <FigmaEmbed
+          desktopEmbedUrl={project.figmaDesktopEmbedUrl || ""}
+          mobileEmbedUrl={
+            project.figmaMobileEmbedUrl || project.figmaDesktopEmbedUrl || ""
+          }
+        />
+      )}
     </div>
   );
 };

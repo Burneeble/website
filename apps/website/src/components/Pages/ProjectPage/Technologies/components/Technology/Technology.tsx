@@ -7,14 +7,16 @@ import {
   FigmaIcon,
   NextJsIcon,
   StripeIcon,
-  SupabaseIcon,
   TailwindIcon,
   WordpressIcon,
+  SupabaseIcon,
 } from "@burneeble/icons";
 import { TechnologyProps } from "./Technology.types";
 import { useClientInfoService } from "@burneeble/ui-components";
 import { cn } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMicrochip } from "@fortawesome/free-solid-svg-icons";
 
 const Technology = (props: TechnologyProps) => {
   //States
@@ -47,7 +49,7 @@ const Technology = (props: TechnologyProps) => {
       case "supabase":
         return <SupabaseIcon />;
       default:
-        return <>not found</>;
+        return <FontAwesomeIcon className="tw-h-[35px]" icon={faMicrochip} />;
     }
   };
 
