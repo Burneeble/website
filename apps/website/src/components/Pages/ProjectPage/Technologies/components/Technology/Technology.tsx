@@ -7,6 +7,7 @@ import {
   FigmaIcon,
   NextJsIcon,
   StripeIcon,
+  SupabaseIcon,
   TailwindIcon,
   WordpressIcon,
   SupabaseIcon,

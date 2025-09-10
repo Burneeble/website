@@ -11,6 +11,7 @@ export interface IProjectModel {
   mainColor?: string;
   figmaDesktopEmbedUrl?: string;
   figmaMobileEmbedUrl?: string;
+  backgroundVideo?: string;
   technologies?: {
     slug: string;
     name: string;
@@ -47,6 +48,7 @@ export class ProjectModel implements IProjectModel {
 
   @JsonProperty()
   figmaMobileEmbedUrl?: string;
+  backgroundVideo?: string;
 
   @JsonProperty()
   technologies?: {
@@ -68,6 +70,7 @@ export class ProjectModel implements IProjectModel {
     this.mainColor = obj?.mainColor;
     this.figmaDesktopEmbedUrl = obj?.figmaDesktopEmbedUrl;
     this.figmaMobileEmbedUrl = obj?.figmaMobileEmbedUrl;
+    this.backgroundVideo = obj?.backgroundVideo;
     this.technologies = obj?.technologies;
     this.sections = obj?.sections;
   }

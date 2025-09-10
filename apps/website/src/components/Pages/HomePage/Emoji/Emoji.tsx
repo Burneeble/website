@@ -31,12 +31,21 @@ const Emoji = (props: EmojiProps) => {
 					</>
 				}
 			>
-				<Canvas
-					gl={{ antialias: true, outputColorSpace: THREE.SRGBColorSpace }}
-					style={{ height: "100vh", width: "100%" }}
+				<div 
+					className="tw-relative tw-z-[1]"
+					style={{ 
+						isolation: "isolate",
+						height: "100vh", 
+						width: "100%" 
+					}}
 				>
-					<CanvaContent />
-				</Canvas>
+					<Canvas
+						gl={{ antialias: true, outputColorSpace: THREE.SRGBColorSpace }}
+						style={{ height: "100%", width: "100%" }}
+					>
+						<CanvaContent />
+					</Canvas>
+				</div>
 			</Suspense>
 		</section>
 	);

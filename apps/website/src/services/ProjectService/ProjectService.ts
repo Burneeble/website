@@ -6,6 +6,7 @@ import {
   GET_PROJECT_QUERY,
   GET_PROJECTS_BY_CATEGORIES_QUERY,
   GET_PROJECTS_QUERY,
+  GET_PROJECTS_WITH_EXCLUSION_SIMPLE_QUERY,
 } from "./queries";
 import {
   ImageLayoutModel,
@@ -131,6 +132,7 @@ export class ProjectService {
         }) || ["Dapp"],
       favicon: data.project?.projectFields?.favicon?.node.guid || "",
       mainColor: data.project?.projectFields?.mainColor || "",
+      backgroundVideo: data.project?.projectFields?.backgroundVideo || undefined,
       technologies:
         data.project?.projectFields?.technologies?.nodes.map((t) => ({
           name: t.name || "",
@@ -158,6 +160,47 @@ export class ProjectService {
           }
         : { query: GET_PROJECTS_QUERY }
     );
+
+    if (!data) return [];
+
+    const projectsInfo: IProjectModel[] | null = data.projects
+      ? data.projects?.edges.map((edge) => {
+          return {
+            title: edge.node.title || "",
+            description: edge.node.projectFields?.description || "",
+            projectUrl: edge.node.projectFields?.projectUrl || "",
+            thumbnailUrl: edge.node.projectFields?.thumbnail?.node.guid || "",
+            categories: edge.node.projectFields?.category?.edges
+              .map((c) => c.node.name)
+              .filter((c) => {
+                return typeof c === "string";
+              }) || ["Dapp"],
+          };
+        })
+      : null;
+
+    if (!projectsInfo) return [];
+
+    const projects = (serializer.deserializeObjectArray<ProjectModel>(
+      projectsInfo,
+      ProjectModel
+    ) || []) as Array<ProjectModel>;
+
+    return projects;
+  }
+
+  public async getProjectsWithExclusion(
+    excludeCategories?: string[]
+  ): Promise<Array<ProjectModel>> {
+    const { data } = await GraphQLService.instance.client.query({
+      query: GET_PROJECTS_WITH_EXCLUSION_SIMPLE_QUERY,
+      variables: { 
+        excludeCategories: excludeCategories || [],
+        limit: null,
+        offset: null,
+        search: null
+      },
+    });
 
     if (!data) return [];
 
