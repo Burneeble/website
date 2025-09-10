@@ -50,7 +50,7 @@ const PortfolioPage = () => {
     e.preventDefault();
 
     const validPassword =
-      process.env.NEXT_PUBLIC_PORTFOLIO_PASSWORD || "burneeble2024";
+      process.env.NEXT_PUBLIC_PORTFOLIO_PASSWORD || "burneeble2026";
 
     if (password === validPassword) {
       sessionStorage.setItem("portfolio_auth", "true");

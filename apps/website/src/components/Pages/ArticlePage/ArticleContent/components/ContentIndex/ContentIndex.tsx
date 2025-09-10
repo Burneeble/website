@@ -24,7 +24,7 @@ const ContentIndex = (props: ContentIndexProps) => {
         .replaceAll("#", "")
         .replaceAll(".", "")
         .toLowerCase();
-      if (p.innerText !== "© COPYRIGHT 2024 - BURNEEBLE SRL") tmp.push(p);
+      if (p.innerText !== "© COPYRIGHT 2025 - BURNEEBLE SRL") tmp.push(p);
     });
     setParagraphs(tmp);
   }, []);
