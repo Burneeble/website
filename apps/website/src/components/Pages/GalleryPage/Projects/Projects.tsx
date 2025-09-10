@@ -265,8 +265,7 @@ const Projects = (props: ProjectsProps) => {
                   <div
                     className={cn(
                       `
-                        icon
-
+                        icon !tw-h-[40px]
                         md:tw-flex-1
 
                         xl:tw-max-w-[630px]
@@ -287,14 +286,14 @@ const Projects = (props: ProjectsProps) => {
                         }}
                         placeholder="Search Project Name..."
                         className={`
-                          tw-flex-1 tw-bg-[rgba(0,0,0,0)] tw-font-inter
-                          tw-text-2xl tw-text-headings tw-outline-none
+                          p-default tw-flex-1 tw-bg-[rgba(0,0,0,0)] tw-font-inter
+                           tw-text-headings tw-outline-none
                         `}
                       />
                     )}
                     <FontAwesomeIcon
                       icon={faMagnifyingGlass}
-                      className={`tw-max-h-[1.875rem]`}
+                      className={`tw-h-[20px]]`}
                     />
                   </div>
                   {["sm", "md", "lg"].includes(screen) && (

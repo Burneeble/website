@@ -70,6 +70,7 @@ const ProjectPage = async ({ params }: { params: { projectName: string } }) => {
     notFound();
   }
 
+
   return project ? <ProjectPageWrapper project={project} projectName={projectName} /> : null;
 };
 
