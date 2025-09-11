@@ -39,7 +39,7 @@ const LayoutWrapperContent = (props: LayoutWrapperProps) => {
           tw-fixed tw-top-0 tw-z-50 tw-w-full tw-transition-all tw-duration-300
 
           ${isScrolled ? 'tw-py-1 tw-backdrop-blur-md' : 'tw-py-2'}
-          ${!isNavbarVisible ? 'tw-opacity-0 -tw-translate-y-full' : `
+          ${!isNavbarVisible ? '-tw-translate-y-full tw-opacity-0' : `
             tw-opacity-100
           `}
         `}

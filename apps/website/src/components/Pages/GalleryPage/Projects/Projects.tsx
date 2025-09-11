@@ -266,6 +266,7 @@ const Projects = (props: ProjectsProps) => {
                     className={cn(
                       `
                         icon !tw-h-[40px]
+
                         md:tw-flex-1
 
                         xl:tw-max-w-[630px]
@@ -286,8 +287,8 @@ const Projects = (props: ProjectsProps) => {
                         }}
                         placeholder="Search Project Name..."
                         className={`
-                          p-default tw-flex-1 tw-bg-[rgba(0,0,0,0)] tw-font-inter
-                           tw-text-headings tw-outline-none
+                          p-default tw-flex-1 tw-bg-[rgba(0,0,0,0)]
+                          tw-font-inter tw-text-headings tw-outline-none
                         `}
                       />
                     )}

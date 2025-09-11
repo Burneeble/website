@@ -48,6 +48,8 @@ export class ProjectModel implements IProjectModel {
 
   @JsonProperty()
   figmaMobileEmbedUrl?: string;
+  
+  @JsonProperty()
   backgroundVideo?: string;
 
   @JsonProperty()

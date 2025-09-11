@@ -220,7 +220,7 @@ const ProjectLogo = (props: ProjectLogoProps) => {
       {hasVideo && (
         <div 
           ref={gradientRef}
-          className="tw-absolute tw-inset-0 tw-z-10 tw-pointer-events-none"
+          className="tw-pointer-events-none tw-absolute tw-inset-0 tw-z-10"
           style={{
             background: `
               linear-gradient(to bottom, 
@@ -246,7 +246,7 @@ const ProjectLogo = (props: ProjectLogoProps) => {
       {hasVideo && (
         <div 
           ref={navbarGradientRef}
-          className="tw-absolute tw-top-0 tw-left-0 tw-right-0 tw-h-20 tw-z-30 tw-pointer-events-none"
+          className="tw-pointer-events-none tw-absolute tw-inset-x-0 tw-top-0 tw-z-30 tw-h-20"
           style={{
             background: `
               linear-gradient(to bottom, 
