@@ -132,6 +132,8 @@ export class ProjectService {
         }) || ["Dapp"],
       favicon: data.project?.projectFields?.favicon?.node.guid || "",
       mainColor: data.project?.projectFields?.mainColor || "",
+      figmaDesktopEmbedUrl: data.project?.projectFields?.figmaEmbedDesktopLink || undefined,
+      figmaMobileEmbedUrl: data.project?.projectFields?.figmaEmbedMobileLink || undefined,
       backgroundVideo: data.project?.projectFields?.backgroundVideo || undefined,
       technologies:
         data.project?.projectFields?.technologies?.nodes.map((t) => ({

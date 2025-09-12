@@ -9,22 +9,47 @@ const FigmaEmbed = (props: FigmaEmbedProps) => {
 
   //Methods
   const getEmbedUrlWithParams = (url: string) => {
-    // Check if URL already has parameters
-    const hasParams = url.includes("?");
-    const separator = hasParams ? "&" : "?";
+    try {
+      // Parse the URL to properly handle parameters
+      const urlObj = new URL(url);
+      
+      // Fix the scaling parameter if it was changed
+      if (urlObj.searchParams.get("scaling") === "min-zoom") {
+        urlObj.searchParams.set("scaling", "scale-down-width");
+      }
+      
+      // Add p=f parameter if missing (for full presentation mode)
+      if (!urlObj.searchParams.has("p")) {
+        urlObj.searchParams.set("p", "f");
+      }
+      
+      // Add parameters only if they don't exist
+      if (!urlObj.searchParams.has("hide-ui")) {
+        urlObj.searchParams.set("hide-ui", "1");
+      }
 
-    // Add security parameters if not already present
-    let finalUrl = url;
-    if (!url.includes("hide-ui=")) {
-      finalUrl += `${separator}hide-ui=1`;
-    }
-    if (!url.includes("hotspot-hints=")) {
-      finalUrl += `${
-        finalUrl.includes("hide-ui=") ? "&" : separator
-      }hotspot-hints=0`;
-    }
+      if (!urlObj.searchParams.has("hotspot-hints")) {
+        urlObj.searchParams.set("hotspot-hints", "0");
+      }
 
-    return finalUrl;
+      return urlObj.toString();
+    } catch (error) {
+      // Fallback for invalid URLs
+      const hasParams = url.includes("?");
+      const separator = hasParams ? "&" : "?";
+
+      let finalUrl = url;
+      if (!url.includes("hide-ui=")) {
+        finalUrl += `${separator}hide-ui=1`;
+      }
+      if (!url.includes("hotspot-hints=")) {
+        finalUrl += `${
+          finalUrl.includes("hide-ui=") ? "&" : separator
+        }hotspot-hints=0`;
+      }
+
+      return finalUrl;
+    }
   };
 
   return (
@@ -96,8 +121,8 @@ const FigmaEmbed = (props: FigmaEmbedProps) => {
           <iframe
             className="tw-absolute tw-left-0 tw-top-0 tw-h-full tw-w-full"
             style={{ border: "none" }}
-            width="100%"
-            height="100%"
+            width="800px"
+            height="450px"
             src={getEmbedUrlWithParams(
               screen === "sm" ? props.mobileEmbedUrl : props.desktopEmbedUrl
             )}

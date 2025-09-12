@@ -153,6 +153,8 @@ export const GET_PROJECT_QUERY = gql(/* GraphQL */ `
             description
           }
         }
+        figmaEmbedDesktopLink
+        figmaEmbedMobileLink
       }
     }
   }
