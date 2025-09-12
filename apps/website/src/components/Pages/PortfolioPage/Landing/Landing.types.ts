@@ -1,1 +1,0 @@
-// No props needed for simplified version

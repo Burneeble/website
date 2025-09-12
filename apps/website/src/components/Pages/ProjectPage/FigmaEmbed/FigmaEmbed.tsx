@@ -33,7 +33,7 @@ const FigmaEmbed = (props: FigmaEmbedProps) => {
       }
 
       return urlObj.toString();
-    } catch (error) {
+    } catch {
       // Fallback for invalid URLs
       const hasParams = url.includes("?");
       const separator = hasParams ? "&" : "?";
