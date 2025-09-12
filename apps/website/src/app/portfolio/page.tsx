@@ -4,17 +4,23 @@ import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { PortfolioLanding, Projects } from "@/components/Pages/PortfolioPage";
 import { ProjectService } from "@/services/ProjectService";
-import { Button, NotificationHandler } from "@burneeble/ui-components";
+import {
+  Button,
+  NotificationHandler,
+  useClientInfoService,
+} from "@burneeble/ui-components";
 import { FlameIcon } from "@burneeble/icons";
 
 const PortfolioPage = () => {
+  const { screen, width } = useClientInfoService();
+
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState("");
   const [categories, setCategories] = useState<string[] | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  
+
   // Get redirect URL from query params
   const redirectUrl = searchParams.get("redirect");
 
@@ -23,7 +29,7 @@ const PortfolioPage = () => {
     const authStatus = sessionStorage.getItem("portfolio_auth");
     if (authStatus === "true") {
       setIsAuthenticated(true);
-      
+
       // If authenticated and there's a redirect URL, redirect immediately
       if (redirectUrl) {
         router.push(redirectUrl);
@@ -56,7 +62,7 @@ const PortfolioPage = () => {
       sessionStorage.setItem("portfolio_auth", "true");
       setIsAuthenticated(true);
       NotificationHandler.instance.success("Access granted!");
-      
+
       // If there's a redirect URL, navigate there after authentication
       if (redirectUrl) {
         router.push(redirectUrl);
@@ -73,24 +79,34 @@ const PortfolioPage = () => {
 
   if (!isAuthenticated) {
     return (
-      <div className={`
+      <div
+        className={`
         portfolio-auth-page cs-page tw-min-h-screen tw-bg-gradient-to-t
         tw-from-[var(--secondary-darker)] tw-to-[var(--secondary-base)]
-      `}>
-        <div className={`
+      `}
+      >
+        <div
+          className={`
           tw-flex tw-min-h-screen tw-items-center tw-justify-center tw-px-4
-        `}>
+        `}
+        >
           <div className="tw-w-full tw-max-w-md">
-            <div className={`
+            <div
+              className={`
               tw-rounded-2xl tw-bg-black/30 tw-p-8 tw-backdrop-blur-sm
-            `}>
+            `}
+            >
               <div className="tw-mb-8 tw-text-center">
-                <FlameIcon className={`
+                <FlameIcon
+                  className={`
                   tw-mx-auto tw-mb-4 tw-h-[60px] tw-w-[60px]
-                `} />
-                <h1 className={`
+                `}
+                />
+                <h1
+                  className={`
                   tw-mb-2 tw-font-bowlby-one tw-text-3xl tw-text-white
-                `}>
+                `}
+                >
                   Private Portfolio
                 </h1>
                 <p className="tw-font-inter tw-text-base tw-text-gray-400">
@@ -116,9 +132,8 @@ const PortfolioPage = () => {
                 />
                 <Button
                   type="submit"
-                  variant="primary"
+                  size={screen === "sm" || screen === "md" ? "default" : "lg"}
                   fit="full"
-                  className="tw-py-3"
                 >
                   Access Portfolio
                 </Button>
@@ -131,10 +146,12 @@ const PortfolioPage = () => {
   }
 
   return (
-    <div className={`
+    <div
+      className={`
       portfolio-page cs-page tw-bg-gradient-to-t
       tw-from-[var(--secondary-darker)] tw-to-[var(--secondary-base)]
-    `}>
+    `}
+    >
       <PortfolioLanding />
       <Projects
         categories={categories || []}
