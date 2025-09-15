@@ -129,7 +129,7 @@ const Footer = (props: FooterProps) => {
 
             `}
 					>
-						© COPYRIGHT 2024 - BURNEEBLE SRL
+						© COPYRIGHT 2025 - BURNEEBLE SRL
 					</h4>
 				</div>
 			</div>

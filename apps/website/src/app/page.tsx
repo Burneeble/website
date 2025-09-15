@@ -29,7 +29,7 @@ export default async function Home() {
 
 	try {
 		const [projectsInfo, skillsInfo] = await Promise.all([
-			ProjectService.instance.getProjects(),
+			ProjectService.instance.getProjectsWithExclusion(["Portfolio Only"]),
 			SkillService.instance.getSkills(),
 		]);
 

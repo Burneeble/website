@@ -20,7 +20,7 @@ const ProjectPreviewSkeleton = (props: ProjectPreviewSkeletonProps) => {
 
       <div
         className={`
-          tw-flex tw-h-[146px] tw-flex-col tw-items-start tw-justify-start
+          tw-flex tw-h-[80px] tw-flex-col tw-items-start tw-justify-start
           tw-gap-[5px]
         `}
       >

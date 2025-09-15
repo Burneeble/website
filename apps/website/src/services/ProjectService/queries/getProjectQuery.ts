@@ -145,6 +145,7 @@ export const GET_PROJECT_QUERY = gql(/* GraphQL */ `
           }
         }
         mainColor
+        backgroundVideo
         technologies {
           nodes {
             name
@@ -152,6 +153,8 @@ export const GET_PROJECT_QUERY = gql(/* GraphQL */ `
             description
           }
         }
+        figmaEmbedDesktopLink
+        figmaEmbedMobileLink
       }
     }
   }

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   ApolloClient,
   ApolloLink,
@@ -30,18 +31,18 @@ export class GraphQLService {
     const loggerLink = new ApolloLink((operation, forward) => {
       const { operationName, variables } = operation;
 
-      console.log("Request:", {
-        operationName,
-        variables,
-        headers: operation.getContext().headers,
-      });
+      // console.log("Request:", {
+      //   operationName,
+      //   variables,
+      //   headers: operation.getContext().headers,
+      // });
 
       return forward(operation).map((response) => {
-        console.log("Response:", {
-          operationName,
-          data: JSON.stringify(response.data, null, 2),
-          errors: response.errors,
-        });
+        // console.log("Response:", {
+        //   operationName,
+        //   data: JSON.stringify(response.data, null, 2),
+        //   errors: response.errors,
+        // });
 
         return response;
       });

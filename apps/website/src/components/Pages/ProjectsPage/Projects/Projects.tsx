@@ -4,7 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ProjectsProps } from "./Projects.types";
 import { faFilter, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import {
-  GET_PROJECTS_BY_CATEGORIES_QUERY,
+  GET_PROJECTS_BY_CATEGORIES_WITH_EXCLUSION_QUERY,
+  GET_PROJECTS_WITH_EXCLUSION_SIMPLE_QUERY,
   ProjectModel,
 } from "@/services/ProjectService";
 import { useCallback, useEffect, useState } from "react";
@@ -20,7 +21,10 @@ import {
   useScrollLock,
 } from "@burneeble/ui-components";
 import { useQuery } from "@apollo/client";
-import { GetProjectsQueryQuery } from "@/__generated__/graphql";
+import {
+  GetProjectsByCategoriesWithExclusionQueryQuery,
+  GetProjectsWithExclusionSimpleQueryQuery,
+} from "@/__generated__/graphql";
 import { cn } from "@/lib/utils";
 import { FilterPopup, SearchPopup } from "./components";
 import RoundedWrapper from "@/components/RoundedWrapper";
@@ -37,7 +41,7 @@ const Projects = (props: ProjectsProps) => {
   const [hasNextPage, setHasNextPage] = useState<boolean>(true);
   const [endCursor, setEndCursor] = useState<string>("0");
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const batchSize = 3;
+  const batchSize = props.batchSize || 3; // Default to 3 if not specified
   const [isFirstRender, setIsFirstRender] = useState<number>(0);
 
   //Hooks
@@ -45,17 +49,31 @@ const Projects = (props: ProjectsProps) => {
   const categoriesPopupLogic = usePopup();
   const searchPopupLogic = usePopup();
   const { lockScroll, unlockScroll } = useScrollLock();
-  const { data: projectsData, fetchMore: fetchMoreProjects } = useQuery(
-    GET_PROJECTS_BY_CATEGORIES_QUERY,
-    {
-      variables: {
-        categories:
-          activeCategories.length > 0 ? activeCategories : props.categories,
+  // Use different queries based on whether categories are selected
+  const hasActiveCategories = activeCategories.length > 0;
+  const query = hasActiveCategories
+    ? GET_PROJECTS_BY_CATEGORIES_WITH_EXCLUSION_QUERY
+    : GET_PROJECTS_WITH_EXCLUSION_SIMPLE_QUERY;
+
+  // Build variables object based on query type
+  const variables = hasActiveCategories
+    ? {
+        includeCategories: activeCategories,
+        excludeCategories: props.excludeCategories || [],
         limit: batchSize,
         offset: endCursor,
         search: searchQuery,
-      },
-    }
+      }
+    : {
+        excludeCategories: props.excludeCategories || [],
+        limit: batchSize,
+        offset: endCursor,
+        search: searchQuery,
+      };
+
+  const { data: projectsData, fetchMore: fetchMoreProjects } = useQuery(
+    query,
+    { variables: variables as any } // Type assertion to handle different variable shapes
   );
 
   //Effects
@@ -111,15 +129,24 @@ const Projects = (props: ProjectsProps) => {
     setIsLoading(true);
     try {
       if (!fetchMoreProjects) return;
-      const { data: res } = await fetchMoreProjects({
-        variables: {
-          categories:
-            activeCategories.length > 0 ? activeCategories : props.categories,
-          limit: batchSize,
-          offset: endCursor,
-          search: searchQuery,
-        },
-      });
+
+      const hasActiveCategories = activeCategories.length > 0;
+      const variables = hasActiveCategories
+        ? {
+            includeCategories: activeCategories,
+            excludeCategories: props.excludeCategories || [],
+            limit: batchSize,
+            offset: endCursor,
+            search: searchQuery,
+          }
+        : {
+            excludeCategories: props.excludeCategories || [],
+            limit: batchSize,
+            offset: endCursor,
+            search: searchQuery,
+          };
+
+      const { data: res } = await fetchMoreProjects({ variables });
 
       const data = res;
       setEndCursor(data.projects?.pageInfo.endCursor || "0");
@@ -134,7 +161,14 @@ const Projects = (props: ProjectsProps) => {
       NotificationHandler.instance.error("Error fetching projects");
     }
     setIsLoading(false);
-  }, [activeCategories, batchSize, endCursor, fetchMoreProjects, searchQuery]);
+  }, [
+    activeCategories,
+    batchSize,
+    endCursor,
+    fetchMoreProjects,
+    props.excludeCategories,
+    searchQuery,
+  ]);
 
   const triggerRefresh = () => {
     setIsLoading(true);
@@ -143,7 +177,9 @@ const Projects = (props: ProjectsProps) => {
   };
 
   const projectFormatter = (
-    data: GetProjectsQueryQuery
+    data:
+      | GetProjectsByCategoriesWithExclusionQueryQuery
+      | GetProjectsWithExclusionSimpleQueryQuery
   ): ProjectModel[] | null => {
     const projectsInfo: ProjectModel[] | null = data.projects
       ? data.projects?.edges.map((edge) => {
@@ -189,13 +225,13 @@ const Projects = (props: ProjectsProps) => {
             <>
               <div
                 className={`
-                  header tw-inline-flex tw-h-[58px] tw-w-full tw-items-center
+                  header tw-inline-flex tw-h-fit tw-w-full tw-items-center
                   tw-justify-between tw-gap-[20px]
 
-                  md:tw-h-[123px] md:tw-flex-col md:tw-items-start
+                   md:tw-flex-col md:tw-items-start
                   md:tw-gap-[10px]
 
-                  xl:tw-h-[70px] xl:tw-flex-row xl:tw-items-center
+                   xl:tw-flex-row xl:tw-items-center
                 `}
               >
                 <h2
@@ -204,7 +240,18 @@ const Projects = (props: ProjectsProps) => {
                     tw-text-white
                   `}
                 >
-                  {screen === "sm" ? (
+                  {props.isPortfolio ? (
+                    screen === "sm" ? (
+                      "PORTFOLIO"
+                    ) : (
+                      <>
+                        Portfolio{" "}
+                        <span className={`cs-text-color-primary-gradient`}>
+                          Collection
+                        </span>
+                      </>
+                    )
+                  ) : screen === "sm" ? (
                     "GALLERY"
                   ) : (
                     <>
@@ -225,7 +272,7 @@ const Projects = (props: ProjectsProps) => {
                   <div
                     className={cn(
                       `
-                        icon
+                        icon !tw-h-[40px]
 
                         md:tw-flex-1
 
@@ -247,20 +294,20 @@ const Projects = (props: ProjectsProps) => {
                         }}
                         placeholder="Search Project Name..."
                         className={`
-                          tw-flex-1 tw-bg-[rgba(0,0,0,0)] tw-font-inter
-                          tw-text-2xl tw-text-headings tw-outline-none
+                          p-default tw-flex-1 tw-bg-[rgba(0,0,0,0)]
+                          tw-font-inter tw-text-headings tw-outline-none
                         `}
                       />
                     )}
                     <FontAwesomeIcon
                       icon={faMagnifyingGlass}
-                      className={`tw-max-h-[1.875rem]`}
+                      className={`tw-h-[20px]`}
                     />
                   </div>
                   {["sm", "md", "lg"].includes(screen) && (
                     <div
                       className={cn(
-                        `icon tw-relative`,
+                        `icon tw-relative !tw-h-[40px] !tw-w-[40px]`,
                         categoriesPopupLogic.isPopupOpen && "opened",
                         activeCategories.length > 0 && "active"
                       )}
@@ -272,7 +319,10 @@ const Projects = (props: ProjectsProps) => {
                         }, 500);
                       }}
                     >
-                      <FontAwesomeIcon icon={faFilter} />
+                      <FontAwesomeIcon
+                        icon={faFilter}
+                        className={`tw-h-[20px]`}
+                      />
                       {["sm", "md", "lg"].includes(screen) && (
                         <FilterPopup
                           popupLogic={categoriesPopupLogic}

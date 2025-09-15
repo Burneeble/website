@@ -7,6 +7,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useClientInfoService } from "@burneeble/ui-components";
 import { cn } from "@/lib/utils";
+import { useNavbar } from "@/contexts/NavbarContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,6 +18,7 @@ const Abilities = (props: AbilitiesProps) => {
   //Hooks
   const sectionRef = useRef<HTMLElement>(null);
   const { screen } = useClientInfoService();
+  const { setNavbarVisible } = useNavbar();
 
   //Effects
   useEffect(() => {
@@ -47,6 +49,35 @@ const Abilities = (props: AbilitiesProps) => {
       // Ensures no memory leaks or unnecessary listeners remain.
     };
   }, []);
+
+  // IntersectionObserver to hide/show navbar
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // Hide navbar when section is more than 10% visible
+          if (entry.isIntersecting && entry.intersectionRatio > 0.1) {
+            setNavbarVisible(false);
+          } else if (!entry.isIntersecting || entry.intersectionRatio <= 0.1) {
+            setNavbarVisible(true);
+          }
+        });
+      },
+      {
+        threshold: [0, 0.1, 0.5, 1], // Multiple thresholds for smoother detection
+      }
+    );
+
+    observer.observe(section);
+
+    return () => {
+      observer.disconnect();
+      setNavbarVisible(true); // Ensure navbar is visible when component unmounts
+    };
+  }, [setNavbarVisible]);
 
   return (
     <section
