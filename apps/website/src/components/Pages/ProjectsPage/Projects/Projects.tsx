@@ -21,9 +21,9 @@ import {
   useScrollLock,
 } from "@burneeble/ui-components";
 import { useQuery } from "@apollo/client";
-import { 
+import {
   GetProjectsByCategoriesWithExclusionQueryQuery,
-  GetProjectsWithExclusionSimpleQueryQuery 
+  GetProjectsWithExclusionSimpleQueryQuery,
 } from "@/__generated__/graphql";
 import { cn } from "@/lib/utils";
 import { FilterPopup, SearchPopup } from "./components";
@@ -51,10 +51,10 @@ const Projects = (props: ProjectsProps) => {
   const { lockScroll, unlockScroll } = useScrollLock();
   // Use different queries based on whether categories are selected
   const hasActiveCategories = activeCategories.length > 0;
-  const query = hasActiveCategories 
+  const query = hasActiveCategories
     ? GET_PROJECTS_BY_CATEGORIES_WITH_EXCLUSION_QUERY
     : GET_PROJECTS_WITH_EXCLUSION_SIMPLE_QUERY;
-    
+
   // Build variables object based on query type
   const variables = hasActiveCategories
     ? {
@@ -70,7 +70,7 @@ const Projects = (props: ProjectsProps) => {
         offset: endCursor,
         search: searchQuery,
       };
-      
+
   const { data: projectsData, fetchMore: fetchMoreProjects } = useQuery(
     query,
     { variables: variables as any } // Type assertion to handle different variable shapes
@@ -129,7 +129,7 @@ const Projects = (props: ProjectsProps) => {
     setIsLoading(true);
     try {
       if (!fetchMoreProjects) return;
-      
+
       const hasActiveCategories = activeCategories.length > 0;
       const variables = hasActiveCategories
         ? {
@@ -145,7 +145,7 @@ const Projects = (props: ProjectsProps) => {
             offset: endCursor,
             search: searchQuery,
           };
-          
+
       const { data: res } = await fetchMoreProjects({ variables });
 
       const data = res;
@@ -161,7 +161,14 @@ const Projects = (props: ProjectsProps) => {
       NotificationHandler.instance.error("Error fetching projects");
     }
     setIsLoading(false);
-  }, [activeCategories, batchSize, endCursor, fetchMoreProjects, props.excludeCategories, searchQuery]);
+  }, [
+    activeCategories,
+    batchSize,
+    endCursor,
+    fetchMoreProjects,
+    props.excludeCategories,
+    searchQuery,
+  ]);
 
   const triggerRefresh = () => {
     setIsLoading(true);
@@ -170,7 +177,9 @@ const Projects = (props: ProjectsProps) => {
   };
 
   const projectFormatter = (
-    data: GetProjectsByCategoriesWithExclusionQueryQuery | GetProjectsWithExclusionSimpleQueryQuery
+    data:
+      | GetProjectsByCategoriesWithExclusionQueryQuery
+      | GetProjectsWithExclusionSimpleQueryQuery
   ): ProjectModel[] | null => {
     const projectsInfo: ProjectModel[] | null = data.projects
       ? data.projects?.edges.map((edge) => {
@@ -216,13 +225,13 @@ const Projects = (props: ProjectsProps) => {
             <>
               <div
                 className={`
-                  header tw-inline-flex tw-h-[58px] tw-w-full tw-items-center
+                  header tw-inline-flex tw-h-fit tw-w-full tw-items-center
                   tw-justify-between tw-gap-[20px]
 
-                  md:tw-h-[123px] md:tw-flex-col md:tw-items-start
+                   md:tw-flex-col md:tw-items-start
                   md:tw-gap-[10px]
 
-                  xl:tw-h-[70px] xl:tw-flex-row xl:tw-items-center
+                   xl:tw-flex-row xl:tw-items-center
                 `}
               >
                 <h2
@@ -242,17 +251,15 @@ const Projects = (props: ProjectsProps) => {
                         </span>
                       </>
                     )
+                  ) : screen === "sm" ? (
+                    "GALLERY"
                   ) : (
-                    screen === "sm" ? (
-                      "GALLERY"
-                    ) : (
-                      <>
-                        Gallery{" "}
-                        <span className={`cs-text-color-primary-gradient`}>
-                          on Fire!
-                        </span>
-                      </>
-                    )
+                    <>
+                      Gallery{" "}
+                      <span className={`cs-text-color-primary-gradient`}>
+                        on Fire!
+                      </span>
+                    </>
                   )}
                 </h2>
                 <div
@@ -294,13 +301,13 @@ const Projects = (props: ProjectsProps) => {
                     )}
                     <FontAwesomeIcon
                       icon={faMagnifyingGlass}
-                      className={`tw-h-[20px]]`}
+                      className={`tw-h-[20px]`}
                     />
                   </div>
                   {["sm", "md", "lg"].includes(screen) && (
                     <div
                       className={cn(
-                        `icon tw-relative`,
+                        `icon tw-relative !tw-h-[40px] !tw-w-[40px]`,
                         categoriesPopupLogic.isPopupOpen && "opened",
                         activeCategories.length > 0 && "active"
                       )}
@@ -312,7 +319,10 @@ const Projects = (props: ProjectsProps) => {
                         }, 500);
                       }}
                     >
-                      <FontAwesomeIcon icon={faFilter} />
+                      <FontAwesomeIcon
+                        icon={faFilter}
+                        className={`tw-h-[20px]`}
+                      />
                       {["sm", "md", "lg"].includes(screen) && (
                         <FilterPopup
                           popupLogic={categoriesPopupLogic}

@@ -54,42 +54,8 @@ const Landing = ({ variant }: LandingProps) => {
           <FlameIcon className="tw-h-[60px] tw-w-[60px]" />
         </div>
 
-        {isPortfolio ? (
-          <>
-            <span
-              className={`
-                tw-whitespace-nowrap tw-text-center tw-text-5xl tw-font-normal
-                tw-text-[var(--primary-lighter)] tw-opacity-70
-
-                lg:tw-text-7xl
-
-                md:tw-text-6xl
-              `}
-            >
-              {isMobile ? config.title.mobile : config.title.desktop}
-            </span>
-            {config.showSubtitle && (
-              <h1
-                className={`
-                  tw-relative -tw-top-1/4 tw-text-center tw-font-normal
-                  tw-text-headings
-
-                  lg:tw-text-6xl
-
-                  md:tw-text-5xl
-
-                  sm:tw-text-4xl
-
-                  xl:tw-text-7xl
-                `}
-              >
-                {config.subtitle}
-              </h1>
-            )}
-          </>
-        ) : (
-          <h1
-            className={`
+        <h1
+          className={`
               tw-whitespace-nowrap tw-text-center tw-text-4xl tw-font-normal
               tw-text-headings
 
@@ -97,10 +63,13 @@ const Landing = ({ variant }: LandingProps) => {
 
               md:tw-text-5xl
             `}
-          >
-            {isMobile ? config.title.mobile : <>{config.title.desktop}</>}
-          </h1>
-        )}
+        >
+          {isPortfolio
+            ? config.subtitle
+            : isMobile
+            ? config.title.mobile
+            : config.title.desktop}
+        </h1>
       </div>
     </section>
   );

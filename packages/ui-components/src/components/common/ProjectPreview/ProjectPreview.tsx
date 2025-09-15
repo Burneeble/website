@@ -70,7 +70,7 @@ const ProjectPreview = (props: ProjectPreviewProps) => {
       </div>
       <div
         className={`
-          project-info tw-flex tw-h-[146px] tw-max-w-full tw-flex-col
+          project-info tw-flex tw-max-w-full tw-flex-col
           tw-items-start tw-justify-start
         `}
       >
